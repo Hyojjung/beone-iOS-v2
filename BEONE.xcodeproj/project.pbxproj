@@ -14,6 +14,9 @@
 		62E5CF171BDDE19100A99F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E5CF161BDDE19100A99F4C /* Assets.xcassets */; };
 		62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E5CF181BDDE19100A99F4C /* LaunchScreen.storyboard */; };
 		62E5CF251BDDE19100A99F4C /* BEONETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF241BDDE19100A99F4C /* BEONETests.swift */; };
+		62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF371BDDEE7100A99F4C /* NetworkError.swift */; settings = {ASSET_TAGS = (); }; };
+		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04FC2C834CC415EBBA82B36E /* Pods-BEONE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEONE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BEONE/Pods-BEONE.debug.xcconfig"; sourceTree = "<group>"; };
+		3AA36593DD13744C71A2C68B /* Pods-BEONE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEONE.release.xcconfig"; path = "Pods/Target Support Files/Pods-BEONE/Pods-BEONE.release.xcconfig"; sourceTree = "<group>"; };
+		4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BEONE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		62E5CF201BDDE19100A99F4C /* BEONETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BEONETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF241BDDE19100A99F4C /* BEONETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BEONETests.swift; sourceTree = "<group>"; };
 		62E5CF261BDDE19100A99F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		62E5CF371BDDEE7100A99F4C /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11CE2D280E347485354658BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		62E5CF011BDDE19100A99F4C = {
 			isa = PBXGroup;
 			children = (
 				62E5CF0C1BDDE19100A99F4C /* BEONE */,
 				62E5CF231BDDE19100A99F4C /* BEONETests */,
 				62E5CF0B1BDDE19100A99F4C /* Products */,
+				88D4EECDACA8F87D33D48419 /* Pods */,
+				11CE2D280E347485354658BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +153,8 @@
 		62E5CF331BDDEB8800A99F4C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */,
+				62E5CF371BDDEE7100A99F4C /* NetworkError.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -147,6 +168,15 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
+		88D4EECDACA8F87D33D48419 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04FC2C834CC415EBBA82B36E /* Pods-BEONE.debug.xcconfig */,
+				3AA36593DD13744C71A2C68B /* Pods-BEONE.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62E5CF291BDDE19100A99F4C /* Build configuration list for PBXNativeTarget "BEONE" */;
 			buildPhases = (
+				85A17C78E1DF5ED67B92DDC4 /* Check Pods Manifest.lock */,
 				62E5CF061BDDE19100A99F4C /* Sources */,
 				62E5CF071BDDE19100A99F4C /* Frameworks */,
 				62E5CF081BDDE19100A99F4C /* Resources */,
+				681DEB221A9F897767D79348 /* Embed Pods Frameworks */,
+				A08352FD4C1B5D1C3DCF2930 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,14 +275,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		681DEB221A9F897767D79348 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEONE/Pods-BEONE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85A17C78E1DF5ED67B92DDC4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A08352FD4C1B5D1C3DCF2930 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEONE/Pods-BEONE-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		62E5CF061BDDE19100A99F4C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
+				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +457,7 @@
 		};
 		62E5CF2A1BDDE19100A99F4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FC2C834CC415EBBA82B36E /* Pods-BEONE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BEONE/Info.plist;
@@ -385,6 +469,7 @@
 		};
 		62E5CF2B1BDDE19100A99F4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AA36593DD13744C71A2C68B /* Pods-BEONE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BEONE/Info.plist;
@@ -437,6 +522,7 @@
 				62E5CF2B1BDDE19100A99F4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62E5CF2C1BDDE19100A99F4C /* Build configuration list for PBXNativeTarget "BEONETests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +531,7 @@
 				62E5CF2E1BDDE19100A99F4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
