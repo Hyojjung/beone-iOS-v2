@@ -16,6 +16,10 @@
 		62E5CF251BDDE19100A99F4C /* BEONETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF241BDDE19100A99F4C /* BEONETests.swift */; };
 		62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF371BDDEE7100A99F4C /* NetworkError.swift */; settings = {ASSET_TAGS = (); }; };
+		62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF3D1BDDFF3F00A99F4C /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF401BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */; settings = {ASSET_TAGS = (); }; };
+		62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		62E5CF261BDDE19100A99F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		62E5CF371BDDEE7100A99F4C /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		62E5CF3E1BDDFF3F00A99F4C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		62E5CF401BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
+		62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +111,7 @@
 				62E5CF321BDDEB7D00A99F4C /* View */,
 				62E5CF2F1BDDEB4C00A99F4C /* Model */,
 				62E5CF311BDDEB6D00A99F4C /* ViewController */,
-				62E5CF301BDDEB5A00A99F4C /* Support */,
+				62E5CF301BDDEB5A00A99F4C /* Supporting Files */,
 			);
 			path = BEONE;
 			sourceTree = "<group>";
@@ -120,18 +128,21 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62E5CF3D1BDDFF3F00A99F4C /* Model.xcdatamodeld */,
+				62E5CF401BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift */,
+				62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		62E5CF301BDDEB5A00A99F4C /* Support */ = {
+		62E5CF301BDDEB5A00A99F4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */,
 				62E5CF161BDDE19100A99F4C /* Assets.xcassets */,
 				62E5CF1B1BDDE19100A99F4C /* Info.plist */,
 			);
-			name = Support;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
@@ -153,8 +164,8 @@
 		62E5CF331BDDEB8800A99F4C /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */,
-				62E5CF371BDDEE7100A99F4C /* NetworkError.swift */,
+				62E5CF461BDE108F00A99F4C /* CoreData */,
+				62E5CF3A1BDDFE5700A99F4C /* Network */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -166,6 +177,23 @@
 				62E5CF181BDDE19100A99F4C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		62E5CF3A1BDDFE5700A99F4C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */,
+				62E5CF371BDDEE7100A99F4C /* NetworkError.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		62E5CF461BDE108F00A99F4C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		88D4EECDACA8F87D33D48419 /* Pods */ = {
@@ -329,10 +357,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
+				62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
+				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
+				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
+				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +566,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62E5CF3D1BDDFF3F00A99F4C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62E5CF3E1BDDFF3F00A99F4C /* Model.xcdatamodel */,
+			);
+			currentVersion = 62E5CF3E1BDDFF3F00A99F4C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 62E5CF021BDDE19100A99F4C /* Project object */;
 }
