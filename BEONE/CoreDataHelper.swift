@@ -1,9 +1,9 @@
 //
-//  CoreDataStore.swift
-//  SwiftCoreDataSimpleDemo
+//  CoreDataHelper.swift
+//  BEONE
 //
-//  Created by CHENHAO on 14-7-9.
-//  Copyright (c) 2014 CHENHAO. All rights reserved.
+//  Created by 효정 김 on 2015. 10. 26..
+//  Copyright © 2015년 효정 김. All rights reserved.
 //
 
 import Foundation

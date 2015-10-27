@@ -1,9 +1,9 @@
 //
 //  NetworkError.swift
-//  BOFlorist
+//  BEONE
 //
-//  Created by 효정 김 on 2015. 8. 18..
-//  Copyright (c) 2015년 효정 김. All rights reserved.
+//  Created by 효정 김 on 2015. 10. 26..
+//  Copyright © 2015년 효정 김. All rights reserved.
 //
 
 import UIKit

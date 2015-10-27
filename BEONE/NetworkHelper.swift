@@ -1,9 +1,9 @@
 //
 //  NetworkHelper.swift
-//  BOFlorist
+//  BEONE
 //
-//  Created by 효정 김 on 2015. 8. 18..
-//  Copyright (c) 2015년 효정 김. All rights reserved.
+//  Created by 효정 김 on 2015. 10. 26..
+//  Copyright © 2015년 효정 김. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,8 @@ enum NetworkMethod: String {
   case Put = "PUT"
   case Delete = "DELETE"
 }
+
+let kNetworkResponseKeyData = "data"
 
 let kNetworkHeaderKeyContentType = "Content-Type"
 let kNetworkHeaderValueContentType = "application/json"
@@ -118,23 +120,25 @@ class NetworkHelper: NSObject {
 
   // MARK: - Static Public Methods
   
-  static func request(method: String, url: String, parameter: AnyObject?,
+  static func request(method: NetworkMethod, url: String, parameter: AnyObject?,
     success: NetworkSuccess?, failure: NetworkFailure?) {
       #if DEBUG
         print("\(method) \(url)")
       #endif
       let networkManager = self.networkManager()
       switch method {
-      case NetworkMethod.Get.rawValue:
+      case NetworkMethod.Get:
         requestGet(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Post.rawValue:
+      case NetworkMethod.Post:
         requestPost(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Put.rawValue:
+      case NetworkMethod.Put:
         requestPut(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Delete.rawValue:
+      case NetworkMethod.Delete:
         requestDelete(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      default:
-        preconditionFailure("invalid method")
       }
+  }
+  
+  static func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?) {
+      request(method, url: url, parameter: parameter, success: success, failure: nil)
   }
 }

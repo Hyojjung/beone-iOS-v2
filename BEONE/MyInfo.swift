@@ -11,10 +11,10 @@ import CoreData
 
 class MyInfo: NSManagedObject {
   
-  private static let myInfoEntityName = "MyInfo"
+  private static let entityName = "MyInfo"
   
   static func sharedMyInfo() -> MyInfo {
-    let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: myInfoEntityName)
+    let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: entityName)
     var result: [AnyObject]?
     do {
       result = try CoreDataHelper.sharedCoreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest)
@@ -26,7 +26,7 @@ class MyInfo: NSManagedObject {
       return myInfo as! MyInfo
     } else {
       let myInfo: MyInfo =
-      NSEntityDescription.insertNewObjectForEntityForName(myInfoEntityName,
+      NSEntityDescription.insertNewObjectForEntityForName(entityName,
         inManagedObjectContext: CoreDataHelper.sharedCoreDataHelper.backgroundContext) as! MyInfo
       CoreDataHelper.sharedCoreDataHelper.saveContext()
       return myInfo
