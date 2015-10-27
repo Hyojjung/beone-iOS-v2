@@ -71,6 +71,6 @@ class CoreDataHelper: NSObject{
   }
   
   func saveContext() {
-    self.saveContext(self.backgroundContext)
+    self.saveContext(self.managedObjectContext)
   }
 }

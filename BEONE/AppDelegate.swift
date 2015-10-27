@@ -11,10 +11,10 @@ import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   var window: UIWindow?
-
-
+  
+  
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
     
@@ -24,17 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
   }
-
+  
   func application(application: UIApplication, openURL url: NSURL,
     sourceApplication: String?, annotation: AnyObject) -> Bool {
-    return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
-      sourceApplication: sourceApplication, annotation: annotation)
+      if KOSession.isKakaoAccountLoginCallback(url) {
+        return KOSession.handleOpenURL(url)
+      }
+      return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
+        sourceApplication: sourceApplication, annotation: annotation)
   }
   
   func applicationDidBecomeActive(application: UIApplication) {
+    KOSession.handleDidBecomeActive()
     FBSDKAppEvents.activateApp()
   }
-
+  
   func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
     var tokenString = deviceToken.description
     tokenString = tokenString .stringByReplacingOccurrencesOfString("<", withString: String())

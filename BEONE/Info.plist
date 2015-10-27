@@ -2,18 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>org-appextension-feature-password-management</string>
-		<string>fbauth2</string>
-		<string>fbauth</string>
-		<string>kakaokompassauth</string>
-		<string>kakaobd09094081fd6407c0d04e0415afaf7c</string>
-	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>akamaihd.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>kakao.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>kakao.co.kr</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>kakaocdn.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
 			<key>facebook.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -28,28 +48,18 @@
 				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>
-			<key>akamaihd.net</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
 		</dict>
 	</dict>
-	<key>CFBundleURLTypes</key>
+	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb1414064805578739</string>
-			</array>
-		</dict>
+		<string>org-appextension-feature-password-management</string>
+		<string>fbauth2</string>
+		<string>fbauth</string>
+		<string>kakaokompassauth</string>
+		<string>kakaobd09094081fd6407c0d04e0415afaf7c</string>
 	</array>
-	<key>FacebookAppID</key>
-	<string>1414064805578739</string>
-	<key>FacebookDisplayName</key>
-	<string>비밀의화원</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>bd09094081fd6407c0d04e0415afaf7c</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -66,8 +76,29 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1414064805578739</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakaobd09094081fd6407c0d04e0415afaf7c</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>1414064805578739</string>
+	<key>FacebookDisplayName</key>
+	<string>비밀의화원</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

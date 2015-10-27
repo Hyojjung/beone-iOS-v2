@@ -52,9 +52,20 @@ class SigningViewController: BaseViewController {
     logInManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self)
       { (result, error) -> Void in
         if !result.isCancelled {
+          KOSession.sharedSession().close()
+
           FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
           AuthenticationHelper.requestFacebookSignIn()
         }
+    }
+  }
+  
+  @IBAction func kakaotalkSignInButtonTapped() {
+    KOSession.sharedSession().openWithCompletionHandler() { (error) -> Void in
+      if KOSession.sharedSession().isOpen() {
+        FBSDKLoginManager().logOut()
+        AuthenticationHelper.requestKakaoSignIn()
+      }
     }
   }
   
@@ -72,8 +83,10 @@ class SigningViewController: BaseViewController {
   }
   
   // MARK: - Observer Action
-
+  
   func handleSnsSignInFailure() {
     performSegueWithIdentifier(kSegueIdentifierFromSigningToSnsSignUp, sender: nil)
   }
+  
+  // TODO: - loading view
 }

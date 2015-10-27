@@ -10,10 +10,13 @@ import UIKit
 import FBSDKLoginKit
 
 class SnsSignUpViewController: BaseViewController {
+  
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet var agreementButtons: [UIButton]!
   @IBOutlet weak var allAgreementButton: UIButton!
+  
+  var snsType: SnsType?
   
   // MARK: - View Cycles
   
@@ -31,6 +34,10 @@ class SnsSignUpViewController: BaseViewController {
       name: kNotificationFetchFacebookInfoSuccess,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "setUpTextField:",
+      name: kNotificationFetchKakaoInfoSuccess,
+      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
       selector: "closeViewController",
       name: kNotificationSigningSuccess,
       object: nil)
@@ -43,6 +50,7 @@ class SnsSignUpViewController: BaseViewController {
   
   override func setUpView() {
     AuthenticationHelper.getFaceBookInfo()
+    AuthenticationHelper.getKakaoInfo()
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
   
@@ -55,8 +63,8 @@ class SnsSignUpViewController: BaseViewController {
   @IBAction func snsSignUpButtonTapped() {
     if let errorMessage = errorMessage() {
       ViewControllerHelper.showAlertView(errorMessage, message: nil)
-    } else {
-      AuthenticationHelper.signUp(SnsType.Facebook,
+    } else if let snsType = snsType {
+      AuthenticationHelper.signUp(snsType,
         userId: FBSDKAccessToken.currentAccessToken().userID,
         token: FBSDKAccessToken.currentAccessToken().tokenString,
         email: emailTextField.text!,
@@ -84,6 +92,7 @@ class SnsSignUpViewController: BaseViewController {
   
   func setUpTextField(notification: NSNotification) {
     if let userInfo = notification.userInfo as? [String: String] {
+      snsType = notification.name == kNotificationFetchFacebookInfoSuccess ? SnsType.Facebook : SnsType.Kakao
       emailTextField.text = userInfo[kNotificationKeyFacebookEmail]
       nameTextField.text = userInfo[kNotificationKeyFacebookName]
     }

@@ -12,6 +12,7 @@ import FBSDKLoginKit
 let kNotificationSigningSuccess = "NotificationSigningSuccess"
 let kNotificationNeedSignUp = "NotificationNeedSignUp"
 let kNotificationFetchFacebookInfoSuccess = "NotificationFetchFacebookInfoSuccess"
+let kNotificationFetchKakaoInfoSuccess = "NotificationFetchKakaoInfoSuccess"
 let kNotificationKeyFacebookName = "NotificationKeyFacebookName"
 let kNotificationKeyFacebookEmail = "NotificationKeyFacebookEmail"
 
@@ -147,6 +148,7 @@ class AuthenticationHelper: NSObject {
     NetworkHelper.request(NetworkMethod.Post, url: "device-infos", parameter: parameter) { (result) -> Void in
       if let deviceInfo = result![kNetworkResponseKeyData] as? [String: AnyObject] {
         myInfo.userDeviceInfoId = deviceInfo[kObjectPropertyKeyId] as? NSNumber
+        CoreDataHelper.sharedCoreDataHelper.saveContext()
       }
       success(result: result)
     }
@@ -187,19 +189,15 @@ class AuthenticationHelper: NSObject {
   // MARK: - Sns Methods
   
   static func requestFacebookSignIn() {
-    var parameter = [String: String]()
-    parameter["fields"] = "name, email"
-    let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameter)
-    graphRequest.startWithCompletionHandler { (_, result, _) -> Void in
-      AuthenticationHelper.signIn(SnsType.Facebook,
-        userId: FBSDKAccessToken.currentAccessToken().userID,
-        token: FBSDKAccessToken.currentAccessToken().tokenString)
-    }
+    AuthenticationHelper.signIn(SnsType.Facebook,
+      userId: FBSDKAccessToken.currentAccessToken().userID,
+      token: FBSDKAccessToken.currentAccessToken().tokenString)
   }
   
   static func getFaceBookInfo() {
     var parameter = [String: String]()
     parameter["fields"] = "name, email"
+    
     let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameter)
     graphRequest.startWithCompletionHandler { (_, result, _) -> Void in
       if let result = result as? [String: AnyObject]{
@@ -211,6 +209,33 @@ class AuthenticationHelper: NSObject {
           object: nil,
           userInfo: userInfo)
       }
+    }
+  }
+  
+  static func kakaoSessionMeTask(completionHandler: KOUser -> Void) {
+    KOSessionTask.meTaskWithCompletionHandler { (result, _) -> Void in
+      if let user = result as? KOUser {
+        completionHandler(user)
+      }
+    }
+  }
+  
+  static func requestKakaoSignIn() {
+    kakaoSessionMeTask() { (user) -> Void in
+      AuthenticationHelper.signIn(SnsType.Kakao,
+        userId: user.ID.description,
+        token: KOSession.sharedSession().accessToken)
+    }
+  }
+  
+  static func getKakaoInfo() {
+    kakaoSessionMeTask() { (user) -> Void in
+      var userInfo = [String: String]()
+      userInfo[kNotificationKeyFacebookName] = user.propertyForKey("nickname") as? String
+      
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchKakaoInfoSuccess,
+        object: nil,
+        userInfo: userInfo)
     }
   }
 }
