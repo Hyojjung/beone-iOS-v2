@@ -26,6 +26,9 @@ let kNetworkHeaderValueContentType = "application/json"
 
 let kHeaderAuthorizationKey = "x-beone-authorization"
 
+let kNotificationNetworkStart = "NotificationNetworkStart"
+let kNotificationNetworkEnd = "NotificationNetworkEnd"
+
 // TODO: 주소수정
 #if DEBUG
 let kBaseApiUrl = "http://52.68.151.169/api/"
@@ -36,6 +39,8 @@ let kBaseUrl = "https://devapp.beone.kr/"
 #endif
 
 class NetworkHelper: NSObject {
+  
+  static private var networkCommunicationCount = 0
   
   // MARK: - Static Private Methods
   
@@ -108,6 +113,7 @@ class NetworkHelper: NSObject {
       } else if let success = success {
         success(result: responseObject)
       }
+      subtractNetworkCount()
   }
   
   static private func networkManager() -> AFHTTPRequestOperationManager {
@@ -116,11 +122,26 @@ class NetworkHelper: NSObject {
     return networkManager
   }
   
+  static private func addNetworkCount() {
+    networkCommunicationCount += 1
+    if networkCommunicationCount == 1 {
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkStart, object: nil)
+    }
+  }
+  
+  static private func subtractNetworkCount() {
+    networkCommunicationCount -= 1
+    if networkCommunicationCount == 0 {
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkEnd, object: nil)
+    }
+  }
+  
   // MARK: - Static Public Methods
   
   static func request(method: NetworkMethod, url: String, parameter: AnyObject?,
     success: NetworkSuccess?, failure: NetworkFailure?) {
       print("\(method) \(url)")
+      addNetworkCount()
       let networkManager = self.networkManager()
       switch method {
       case NetworkMethod.Get:
@@ -136,5 +157,36 @@ class NetworkHelper: NSObject {
   
   static func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?) {
     request(method, url: url, parameter: parameter, success: success, failure: nil)
+  }
+  
+  static func uploadData(signedUrl: String?, contentType: String, parameters: NSData,
+    success: NetworkSuccess?, failure: NetworkFailure?) {
+      if let signedUrl = signedUrl {
+        addNetworkCount()
+        let request = NSMutableURLRequest(URL: NSURL(string: signedUrl)!,
+          cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+          timeoutInterval: 10)
+        request.setValue(contentType, forHTTPHeaderField: kNetworkHeaderKeyContentType)
+        request.HTTPMethod = NetworkMethod.Put.rawValue
+        request.HTTPBody = parameters
+        
+        let operation = AFHTTPRequestOperation(request: request)
+        operation.responseSerializer = AFJSONResponseSerializer()
+        operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+          self.processResponse(operation,
+            responseObject: responseObject,
+            error: nil,
+            success: success,
+            failure: failure)
+          }, failure: { (operation, error) -> Void in
+            self.processResponse(operation,
+              responseObject: operation.responseObject,
+              error: error,
+              success: success,
+              failure: failure)
+        })
+        operation.start()
+      }
+      
   }
 }

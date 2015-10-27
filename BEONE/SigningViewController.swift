@@ -22,6 +22,11 @@ class SigningViewController: BaseViewController {
     navigationController?.navigationBar.hidden = true
   }
   
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    loadingView.hide()
+  }
+  
   // MARK: - Override Methods
   
   override func addObservers() {
@@ -52,8 +57,10 @@ class SigningViewController: BaseViewController {
     logInManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self)
       { (result, error) -> Void in
         if !result.isCancelled {
+          self.loadingView.show()
+          
           KOSession.sharedSession().close()
-
+          
           FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
           AuthenticationHelper.requestFacebookSignIn()
         }
@@ -63,6 +70,8 @@ class SigningViewController: BaseViewController {
   @IBAction func kakaotalkSignInButtonTapped() {
     KOSession.sharedSession().openWithCompletionHandler() { (error) -> Void in
       if KOSession.sharedSession().isOpen() {
+        self.loadingView.show()
+
         FBSDKLoginManager().logOut()
         AuthenticationHelper.requestKakaoSignIn()
       }
@@ -87,6 +96,4 @@ class SigningViewController: BaseViewController {
   func handleSnsSignInFailure() {
     performSegueWithIdentifier(kSegueIdentifierFromSigningToSnsSignUp, sender: nil)
   }
-  
-  // TODO: - loading view
 }

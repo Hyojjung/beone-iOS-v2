@@ -149,7 +149,7 @@ class AuthenticationHelper: NSObject {
     NetworkHelper.request(NetworkMethod.Post, url: "device-infos", parameter: parameter) { (result) -> Void in
       if let deviceInfo = result![kNetworkResponseKeyData] as? [String: AnyObject] {
         myInfo.userDeviceInfoId = deviceInfo[kObjectPropertyKeyId] as? NSNumber
-        CoreDataHelper.sharedCoreDataHelper.saveContext()
+        CoreDataHelper.sharedCoreDataHelper.saveContext(CoreDataHelper.sharedCoreDataHelper.backgroundContext)
       }
       success(result: result)
     }

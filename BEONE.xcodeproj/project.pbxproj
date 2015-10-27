@@ -21,6 +21,7 @@
 		62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; settings = {ASSET_TAGS = (); }; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; settings = {ASSET_TAGS = (); }; };
 		62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E931BDF41550071E1B1 /* SigningViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -77,6 +78,7 @@
 		62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
 		62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62FC6E931BDF41550071E1B1 /* SigningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		62E5CF321BDDEB7D00A99F4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				62FA80501BDFE3CA00C016C3 /* LoadingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */,
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
+				62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
