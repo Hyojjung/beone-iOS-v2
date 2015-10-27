@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 let kNotificationSigningSuccess = "NotificationSigningSuccess"
+let kNotificationNeedSignUp = "NotificationNeedSignUp"
+let kNotificationFetchFacebookInfoSuccess = "NotificationFetchFacebookInfoSuccess"
+let kNotificationKeyFacebookName = "NotificationKeyFacebookName"
+let kNotificationKeyFacebookEmail = "NotificationKeyFacebookEmail"
 
 let kRequestUrlUsers = "users"
 let kRequestUrlAuthentications = "authentications"
@@ -50,7 +55,7 @@ class AuthenticationHelper: NSObject {
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kSigningParameterKeyPassword] = password
     parameter[kSigningParameterKeyEmail] = email
-    NetworkHelper.request(NetworkMethod.Put, url: kRequestUrlAuthentications, parameter: parameter)
+    NetworkHelper.request(NetworkMethod.Post, url: kRequestUrlAuthentications, parameter: parameter)
       { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
@@ -66,13 +71,15 @@ class AuthenticationHelper: NSObject {
     parameter[kSigningParameterKeySnsType] = snsType.rawValue
     parameter[kSigningParameterKeyUserId] = userId
     parameter[kSigningParameterKeySnsToken] = token
-    NetworkHelper.request(NetworkMethod.Put, url: kRequestUrlAuthentications, parameter: parameter,
+    NetworkHelper.request(NetworkMethod.Post, url: kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
       },
       failure: { (error) -> Void in
-        // post noti
+        if error.statusCode == NetworkResponseCode.NotFound.rawValue {
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNeedSignUp, object: nil)
+        }
     })
   }
   
@@ -175,5 +182,35 @@ class AuthenticationHelper: NSObject {
           registerDeviceInfo(success)
         }
     })
+  }
+  
+  // MARK: - Sns Methods
+  
+  static func requestFacebookSignIn() {
+    var parameter = [String: String]()
+    parameter["fields"] = "name, email"
+    let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameter)
+    graphRequest.startWithCompletionHandler { (_, result, _) -> Void in
+      AuthenticationHelper.signIn(SnsType.Facebook,
+        userId: FBSDKAccessToken.currentAccessToken().userID,
+        token: FBSDKAccessToken.currentAccessToken().tokenString)
+    }
+  }
+  
+  static func getFaceBookInfo() {
+    var parameter = [String: String]()
+    parameter["fields"] = "name, email"
+    let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameter)
+    graphRequest.startWithCompletionHandler { (_, result, _) -> Void in
+      if let result = result as? [String: AnyObject]{
+        var userInfo = [String: String]()
+        userInfo[kNotificationKeyFacebookName] = result["name"] as? String
+        userInfo[kNotificationKeyFacebookEmail] = result["email"] as? String
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchFacebookInfoSuccess,
+          object: nil,
+          userInfo: userInfo)
+      }
+    }
   }
 }

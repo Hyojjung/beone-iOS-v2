@@ -26,8 +26,8 @@ enum NetworkResponseCode: Int {
 
 struct NetworkError {
     
-    var statusCode : NSInteger?
-    var originalErrorCode : NSInteger?
+    var statusCode : Int?
+    var originalErrorCode : Int?
     var responseObject : AnyObject?
     
     // MARK: - Init & Dealloc Methods

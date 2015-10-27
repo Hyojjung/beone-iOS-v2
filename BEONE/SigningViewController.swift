@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 let kSegueIdentifierFromSigningToSnsSignUp = "From Signing To Sns Sign Up"
 let kSegueIdentifierFromSigningToEmailSignUp = "From Signing To Email Sign Up"
 let kSegueIdentifierFromSigningToEmailSignIn = "From Signing To Email Sign In"
-
 
 class SigningViewController: BaseViewController {
   
@@ -24,12 +24,38 @@ class SigningViewController: BaseViewController {
   
   // MARK: - Override Methods
   
+  override func addObservers() {
+    super.addObservers()
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "closeButtonTapped",
+      name: kNotificationSigningSuccess,
+      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "handleSnsSignInFailure",
+      name: kNotificationNeedSignUp,
+      object: nil)
+  }
   
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
   
   // MARK: - Actions
-
+  
   @IBAction func closeButtonTapped() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  @IBAction func facebookSignInButtonTapped() {
+    let logInManager = FBSDKLoginManager()
+    logInManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self)
+      { (result, error) -> Void in
+        if !result.isCancelled {
+          FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+          AuthenticationHelper.requestFacebookSignIn()
+        }
+    }
   }
   
   @IBAction func signingWithEmailButtonTapped() {
@@ -45,5 +71,9 @@ class SigningViewController: BaseViewController {
     ViewControllerHelper.showActionSheet(self, title: nil, actionSheetButtons: [signInButton, signUpButton])
   }
   
-  
+  // MARK: - Observer Action
+
+  func handleSnsSignInFailure() {
+    performSegueWithIdentifier(kSegueIdentifierFromSigningToSnsSignUp, sender: nil)
+  }
 }

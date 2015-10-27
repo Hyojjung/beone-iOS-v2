@@ -31,8 +31,8 @@ let kHeaderAuthorizationKey = "x-beone-authorization"
 let kBaseApiUrl = "http://52.68.151.169/api/"
 let kBaseUrl = "http://52.68.151.169/"
   #else
-let kBaseApiUrl = "https://shop.beone.kr/api/"
-let kBaseUrl = "https://shop.beone.kr/"
+let kBaseApiUrl = "https://devapp.beone.kr/api/"
+let kBaseUrl = "https://devapp.beone.kr/"
 #endif
 
 class NetworkHelper: NSObject {
@@ -85,10 +85,8 @@ class NetworkHelper: NSObject {
   
   static private func processResponse(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError?,
     success: NetworkSuccess?, failure: NetworkFailure?) {
-      #if DEBUG
-        print("\(operation.response?.statusCode) \(operation.request.URL)")
-        print("responseObject: \(responseObject)")
-      #endif
+      print("\(operation.response?.statusCode) \(operation.request.URL)")
+      print("responseObject: \(responseObject)")
       if let error = error {
         if operation.response == nil ||
           operation.response?.statusCode == NetworkResponseCode.None.rawValue ||
@@ -108,23 +106,21 @@ class NetworkHelper: NSObject {
           // TODO: handle common error
         }
       } else if let success = success {
-          success(result: responseObject)
+        success(result: responseObject)
       }
   }
-
+  
   static private func networkManager() -> AFHTTPRequestOperationManager {
     let networkManager = AFHTTPRequestOperationManager(baseURL: NSURL(string: kBaseApiUrl))
     networkManager.requestSerializer = AFJSONRequestSerializer()
     return networkManager
   }
-
+  
   // MARK: - Static Public Methods
   
   static func request(method: NetworkMethod, url: String, parameter: AnyObject?,
     success: NetworkSuccess?, failure: NetworkFailure?) {
-      #if DEBUG
-        print("\(method) \(url)")
-      #endif
+      print("\(method) \(url)")
       let networkManager = self.networkManager()
       switch method {
       case NetworkMethod.Get:
@@ -139,6 +135,6 @@ class NetworkHelper: NSObject {
   }
   
   static func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?) {
-      request(method, url: url, parameter: parameter, success: success, failure: nil)
+    request(method, url: url, parameter: parameter, success: success, failure: nil)
   }
 }

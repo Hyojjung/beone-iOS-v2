@@ -11,7 +11,6 @@
 		62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SecondViewController.swift */; };
 		62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E5CF131BDDE19100A99F4C /* Main.storyboard */; };
-		62E5CF171BDDE19100A99F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E5CF161BDDE19100A99F4C /* Assets.xcassets */; };
 		62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E5CF181BDDE19100A99F4C /* LaunchScreen.storyboard */; };
 		62E5CF251BDDE19100A99F4C /* BEONETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF241BDDE19100A99F4C /* BEONETests.swift */; };
 		62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF361BDDEE7100A99F4C /* NetworkHelper.swift */; settings = {ASSET_TAGS = (); }; };
@@ -26,6 +25,18 @@
 		62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E931BDF41550071E1B1 /* SigningViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E981BDF4FF50071E1B1 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
+		62FC6E9D1BDF53210071E1B1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FC6E9C1BDF53210071E1B1 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		62FC6E9F1BDF55240071E1B1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FC6E9E1BDF55240071E1B1 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6EA31BDF69370071E1B1 /* StringValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6EA21BDF69370071E1B1 /* StringValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA41BDF72F60071E1B1 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EB11BDF73260071E1B1 /* bg_payment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EB21BDF73260071E1B1 /* bg_orderhistory_top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */; settings = {ASSET_TAGS = (); }; };
+		62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */; settings = {ASSET_TAGS = (); }; };
 		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +59,6 @@
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		62E5CF111BDDE19100A99F4C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		62E5CF141BDDE19100A99F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		62E5CF161BDDE19100A99F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62E5CF191BDDE19100A99F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62E5CF1B1BDDE19100A99F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E5CF201BDDE19100A99F4C /* BEONETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BEONETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +76,18 @@
 		62FC6E931BDF41550071E1B1 /* SigningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
 		62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
 		62FC6E981BDF4FF50071E1B1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		62FC6E9C1BDF53210071E1B1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		62FC6E9E1BDF55240071E1B1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnsSignUpViewController.swift; sourceTree = "<group>"; };
+		62FC6EA21BDF69370071E1B1 /* StringValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidationHelper.swift; sourceTree = "<group>"; };
+		62FC6EA41BDF72F60071E1B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_1.jpg; sourceTree = "<group>"; };
+		62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_2.jpg; sourceTree = "<group>"; };
+		62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_3.jpg; sourceTree = "<group>"; };
+		62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_payment.jpg; sourceTree = "<group>"; };
+		62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_orderhistory_top.jpg; sourceTree = "<group>"; };
+		62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join_detail.jpg; sourceTree = "<group>"; };
+		62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +96,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */,
+				62FC6E9D1BDF53210071E1B1 /* FBSDKCoreKit.framework in Frameworks */,
+				62FC6E9F1BDF55240071E1B1 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +114,8 @@
 		11CE2D280E347485354658BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62FC6E9E1BDF55240071E1B1 /* FBSDKLoginKit.framework */,
+				62FC6E9C1BDF53210071E1B1 /* FBSDKCoreKit.framework */,
 				4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */,
 			);
 			name = Frameworks;
@@ -118,6 +144,7 @@
 		62E5CF0C1BDDE19100A99F4C /* BEONE */ = {
 			isa = PBXGroup;
 			children = (
+				62FC6EA61BDF73150071E1B1 /* Resources */,
 				62E5CF351BDDEBA100A99F4C /* Storyboard */,
 				62E5CF331BDDEB8800A99F4C /* Util */,
 				62E5CF321BDDEB7D00A99F4C /* View */,
@@ -150,8 +177,8 @@
 		62E5CF301BDDEB5A00A99F4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62FC6EA41BDF72F60071E1B1 /* Images.xcassets */,
 				62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */,
-				62E5CF161BDDE19100A99F4C /* Assets.xcassets */,
 				62E5CF1B1BDDE19100A99F4C /* Info.plist */,
 				62FC6E981BDF4FF50071E1B1 /* Localizable.strings */,
 			);
@@ -183,6 +210,7 @@
 				62E5CF3A1BDDFE5700A99F4C /* Network */,
 				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
 				62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */,
+				62FC6EA21BDF69370071E1B1 /* StringValidationHelper.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -218,8 +246,23 @@
 			isa = PBXGroup;
 			children = (
 				62FC6E931BDF41550071E1B1 /* SigningViewController.swift */,
+				62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */,
 			);
 			name = Signing;
+			sourceTree = "<group>";
+		};
+		62FC6EA61BDF73150071E1B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */,
+				62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */,
+				62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */,
+				62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */,
+				62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */,
+				62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */,
+				62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		88D4EECDACA8F87D33D48419 /* Pods */ = {
@@ -315,10 +358,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
+				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
+				62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */,
+				62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */,
+				62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */,
+				62FC6EB11BDF73260071E1B1 /* bg_payment.jpg in Resources */,
+				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
+				62FC6EB21BDF73260071E1B1 /* bg_orderhistory_top.jpg in Resources */,
 				62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */,
-				62E5CF171BDDE19100A99F4C /* Assets.xcassets in Resources */,
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
+				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +440,11 @@
 				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,
 				62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */,
+				62FC6EA31BDF69370071E1B1 /* StringValidationHelper.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
+				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
@@ -524,6 +576,11 @@
 			baseConfigurationReference = 04FC2C834CC415EBBA82B36E /* Pods-BEONE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BEONE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.beone.BEONE;
@@ -536,6 +593,11 @@
 			baseConfigurationReference = 3AA36593DD13744C71A2C68B /* Pods-BEONE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BEONE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.beone.BEONE;

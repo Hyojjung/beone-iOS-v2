@@ -27,4 +27,11 @@ class ViewControllerHelper: NSObject {
       
       viewController.presentViewController(actionSheet, animated: true, completion: nil)
   }
+  
+  static func showAlertView(title: String, message: String?) {
+    let alertView =
+    UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "취소")
+    alertView.addButtonWithTitle(NSLocalizedString("ok", comment: "okButtonTitle"))
+    alertView.show()
+  }
 }

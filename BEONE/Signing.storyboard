@@ -83,7 +83,7 @@
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="facebookSignInButtonTapped" destination="ioK-Ns-xIX" eventType="touchUpInside" id="NNd-LE-sov"/>
+                                                            <action selector="facebookSignInButtonTapped" destination="ioK-Ns-xIX" eventType="touchUpInside" id="XNJ-iD-ffg"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이스북 로그인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyF-F7-5MF">
@@ -934,7 +934,7 @@
         <!--Sns Sign Up View Controller-->
         <scene sceneID="Pbm-sp-yL2">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Vyr-nv-b6X" customClass="BOSnsSignUpViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Vyr-nv-b6X" customClass="SnsSignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nkp-3F-Rmb"/>
                         <viewControllerLayoutGuide type="bottom" id="xlL-Hh-ZrE"/>
@@ -959,7 +959,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="backButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="aej-P0-jyy"/>
+                                                    <action selector="backButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="87S-dQ-yNv"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phE-Is-JsC">
@@ -974,7 +974,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_form" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-19-Xee">
                                                         <rect key="frame" x="0.0" y="0.0" width="572" height="308"/>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이메일을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-aq-WmU" customClass="UIFloatLabelTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이메일을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-aq-WmU">
                                                         <rect key="frame" x="13" y="16" width="546" height="32"/>
                                                         <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" label="emailTextField"/>
@@ -985,7 +985,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="iXw-IG-lfo"/>
+                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="qgy-UX-v2h"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0y4-jb-ygi">
@@ -1031,7 +1031,7 @@
                                                         </state>
                                                         <state key="selected" image="checkbox_on"/>
                                                         <connections>
-                                                            <action selector="agreementButtonTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="BfZ-f8-IMB"/>
+                                                            <action selector="agreementButtonTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="8yr-sM-daW"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의합니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g4-AT-Neb">
@@ -1098,10 +1098,10 @@
                                                         </state>
                                                         <state key="selected" image="checkbox_on"/>
                                                         <connections>
-                                                            <action selector="allAgreementTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="QMQ-WF-Kvh"/>
+                                                            <action selector="allAgreementTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="mo5-5d-Ea9"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV">
                                                         <rect key="frame" x="13" y="63" width="546" height="34"/>
                                                         <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" label="emailTextField"/>
@@ -1112,7 +1112,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="sRy-vT-B19"/>
+                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="Wb6-FT-TeD"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -1200,7 +1200,7 @@
                                                 </state>
                                                 <state key="highlighted" backgroundImage="btn_submit_gold_pressed"/>
                                                 <connections>
-                                                    <action selector="snsSignUpButtonTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="oqj-yu-Jzq"/>
+                                                    <action selector="snsSignUpButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="jpg-3L-D7B"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1253,11 +1253,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="allAgreementButton" destination="4g8-8q-Xk6" id="L20-qT-VeR"/>
-                        <outlet property="emailTextField" destination="vCR-aq-WmU" id="PfV-As-17g"/>
-                        <outlet property="nameTextField" destination="eXS-gN-xvV" id="Si2-xH-MnO"/>
-                        <outletCollection property="agreementButtons" destination="bJh-ls-Pdh" id="pog-AZ-R9Y"/>
-                        <outletCollection property="agreementButtons" destination="oXg-zQ-rXX" id="zZ6-Sv-h0h"/>
+                        <outlet property="allAgreementButton" destination="4g8-8q-Xk6" id="gJI-oW-cIX"/>
+                        <outlet property="emailTextField" destination="vCR-aq-WmU" id="pTU-aE-WLy"/>
+                        <outlet property="nameTextField" destination="eXS-gN-xvV" id="xux-hA-kZW"/>
+                        <outletCollection property="agreementButtons" destination="oXg-zQ-rXX" collectionClass="NSMutableArray" id="zZ6-Sv-h0h"/>
+                        <outletCollection property="agreementButtons" destination="bJh-ls-Pdh" collectionClass="NSMutableArray" id="rN8-dS-8KL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxC-fy-9hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1449,7 +1449,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_join.jpg" width="4" height="4"/>
+        <image name="bg_join.jpg" width="960" height="1644"/>
         <image name="bg_join_detail.jpg" width="960" height="1644"/>
         <image name="bg_join_form" width="9" height="9"/>
         <image name="btn_back" width="40" height="40"/>
