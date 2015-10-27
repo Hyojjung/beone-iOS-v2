@@ -313,7 +313,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="5Qz-cO-6B8">
             <objects>
-                <viewController storyboardIdentifier="BWSignInView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Sx-2k-kGu" customClass="BOSignInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BWSignInView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Sx-2k-kGu" customClass="SignInViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2cL-Zq-GFq"/>
                         <viewControllerLayoutGuide type="bottom" id="e0K-GW-ydU"/>
