@@ -36,8 +36,9 @@ let kSigningResponseKeyDeviceInfos = "deviceInfos"
 let kSigningResponseKeyAuthentication = "authentication"
 let kSigningResponseKeyDeviceInfo = "deviceInfo"
 
-
 let kObjectPropertyKeyId = "id"
+
+let kDeviceTypeiOS = 1
 
 enum SnsType: Int {
   case Facebook = 1
@@ -51,7 +52,7 @@ class AuthenticationHelper: NSObject {
   static func signIn(email: String, password: String) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kSigningParameterKeyPassword] = password
@@ -66,7 +67,7 @@ class AuthenticationHelper: NSObject {
   static func signIn(snsType: SnsType, userId: String, token: String) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kSigningParameterKeySnsType] = snsType.rawValue
@@ -87,7 +88,7 @@ class AuthenticationHelper: NSObject {
   static func signUp(email: String, name: String, password: String) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kSigningParameterKeyPassword] = password
@@ -102,7 +103,7 @@ class AuthenticationHelper: NSObject {
   static func signUp(snsType: SnsType, userId: String, token: String, email: String, name: String) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kSigningParameterKeySnsType] = snsType.rawValue
@@ -142,7 +143,7 @@ class AuthenticationHelper: NSObject {
   static func registerDeviceInfo(success: NetworkSuccess) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     
     NetworkHelper.request(NetworkMethod.Post, url: "device-infos", parameter: parameter) { (result) -> Void in
@@ -157,7 +158,7 @@ class AuthenticationHelper: NSObject {
   static func signInForNonUser(success: NetworkSuccess) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     
@@ -170,7 +171,7 @@ class AuthenticationHelper: NSObject {
   static func refreshToken(success: NetworkSuccess, failure: NetworkFailure) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = 1 // TODO: string으로 변경
+    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
     parameter[kAuthenticationPropertyKeyRefreshToken] = myInfo.refreshToken

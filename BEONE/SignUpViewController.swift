@@ -1,5 +1,5 @@
 //
-//  SnsSignUpViewController.swift
+//  SignUpViewController.swift
 //  BEONE
 //
 //  Created by 효정 김 on 2015. 10. 27..
@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
-class SnsSignUpViewController: BaseViewController {
+class SignUpViewController: BaseViewController {
   
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var nameTextField: UIFloatLabelTextField!
+  @IBOutlet weak var passwordTextField: UIFloatLabelTextField!
+  @IBOutlet weak var passwordVerifyingTextField: UIFloatLabelTextField!
   @IBOutlet var agreementButtons: [UIButton]!
   @IBOutlet weak var allAgreementButton: UIButton!
-  
-  var snsType: SnsType?
   
   // MARK: - View Cycles
   
@@ -30,14 +29,6 @@ class SnsSignUpViewController: BaseViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "setUpTextField:",
-      name: kNotificationFetchFacebookInfoSuccess,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "setUpTextField:",
-      name: kNotificationFetchKakaoInfoSuccess,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
       selector: "closeViewController",
       name: kNotificationSigningSuccess,
       object: nil)
@@ -49,14 +40,18 @@ class SnsSignUpViewController: BaseViewController {
   }
   
   override func setUpView() {
-    AuthenticationHelper.getFaceBookInfo()
-    AuthenticationHelper.getKakaoInfo()
-    
     ViewControllerHelper.setUpFloatingLabel(emailTextField,
       placeholder: NSLocalizedString("email form", comment: "placeholder"))
     ViewControllerHelper.setUpFloatingLabel(nameTextField,
       placeholder: NSLocalizedString("name form", comment: "placeholder"))
+    ViewControllerHelper.setUpFloatingLabel(passwordTextField,
+      placeholder: NSLocalizedString("password form", comment: "placeholder"))
+    ViewControllerHelper.setUpFloatingLabel(passwordVerifyingTextField,
+      placeholder: NSLocalizedString("password form", comment: "placeholder"))
+    
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    passwordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    passwordVerifyingTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
   
   // MARK: - Actions
@@ -65,15 +60,13 @@ class SnsSignUpViewController: BaseViewController {
     navigationController?.popViewControllerAnimated(true)
   }
   
-  @IBAction func snsSignUpButtonTapped() {
+  @IBAction func signUpButtonTapped() {
     if let errorMessage = errorMessage() {
       ViewControllerHelper.showAlertView(errorMessage, message: nil)
-    } else if let snsType = snsType {
-      AuthenticationHelper.signUp(snsType,
-        userId: FBSDKAccessToken.currentAccessToken().userID,
-        token: FBSDKAccessToken.currentAccessToken().tokenString,
-        email: emailTextField.text!,
-        name: nameTextField.text!)
+    } else {
+      AuthenticationHelper.signUp(emailTextField.text!,
+        name: nameTextField.text!,
+        password: passwordTextField.text!)
     }
   }
   
@@ -95,18 +88,9 @@ class SnsSignUpViewController: BaseViewController {
   
   // MARK: - Observer Actions
   
-  func setUpTextField(notification: NSNotification) {
-    if let userInfo = notification.userInfo as? [String: String] {
-      snsType = notification.name == kNotificationFetchFacebookInfoSuccess ? SnsType.Facebook : SnsType.Kakao
-      emailTextField.text = userInfo[kNotificationKeyFacebookEmail]
-      nameTextField.text = userInfo[kNotificationKeyFacebookName]
-    }
-  }
-  
   func closeViewController() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
-  
   // MARK: - Private Methods
   
   private func errorMessage() -> String? {
@@ -114,6 +98,10 @@ class SnsSignUpViewController: BaseViewController {
       return NSLocalizedString("check email form", comment: "alert")
     } else if nameTextField.text == nil || nameTextField.text!.isEmpty {
       return NSLocalizedString("enter name", comment: "alert")
+    } else if passwordTextField.text == nil || !passwordTextField.text!.isValidPassword() {
+      return NSLocalizedString("password length is invalid", comment: "alert")
+    } else if passwordTextField.text != passwordVerifyingTextField.text {
+      return NSLocalizedString("check each password", comment: "alert")
     }
     for agreementButton in agreementButtons {
       if !agreementButton.selected {
@@ -122,16 +110,21 @@ class SnsSignUpViewController: BaseViewController {
     }
     return nil
   }
+  
   // TODO: - webview 연결
 }
 
 // MARK: - UITextFieldDelegate
 
-extension SnsSignUpViewController {
+extension SignUpViewController {
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     if textField == emailTextField {
       nameTextField.becomeFirstResponder()
     } else if textField == nameTextField {
+      passwordTextField.becomeFirstResponder()
+    } else if textField == passwordTextField {
+      passwordVerifyingTextField.becomeFirstResponder()
+    } else if textField == passwordVerifyingTextField {
       view.endEditing(true)
     }
     return true

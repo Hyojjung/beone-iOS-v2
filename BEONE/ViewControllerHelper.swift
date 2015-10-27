@@ -34,4 +34,10 @@ class ViewControllerHelper: NSObject {
     alertView.addButtonWithTitle(NSLocalizedString("ok", comment: "okButtonTitle"))
     alertView.show()
   }
+  
+  static func setUpFloatingLabel(textfield: UIFloatLabelTextField, placeholder: String) {
+    textfield.placeholder = placeholder;
+    textfield.floatLabelActiveColor = darkGold
+    textfield.tintColor = grey
+  }
 }

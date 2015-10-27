@@ -525,7 +525,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="FhM-J0-8Ia">
             <objects>
-                <viewController storyboardIdentifier="signUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="BOSignUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="SignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oX0-bg-aBm"/>
                         <viewControllerLayoutGuide type="bottom" id="L3a-Tc-la1"/>
@@ -918,13 +918,12 @@
                     <size key="freeformSize" width="600" height="700"/>
                     <connections>
                         <outlet property="allAgreementButton" destination="tDo-nu-3tM" id="ZbM-Tq-G2B"/>
-                        <outlet property="emailTextField" destination="Woy-Vz-dD3" id="zpo-07-rVr"/>
+                        <outlet property="emailTextField" destination="Woy-Vz-dD3" id="orT-CV-llC"/>
                         <outlet property="nameTextField" destination="dDf-Vy-hMU" id="5hB-QS-p5l"/>
                         <outlet property="passwordTextField" destination="Jl4-um-uMl" id="fZa-v4-s61"/>
                         <outlet property="passwordVerifyingTextField" destination="X8U-4O-HDM" id="7q4-Wf-o7f"/>
-                        <outlet property="signUpButton" destination="wQb-yN-Qkz" id="nuR-Zx-dyy"/>
-                        <outletCollection property="agreementButtons" destination="LrI-SS-mra" id="aUi-jW-qy2"/>
-                        <outletCollection property="agreementButtons" destination="F4F-rS-tJ2" id="qx8-Eo-yw1"/>
+                        <outletCollection property="agreementButtons" destination="LrI-SS-mra" collectionClass="NSMutableArray" id="aUi-jW-qy2"/>
+                        <outletCollection property="agreementButtons" destination="F4F-rS-tJ2" collectionClass="NSMutableArray" id="qx8-Eo-yw1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svh-IN-8KJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -974,7 +973,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_form" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-19-Xee">
                                                         <rect key="frame" x="0.0" y="0.0" width="572" height="308"/>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이메일을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-aq-WmU">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이메일을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-aq-WmU" customClass="UIFloatLabelTextField">
                                                         <rect key="frame" x="13" y="16" width="546" height="32"/>
                                                         <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" label="emailTextField"/>
@@ -1101,7 +1100,7 @@
                                                             <action selector="allAgreementTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="mo5-5d-Ea9"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
                                                         <rect key="frame" x="13" y="63" width="546" height="34"/>
                                                         <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" label="emailTextField"/>

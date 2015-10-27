@@ -38,6 +38,9 @@
 		62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */; settings = {ASSET_TAGS = (); }; };
 		62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */; settings = {ASSET_TAGS = (); }; };
 		62FDC3821BDFB8380072BBCE /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; settings = {ASSET_TAGS = (); }; };
+		62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3891BDFC1780072BBCE /* DesignResource.swift */; settings = {ASSET_TAGS = (); }; };
 		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,10 @@
 		62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join.jpg; sourceTree = "<group>"; };
 		62FDC37B1BDFAB820072BBCE /* BEONE-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEONE-Bridging-Header.h"; sourceTree = "<group>"; };
 		62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		62FDC3861BDFC0F30072BBCE /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatLabelTextField.h; sourceTree = "<group>"; };
+		62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatLabelTextField.m; sourceTree = "<group>"; };
+		62FDC3891BDFC1780072BBCE /* DesignResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +156,7 @@
 		62E5CF0C1BDDE19100A99F4C /* BEONE */ = {
 			isa = PBXGroup;
 			children = (
+				62FDC3851BDFC0E40072BBCE /* Vendor */,
 				62FC6EA61BDF73150071E1B1 /* Resources */,
 				62E5CF351BDDEBA100A99F4C /* Storyboard */,
 				62E5CF331BDDEB8800A99F4C /* Util */,
@@ -156,7 +164,6 @@
 				62E5CF2F1BDDEB4C00A99F4C /* Model */,
 				62E5CF311BDDEB6D00A99F4C /* ViewController */,
 				62E5CF301BDDEB5A00A99F4C /* Supporting Files */,
-				62FDC37B1BDFAB820072BBCE /* BEONE-Bridging-Header.h */,
 			);
 			path = BEONE;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 		62E5CF301BDDEB5A00A99F4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				62FDC37B1BDFAB820072BBCE /* BEONE-Bridging-Header.h */,
 				62FC6EA41BDF72F60071E1B1 /* Images.xcassets */,
 				62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */,
 				62E5CF1B1BDDE19100A99F4C /* Info.plist */,
@@ -217,6 +225,7 @@
 				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
 				62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */,
 				62FC6EA21BDF69370071E1B1 /* StringFormatter.swift */,
+				62FDC3891BDFC1780072BBCE /* DesignResource.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -253,6 +262,7 @@
 			children = (
 				62FC6E931BDF41550071E1B1 /* SigningViewController.swift */,
 				62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */,
+				62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */,
 			);
 			name = Signing;
 			sourceTree = "<group>";
@@ -269,6 +279,15 @@
 				62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		62FDC3851BDFC0E40072BBCE /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				62FDC3861BDFC0F30072BBCE /* UIFloatLabelTextField.h */,
+				62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		88D4EECDACA8F87D33D48419 /* Pods */ = {
@@ -451,10 +470,13 @@
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
+				62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */,
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
+				62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */,
+				62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

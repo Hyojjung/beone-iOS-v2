@@ -11,3 +11,9 @@
 "check email form" = "이메일 형식을 확인해주세요.";
 "enter name" = "이름을 입력해주세요.";
 "need agreement all rule" = "약관에 동의해주세요.";
+"password length is invalid" = "영문, 숫자, 특수문자 중 2가지 이상의 조합으로 구성된 8~20자의 비밀번호를 입력해주세요.";
+"check each password" = "비밀번호를 확인해주세요.";
+
+"email form" = "이메일";
+"password form" = "비밀번호 (영문, 숫자, 특수문자 8~20자)";
+"name form" = "이름 (1~20자)";
