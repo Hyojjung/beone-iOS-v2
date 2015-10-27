@@ -10,16 +10,10 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+  @IBAction func signInButtonTapped() {
+    let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
+    let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("SigningNavigationView")
+    presentViewController(signingViewController, animated: true, completion: nil)
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
 }
 

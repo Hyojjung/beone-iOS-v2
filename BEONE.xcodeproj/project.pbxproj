@@ -21,6 +21,11 @@
 		62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */; settings = {ASSET_TAGS = (); }; };
 		62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; settings = {ASSET_TAGS = (); }; };
+		62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E931BDF41550071E1B1 /* SigningViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E981BDF4FF50071E1B1 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
 		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +61,11 @@
 		62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
 		62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
+		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
+		62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		62FC6E931BDF41550071E1B1 /* SigningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
+		62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
+		62FC6E981BDF4FF50071E1B1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +153,7 @@
 				62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */,
 				62E5CF161BDDE19100A99F4C /* Assets.xcassets */,
 				62E5CF1B1BDDE19100A99F4C /* Info.plist */,
+				62FC6E981BDF4FF50071E1B1 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -150,8 +161,10 @@
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				62FC6E951BDF43CB0071E1B1 /* Signing */,
 				62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */,
 				62E5CF111BDDE19100A99F4C /* SecondViewController.swift */,
+				62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -169,6 +182,7 @@
 				62E5CF461BDE108F00A99F4C /* CoreData */,
 				62E5CF3A1BDDFE5700A99F4C /* Network */,
 				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
+				62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -176,6 +190,7 @@
 		62E5CF351BDDEBA100A99F4C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */,
 				62E5CF131BDDE19100A99F4C /* Main.storyboard */,
 				62E5CF181BDDE19100A99F4C /* LaunchScreen.storyboard */,
 			);
@@ -197,6 +212,14 @@
 				62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		62FC6E951BDF43CB0071E1B1 /* Signing */ = {
+			isa = PBXGroup;
+			children = (
+				62FC6E931BDF41550071E1B1 /* SigningViewController.swift */,
+			);
+			name = Signing;
 			sourceTree = "<group>";
 		};
 		88D4EECDACA8F87D33D48419 /* Pods */ = {
@@ -291,6 +314,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
+				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
 				62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */,
 				62E5CF171BDDE19100A99F4C /* Assets.xcassets in Resources */,
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
@@ -359,14 +384,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */,
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
 				62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */,
+				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,
 				62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
+				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 			);
