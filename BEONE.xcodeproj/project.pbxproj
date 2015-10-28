@@ -22,6 +22,7 @@
 		62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; settings = {ASSET_TAGS = (); }; };
+		62FA80551BE0532B00C016C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; settings = {ASSET_TAGS = (); }; };
 		62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E931BDF41550071E1B1 /* SigningViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -79,6 +80,7 @@
 		62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
 		62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62FC6E931BDF41550071E1B1 /* SigningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		62E5CF0C1BDDE19100A99F4C /* BEONE */ = {
 			isa = PBXGroup;
 			children = (
+				62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */,
 				62FDC3851BDFC0E40072BBCE /* Vendor */,
 				62FC6EA61BDF73150071E1B1 /* Resources */,
 				62E5CF351BDDEBA100A99F4C /* Storyboard */,
@@ -389,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FA80551BE0532B00C016C3 /* GoogleService-Info.plist in Resources */,
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
 				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
 				62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */,

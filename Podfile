@@ -6,6 +6,7 @@ use_frameworks!
 target 'BEONE' do
 
 pod 'AFNetworking'
+pod 'Google/Analytics'
 
 end
 

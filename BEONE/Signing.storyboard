@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Signing View Controller-->
+        <!--SigningViewController-->
         <scene sceneID="60f-Dt-pMt">
             <objects>
-                <viewController storyboardIdentifier="sigin" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ioK-Ns-xIX" customClass="SigningViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sigin" title="SigningViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ioK-Ns-xIX" customClass="SigningViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V64-4c-Sxr"/>
                         <viewControllerLayoutGuide type="bottom" id="4U4-To-bO6"/>
@@ -522,10 +522,10 @@
             </objects>
             <point key="canvasLocation" x="1960" y="73"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--SignUpViewController-->
         <scene sceneID="FhM-J0-8Ia">
             <objects>
-                <viewController storyboardIdentifier="signUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="SignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpViewController" title="SignUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="SignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oX0-bg-aBm"/>
                         <viewControllerLayoutGuide type="bottom" id="L3a-Tc-la1"/>

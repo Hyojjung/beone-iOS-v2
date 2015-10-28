@@ -17,9 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-    
     application.registerUserNotificationSettings( settings )
     application.registerForRemoteNotifications()
+    
+    // Configure tracker from GoogleService-Info.plist.
+    var configureError:NSError?
+    GGLContext.sharedInstance().configureWithError(&configureError)
+    assert(configureError == nil, "Error configuring Google services: \(configureError)")
+    
+    // Optional: configure GAI options.
+    let gai = GAI.sharedInstance()
+    gai.trackUncaughtExceptions = true  // report uncaught exceptions
+    gai.logger.logLevel = GAILogLevel.Verbose  // remove before app releaseAppDelegate.swift
     
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
