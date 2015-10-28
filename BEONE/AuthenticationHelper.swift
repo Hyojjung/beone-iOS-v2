@@ -36,8 +36,6 @@ let kSigningResponseKeyDeviceInfos = "deviceInfos"
 let kSigningResponseKeyAuthentication = "authentication"
 let kSigningResponseKeyDeviceInfo = "deviceInfo"
 
-let kObjectPropertyKeyId = "id"
-
 let kDeviceTypeiOS = 1
 
 enum SnsType: Int {
