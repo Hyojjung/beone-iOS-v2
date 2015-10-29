@@ -14,10 +14,10 @@ let kTemplateStylePropertyKeyBackgroundColor = "backgroundColor"
 let kTemplateStylePropertyKeyBackgroundImageUrl = "backgroundImageUrl"
 let kTemplateStylePropertyKeyAlignment = "alignment"
 
-enum Alignment: Int {
-  case Left = 1
-  case Center
-  case Right
+enum Alignment: String {
+  case Left = "left"
+  case Center = "center"
+  case Right = "right"
 }
 
 class TemplateStyle: BaseModel {
@@ -25,7 +25,6 @@ class TemplateStyle: BaseModel {
   var padding: UIEdgeInsets?
   var backgroundColor: UIColor?
   var backgroundImageUrl: String?
-  var alignment: Alignment?
   
   // MARK: - Override Methods
   
@@ -46,10 +45,6 @@ class TemplateStyle: BaseModel {
       }
       
       backgroundImageUrl = style[kTemplateStylePropertyKeyBackgroundImageUrl] as? String
-      
-      if let alignment = style[kTemplateStylePropertyKeyAlignment] as? Int {
-        self.alignment = Alignment(rawValue: alignment)
-      }
     }
   }
 

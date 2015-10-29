@@ -12,10 +12,10 @@ let kContentsPropertyKeyBackgroundColor = "backgroundColor"
 let kContentsPropertyKeyTextColor = "textColor"
 let kContentsPropertyKeyAlignment = "alignment"
 let kContentsPropertyKeyText = "text"
-let kContentsPropertyKeyUnderlined = "underlined"
-let kContentsPropertyKeyBold = "bold"
-let kContentsPropertyKeyItalic = "italic"
-let kContentsPropertyKeyCancel = "cancel"
+let kContentsPropertyKeyIsUnderlined = "isUnderlined"
+let kContentsPropertyKeyIsBold = "isBold"
+let kContentsPropertyKeyIsItalic = "isItalic"
+let kContentsPropertyKeyIsCancelLined = "isCancelLined"
 let kContentsPropertyKeySize = "size"
 let kContentsPropertyKeyImageUrl = "imageUrl"
 
@@ -30,10 +30,10 @@ class Contents: BaseModel {
   
   var text: String?
   var alignment: Alignment?
-  var underlined: Bool?
-  var bold: Bool?
-  var italic: Bool?
-  var cancel: Bool?
+  var isUnderlined: Bool?
+  var isBold: Bool?
+  var isItalic: Bool?
+  var isCancelLined: Bool?
   var backgroundColor: UIColor?
   var textColor: UIColor?
   var size: CGFloat?
@@ -50,10 +50,10 @@ class Contents: BaseModel {
       text = contents[kContentsPropertyKeyText] as? String
       imageUrl = contents[kContentsPropertyKeyImageUrl] as? String
       
-      underlined = contents[kContentsPropertyKeyUnderlined] as? Bool
-      bold = contents[kContentsPropertyKeyBold] as? Bool
-      italic = contents[kContentsPropertyKeyItalic] as? Bool
-      cancel = contents[kContentsPropertyKeyCancel] as? Bool
+      isUnderlined = contents[kContentsPropertyKeyIsUnderlined] as? Bool
+      isBold = contents[kContentsPropertyKeyIsBold] as? Bool
+      isItalic = contents[kContentsPropertyKeyIsItalic] as? Bool
+      isCancelLined = contents[kContentsPropertyKeyIsCancelLined] as? Bool
       
       size = contents[kContentsPropertyKeySize] as? CGFloat
       
@@ -65,7 +65,7 @@ class Contents: BaseModel {
         self.textColor = UIColor(rgba: textColor)
       }
       
-      if let alignment = contents[kContentsPropertyKeyAlignment] as? Int {
+      if let alignment = contents[kContentsPropertyKeyAlignment] as? String {
         self.alignment = Alignment(rawValue: alignment)
       }
     }
