@@ -57,7 +57,7 @@ class FirstViewController: UIViewController {
             ]
           ]
         ],[
-          "type": "text",
+          "type": "image",
           "style": [
             "margin": "0 20 0 20",
             "padding": "20 10 20 30",

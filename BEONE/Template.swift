@@ -47,7 +47,6 @@ class Template: BaseModel {
   // MARK: - Override Methods
   
   override func assignObject(data: AnyObject) {
-    print(data)
     if let template = data as? [String: AnyObject] {
       if let typeString = template[kTemplatePropertyKeyType] as? String {
         type = TemplateType(rawValue: typeString)

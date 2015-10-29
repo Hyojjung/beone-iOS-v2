@@ -7,6 +7,7 @@ target 'BEONE' do
 
 pod 'AFNetworking'
 pod 'Google/Analytics'
+pod 'SDWebImage'
 
 end
 

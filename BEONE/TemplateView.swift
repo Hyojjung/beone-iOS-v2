@@ -95,8 +95,6 @@ class TemplateView: UIView {
       return "BannerTemplateView"
     case .Table:
       return "TableTemplateView"
-    default:
-      return nil
     }
   }
 }
