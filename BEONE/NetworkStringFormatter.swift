@@ -19,7 +19,8 @@ extension String {
   }
   
   private func urlForm() -> String {
-    return isUrlString() ? kBaseUrl.stringByAppendingString(self) : self;
+    return !isUrlString() ? "https://devapi.beone.kr".stringByAppendingString(self) : self;
+    // TODO: - Base Url 로 변경
   }
   
   func url() -> NSURL {

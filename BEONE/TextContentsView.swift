@@ -8,13 +8,12 @@
 
 import UIKit
 
-class TextTemplateView: UIView {
+class TextContentsView: TemplateContentsView {
   
   @IBOutlet weak var textLabel: UILabel!
   
-  func layoutView(contents: Contents) {
+  override func layoutView(contents: Contents) {
     if let text = contents.text {
-      print(contents.alignment)
       if let alignment = contents.alignment {
         switch alignment {
         case .Left:

@@ -34,8 +34,8 @@ let kNotificationNetworkEnd = "NotificationNetworkEnd"
 let kBaseApiUrl = "http://52.68.151.169/api/"
 let kBaseUrl = "http://52.68.151.169/"
   #else
-let kBaseApiUrl = "https://devapp.beone.kr/api/"
-let kBaseUrl = "https://devapp.beone.kr/"
+let kBaseApiUrl = "https://devapi.beone.kr/api/"
+let kBaseUrl = "https://devapi.beone.kr/"
 #endif
 
 class NetworkHelper: NSObject {

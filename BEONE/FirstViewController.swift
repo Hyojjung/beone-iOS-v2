@@ -67,15 +67,7 @@ class FirstViewController: UIViewController {
           ],
           "contents": [
             [
-              "text": "text",
-              "alignment": "right",
-              "isUnderlined": false,
-              "isBold": true,
-              "isItalic": false,
-              "isCancelLined": true,
-              "backgroundColor": "#000000",
-              "textColor": "#ffffff",
-              "size": 12,
+              "imageUrl": "/resources/images/banners/banner_intro.jpg",
               "action": "Action Object"
             ]
           ]

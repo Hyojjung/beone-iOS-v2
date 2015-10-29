@@ -64,7 +64,7 @@ class TemplateView: UIView {
         beforeView = templateView
       }
     } else if let type = template.type, viewNibName = self.viewNibName(type),
-      contentView = UINib(nibName:viewNibName, bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? TextTemplateView {
+      contentView = UINib(nibName:viewNibName, bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? TemplateContentsView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         templateContentsView.addSubview(contentView)
         contentView.layoutView(template.contents.first!)
@@ -78,23 +78,23 @@ class TemplateView: UIView {
   func viewNibName(type: TemplateType) -> String? {
     switch type {
     case .Text:
-      return "TextTemplateView"
+      return "TextContentsView"
     case .Image:
-      return "ImageTemplateView"
+      return "ImageContentsView"
     case .Button:
-      return "ButtonTemplateView"
+      return "ButtonContentsView"
     case .Gap:
-      return "GapTemplateView"
+      return "GapContentsView"
     case .Shop:
-      return "ShopTemplateView"
+      return "ShopContentsView"
     case .Product:
-      return "ProductTemplateView"
+      return "ProductContentsView"
     case .Review:
-      return "ReviewTemplateView"
+      return "ReviewContentsView"
     case .Banner:
-      return "BannerTemplateView"
+      return "BannerContentsView"
     case .Table:
-      return "TableTemplateView"
+      return "TableContentsView"
     }
   }
 }

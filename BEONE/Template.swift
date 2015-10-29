@@ -20,7 +20,7 @@ let kTemplatePropertyKeyIsGroup = "isGroup"
 
 enum TemplateType: String {
   case Text = "text"
-  case Image
+  case Image = "image"
   case Button
   case Gap
   case Shop
