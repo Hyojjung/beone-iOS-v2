@@ -67,6 +67,7 @@ class BaseViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    ViewControllerHelper.showingNavigationViewController = self.navigationController
 //    ViewControllerHelper.frontViewController = self
     
     let tracker = GAI.sharedInstance().defaultTracker
@@ -76,6 +77,7 @@ class BaseViewController: UIViewController {
     tracker.send(builder.build() as [NSObject : AnyObject])
     
     addObservers()
+    setUpData()
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -94,6 +96,9 @@ class BaseViewController: UIViewController {
   func setUpView() {
     UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(backButtonOffset,
       forBarMetrics: .Default)
+  }
+  
+  func setUpData() {
   }
   
   func addObservers() {

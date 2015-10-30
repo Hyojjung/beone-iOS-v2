@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: BaseViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   
   @IBAction func signInButtonTapped() {
@@ -54,7 +54,9 @@ class FirstViewController: UIViewController {
               "backgroundColor": "#ffffff",
               "textColor": "#000000",
               "size": 12,
-              "action": "Action Object"
+              "action": [
+                "type": "none"
+              ]
             ]
           ]
         ],[
@@ -69,7 +71,10 @@ class FirstViewController: UIViewController {
           "contents": [
             [
               "imageUrl": "/resources/images/banners/banner_intro.jpg",
-              "action": "Action Object"
+              "action": [
+                "type": "webview",
+                "content": "http://cmlatte.com"
+              ]
             ]
           ]
         ],
@@ -90,12 +95,16 @@ class FirstViewController: UIViewController {
               "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
               "textColor": "#92d730",
               "text": "String",
-              "action": "Action Object"
-            ],[
+              "action": [
+                "type": "webview",
+                "content": "http://cmlatte.com"
+              ]            ],[
               "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
               "textColor": "#92d730",
               "text": "String",
-              "action": "Action Object"
+                "action": [
+                  "type": "none"
+                ]
             ],[
               "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
               "textColor": "#927030",

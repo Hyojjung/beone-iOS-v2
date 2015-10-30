@@ -24,7 +24,7 @@ enum ActionType: String {
 class Action: BaseModel {
   var type: ActionType?
   var content: String?
-  // url string for webview 
+  // url string for webview
   // scheme string for scheme
   // alert message fot alert
   
@@ -48,6 +48,21 @@ class Action: BaseModel {
       if let cancelAction = action[kActionKeyCancelAction] {
         self.cancelAction = Action()
         self.cancelAction!.assignObject(cancelAction)
+      }
+    }
+  }
+  
+  func action() {
+    if let type = type {
+      switch type {
+      case .None:
+        print("none")
+      case .Webview:
+        ViewControllerHelper.showWebView(content, title: nil)
+      case .Scheme:
+        print("scheme")
+      case .Alert:
+        print("alert")
       }
     }
   }

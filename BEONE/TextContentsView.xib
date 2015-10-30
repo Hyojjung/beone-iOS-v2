@@ -49,5 +49,10 @@
                 <outlet property="textLabel" destination="J0k-Se-SvS" id="8wu-2Q-m2J"/>
             </connections>
         </view>
+        <tapGestureRecognizer id="zR8-eI-736">
+            <connections>
+                <action selector="viewTapped" destination="iN0-l3-epB" id="mbh-hI-V4h"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

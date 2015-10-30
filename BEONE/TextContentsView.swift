@@ -9,11 +9,14 @@
 import UIKit
 
 class TextContentsView: TemplateContentsView {
-  
   @IBOutlet weak var textLabel: UILabel!
-  
+  var action: Action?
+
+  // MARK: - Override Methods
+
   override func layoutView(template: Template) {
     if let textContents = template.contents.first, text = textContents.text {
+      action = textContents.action
       if let alignment = textContents.alignment {
         switch alignment {
         case .Left:
@@ -26,7 +29,6 @@ class TextContentsView: TemplateContentsView {
       }
       
       let attributedString = NSMutableAttributedString(string: text)
-      
       if textContents.isUnderlined != nil && textContents.isUnderlined! {
         attributedString.addAttribute(NSUnderlineStyleAttributeName,
           value: NSUnderlineStyle.StyleSingle.rawValue,
@@ -66,5 +68,11 @@ class TextContentsView: TemplateContentsView {
       
       textLabel.attributedText = attributedString
     }
+  }
+  
+  // MARK: - Actions
+  
+  @IBAction func viewTapped() {
+    action?.action()
   }
 }

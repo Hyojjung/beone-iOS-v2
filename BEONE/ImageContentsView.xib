@@ -30,6 +30,7 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="sXC-1q-pvk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BbJ-Id-Hf5"/>
                 <constraint firstItem="sXC-1q-pvk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bmL-ck-uIX"/>
@@ -38,8 +39,14 @@
             </constraints>
             <connections>
                 <outlet property="imageView" destination="sXC-1q-pvk" id="Sag-qy-SK3"/>
+                <outletCollection property="gestureRecognizers" destination="f9A-5t-9GN" appends="YES" id="jUA-KD-pTD"/>
             </connections>
         </view>
+        <tapGestureRecognizer id="f9A-5t-9GN">
+            <connections>
+                <action selector="viewTapped" destination="iN0-l3-epB" id="dhu-2j-cxH"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="image_post_thumbnail" width="320" height="179"/>

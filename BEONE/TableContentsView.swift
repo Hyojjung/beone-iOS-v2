@@ -64,7 +64,7 @@ class TableContentsView: TemplateContentsView {
 
 // MARK: - UICollectionViewDataSource
 
-extension TableContentsView: UICollectionViewDataSource {
+extension TableContentsView {
   func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -83,5 +83,14 @@ extension TableContentsView: UICollectionViewDataSource {
     }
     return cell!
   }
-  
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension TableContentsView: UICollectionViewDelegate {
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    if let contents = contents {
+      contents[indexPath.row].action.action()
+    }
+  }
 }

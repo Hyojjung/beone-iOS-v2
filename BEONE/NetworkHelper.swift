@@ -25,6 +25,8 @@ let kNetworkHeaderKeyContentType = "Content-Type"
 let kNetworkHeaderValueContentType = "application/json"
 
 let kHeaderAuthorizationKey = "x-beone-authorization"
+let kBOHeaderVersionKey = "x-beone-version"
+let kBOHeaderVersion = "v2.0"
 
 let kNotificationNetworkStart = "NotificationNetworkStart"
 let kNotificationNetworkEnd = "NotificationNetworkEnd"
@@ -144,13 +146,13 @@ class NetworkHelper: NSObject {
       addNetworkCount()
       let networkManager = self.networkManager()
       switch method {
-      case NetworkMethod.Get:
+      case .Get:
         requestGet(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Post:
+      case .Post:
         requestPost(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Put:
+      case .Put:
         requestPut(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
-      case NetworkMethod.Delete:
+      case .Delete:
         requestDelete(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
       }
   }

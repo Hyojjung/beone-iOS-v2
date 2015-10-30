@@ -10,10 +10,20 @@ import UIKit
 
 class ImageContentsView: TemplateContentsView {
   @IBOutlet weak var imageView: LazyLoadingImageView!
+  var action: Action?
   
+  // MARK: - Override Methods
+
   override func layoutView(template: Template) {
     if let imageContents = template.contents.first {
       imageView.setLazyLoaingImage(imageContents.imageUrl)
+      action = imageContents.action
     }
+  }
+  
+  // MARK: - Actions
+  
+  @IBAction func viewTapped() {
+    action?.action()
   }
 }

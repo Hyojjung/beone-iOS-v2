@@ -14,6 +14,8 @@ struct ActionSheetButton {
 }
 
 class ViewControllerHelper: NSObject {
+  static var showingNavigationViewController: UINavigationController?
+  
   static func showActionSheet(viewController: UIViewController, title: String?, actionSheetButtons: [ActionSheetButton]) {
       let actionSheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
       
@@ -39,5 +41,15 @@ class ViewControllerHelper: NSObject {
     textfield.placeholder = placeholder;
     textfield.floatLabelActiveColor = darkGold
     textfield.tintColor = grey
+  }
+  
+  static func showWebView(urlString: String?, title: String?) {
+    print(showingNavigationViewController)
+    if let urlString = urlString, showingNavigationViewController = showingNavigationViewController {
+      let webViewController = WebViewController()
+      webViewController.url = urlString
+      webViewController.title = title
+      showingNavigationViewController.pushViewController(webViewController, animated: true)
+    }
   }
 }

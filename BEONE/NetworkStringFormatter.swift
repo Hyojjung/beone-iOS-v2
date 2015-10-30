@@ -13,13 +13,12 @@ extension String {
     return rangeOfString("://") != nil
   }
   
-  private func trimedString() -> String {
+  func trimedString() -> String {
     return stringByReplacingOccurrencesOfString(" ", withString: "")
   }
   
   private func urlForm() -> String {
     return !isUrlString() ? kBaseUrl.stringByAppendingString(self) : self;
-    // TODO: - Base Url 로 변경
   }
   
   func url() -> NSURL {
