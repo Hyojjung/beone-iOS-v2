@@ -14,12 +14,6 @@ let kTemplateStylePropertyKeyBackgroundColor = "backgroundColor"
 let kTemplateStylePropertyKeyBackgroundImageUrl = "backgroundImageUrl"
 let kTemplateStylePropertyKeyAlignment = "alignment"
 
-enum Alignment: String {
-  case Left = "left"
-  case Center = "center"
-  case Right = "right"
-}
-
 class TemplateStyle: BaseModel {
   var margin: UIEdgeInsets?
   var padding: UIEdgeInsets?
@@ -31,15 +25,11 @@ class TemplateStyle: BaseModel {
   override func assignObject(data: AnyObject) {
     if let style = data as? [String: AnyObject] {
       if let margin = style[kTemplateStylePropertyKeyMargin] as? String {
-        let marginString = "{\(margin.stringByReplacingOccurrencesOfString(" ", withString: ","))}"
-        self.margin = UIEdgeInsetsFromString(marginString)
+        self.margin = margin.edgeInsets()
       }
-      
       if let padding = style[kTemplateStylePropertyKeyPadding] as? String {
-        let paddingString = "{\(padding.stringByReplacingOccurrencesOfString(" ", withString: ","))}"
-        self.padding = UIEdgeInsetsFromString(paddingString)
+        self.padding = padding.edgeInsets()
       }
-      
       if let backgroundColor = style[kTemplateStylePropertyKeyBackgroundColor] as? String {
         self.backgroundColor = UIColor(rgba: backgroundColor)
       }

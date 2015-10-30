@@ -19,15 +19,16 @@ let kContentsPropertyKeyIsCancelLined = "isCancelLined"
 let kContentsPropertyKeySize = "size"
 let kContentsPropertyKeyImageUrl = "imageUrl"
 let kContentsPropertyKeyBackgroundImageUrl = "backgroundImageUrl"
+let kContentsPropertyKeyAction = "action"
 
-enum ActionType: Int {
-  case None = 1
-  case Scheme
-  case Webview
+enum Alignment: String {
+  case Left = "left"
+  case Center = "center"
+  case Right = "right"
 }
 
 class Contents: BaseModel {
-  var action: ActionType?
+  var action = Action()
   
   var text: String?
   var alignment: Alignment?
@@ -46,28 +47,24 @@ class Contents: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let contents = data as? [String: AnyObject] {
-      // TODO: - Assign Actions
       // TODO: - Assign Model
-      
       text = contents[kContentsPropertyKeyText] as? String
       imageUrl = contents[kContentsPropertyKeyImageUrl] as? String
       backgroundImageUrl = contents[kContentsPropertyKeyBackgroundImageUrl] as? String
-      
       isUnderlined = contents[kContentsPropertyKeyIsUnderlined] as? Bool
       isBold = contents[kContentsPropertyKeyIsBold] as? Bool
       isItalic = contents[kContentsPropertyKeyIsItalic] as? Bool
       isCancelLined = contents[kContentsPropertyKeyIsCancelLined] as? Bool
-      
       size = contents[kContentsPropertyKeySize] as? CGFloat
-      
       if let backgroundColor = contents[kContentsPropertyKeyBackgroundColor] as? String {
         self.backgroundColor = UIColor(rgba: backgroundColor)
       }
-      
+      if let action = contents[kContentsPropertyKeyAction] {
+        self.action.assignObject(action)
+      }
       if let textColor = contents[kContentsPropertyKeyTextColor] as? String {
         self.textColor = UIColor(rgba: textColor)
       }
-      
       if let alignment = contents[kContentsPropertyKeyAlignment] as? String {
         self.alignment = Alignment(rawValue: alignment)
       }

@@ -25,8 +25,7 @@ class MyInfo: NSManagedObject {
     if let myInfo = result?.first {
       return myInfo as! MyInfo
     } else {
-      let myInfo: MyInfo =
-      NSEntityDescription.insertNewObjectForEntityForName(entityName,
+      let myInfo = NSEntityDescription.insertNewObjectForEntityForName(entityName,
         inManagedObjectContext: CoreDataHelper.sharedCoreDataHelper.backgroundContext) as! MyInfo
       CoreDataHelper.sharedCoreDataHelper.saveContext()
       return myInfo

@@ -17,6 +17,9 @@
 		620717511BE239AD0014B9AC /* TableContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717501BE239AD0014B9AC /* TableContentsView.xib */; };
 		620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717521BE309890014B9AC /* TableContentsCollectionViewCell.xib */; };
 		620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717541BE3171F0014B9AC /* TableContentsCollectionViewCell.swift */; };
+		620717791BE331790014B9AC /* TemplateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717781BE331780014B9AC /* TemplateAction.swift */; };
+		6207177B1BE339EA0014B9AC /* TemplateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207177A1BE339EA0014B9AC /* TemplateHelper.swift */; };
+		6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207177C1BE33DD50014B9AC /* LayoutHelper.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SecondViewController.swift */; };
@@ -89,6 +92,9 @@
 		620717501BE239AD0014B9AC /* TableContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableContentsView.xib; sourceTree = "<group>"; };
 		620717521BE309890014B9AC /* TableContentsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		620717541BE3171F0014B9AC /* TableContentsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		620717781BE331780014B9AC /* TemplateAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateAction.swift; sourceTree = "<group>"; };
+		6207177A1BE339EA0014B9AC /* TemplateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateHelper.swift; sourceTree = "<group>"; };
+		6207177C1BE33DD50014B9AC /* LayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +296,8 @@
 				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
 				62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */,
 				62FDC3891BDFC1780072BBCE /* DesignResource.swift */,
+				6207177A1BE339EA0014B9AC /* TemplateHelper.swift */,
+				6207177C1BE33DD50014B9AC /* LayoutHelper.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 				62EFE9441BE098B50035B2DE /* Contents.swift */,
 				62EFE9381BE087770035B2DE /* TemplateStyle.swift */,
 				62EFE9341BE079C00035B2DE /* Template.swift */,
+				620717781BE331780014B9AC /* TemplateAction.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -571,6 +580,7 @@
 			files = (
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
 				62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */,
+				6207177B1BE339EA0014B9AC /* TemplateHelper.swift in Sources */,
 				62EFE94C1BE0C4C40035B2DE /* TemplateView.swift in Sources */,
 				6207174F1BE231490014B9AC /* TableContentsView.swift in Sources */,
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
@@ -588,6 +598,7 @@
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				620717441BE205840014B9AC /* NetworkStringFormatter.swift in Sources */,
+				620717791BE331790014B9AC /* TemplateAction.swift in Sources */,
 				62EFE9421BE093FB0035B2DE /* UIColorExtension.swift in Sources */,
 				62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */,
 				620717461BE21FCD0014B9AC /* TemplateContentsView.swift in Sources */,
@@ -598,6 +609,7 @@
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				620717481BE221830014B9AC /* ImageContentsView.swift in Sources */,
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
+				6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
 				62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */,
 				62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */,

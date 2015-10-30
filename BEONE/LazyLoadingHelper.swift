@@ -54,20 +54,21 @@ class LazyLoadingImageView: UIImageView {
     }
   }
   
-  func setLazyLoaingImage(urlString: String) {
-    if LazyLoadingHelper.originalImageUrls.contains(urlString) {
-      setLazyLoaingImage(urlString, imageType: .Original)
-    } else {
-      let thumbnailUrl = LazyLoadingHelper.imageUrl(urlString, imageType: .Thumbnail)
-      let isThumbnailLoaded = SDWebImageManager.sharedManager().cachedImageExistsForURL(thumbnailUrl)
-      self.image = UIImage(named: "image_post_thumbnail")
-      setLazyLoaingImage(urlString, imageType: .Thumbnail)
-      if isThumbnailLoaded {
-        setLazyLoaingImage(urlString, imageType: .Basic)
+  func setLazyLoaingImage(urlString: String?) {
+    if let urlString = urlString {
+      if LazyLoadingHelper.originalImageUrls.contains(urlString) {
+        setLazyLoaingImage(urlString, imageType: .Original)
+      } else {
+        let thumbnailUrl = LazyLoadingHelper.imageUrl(urlString, imageType: .Thumbnail)
+        let isThumbnailLoaded = SDWebImageManager.sharedManager().cachedImageExistsForURL(thumbnailUrl)
+//        self.image = UIImage(named: "image_post_thumbnail")
+        setLazyLoaingImage(urlString, imageType: .Thumbnail)
+        if isThumbnailLoaded {
+          setLazyLoaingImage(urlString, imageType: .Basic)
+        }
       }
     }
   }
-  
 }
 
 class LazyLoadingHelper: NSObject {

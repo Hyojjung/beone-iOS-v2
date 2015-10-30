@@ -48,17 +48,17 @@ class Template: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let template = data as? [String: AnyObject] {
-      if let typeString = template[kTemplatePropertyKeyType] as? String {
-        type = TemplateType(rawValue: typeString)
+      if let type = template[kTemplatePropertyKeyType] as? String {
+        self.type = TemplateType(rawValue: type)
       }
       hasSpace = template[kTemplatePropertyKeyHasSpace] as? Bool
       row = template[kTemplatePropertyKeyRow] as? Int
       column = template[kTemplatePropertyKeyColumn] as? Int
       count = template[kTemplatePropertyKeyCount] as? Int
       isGroup = template[kTemplatePropertyKeyIsGroup] as? Bool
-      if let styleObject = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
-        style = TemplateStyle()
-        style!.assignObject(styleObject)
+      if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
+        self.style = TemplateStyle()
+        self.style!.assignObject(style)
       }
       if let templateItemObjects = template[kTemplatePropertyKeyTemplateItems] as? [[String: AnyObject]] { // group
         for templateItemObject in templateItemObjects {
@@ -74,11 +74,5 @@ class Template: BaseModel {
         }
       }
     }
-  }
-  
-  // MARK: - Public Methods
-  
-  func layout() {
-    preconditionFailure("This method must be overridden")
   }
 }

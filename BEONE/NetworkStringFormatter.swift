@@ -9,13 +9,12 @@
 import UIKit
 
 extension String {
-
   private func isUrlString() -> Bool {
     return rangeOfString("://") != nil
   }
   
   private func trimedString() -> String {
-    return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    return stringByReplacingOccurrencesOfString(" ", withString: "")
   }
   
   private func urlForm() -> String {

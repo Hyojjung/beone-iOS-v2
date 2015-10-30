@@ -13,9 +13,7 @@ class TableContentsCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var textLabel: UILabel!
   
   func configure(contents: Contents) {
-    if let backgroundImageUrl = contents.backgroundImageUrl {
-      backgroundImageView.setLazyLoaingImage(backgroundImageUrl)
-    }
+    backgroundImageView.setLazyLoaingImage(contents.backgroundImageUrl)
     textLabel.textColor = contents.textColor
     textLabel.text = contents.text
     if let fontSize = contents.size {
