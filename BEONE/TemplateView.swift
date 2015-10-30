@@ -67,7 +67,7 @@ class TemplateView: UIView {
       contentView = UINib(nibName:viewNibName, bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? TemplateContentsView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         templateContentsView.addSubview(contentView)
-        contentView.layoutView(template.contents.first!)
+        contentView.layoutView(template)
         addConstraint(NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: templateContentsView, attribute: .TopMargin, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: contentView, attribute: .Bottom, relatedBy: .Equal, toItem: templateContentsView, attribute: .BottomMargin, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: templateContentsView, attribute: .LeftMargin, multiplier: 1, constant: 0))

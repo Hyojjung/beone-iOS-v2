@@ -26,6 +26,7 @@
                             <constraint firstAttribute="trailing" secondItem="aar-rf-211" secondAttribute="trailing" id="IE5-GV-Wqf"/>
                             <constraint firstItem="aar-rf-211" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="Ium-7F-TZ1"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="aar-rf-211" secondAttribute="bottom" id="bGJ-jt-a1r"/>
+                            <constraint firstItem="aar-rf-211" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="k5r-d6-cgc"/>
                             <constraint firstItem="aar-rf-211" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wyc-Pi-t30"/>
                         </constraints>
                     </view>
@@ -36,6 +37,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="aar-rf-211" id="9hp-RK-hnQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,7 +64,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
                                 <rect key="frame" x="192" y="329" width="216" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,6 +78,12 @@
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="zEq-FU-wV5"/>
+                                <exclude reference="NDk-cv-Gan"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="lis-x4-U3I"/>
                 </viewController>

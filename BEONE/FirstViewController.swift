@@ -9,6 +9,7 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+  @IBOutlet weak var scrollView: UIScrollView!
   
   @IBAction func signInButtonTapped() {
     let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
@@ -71,6 +72,62 @@ class FirstViewController: UIViewController {
               "action": "Action Object"
             ]
           ]
+        ],
+        [
+          "type": "table",
+          "style":  [
+            "margin": "11 24 13 20",
+            "padding": "25 10 2 9",
+            "backgroundColor": "#df345f",
+            "backgroundImageUrl": "",
+            "alignment": "center"
+          ],
+          "hasSpace": true,
+          "row": 4,
+          "col": 3,
+          "contents": [
+            [
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#92d730",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#92d730",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#927030",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#927340",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#927d30",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#9273f0",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#922730",
+              "text": "String",
+              "action": "Action Object"
+            ],[
+              "backgroundImageUrl": "/resources/images/products/candlysophie/07.jpg",
+              "textColor": "#927430",
+              "text": "String",
+              "action": "Action Object"
+            ]
+          ]
         ]
       ]
     ]
@@ -80,11 +137,13 @@ class FirstViewController: UIViewController {
     
     
     templateView.layoutView(template)
-    view.addSubview(templateView)
+    scrollView.addSubview(templateView)
     
-    view.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Top, relatedBy: .Equal, toItem: topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 0))
-    view.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1, constant: 0))
-    view.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0))
+    scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 0))
+    scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Bottom, relatedBy: .Equal, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: 0))
+    scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1, constant: 0))
+    scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1, constant: 0))
+    scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1, constant: 0))
   }
 }
 

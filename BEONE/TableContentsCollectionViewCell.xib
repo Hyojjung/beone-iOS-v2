@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tableContentsCell" id="KgT-kE-pfp" customClass="TableContentsCollectionViewCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="7Dr-zA-NYL" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj9-fe-19I">
+                        <rect key="frame" x="86" y="88" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7Dr-zA-NYL" secondAttribute="bottom" id="6TO-uh-Dmn"/>
+                <constraint firstItem="mj9-fe-19I" firstAttribute="centerX" secondItem="KgT-kE-pfp" secondAttribute="centerX" id="GQd-0j-OZ0"/>
+                <constraint firstItem="7Dr-zA-NYL" firstAttribute="top" secondItem="KgT-kE-pfp" secondAttribute="top" id="L13-69-nVB"/>
+                <constraint firstItem="mj9-fe-19I" firstAttribute="centerY" secondItem="KgT-kE-pfp" secondAttribute="centerY" id="cFY-zS-itb"/>
+                <constraint firstItem="7Dr-zA-NYL" firstAttribute="leading" secondItem="KgT-kE-pfp" secondAttribute="leading" id="kkQ-lR-6p9"/>
+                <constraint firstAttribute="trailing" secondItem="7Dr-zA-NYL" secondAttribute="trailing" id="vT9-8F-kNB"/>
+            </constraints>
+            <size key="customSize" width="214" height="197"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="7Dr-zA-NYL" id="06D-90-aEh"/>
+                <outlet property="textLabel" destination="mj9-fe-19I" id="6ez-xE-6jR"/>
+            </connections>
+            <point key="canvasLocation" x="341" y="705.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image_post_thumbnail" width="320" height="179"/>
+    </resources>
+</document>

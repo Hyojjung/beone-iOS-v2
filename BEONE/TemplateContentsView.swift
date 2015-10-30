@@ -9,7 +9,7 @@
 import UIKit
 
 class TemplateContentsView: UIView {
-  func layoutView(contents: Contents) {
+  func layoutView(template: Template) {
       preconditionFailure("This method must be overriden")
   }
 }

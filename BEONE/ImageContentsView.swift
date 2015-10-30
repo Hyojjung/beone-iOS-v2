@@ -11,8 +11,8 @@ import UIKit
 class ImageContentsView: TemplateContentsView {
   @IBOutlet weak var imageView: LazyLoadingImageView!
   
-  override func layoutView(contents: Contents) {
-    if let imageUrl = contents.imageUrl {
+  override func layoutView(template: Template) {
+    if let imageContents = template.contents.first, imageUrl = imageContents.imageUrl {
       imageView.setLazyLoaingImage(imageUrl)
     }
   }

@@ -47,7 +47,6 @@ class LazyLoadingImageView: UIImageView {
         self.image = image
       },
       completion:nil)
-    print(constraints)
     for constraint in constraints {
       if constraint.firstAttribute == .Height {
         constraint.constant = image.size.height / image.size.width * frame.size.width

@@ -13,6 +13,10 @@
 		620717481BE221830014B9AC /* ImageContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717471BE221830014B9AC /* ImageContentsView.swift */; };
 		6207174A1BE221970014B9AC /* ImageContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717491BE221970014B9AC /* ImageContentsView.xib */; };
 		6207174D1BE227A50014B9AC /* beone-wildcard.crt in Resources */ = {isa = PBXBuildFile; fileRef = 6207174C1BE227A50014B9AC /* beone-wildcard.crt */; };
+		6207174F1BE231490014B9AC /* TableContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207174E1BE231490014B9AC /* TableContentsView.swift */; };
+		620717511BE239AD0014B9AC /* TableContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717501BE239AD0014B9AC /* TableContentsView.xib */; };
+		620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717521BE309890014B9AC /* TableContentsCollectionViewCell.xib */; };
+		620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717541BE3171F0014B9AC /* TableContentsCollectionViewCell.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SecondViewController.swift */; };
@@ -81,6 +85,10 @@
 		620717471BE221830014B9AC /* ImageContentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentsView.swift; sourceTree = "<group>"; };
 		620717491BE221970014B9AC /* ImageContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageContentsView.xib; sourceTree = "<group>"; };
 		6207174C1BE227A50014B9AC /* beone-wildcard.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "beone-wildcard.crt"; sourceTree = "<group>"; };
+		6207174E1BE231490014B9AC /* TableContentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentsView.swift; sourceTree = "<group>"; };
+		620717501BE239AD0014B9AC /* TableContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableContentsView.xib; sourceTree = "<group>"; };
+		620717521BE309890014B9AC /* TableContentsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableContentsCollectionViewCell.xib; sourceTree = "<group>"; };
+		620717541BE3171F0014B9AC /* TableContentsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -342,6 +350,10 @@
 				62EFE9501BE0C5930035B2DE /* TextContentsView.xib */,
 				620717471BE221830014B9AC /* ImageContentsView.swift */,
 				620717491BE221970014B9AC /* ImageContentsView.xib */,
+				6207174E1BE231490014B9AC /* TableContentsView.swift */,
+				620717501BE239AD0014B9AC /* TableContentsView.xib */,
+				620717541BE3171F0014B9AC /* TableContentsCollectionViewCell.swift */,
+				620717521BE309890014B9AC /* TableContentsCollectionViewCell.xib */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -481,6 +493,8 @@
 				62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */,
 				62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */,
 				6207174A1BE221970014B9AC /* ImageContentsView.xib in Resources */,
+				620717511BE239AD0014B9AC /* TableContentsView.xib in Resources */,
+				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
 				62FC6EB11BDF73260071E1B1 /* bg_payment.jpg in Resources */,
 				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				6207174D1BE227A50014B9AC /* beone-wildcard.crt in Resources */,
@@ -558,6 +572,7 @@
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
 				62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */,
 				62EFE94C1BE0C4C40035B2DE /* TemplateView.swift in Sources */,
+				6207174F1BE231490014B9AC /* TableContentsView.swift in Sources */,
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
 				62EFE9371BE07AA90035B2DE /* BaseModel.swift in Sources */,
 				62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */,
@@ -576,6 +591,7 @@
 				62EFE9421BE093FB0035B2DE /* UIColorExtension.swift in Sources */,
 				62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */,
 				620717461BE21FCD0014B9AC /* TemplateContentsView.swift in Sources */,
+				620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */,
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
 				62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */,
 				62EFE9351BE079C00035B2DE /* Template.swift in Sources */,

@@ -12,7 +12,7 @@ let kTemplatePropertyKeyType = "type"
 let kTemplatePropertyKeyStyle = "style"
 let kTemplatePropertyKeyHasSpace = "hasSpace"
 let kTemplatePropertyKeyRow = "row"
-let kTemplatePropertyKeyColomn = "colomn"
+let kTemplatePropertyKeyColumn = "col"
 let kTemplatePropertyKeyCount = "count"
 let kTemplatePropertyKeyContents = "contents"
 let kTemplatePropertyKeyTemplateItems = "templateItems"
@@ -27,7 +27,7 @@ enum TemplateType: String {
   case Product
   case Review
   case Banner
-  case Table
+  case Table = "table"
 }
 
 class Template: BaseModel {
@@ -39,7 +39,7 @@ class Template: BaseModel {
   
   var hasSpace: Bool?
   var row: Int?
-  var colomn: Int?
+  var column: Int?
   var count: Int?
   
   var templateItems = [Template]()
@@ -53,7 +53,7 @@ class Template: BaseModel {
       }
       hasSpace = template[kTemplatePropertyKeyHasSpace] as? Bool
       row = template[kTemplatePropertyKeyRow] as? Int
-      colomn = template[kTemplatePropertyKeyColomn] as? Int
+      column = template[kTemplatePropertyKeyColumn] as? Int
       count = template[kTemplatePropertyKeyCount] as? Int
       isGroup = template[kTemplatePropertyKeyIsGroup] as? Bool
       if let styleObject = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {

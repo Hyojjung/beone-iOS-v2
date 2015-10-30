@@ -18,6 +18,7 @@ let kContentsPropertyKeyIsItalic = "isItalic"
 let kContentsPropertyKeyIsCancelLined = "isCancelLined"
 let kContentsPropertyKeySize = "size"
 let kContentsPropertyKeyImageUrl = "imageUrl"
+let kContentsPropertyKeyBackgroundImageUrl = "backgroundImageUrl"
 
 enum ActionType: Int {
   case None = 1
@@ -38,6 +39,7 @@ class Contents: BaseModel {
   var textColor: UIColor?
   var size: CGFloat?
   var imageUrl: String?
+  var backgroundImageUrl: String?
   var model: BaseModel?
   
   // MARK: - Override Methods
@@ -49,6 +51,7 @@ class Contents: BaseModel {
       
       text = contents[kContentsPropertyKeyText] as? String
       imageUrl = contents[kContentsPropertyKeyImageUrl] as? String
+      backgroundImageUrl = contents[kContentsPropertyKeyBackgroundImageUrl] as? String
       
       isUnderlined = contents[kContentsPropertyKeyIsUnderlined] as? Bool
       isBold = contents[kContentsPropertyKeyIsBold] as? Bool

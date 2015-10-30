@@ -12,9 +12,9 @@ class TextContentsView: TemplateContentsView {
   
   @IBOutlet weak var textLabel: UILabel!
   
-  override func layoutView(contents: Contents) {
-    if let text = contents.text {
-      if let alignment = contents.alignment {
+  override func layoutView(template: Template) {
+    if let textContents = template.contents.first, text = textContents.text {
+      if let alignment = textContents.alignment {
         switch alignment {
         case .Left:
           textLabel.textAlignment = .Left
@@ -27,28 +27,28 @@ class TextContentsView: TemplateContentsView {
       
       let attributedString = NSMutableAttributedString(string: text)
       
-      if contents.isUnderlined != nil && contents.isUnderlined! {
+      if textContents.isUnderlined != nil && textContents.isUnderlined! {
         attributedString.addAttribute(NSUnderlineStyleAttributeName,
           value: NSUnderlineStyle.StyleSingle.rawValue,
           range: NSMakeRange(0, text.characters.count))
       }
-      if contents.isCancelLined != nil && contents.isCancelLined! {
+      if textContents.isCancelLined != nil && textContents.isCancelLined! {
         attributedString.addAttribute(NSStrikethroughStyleAttributeName,
           value: NSUnderlineStyle.StyleSingle.rawValue,
           range: NSMakeRange(0, text.characters.count))
       }
-      if let backgroundColor = contents.backgroundColor {
+      if let backgroundColor = textContents.backgroundColor {
         attributedString.addAttribute(NSBackgroundColorAttributeName,
           value: backgroundColor,
           range: NSMakeRange(0, text.characters.count))
       }
-      if let textColor = contents.textColor {
+      if let textColor = textContents.textColor {
         attributedString.addAttribute(NSForegroundColorAttributeName,
           value: textColor,
           range: NSMakeRange(0, text.characters.count))
       }
       
-      if let size = contents.size, isBold = contents.isBold, isItalic = contents.isItalic {
+      if let size = textContents.size, isBold = textContents.isBold, isItalic = textContents.isItalic {
         let fontName: String
         if isBold && isItalic {
           fontName = "HelveticaNeue-BoldItalic"
