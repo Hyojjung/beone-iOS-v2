@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="BEONE" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonView" destination="43g-oL-4yA" id="Gdz-4x-crE"/>
+                <outlet property="cancelButton" destination="QE7-0q-Nav" id="dT9-m2-V3U"/>
+                <outlet property="confirmButton" destination="VdD-N4-GCh" id="ui4-AH-bpV"/>
+                <outlet property="messageLabel" destination="FIs-XT-aBM" id="c7W-eT-DlR"/>
+                <outlet property="view" destination="iN0-l3-epB" id="aI2-uh-LvS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMk-Hi-ls6">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Emi-Cn-x4J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                    </view>
+                    <animations/>
+                    <gestureRecognizers/>
+                    <blurEffect style="light"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="cd7-Tr-Ugf" appends="YES" id="cI8-fw-VaY"/>
+                    </connections>
+                </visualEffectView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFp-Mz-Yef">
+                    <rect key="frame" x="100" y="253" width="400" height="95"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIs-XT-aBM">
+                            <rect key="frame" x="12" y="12" width="376" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43g-oL-4yA">
+                            <rect key="frame" x="0.0" y="45" width="400" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-0q-Nav">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                    <animations/>
+                                    <state key="normal" title="취소" backgroundImage="btn_submit_gold"/>
+                                    <connections>
+                                        <action selector="cancelButtonTapped" destination="-1" eventType="touchUpInside" id="bWR-zu-dmj"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdD-N4-GCh">
+                                    <rect key="frame" x="200" y="0.0" width="200" height="50"/>
+                                    <animations/>
+                                    <state key="normal" title="확인" backgroundImage="btn_submit_gold_pressed"/>
+                                    <connections>
+                                        <action selector="confirmButtonTapped" destination="-1" eventType="touchUpInside" id="IK6-Ju-4cI"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="0TL-iY-s9k"/>
+                                <constraint firstItem="VdD-N4-GCh" firstAttribute="leading" secondItem="43g-oL-4yA" secondAttribute="centerX" placeholder="YES" id="EQF-l0-CFi"/>
+                                <constraint firstItem="QE7-0q-Nav" firstAttribute="leading" secondItem="43g-oL-4yA" secondAttribute="leading" id="G2g-et-sxM"/>
+                                <constraint firstAttribute="bottom" secondItem="VdD-N4-GCh" secondAttribute="bottom" id="Qr0-bA-SKw"/>
+                                <constraint firstItem="QE7-0q-Nav" firstAttribute="top" secondItem="43g-oL-4yA" secondAttribute="top" id="ag4-Rf-K5r"/>
+                                <constraint firstItem="VdD-N4-GCh" firstAttribute="leading" secondItem="QE7-0q-Nav" secondAttribute="trailing" id="d2t-cx-xn8"/>
+                                <constraint firstItem="VdD-N4-GCh" firstAttribute="top" secondItem="43g-oL-4yA" secondAttribute="top" id="eGe-9V-L69"/>
+                                <constraint firstAttribute="trailing" secondItem="VdD-N4-GCh" secondAttribute="trailing" id="gZ5-iY-YL9"/>
+                                <constraint firstAttribute="bottom" secondItem="QE7-0q-Nav" secondAttribute="bottom" id="ljq-FR-4XI"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FIs-XT-aBM" secondAttribute="trailing" constant="12" id="6p8-f7-COL"/>
+                        <constraint firstItem="43g-oL-4yA" firstAttribute="top" secondItem="FIs-XT-aBM" secondAttribute="bottom" constant="12" id="AbN-26-Hd9"/>
+                        <constraint firstItem="43g-oL-4yA" firstAttribute="leading" secondItem="lFp-Mz-Yef" secondAttribute="leading" id="GRD-ii-iz1"/>
+                        <constraint firstAttribute="bottom" secondItem="43g-oL-4yA" secondAttribute="bottom" id="JQ0-Qj-EGd"/>
+                        <constraint firstItem="FIs-XT-aBM" firstAttribute="leading" secondItem="lFp-Mz-Yef" secondAttribute="leading" constant="12" id="YHH-hd-Kob"/>
+                        <constraint firstItem="FIs-XT-aBM" firstAttribute="top" secondItem="lFp-Mz-Yef" secondAttribute="top" constant="12" id="cfY-B8-3ZR"/>
+                        <constraint firstItem="FIs-XT-aBM" firstAttribute="centerX" secondItem="lFp-Mz-Yef" secondAttribute="centerX" id="lfs-Fh-l0H"/>
+                        <constraint firstAttribute="trailing" secondItem="43g-oL-4yA" secondAttribute="trailing" id="uB9-ik-E3J"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lFp-Mz-Yef" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="30a-XY-tNe"/>
+                <constraint firstAttribute="trailing" secondItem="lFp-Mz-Yef" secondAttribute="trailing" constant="100" id="8uW-L4-ZaB"/>
+                <constraint firstItem="bMk-Hi-ls6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QM5-82-mKo"/>
+                <constraint firstItem="lFp-Mz-Yef" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VfQ-eV-xoZ"/>
+                <constraint firstItem="bMk-Hi-ls6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c47-s5-SFp"/>
+                <constraint firstAttribute="bottom" secondItem="bMk-Hi-ls6" secondAttribute="bottom" id="dyO-eh-81a"/>
+                <constraint firstAttribute="trailing" secondItem="bMk-Hi-ls6" secondAttribute="trailing" id="z97-zB-cSg"/>
+            </constraints>
+            <point key="canvasLocation" x="159" y="468"/>
+        </view>
+        <tapGestureRecognizer id="cd7-Tr-Ugf">
+            <connections>
+                <action selector="backgroundViewTapped" destination="-1" id="KBx-dg-PVh"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="btn_submit_gold" width="2" height="2"/>
+        <image name="btn_submit_gold_pressed" width="2" height="2"/>
+    </resources>
+</document>

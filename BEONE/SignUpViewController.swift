@@ -62,7 +62,7 @@ class SignUpViewController: BaseViewController {
   
   @IBAction func signUpButtonTapped() {
     if let errorMessage = errorMessage() {
-      ViewControllerHelper.showAlertView(errorMessage, message: nil)
+      ViewControllerHelper.showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else {
       AuthenticationHelper.signUp(emailTextField.text!,
         name: nameTextField.text!,

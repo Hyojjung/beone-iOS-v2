@@ -30,11 +30,13 @@ class ViewControllerHelper: NSObject {
       viewController.presentViewController(actionSheet, animated: true, completion: nil)
   }
   
-  static func showAlertView(title: String, message: String?) {
-    let alertView =
-    UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "취소")
-    alertView.addButtonWithTitle(NSLocalizedString("ok", comment: "okButtonTitle"))
-    alertView.show()
+  static func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?) {
+    if let topViewController = showingNavigationViewController?.topViewController, message = message {
+      let alertViewController = AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction)
+      alertViewController.modalPresentationStyle = .OverCurrentContext
+      alertViewController.modalTransitionStyle = .CrossDissolve
+      topViewController.presentViewController(alertViewController, animated: true, completion: nil)
+    }
   }
   
   static func setUpFloatingLabel(textfield: UIFloatLabelTextField, placeholder: String) {
@@ -44,7 +46,6 @@ class ViewControllerHelper: NSObject {
   }
   
   static func showWebView(urlString: String?, title: String?) {
-    print(showingNavigationViewController)
     if let urlString = urlString, showingNavigationViewController = showingNavigationViewController {
       let webViewController = WebViewController()
       webViewController.url = urlString

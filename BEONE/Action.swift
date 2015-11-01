@@ -55,14 +55,16 @@ class Action: BaseModel {
   func action() {
     if let type = type {
       switch type {
-      case .None:
-        print("none")
       case .Webview:
         ViewControllerHelper.showWebView(content, title: nil)
       case .Scheme:
         print("scheme")
       case .Alert:
-        print("alert")
+        if let content = content {
+          ViewControllerHelper.showAlertView(content, hasCancel: hasCancel, confirmAction: confirmationAction, cancelAction: cancelAction)
+        }
+      default:
+        break
       }
     }
   }

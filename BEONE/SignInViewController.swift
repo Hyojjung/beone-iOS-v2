@@ -53,7 +53,7 @@ class SignInViewController: BaseViewController {
   
   @IBAction func signInButtonTapped() {
     if let errorMessage = errorMessage() {
-      ViewControllerHelper.showAlertView(errorMessage, message: nil)
+      ViewControllerHelper.showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else {
       AuthenticationHelper.signIn(emailTextField.text!,
         password: passwordTextField.text!)

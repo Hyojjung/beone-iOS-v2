@@ -67,7 +67,7 @@ class SnsSignUpViewController: BaseViewController {
   
   @IBAction func snsSignUpButtonTapped() {
     if let errorMessage = errorMessage() {
-      ViewControllerHelper.showAlertView(errorMessage, message: nil)
+      ViewControllerHelper.showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else if let snsType = snsType {
       AuthenticationHelper.signUp(snsType,
         userId: FBSDKAccessToken.currentAccessToken().userID,
