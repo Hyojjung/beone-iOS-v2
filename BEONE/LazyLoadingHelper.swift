@@ -21,38 +21,39 @@ class LazyLoadingImageView: UIImageView {
     sd_cancelCurrentImageLoad()
   }
   
-  private func setLazyLoaingImage(urlString: String, imageType: ImageType) {
-    sd_setImageWithURL(LazyLoadingHelper.imageUrl(urlString, imageType: imageType), placeholderImage: image)
-      { (image, error, cachType, url) -> Void in
-        if let image = image {
-          if imageType == .Thumbnail {
-            self.setLazyLoaingImage(urlString, imageType: .Basic)
-          } else if imageType == .Original && !LazyLoadingHelper.originalImageUrls.contains(urlString) {
-            LazyLoadingHelper.originalImageUrls.append(urlString)
-          }
-          self.setImageWithAnimation(image)
-        } else {
-          if imageType != .Original {
-            self.setLazyLoaingImage(urlString, imageType: .Original)
-          }
-        }
-    }
-  }
   
-  private func setImageWithAnimation(image: UIImage) {
-    UIView.transitionWithView(self,
-      duration: 0.2,
-      options: [.AllowUserInteraction, .TransitionCrossDissolve],
-      animations: { () -> Void in
-        self.image = image
-      },
-      completion:nil)
-    for constraint in constraints {
-      if constraint.firstAttribute == .Height {
-        constraint.constant = image.size.height / image.size.width * frame.size.width
+  private func setLazyLoaingImage(urlString: String, imageType: ImageType) {
+    let url = LazyLoadingHelper.imageUrl(urlString, imageType: imageType)
+    sd_setImageWithURL(url, placeholderImage: image) { (image, error, cacheType, url) -> Void in
+      if let image = image {
+        if imageType == .Thumbnail {
+          self.setLazyLoaingImage(urlString, imageType: .Basic)
+        } else if imageType == .Original && !LazyLoadingHelper.originalImageUrls.contains(urlString) {
+          LazyLoadingHelper.originalImageUrls.append(urlString)
+        }
+        self.setImageWithAnimation(image, cacheType: cacheType)
+      } else {
+        if imageType != .Original {
+          self.setLazyLoaingImage(urlString, imageType: .Original)
+        }
       }
     }
   }
+  
+  func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
+    if cacheType == .Disk || cacheType == .Memory {
+      self.image = image
+    } else {
+      UIView.transitionWithView(self,
+        duration: 0.2,
+        options: [.AllowUserInteraction, .TransitionCrossDissolve],
+        animations: { () -> Void in
+          self.image = image
+        },
+        completion:nil)
+    }
+  }
+  
   
   func setLazyLoaingImage(urlString: String?) {
     if let urlString = urlString {
@@ -61,7 +62,6 @@ class LazyLoadingImageView: UIImageView {
       } else {
         let thumbnailUrl = LazyLoadingHelper.imageUrl(urlString, imageType: .Thumbnail)
         let isThumbnailLoaded = SDWebImageManager.sharedManager().cachedImageExistsForURL(thumbnailUrl)
-//        self.image = UIImage(named: "image_post_thumbnail")
         setLazyLoaingImage(urlString, imageType: .Thumbnail)
         if isThumbnailLoaded {
           setLazyLoaingImage(urlString, imageType: .Basic)

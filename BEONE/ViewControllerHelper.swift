@@ -16,6 +16,10 @@ struct ActionSheetButton {
 class ViewControllerHelper: NSObject {
   static var showingNavigationViewController: UINavigationController?
   
+  static var screenWidth: CGFloat = {
+    return UIScreen.mainScreen().bounds.width
+  }()
+  
   static func showActionSheet(viewController: UIViewController, title: String?, actionSheetButtons: [ActionSheetButton]) {
       let actionSheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
       

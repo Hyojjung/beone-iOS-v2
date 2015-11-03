@@ -12,10 +12,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
                     <constraints>
+                        <constraint firstAttribute="height" priority="999" constant="300" id="54q-ji-Kxd"/>
                         <constraint firstAttribute="height" priority="750" constant="300" id="QeU-Yy-TKX"/>
                         <constraint firstAttribute="height" constant="600" id="T82-ey-sGi"/>
                         <constraint firstAttribute="height" constant="600" id="atw-pg-qIN"/>
@@ -23,6 +24,7 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="QeU-Yy-TKX"/>
                             <exclude reference="T82-ey-sGi"/>
                             <exclude reference="atw-pg-qIN"/>
                             <exclude reference="dTV-fe-XW0"/>

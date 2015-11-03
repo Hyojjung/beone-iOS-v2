@@ -9,8 +9,10 @@
 import UIKit
 
 class FirstViewController: BaseViewController {
-  @IBOutlet weak var scrollView: UIScrollView!
-  
+  @IBOutlet weak var tableView: UITableView!
+  private var templateList = TemplateList()
+//  var dynamicHeightTableViewCells = [String: UITableViewCell]()
+
   @IBAction func signInButtonTapped() {
     let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
     let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("SigningNavigationView")
@@ -20,33 +22,50 @@ class FirstViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let templateView = TemplateView()
-    templateView.translatesAutoresizingMaskIntoConstraints = false
+    tableView.estimatedRowHeight = 44.0
+    tableView.rowHeight = UITableViewAutomaticDimension
     
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "onContentSizeChange:",
+      name: "imageViewLoaded",
+      object: nil)
     
+  
     if let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
     {
       if let jsonData = NSData(contentsOfFile: path)
       {
         do {
-          let templateObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
-          let template = Template()
-          template.assignObject(templateObject)
+          let templateListObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
+          templateList.assignObject(templateListObject)
           
-          templateView.layoutView(template)
-          scrollView.addSubview(templateView)
-          
-          scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 0))
-          scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Bottom, relatedBy: .Equal, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: 0))
-          scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1, constant: 0))
-          scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1, constant: 0))
-          scrollView.addConstraint(NSLayoutConstraint(item: templateView, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1, constant: 0))
-
         } catch _ as NSError{
         }
       }
     }
-    
+  }
+  
+  func onContentSizeChange(notification: NSNotification) {
+    tableView.reloadData()
+  }
+}
+
+// MARK: - DynamicHeightTableViewProtocol
+
+extension FirstViewController: UITableViewDataSource {
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return templateList.list.count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    tableView.registerNib(UINib(nibName: "TemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "templateTableViewCell")
+    let cell = tableView.dequeueReusableCellWithIdentifier("templateTableViewCell", forIndexPath: indexPath) as! TemplateTableViewCell
+    cell.configureCell(templateList.list[indexPath.row] as! Template)
+    return cell
   }
 }
 

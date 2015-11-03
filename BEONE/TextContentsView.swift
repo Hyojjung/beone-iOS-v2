@@ -10,7 +10,6 @@ import UIKit
 
 class TextContentsView: TemplateContentsView {
   @IBOutlet weak var textLabel: UILabel!
-  var action: Action?
 
   // MARK: - Override Methods
 

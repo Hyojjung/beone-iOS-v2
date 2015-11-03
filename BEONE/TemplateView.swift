@@ -30,7 +30,7 @@ class TemplateView: TemplateContentsView {
     }
     templateContentsView.backgroundColor = template.style?.backgroundColor
     backgroundImageView.setLazyLoaingImage(template.style?.backgroundImageUrl)
-    
+
     if template.isGroup != nil && template.isGroup! {
       var beforeView: UIView?
       for (index, item) in template.templateItems.enumerate() {

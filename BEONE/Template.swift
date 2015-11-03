@@ -41,6 +41,7 @@ class Template: BaseModel {
   var row: Int?
   var column: Int?
   var count: Int?
+  var height: CGFloat?
   
   var templateItems = [Template]()
   
@@ -51,6 +52,7 @@ class Template: BaseModel {
       if let type = template[kTemplatePropertyKeyType] as? String {
         self.type = TemplateType(rawValue: type)
       }
+      id = template[kObjectPropertyKeyId] as? NSNumber
       hasSpace = template[kTemplatePropertyKeyHasSpace] as? Bool
       row = template[kTemplatePropertyKeyRow] as? Int
       column = template[kTemplatePropertyKeyColumn] as? Int

@@ -85,12 +85,6 @@ class BaseViewController: UIViewController {
     removeObservers()
   }
   
-  // MARK: - DynamicHeightTableViewProtocol
-  
-  func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    cell.selectionStyle = .None
-  }
-  
   // MARK: - Private Methods
   
   func setUpView() {
