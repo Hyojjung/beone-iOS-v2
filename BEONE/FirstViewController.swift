@@ -23,11 +23,7 @@ class FirstViewController: BaseViewController {
     
     tableView.estimatedRowHeight = 44.0
     tableView.rowHeight = UITableViewAutomaticDimension
-    
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "onContentSizeChange:",
-      name: kNotificationContentsViewLayouted,
-      object: nil)
+
     
   
     if let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
@@ -44,7 +40,7 @@ class FirstViewController: BaseViewController {
     }
   }
   
-  func onContentSizeChange(notification: NSNotification) {
+  func handleLayoutChange(notification: NSNotification) {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
       templateHeight = userInfo[kNotificationKeyHeight] as? CGFloat {
@@ -56,6 +52,48 @@ class FirstViewController: BaseViewController {
         }
       }
     }
+  }
+  
+  func handleAction(notification: NSNotification) {
+    if let userInfo = notification.userInfo,
+      templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber {
+        for template in templateList.list as! [Template] {
+          if template.id == templateId {
+            if template.contents.count == 1 {
+              template.contents.first?.action.action()
+            } else if let contentsId = userInfo[kNotificationKeyContentsId] as? NSNumber {
+              for contents in template.contents {
+                if contents.id == contentsId {
+                  contents.action.action()
+                }
+              }
+            }
+            break;
+          }
+        }
+    }
+  }
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.registerNib(UINib(nibName: kNibNameTemplateTableViewCell, bundle: nil), forCellReuseIdentifier: kCellIdentifierTemplateTableViewCell)
+  }
+  
+  override func addObservers() {
+    super.addObservers()
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "handleLayoutChange:",
+      name: kNotificationContentsViewLayouted,
+      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "handleAction:",
+      name: kNotificationDoAction,
+      object: nil)
+  }
+  
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 }
 
@@ -69,8 +107,7 @@ extension FirstViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    tableView.registerNib(UINib(nibName: "TemplateTableViewCell", bundle: nil), forCellReuseIdentifier: "templateTableViewCell")
-    let cell = tableView.dequeueReusableCellWithIdentifier("templateTableViewCell", forIndexPath: indexPath) as! TemplateTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifierTemplateTableViewCell, forIndexPath: indexPath) as! TemplateTableViewCell
     cell.configureCell(templateList.list[indexPath.row] as! Template)
     return cell
   }
