@@ -60,7 +60,7 @@ class CoreDataHelper: NSObject{
   
   // MARK: - Public Methods
   
-  func saveContext(context: NSManagedObjectContext) {
+  private func saveContext(context: NSManagedObjectContext) {
     if context.hasChanges {
       do {
         try context.save()
@@ -71,6 +71,7 @@ class CoreDataHelper: NSObject{
   }
   
   func saveContext() {
-    self.saveContext(self.managedObjectContext)
+    saveContext(managedObjectContext)
+    saveContext(backgroundContext)
   }
 }
