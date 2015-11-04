@@ -81,12 +81,24 @@ extension UIView {
   }
   
   func addBottomMarginLayout(subView: UIView) {
-    addConstraint(NSLayoutConstraint(item: subView,
+    let bottomMarginConstraint = NSLayoutConstraint(item: subView,
       attribute: .Bottom,
       relatedBy: .Equal,
       toItem: self,
       attribute: .BottomMargin,
       multiplier: 1,
-      constant: 0))
+      constant: 0)
+    bottomMarginConstraint.priority = UILayoutPriorityDefaultHigh
+    addConstraint(bottomMarginConstraint)
+  }
+  
+  func changeHeightLayoutConstant(height: CGFloat?) {
+    if let height = height {
+      for constraint in constraints {
+        if constraint.firstAttribute == .Height {
+          constraint.constant = height
+        }
+      }
+    }
   }
 }

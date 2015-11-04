@@ -28,15 +28,12 @@ let kHeaderAuthorizationKey = "x-beone-authorization"
 let kBOHeaderVersionKey = "x-beone-version"
 let kBOHeaderVersion = "v2.0"
 
-let kNotificationNetworkStart = "NotificationNetworkStart"
-let kNotificationNetworkEnd = "NotificationNetworkEnd"
-
 // TODO: 주소수정
 #if DEBUG
-let kBaseApiUrl = "http://52.68.151.169/api/"
-let kBaseUrl = "http://52.68.151.169/"
-  #else
-let kBaseApiUrl = "https://devapi.beone.kr/api/"
+let kBaseApiUrl = "https://devapi.beone.kr/"
+let kBaseUrl = "https://devapi.beone.kr/"
+#else
+let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
 #endif
 

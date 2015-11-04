@@ -67,6 +67,7 @@
 		62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */; };
 		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; };
 		62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3891BDFC1780072BBCE /* DesignResource.swift */; };
+		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
 		73EA25411BE4D4300085382A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25401BE4D4300085382A /* test.json */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
@@ -74,7 +75,6 @@
 		73EA25491BE5F2770085382A /* TemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25471BE5F2770085382A /* TemplateTableViewCell.xib */; };
 		73EA254B1BE5FA840085382A /* BaseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA254A1BE5FA840085382A /* BaseListModel.swift */; };
 		73EA254D1BE5FD4C0085382A /* TemplateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA254C1BE5FD4C0085382A /* TemplateList.swift */; };
-		73EA254F1BE60FE70085382A /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA254E1BE60FE70085382A /* DynamicHeightTableView.swift */; };
 		73EA25511BE781120085382A /* ImageContentsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25501BE781120085382A /* ImageContentsImageView.swift */; };
 		ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1038EC9624A56E3E9D407B /* Pods_BEONE.framework */; };
 /* End PBXBuildFile section */
@@ -159,6 +159,7 @@
 		62FDC3861BDFC0F30072BBCE /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatLabelTextField.h; sourceTree = "<group>"; };
 		62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatLabelTextField.m; sourceTree = "<group>"; };
 		62FDC3891BDFC1780072BBCE /* DesignResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignResource.swift; sourceTree = "<group>"; };
+		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		73EA25401BE4D4300085382A /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
@@ -166,7 +167,6 @@
 		73EA25471BE5F2770085382A /* TemplateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateTableViewCell.xib; sourceTree = "<group>"; };
 		73EA254A1BE5FA840085382A /* BaseListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListModel.swift; sourceTree = "<group>"; };
 		73EA254C1BE5FD4C0085382A /* TemplateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateList.swift; sourceTree = "<group>"; };
-		73EA254E1BE60FE70085382A /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		73EA25501BE781120085382A /* ImageContentsImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentsImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +268,7 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				620717781BE331780014B9AC /* Action.swift */,
 				62EFE94A1BE0C27C0035B2DE /* MyInfo */,
 				62EFE93A1BE088B10035B2DE /* Template */,
 				62EFE9361BE07AA90035B2DE /* BaseModel.swift */,
@@ -306,12 +307,10 @@
 		62E5CF321BDDEB7D00A99F4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				73EA254E1BE60FE70085382A /* DynamicHeightTableView.swift */,
 				62EFE94D1BE0C5600035B2DE /* Template */,
 				62FA80501BDFE3CA00C016C3 /* LoadingView.swift */,
 				73EA25421BE4D5FF0085382A /* AlertViewController.swift */,
 				73EA25441BE4D7DD0085382A /* AlertViewController.xib */,
-				73EA25501BE781120085382A /* ImageContentsImageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -328,6 +327,7 @@
 				62FDC3891BDFC1780072BBCE /* DesignResource.swift */,
 				6207177A1BE339EA0014B9AC /* TemplateHelper.swift */,
 				6207177C1BE33DD50014B9AC /* LayoutHelper.swift */,
+				733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -365,7 +365,6 @@
 				62EFE9441BE098B50035B2DE /* Contents.swift */,
 				62EFE9381BE087770035B2DE /* TemplateStyle.swift */,
 				62EFE9341BE079C00035B2DE /* Template.swift */,
-				620717781BE331780014B9AC /* Action.swift */,
 				73EA254C1BE5FD4C0085382A /* TemplateList.swift */,
 			);
 			name = Template;
@@ -384,6 +383,7 @@
 		62EFE94D1BE0C5600035B2DE /* Template */ = {
 			isa = PBXGroup;
 			children = (
+				73EA25501BE781120085382A /* ImageContentsImageView.swift */,
 				62EFE94B1BE0C4C40035B2DE /* TemplateView.swift */,
 				620717451BE21FCD0014B9AC /* TemplateContentsView.swift */,
 				62EFE94E1BE0C5830035B2DE /* TextContentsView.swift */,
@@ -646,7 +646,7 @@
 				620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */,
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
 				62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */,
-				73EA254F1BE60FE70085382A /* DynamicHeightTableView.swift in Sources */,
+				733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */,
 				73EA254D1BE5FD4C0085382A /* TemplateList.swift in Sources */,
 				62EFE9351BE079C00035B2DE /* Template.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,

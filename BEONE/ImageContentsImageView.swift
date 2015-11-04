@@ -9,20 +9,22 @@
 import UIKit
 import SDWebImage
 
-class ImageContentsImageView: LazyLoadingImageView {
+let kDefaultImageViewWidth = CGFloat(600)
+
+class ImageContentsImageView: LazyLoadingImageView, TemplateContentsViewProtocol {
   var isLayouted = false
-  var template: Template?
+  var templateId: NSNumber?
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    if frame.width != 600 {
+    if frame.width != kDefaultImageViewWidth {
       isLayouted = true
+      modifyHeightConstraint()
     }
-    modifyHeightConstraint()
   }
   
   func setTemplateImage(template: Template) {
-    self.template = template
+    templateId = template.id
     setLazyLoaingImage(template.contents.first?.imageUrl)
   }
   
@@ -33,17 +35,9 @@ class ImageContentsImageView: LazyLoadingImageView {
   }
   
   func modifyHeightConstraint() {
-    if let image = image, template = template {
-      if isLayouted {
-        let height = image.size.height / image.size.width * frame.size.width
-        for constraint in constraints {
-          if constraint.firstAttribute == .Height && Int(constraint.constant) != Int(height) && constraint.isMemberOfClass(NSLayoutConstraint) {
-            constraint.constant = height
-            template.height = height
-            NSNotificationCenter.defaultCenter().postNotificationName("imageViewLoaded", object: nil, userInfo: ["id": template.id!])
-          }
-        }
-      }
+    if let image = image {
+      let height = image.size.height / image.size.width * frame.size.width
+      layoutContentsView(isLayouted, templateId: templateId, height: height, contentsView: self)
     }
   }
 }

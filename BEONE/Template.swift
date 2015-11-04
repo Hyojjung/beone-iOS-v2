@@ -16,7 +16,6 @@ let kTemplatePropertyKeyColumn = "col"
 let kTemplatePropertyKeyCount = "count"
 let kTemplatePropertyKeyContents = "contents"
 let kTemplatePropertyKeyTemplateItems = "templateItems"
-let kTemplatePropertyKeyIsGroup = "isGroup"
 
 enum TemplateType: String {
   case Text = "text"
@@ -35,15 +34,12 @@ class Template: BaseModel {
   
   var style: TemplateStyle?
   var contents = [Contents]()
-  var isGroup: Bool?
   
   var hasSpace: Bool?
   var row: Int?
   var column: Int?
   var count: Int?
   var height: CGFloat?
-  
-  var templateItems = [Template]()
   
   // MARK: - Override Methods
   
@@ -57,18 +53,11 @@ class Template: BaseModel {
       row = template[kTemplatePropertyKeyRow] as? Int
       column = template[kTemplatePropertyKeyColumn] as? Int
       count = template[kTemplatePropertyKeyCount] as? Int
-      isGroup = template[kTemplatePropertyKeyIsGroup] as? Bool
       if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
         self.style = TemplateStyle()
         self.style!.assignObject(style)
       }
-      if let templateItemObjects = template[kTemplatePropertyKeyTemplateItems] as? [[String: AnyObject]] { // group
-        for templateItemObject in templateItemObjects {
-          let templateItem = Template()
-          templateItem.assignObject(templateItemObject)
-          templateItems.append(templateItem)
-        }
-      } else if let contents = template[kTemplatePropertyKeyContents] as? [[String: AnyObject]] { // something else
+      if let contents = template[kTemplatePropertyKeyContents] as? [[String: AnyObject]] { // something else
         for contentObject in contents {
           let content = Contents()
           content.assignObject(contentObject)

@@ -30,23 +30,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="J0k-Se-SvS" secondAttribute="bottom" id="1vK-Ce-naS"/>
-                <constraint firstItem="J0k-Se-SvS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NGl-ll-0AE"/>
                 <constraint firstAttribute="trailing" secondItem="J0k-Se-SvS" secondAttribute="trailing" id="UiP-mf-Afb"/>
-                <constraint firstItem="J0k-Se-SvS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iaP-1f-bZu"/>
-                <constraint firstAttribute="bottom" secondItem="J0k-Se-SvS" secondAttribute="bottom" id="k3y-JL-iYk"/>
                 <constraint firstItem="J0k-Se-SvS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mXM-lY-gmz"/>
-                <constraint firstAttribute="trailing" secondItem="J0k-Se-SvS" secondAttribute="trailing" id="wWW-5G-Wah"/>
                 <constraint firstItem="J0k-Se-SvS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="z4i-38-kmW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="NGl-ll-0AE"/>
-                    <exclude reference="iaP-1f-bZu"/>
-                    <exclude reference="k3y-JL-iYk"/>
-                    <exclude reference="wWW-5G-Wah"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="textLabel" destination="J0k-Se-SvS" id="8wu-2Q-m2J"/>
                 <outletCollection property="gestureRecognizers" destination="zR8-eI-736" appends="YES" id="pfz-Ye-2bi"/>

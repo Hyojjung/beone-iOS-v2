@@ -11,7 +11,6 @@ import UIKit
 class FirstViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
   private var templateList = TemplateList()
-//  var dynamicHeightTableViewCells = [String: UITableViewCell]()
 
   @IBAction func signInButtonTapped() {
     let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
@@ -27,7 +26,7 @@ class FirstViewController: BaseViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self,
       selector: "onContentSizeChange:",
-      name: "imageViewLoaded",
+      name: kNotificationContentsViewLayouted,
       object: nil)
     
   
@@ -46,11 +45,19 @@ class FirstViewController: BaseViewController {
   }
   
   func onContentSizeChange(notification: NSNotification) {
-    tableView.reloadData()
+    if let userInfo = notification.userInfo,
+      templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
+      templateHeight = userInfo[kNotificationKeyHeight] as? CGFloat {
+      for (index, template) in (templateList.list as! [Template]).enumerate() {
+        if template.id == templateId {
+          template.height = templateHeight
+          tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
+          break;
+        }
+      }
+    }
   }
 }
-
-// MARK: - DynamicHeightTableViewProtocol
 
 extension FirstViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {

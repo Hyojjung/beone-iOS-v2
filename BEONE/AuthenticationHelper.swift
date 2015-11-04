@@ -9,13 +9,6 @@
 import UIKit
 import FBSDKLoginKit
 
-let kNotificationSigningSuccess = "NotificationSigningSuccess"
-let kNotificationNeedSignUp = "NotificationNeedSignUp"
-let kNotificationFetchFacebookInfoSuccess = "NotificationFetchFacebookInfoSuccess"
-let kNotificationFetchKakaoInfoSuccess = "NotificationFetchKakaoInfoSuccess"
-let kNotificationKeyFacebookName = "NotificationKeyFacebookName"
-let kNotificationKeyFacebookEmail = "NotificationKeyFacebookEmail"
-
 let kRequestUrlUsers = "users"
 let kRequestUrlAuthentications = "authentications"
 

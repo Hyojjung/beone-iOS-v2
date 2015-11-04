@@ -16,7 +16,7 @@
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="600" id="S3i-68-XUu"/>
+                        <constraint firstAttribute="height" priority="999" constant="600" id="S3i-68-XUu"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mrf-h0-J6T">
                         <size key="itemSize" width="50" height="50"/>
@@ -33,19 +33,11 @@
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="leD-7S-CuK" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="1wE-a4-Bgq"/>
                 <constraint firstAttribute="bottom" secondItem="leD-7S-CuK" secondAttribute="bottom" id="6ef-bD-zEn"/>
                 <constraint firstItem="leD-7S-CuK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CaP-Np-ck4"/>
                 <constraint firstAttribute="trailing" secondItem="leD-7S-CuK" secondAttribute="trailing" id="DCr-Sf-d7P"/>
-                <constraint firstItem="leD-7S-CuK" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="ccc-eO-GVs"/>
                 <constraint firstItem="leD-7S-CuK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wUF-np-XPM"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="1wE-a4-Bgq"/>
-                    <exclude reference="ccc-eO-GVs"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="collectionView" destination="leD-7S-CuK" id="HAu-Ns-FCK"/>
             </connections>

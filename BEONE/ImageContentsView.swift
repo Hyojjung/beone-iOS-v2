@@ -14,20 +14,18 @@ class ImageContentsView: TemplateContentsView {
   // MARK: - Override Methods
   
   override func layoutView(template: Template) {
-    if let height = template.height {
-      for constraint in imageView.constraints {
-        if constraint.firstAttribute == .Height {
-          constraint.constant = height
-        }
-      }
-    }
+    imageView.changeHeightLayoutConstant(template.height)
     imageView.setTemplateImage(template)
-    action = template.contents.first?.action
+    templateId = template.id
   }
   
   // MARK: - Actions
   
   @IBAction func viewTapped() {
-    action?.action()
+    if let templateId = templateId {
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationDoAction,
+        object: nil,
+        userInfo: [kNotificationKeyTemplateId: templateId])
+    }
   }
 }

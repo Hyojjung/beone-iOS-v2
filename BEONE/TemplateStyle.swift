@@ -33,7 +33,6 @@ class TemplateStyle: BaseModel {
       if let backgroundColor = style[kTemplateStylePropertyKeyBackgroundColor] as? String {
         self.backgroundColor = UIColor(rgba: backgroundColor)
       }
-      
       backgroundImageUrl = style[kTemplateStylePropertyKeyBackgroundImageUrl] as? String
     }
   }

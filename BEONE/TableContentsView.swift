@@ -10,6 +10,8 @@ import UIKit
 
 let kSpaceWidthCell = CGFloat(10)
 let kNoSpaceWidthCell = CGFloat(0)
+let kNibNameTableContentsCollectionViewCell = "TableContentsCollectionViewCell"
+let kCellIdentifierTableContentsCollectionViewCell = "tableContentsCell"
 
 class TableContentsView: TemplateContentsView {
   @IBOutlet weak var collectionView: UICollectionView!
@@ -26,16 +28,29 @@ class TableContentsView: TemplateContentsView {
     return layout
   }()
   
+  override func setNeedsLayout() {
+    super.setNeedsLayout()
+    collectionView.registerNib(UINib(nibName: kNibNameTableContentsCollectionViewCell, bundle: nil),
+      forCellWithReuseIdentifier: kCellIdentifierTableContentsCollectionViewCell)
+  }
+  
+  override func setNeedsDisplay() {
+    super.setNeedsDisplay()
+  }
+  
   override func layoutSubviews() {
     super.layoutSubviews()
     if lastWidth != frame.size.width {
       lastWidth = frame.size.width
+      isLayouted = true
       setUpCollectionViewFlowLayout(collectionViewLayout)
       collectionView.reloadData()
     }
   }
   
   override func layoutView(template: Template) {
+    collectionView.changeHeightLayoutConstant(template.height)
+    templateId = template.id
     contents = template.contents
     hasSpace = template.hasSpace
     row = template.row
@@ -52,11 +67,8 @@ class TableContentsView: TemplateContentsView {
       let itemWidth = (lastWidth - space * CGFloat(column - 1)) / CGFloat(column)
       collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
       
-      for constraint in collectionView.constraints {
-        if constraint.firstAttribute == .Height {
-          constraint.constant = itemWidth * CGFloat(row) + space * CGFloat(row - 1)
-        }
-      }
+      let height = itemWidth * CGFloat(row) + space * CGFloat(row - 1)
+      layoutContentsView(isLayouted, templateId: templateId, height: height, contentsView: collectionView)
     }
   }
   
@@ -74,14 +86,12 @@ extension TableContentsView {
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    collectionView.registerNib(UINib(nibName: "TableContentsCollectionViewCell", bundle: nil),
-      forCellWithReuseIdentifier: "tableContentsCell")
-    let cell =
-    collectionView.dequeueReusableCellWithReuseIdentifier("tableContentsCell", forIndexPath: indexPath) as? TableContentsCollectionViewCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifierTableContentsCollectionViewCell,
+      forIndexPath: indexPath) as! TableContentsCollectionViewCell
     if let contents = contents {
-      cell?.configure(contents[indexPath.row])
+      cell.configure(contents[indexPath.row])
     }
-    return cell!
+    return cell
   }
 }
 
@@ -89,8 +99,10 @@ extension TableContentsView {
 
 extension TableContentsView: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    if let contents = contents {
-      contents[indexPath.row].action.action()
+    if let templateId = templateId, contents = contents, contentsId = contents[indexPath.row].id {
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationDoAction,
+        object: nil,
+        userInfo: [kNotificationKeyTemplateId: templateId, kNotificationKeyContentsId: contentsId])
     }
   }
 }
