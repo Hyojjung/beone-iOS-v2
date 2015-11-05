@@ -1,3 +1,4 @@
+
 let kNotificationDoAction = "NotificationDoAction"
 let kNotificationContentsViewLayouted = "NotificationContentsViewLayouted"
 let kNotificationSigningSuccess = "NotificationSigningSuccess"

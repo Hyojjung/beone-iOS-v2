@@ -14,8 +14,8 @@
 #ifndef UIFloatLabelAnimationType
 typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 {
-    UIFloatLabelAnimationTypeShow = 0,
-    UIFloatLabelAnimationTypeHide
+  UIFloatLabelAnimationTypeShow = 0,
+  UIFloatLabelAnimationTypeHide
 };
 #define UIFloatLabelAnimationType UIFloatLabelAnimationType
 #endif
@@ -35,15 +35,15 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, strong) UIFont *floatLabelFont UI_APPEARANCE_SELECTOR;
 
 /**
- * The inactive color for the floatLabel. 
+ * The inactive color for the floatLabel.
  *
  * Defaults to @c lightGrayColor.
  */
 @property (nonatomic, strong) UIColor *floatLabelPassiveColor UI_APPEARANCE_SELECTOR;
 
 /**
- The inactive color for the floatLabel. 
- * 
+ The inactive color for the floatLabel.
+ *
  * Defaults to @c blueColor.
  */
 @property (nonatomic, strong) UIColor *floatLabelActiveColor UI_APPEARANCE_SELECTOR;
@@ -80,7 +80,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, assign) CGFloat horizontalPadding UI_APPEARANCE_SELECTOR;
 
 /**
- * Disables the option to @a paste in the @c UIMenuController. 
+ * Disables the option to @a paste in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  *
  * Defaults to YES.
