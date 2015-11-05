@@ -51,7 +51,11 @@ class BaseModel: NSObject {
   }
   
   func fetchSuccess() -> NetworkSuccess? {
-    return nil
+    return { (result) -> Void in
+      if let result = result {
+        self.assignObject(result)
+      }
+    }
   }
   
   func fetchFailure() -> NetworkFailure? {

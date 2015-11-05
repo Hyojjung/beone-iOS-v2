@@ -11,28 +11,6 @@ class FirstViewController: BaseViewController {
     presentViewController(signingViewController, animated: true, completion: nil)
   }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    tableView.estimatedRowHeight = 44.0
-    tableView.rowHeight = UITableViewAutomaticDimension
-
-    
-  
-    if let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
-    {
-      if let jsonData = NSData(contentsOfFile: path)
-      {
-        do {
-          let templateListObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
-          templateList.assignObject(templateListObject)
-          
-        } catch _ as NSError{
-        }
-      }
-    }
-  }
-  
   func handleLayoutChange(notification: NSNotification) {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
@@ -69,19 +47,29 @@ class FirstViewController: BaseViewController {
   
   override func setUpView() {
     super.setUpView()
+    tableView.estimatedRowHeight = 44.0
+    tableView.rowHeight = UITableViewAutomaticDimension
     tableView.registerNib(UINib(nibName: kNibNameTemplateTableViewCell, bundle: nil), forCellReuseIdentifier: kCellIdentifierTemplateTableViewCell)
+    templateList.fetch()
+    //    if let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
+    //    {
+    //      if let jsonData = NSData(contentsOfFile: path)
+    //      {
+    //        do {
+    //          let templateListObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
+    //          templateList.assignObject(templateListObject)
+    //
+    //        } catch _ as NSError{
+    //        }
+    //      }
+    //    }
   }
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleLayoutChange:",
-      name: kNotificationContentsViewLayouted,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleAction:",
-      name: kNotificationDoAction,
-      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange:", name: kNotificationContentsViewLayouted, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:", name: kNotificationDoAction, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "success", object: nil)
   }
   
   override func removeObservers() {

@@ -36,8 +36,7 @@ class NetworkHelper: NSObject {
   
   // MARK: - Static Private Methods
   
-  static private func requestGet(url: String, parameter: AnyObject?, networkManager: AFHTTPRequestOperationManager,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
+  static private func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
       networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
         self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
         },
@@ -47,8 +46,7 @@ class NetworkHelper: NSObject {
       })
   }
   
-  static private func requestPost(url: String, parameter: AnyObject?, networkManager: AFHTTPRequestOperationManager,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
+  static private func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
       networkManager.POST(url, parameters: parameter, success: { (operation, responseObject) -> Void in
         self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
         },
@@ -58,8 +56,7 @@ class NetworkHelper: NSObject {
       })
   }
   
-  static private func requestPut(url: String, parameter: AnyObject?, networkManager: AFHTTPRequestOperationManager,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
+  static private func requestPut(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
       networkManager.PUT(url, parameters: parameter, success: { (operation, responseObject) -> Void in
         self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
         },
@@ -69,8 +66,7 @@ class NetworkHelper: NSObject {
       })
   }
   
-  static private func requestDelete(url: String, parameter: AnyObject?, networkManager: AFHTTPRequestOperationManager,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
+  static private func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
       networkManager.DELETE(url, parameters: parameter, success: { (operation, responseObject) -> Void in
         self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
         },
@@ -108,12 +104,6 @@ class NetworkHelper: NSObject {
       subtractNetworkCount()
   }
   
-  static private func networkManager() -> AFHTTPRequestOperationManager {
-    let networkManager = AFHTTPRequestOperationManager(baseURL: NSURL(string: kBaseApiUrl))
-    networkManager.requestSerializer = AFJSONRequestSerializer()
-    return networkManager
-  }
-  
   static private func addNetworkCount() {
     networkCommunicationCount += 1
     if networkCommunicationCount == 1 {
@@ -134,16 +124,15 @@ class NetworkHelper: NSObject {
     success: NetworkSuccess?, failure: NetworkFailure?) {
       print("\(method) \(url)")
       addNetworkCount()
-      let networkManager = self.networkManager()
       switch method {
       case .Get:
-        requestGet(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
+        requestGet(url, parameter: parameter, success: success, failure: failure)
       case .Post:
-        requestPost(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
+        requestPost(url, parameter: parameter, success: success, failure: failure)
       case .Put:
-        requestPut(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
+        requestPut(url, parameter: parameter, success: success, failure: failure)
       case .Delete:
-        requestDelete(url, parameter: parameter, networkManager: networkManager, success: success, failure: failure)
+        requestDelete(url, parameter: parameter, success: success, failure: failure)
       }
   }
   
@@ -180,5 +169,16 @@ class NetworkHelper: NSObject {
         operation.start()
       }
       
+  }
+}
+
+extension NetworkHelper {
+  static var networkManager: AFHTTPRequestOperationManager {
+    let networkManager = AFHTTPRequestOperationManager(baseURL: NSURL(string: kBaseApiUrl))
+    networkManager.requestSerializer = AFJSONRequestSerializer()
+    if let accessToken = MyInfo.sharedMyInfo().accessToken {
+      networkManager.requestSerializer.setValue(accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
+    }
+    return networkManager
   }
 }

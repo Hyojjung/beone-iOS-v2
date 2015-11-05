@@ -47,11 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tokenString = tokenString .stringByReplacingOccurrencesOfString(">", withString: String())
     tokenString = tokenString .stringByReplacingOccurrencesOfString(" ", withString: String())
     MyInfo.sharedMyInfo().deviceToken = tokenString
-    if MyInfo.sharedMyInfo().userDeviceInfoId == nil {
+    if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser() { (result) -> Void in
-          
-        }
+        AuthenticationHelper.signInForNonUser(nil)
       }
     }
   }
@@ -59,11 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser() { (result) -> Void in
-          
-        }
+        AuthenticationHelper.signInForNonUser(nil)
       }
     }
   }
 }
-

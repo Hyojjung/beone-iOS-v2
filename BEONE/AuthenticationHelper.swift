@@ -17,12 +17,14 @@ let kSigningParameterKeyName = "name"
 let kSigningParameterKeySnsType = "snsType"
 let kSigningParameterKeyUserId = "uid"
 let kSigningParameterKeySnsToken = "snsToken"
+let kSigningParameterKeyUserType = "userType"
 
 let kSigningResponseKeyDeviceInfos = "deviceInfos"
 let kSigningResponseKeyAuthentication = "authentication"
 let kSigningResponseKeyDeviceInfo = "deviceInfo"
 
-let kDeviceTypeiOS = 1
+let kDeviceTypeiOS = "ios"
+let kUserTypeGuest = "guest"
 
 enum SnsType: Int {
   case Facebook = 1
@@ -103,9 +105,9 @@ class AuthenticationHelper: NSObject {
   
   static func saveMyInfo(result: [String: AnyObject]?, isNewUserResponse: Bool) {
     let myInfo = MyInfo.sharedMyInfo()
-    if let result = result {
+    if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
       if isNewUserResponse {
-        if let deviceInfos = result[kSigningResponseKeyDeviceInfos] as? [[String: AnyObject]],
+        if let deviceInfos = data[kSigningResponseKeyDeviceInfos] as? [[String: AnyObject]],
           deviceInfo = deviceInfos.first,
           authentication = deviceInfo[kSigningResponseKeyAuthentication] as? [String: AnyObject] {
             myInfo.accessToken = authentication[kAuthenticationPropertyKeyAccessToken] as? String
@@ -113,11 +115,11 @@ class AuthenticationHelper: NSObject {
             myInfo.authenticationId = authentication[kObjectPropertyKeyId] as? NSNumber
             myInfo.userDeviceInfoId = deviceInfo[kObjectPropertyKeyId] as? NSNumber
         }
-        myInfo.userId = result[kObjectPropertyKeyId] as? NSNumber
-      } else if let deviceInfo = result[kSigningResponseKeyDeviceInfo] as? [String: AnyObject] {
-        myInfo.accessToken = result[kAuthenticationPropertyKeyAccessToken] as? String
-        myInfo.refreshToken = result[kAuthenticationPropertyKeyRefreshToken] as? String
-        myInfo.authenticationId = result[kObjectPropertyKeyId] as? NSNumber
+        myInfo.userId = data[kObjectPropertyKeyId] as? NSNumber
+      } else if let deviceInfo = data[kSigningResponseKeyDeviceInfo] as? [String: AnyObject] {
+        myInfo.accessToken = data[kAuthenticationPropertyKeyAccessToken] as? String
+        myInfo.refreshToken = data[kAuthenticationPropertyKeyRefreshToken] as? String
+        myInfo.authenticationId = data[kObjectPropertyKeyId] as? NSNumber
         myInfo.userDeviceInfoId = deviceInfo[kObjectPropertyKeyId] as? NSNumber
       }
       CoreDataHelper.sharedCoreDataHelper.saveContext()
@@ -139,16 +141,16 @@ class AuthenticationHelper: NSObject {
     }
   }
   
-  static func signInForNonUser(success: NetworkSuccess) {
+  static func signInForNonUser(success: NetworkSuccess?) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
-    parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
     parameter[kAuthenticationPropertyKeyDeviceInfoId] = myInfo.userDeviceInfoId
+    parameter[kSigningParameterKeyUserType] = kUserTypeGuest
     
     NetworkHelper.request(NetworkMethod.Post, url: kRequestUrlAuthentications, parameter: parameter)
       { (result) -> Void in
-        success(result: result)
+        saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
     }
   }
   

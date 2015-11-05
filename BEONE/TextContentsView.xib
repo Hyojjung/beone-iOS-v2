@@ -27,7 +27,7 @@
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="J0k-Se-SvS" secondAttribute="bottom" id="1vK-Ce-naS"/>
                 <constraint firstAttribute="trailing" secondItem="J0k-Se-SvS" secondAttribute="trailing" id="UiP-mf-Afb"/>

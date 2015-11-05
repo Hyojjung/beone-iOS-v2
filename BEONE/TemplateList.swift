@@ -9,6 +9,12 @@ class TemplateList: BaseListModel {
         template.assignObject(templateObject)
         list.append(template)
       }
+      NSNotificationCenter.defaultCenter().postNotificationName("success", object: nil)
     }
   }
+  
+  override func fetchUrl() -> String {
+    return "app-views/main/template-items"
+  }
+  
 }
