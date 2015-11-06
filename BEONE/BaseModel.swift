@@ -11,11 +11,7 @@ class BaseModel: NSObject {
   }
   
   func post() {
-    NetworkHelper.request(NetworkMethod.Post,
-      url: postUrl(),
-      parameter: postParameter(),
-      success: postSuccess(),
-      failure: postFailure())
+    NetworkHelper.requestPost(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
   func postUrl() -> String {
@@ -35,11 +31,7 @@ class BaseModel: NSObject {
   }
   
   func fetch() {
-    NetworkHelper.request(NetworkMethod.Get,
-      url: fetchUrl(),
-      parameter: fetchParameter(),
-      success: fetchSuccess(),
-      failure: fetchFailure())
+    NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
   func fetchUrl() -> String {
@@ -63,11 +55,7 @@ class BaseModel: NSObject {
   }
   
   func put() {
-    NetworkHelper.request(NetworkMethod.Put,
-      url: putUrl(),
-      parameter: putParameter(),
-      success: putSuccess(),
-      failure: putFailure())
+    NetworkHelper.requestPut(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
   func putUrl() -> String {
@@ -87,11 +75,7 @@ class BaseModel: NSObject {
   }
   
   func delete() {
-    NetworkHelper.request(NetworkMethod.Delete,
-      url: deleteUrl(),
-      parameter: deleteParameter(),
-      success: deleteSuccess(),
-      failure: deleteFailure())
+    NetworkHelper.requestDelete(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
   func deleteUrl() -> String {

@@ -7,6 +7,8 @@ let kNotificationFetchFacebookInfoSuccess = "NotificationFetchFacebookInfoSucces
 let kNotificationFetchKakaoInfoSuccess = "NotificationFetchKakaoInfoSuccess"
 let kNotificationNetworkStart = "NotificationNetworkStart"
 let kNotificationNetworkEnd = "NotificationNetworkEnd"
+let kNotificationGuestAuthenticationSuccess = "NotificationGuestAuthenticationSuccess"
+let kNotificationFetchTemplateListSuccess = "NotificationFetchTemplateListSuccess"
 
 let kNotificationKeyFacebookName = "NotificationKeyFacebookName"
 let kNotificationKeyFacebookEmail = "NotificationKeyFacebookEmail"

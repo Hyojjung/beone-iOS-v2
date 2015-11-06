@@ -20,14 +20,16 @@ enum NetworkResponseCode: Int {
 struct NetworkError {
   
   var statusCode : Int?
-  var originalErrorCode : Int?
+  var errorCode: String?
+  var errorKey: String?
   var responseObject : AnyObject?
   
   // MARK: - Init & Dealloc Methods
   
-  init (statusCode: NSInteger?, originalErrorCode: NSInteger?, responseObject: AnyObject?) {
+  init (statusCode: Int?, errorCode: String?, errorKey: String?, responseObject: AnyObject?) {
     self.statusCode = statusCode
-    self.originalErrorCode = originalErrorCode
+    self.errorCode = errorCode
+    self.errorKey = errorKey
     self.responseObject = responseObject
   }
 }

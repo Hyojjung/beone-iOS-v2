@@ -13,6 +13,9 @@ enum NetworkMethod: String {
 }
 
 let kNetworkResponseKeyData = "data"
+let kNetworkResponseKeyError = "error"
+let kNetworkErrorKeyCode = "code"
+let kNetworkErrorKeyKey = "key"
 
 let kNetworkHeaderKeyContentType = "Content-Type"
 let kNetworkHeaderValueContentType = "application/json"
@@ -30,78 +33,115 @@ let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
 #endif
 
+enum NetworkErrorCode: String {
+  case TokenExpired = "1002"
+  case Invalid = "1001"
+}
+
+enum NetworkErrorKey: String {
+  case AccessToken = "accessToken"
+  case RefreshToken = "refreshToken"
+  case SnsInfos = "snsInfos"
+}
+
 class NetworkHelper: NSObject {
   
   static private var networkCommunicationCount = 0
   
   // MARK: - Static Private Methods
   
-  static private func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-      networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
-        self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
-        },
-        failure: { (operation, error) -> Void in
-          self.processResponse(operation, responseObject: operation.responseObject, error: error,
-            success: success, failure: failure)
-      })
+  static private func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    print("\(method) \(url)")
+    addNetworkCount()
+    switch method {
+    case .Get:
+      requestGet(url, parameter: parameter, success: success, failure: failure)
+    case .Post:
+      requestPost(url, parameter: parameter, success: success, failure: failure)
+    case .Put:
+      requestPut(url, parameter: parameter, success: success, failure: failure)
+    case .Delete:
+      requestDelete(url, parameter: parameter, success: success, failure: failure)
+    }
   }
   
-  static private func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-      networkManager.POST(url, parameters: parameter, success: { (operation, responseObject) -> Void in
-        self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
-        },
-        failure: { (operation, error) -> Void in
-          self.processResponse(operation, responseObject: operation.responseObject, error: error,
-            success: success, failure: failure)
-      })
-  }
   
-  static private func requestPut(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-      networkManager.PUT(url, parameters: parameter, success: { (operation, responseObject) -> Void in
-        self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
-        },
-        failure: { (operation, error) -> Void in
-          self.processResponse(operation, responseObject: operation.responseObject, error: error,
-            success: success, failure: failure)
-      })
-  }
-  
-  static private func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-      networkManager.DELETE(url, parameters: parameter, success: { (operation, responseObject) -> Void in
-        self.processResponse(operation, responseObject: responseObject, error: nil, success: success, failure: failure)
-        },
-        failure: { (operation, error) -> Void in
-          self.processResponse(operation, responseObject: operation.responseObject, error: error,
-            success: success, failure: failure)
-      })
-  }
-  
-  static private func processResponse(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError?,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
+  static private func handleErrorDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError, success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
       print("\(operation.response?.statusCode) \(operation.request.URL)")
       print("responseObject: \(responseObject)")
-      if let error = error {
-        if operation.response == nil ||
-          operation.response?.statusCode == NetworkResponseCode.None.rawValue ||
-          operation.response?.statusCode == NetworkResponseCode.BadGateWay.rawValue ||
-          operation.response?.statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
-            // TODO: show alert view with "check network"
-        } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
-          // TODO: show alert view with "something wrong in server"
+    #endif
+    
+    if let responseObject = responseObject, statusCode = operation.response?.statusCode {
+      var errorCode: String? = nil
+      var errorKey: String? = nil
+      if let errorObject = responseObject[kNetworkResponseKeyError] as? [String: String] {
+      errorCode = errorObject[kNetworkErrorKeyCode]
+      errorKey = errorObject[kNetworkErrorKeyKey]
+    }
+      let myInfo = MyInfo.sharedMyInfo()
+      if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
+        // TODO: show alert view with "서버 점검 중"
+      } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
+        // TODO: show alert view with "something wrong in server"
+      } else if statusCode == NetworkResponseCode.Invalid.rawValue {
+        if errorCode != nil && errorKey != nil {
+          if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && myInfo.refreshToken == nil ||
+            errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
+              myInfo.accessToken = nil
+              AuthenticationHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
+          } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue {
+            myInfo.accessToken = nil
+            AuthenticationHelper.refreshToken(signingSuccess(operation, success: success, failure: failure))
+            }
         }
-        
-        if let response = operation.response {
-          let networkError =
-          NetworkError(statusCode: response.statusCode, originalErrorCode: error.code, responseObject: responseObject)
-          if let failure = failure {
-            failure(error: networkError)
-          }
-          // TODO: handle common error
-        }
-      } else if let success = success {
-        success(result: responseObject)
       }
-      subtractNetworkCount()
+      
+      if let response = operation.response {
+        let networkError =
+        NetworkError(statusCode: response.statusCode, errorCode: errorCode, errorKey: errorKey, responseObject: responseObject)
+
+        if let failure = failure {
+          failure(error: networkError)
+        }
+        // TODO: handle common error
+      }
+    } else {
+      // TODO: show alert view with "check network"
+    }
+    subtractNetworkCount()
+  }
+  
+  static private func signingSuccess(operation: AFHTTPRequestOperation, success: NetworkSuccess?, failure: NetworkFailure?) -> NetworkSuccess {
+    return { (result) -> Void in
+      let parameter: AnyObject?
+      if let httpBody = operation.request.HTTPBody {
+        do {
+          try parameter = NSJSONSerialization.JSONObjectWithData(httpBody, options: .MutableContainers)
+        } catch {
+          parameter = nil
+        }
+      } else {
+        parameter = nil
+      }
+      
+      if let url = operation.request.URL?.absoluteString.stringByReplacingOccurrencesOfString(kBaseApiUrl, withString:""),
+        httpMethodString = operation.request.HTTPMethod,
+        method = NetworkMethod(rawValue: httpMethodString) {
+          request(method, url: url, parameter: parameter, success: success, failure: failure)
+      }
+    }
+  }
+  
+  
+  static private func handleSuccessDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, success: NetworkSuccess?) {
+    #if DEBUG
+      print("\(operation.response?.statusCode) \(operation.request.URL)")
+    #endif
+    if let success = success {
+      success(result: responseObject)
+    }
+    subtractNetworkCount()
   }
   
   static private func addNetworkCount() {
@@ -120,25 +160,46 @@ class NetworkHelper: NSObject {
   
   // MARK: - Static Public Methods
   
-  static func request(method: NetworkMethod, url: String, parameter: AnyObject?,
-    success: NetworkSuccess?, failure: NetworkFailure?) {
-      print("\(method) \(url)")
-      addNetworkCount()
-      switch method {
-      case .Get:
-        requestGet(url, parameter: parameter, success: success, failure: failure)
-      case .Post:
-        requestPost(url, parameter: parameter, success: success, failure: failure)
-      case .Put:
-        requestPut(url, parameter: parameter, success: success, failure: failure)
-      case .Delete:
-        requestDelete(url, parameter: parameter, success: success, failure: failure)
-      }
+  static func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    addNetworkCount()
+    networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+      self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
+      },
+      failure: { (operation, error) -> Void in
+        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
+    })
   }
   
-  static func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?) {
-    request(method, url: url, parameter: parameter, success: success, failure: nil)
+  static func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    addNetworkCount()
+    networkManager.POST(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+      self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
+      },
+      failure: { (operation, error) -> Void in
+        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
+    })
   }
+  
+  static func requestPut(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    addNetworkCount()
+    networkManager.PUT(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+      self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
+      },
+      failure: { (operation, error) -> Void in
+        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
+    })
+  }
+  
+  static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    addNetworkCount()
+    networkManager.DELETE(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+      self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
+      },
+      failure: { (operation, error) -> Void in
+        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
+    })
+  }
+  
   
   static func uploadData(signedUrl: String?, contentType: String, parameters: NSData,
     success: NetworkSuccess?, failure: NetworkFailure?) {
@@ -154,17 +215,9 @@ class NetworkHelper: NSObject {
         let operation = AFHTTPRequestOperation(request: request)
         operation.responseSerializer = AFJSONResponseSerializer()
         operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-          self.processResponse(operation,
-            responseObject: responseObject,
-            error: nil,
-            success: success,
-            failure: failure)
+          self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
           }, failure: { (operation, error) -> Void in
-            self.processResponse(operation,
-              responseObject: operation.responseObject,
-              error: error,
-              success: success,
-              failure: failure)
+            self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
         })
         operation.start()
       }

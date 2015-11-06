@@ -801,6 +801,7 @@
 					"\"AFNetworking\"",
 					"-all_load",
 				);
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.beone.BEONE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BEONE/BEONE-Bridging-Header.h";

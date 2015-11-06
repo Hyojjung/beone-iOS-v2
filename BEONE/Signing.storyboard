@@ -552,7 +552,6 @@
                     <connections>
                         <outlet property="emailTextField" destination="UMl-a2-CJs" id="mcs-OG-lAi"/>
                         <outlet property="passwordTextField" destination="Iuw-St-UUO" id="Ykv-qc-re4"/>
-                        <outlet property="signInButton" destination="dS9-uM-j4G" id="AMg-ho-Rj9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3w-Ts-dpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
