@@ -14,7 +14,6 @@ class LazyLoadingImageView: UIImageView {
     sd_cancelCurrentImageLoad()
   }
   
-  
   private func setLazyLoaingImage(urlString: String, imageType: ImageType) {
     let url = LazyLoadingHelper.imageUrl(urlString, imageType: imageType)
     sd_setImageWithURL(url, placeholderImage: image) { (image, error, cacheType, url) -> Void in

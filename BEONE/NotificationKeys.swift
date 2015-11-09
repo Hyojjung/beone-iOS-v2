@@ -14,6 +14,7 @@ let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPass
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 
 let kNotificationShowAlert = "NotificationShowAlert"
+let kNotificationShowWebView = "NotificationShowWebView"
 
 let kNotificationAlertKeyMessage = "NotificationAlertKeyMessage"
 let kNotificationAlertKeyHasCancel = "NotificationAlertKeyHasCancel"

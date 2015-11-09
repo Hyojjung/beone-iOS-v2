@@ -81,11 +81,11 @@ class SignUpViewController: BaseViewController {
   }
   
   @IBAction func servicePolicyButtonTapped() {
-    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
+    showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
   }
   
   @IBAction func privacyPolicyButtonTapped() {
-    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
+    showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
   }
   
   // MARK: - Observer Actions

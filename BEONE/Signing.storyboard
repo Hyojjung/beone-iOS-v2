@@ -378,13 +378,7 @@
                                     <constraint firstAttribute="centerY" secondItem="xQ8-4i-0Nm" secondAttribute="centerY" id="eTO-D5-qgM"/>
                                     <constraint firstAttribute="centerX" secondItem="N49-mO-GdT" secondAttribute="centerX" id="qCi-Jv-6nI"/>
                                     <constraint firstAttribute="centerY" secondItem="N49-mO-GdT" secondAttribute="centerY" constant="-0.5" id="rbN-zg-ObJ"/>
-                                    <constraint firstAttribute="centerX" secondItem="xQ8-4i-0Nm" secondAttribute="centerX" id="wLZ-mm-73G"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="wLZ-mm-73G"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KN-Lw-Qvw" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>

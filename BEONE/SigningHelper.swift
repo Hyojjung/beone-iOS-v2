@@ -169,14 +169,14 @@ class SigningHelper: NSObject {
   
   static func getFaceBookInfo() {
     var parameter = [String: String]()
-    parameter["fields"] = "name, email"
+    parameter["fields"] = "\(kSigningParameterKeyName), \(kSigningParameterKeyEmail)"
     
     let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameter)
     graphRequest.startWithCompletionHandler { (_, result, _) -> Void in
       if let result = result as? [String: AnyObject]{
         var userInfo = [String: String]()
-        userInfo[kNotificationKeyFacebookName] = result["name"] as? String
-        userInfo[kNotificationKeyFacebookEmail] = result["email"] as? String
+        userInfo[kNotificationKeyFacebookName] = result[kSigningParameterKeyName] as? String
+        userInfo[kNotificationKeyFacebookEmail] = result[kSigningParameterKeyEmail] as? String
         
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchFacebookInfoSuccess,
           object: nil,

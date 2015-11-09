@@ -47,25 +47,23 @@ class Action: BaseModel {
   }
   
   func action() {
-    if let type = type {
+    if let type = type, content = content {
       switch type {
       case .Webview:
-        ViewControllerHelper.showWebView(content, title: nil)
+        var userInfo = [String: AnyObject]()
+        userInfo[kNotificationAlertKeyMessage] = content
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowWebView, object: nil, userInfo: userInfo)
       case .Scheme:
         print("scheme")
       case .Alert:
-        if let content = content {
-          var userInfo = [String: AnyObject]()
-          userInfo[kNotificationAlertKeyMessage] = content
-          userInfo[kNotificationAlertKeyHasCancel] = hasCancel
-          userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
-          userInfo[kNotificationAlertKeyCancelAction] = cancelAction
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
-        }
+        var userInfo = [String: AnyObject]()
+        userInfo[kNotificationAlertKeyMessage] = content
+        userInfo[kNotificationAlertKeyHasCancel] = hasCancel
+        userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
+        userInfo[kNotificationAlertKeyCancelAction] = cancelAction
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
       case .Method:
-        if let content = content {
-          performSelector(Selector(stringLiteral: content))
-        }
+        performSelector(Selector(stringLiteral: content))
       default:
         break
       }

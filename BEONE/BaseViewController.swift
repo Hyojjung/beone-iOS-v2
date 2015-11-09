@@ -101,7 +101,10 @@ class BaseViewController: UIViewController {
       selector: "showAlert:",
       name: kNotificationShowAlert,
       object: nil)
-    
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "showWebView:",
+      name: kNotificationShowWebView,
+      object: nil)
   }
   
   func removeObservers() {
@@ -114,6 +117,12 @@ class BaseViewController: UIViewController {
         hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
         confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
         cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action)
+    }
+  }
+  
+  func showWebView(notification: NSNotification) {
+    if let userInfo = notification.userInfo as? [String: AnyObject] {
+      showWebView(userInfo[kNotificationAlertKeyMessage] as? String, title: nil)
     }
   }
   

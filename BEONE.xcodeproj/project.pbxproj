@@ -58,8 +58,6 @@
 		62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */; };
 		62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */; };
 		62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */; };
-		62FC6EB11BDF73260071E1B1 /* bg_payment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */; };
-		62FC6EB21BDF73260071E1B1 /* bg_orderhistory_top.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */; };
 		62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */; };
 		62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */; };
 		62FDC3821BDFB8380072BBCE /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */; };
@@ -150,8 +148,6 @@
 		62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_1.jpg; sourceTree = "<group>"; };
 		62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_2.jpg; sourceTree = "<group>"; };
 		62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_3.jpg; sourceTree = "<group>"; };
-		62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_payment.jpg; sourceTree = "<group>"; };
-		62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_orderhistory_top.jpg; sourceTree = "<group>"; };
 		62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join_detail.jpg; sourceTree = "<group>"; };
 		62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join.jpg; sourceTree = "<group>"; };
 		62FDC37B1BDFAB820072BBCE /* BEONE-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEONE-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -422,8 +418,6 @@
 				62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */,
 				62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */,
 				62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */,
-				62FC6EAA1BDF73260071E1B1 /* bg_payment.jpg */,
-				62FC6EAB1BDF73260071E1B1 /* bg_orderhistory_top.jpg */,
 				62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */,
 				62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */,
 			);
@@ -552,12 +546,10 @@
 				6207174A1BE221970014B9AC /* ImageContentsView.xib in Resources */,
 				620717511BE239AD0014B9AC /* TableContentsView.xib in Resources */,
 				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
-				62FC6EB11BDF73260071E1B1 /* bg_payment.jpg in Resources */,
 				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				6207174D1BE227A50014B9AC /* beone-wildcard.crt in Resources */,
 				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
 				620717831BE347E20014B9AC /* WebViewController.xib in Resources */,
-				62FC6EB21BDF73260071E1B1 /* bg_orderhistory_top.jpg in Resources */,
 				62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */,
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
 				62EFE9511BE0C5930035B2DE /* TextContentsView.xib in Resources */,

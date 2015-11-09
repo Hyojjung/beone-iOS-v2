@@ -22,16 +22,6 @@ class ViewControllerHelper: NSObject {
     textfield.floatLabelActiveColor = darkGold
     textfield.tintColor = grey
   }
-  
-  static func showWebView(urlString: String?, title: String?) {
-    if let urlString = urlString, showingNavigationViewController = showingNavigationViewController {
-      let webViewController = WebViewController()
-      webViewController.url = urlString
-      webViewController.title = title
-      showingNavigationViewController.pushViewController(webViewController, animated: true)
-      showingNavigationViewController.navigationBar.hidden = false
-    }
-  }
 }
 
 extension UIView {
@@ -66,4 +56,15 @@ extension UIViewController {
       presentViewController(alertViewController, animated: true, completion: nil)
     }
   }
+  
+  func showWebView(urlString: String?, title: String?) {
+    if let urlString = urlString {
+      let webViewController = WebViewController()
+      webViewController.url = urlString
+      webViewController.title = title
+      navigationController?.pushViewController(webViewController, animated: true)
+      navigationController?.navigationBar.hidden = false
+    }
+  }
 }
+
