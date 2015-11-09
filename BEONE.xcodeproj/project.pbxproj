@@ -68,7 +68,6 @@
 		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; };
 		62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3891BDFC1780072BBCE /* DesignResource.swift */; };
 		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
-		73EA25411BE4D4300085382A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25401BE4D4300085382A /* test.json */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -160,7 +159,6 @@
 		62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatLabelTextField.m; sourceTree = "<group>"; };
 		62FDC3891BDFC1780072BBCE /* DesignResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignResource.swift; sourceTree = "<group>"; };
 		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
-		73EA25401BE4D4300085382A /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */,
 				62E5CF1B1BDDE19100A99F4C /* Info.plist */,
 				62FC6E981BDF4FF50071E1B1 /* Localizable.strings */,
-				73EA25401BE4D4300085382A /* test.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -547,7 +544,6 @@
 				62FC6EB21BDF73260071E1B1 /* bg_orderhistory_top.jpg in Resources */,
 				62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */,
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
-				73EA25411BE4D4300085382A /* test.json in Resources */,
 				62EFE9511BE0C5930035B2DE /* TextContentsView.xib in Resources */,
 				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
 			);

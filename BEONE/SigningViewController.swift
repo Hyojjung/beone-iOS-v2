@@ -81,7 +81,7 @@ class SigningViewController: BaseViewController {
         self.performSegueWithIdentifier(kSegueIdentifierFromSigningToEmailSignUp, sender: nil)
     }
     
-    ViewControllerHelper.showActionSheet(self, title: nil, actionSheetButtons: [signInButton, signUpButton])
+    showActionSheet([signInButton, signUpButton])
   }
   
   // MARK: - Observer Action

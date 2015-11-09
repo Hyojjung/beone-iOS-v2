@@ -51,18 +51,6 @@ class FirstViewController: BaseViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.registerNib(UINib(nibName: kNibNameTemplateTableViewCell, bundle: nil), forCellReuseIdentifier: kCellIdentifierTemplateTableViewCell)
     templateList.fetch()
-    //    if let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
-    //    {
-    //      if let jsonData = NSData(contentsOfFile: path)
-    //      {
-    //        do {
-    //          let templateListObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
-    //          templateList.assignObject(templateListObject)
-    //
-    //        } catch _ as NSError{
-    //        }
-    //      }
-    //    }
   }
   
   override func addObservers() {
@@ -78,6 +66,8 @@ class FirstViewController: BaseViewController {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 }
+
+// MARK: - UITableViewDataSource
 
 extension FirstViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {

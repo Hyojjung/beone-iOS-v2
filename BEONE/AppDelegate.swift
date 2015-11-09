@@ -49,7 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     MyInfo.sharedMyInfo().deviceToken = tokenString
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser(nil)
+        AuthenticationHelper.signInForNonUser({ (result) -> Void in
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
+        })
       }
     }
   }
@@ -57,7 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser(nil)
+        AuthenticationHelper.signInForNonUser({ (result) -> Void in
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
+        })
       }
     }
   }

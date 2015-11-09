@@ -38,12 +38,12 @@ class BaseViewController: UIViewController {
       multiplier: 1.0,
       constant: 0.0))
     return loadingView
-    }()
+  }()
   
   lazy var tapRecognizer: UITapGestureRecognizer = {
     let tapRecognizer = UITapGestureRecognizer(target: self, action: "endEditing")
     return tapRecognizer
-    }()
+  }()
   
   func endEditing() {
     view.endEditing(true)
@@ -53,7 +53,7 @@ class BaseViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    ViewControllerHelper.frontViewController = self
+    //    ViewControllerHelper.frontViewController = self
     setUpView()
   }
   
@@ -61,7 +61,7 @@ class BaseViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     ViewControllerHelper.showingNavigationViewController = self.navigationController
-//    ViewControllerHelper.frontViewController = self
+    //    ViewControllerHelper.frontViewController = self
     
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: self.title)
@@ -97,15 +97,28 @@ class BaseViewController: UIViewController {
       selector: "stopIndicator",
       name: kNotificationNetworkEnd,
       object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "showAlert:",
+      name: kNotificationShowAlert,
+      object: nil)
+    
   }
   
   func removeObservers() {
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationNetworkStart, object: nil)
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationNetworkEnd, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
   func popView() {
     navigationController?.popViewControllerAnimated(true)
+  }
+  
+  func showAlert(notification: NSNotification) {
+    if let userInfo = notification.userInfo as? [String: AnyObject] {
+      showAlertView(userInfo[kNotificationAlertKeyMessage] as? String,
+        hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
+        confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
+        cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action)
+    }
   }
   
   func startIndicator() {

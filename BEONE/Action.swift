@@ -54,7 +54,12 @@ class Action: BaseModel {
         print("scheme")
       case .Alert:
         if let content = content {
-          ViewControllerHelper.showAlertView(content, hasCancel: hasCancel, confirmAction: confirmationAction, cancelAction: cancelAction)
+          var userInfo = [String: AnyObject]()
+          userInfo[kNotificationAlertKeyMessage] = content
+          userInfo[kNotificationAlertKeyHasCancel] = hasCancel
+          userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
+          userInfo[kNotificationAlertKeyCancelAction] = cancelAction
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
         }
       default:
         break

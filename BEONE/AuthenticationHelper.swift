@@ -91,7 +91,11 @@ class AuthenticationHelper: NSObject {
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
       },
-      failure: nil)
+      failure: { (error) -> Void in
+        if error.statusCode == NetworkResponseCode.Duplicated.rawValue {
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningFailure, object: nil)
+        }
+    })
   }
   
   static func signUp(snsType: SnsType, userId: String, token: String, email: String, name: String) {
@@ -110,7 +114,7 @@ class AuthenticationHelper: NSObject {
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
       },
-      failure: nil)
+      failure:nil)
   }
   
   static func saveMyInfo(result: [String: AnyObject]?, isNewUserResponse: Bool) {
@@ -164,7 +168,6 @@ class AuthenticationHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
         success?(result: result)
       },
       failure: nil)

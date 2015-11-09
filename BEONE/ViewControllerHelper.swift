@@ -13,30 +13,6 @@ class ViewControllerHelper: NSObject {
     return UIScreen.mainScreen().bounds.width
   }()
   
-  static func showActionSheet(viewController: UIViewController, title: String?, actionSheetButtons: [ActionSheetButton]) {
-    let actionSheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
-    
-    for actionSheetButton in actionSheetButtons {
-      let button = UIAlertAction(title: actionSheetButton.title, style: .Default, handler: actionSheetButton.action)
-      actionSheet.addAction(button)
-    }
-    
-    let cancelButton = UIAlertAction(title: "취소", style: .Cancel, handler:nil)
-    actionSheet.addAction(cancelButton)
-    
-    viewController.presentViewController(actionSheet, animated: true, completion: nil)
-  }
-  
-  static func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?) {
-    if let topViewController = showingNavigationViewController?.topViewController, message = message {
-      let alertViewController =
-      AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction)
-      alertViewController.modalPresentationStyle = .OverCurrentContext
-      alertViewController.modalTransitionStyle = .CrossDissolve
-      topViewController.presentViewController(alertViewController, animated: true, completion: nil)
-    }
-  }
-  
   static func setUpFloatingLabel(textfield: UIFloatLabelTextField, placeholder: String) {
     textfield.placeholder = placeholder;
     textfield.floatLabelActiveColor = darkGold
@@ -59,5 +35,30 @@ extension UIView {
       return UINib(nibName: nibName, bundle: bundle).instantiateWithOwner(nil, options: nil)[0] as? UIView
     }
     return nil
+  }
+}
+
+extension UIViewController {
+  func showActionSheet(actionSheetButtons: [ActionSheetButton]) {
+    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    
+    for actionSheetButton in actionSheetButtons {
+      let button = UIAlertAction(title: actionSheetButton.title, style: .Default, handler: actionSheetButton.action)
+      actionSheet.addAction(button)
+    }
+    
+    let cancelButton = UIAlertAction(title: NSLocalizedString("cancel", comment: "cancel"), style: .Cancel, handler:nil)
+    actionSheet.addAction(cancelButton)
+    
+    presentViewController(actionSheet, animated: true, completion: nil)
+  }
+  
+  func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?) {
+    if let message = message {
+      let alertViewController = AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction)
+      alertViewController.modalPresentationStyle = .OverCurrentContext
+      alertViewController.modalTransitionStyle = .CrossDissolve
+      presentViewController(alertViewController, animated: true, completion: nil)
+    }
   }
 }
