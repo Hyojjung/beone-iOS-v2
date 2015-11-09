@@ -7,6 +7,24 @@ extension UIView {
     addSubview(subView)
   }
   
+  func addSubViewAndCenterLayout(subView: UIView) {
+    addSubViewAndEnableAutoLayout(subView)
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .CenterY,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: .CenterY,
+      multiplier: 1,
+      constant: 0))
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .CenterX,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: .CenterX,
+      multiplier: 1,
+      constant: 0))
+  }
+  
   func addSubViewAndLayout(subView: UIView) {
     addSubViewAndEnableAutoLayout(subView)
     addConstraint(NSLayoutConstraint(item: subView,

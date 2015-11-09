@@ -34,14 +34,10 @@ class SignUpViewController: BaseViewController {
   }
   
   override func setUpView() {
-    ViewControllerHelper.setUpFloatingLabel(emailTextField,
-      placeholder: NSLocalizedString("email form", comment: "placeholder"))
-    ViewControllerHelper.setUpFloatingLabel(nameTextField,
-      placeholder: NSLocalizedString("name form", comment: "placeholder"))
-    ViewControllerHelper.setUpFloatingLabel(passwordTextField,
-      placeholder: NSLocalizedString("password form", comment: "placeholder"))
-    ViewControllerHelper.setUpFloatingLabel(passwordVerifyingTextField,
-      placeholder: NSLocalizedString("password form", comment: "placeholder"))
+    emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
+    nameTextField.setUpFloatingLabel(NSLocalizedString("name form", comment: "placeholder"))
+    passwordTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
+    passwordVerifyingTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
     
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     passwordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)

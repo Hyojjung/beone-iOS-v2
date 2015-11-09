@@ -21,7 +21,6 @@ class ImageContentsImageView: LazyLoadingImageView, TemplateContentsViewProtocol
     setLazyLoaingImage(template.contents.first?.imageUrl)
   }
   
-  
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
     super.setImageWithAnimation(image, cacheType: cacheType)
     modifyHeightConstraint()

@@ -30,10 +30,8 @@ class SignInViewController: BaseViewController {
   }
   
   override func setUpView() {
-    ViewControllerHelper.setUpFloatingLabel(emailTextField,
-      placeholder: NSLocalizedString("email form", comment: "placeholder"))
-    ViewControllerHelper.setUpFloatingLabel(passwordTextField,
-      placeholder: NSLocalizedString("password form", comment: "placeholder"))
+    emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
+    passwordTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
     
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     passwordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)

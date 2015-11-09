@@ -11,6 +11,12 @@ class FirstViewController: BaseViewController {
     presentViewController(signingViewController, animated: true, completion: nil)
   }
   
+  @IBAction func product(sender: AnyObject) {
+    let signingStoryboard = UIStoryboard(name: "ProductDetail", bundle: nil)
+    let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("productDetailView")
+    navigationController?.pushViewController(signingViewController, animated: true)
+  }
+  
   func handleLayoutChange(notification: NSNotification) {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,

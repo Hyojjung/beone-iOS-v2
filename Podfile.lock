@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - CSStickyHeaderFlowLayout (0.2.10)
   - Google/Analytics (1.1.1):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -42,11 +43,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CSStickyHeaderFlowLayout
   - Google/Analytics
   - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  CSStickyHeaderFlowLayout: 5366582779d8b7c9ba9b9cc729c218cc23888776
   Google: 529a5d8719dff90ea2e7cba5f45302cd359b5456
   GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
   GoogleInterchangeUtilities: fe088bea8c936218e52324a004d279c4491b9d65

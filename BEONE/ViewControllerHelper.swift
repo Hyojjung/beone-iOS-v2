@@ -16,12 +16,6 @@ class ViewControllerHelper: NSObject {
   static var screenHeight: CGFloat = {
     return UIScreen.mainScreen().bounds.height
   }()
-  
-  static func setUpFloatingLabel(textfield: UIFloatLabelTextField, placeholder: String) {
-    textfield.placeholder = placeholder;
-    textfield.floatLabelActiveColor = darkGold
-    textfield.tintColor = grey
-  }
 }
 
 extension UIView {
@@ -68,3 +62,10 @@ extension UIViewController {
   }
 }
 
+extension UIFloatLabelTextField {
+  func setUpFloatingLabel(placeholder: String) {
+    self.placeholder = placeholder;
+    floatLabelActiveColor = darkGold
+    tintColor = grey
+  }
+}

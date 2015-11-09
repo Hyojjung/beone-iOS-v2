@@ -46,10 +46,8 @@ class SnsSignUpViewController: BaseViewController {
     SigningHelper.getFaceBookInfo()
     SigningHelper.getKakaoInfo()
     
-    ViewControllerHelper.setUpFloatingLabel(emailTextField,
-      placeholder: NSLocalizedString("email form", comment: "placeholder"))
-    ViewControllerHelper.setUpFloatingLabel(nameTextField,
-      placeholder: NSLocalizedString("name form", comment: "placeholder"))
+    emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
+    nameTextField.setUpFloatingLabel(NSLocalizedString("name form", comment: "placeholder"))
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
   

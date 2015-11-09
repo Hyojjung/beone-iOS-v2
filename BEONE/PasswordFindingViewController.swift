@@ -1,10 +1,3 @@
-//
-//  PasswordFindingViewController.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 9..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 
@@ -27,7 +20,7 @@ class PasswordFindingViewController: BaseViewController {
   }
   
   override func setUpView() {
-    ViewControllerHelper.setUpFloatingLabel(emailTextField, placeholder: NSLocalizedString("email form", comment: "email form"))
+    emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "email form"))
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
   
