@@ -123,7 +123,7 @@
         <scene sceneID="67U-JE-hT3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c0G-lm-Nt6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="929-LV-fL8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -143,7 +143,7 @@
         <scene sceneID="eEY-oc-Ob5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LMR-AS-7Xr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="검색" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="검색" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0ZJ-R6-E61">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -160,8 +160,4 @@
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
-    </resources>
 </document>

@@ -3,6 +3,7 @@ import UIKit
 
 class SignInViewController: BaseViewController {
   
+  @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var passwordTextField: UIFloatLabelTextField!
   
@@ -48,7 +49,7 @@ class SignInViewController: BaseViewController {
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else {
-      AuthenticationHelper.signIn(emailTextField.text!,
+      SigningHelper.signIn(emailTextField.text!,
         password: passwordTextField.text!)
     }
   }
@@ -68,7 +69,6 @@ class SignInViewController: BaseViewController {
     }
     return nil
   }
-  // TODO: - 비밀번호 찾기
 }
 
 // MARK: - UITextFieldDelegate
@@ -80,6 +80,11 @@ extension SignInViewController {
     } else if textField == passwordTextField {
       signInButtonTapped()
     }
+    return true
+  }
+  
+  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    scrollView.focusOffset = textField.frame.origin.y - emailTextField.frame.origin.y
     return true
   }
   

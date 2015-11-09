@@ -45,7 +45,6 @@
 		62EFE9511BE0C5930035B2DE /* TextContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62EFE9501BE0C5930035B2DE /* TextContentsView.xib */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
-		62FA80551BE0532B00C016C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
 		62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */; };
 		62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6E931BDF41550071E1B1 /* SigningViewController.swift */; };
@@ -67,6 +66,10 @@
 		62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */; };
 		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; };
 		62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3891BDFC1780072BBCE /* DesignResource.swift */; };
+		73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */; };
+		73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */; };
+		73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */; };
+		73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C151BF0CAE600308AF2 /* SigningHelper.swift */; };
 		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
@@ -134,7 +137,6 @@
 		62EFE9501BE0C5930035B2DE /* TextContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextContentsView.xib; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
 		62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62FC6E931BDF41550071E1B1 /* SigningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,10 @@
 		62FDC3861BDFC0F30072BBCE /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatLabelTextField.h; sourceTree = "<group>"; };
 		62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatLabelTextField.m; sourceTree = "<group>"; };
 		62FDC3891BDFC1780072BBCE /* DesignResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignResource.swift; sourceTree = "<group>"; };
+		73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
+		73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFindingViewController.swift; sourceTree = "<group>"; };
+		73168C151BF0CAE600308AF2 /* SigningHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningHelper.swift; sourceTree = "<group>"; };
 		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 		62E5CF011BDDE19100A99F4C = {
 			isa = PBXGroup;
 			children = (
+				73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */,
 				62E5CF0C1BDDE19100A99F4C /* BEONE */,
 				62E5CF231BDDE19100A99F4C /* BEONETests */,
 				62E5CF0B1BDDE19100A99F4C /* Products */,
@@ -241,7 +248,6 @@
 		62E5CF0C1BDDE19100A99F4C /* BEONE */ = {
 			isa = PBXGroup;
 			children = (
-				62FA80541BE0532B00C016C3 /* GoogleService-Info.plist */,
 				62FDC3851BDFC0E40072BBCE /* Vendor */,
 				62FC6EA61BDF73150071E1B1 /* Resources */,
 				62E5CF351BDDEBA100A99F4C /* Storyboard */,
@@ -308,6 +314,7 @@
 				62FA80501BDFE3CA00C016C3 /* LoadingView.swift */,
 				73EA25421BE4D5FF0085382A /* AlertViewController.swift */,
 				73EA25441BE4D7DD0085382A /* AlertViewController.xib */,
+				73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -315,11 +322,11 @@
 		62E5CF331BDDEB8800A99F4C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				73168C141BF0CAC800308AF2 /* Session */,
 				620717421BE2055C0014B9AC /* StringExtension */,
 				6207173F1BE201EB0014B9AC /* Image */,
 				62E5CF461BDE108F00A99F4C /* CoreData */,
 				62E5CF3A1BDDFE5700A99F4C /* Network */,
-				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
 				62FC6E961BDF47160071E1B1 /* ViewControllerHelper.swift */,
 				62FDC3891BDFC1780072BBCE /* DesignResource.swift */,
 				6207177A1BE339EA0014B9AC /* TemplateHelper.swift */,
@@ -404,6 +411,7 @@
 				62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */,
 				62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */,
 				62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */,
+				73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */,
 			);
 			name = Signing;
 			sourceTree = "<group>";
@@ -430,6 +438,15 @@
 				62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		73168C141BF0CAC800308AF2 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */,
+				73168C151BF0CAE600308AF2 /* SigningHelper.swift */,
+			);
+			name = Session;
 			sourceTree = "<group>";
 		};
 		88D4EECDACA8F87D33D48419 /* Pods */ = {
@@ -527,7 +544,6 @@
 			files = (
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
 				73EA25491BE5F2770085382A /* TemplateTableViewCell.xib in Resources */,
-				62FA80551BE0532B00C016C3 /* GoogleService-Info.plist in Resources */,
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
 				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
 				62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */,
@@ -546,6 +562,7 @@
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
 				62EFE9511BE0C5930035B2DE /* TextContentsView.xib in Resources */,
 				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
+				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +632,7 @@
 				620717821BE347E20014B9AC /* WebViewController.swift in Sources */,
 				73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */,
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
+				73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */,
 				62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */,
 				6207177B1BE339EA0014B9AC /* TemplateHelper.swift in Sources */,
 				62EFE94C1BE0C4C40035B2DE /* TemplateView.swift in Sources */,
@@ -641,6 +659,8 @@
 				620717461BE21FCD0014B9AC /* TemplateContentsView.swift in Sources */,
 				620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */,
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
+				73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */,
+				73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */,
 				62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */,
 				733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */,
 				73EA254D1BE5FD4C0085382A /* TemplateList.swift in Sources */,
@@ -826,6 +846,7 @@
 					"\"AFNetworking\"",
 					"-all_load",
 				);
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.beone.BEONE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BEONE/BEONE-Bridging-Header.h";

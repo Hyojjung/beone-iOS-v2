@@ -55,7 +55,7 @@ class SigningViewController: BaseViewController {
           KOSession.sharedSession().close()
           
           FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-          AuthenticationHelper.requestFacebookSignIn()
+          SigningHelper.requestFacebookSignIn()
         }
     }
   }
@@ -66,7 +66,7 @@ class SigningViewController: BaseViewController {
         self.loadingView.show()
 
         FBSDKLoginManager().logOut()
-        AuthenticationHelper.requestKakaoSignIn()
+        SigningHelper.requestKakaoSignIn()
       }
     }
   }

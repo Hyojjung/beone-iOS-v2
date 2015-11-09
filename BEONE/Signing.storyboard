@@ -386,11 +386,11 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KN-Lw-Qvw">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KN-Lw-Qvw" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAk-eC-qKd">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="272"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="266"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWh-TS-HXD">
                                                 <rect key="frame" x="14" y="5" width="572" height="128"/>
@@ -514,7 +514,7 @@
                                             <constraint firstAttribute="trailing" secondItem="dS9-uM-j4G" secondAttribute="trailing" constant="14" id="XeN-O3-6Q2"/>
                                             <constraint firstItem="dS9-uM-j4G" firstAttribute="top" secondItem="mtm-WC-SZp" secondAttribute="bottom" constant="20" id="Xyh-1a-PIK"/>
                                             <constraint firstItem="OWh-TS-HXD" firstAttribute="leading" secondItem="eAk-eC-qKd" secondAttribute="leading" constant="14" id="ZVk-hf-aHr"/>
-                                            <constraint firstAttribute="bottom" secondItem="dS9-uM-j4G" secondAttribute="bottom" constant="20" id="gVM-gu-YEq"/>
+                                            <constraint firstAttribute="bottom" secondItem="dS9-uM-j4G" secondAttribute="bottom" constant="14" id="gVM-gu-YEq"/>
                                             <constraint firstItem="mtm-WC-SZp" firstAttribute="leading" secondItem="eAk-eC-qKd" secondAttribute="leading" constant="14" id="h77-0o-sQ7"/>
                                             <constraint firstItem="mtm-WC-SZp" firstAttribute="top" secondItem="OWh-TS-HXD" secondAttribute="bottom" constant="20" id="y3e-X4-E7r"/>
                                         </constraints>
@@ -552,16 +552,17 @@
                     <connections>
                         <outlet property="emailTextField" destination="UMl-a2-CJs" id="mcs-OG-lAi"/>
                         <outlet property="passwordTextField" destination="Iuw-St-UUO" id="Ykv-qc-re4"/>
+                        <outlet property="scrollView" destination="9KN-Lw-Qvw" id="wBC-pi-Pgz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3w-Ts-dpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1960" y="73"/>
         </scene>
-        <!--SignUpViewController-->
+        <!--회원가입-->
         <scene sceneID="FhM-J0-8Ia">
             <objects>
-                <viewController storyboardIdentifier="signUpViewController" title="SignUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="SignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpViewController" title="회원가입" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGC-i6-oqs" customClass="SignUpViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oX0-bg-aBm"/>
                         <viewControllerLayoutGuide type="bottom" id="L3a-Tc-la1"/>
@@ -606,11 +607,11 @@
                                     <constraint firstAttribute="height" constant="49" id="v87-bg-Rg7"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDj-JL-JNQ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDj-JL-JNQ" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="631"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gZ-er-lr5">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="514"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="511"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDh-V0-V5e">
                                                 <rect key="frame" x="14" y="5" width="572" height="412"/>
@@ -703,7 +704,7 @@
                                                             <color key="titleColor" red="0.58431372549019611" green="0.51372549019607838" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="servicePolicyButtonTapped" destination="kGC-i6-oqs" eventType="touchUpInside" id="Vfv-0x-9Re"/>
+                                                            <action selector="servicePolicyButtonTapped" destination="kGC-i6-oqs" eventType="touchUpInside" id="JkE-Zn-nFN"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrI-SS-mra">
@@ -738,17 +739,6 @@
                                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-jV-r8q">
-                                                        <rect key="frame" x="13" y="317" width="56" height="28"/>
-                                                        <animations/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
-                                                        <state key="normal" title="전체보기 &gt;">
-                                                            <color key="titleColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="privacyPolicyButtonTapped" destination="kGC-i6-oqs" eventType="touchUpInside" id="ad0-K0-aZZ"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4F-rS-tJ2">
                                                         <rect key="frame" x="462" y="301" width="35" height="35"/>
                                                         <animations/>
@@ -823,6 +813,17 @@
                                                             <outlet property="delegate" destination="kGC-i6-oqs" id="GAn-3P-Cyl"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-jV-r8q">
+                                                        <rect key="frame" x="13" y="317" width="56" height="28"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                        <state key="normal" title="전체보기 &gt;">
+                                                            <color key="titleColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="privacyPolicyButtonTapped" destination="kGC-i6-oqs" eventType="touchUpInside" id="K58-3u-xhO"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -934,7 +935,7 @@
                                             <constraint firstItem="wQb-yN-Qkz" firstAttribute="leading" secondItem="0gZ-er-lr5" secondAttribute="leading" constant="14" id="PLF-8Q-c7k"/>
                                             <constraint firstItem="TDh-V0-V5e" firstAttribute="leading" secondItem="0gZ-er-lr5" secondAttribute="leading" constant="14" id="Sq8-ds-Fll"/>
                                             <constraint firstItem="TDh-V0-V5e" firstAttribute="top" secondItem="0gZ-er-lr5" secondAttribute="top" constant="5" id="gmc-q6-nv2"/>
-                                            <constraint firstAttribute="bottom" secondItem="wQb-yN-Qkz" secondAttribute="bottom" constant="17" id="iZo-6p-jr9"/>
+                                            <constraint firstAttribute="bottom" secondItem="wQb-yN-Qkz" secondAttribute="bottom" constant="14" id="iZo-6p-jr9"/>
                                             <constraint firstAttribute="trailing" secondItem="wQb-yN-Qkz" secondAttribute="trailing" constant="14" id="v3I-n3-ckN"/>
                                             <constraint firstItem="wQb-yN-Qkz" firstAttribute="top" secondItem="Uq3-5h-Hnh" secondAttribute="bottom" constant="68" id="yJ7-dB-HHa"/>
                                         </constraints>
@@ -989,6 +990,7 @@
                         <outlet property="nameTextField" destination="dDf-Vy-hMU" id="5hB-QS-p5l"/>
                         <outlet property="passwordTextField" destination="Jl4-um-uMl" id="fZa-v4-s61"/>
                         <outlet property="passwordVerifyingTextField" destination="X8U-4O-HDM" id="7q4-Wf-o7f"/>
+                        <outlet property="scrollView" destination="SDj-JL-JNQ" id="GsJ-mp-Hau"/>
                         <outletCollection property="agreementButtons" destination="LrI-SS-mra" collectionClass="NSMutableArray" id="aUi-jW-qy2"/>
                         <outletCollection property="agreementButtons" destination="F4F-rS-tJ2" collectionClass="NSMutableArray" id="qx8-Eo-yw1"/>
                     </connections>
@@ -1013,32 +1015,14 @@
                                 <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
                                 <animations/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Mru-F9-3cJ">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Mru-F9-3cJ" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="69" width="600" height="401"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-0C-8JY">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-z0-5na">
-                                                <rect key="frame" x="14" y="8" width="40" height="40"/>
-                                                <animations/>
-                                                <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                                <state key="normal" image="btn_back">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="87S-dQ-yNv"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phE-Is-JsC">
-                                                <rect key="frame" x="265" y="16" width="70" height="24"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90C-L4-Op9">
-                                                <rect key="frame" x="14" y="65" width="572" height="312"/>
+                                                <rect key="frame" x="14" y="5" width="572" height="312"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_form" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-19-Xee">
                                                         <rect key="frame" x="0.0" y="0.0" width="572" height="312"/>
@@ -1067,6 +1051,21 @@
                                                             <constraint firstAttribute="height" constant="1" id="Ptz-De-DsR"/>
                                                         </constraints>
                                                     </view>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
+                                                        <rect key="frame" x="13" y="66" width="546" height="35"/>
+                                                        <animations/>
+                                                        <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" label="emailTextField"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="Ogp-am-6MW"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="Wb6-FT-TeD"/>
+                                                        </connections>
+                                                    </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-QF-SsZ">
                                                         <rect key="frame" x="13" y="103" width="546" height="1"/>
                                                         <animations/>
@@ -1187,21 +1186,6 @@
                                                             <action selector="allAgreementTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="mo5-5d-Ea9"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
-                                                        <rect key="frame" x="13" y="66" width="546" height="35"/>
-                                                        <animations/>
-                                                        <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <accessibility key="accessibilityConfiguration" label="emailTextField"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="Ogp-am-6MW"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="Wb6-FT-TeD"/>
-                                                        </connections>
-                                                    </textField>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1221,6 +1205,7 @@
                                                     <constraint firstItem="0y4-jb-ygi" firstAttribute="leading" secondItem="90C-L4-Op9" secondAttribute="leading" constant="13" id="BF7-lv-Nzy"/>
                                                     <constraint firstItem="jJu-T9-Kiq" firstAttribute="top" secondItem="Dm6-hi-zje" secondAttribute="bottom" constant="8" id="CF5-CX-cnC"/>
                                                     <constraint firstAttribute="trailing" secondItem="0y4-jb-ygi" secondAttribute="trailing" constant="13" id="DkS-dU-hL1"/>
+                                                    <constraint firstItem="vCR-aq-WmU" firstAttribute="top" secondItem="90C-L4-Op9" secondAttribute="top" constant="16" id="FlH-jz-wyc"/>
                                                     <constraint firstItem="Pju-xH-xXx" firstAttribute="top" secondItem="dAB-Bi-5FC" secondAttribute="bottom" constant="3" id="Fvc-hG-o6K"/>
                                                     <constraint firstItem="jJu-T9-Kiq" firstAttribute="leading" secondItem="90C-L4-Op9" secondAttribute="leading" constant="13" id="Hl4-8x-41s"/>
                                                     <constraint firstItem="0y4-jb-ygi" firstAttribute="top" secondItem="vCR-aq-WmU" secondAttribute="bottom" constant="2" id="LLZ-93-yFM"/>
@@ -1268,6 +1253,7 @@
                                                         <exclude reference="Uer-MO-8KR"/>
                                                         <exclude reference="Uon-gD-4LG"/>
                                                         <exclude reference="hCB-F0-39B"/>
+                                                        <exclude reference="hnp-jp-MJt"/>
                                                         <exclude reference="0S5-C3-aaz"/>
                                                         <exclude reference="9VZ-eo-Z5l"/>
                                                         <exclude reference="ecU-Z9-Kpb"/>
@@ -1277,7 +1263,7 @@
                                                 </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5P-Kl-hgD">
-                                                <rect key="frame" x="14" y="397" width="572" height="50"/>
+                                                <rect key="frame" x="14" y="337" width="572" height="50"/>
                                                 <animations/>
                                                 <accessibility key="accessibilityConfiguration" label="signUpButton"/>
                                                 <constraints>
@@ -1297,18 +1283,15 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="P5P-Kl-hgD" firstAttribute="leading" secondItem="8Sm-0C-8JY" secondAttribute="leading" constant="14" id="1EB-ot-NfN"/>
-                                            <constraint firstItem="dmO-z0-5na" firstAttribute="leading" secondItem="8Sm-0C-8JY" secondAttribute="leading" constant="14" id="84j-GP-tVz"/>
                                             <constraint firstAttribute="bottom" secondItem="P5P-Kl-hgD" secondAttribute="bottom" constant="17" id="Eco-Ak-0SZ"/>
                                             <constraint firstItem="P5P-Kl-hgD" firstAttribute="top" secondItem="hWh-19-Xee" secondAttribute="bottom" constant="20" id="JaZ-BW-s9l"/>
                                             <constraint firstAttribute="trailing" secondItem="P5P-Kl-hgD" secondAttribute="trailing" constant="14" id="Mjm-WJ-MEi"/>
-                                            <constraint firstItem="phE-Is-JsC" firstAttribute="centerY" secondItem="dmO-z0-5na" secondAttribute="centerY" id="O3N-At-Liy"/>
                                             <constraint firstAttribute="trailing" secondItem="90C-L4-Op9" secondAttribute="trailing" constant="14" id="SUr-Ud-eGV"/>
-                                            <constraint firstItem="90C-L4-Op9" firstAttribute="top" secondItem="8Sm-0C-8JY" secondAttribute="top" constant="65" id="Zd9-tj-W5X"/>
-                                            <constraint firstAttribute="centerX" secondItem="phE-Is-JsC" secondAttribute="centerX" id="a4I-0n-cRI"/>
+                                            <constraint firstItem="90C-L4-Op9" firstAttribute="top" secondItem="8Sm-0C-8JY" secondAttribute="top" constant="5" id="Zd9-tj-W5X"/>
                                             <constraint firstItem="P5P-Kl-hgD" firstAttribute="top" secondItem="hWh-19-Xee" secondAttribute="bottom" constant="68" id="etX-P2-3fP"/>
                                             <constraint firstItem="P5P-Kl-hgD" firstAttribute="top" secondItem="90C-L4-Op9" secondAttribute="bottom" constant="68" id="lk5-HK-TO6"/>
+                                            <constraint firstAttribute="bottom" secondItem="P5P-Kl-hgD" secondAttribute="bottom" constant="14" id="mBO-Y4-cZQ"/>
                                             <constraint firstItem="90C-L4-Op9" firstAttribute="leading" secondItem="8Sm-0C-8JY" secondAttribute="leading" constant="14" id="pd7-O6-EiQ"/>
-                                            <constraint firstItem="dmO-z0-5na" firstAttribute="top" secondItem="8Sm-0C-8JY" secondAttribute="top" constant="8" id="yMd-ti-shj"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -1330,12 +1313,34 @@
                                     <constraint firstItem="8Sm-0C-8JY" firstAttribute="leading" secondItem="Mru-F9-3cJ" secondAttribute="leading" id="qSH-XH-mhQ"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-z0-5na">
+                                <rect key="frame" x="14" y="25" width="40" height="40"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration" label="backButton"/>
+                                <state key="normal" image="btn_back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="87S-dQ-yNv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phE-Is-JsC">
+                                <rect key="frame" x="265" y="33" width="70" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xlL-Hh-ZrE" firstAttribute="top" secondItem="HxL-bn-zmm" secondAttribute="bottom" id="7Wv-FD-jfr"/>
-                            <constraint firstItem="Mru-F9-3cJ" firstAttribute="top" secondItem="Nkp-3F-Rmb" secondAttribute="bottom" id="APO-mT-WPm"/>
+                            <constraint firstItem="dmO-z0-5na" firstAttribute="leading" secondItem="GeC-2g-YCa" secondAttribute="leading" constant="14" id="9fL-Qh-iZl"/>
+                            <constraint firstItem="Mru-F9-3cJ" firstAttribute="top" secondItem="Nkp-3F-Rmb" secondAttribute="bottom" constant="49" id="APO-mT-WPm"/>
+                            <constraint firstItem="phE-Is-JsC" firstAttribute="centerY" secondItem="dmO-z0-5na" secondAttribute="centerY" id="BHY-4E-Y8T"/>
+                            <constraint firstItem="phE-Is-JsC" firstAttribute="centerX" secondItem="GeC-2g-YCa" secondAttribute="centerX" id="DwQ-hD-Zyb"/>
+                            <constraint firstItem="dmO-z0-5na" firstAttribute="top" secondItem="Nkp-3F-Rmb" secondAttribute="bottom" constant="5" id="KUc-5G-L6H"/>
                             <constraint firstItem="xlL-Hh-ZrE" firstAttribute="top" secondItem="Mru-F9-3cJ" secondAttribute="bottom" id="Qqy-xC-HBM"/>
                             <constraint firstItem="HxL-bn-zmm" firstAttribute="top" secondItem="GeC-2g-YCa" secondAttribute="topMargin" constant="-20" id="Tv2-9m-I9q"/>
                             <constraint firstAttribute="trailing" secondItem="HxL-bn-zmm" secondAttribute="trailing" id="aCM-AZ-D2C"/>
@@ -1343,18 +1348,24 @@
                             <constraint firstItem="HxL-bn-zmm" firstAttribute="leading" secondItem="GeC-2g-YCa" secondAttribute="leading" id="u2X-CX-VSC"/>
                             <constraint firstItem="Mru-F9-3cJ" firstAttribute="leading" secondItem="GeC-2g-YCa" secondAttribute="leading" id="xRY-Ct-kI5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qqy-xC-HBM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="allAgreementButton" destination="4g8-8q-Xk6" id="gJI-oW-cIX"/>
                         <outlet property="emailTextField" destination="vCR-aq-WmU" id="pTU-aE-WLy"/>
                         <outlet property="nameTextField" destination="eXS-gN-xvV" id="xux-hA-kZW"/>
+                        <outlet property="scrollView" destination="Mru-F9-3cJ" id="FXM-O5-ZxC"/>
                         <outletCollection property="agreementButtons" destination="oXg-zQ-rXX" collectionClass="NSMutableArray" id="zZ6-Sv-h0h"/>
                         <outletCollection property="agreementButtons" destination="bJh-ls-Pdh" collectionClass="NSMutableArray" id="rN8-dS-8KL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxC-fy-9hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921" y="1563"/>
+            <point key="canvasLocation" x="1722" y="1608"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tq3-dZ-3oT">
@@ -1376,7 +1387,7 @@
         <!--Password Finding View Controller-->
         <scene sceneID="gjw-E3-pYx">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FqX-h6-qpT" customClass="BOPasswordFindingViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FqX-h6-qpT" customClass="PasswordFindingViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hE4-P6-1dq"/>
                         <viewControllerLayoutGuide type="bottom" id="ZsF-by-ln3"/>
@@ -1389,32 +1400,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-mc-9kC">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-mc-9kC" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="69" width="600" height="163"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-SF-g0f">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="163"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-kd-fVh">
-                                                <rect key="frame" x="14" y="8" width="40" height="40"/>
-                                                <animations/>
-                                                <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                                <state key="normal" image="btn_back">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="zaV-5S-CXy"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-VU-je2">
-                                                <rect key="frame" x="246" y="16" width="109" height="24"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqS-aP-XxZ">
-                                                <rect key="frame" x="14" y="65" width="572" height="74"/>
+                                                <rect key="frame" x="14" y="5" width="572" height="74"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_form" translatesAutoresizingMaskIntoConstraints="NO" id="VGv-W3-Nxo">
                                                         <rect key="frame" x="0.0" y="0.0" width="572" height="74"/>
@@ -1432,7 +1425,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="FqX-h6-qpT" id="iZ9-AZ-WYP"/>
+                                                            <outlet property="delegate" destination="FqX-h6-qpT" id="F6n-E5-HEv"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2P-IK-Oxo">
@@ -1467,7 +1460,7 @@
                                                 </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-Ro-b48">
-                                                <rect key="frame" x="14" y="159" width="572" height="50"/>
+                                                <rect key="frame" x="14" y="99" width="572" height="50"/>
                                                 <animations/>
                                                 <accessibility key="accessibilityConfiguration" label="signInButton"/>
                                                 <constraints>
@@ -1479,22 +1472,19 @@
                                                 </state>
                                                 <state key="highlighted" title="비밀번호 찾기" backgroundImage="btn_submit_gold_pressed"/>
                                                 <connections>
-                                                    <action selector="passwordFindButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="hGP-oa-jNH"/>
+                                                    <action selector="passwordFindButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="7o1-mg-cNX"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="I6M-VU-je2" firstAttribute="centerY" secondItem="SRG-kd-fVh" secondAttribute="centerY" id="CAC-eS-DSv"/>
                                             <constraint firstItem="rXa-Ro-b48" firstAttribute="top" secondItem="VGv-W3-Nxo" secondAttribute="bottom" constant="20" id="HiU-kT-kpx"/>
                                             <constraint firstAttribute="trailing" secondItem="rXa-Ro-b48" secondAttribute="trailing" constant="14" id="Mb4-Rq-yMb"/>
-                                            <constraint firstItem="SRG-kd-fVh" firstAttribute="leading" secondItem="U9j-SF-g0f" secondAttribute="leading" constant="14" id="N7s-uj-MMd"/>
                                             <constraint firstItem="eqS-aP-XxZ" firstAttribute="leading" secondItem="U9j-SF-g0f" secondAttribute="leading" constant="14" id="VQ5-x7-SBB"/>
                                             <constraint firstAttribute="trailing" secondItem="eqS-aP-XxZ" secondAttribute="trailing" constant="14" id="Vcr-iH-Jgv"/>
-                                            <constraint firstItem="eqS-aP-XxZ" firstAttribute="top" secondItem="U9j-SF-g0f" secondAttribute="top" constant="65" id="f3p-Kv-LvE"/>
-                                            <constraint firstItem="SRG-kd-fVh" firstAttribute="top" secondItem="U9j-SF-g0f" secondAttribute="top" constant="8" id="gnw-Gh-1IE"/>
-                                            <constraint firstAttribute="centerX" secondItem="I6M-VU-je2" secondAttribute="centerX" id="lTu-ve-EoT"/>
+                                            <constraint firstItem="eqS-aP-XxZ" firstAttribute="top" secondItem="U9j-SF-g0f" secondAttribute="top" constant="5" id="f3p-Kv-LvE"/>
+                                            <constraint firstAttribute="bottom" secondItem="rXa-Ro-b48" secondAttribute="bottom" constant="14" id="jZj-v6-I7Z"/>
                                             <constraint firstItem="rXa-Ro-b48" firstAttribute="leading" secondItem="U9j-SF-g0f" secondAttribute="leading" constant="14" id="xXO-e0-Qmo"/>
                                         </constraints>
                                     </view>
@@ -1517,6 +1507,24 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-VU-je2">
+                                <rect key="frame" x="246" y="33" width="109" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-kd-fVh">
+                                <rect key="frame" x="14" y="25" width="40" height="40"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration" label="backButton"/>
+                                <state key="normal" image="btn_back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="flJ-2C-29d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1525,26 +1533,31 @@
                         </accessibility>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WSi-mc-9kC" secondAttribute="bottom" id="3qg-2l-L1Y"/>
-                            <constraint firstItem="WSi-mc-9kC" firstAttribute="top" secondItem="hE4-P6-1dq" secondAttribute="bottom" id="5hK-DF-eqd"/>
+                            <constraint firstItem="WSi-mc-9kC" firstAttribute="top" secondItem="hE4-P6-1dq" secondAttribute="bottom" constant="49" id="5hK-DF-eqd"/>
                             <constraint firstAttribute="trailing" secondItem="WSi-mc-9kC" secondAttribute="trailing" id="AUj-uN-kSr"/>
                             <constraint firstItem="WSi-mc-9kC" firstAttribute="height" secondItem="XP3-Jz-GJV" secondAttribute="height" id="BoW-bk-GXt"/>
+                            <constraint firstItem="I6M-VU-je2" firstAttribute="centerY" secondItem="SRG-kd-fVh" secondAttribute="centerY" id="JzC-j7-vLB"/>
+                            <constraint firstItem="I6M-VU-je2" firstAttribute="centerX" secondItem="XP3-Jz-GJV" secondAttribute="centerX" id="MLF-rL-uGf"/>
+                            <constraint firstItem="SRG-kd-fVh" firstAttribute="leading" secondItem="XP3-Jz-GJV" secondAttribute="leading" constant="14" id="aP7-jg-Vdf"/>
                             <constraint firstItem="WSi-mc-9kC" firstAttribute="leading" secondItem="XP3-Jz-GJV" secondAttribute="leading" id="alU-zB-omk"/>
                             <constraint firstAttribute="trailing" secondItem="3Rm-Tc-quy" secondAttribute="trailing" id="eoX-rH-nQp"/>
                             <constraint firstItem="ZsF-by-ln3" firstAttribute="top" secondItem="3Rm-Tc-quy" secondAttribute="bottom" id="qks-4y-cNV"/>
                             <constraint firstItem="3Rm-Tc-quy" firstAttribute="top" secondItem="hE4-P6-1dq" secondAttribute="bottom" constant="-20" id="w7B-hX-PTQ"/>
                             <constraint firstItem="3Rm-Tc-quy" firstAttribute="leading" secondItem="XP3-Jz-GJV" secondAttribute="leading" id="xht-er-Tlw"/>
                             <constraint firstItem="WSi-mc-9kC" firstAttribute="width" secondItem="XP3-Jz-GJV" secondAttribute="width" id="y5q-YL-zPP"/>
+                            <constraint firstItem="SRG-kd-fVh" firstAttribute="top" secondItem="hE4-P6-1dq" secondAttribute="bottom" constant="5" id="zdf-PV-pHZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3qg-2l-L1Y"/>
                                 <exclude reference="BoW-bk-GXt"/>
                                 <exclude reference="y5q-YL-zPP"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="cah-qJ-nx8" id="x16-VC-Esd"/>
-                        <outlet property="passwordFindButton" destination="rXa-Ro-b48" id="BA2-eW-cBC"/>
+                        <outlet property="emailTextField" destination="cah-qJ-nx8" id="EIm-dD-Cgf"/>
+                        <outlet property="scrollView" destination="WSi-mc-9kC" id="4TC-mL-g1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgE-zw-i2U" userLabel="First Responder" sceneMemberID="firstResponder"/>

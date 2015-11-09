@@ -10,6 +10,8 @@ let kNotificationNetworkStart = "NotificationNetworkStart"
 let kNotificationNetworkEnd = "NotificationNetworkEnd"
 let kNotificationGuestAuthenticationSuccess = "NotificationGuestAuthenticationSuccess"
 let kNotificationFetchTemplateListSuccess = "NotificationFetchTemplateListSuccess"
+let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
+let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 
 let kNotificationShowAlert = "NotificationShowAlert"
 
@@ -23,3 +25,5 @@ let kNotificationKeyFacebookEmail = "NotificationKeyFacebookEmail"
 let kNotificationKeyHeight = "NotificationKeyHeight"
 let kNotificationKeyTemplateId = "NotificationKeyTemplateId"
 let kNotificationKeyContentsId = "NotificationKeyContentsId"
+
+let kNotificationKeyErrorStatusCode = "NotificationKeyErrorStatusCode"

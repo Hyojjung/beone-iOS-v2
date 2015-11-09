@@ -1,6 +1,9 @@
 
 import UIKit
 
+let kPrivacyPolicyUrlString = "policies/privacy"
+let kServicePolicyUrlString = "policies/service"
+
 class WebViewController: BaseViewController {
   @IBOutlet weak var webView: UIWebView!
   var url: String?
@@ -28,7 +31,7 @@ class WebViewController: BaseViewController {
   
   override func setUpData() {
     if let url = url {
-      let request = NSMutableURLRequest(URL: NSURL(string:url.trimedString())!)
+      let request = NSMutableURLRequest(URL: url.url())
       request.addValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
       loadingView.show()
       webView.loadRequest(request)

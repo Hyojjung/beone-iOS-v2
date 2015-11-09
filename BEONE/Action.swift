@@ -12,6 +12,7 @@ enum ActionType: String {
   case Webview = "webview"
   case Scheme = "scheme"
   case Alert = "alert"
+  case Method = "method"
 }
 
 class Action: BaseModel {
@@ -61,9 +62,23 @@ class Action: BaseModel {
           userInfo[kNotificationAlertKeyCancelAction] = cancelAction
           NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
         }
+      case .Method:
+        if let content = content {
+          performSelector(Selector(stringLiteral: content))
+        }
       default:
         break
       }
     }
+  }
+  
+  func popView() {
+    UIViewController.popView()
+  }
+}
+
+extension UIViewController {
+  static func popView() {
+    ViewControllerHelper.showingNavigationViewController?.popViewControllerAnimated(true)
   }
 }

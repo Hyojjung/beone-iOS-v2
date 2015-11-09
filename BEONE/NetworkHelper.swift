@@ -89,7 +89,7 @@ class NetworkHelper: NSObject {
           if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && myInfo.refreshToken == nil ||
             errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
               myInfo.accessToken = nil
-              AuthenticationHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
+              SigningHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
           } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue {
             myInfo.accessToken = nil
             AuthenticationHelper.refreshToken(signingSuccess(operation, success: success, failure: failure))

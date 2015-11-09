@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application.registerUserNotificationSettings( settings )
     application.registerForRemoteNotifications()
     
+#if RELEASE
     // Configure tracker from GoogleService-Info.plist.
     var configureError:NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
@@ -22,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let gai = GAI.sharedInstance()
     gai.trackUncaughtExceptions = true  // report uncaught exceptions
     gai.logger.logLevel = GAILogLevel.None  // remove before app releaseAppDelegate.swift
-    
+#endif
+  
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
   }
@@ -49,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     MyInfo.sharedMyInfo().deviceToken = tokenString
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser({ (result) -> Void in
+        SigningHelper.signInForNonUser({ (result) -> Void in
           NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
         })
       }
@@ -59,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
-        AuthenticationHelper.signInForNonUser({ (result) -> Void in
+        SigningHelper.signInForNonUser({ (result) -> Void in
           NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
         })
       }

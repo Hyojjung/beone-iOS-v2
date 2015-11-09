@@ -13,6 +13,10 @@ class ViewControllerHelper: NSObject {
     return UIScreen.mainScreen().bounds.width
   }()
   
+  static var screenHeight: CGFloat = {
+    return UIScreen.mainScreen().bounds.height
+  }()
+  
   static func setUpFloatingLabel(textfield: UIFloatLabelTextField, placeholder: String) {
     textfield.placeholder = placeholder;
     textfield.floatLabelActiveColor = darkGold
@@ -25,6 +29,7 @@ class ViewControllerHelper: NSObject {
       webViewController.url = urlString
       webViewController.title = title
       showingNavigationViewController.pushViewController(webViewController, animated: true)
+      showingNavigationViewController.navigationBar.hidden = false
     }
   }
 }

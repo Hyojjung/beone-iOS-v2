@@ -4,6 +4,7 @@ import FBSDKLoginKit
 
 class SnsSignUpViewController: BaseViewController {
   
+  @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var nameTextField: UIFloatLabelTextField!
   @IBOutlet var agreementButtons: [UIButton]!
@@ -42,8 +43,8 @@ class SnsSignUpViewController: BaseViewController {
   }
   
   override func setUpView() {
-    AuthenticationHelper.getFaceBookInfo()
-    AuthenticationHelper.getKakaoInfo()
+    SigningHelper.getFaceBookInfo()
+    SigningHelper.getKakaoInfo()
     
     ViewControllerHelper.setUpFloatingLabel(emailTextField,
       placeholder: NSLocalizedString("email form", comment: "placeholder"))
@@ -62,7 +63,7 @@ class SnsSignUpViewController: BaseViewController {
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else if let snsType = snsType {
-      AuthenticationHelper.signUp(snsType,
+      SigningHelper.signUp(snsType,
         userId: FBSDKAccessToken.currentAccessToken().userID,
         token: FBSDKAccessToken.currentAccessToken().tokenString,
         email: emailTextField.text!,
@@ -84,6 +85,14 @@ class SnsSignUpViewController: BaseViewController {
     for agreementButton in agreementButtons {
       agreementButton.selected = sender.selected
     }
+  }
+  
+  @IBAction func servicePolicyButtonTapped() {
+    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
+  }
+  
+  @IBAction func privacyPolicyButtonTapped() {
+    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
   }
   
   // MARK: - Observer Actions
@@ -127,6 +136,11 @@ extension SnsSignUpViewController {
     } else if textField == nameTextField {
       view.endEditing(true)
     }
+    return true
+  }
+  
+  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    scrollView.focusOffset = textField.frame.origin.y - emailTextField.frame.origin.y
     return true
   }
   

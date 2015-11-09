@@ -3,6 +3,7 @@ import UIKit
 
 class SignUpViewController: BaseViewController {
   
+  @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var nameTextField: UIFloatLabelTextField!
   @IBOutlet weak var passwordTextField: UIFloatLabelTextField!
@@ -57,7 +58,7 @@ class SignUpViewController: BaseViewController {
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
     } else {
-      AuthenticationHelper.signUp(emailTextField.text!,
+      SigningHelper.signUp(emailTextField.text!,
         name: nameTextField.text!,
         password: passwordTextField.text!)
     }
@@ -77,6 +78,14 @@ class SignUpViewController: BaseViewController {
     for agreementButton in agreementButtons {
       agreementButton.selected = sender.selected
     }
+  }
+  
+  @IBAction func servicePolicyButtonTapped() {
+    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
+  }
+  
+  @IBAction func privacyPolicyButtonTapped() {
+    ViewControllerHelper.showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
   }
   
   // MARK: - Observer Actions
@@ -103,8 +112,6 @@ class SignUpViewController: BaseViewController {
     }
     return nil
   }
-  
-  // TODO: - webview 연결
 }
 
 // MARK: - UITextFieldDelegate
@@ -120,6 +127,11 @@ extension SignUpViewController {
     } else if textField == passwordVerifyingTextField {
       view.endEditing(true)
     }
+    return true
+  }
+  
+  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    scrollView.focusOffset = textField.frame.origin.y - emailTextField.frame.origin.y
     return true
   }
   

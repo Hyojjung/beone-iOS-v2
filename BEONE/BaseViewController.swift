@@ -62,13 +62,13 @@ class BaseViewController: UIViewController {
     super.viewWillAppear(animated)
     ViewControllerHelper.showingNavigationViewController = self.navigationController
     //    ViewControllerHelper.frontViewController = self
-    
+#if RELEASE
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: self.title)
     
     let builder = GAIDictionaryBuilder.createScreenView()
     tracker.send(builder.build() as [NSObject : AnyObject])
-    
+#endif
     addObservers()
     setUpData()
   }
@@ -106,10 +106,6 @@ class BaseViewController: UIViewController {
   
   func removeObservers() {
     NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-  
-  func popView() {
-    navigationController?.popViewControllerAnimated(true)
   }
   
   func showAlert(notification: NSNotification) {
