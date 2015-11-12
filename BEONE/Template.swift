@@ -13,7 +13,7 @@ let kTemplatePropertyKeyTemplateItems = "templateItems"
 enum TemplateType: String {
   case Text = "text"
   case Image = "image"
-  case Button
+  case Button = "button"
   case Gap
   case Shop
   case Product
@@ -25,7 +25,7 @@ enum TemplateType: String {
 class Template: BaseModel {
   var type: TemplateType?
   
-  var style: TemplateStyle?
+  var style = TemplateStyle()
   var contents = [Contents]()
   
   var hasSpace: Bool?
@@ -36,19 +36,20 @@ class Template: BaseModel {
   
   // MARK: - Override Methods
   
+  init(type: TemplateType) {
+    super.init()
+    self.type = type
+  }
+  
   override func assignObject(data: AnyObject) {
     if let template = data as? [String: AnyObject] {
-      if let type = template[kTemplatePropertyKeyType] as? String {
-        self.type = TemplateType(rawValue: type)
-      }
       id = template[kObjectPropertyKeyId] as? NSNumber
       hasSpace = template[kTemplatePropertyKeyHasSpace] as? Bool
       row = template[kTemplatePropertyKeyRow] as? Int
       column = template[kTemplatePropertyKeyColumn] as? Int
       count = template[kTemplatePropertyKeyCount] as? Int
       if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
-        self.style = TemplateStyle()
-        self.style!.assignObject(style)
+        self.style.assignObject(style)
       }
       if let contents = template[kTemplatePropertyKeyContents] as? [[String: AnyObject]] { // something else
         for contentObject in contents {

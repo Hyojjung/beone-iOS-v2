@@ -24,7 +24,8 @@ class FirstViewController: BaseViewController {
         for (index, template) in (templateList.list as! [Template]).enumerate() {
           if template.id == templateId {
             template.height = templateHeight
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
+            tableView.reloadData()
+//            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
             break;
           }
         }

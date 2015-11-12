@@ -8,8 +8,8 @@ let kTemplateStylePropertyKeyBackgroundImageUrl = "backgroundImageUrl"
 let kTemplateStylePropertyKeyAlignment = "alignment"
 
 class TemplateStyle: BaseModel {
-  var margin: UIEdgeInsets?
-  var padding: UIEdgeInsets?
+  var margin = UIEdgeInsetsZero
+  var padding = UIEdgeInsetsZero
   var backgroundColor: UIColor?
   var backgroundImageUrl: String?
   
@@ -20,14 +20,15 @@ class TemplateStyle: BaseModel {
       if let margin = style[kTemplateStylePropertyKeyMargin] as? String {
         self.margin = margin.edgeInsets()
       }
+      
       if let padding = style[kTemplateStylePropertyKeyPadding] as? String {
         self.padding = padding.edgeInsets()
       }
+      
       if let backgroundColor = style[kTemplateStylePropertyKeyBackgroundColor] as? String {
         self.backgroundColor = UIColor(rgba: backgroundColor)
       }
       backgroundImageUrl = style[kTemplateStylePropertyKeyBackgroundImageUrl] as? String
     }
   }
-
 }

@@ -27,12 +27,8 @@ class TemplateView: TemplateContentsView {
   
   private func configureStyle(style: TemplateStyle?) {
     if let style = style {
-      if let margin = style.margin {
-        layoutMargins = margin
-      }
-      if let padding = style.padding {
-        templateContentsView.layoutMargins = padding
-      }
+      layoutMargins = style.margin
+      templateContentsView.layoutMargins = style.padding
       templateContentsView.backgroundColor = style.backgroundColor
       backgroundImageView.setLazyLoaingImage(style.backgroundImageUrl)
     }
