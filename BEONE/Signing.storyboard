@@ -1045,21 +1045,6 @@
                                                             <constraint firstAttribute="height" constant="1" id="Ptz-De-DsR"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
-                                                        <rect key="frame" x="13" y="66" width="546" height="35"/>
-                                                        <animations/>
-                                                        <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <accessibility key="accessibilityConfiguration" label="emailTextField"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="Ogp-am-6MW"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="Wb6-FT-TeD"/>
-                                                        </connections>
-                                                    </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-QF-SsZ">
                                                         <rect key="frame" x="13" y="103" width="546" height="1"/>
                                                         <animations/>
@@ -1180,6 +1165,21 @@
                                                             <action selector="allAgreementTapped:" destination="Vyr-nv-b6X" eventType="touchUpInside" id="mo5-5d-Ea9"/>
                                                         </connections>
                                                     </button>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="이름을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gN-xvV" customClass="UIFloatLabelTextField">
+                                                        <rect key="frame" x="13" y="69" width="546" height="35"/>
+                                                        <animations/>
+                                                        <color key="tintColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" label="emailTextField"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="Ogp-am-6MW"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Vyr-nv-b6X" id="Wb6-FT-TeD"/>
+                                                        </connections>
+                                                    </textField>
                                                 </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

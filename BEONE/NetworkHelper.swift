@@ -51,8 +51,6 @@ class NetworkHelper: NSObject {
   // MARK: - Static Private Methods
   
   static private func request(method: NetworkMethod, url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-    print("\(method) \(url)")
-    addNetworkCount()
     switch method {
     case .Get:
       requestGet(url, parameter: parameter, success: success, failure: failure)
@@ -89,6 +87,7 @@ class NetworkHelper: NSObject {
           if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && myInfo.refreshToken == nil ||
             errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
               myInfo.accessToken = nil
+              myInfo.refreshToken = nil
               SigningHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
           } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue {
             myInfo.accessToken = nil
@@ -161,6 +160,9 @@ class NetworkHelper: NSObject {
   // MARK: - Static Public Methods
   
   static func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
+      print("GET \(url)")
+    #endif
     addNetworkCount()
     networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
@@ -171,6 +173,9 @@ class NetworkHelper: NSObject {
   }
   
   static func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
+      print("POST \(url)")
+    #endif
     addNetworkCount()
     networkManager.POST(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
@@ -181,6 +186,9 @@ class NetworkHelper: NSObject {
   }
   
   static func requestPut(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
+      print("PUT \(url)")
+    #endif
     addNetworkCount()
     networkManager.PUT(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
@@ -191,6 +199,9 @@ class NetworkHelper: NSObject {
   }
   
   static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
+      print("DELETE \(url)")
+    #endif
     addNetworkCount()
     networkManager.DELETE(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)

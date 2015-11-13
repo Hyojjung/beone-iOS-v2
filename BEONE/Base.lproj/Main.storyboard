@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--First View Controller-->
@@ -41,11 +42,18 @@
                                 <action selector="signInButtonTapped" destination="9pv-A4-QxB" id="Xsw-jb-Mg7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="product" id="CDE-D9-9zX">
-                            <connections>
-                                <action selector="product:" destination="9pv-A4-QxB" id="wIY-Pe-Kjj"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="product" id="CDE-D9-9zX">
+                                <connections>
+                                    <action selector="product:" destination="9pv-A4-QxB" id="wIY-Pe-Kjj"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="reload" id="KHT-ga-aOg">
+                                <connections>
+                                    <action selector="templateReload:" destination="9pv-A4-QxB" id="gY4-pt-jou"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="43d-VB-8Up" id="R3P-4M-Ptb"/>

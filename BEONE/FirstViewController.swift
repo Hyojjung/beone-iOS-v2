@@ -21,11 +21,10 @@ class FirstViewController: BaseViewController {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
       templateHeight = userInfo[kNotificationKeyHeight] as? CGFloat {
-        for (index, template) in (templateList.list as! [Template]).enumerate() {
+        for template in templateList.list as! [Template] {
           if template.id == templateId {
             template.height = templateHeight
             tableView.reloadData()
-//            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
             break;
           }
         }
@@ -57,6 +56,11 @@ class FirstViewController: BaseViewController {
     tableView.estimatedRowHeight = kTableViewDefaultHeight
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.registerNib(UINib(nibName: kNibNameTemplateTableViewCell, bundle: nil), forCellReuseIdentifier: kCellIdentifierTemplateTableViewCell)
+    templateList.fetch()
+  }
+  
+  
+  @IBAction func templateReload(sender: AnyObject) {
     templateList.fetch()
   }
   

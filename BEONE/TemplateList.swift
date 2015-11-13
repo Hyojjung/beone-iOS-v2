@@ -3,7 +3,7 @@ import UIKit
 
 class TemplateList: BaseListModel {
   override func assignObject(data: AnyObject) {
-    print(data)
+    list.removeAll()
     if let templateList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       for templateObject in templateList {
         if let type = templateObject[kTemplatePropertyKeyType] as? String, templateType = TemplateType(rawValue: type) {

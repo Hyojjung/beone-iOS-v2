@@ -68,6 +68,8 @@
 		73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */; };
 		73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */; };
 		73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C151BF0CAE600308AF2 /* SigningHelper.swift */; };
+		7322626C1BF5880E008A47B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626A1BF5880E008A47B1 /* Fabric.framework */; };
+		7322626D1BF5880E008A47B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626B1BF5880E008A47B1 /* Crashlytics.framework */; };
 		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
@@ -167,6 +169,8 @@
 		73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
 		73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFindingViewController.swift; sourceTree = "<group>"; };
 		73168C151BF0CAE600308AF2 /* SigningHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningHelper.swift; sourceTree = "<group>"; };
+		7322626A1BF5880E008A47B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7322626B1BF5880E008A47B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
@@ -191,8 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECEBF497FC79F916A2DD9E6F /* Pods_BEONE.framework in Frameworks */,
+				7322626C1BF5880E008A47B1 /* Fabric.framework in Frameworks */,
 				62FDC3821BDFB8380072BBCE /* KakaoOpenSDK.framework in Frameworks */,
 				62FC6E9D1BDF53210071E1B1 /* FBSDKCoreKit.framework in Frameworks */,
+				7322626D1BF5880E008A47B1 /* Crashlytics.framework in Frameworks */,
 				62FC6E9F1BDF55240071E1B1 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +216,8 @@
 		11CE2D280E347485354658BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7322626A1BF5880E008A47B1 /* Fabric.framework */,
+				7322626B1BF5880E008A47B1 /* Crashlytics.framework */,
 				62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */,
 				62FC6E9E1BDF55240071E1B1 /* FBSDKLoginKit.framework */,
 				62FC6E9C1BDF53210071E1B1 /* FBSDKCoreKit.framework */,
@@ -504,6 +512,7 @@
 				62E5CF081BDDE19100A99F4C /* Resources */,
 				681DEB221A9F897767D79348 /* Embed Pods Frameworks */,
 				A08352FD4C1B5D1C3DCF2930 /* Copy Pods Resources */,
+				732262691BF587F3008A47B1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -624,6 +633,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEONE/Pods-BEONE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		732262691BF587F3008A47B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bde3e6a4f4a3ccd157afd59d582bf8d8ea5ffd6d dffd3808d8e83144d38982ef449046fde9ad3a3c3c08418580ecff3d9bf2e312";
 		};
 		85A17C78E1DF5ED67B92DDC4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

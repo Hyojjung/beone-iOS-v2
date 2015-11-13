@@ -136,12 +136,7 @@ extension SnsSignUpViewController {
     }
     return true
   }
-  
-  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-    scrollView.focusOffset = textField.frame.origin.y - emailTextField.frame.origin.y
-    return true
-  }
-  
+
   func textFieldDidChange(textField: UITextField) {
     textField.text = textField.text?.emailCharacterString()
   }

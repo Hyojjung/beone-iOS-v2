@@ -1595,9 +1595,7 @@
                         <outlet property="productTitleLabel" destination="EEp-ND-zaf" id="SGz-S9-6SU"/>
                         <outlet property="thumbnailImageView" destination="kFx-mK-ZdB" id="8Dc-AG-YJM"/>
                         <segue destination="Csn-Bo-N69" kind="show" identifier="From Product Detail To Inquiry By Show" id="po8-ca-grl"/>
-                        <segue destination="Csn-Bo-N69" kind="push" identifier="From Product Detail To Inquiry By Push" id="0F8-nf-rKO"/>
                         <segue destination="oH7-Bu-1Bx" kind="show" identifier="From Product Detail To Review By Show" id="9GO-MU-rkf"/>
-                        <segue destination="oH7-Bu-1Bx" kind="push" identifier="From Product Detail To Review By Push" id="iQL-fz-kIy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEM-pJ-2ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2954,8 +2952,4 @@
         <image name="stroke_1" width="2" height="1"/>
         <image name="stroke_2" width="2" height="2"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="iQL-fz-kIy"/>
-        <segue reference="0F8-nf-rKO"/>
-    </inferredMetricsTieBreakers>
 </document>
