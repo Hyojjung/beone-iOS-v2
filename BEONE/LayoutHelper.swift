@@ -113,3 +113,22 @@ extension UIView {
     }
   }
 }
+
+extension UIViewController {
+  func addVerticalLayoutGuideLayout(subView: UIView) {
+    view.addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Top,
+      relatedBy: .Equal,
+      toItem: topLayoutGuide,
+      attribute: .Bottom,
+      multiplier: 1,
+      constant: 0))
+    view.addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Bottom,
+      relatedBy: .Equal,
+      toItem: bottomLayoutGuide,
+      attribute: .Top,
+      multiplier: 1,
+      constant: 0))
+  }
+}

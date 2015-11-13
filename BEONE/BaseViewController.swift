@@ -8,35 +8,7 @@ class BaseViewController: UIViewController {
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
     loadingView.layout()
-    self.view.addSubview(loadingView)
-    self.view.addConstraint(NSLayoutConstraint(item: loadingView,
-      attribute: NSLayoutAttribute.Leading,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self.view,
-      attribute: NSLayoutAttribute.Leading,
-      multiplier: 1.0,
-      constant: 0.0))
-    self.view.addConstraint(NSLayoutConstraint(item: loadingView,
-      attribute: NSLayoutAttribute.Trailing,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self.view,
-      attribute: NSLayoutAttribute.Trailing,
-      multiplier: 1.0,
-      constant: 0.0))
-    self.view.addConstraint(NSLayoutConstraint(item: loadingView,
-      attribute: NSLayoutAttribute.Bottom,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self.view,
-      attribute: NSLayoutAttribute.Bottom,
-      multiplier: 1.0,
-      constant: 0.0))
-    self.view.addConstraint(NSLayoutConstraint(item: loadingView,
-      attribute: NSLayoutAttribute.Top,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self.view,
-      attribute: NSLayoutAttribute.Top,
-      multiplier: 1.0,
-      constant: 0.0))
+    self.view.addSubViewAndLayout(loadingView)
     return loadingView
   }()
   
@@ -53,7 +25,6 @@ class BaseViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    ViewControllerHelper.frontViewController = self
     setUpView()
   }
   
@@ -61,7 +32,6 @@ class BaseViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     ViewControllerHelper.showingNavigationViewController = self.navigationController
-    //    ViewControllerHelper.frontViewController = self
 #if RELEASE
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: self.title)

@@ -28,7 +28,13 @@ class AlertViewController: UIViewController {
     super.viewDidLoad()
     messageLabel.text = message
     let secondAttribute = hasCancel == nil || !hasCancel! ? NSLayoutAttribute.Leading : NSLayoutAttribute.CenterX
-    buttonView.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .Leading, relatedBy: .Equal, toItem: buttonView, attribute: secondAttribute, multiplier: 1, constant: 0))
+    buttonView.addConstraint(NSLayoutConstraint(item: confirmButton,
+      attribute: .Leading,
+      relatedBy: .Equal,
+      toItem: buttonView,
+      attribute: secondAttribute,
+      multiplier: 1,
+      constant: 0))
     cancelButton.enabled = hasCancel != nil && hasCancel!
   }
   

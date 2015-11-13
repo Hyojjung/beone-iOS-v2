@@ -13,20 +13,7 @@ class WebViewController: BaseViewController {
   override func setUpView() {
     super.setUpView()
     automaticallyAdjustsScrollViewInsets = false
-    view.addConstraint(NSLayoutConstraint(item: webView,
-      attribute: .Top,
-      relatedBy: .Equal,
-      toItem: topLayoutGuide,
-      attribute: .Bottom,
-      multiplier: 1,
-      constant: 0))
-    view.addConstraint(NSLayoutConstraint(item: webView,
-      attribute: .Bottom,
-      relatedBy: .Equal,
-      toItem: bottomLayoutGuide,
-      attribute: .Top,
-      multiplier: 1,
-      constant: 0))
+    addVerticalLayoutGuideLayout(webView)
   }
   
   override func setUpData() {
