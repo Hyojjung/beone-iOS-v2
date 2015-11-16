@@ -11,7 +11,7 @@ class BaseModel: NSObject {
   }
   
   func post() {
-    NetworkHelper.requestPost(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
+    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: postSuccess(), failure: postFailure())
   }
   
   func postUrl() -> String {
@@ -44,9 +44,7 @@ class BaseModel: NSObject {
   
   func fetchSuccess() -> NetworkSuccess? {
     return { (result) -> Void in
-      if let result = result {
-        self.assignObject(result)
-      }
+      self.assignObject(result)
     }
   }
   
@@ -55,7 +53,7 @@ class BaseModel: NSObject {
   }
   
   func put() {
-    NetworkHelper.requestPut(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
+    NetworkHelper.requestPut(putUrl(), parameter: putParameter(), success: putSuccess(), failure: putFailure())
   }
   
   func putUrl() -> String {
@@ -75,7 +73,7 @@ class BaseModel: NSObject {
   }
   
   func delete() {
-    NetworkHelper.requestDelete(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
+    NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: deleteSuccess(), failure: deleteFailure())
   }
   
   func deleteUrl() -> String {

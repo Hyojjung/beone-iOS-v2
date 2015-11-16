@@ -2,6 +2,9 @@
 import UIKit
 
 class AlertViewController: UIViewController {
+  
+  // MARK: - Property
+  
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var confirmButton: UIButton!
@@ -11,19 +14,30 @@ class AlertViewController: UIViewController {
   var hasCancel: Bool?
   var confirmAction: Action?
   var cancelAction: Action?
+  var actionDelegate: AnyObject?
+}
+
+// MARK: - Init
+
+extension AlertViewController {
+  convenience init(message: String) {
+    self.init(message: message, hasCancel: false, confirmAction: nil, cancelAction: nil, actionDelegate: nil)
+  }
   
-  // MARK: - Init
-  
-  convenience init(message: String, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?) {
+  convenience init(message: String, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?, actionDelegate: AnyObject?) {
     self.init()
     self.message = message
     self.confirmAction = confirmAction
+    self.confirmAction?.actionDelegate = actionDelegate
     self.cancelAction = cancelAction
+    self.cancelAction?.actionDelegate = actionDelegate
     self.hasCancel = hasCancel
   }
-  
-  // MARK: - Override Methods
-  
+}
+
+// MARK: - View Cycles
+
+extension AlertViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     messageLabel.text = message
@@ -37,9 +51,11 @@ class AlertViewController: UIViewController {
       constant: 0))
     cancelButton.enabled = hasCancel != nil && hasCancel!
   }
-  
-  // MARK: - Actions
-  
+}
+
+// MARK: - Actions
+
+extension AlertViewController {
   @IBAction func backgroundViewTapped() {
     dismissViewControllerAnimated(true, completion: nil)
   }

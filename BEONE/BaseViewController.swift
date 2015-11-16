@@ -28,7 +28,6 @@ class BaseViewController: UIViewController {
     setUpView()
   }
   
-  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     ViewControllerHelper.showingNavigationViewController = self.navigationController
@@ -86,7 +85,8 @@ class BaseViewController: UIViewController {
       showAlertView(userInfo[kNotificationAlertKeyMessage] as? String,
         hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
         confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
-        cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action)
+        cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action,
+      delegate: self)
     }
   }
   

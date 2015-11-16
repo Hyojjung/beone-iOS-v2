@@ -6,9 +6,7 @@ class FirstViewController: BaseViewController {
   private var templateList = TemplateList()
   
   @IBAction func signInButtonTapped() {
-    let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
-    let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("SigningNavigationView")
-    presentViewController(signingViewController, animated: true, completion: nil)
+    showSigningView()
   }
   
   @IBAction func product(sender: AnyObject) {
@@ -59,7 +57,6 @@ class FirstViewController: BaseViewController {
     templateList.fetch()
   }
   
-  
   @IBAction func templateReload(sender: AnyObject) {
     templateList.fetch()
   }
@@ -71,16 +68,11 @@ class FirstViewController: BaseViewController {
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData", name: kNotificationFetchTemplateListSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(templateList, selector: "fetch", name: kNotificationGuestAuthenticationSuccess, object: nil)
   }
-  
-  override func removeObservers() {
-    super.removeObservers()
-    NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
 }
 
 // MARK: - UITableViewDataSource
 
-extension FirstViewController: UITableViewDataSource {
+extension FirstViewController {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }

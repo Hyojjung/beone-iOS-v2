@@ -2,25 +2,20 @@
 import UIKit
 import FBSDKLoginKit
 
-let kSegueIdentifierFromSigningToSnsSignUp = "From Signing To Sns Sign Up"
-let kSegueIdentifierFromSigningToEmailSignUp = "From Signing To Email Sign Up"
-let kSegueIdentifierFromSigningToEmailSignIn = "From Signing To Email Sign In"
-
 class SigningViewController: BaseViewController {
   
-  // MARK: - View Cycles
+  // MARK: - Constant
+
+  private let kSegueIdentifierFromSigningToSnsSignUp = "From Signing To Sns Sign Up"
+  private let kSegueIdentifierFromSigningToEmailSignUp = "From Signing To Email Sign Up"
+  private let kSegueIdentifierFromSigningToEmailSignIn = "From Signing To Email Sign In"
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  // MARK: - BaseViewController Methods
+  
+  override func setUpView() {
+    super.setUpView()
     navigationController?.navigationBar.hidden = true
   }
-  
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-    loadingView.hide()
-  }
-  
-  // MARK: - Override Methods
   
   override func addObservers() {
     super.addObservers()
@@ -33,14 +28,20 @@ class SigningViewController: BaseViewController {
       name: kNotificationNeedSignUp,
       object: nil)
   }
-  
-  override func removeObservers() {
-    super.removeObservers()
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+}
+
+// MARK: - View Cycles
+
+extension SigningViewController {
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    loadingView.hide()
   }
-  
-  // MARK: - Actions
-  
+}
+
+// MARK: - Actions
+
+extension SigningViewController {
   @IBAction func closeButtonTapped() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
@@ -51,9 +52,7 @@ class SigningViewController: BaseViewController {
       { (result, error) -> Void in
         if !result.isCancelled {
           self.loadingView.show()
-          
           KOSession.sharedSession().close()
-          
           FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
           SigningHelper.requestFacebookSignIn()
         }
@@ -64,7 +63,6 @@ class SigningViewController: BaseViewController {
     KOSession.sharedSession().openWithCompletionHandler() { (error) -> Void in
       if KOSession.sharedSession().isOpen() {
         self.loadingView.show()
-
         FBSDKLoginManager().logOut()
         SigningHelper.requestKakaoSignIn()
       }
@@ -74,18 +72,20 @@ class SigningViewController: BaseViewController {
   @IBAction func signingWithEmailButtonTapped() {
     let signInButton = ActionSheetButton(title: NSLocalizedString("sign in", comment: "button title"))
       {(_) -> Void in
-        self.performSegueWithIdentifier(kSegueIdentifierFromSigningToEmailSignIn, sender: nil)
+        self.performSegueWithIdentifier(self.kSegueIdentifierFromSigningToEmailSignIn, sender: nil)
     }
     let signUpButton = ActionSheetButton(title: NSLocalizedString("sign up", comment: "button title"))
       {(_) -> Void in
-        self.performSegueWithIdentifier(kSegueIdentifierFromSigningToEmailSignUp, sender: nil)
+        self.performSegueWithIdentifier(self.kSegueIdentifierFromSigningToEmailSignUp, sender: nil)
     }
     
     showActionSheet([signInButton, signUpButton])
   }
-  
-  // MARK: - Observer Action
-  
+}
+
+// MARK: - Observer Actions
+
+extension SigningViewController {
   func handleSnsSignInFailure() {
     performSegueWithIdentifier(kSegueIdentifierFromSigningToSnsSignUp, sender: nil)
   }

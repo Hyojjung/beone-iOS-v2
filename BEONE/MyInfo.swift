@@ -24,4 +24,19 @@ class MyInfo: NSManagedObject {
       return myInfo
     }
   }
+  
+  func logOut() {
+    accessToken = nil
+    refreshToken = nil
+    userId = nil
+    CoreDataHelper.sharedCoreDataHelper.saveContext()
+    SigningHelper.signInForNonUser { (result) -> Void in
+      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationLogOutSuccess, object: nil)
+    }
+    // TODO: 실패하면 노답
+  }
+  
+  func isUser() -> Bool {
+    return refreshToken != nil
+  }
 }

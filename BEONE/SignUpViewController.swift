@@ -3,6 +3,8 @@ import UIKit
 
 class SignUpViewController: BaseViewController {
   
+  // MARK: - Property
+
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var nameTextField: UIFloatLabelTextField!
@@ -11,14 +13,7 @@ class SignUpViewController: BaseViewController {
   @IBOutlet var agreementButtons: [UIButton]!
   @IBOutlet weak var allAgreementButton: UIButton!
   
-  // MARK: - View Cycles
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController!.navigationBar.hidden = true
-  }
-  
-  // MARK: - Override Methods
+  // MARK: - BaseViewController Methods
   
   override func addObservers() {
     super.addObservers()
@@ -28,12 +23,8 @@ class SignUpViewController: BaseViewController {
       object: nil)
   }
   
-  override func removeObservers() {
-    super.removeObservers()
-    NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-  
   override func setUpView() {
+    super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
     nameTextField.setUpFloatingLabel(NSLocalizedString("name form", comment: "placeholder"))
     passwordTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
@@ -43,16 +34,27 @@ class SignUpViewController: BaseViewController {
     passwordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     passwordVerifyingTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
-  
-  // MARK: - Actions
-  
+}
+
+// MARK: - View Cycles
+
+extension SignUpViewController {
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController!.navigationBar.hidden = true
+  }
+}
+
+// MARK: - Actions
+
+extension SignUpViewController {
   @IBAction func backButtonTapped() {
-    navigationController?.popViewControllerAnimated(true)
+    popView()
   }
   
   @IBAction func signUpButtonTapped() {
     if let errorMessage = errorMessage() {
-      showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
+      showAlertView(errorMessage)
     } else {
       SigningHelper.signUp(emailTextField.text!,
         name: nameTextField.text!,
@@ -83,14 +85,20 @@ class SignUpViewController: BaseViewController {
   @IBAction func privacyPolicyButtonTapped() {
     showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
   }
-  
-  // MARK: - Observer Actions
-  
+}
+
+// MARK: - Observer Actions
+
+extension SignUpViewController {
   func closeViewController() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
-  // MARK: - Private Methods
-  
+}
+
+
+// MARK: - Private Methods
+
+extension SignUpViewController {
   private func errorMessage() -> String? {
     if emailTextField.text == nil || !emailTextField.text!.isValidEmail() {
       return NSLocalizedString("check email form", comment: "alert")

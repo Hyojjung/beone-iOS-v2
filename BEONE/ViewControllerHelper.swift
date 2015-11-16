@@ -42,13 +42,27 @@ extension UIViewController {
     presentViewController(actionSheet, animated: true, completion: nil)
   }
   
-  func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?) {
+  
+  func showAlertView(message: String?) {
     if let message = message {
-      let alertViewController = AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction)
-      alertViewController.modalPresentationStyle = .OverCurrentContext
-      alertViewController.modalTransitionStyle = .CrossDissolve
-      presentViewController(alertViewController, animated: true, completion: nil)
+      let alertViewController =
+      AlertViewController(message: message)
+      showAlertView(alertViewController)
     }
+  }
+  
+  func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?, delegate: AnyObject?) {
+    if let message = message {
+      let alertViewController =
+      AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction, actionDelegate: delegate)
+      showAlertView(alertViewController)
+    }
+  }
+  
+  private func showAlertView(alertViewController: AlertViewController) {
+    alertViewController.modalPresentationStyle = .OverCurrentContext
+    alertViewController.modalTransitionStyle = .CrossDissolve
+    presentViewController(alertViewController, animated: true, completion: nil)
   }
   
   func showWebView(urlString: String?, title: String?) {
@@ -60,6 +74,12 @@ extension UIViewController {
       navigationController?.navigationBar.hidden = false
     }
   }
+  
+  func showSigningView() {
+    let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
+    let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("SigningNavigationView")
+    presentViewController(signingViewController, animated: true, completion: nil)
+  }
 }
 
 extension UIFloatLabelTextField {
@@ -67,5 +87,11 @@ extension UIFloatLabelTextField {
     self.placeholder = placeholder;
     floatLabelActiveColor = darkGold
     tintColor = grey
+  }
+}
+
+extension UIViewController {
+  func popView() {
+    navigationController?.popViewControllerAnimated(true)
   }
 }

@@ -2,7 +2,7 @@
 import UIKit
 import AFNetworking
 
-typealias NetworkSuccess = (result: AnyObject?) -> Void
+typealias NetworkSuccess = (result: AnyObject) -> Void
 typealias NetworkFailure = (error: NetworkError) -> Void
 
 enum NetworkMethod: String {
@@ -139,7 +139,7 @@ class NetworkHelper: NSObject {
     #if DEBUG
       print("\(operation.response?.statusCode) \(operation.request.URL)")
     #endif
-    if let success = success {
+    if let success = success, responseObject = responseObject {
       success(result: responseObject)
     }
     subtractNetworkCount()

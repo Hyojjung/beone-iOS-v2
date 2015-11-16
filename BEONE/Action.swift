@@ -16,6 +16,9 @@ enum ActionType: String {
 }
 
 class Action: BaseModel {
+  
+  // MARK: - Property
+
   var type: ActionType?
   var content: String?
   // url string for webview
@@ -25,8 +28,9 @@ class Action: BaseModel {
   var hasCancel: Bool?
   var confirmationAction: Action?
   var cancelAction: Action?
-  
-  // MARK: - Override Methods
+  var actionDelegate: AnyObject?
+
+  // MARK: - BaseModel Methods
   
   override func assignObject(data: AnyObject) {
     if let action = data as? [String: AnyObject] {
@@ -45,7 +49,11 @@ class Action: BaseModel {
       }
     }
   }
-  
+}
+
+// MARK: - Private Methods
+
+extension Action {
   func action() {
     if let type = type, content = content {
       switch type {
@@ -63,20 +71,10 @@ class Action: BaseModel {
         userInfo[kNotificationAlertKeyCancelAction] = cancelAction
         NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
       case .Method:
-        performSelector(Selector(stringLiteral: content))
+        actionDelegate?.performSelector(Selector(stringLiteral: content))
       default:
         break
       }
     }
-  }
-  
-  func popView() {
-    UIViewController.popView()
-  }
-}
-
-extension UIViewController {
-  static func popView() {
-    ViewControllerHelper.showingNavigationViewController?.popViewControllerAnimated(true)
   }
 }

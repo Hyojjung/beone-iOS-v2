@@ -4,6 +4,8 @@ import FBSDKLoginKit
 
 class SnsSignUpViewController: BaseViewController {
   
+  // MARK: - Property
+  
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var nameTextField: UIFloatLabelTextField!
@@ -12,14 +14,7 @@ class SnsSignUpViewController: BaseViewController {
   
   var snsType: SnsType?
   
-  // MARK: - View Cycles
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController!.navigationBar.hidden = true
-  }
-  
-  // MARK: - Override Methods
+  // MARK: - BaseViewController Methods
   
   override func addObservers() {
     super.addObservers()
@@ -37,29 +32,39 @@ class SnsSignUpViewController: BaseViewController {
       object: nil)
   }
   
-  override func removeObservers() {
-    super.removeObservers()
-    NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-  
   override func setUpView() {
-    SigningHelper.getFaceBookInfo()
-    SigningHelper.getKakaoInfo()
-    
+    super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
     nameTextField.setUpFloatingLabel(NSLocalizedString("name form", comment: "placeholder"))
     emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
   
-  // MARK: - Actions
-  
+  override func setUpData() {
+    super.setUpData()
+    SigningHelper.getFaceBookInfo()
+    SigningHelper.getKakaoInfo()
+  }
+}
+
+// MARK: - View Cycles
+
+extension SnsSignUpViewController {
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController!.navigationBar.hidden = true
+  }
+}
+
+// MARK: - Actions
+
+extension SnsSignUpViewController {
   @IBAction func backButtonTapped() {
-    navigationController?.popViewControllerAnimated(true)
+    popView()
   }
   
   @IBAction func snsSignUpButtonTapped() {
     if let errorMessage = errorMessage() {
-      showAlertView(errorMessage, hasCancel: false, confirmAction: nil, cancelAction: nil)
+      showAlertView(errorMessage)
     } else if let snsType = snsType {
       SigningHelper.signUp(snsType,
         userId: FBSDKAccessToken.currentAccessToken().userID,
@@ -92,9 +97,11 @@ class SnsSignUpViewController: BaseViewController {
   @IBAction func privacyPolicyButtonTapped() {
     showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
   }
-  
-  // MARK: - Observer Actions
-  
+}
+
+// MARK: - Observer Actions
+
+extension SnsSignUpViewController {
   func setUpTextField(notification: NSNotification) {
     if let userInfo = notification.userInfo as? [String: String] {
       snsType = notification.name == kNotificationFetchFacebookInfoSuccess ? SnsType.Facebook : SnsType.Kakao
@@ -106,9 +113,12 @@ class SnsSignUpViewController: BaseViewController {
   func closeViewController() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
-  
-  // MARK: - Private Methods
-  
+}
+
+
+// MARK: - Private Methods
+
+extension SnsSignUpViewController {
   private func errorMessage() -> String? {
     if emailTextField.text == nil || !emailTextField.text!.isValidEmail() {
       return NSLocalizedString("check email form", comment: "alert")
@@ -122,7 +132,6 @@ class SnsSignUpViewController: BaseViewController {
     }
     return nil
   }
-  // 에: - webview 연결
 }
 
 // MARK: - UITextFieldDelegate
@@ -136,7 +145,7 @@ extension SnsSignUpViewController {
     }
     return true
   }
-
+  
   func textFieldDidChange(textField: UITextField) {
     textField.text = textField.text?.emailCharacterString()
   }

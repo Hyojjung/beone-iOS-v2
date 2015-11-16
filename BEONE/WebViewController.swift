@@ -5,10 +5,13 @@ let kPrivacyPolicyUrlString = "policies/privacy"
 let kServicePolicyUrlString = "policies/service"
 
 class WebViewController: BaseViewController {
+
+  // MARK: - Property
+
   @IBOutlet weak var webView: UIWebView!
   var url: String?
   
-  // MARK: - Override Methods
+  // MARK: - BaseViewController Methods
   
   override func setUpView() {
     super.setUpView()
@@ -17,6 +20,7 @@ class WebViewController: BaseViewController {
   }
   
   override func setUpData() {
+    super.setUpData()
     if let url = url {
       let request = NSMutableURLRequest(URL: url.url())
       request.addValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
