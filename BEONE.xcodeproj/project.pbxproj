@@ -77,6 +77,10 @@
 		73445E761BF9AF7C008BE2AC /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E751BF9AF7C008BE2AC /* Version.swift */; };
 		73445E781BFAC3F2008BE2AC /* BeoneStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E771BFAC3F2008BE2AC /* BeoneStrings.swift */; };
 		73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E791BFAD843008BE2AC /* ProfileViewController.swift */; };
+		73445E7C1BFAEEF9008BE2AC /* ShopContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E7B1BFAEEF9008BE2AC /* ShopContentsView.swift */; };
+		73445E7E1BFAEF05008BE2AC /* ShopContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73445E7D1BFAEF05008BE2AC /* ShopContentsView.xib */; };
+		73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */; };
+		73445E821BFAFB82008BE2AC /* TemplateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -184,6 +188,10 @@
 		73445E751BF9AF7C008BE2AC /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		73445E771BFAC3F2008BE2AC /* BeoneStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeoneStrings.swift; sourceTree = "<group>"; };
 		73445E791BFAD843008BE2AC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		73445E7B1BFAEEF9008BE2AC /* ShopContentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopContentsView.swift; sourceTree = "<group>"; };
+		73445E7D1BFAEF05008BE2AC /* ShopContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopContentsView.xib; sourceTree = "<group>"; };
+		73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopsViewController.swift; sourceTree = "<group>"; };
+		73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateListViewController.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -339,6 +347,8 @@
 				73F6298B1BF18789001EA72F /* ProductDetailCollectionViewController.swift */,
 				73445E711BF9791C008BE2AC /* SettingViewController.swift */,
 				73445E791BFAD843008BE2AC /* ProfileViewController.swift */,
+				73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */,
+				73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -441,6 +451,8 @@
 				73EA25471BE5F2770085382A /* TemplateTableViewCell.xib */,
 				73F629A31BF43892001EA72F /* ButtonContentsView.swift */,
 				73F629A51BF43AE2001EA72F /* ButtonContentsView.xib */,
+				73445E7B1BFAEEF9008BE2AC /* ShopContentsView.swift */,
+				73445E7D1BFAEF05008BE2AC /* ShopContentsView.xib */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -602,6 +614,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73445E7E1BFAEF05008BE2AC /* ShopContentsView.xib in Resources */,
 				73F629A61BF43AE2001EA72F /* ButtonContentsView.xib in Resources */,
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
 				73EA25491BE5F2770085382A /* TemplateTableViewCell.xib in Resources */,
@@ -725,12 +738,14 @@
 				73F629A41BF43892001EA72F /* ButtonContentsView.swift in Sources */,
 				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,
 				73EA25511BE781120085382A /* ImageContentsImageView.swift in Sources */,
+				73445E821BFAFB82008BE2AC /* TemplateListViewController.swift in Sources */,
 				62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SecondViewController.swift in Sources */,
 				62FC6EA31BDF69370071E1B1 /* StringValidator.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
+				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				620717441BE205840014B9AC /* NetworkStringFormatter.swift in Sources */,
 				620717791BE331790014B9AC /* Action.swift in Sources */,
@@ -747,6 +762,7 @@
 				62EFE9351BE079C00035B2DE /* Template.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */,
+				73445E7C1BFAEEF9008BE2AC /* ShopContentsView.swift in Sources */,
 				73F629A21BF1EB39001EA72F /* XLCCycleScrollView.m in Sources */,
 				620717481BE221830014B9AC /* ImageContentsView.swift in Sources */,
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,

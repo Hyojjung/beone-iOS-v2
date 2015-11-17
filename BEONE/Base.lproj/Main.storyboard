@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--First View Controller-->
@@ -43,18 +42,11 @@
                                 <action selector="signInButtonTapped" destination="9pv-A4-QxB" id="Xsw-jb-Mg7"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="product" id="CDE-D9-9zX">
-                                <connections>
-                                    <action selector="product:" destination="9pv-A4-QxB" id="wIY-Pe-Kjj"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="btnFavoriteOff" id="KHT-ga-aOg">
-                                <connections>
-                                    <action selector="templateReload:" destination="9pv-A4-QxB" id="gY4-pt-jou"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="product" id="CDE-D9-9zX">
+                            <connections>
+                                <action selector="product:" destination="9pv-A4-QxB" id="wIY-Pe-Kjj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="43d-VB-8Up" id="R3P-4M-Ptb"/>
@@ -113,6 +105,46 @@
             </objects>
             <point key="canvasLocation" x="1562" y="360"/>
         </scene>
+        <!--화원-->
+        <scene sceneID="HW7-zn-Cuw">
+            <objects>
+                <tableViewController id="odC-7X-TlO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="v4A-r3-sfv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="odC-7X-TlO" id="jU9-xd-ITY"/>
+                            <outlet property="delegate" destination="odC-7X-TlO" id="bZ9-eE-lyB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="화원" id="SHu-Wp-oy7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNh-Ea-MZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-744" y="889"/>
+        </scene>
+        <!--화원-->
+        <scene sceneID="wDN-fe-UKR">
+            <objects>
+                <navigationController id="lIh-bn-Har" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="화원" id="yet-Zw-Y8b"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ryz-6P-9C7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="odC-7X-TlO" kind="relationship" relationship="rootViewController" id="Fei-9N-L6h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w12-Bc-lrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-744" y="31"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -127,6 +159,7 @@
                     <connections>
                         <segue destination="c0G-lm-Nt6" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="LMR-AS-7Xr" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="lIh-bn-Har" kind="relationship" relationship="viewControllers" id="EAB-hj-A1u"/>
                         <segue destination="XYo-Jg-rbF" kind="relationship" relationship="viewControllers" id="fFP-6N-laI"/>
                         <segue destination="z43-Ih-2Hj" kind="relationship" relationship="viewControllers" id="oGF-Ck-NSI"/>
                     </connections>
@@ -1183,7 +1216,6 @@
     <resources>
         <image name="bg_list" width="3" height="3"/>
         <image name="bg_list_divider" width="3" height="3"/>
-        <image name="btnFavoriteOff" width="29" height="29"/>
         <image name="btn_gold_stroke" width="11" height="11"/>
         <image name="btn_gold_stroke_pressed" width="11" height="11"/>
         <image name="icon_list_arrow" width="7" height="14"/>
