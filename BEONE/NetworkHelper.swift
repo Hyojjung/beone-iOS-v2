@@ -147,6 +147,7 @@ class NetworkHelper: NSObject {
   
   static private func addNetworkCount() {
     networkCommunicationCount += 1
+    print("added \(networkCommunicationCount)")
     if networkCommunicationCount == 1 {
       NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkStart, object: nil)
     }
@@ -154,6 +155,7 @@ class NetworkHelper: NSObject {
   
   static private func subtractNetworkCount() {
     networkCommunicationCount -= 1
+    print("subtracted \(networkCommunicationCount)")
     if networkCommunicationCount == 0 {
       NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkEnd, object: nil)
     }

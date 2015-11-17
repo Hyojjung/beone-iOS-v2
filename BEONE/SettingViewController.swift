@@ -54,7 +54,7 @@ class SettingViewController: BaseViewController {
 
   override func setUpView() {
     super.setUpView()
-    tableView.estimatedRowHeight = 16
+    tableView.estimatedRowHeight = kTableViewDefaultHeight
     tableView.rowHeight = UITableViewAutomaticDimension
   }
   
@@ -137,7 +137,9 @@ extension SettingViewController {
   }
 }
 
-extension SettingViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate
+
+extension SettingViewController {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     switch SettingTableViewSection(rawValue: indexPath.section)! {
     case .LogOut:

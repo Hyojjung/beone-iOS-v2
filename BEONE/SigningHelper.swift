@@ -124,7 +124,6 @@ class SigningHelper: NSObject {
         }
         myInfo.userId = data[kObjectPropertyKeyId] as? NSNumber
       } else if let deviceInfo = data[kSigningResponseKeyDeviceInfo] as? [String: AnyObject] {
-        print(result)
         myInfo.accessToken = data[kAuthenticationPropertyKeyAccessToken] as? String
         myInfo.refreshToken = data[kAuthenticationPropertyKeyRefreshToken] as? String
         myInfo.authenticationId = data[kObjectPropertyKeyId] as? NSNumber

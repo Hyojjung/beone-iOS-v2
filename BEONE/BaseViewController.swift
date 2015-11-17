@@ -45,6 +45,7 @@ class BaseViewController: UIViewController {
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
     removeObservers()
+    loadingView.hide()
   }
   
   // MARK: - Private Methods

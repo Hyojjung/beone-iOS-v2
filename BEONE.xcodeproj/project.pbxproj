@@ -76,6 +76,7 @@
 		73445E741BF97BF0008BE2AC /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E731BF97BF0008BE2AC /* DeviceInfo.swift */; };
 		73445E761BF9AF7C008BE2AC /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E751BF9AF7C008BE2AC /* Version.swift */; };
 		73445E781BFAC3F2008BE2AC /* BeoneStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E771BFAC3F2008BE2AC /* BeoneStrings.swift */; };
+		73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E791BFAD843008BE2AC /* ProfileViewController.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -182,6 +183,7 @@
 		73445E731BF97BF0008BE2AC /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		73445E751BF9AF7C008BE2AC /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		73445E771BFAC3F2008BE2AC /* BeoneStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeoneStrings.swift; sourceTree = "<group>"; };
+		73445E791BFAD843008BE2AC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				620717811BE347E20014B9AC /* WebViewController.xib */,
 				73F6298B1BF18789001EA72F /* ProductDetailCollectionViewController.swift */,
 				73445E711BF9791C008BE2AC /* SettingViewController.swift */,
+				73445E791BFAD843008BE2AC /* ProfileViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				62EFE9451BE098B50035B2DE /* Contents.swift in Sources */,
 				73445E741BF97BF0008BE2AC /* DeviceInfo.swift in Sources */,
 				62EFE94F1BE0C5830035B2DE /* TextContentsView.swift in Sources */,
+				73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */,
 				620717411BE2020A0014B9AC /* LazyLoadingHelper.swift in Sources */,
 				73F629A41BF43892001EA72F /* ButtonContentsView.swift in Sources */,
 				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,
