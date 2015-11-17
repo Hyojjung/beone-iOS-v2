@@ -8,7 +8,7 @@ class BaseViewController: UIViewController {
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
     loadingView.layout()
-    self.view.addSubViewAndLayout(loadingView)
+    self.view.addSubViewAndEdgeLayout(loadingView)
     return loadingView
   }()
   

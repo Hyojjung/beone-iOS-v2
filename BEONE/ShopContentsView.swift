@@ -9,13 +9,18 @@
 import UIKit
 
 class ShopContentsView: TemplateContentsView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+  @IBOutlet weak var imageView: LazyLoadingImageView!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var productCountLabel: UILabel!
+  @IBOutlet weak var descriptionLabel: UILabel!
+  
+  func configureView(shop: Shop?) {
+    if let shop = shop {
+      imageView.setLazyLoaingImage(shop.backgroundImageUrl)
+      nameLabel.text = shop.name
+      descriptionLabel.text = shop.summary
+      
+      // TODO: Product Count
     }
-    */
-
+  }
 }

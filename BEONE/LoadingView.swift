@@ -13,7 +13,7 @@ class LoadingView: UIView {
     backgroundColor = UIColor.clearColor()
     let blurEffect = UIBlurEffect(style: .Light)
     blurEffectView.effect = blurEffect
-    addSubViewAndLayout(blurEffectView)
+    addSubViewAndEdgeLayout(blurEffectView)
     // background view
     
     addSubViewAndCenterLayout(indicator)

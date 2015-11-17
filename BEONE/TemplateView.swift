@@ -11,18 +11,18 @@ class TemplateView: TemplateContentsView {
     
     if let type = template.type,
       contentView = UIView.loadFromNibName(TemplateHelper.viewNibName(type)) as? TemplateContentsView {
-        templateContentsView.addSubViewAndMarginLayout(contentView)
+        templateContentsView.addSubViewAndEdgeMarginLayout(contentView)
         contentView.layoutView(template)
     }
   }
   
   private func configureViewHierarchy() {
     if templateContentsView.superview == nil {
-      addSubViewAndMarginLayout(templateContentsView)
+      addSubViewAndEdgeMarginLayout(templateContentsView)
     } else {
-      templateContentsView.subviews.forEach{ $0.removeFromSuperview() }
+      templateContentsView.subviews.forEach { $0.removeFromSuperview() }
     }
-    templateContentsView.addSubViewAndLayout(backgroundImageView)
+    templateContentsView.addSubViewAndEdgeLayout(backgroundImageView)
   }
   
   private func configureStyle(style: TemplateStyle?) {

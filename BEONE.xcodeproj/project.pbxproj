@@ -81,6 +81,8 @@
 		73445E7E1BFAEF05008BE2AC /* ShopContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73445E7D1BFAEF05008BE2AC /* ShopContentsView.xib */; };
 		73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */; };
 		73445E821BFAFB82008BE2AC /* TemplateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */; };
+		73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E831BFAFE8F008BE2AC /* Shop.swift */; };
+		73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E851BFAFEAE008BE2AC /* ShopList.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -192,6 +194,8 @@
 		73445E7D1BFAEF05008BE2AC /* ShopContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopContentsView.xib; sourceTree = "<group>"; };
 		73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopsViewController.swift; sourceTree = "<group>"; };
 		73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateListViewController.swift; sourceTree = "<group>"; };
+		73445E831BFAFE8F008BE2AC /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		73445E851BFAFEAE008BE2AC /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				62EFE9361BE07AA90035B2DE /* BaseModel.swift */,
 				73EA254A1BE5FA840085382A /* BaseListModel.swift */,
 				73445E751BF9AF7C008BE2AC /* Version.swift */,
+				73445E831BFAFE8F008BE2AC /* Shop.swift */,
+				73445E851BFAFEAE008BE2AC /* ShopList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -761,11 +767,13 @@
 				73EA254D1BE5FD4C0085382A /* TemplateList.swift in Sources */,
 				62EFE9351BE079C00035B2DE /* Template.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
+				73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */,
 				73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */,
 				73445E7C1BFAEEF9008BE2AC /* ShopContentsView.swift in Sources */,
 				73F629A21BF1EB39001EA72F /* XLCCycleScrollView.m in Sources */,
 				620717481BE221830014B9AC /* ImageContentsView.swift in Sources */,
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,
+				73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */,
 				73F6298C1BF18789001EA72F /* ProductDetailCollectionViewController.swift in Sources */,
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */,

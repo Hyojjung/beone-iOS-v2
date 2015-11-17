@@ -25,82 +25,20 @@ extension UIView {
       constant: 0))
   }
   
-  func addSubViewAndLayout(subView: UIView) {
+  func addSubViewAndEdgeLayout(subView: UIView) {
     addSubViewAndEnableAutoLayout(subView)
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Top,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .Top,
-      multiplier: 1,
-      constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Bottom,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .Bottom,
-      multiplier: 1,
-      constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Left,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .Left,
-      multiplier: 1,
-      constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Right,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .Right,
-      multiplier: 1,
-      constant: 0))
+    addTopLayout(subView)
+    addBottomLayout(subView)
+    addLeftLayout(subView)
+    addRightLayout(subView)
   }
   
-  func addSubViewAndMarginLayout(subView: UIView) {
+  func addSubViewAndEdgeMarginLayout(subView: UIView) {
     addSubViewAndEnableAutoLayout(subView)
     addTopMarginLayout(subView)
     addBottomMarginLayout(subView)
-    addHorizontalMarginLayout(subView)
-  }
-  
-  func addHorizontalMarginLayout(subView: UIView) {
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Left,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .LeftMargin,
-      multiplier: 1,
-      constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Right,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .RightMargin,
-      multiplier: 1,
-      constant: 0))
-  }
-  
-  func addTopMarginLayout(subView: UIView) {
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Top,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .TopMargin,
-      multiplier: 1,
-      constant: 0))
-  }
-  
-  func addBottomMarginLayout(subView: UIView) {
-    let bottomMarginConstraint = NSLayoutConstraint(item: subView,
-      attribute: .Bottom,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .BottomMargin,
-      multiplier: 1,
-      constant: 0)
-    bottomMarginConstraint.priority = UILayoutPriorityDefaultHigh
-    addConstraint(bottomMarginConstraint)
+    addLeftMarginLayout(subView)
+    addRightMarginLayout(subView)
   }
   
   func changeHeightLayoutConstant(height: CGFloat?) {
@@ -111,6 +49,128 @@ extension UIView {
         }
       }
     }
+  }
+}
+
+// MARK: - Bottom Layout Methods
+
+extension UIView {
+  func addBottomLayout(subView: UIView, constant: CGFloat) {
+    addBottomMarginLayout(subView, constant: constant, layoutAttribute: .Bottom)
+  }
+  
+  func addBottomLayout(subView: UIView) {
+    addBottomLayout(subView, constant: 0)
+  }
+  
+  func addBottomMarginLayout(subView: UIView, constant: CGFloat) {
+    addBottomMarginLayout(subView, constant: constant, layoutAttribute: .BottomMargin)
+  }
+  
+  func addBottomMarginLayout(subView: UIView) {
+    addBottomMarginLayout(subView, constant: 0)
+  }
+  
+  private func addBottomMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    let bottomMarginConstraint = NSLayoutConstraint(item: subView,
+      attribute: .Bottom,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: -constant)
+    bottomMarginConstraint.priority = UILayoutPriorityDefaultHigh
+    addConstraint(bottomMarginConstraint)
+  }
+}
+
+// MARK: - Top Layout Methods
+
+extension UIView {
+  func addTopLayout(subView: UIView, constant: CGFloat) {
+    addTopMarginLayout(subView, constant: constant, layoutAttribute: .Top)
+  }
+  
+  func addTopLayout(subView: UIView) {
+    addTopLayout(subView, constant: 0)
+  }
+  
+  func addTopMarginLayout(subView: UIView, constant: CGFloat) {
+    addTopMarginLayout(subView, constant: constant, layoutAttribute: .TopMargin)
+  }
+  
+  func addTopMarginLayout(subView: UIView) {
+    addTopMarginLayout(subView, constant: 0)
+  }
+  
+  private func addTopMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Top,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: constant))
+  }
+}
+
+// MARK: - Left Layout Methods
+
+extension UIView {
+  func addLeftLayout(subView: UIView, constant: CGFloat) {
+    addLeftMarginLayout(subView, constant: constant, layoutAttribute: .Left)
+  }
+  
+  func addLeftLayout(subView: UIView) {
+    addLeftLayout(subView, constant: 0)
+  }
+  
+  func addLeftMarginLayout(subView: UIView, constant: CGFloat) {
+    addLeftMarginLayout(subView, constant: constant, layoutAttribute: .LeftMargin)
+  }
+  
+  func addLeftMarginLayout(subView: UIView) {
+    addLeftMarginLayout(subView, constant: 0)
+  }
+  
+  private func addLeftMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Left,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: constant))
+  }
+}
+
+// MARK: - Right Layout Methods
+
+extension UIView {
+  func addRightLayout(subView: UIView, constant: CGFloat) {
+    addRightMarginLayout(subView, constant: constant, layoutAttribute: .Right)
+  }
+  
+  func addRightLayout(subView: UIView) {
+    addRightLayout(subView, constant: 0)
+  }
+  
+  func addRightMarginLayout(subView: UIView, constant: CGFloat) {
+    addRightMarginLayout(subView, constant: constant, layoutAttribute: .RightMargin)
+  }
+  
+  func addRightMarginLayout(subView: UIView) {
+    addRightMarginLayout(subView, constant: 0)
+  }
+  
+  private func addRightMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Right,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: -constant))
   }
 }
 
