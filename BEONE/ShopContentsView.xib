@@ -13,10 +13,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLF-jt-H4w">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="283"/>
+                    <rect key="frame" x="2" y="0.0" width="596" height="281"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_infomation" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-n6-DMq" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="283"/>
+                            <rect key="frame" x="0.0" y="0.0" width="596" height="281"/>
                             <animations/>
                         </imageView>
                     </subviews>
@@ -31,10 +31,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGG-qx-tlY">
-                    <rect key="frame" x="0.0" y="283" width="600" height="85"/>
+                    <rect key="frame" x="0.0" y="281" width="600" height="87"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListWhiteShadow" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-Cd-tvk">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                             <animations/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awD-TX-CjT">
@@ -52,7 +52,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-Tx-zar">
-                            <rect key="frame" x="12" y="58" width="576" height="15"/>
+                            <rect key="frame" x="12" y="58" width="576" height="17"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,7 +60,7 @@
                         </label>
                     </subviews>
                     <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="4xO-Cd-tvk" secondAttribute="trailing" id="CVq-GN-1DD"/>
                         <constraint firstAttribute="bottom" secondItem="ry0-Tx-zar" secondAttribute="bottom" constant="12" id="Eyq-Ya-tZr"/>
@@ -85,7 +85,7 @@
                 </view>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gLF-jt-H4w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="61H-Wz-IRb"/>
                 <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="83D-yg-aDT"/>
@@ -93,8 +93,8 @@
                 <constraint firstAttribute="trailing" secondItem="iGG-qx-tlY" secondAttribute="trailing" id="Uhd-0Z-KKH"/>
                 <constraint firstAttribute="bottom" secondItem="iGG-qx-tlY" secondAttribute="bottom" id="bfq-Dk-0fi"/>
                 <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="dJA-ZB-oU1"/>
-                <constraint firstItem="gLF-jt-H4w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="efW-4z-o5L"/>
-                <constraint firstAttribute="trailing" secondItem="gLF-jt-H4w" secondAttribute="trailing" id="y4d-sg-z7X"/>
+                <constraint firstItem="gLF-jt-H4w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="efW-4z-o5L"/>
+                <constraint firstAttribute="trailing" secondItem="gLF-jt-H4w" secondAttribute="trailing" constant="2" id="y4d-sg-z7X"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -106,7 +106,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bgListWhiteShadow" width="11" height="11"/>
+        <image name="bgListWhiteShadow" width="8" height="11"/>
         <image name="bg_cart_infomation" width="4" height="4"/>
     </resources>
 </document>

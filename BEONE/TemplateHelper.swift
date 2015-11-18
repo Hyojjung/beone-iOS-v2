@@ -1,6 +1,8 @@
 
 import UIKit
 
+let kShopContentsViewViewNibName = "ShopContentsView"
+
 class TemplateHelper: NSObject {
   static func viewNibName(type: TemplateType) -> String? {
     switch type {
@@ -13,7 +15,7 @@ class TemplateHelper: NSObject {
     case .Gap:
       return "GapContentsView"
     case .Shop:
-      return "ShopContentsView"
+      return kShopContentsViewViewNibName
     case .Product:
       return "ProductContentsView"
     case .Review:

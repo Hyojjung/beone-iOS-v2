@@ -43,7 +43,7 @@ class Template: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let template = data as? [String: AnyObject] {
-      id = template[kObjectPropertyKeyId] as? NSNumber
+      id = template[kObjectPropertyKeyId] as? Int
       hasSpace = template[kTemplatePropertyKeyHasSpace] as? Bool
       row = template[kTemplatePropertyKeyRow] as? Int
       column = template[kTemplatePropertyKeyColumn] as? Int

@@ -36,7 +36,7 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifierTemplateTableViewCell, forIndexPath: indexPath) as! TemplateTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(kTemplateTableViewCellIdentifier, forIndexPath: indexPath) as! TemplateTableViewCell
     cell.configureCell(templateList.list[indexPath.row] as! Template)
     return cell
   }

@@ -1,11 +1,34 @@
 
 import UIKit
 
-class TemplateListViewController: BaseViewController {
-  @IBOutlet weak var tableView: UITableView!
+class TemplateListViewController: BaseTableViewController {
+  
+  // MARK: - Property
 
   var templateList = TemplateList()
+  
+  // MARK: - BaseViewController Methods
 
+  override func setUpView() {
+    super.setUpView()
+    tableView.registerNib(UINib(nibName: kTemplateTableViewCellNibName, bundle: nil),
+      forCellReuseIdentifier: kTemplateTableViewCellIdentifier)
+  }
+  
+  override func addObservers() {
+    super.addObservers()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange:",
+      name: kNotificationContentsViewLayouted, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:",
+      name: kNotificationDoAction, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
+      name: kNotificationFetchTemplateListSuccess, object: nil)
+  }
+}
+
+// MARK: - Observer Actions 
+
+extension TemplateListViewController {
   func handleLayoutChange(notification: NSNotification) {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
@@ -38,23 +61,5 @@ class TemplateListViewController: BaseViewController {
         }
       }
     }
-  }
-  
-  override func setUpView() {
-    super.setUpView()
-    tableView.estimatedRowHeight = kTableViewDefaultHeight
-    tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.registerNib(UINib(nibName: kNibNameTemplateTableViewCell, bundle: nil),
-      forCellReuseIdentifier: kCellIdentifierTemplateTableViewCell)
-  }
-  
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange:",
-      name: kNotificationContentsViewLayouted, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:",
-      name: kNotificationDoAction, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchTemplateListSuccess, object: nil)
   }
 }

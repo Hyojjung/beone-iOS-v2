@@ -21,6 +21,7 @@ class Shop: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let shop = data as? [String: AnyObject] {
+      id = shop[kObjectPropertyKeyId] as? Int
       backgroundImageUrl = shop[kShopPropertyKeyBackgroundImageUrl] as? String
       name = shop[kShopPropertyKeyName] as? String
       profileImageUrl = shop[kShopPropertyKeyProfileImageUrl] as? String

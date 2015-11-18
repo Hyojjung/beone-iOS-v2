@@ -20,10 +20,6 @@ class AlertViewController: UIViewController {
 // MARK: - Init
 
 extension AlertViewController {
-  convenience init(message: String) {
-    self.init(message: message, hasCancel: false, confirmAction: nil, cancelAction: nil, actionDelegate: nil)
-  }
-  
   convenience init(message: String, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?, actionDelegate: AnyObject?) {
     self.init()
     self.message = message

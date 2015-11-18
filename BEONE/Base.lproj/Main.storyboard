@@ -117,22 +117,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nUX-Ex-q2b">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nUX-Ex-q2b">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="181" id="xVI-W1-zuB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="181" id="xVI-W1-zuB" customClass="ShopCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xVI-W1-zuB" id="Xh1-mP-wf6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="181"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sm3-X7-GAz">
+                                                    <rect key="frame" x="8" y="8" width="584" height="173"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="sm3-X7-GAz" firstAttribute="leading" secondItem="Xh1-mP-wf6" secondAttribute="leading" constant="8" id="Che-pp-tNg"/>
+                                                <constraint firstItem="sm3-X7-GAz" firstAttribute="top" secondItem="Xh1-mP-wf6" secondAttribute="top" constant="8" id="DVV-3z-45v"/>
+                                                <constraint firstAttribute="trailing" secondItem="sm3-X7-GAz" secondAttribute="trailing" constant="8" id="h0M-iY-psg"/>
+                                                <constraint firstAttribute="bottom" secondItem="sm3-X7-GAz" secondAttribute="bottom" id="omT-N5-Np9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="shopView" destination="sm3-X7-GAz" id="8hW-A7-Vpb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -142,7 +159,7 @@
                             </tableView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4WB-JS-vN1" firstAttribute="top" secondItem="nUX-Ex-q2b" secondAttribute="bottom" id="aNV-2X-On3"/>
                             <constraint firstItem="nUX-Ex-q2b" firstAttribute="top" secondItem="hw1-rP-vil" secondAttribute="bottom" id="ccZ-Wg-ap7"/>

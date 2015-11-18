@@ -3,8 +3,8 @@ import UIKit
 
 let kSpaceWidthCell = CGFloat(10)
 let kNoSpaceWidthCell = CGFloat(0)
-let kNibNameTableContentsCollectionViewCell = "TableContentsCollectionViewCell"
-let kCellIdentifierTableContentsCollectionViewCell = "tableContentsCell"
+let kTableContentsCollectionViewCellNibName = "TableContentsCollectionViewCell"
+let kTableContentsCellIdentifier = "tableContentsCell"
 
 class TableContentsView: TemplateContentsView {
   @IBOutlet weak var collectionView: UICollectionView!
@@ -23,8 +23,8 @@ class TableContentsView: TemplateContentsView {
   
   override func setNeedsLayout() {
     super.setNeedsLayout()
-    collectionView.registerNib(UINib(nibName: kNibNameTableContentsCollectionViewCell, bundle: nil),
-      forCellWithReuseIdentifier: kCellIdentifierTableContentsCollectionViewCell)
+    collectionView.registerNib(UINib(nibName: kTableContentsCollectionViewCellNibName, bundle: nil),
+      forCellWithReuseIdentifier: kTableContentsCellIdentifier)
   }
   
   override func setNeedsDisplay() {
@@ -79,7 +79,7 @@ extension TableContentsView {
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifierTableContentsCollectionViewCell,
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kTableContentsCellIdentifier,
       forIndexPath: indexPath) as! TableContentsCollectionViewCell
     if let contents = contents {
       cell.configure(contents[indexPath.row])

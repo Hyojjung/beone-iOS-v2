@@ -4,7 +4,7 @@ import UIKit
 let kObjectPropertyKeyId = "id"
 
 class BaseModel: NSObject {
-  var id: NSNumber?
+  var id: Int?
   
   func assignObject(data: AnyObject) {
     fatalError("Must Override")

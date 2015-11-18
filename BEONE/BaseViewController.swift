@@ -3,6 +3,8 @@ import UIKit
 
 class BaseViewController: UIViewController {
   
+  // MARK: - Property
+  
   private let backButtonOffset = UIOffsetMake(0, -60)
   
   lazy var loadingView: LoadingView = {

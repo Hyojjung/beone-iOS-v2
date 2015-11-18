@@ -2,8 +2,8 @@
 import UIKit
 import CSStickyHeaderFlowLayout
 
-let kNibNameProductDetailHeaderCell = "ProductDetailHeaderCollectionViewCell"
-let kIdentifierProductDetailHeaderCell = "headerCell"
+let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
+let kProductDetailHeaderCellIdentifier = "headerCell"
 
 let kCellHeightProductDetailHeaderCell = CGFloat(300)
 
@@ -12,9 +12,9 @@ class ProductDetailCollectionViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     reloadLayout()
-    collectionView?.registerNib(UINib(nibName: kNibNameProductDetailHeaderCell, bundle: nil),
+    collectionView?.registerNib(UINib(nibName: kProductDetailHeaderCellNibName, bundle: nil),
       forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader,
-      withReuseIdentifier: kIdentifierProductDetailHeaderCell)
+      withReuseIdentifier: kProductDetailHeaderCellIdentifier)
   }
   
   func reloadLayout() {
@@ -47,7 +47,7 @@ class ProductDetailCollectionViewController: UICollectionViewController {
   override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
     if kind == CSStickyHeaderParallaxHeader {
       let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind,
-        withReuseIdentifier: kIdentifierProductDetailHeaderCell,
+        withReuseIdentifier: kProductDetailHeaderCellIdentifier,
         forIndexPath: indexPath)
       return cell
     } else {

@@ -1,11 +1,11 @@
 
 import UIKit
 
-let kActionKeyType = "type"
-let kActionKeyContent = "content"
-let kActionKeyHasCancel = "hasCancel"
-let kActionKeyConfirmationAction = "confirmationAction"
-let kActionKeyCancelAction = "cancelAction"
+let kActionPropertyKeyType = "type"
+let kActionPropertyKeyContent = "content"
+let kActionPropertyKeyHasCancel = "hasCancel"
+let kActionPropertyKeyConfirmationAction = "confirmationAction"
+let kActionPropertyKeyCancelAction = "cancelAction"
 
 enum ActionType: String {
   case None = "none"
@@ -34,16 +34,16 @@ class Action: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let action = data as? [String: AnyObject] {
-      if let type = action[kActionKeyType] as? String {
+      if let type = action[kActionPropertyKeyType] as? String {
         self.type = ActionType(rawValue: type)
       }
-      content = action[kActionKeyContent] as? String
-      hasCancel = action[kActionKeyHasCancel] as? Bool
-      if let confirmationAction = action[kActionKeyConfirmationAction] {
+      content = action[kActionPropertyKeyContent] as? String
+      hasCancel = action[kActionPropertyKeyHasCancel] as? Bool
+      if let confirmationAction = action[kActionPropertyKeyConfirmationAction] {
         self.confirmationAction = Action()
         self.confirmationAction!.assignObject(confirmationAction)
       }
-      if let cancelAction = action[kActionKeyCancelAction] {
+      if let cancelAction = action[kActionPropertyKeyCancelAction] {
         self.cancelAction = Action()
         self.cancelAction!.assignObject(cancelAction)
       }

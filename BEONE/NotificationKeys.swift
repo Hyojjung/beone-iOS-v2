@@ -14,6 +14,7 @@ let kNotificationNetworkEnd = "NotificationNetworkEnd"
 let kNotificationGuestAuthenticationSuccess = "NotificationGuestAuthenticationSuccess"
 let kNotificationFetchTemplateListSuccess = "NotificationFetchTemplateListSuccess"
 let kNotificationFetchShopListSuccess = "NotificationFetchShopListSuccess"
+let kNotificationFetchProductListSuccess = "NotificationFetchProductListSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 

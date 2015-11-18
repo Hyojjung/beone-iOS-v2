@@ -48,6 +48,7 @@ class LazyLoadingImageView: UIImageView {
   
   
   func setLazyLoaingImage(urlString: String?) {
+    sd_cancelCurrentImageLoad()
     if let urlString = urlString {
       if LazyLoadingHelper.originalImageUrls.contains(urlString) {
         setLazyLoaingImage(urlString, imageType: .Original)

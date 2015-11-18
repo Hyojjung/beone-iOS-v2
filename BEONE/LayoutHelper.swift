@@ -50,6 +50,17 @@ extension UIView {
       }
     }
   }
+  
+  
+  func changeWidthLayoutConstant(width: CGFloat?) {
+    if let width = width {
+      for constraint in constraints {
+        if constraint.firstAttribute == .Width {
+          constraint.constant = width
+        }
+      }
+    }
+  }
 }
 
 // MARK: - Bottom Layout Methods

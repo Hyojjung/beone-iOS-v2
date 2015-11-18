@@ -27,6 +27,15 @@ extension UIView {
   }
 }
 
+extension UIImageView {
+  func makeCircleView() {
+    layer.masksToBounds = false
+    layer.borderColor = UIColor.whiteColor().CGColor
+    layer.cornerRadius = frame.size.width / 2
+    clipsToBounds = true
+  }
+}
+
 extension UIViewController {
   func showActionSheet(actionSheetButtons: [ActionSheetButton]) {
     let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -42,12 +51,9 @@ extension UIViewController {
     presentViewController(actionSheet, animated: true, completion: nil)
   }
   
-  
   func showAlertView(message: String?) {
     if let message = message {
-      let alertViewController =
-      AlertViewController(message: message)
-      showAlertView(alertViewController)
+      showAlertView(message, hasCancel: false, confirmAction: nil, cancelAction: nil, delegate: nil)
     }
   }
   
@@ -55,14 +61,10 @@ extension UIViewController {
     if let message = message {
       let alertViewController =
       AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction, actionDelegate: delegate)
-      showAlertView(alertViewController)
+      alertViewController.modalPresentationStyle = .OverCurrentContext
+      alertViewController.modalTransitionStyle = .CrossDissolve
+      presentViewController(alertViewController, animated: true, completion: nil)
     }
-  }
-  
-  private func showAlertView(alertViewController: AlertViewController) {
-    alertViewController.modalPresentationStyle = .OverCurrentContext
-    alertViewController.modalTransitionStyle = .CrossDissolve
-    presentViewController(alertViewController, animated: true, completion: nil)
   }
   
   func showWebView(urlString: String?, title: String?) {
@@ -76,9 +78,27 @@ extension UIViewController {
   }
   
   func showSigningView() {
-    let signingStoryboard = UIStoryboard(name: "Signing", bundle: nil)
-    let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("SigningNavigationView")
-    presentViewController(signingViewController, animated: true, completion: nil)
+    presentViewController(kSigningStoryboardName, viewIdentifier: kSigningNavigationViewIdentifier)
+  }
+}
+
+extension UIViewController {
+  func presentViewController(storyboardName: String?, viewIdentifier: String?) {
+    if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
+      presentViewController(viewController(storyboardName, viewIdentifier: viewIdentifier),
+        animated: true, completion: nil)
+    }
+  }
+  
+  func showViewController(storyboardName: String?, viewIdentifier: String?) {
+    if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
+      showViewController(viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
+    }
+  }
+  
+  func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
+    let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+    return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
   }
 }
 
