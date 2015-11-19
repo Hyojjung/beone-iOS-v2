@@ -15,7 +15,7 @@ class ShopViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  var shop = BEONEManager.sharedInstance.selectedShop
+  var shop = BEONEManager.selectedShop
   
   lazy var shopProductList: ProductList = {
     let productList = ProductList()
@@ -34,6 +34,19 @@ class ShopViewController: BaseTableViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
       name: kNotificationFetchProductListSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOpion:",
+      name: kNotificationSegueToOption, object: nil)
+  }
+  
+  // MARK: - Observer Actions
+  
+  func segueToOpion(notification: NSNotification) {
+    if let userInfo = notification.userInfo {
+      let product = Product()
+      product.id = userInfo[kNotificationKeyProductId] as? Int
+      BEONEManager.selectedProduct = product
+      showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+    }
   }
 }
 

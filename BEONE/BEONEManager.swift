@@ -9,7 +9,6 @@
 import UIKit
 
 class BEONEManager: NSObject {
-  static let sharedInstance = BEONEManager()
-  
-  var selectedShop: Shop?
+  static var selectedShop: Shop?
+  static var selectedProduct: Product?
 }

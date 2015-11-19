@@ -49,7 +49,7 @@ extension ShopsViewController {
 extension ShopsViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if let shop = shopList.list[indexPath.row] as? Shop {
-      BEONEManager.sharedInstance.selectedShop = shop
+      BEONEManager.selectedShop = shop
       showViewController(kShopStoryboardName, viewIdentifier: kShopViewIdentifier)
     }
   }

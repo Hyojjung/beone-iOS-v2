@@ -76,11 +76,15 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUA-fD-RWS">
                             <rect key="frame" x="8" y="110" width="359" height="30"/>
                             <animations/>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="MjQ-UL-8bq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="바로구매"/>
+                            <connections>
+                                <action selector="orderButtonTapped" destination="iN0-l3-epB" eventType="touchUpInside" id="Cd3-8i-jqa"/>
+                            </connections>
                         </button>
                     </subviews>
                     <animations/>

@@ -19,7 +19,7 @@ class ProductList: BaseListModel {
   override func fetchUrl() -> String {
     switch type {
     case .Shop:
-      if let shopId = BEONEManager.sharedInstance.selectedShop?.id {
+      if let shopId = BEONEManager.selectedShop?.id {
         return "shops/\(shopId)/products"
       } else {
         return "products"

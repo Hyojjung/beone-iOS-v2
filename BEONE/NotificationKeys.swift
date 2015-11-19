@@ -15,11 +15,16 @@ let kNotificationGuestAuthenticationSuccess = "NotificationGuestAuthenticationSu
 let kNotificationFetchTemplateListSuccess = "NotificationFetchTemplateListSuccess"
 let kNotificationFetchShopListSuccess = "NotificationFetchShopListSuccess"
 let kNotificationFetchProductListSuccess = "NotificationFetchProductListSuccess"
+let kNotificationFetchProductSuccess = "NotificationFetchProductSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 
 let kNotificationShowAlert = "NotificationShowAlert"
 let kNotificationShowWebView = "NotificationShowWebView"
+let kNotificationOrder = "NotificationOrder"
+let kNotificationSegueToOption = "NotificationSegueToOption"
+let kNotificationKeyProductIds = "NotificationKeyProductIds"
+let kNotificationKeyProductId = "NotificationKeyProductId"
 
 let kNotificationAlertKeyMessage = "NotificationAlertKeyMessage"
 let kNotificationAlertKeyHasCancel = "NotificationAlertKeyHasCancel"

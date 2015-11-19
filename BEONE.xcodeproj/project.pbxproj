@@ -70,6 +70,8 @@
 		7309D7431BFCA28900F9761A /* SimpleProductsContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7421BFCA28900F9761A /* SimpleProductsContentsView.swift */; };
 		7309D7451BFCA2C200F9761A /* SimpleProductsContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7309D7441BFCA2C200F9761A /* SimpleProductsContentsView.xib */; };
 		7309D7471BFCB1A400F9761A /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7461BFCB1A400F9761A /* ProductList.swift */; };
+		7309D7491BFDB1DE00F9761A /* ProductOrderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */; };
+		7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D74A1BFDC3F000F9761A /* OptionViewController.swift */; };
 		73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */; };
 		73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */; };
 		73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */; };
@@ -193,6 +195,8 @@
 		7309D7421BFCA28900F9761A /* SimpleProductsContentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleProductsContentsView.swift; sourceTree = "<group>"; };
 		7309D7441BFCA2C200F9761A /* SimpleProductsContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleProductsContentsView.xib; sourceTree = "<group>"; };
 		7309D7461BFCB1A400F9761A /* ProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
+		7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOrderableInfo.swift; sourceTree = "<group>"; };
+		7309D74A1BFDC3F000F9761A /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
 		73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFindingViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +350,7 @@
 				734241701BFC44ED00BE21F5 /* BEONEManager.swift */,
 				7309D73F1BFC9F6600F9761A /* Product.swift */,
 				7309D7461BFCB1A400F9761A /* ProductList.swift */,
+				7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				73445E791BFAD843008BE2AC /* ProfileViewController.swift */,
 				73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */,
 				734241741BFC4FF400BE21F5 /* ShopViewController.swift */,
+				7309D74A1BFDC3F000F9761A /* OptionViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -813,6 +819,7 @@
 				62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */,
 				7309D7471BFCB1A400F9761A /* ProductList.swift in Sources */,
 				73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */,
+				7309D7491BFDB1DE00F9761A /* ProductOrderableInfo.swift in Sources */,
 				73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */,
 				62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */,
 				733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */,
@@ -838,6 +845,7 @@
 				73445E781BFAC3F2008BE2AC /* BeoneStrings.swift in Sources */,
 				7309D73C1BFC97E000F9761A /* SimpleProductView.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
+				7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
