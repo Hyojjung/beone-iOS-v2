@@ -30,3 +30,9 @@
 "latest version" = "최신버전 입니다.";
 
 "sure log out" = "정말 로그아웃 하시겠습니까?";
+
+"select delivery type" = "배송수단을 선택해주세요.";
+"select quantity" = "수량을 선택해주세요.";
+
+"order right now" = "바로구매";
+"add to cart" = "장바구니에 담기";

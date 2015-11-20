@@ -9,6 +9,7 @@ pod 'AFNetworking'
 pod 'Google/Analytics'
 pod 'SDWebImage'
 pod 'CSStickyHeaderFlowLayout'
+pod 'ActionSheetPicker-3.0'
 
 end
 

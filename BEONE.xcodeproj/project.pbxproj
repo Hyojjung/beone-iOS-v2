@@ -72,6 +72,7 @@
 		7309D7471BFCB1A400F9761A /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7461BFCB1A400F9761A /* ProductList.swift */; };
 		7309D7491BFDB1DE00F9761A /* ProductOrderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */; };
 		7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D74A1BFDC3F000F9761A /* OptionViewController.swift */; };
+		7309D74D1BFEF36700F9761A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D74C1BFEF36700F9761A /* CartItem.swift */; };
 		73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */; };
 		73168C111BF07F4700308AF2 /* KeyboardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */; };
 		73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */; };
@@ -197,6 +198,7 @@
 		7309D7461BFCB1A400F9761A /* ProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOrderableInfo.swift; sourceTree = "<group>"; };
 		7309D74A1BFDC3F000F9761A /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		7309D74C1BFEF36700F9761A /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		73168C0E1BF07CBE00308AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardScrollView.swift; sourceTree = "<group>"; };
 		73168C121BF0A83700308AF2 /* PasswordFindingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFindingViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				7309D73F1BFC9F6600F9761A /* Product.swift */,
 				7309D7461BFCB1A400F9761A /* ProductList.swift */,
 				7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */,
+				7309D74C1BFEF36700F9761A /* CartItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */,
 				73EA254D1BE5FD4C0085382A /* TemplateList.swift in Sources */,
 				62EFE9351BE079C00035B2DE /* Template.swift in Sources */,
+				7309D74D1BFEF36700F9761A /* CartItem.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */,
 				73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */,
 				73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */,

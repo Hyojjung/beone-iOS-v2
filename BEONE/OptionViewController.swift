@@ -1,12 +1,6 @@
-//
-//  OptionViewController.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 19..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class OptionViewController: BaseTableViewController {
   
@@ -20,22 +14,86 @@ class OptionViewController: BaseTableViewController {
   }
   
   private let kOptionTableViewCellIdentifiers = ["productCell", "cartItemInfoCell", "buttonCell"]
-
+  private let kQuantityStrings = ["1", "2", "3", "4", "5"]
+  
   // MARK: - Property
-
+  
   var product = BEONEManager.selectedProduct
+  var selectedProductOrderableInfo: ProductOrderableInfo?
+  var deliveryTypeNames = [String]()
+  var productQuantity = 1
   
   // MARK: - BaseViewController Methods
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
       name: kNotificationFetchProductSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "", name: kNotificationPostCartItemSuccess, object: nil)
   }
-
+  
   override func setUpData() {
     super.setUpData()
     product?.fetch()
+  }
+  
+  // MARK: - Init & Deinit
+  
+  deinit {
+    BEONEManager.ordering = false
+  }
+  
+  // MARK: - Observer Actions
+  
+  func setUpProductData() {
+    if product?.productOrderableInfos.count == 1 {
+      selectedProductOrderableInfo = product?.productOrderableInfos.first
+    }
+    deliveryTypeNames.removeAll()
+    if let product = product {
+      for productOrderableInfo in product.productOrderableInfos {
+        if let name = productOrderableInfo.name {
+          deliveryTypeNames.append(name)
+        }
+      }
+    }
+    tableView.reloadData()
+  }
+  
+  // MARK: - Actions
+  
+  @IBAction func sendCart() {
+    if let product = product, productOrderableInfo = selectedProductOrderableInfo {
+      let cartItem = CartItem()
+      cartItem.productId = product.id
+      cartItem.productOrderableInfoId = productOrderableInfo.id
+      cartItem.quantity = productQuantity
+      cartItem.post()
+    }
+  }
+  
+  @IBAction func selectDeliveryTypeButtonTapped() {
+    if deliveryTypeNames.count > 0 {
+      let deliveryTypeActionSheet =
+      ActionSheetStringPicker(title: NSLocalizedString("select delivery type", comment: "picker title"),
+        rows: deliveryTypeNames, initialSelection: 0, doneBlock: { (_, selectedIndex, _) -> Void in
+          self.selectedProductOrderableInfo = self.product!.productOrderableInfos[selectedIndex]
+          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemInfo.rawValue),
+            withRowAnimation: .Automatic)
+        }, cancelBlock: nil, origin: view)
+      deliveryTypeActionSheet.showActionSheetPicker()
+    }
+  }
+  
+  @IBAction func selectQuantityButtonTapped() {
+    let quantityActionSheet =
+    ActionSheetStringPicker(title: NSLocalizedString("select quantity", comment: "picker title"),
+      rows: kQuantityStrings, initialSelection: 0, doneBlock: { (_, selectedIndex, _) -> Void in
+        self.productQuantity = selectedIndex + 1
+        self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemInfo.rawValue),
+          withRowAnimation: .Automatic)
+      }, cancelBlock: nil, origin: view)
+    quantityActionSheet.showActionSheetPicker()
   }
 }
 
@@ -55,18 +113,30 @@ extension OptionViewController {
     case .Product:
       configureProductCell(cell)
     case .CartItemInfo:
-      print("cartItemInfo")
+      configureCartItemInfoCell(cell)
     case .Button:
-      print("button")
+      configureButtonCell(cell)
     default:
       break
     }
     return cell
   }
-
+  
   private func configureProductCell(cell: UITableViewCell) {
     if let cell = cell as? ProductCell, product = product {
       cell.configureCell(product)
+    }
+  }
+  
+  private func configureCartItemInfoCell(cell: UITableViewCell) {
+    if let cell = cell as? CartItemInfoCell {
+      cell.configureCell(selectedProductOrderableInfo, quantity: productQuantity)
+    }
+  }
+  
+  private func configureButtonCell(cell: UITableViewCell) {
+    if let cell = cell as? ButtonCell {
+      cell.configureCell(BEONEManager.ordering)
     }
   }
 }
@@ -87,5 +157,25 @@ class ProductCell: UITableViewCell {
 
 class CartItemInfoCell: UITableViewCell {
   @IBOutlet weak var selectedDeliveryNameLabel: UILabel!
-  @IBOutlet weak var selectedCountLabel: UILabel!
+  @IBOutlet weak var selectedQuantityLabel: UILabel!
+  @IBOutlet weak var quantitySelectButton: UIButton!
+  
+  func configureCell(productOrderableInfo: ProductOrderableInfo?, quantity: Int) {
+    selectedDeliveryNameLabel.text = productOrderableInfo == nil ?
+      NSLocalizedString("select delivery type", comment: "picker title") : productOrderableInfo?.name
+    selectedQuantityLabel.text = "\(quantity)"
+    quantitySelectButton.enabled = productOrderableInfo != nil
+  }
+}
+
+class ButtonCell: UITableViewCell {
+  @IBOutlet weak var addCartItemButton: UIButton!
+  
+  func configureCell(ordering: Bool) {
+    let buttonTitle = ordering ?
+      NSLocalizedString("order right now", comment: "button title") :
+      NSLocalizedString("add to cart", comment: "button title")
+    addCartItemButton.setTitle(buttonTitle, forState: .Normal)
+    addCartItemButton.setTitle(buttonTitle, forState: .Highlighted)
+  }
 }

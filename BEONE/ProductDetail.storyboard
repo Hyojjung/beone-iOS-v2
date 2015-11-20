@@ -3000,7 +3000,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="l0I-of-a6H" secondAttribute="bottom" id="1Vb-x7-rtd"/>
                                                         <constraint firstAttribute="trailing" secondItem="ofI-yv-Su6" secondAttribute="trailing" constant="13" id="6nl-pT-2oC"/>
-                                                        <constraint firstAttribute="width" secondItem="C15-PQ-dZu" secondAttribute="height" multiplier="375:210" id="7VD-Io-gOt"/>
+                                                        <constraint firstAttribute="width" secondItem="C15-PQ-dZu" secondAttribute="height" multiplier="375:210" priority="750" id="7VD-Io-gOt"/>
                                                         <constraint firstItem="5hS-L2-MZr" firstAttribute="top" secondItem="C15-PQ-dZu" secondAttribute="top" id="8nS-FM-F06"/>
                                                         <constraint firstItem="Ymj-6C-XZH" firstAttribute="top" secondItem="mMr-9t-m8w" secondAttribute="bottom" constant="10" id="Iw0-pd-hZt"/>
                                                         <constraint firstItem="ofI-yv-Su6" firstAttribute="trailing" secondItem="mMr-9t-m8w" secondAttribute="trailing" id="JLs-qX-vUQ"/>
@@ -3088,7 +3088,7 @@
                                                                     </state>
                                                                     <state key="disabled" backgroundImage="combobox_gold_disalbed"/>
                                                                     <connections>
-                                                                        <action selector="productEndPointButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="KUi-Au-N6G"/>
+                                                                        <action selector="selectDeliveryTypeButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="1U6-8b-VLL"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -3130,7 +3130,7 @@
                                                                     </state>
                                                                     <state key="disabled" backgroundImage="combobox_gold_disalbed"/>
                                                                     <connections>
-                                                                        <action selector="productCountButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="PLh-0e-qZR"/>
+                                                                        <action selector="selectQuantityButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="ame-mg-Kps"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -3232,11 +3232,12 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <outlet property="selectedCountLabel" destination="FLb-FC-LFt" id="psO-wX-py5"/>
+                                            <outlet property="quantitySelectButton" destination="t9T-PX-cvD" id="Zwu-EN-zbp"/>
                                             <outlet property="selectedDeliveryNameLabel" destination="9W7-6E-aHf" id="LR6-eg-38m"/>
+                                            <outlet property="selectedQuantityLabel" destination="FLb-FC-LFt" id="yWX-cs-Eze"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonCell" rowHeight="65" id="ftb-ej-9KH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonCell" rowHeight="65" id="ftb-ej-9KH" customClass="ButtonCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="493" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ftb-ej-9KH" id="6Qh-Ps-fr0">
@@ -3257,7 +3258,7 @@
                                                     <state key="selected" backgroundImage="btn_submit_gold_pressed"/>
                                                     <state key="highlighted" title="장바구니에 담기" image="btn_submit_gold_pressed" backgroundImage="btn_submit_gold_pressed"/>
                                                     <connections>
-                                                        <action selector="sendCart" destination="gh2-yY-KRU" eventType="touchUpInside" id="tmH-KT-1CA"/>
+                                                        <action selector="sendCart" destination="gh2-yY-KRU" eventType="touchUpInside" id="WfR-oi-ilc"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -3279,6 +3280,9 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="addCartItemButton" destination="BQh-Br-4wa" id="yY2-sW-N65"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

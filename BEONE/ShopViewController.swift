@@ -42,6 +42,7 @@ class ShopViewController: BaseTableViewController {
   
   func segueToOpion(notification: NSNotification) {
     if let userInfo = notification.userInfo {
+      BEONEManager.ordering = true
       let product = Product()
       product.id = userInfo[kNotificationKeyProductId] as? Int
       BEONEManager.selectedProduct = product
