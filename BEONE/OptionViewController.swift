@@ -155,7 +155,7 @@ class ProductCell: UITableViewCell {
     mainImageView.setLazyLoaingImage(product.mainImageUrl)
     titleLabel.text = product.title
     actualPriceLabel.text = product.actualPrice?.priceNotation(.English)
-    priceLabel.attributedText = product.originalPriceAttributedString()
+    priceLabel.attributedText = product.priceAttributedString()
   }
 }
 
