@@ -51,7 +51,6 @@ extension UIView {
     }
   }
   
-  
   func changeWidthLayoutConstant(width: CGFloat?) {
     if let width = width {
       for constraint in constraints {

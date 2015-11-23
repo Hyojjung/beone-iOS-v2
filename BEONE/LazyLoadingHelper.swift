@@ -30,6 +30,7 @@ class LazyLoadingImageView: UIImageView {
         }
       }
     }
+    // TODO: image load 방식 개선
   }
   
   func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
@@ -70,5 +71,15 @@ class LazyLoadingHelper: NSObject {
   static func imageUrl(url: String, imageType: ImageType) -> NSURL {
     let urlString = imageType == .Original ? url : "\(url)?imageType=\(imageType.rawValue)"
     return urlString.url()
+  }
+}
+
+class ProductDetailImageView: LazyLoadingImageView {
+  override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
+    super.setImageWithAnimation(image, cacheType: cacheType)
+    if let image = self.image {
+      let height = image.size.height / image.size.width * frame.size.width
+      changeHeightLayoutConstant(height)
+    }
   }
 }

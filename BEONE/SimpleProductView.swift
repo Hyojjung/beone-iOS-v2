@@ -19,7 +19,7 @@ class SimpleProductView: UIView {
       summaryLabel.text = product.subtitle
       productId = product.id
       
-      originalPriceLabel.attributedText = product.originalPriceAttributedString()
+      originalPriceLabel.attributedText = product.priceAttributedString()
     }
   }
   

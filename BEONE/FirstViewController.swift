@@ -7,6 +7,10 @@ class FirstViewController: TemplateListViewController {
   }
   
   @IBAction func product(sender: AnyObject) {
+    let product = Product()
+    product.id = 2
+    BEONEManager.selectedProduct = product
+    
     let signingStoryboard = UIStoryboard(name: "ProductDetail", bundle: nil)
     let signingViewController = signingStoryboard.instantiateViewControllerWithIdentifier("productDetailView")
     navigationController?.pushViewController(signingViewController, animated: true)
