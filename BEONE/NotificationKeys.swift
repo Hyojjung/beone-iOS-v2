@@ -39,3 +39,6 @@ let kNotificationKeyTemplateId = "NotificationKeyTemplateId"
 let kNotificationKeyContentsId = "NotificationKeyContentsId"
 
 let kNotificationKeyErrorStatusCode = "NotificationKeyErrorStatusCode"
+
+let kNotificationAddressSelected = "NotificationAddressSelected"
+let kNotificationKeyAddress = "NotificationKeyAddress"

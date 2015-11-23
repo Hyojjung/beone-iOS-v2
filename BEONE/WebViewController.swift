@@ -5,9 +5,9 @@ let kPrivacyPolicyUrlString = "policies/privacy"
 let kServicePolicyUrlString = "policies/service"
 
 class WebViewController: BaseViewController {
-
+  
   // MARK: - Property
-
+  
   @IBOutlet weak var webView: UIWebView!
   var url: String?
   
@@ -41,7 +41,11 @@ extension WebViewController: UIWebViewDelegate {
     navigationType: UIWebViewNavigationType) -> Bool {
       if let url = request.URL?.absoluteString {
         if url.hasPrefix("beone://postcode.result") {
-          // TODO: - handle address result
+          let addressComponents = url.componentsSeparatedByString("&")
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationAddressSelected,
+            object: nil,
+            userInfo: [kNotificationKeyAddress: addressComponents])
+          popView()
           return false
         }
       }

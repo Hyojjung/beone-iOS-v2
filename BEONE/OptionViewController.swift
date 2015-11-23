@@ -29,7 +29,7 @@ class OptionViewController: BaseTableViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
       name: kNotificationFetchProductSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "", name: kNotificationPostCartItemSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOrderView", name: kNotificationPostCartItemSuccess, object: nil)
   }
   
   override func setUpData() {
@@ -58,6 +58,10 @@ class OptionViewController: BaseTableViewController {
       }
     }
     tableView.reloadData()
+  }
+  
+  func segueToOrderView() {
+    showViewController("Order", viewIdentifier: "OrderAddressView")
   }
   
   // MARK: - Actions
