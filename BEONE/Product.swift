@@ -88,7 +88,7 @@ class Product: BaseModel {
           shop.assignObject(shopObject)
         }
         if isInList {
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchProductSuccess, object: nil)
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchProductSuccess, object: nil)
         }
       }
     }
@@ -117,7 +117,7 @@ class Product: BaseModel {
   }
 }
 
-// MARK: - Private Methods
+// MARK: - Publice Methods
 
 extension Product {
   func priceAttributedString() -> NSAttributedString? {
@@ -130,6 +130,19 @@ extension Product {
       return originalPrice
     }
     return nil
+  }
+  
+  func productDetailImageUrls() -> [String] {
+    var imageUrls = [String]()
+    for productDetail in productDetails {
+      if productDetail.detailType == .Image && productDetail.content != nil {
+        imageUrls.append(productDetail.content!)
+      }
+    }
+    if imageUrls.isEmpty && mainImageUrl != nil {
+      imageUrls.append(mainImageUrl!)
+    }
+    return imageUrls
   }
 }
 

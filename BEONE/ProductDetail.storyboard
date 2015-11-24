@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEM-pJ-2ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-377" y="1559"/>
+            <point key="canvasLocation" x="-378" y="1193"/>
         </scene>
         <!--상품문의-->
         <scene sceneID="fZg-YZ-exX">
@@ -3090,16 +3090,30 @@
                                     <outlet property="delegate" destination="0O0-Tf-ajG" id="emq-pd-nZy"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-GO-pqK">
+                                <rect key="frame" x="10" y="30" width="40" height="40"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration" label="backButton"/>
+                                <state key="normal" image="btn_back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="0O0-Tf-ajG" eventType="touchUpInside" id="Y42-qz-0cG"/>
+                                    <action selector="backButtonTapped" destination="lTJ-GA-6X0" eventType="touchUpInside" id="yl1-73-OoU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rDm-du-nF3" secondAttribute="trailing" id="0lA-vd-3cv"/>
                             <constraint firstItem="rDm-du-nF3" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" id="3py-0F-638"/>
+                            <constraint firstItem="wCh-GO-pqK" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" constant="10" id="DWO-ei-KuS"/>
                             <constraint firstItem="PeH-9W-7jI" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="LD7-ul-pG2"/>
                             <constraint firstItem="cNr-0v-VsF" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="bottom" id="Lf9-mi-hE4"/>
                             <constraint firstItem="rDm-du-nF3" firstAttribute="width" secondItem="msV-1H-v4L" secondAttribute="width" id="MCi-Yu-lJY"/>
                             <constraint firstAttribute="trailing" secondItem="PeH-9W-7jI" secondAttribute="trailing" id="RJa-KV-xo4"/>
+                            <constraint firstItem="wCh-GO-pqK" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" constant="10" id="aXz-Sc-XPS"/>
                             <constraint firstItem="cNr-0v-VsF" firstAttribute="top" secondItem="rDm-du-nF3" secondAttribute="bottom" id="ada-Zm-ZSD"/>
                             <constraint firstItem="rDm-du-nF3" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="iFa-yG-mDk"/>
                         </constraints>

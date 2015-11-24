@@ -20,6 +20,10 @@ let kNotificationPostCartItemSuccess = "NotificationPostCartItemSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 
+let kNotificationProductDetailImageTapped = "NotificationProductDetailImageTapped"
+let kNotificationKeyIndex = "NotificationKeyIndex"
+let kNotificationKeyView = "NotificationKeyView"
+
 let kNotificationShowAlert = "NotificationShowAlert"
 let kNotificationShowWebView = "NotificationShowWebView"
 let kNotificationOrder = "NotificationOrder"

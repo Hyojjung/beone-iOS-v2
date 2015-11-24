@@ -51,6 +51,16 @@ class ProductDetailViewController: BaseViewController {
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.hidden = true
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.navigationBar.hidden = false
+  }
+  
   override func setUpView() {
     super.setUpView()
     reloadLayout()
@@ -64,6 +74,8 @@ class ProductDetailViewController: BaseViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
       name: kNotificationFetchProductSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleShowImageNotification:",
+      name: kNotificationProductDetailImageTapped, object: nil)
   }
   
   func reloadLayout() {
@@ -71,22 +83,26 @@ class ProductDetailViewController: BaseViewController {
     if layout.isKindOfClass(CSStickyHeaderFlowLayout) {
       if let stickyLayout = layout as? CSStickyHeaderFlowLayout {
         stickyLayout.parallaxHeaderReferenceSize = CGSizeMake(view.frame.size.width, kCellHeightProductDetailHeaderCell)
+        stickyLayout.parallaxHeaderMinimumReferenceSize = CGSizeMake(view.frame.size.width, 60)
         stickyLayout.estimatedItemSize = CGSize(width: 150, height: 75)
         stickyLayout.disableStickyHeaders = true
+        stickyLayout.parallaxHeaderAlwaysOnTop = true
       }
     }
   }
   
   func setUpProductData() {
-    if let productDetails = product?.productDetails {
-      imageUrls.removeAll()
-      for productDetail in productDetails {
-        if productDetail.detailType == .Image && productDetail.content != nil {
-          imageUrls.append(productDetail.content!.url())
-        }
+    if let imageUrls = product?.productDetailImageUrls() {
+      self.imageUrls.removeAll()
+      for imageUrl in imageUrls {
+        self.imageUrls.append(imageUrl.url())
       }
     }
     collectionView.reloadData()
+  }
+  
+  @IBAction func backButtonTapped() {
+    popView()
   }
   
   @IBAction func orderButtonTapped() {
@@ -98,13 +114,25 @@ class ProductDetailViewController: BaseViewController {
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
-    let browser = IDMPhotoBrowser(photoURLs: imageUrls, animatedFromView: sender)
     let selectedImageUrl = product?.productDetails[sender.tag].content
     for (index, imageUrl) in imageUrls.enumerate() {
       if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
-        browser.setInitialPageIndex(UInt(index))
+        showImage(index, view: sender)
       }
     }
+  }
+  
+  func handleShowImageNotification(notification: NSNotification) {
+    if let userInfo = notification.userInfo,
+      index = userInfo[kNotificationKeyIndex] as? Int,
+      view = userInfo[kNotificationKeyView] as? UIView {
+      showImage(index, view: view)
+    }
+  }
+  
+  func showImage(index: Int, view: UIView) {
+    let browser = IDMPhotoBrowser(photoURLs: imageUrls, animatedFromView: view)
+    browser.setInitialPageIndex(UInt(index))
     browser.usePopAnimation = true
     browser.displayArrowButton = true
     browser.displayCounterLabel = true
@@ -142,7 +170,9 @@ extension ProductDetailViewController {
     let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind,
       withReuseIdentifier: kProductDetailHeaderCellIdentifier,
       forIndexPath: indexPath)
-    
+    if let product = product {
+      (cell as? ProductDetailHeaderCollectionViewCell)?.configureCell(product)
+    }
     return cell
   }
   
@@ -174,5 +204,5 @@ extension ProductDetailViewController: UICollectionViewDelegate {
       break
     }
   }
-
+  
 }
