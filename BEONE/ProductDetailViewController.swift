@@ -1,6 +1,7 @@
 
 import UIKit
 import CSStickyHeaderFlowLayout
+import IDMPhotoBrowser
 
 let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
 let kProductDetailHeaderCellIdentifier = "headerCell"
@@ -47,6 +48,8 @@ class ProductDetailViewController: BaseViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   let product = BEONEManager.selectedProduct
   let reviewList = ReviewList()
+  var imageUrls = [NSURL]()
+  var selectedImageUrlIndex = 0
   
   override func setUpView() {
     super.setUpView()
@@ -59,7 +62,7 @@ class ProductDetailViewController: BaseViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(collectionView, selector: "reloadData",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
       name: kNotificationFetchProductSuccess, object: nil)
   }
   
@@ -74,6 +77,18 @@ class ProductDetailViewController: BaseViewController {
     }
   }
   
+  func setUpProductData() {
+    if let productDetails = product?.productDetails {
+      imageUrls.removeAll()
+      for productDetail in productDetails {
+        if productDetail.detailType == .Image && productDetail.content != nil {
+          imageUrls.append(productDetail.content!.url())
+        }
+      }
+    }
+    collectionView.reloadData()
+  }
+  
   @IBAction func orderButtonTapped() {
     performSegueWithIdentifier("From Product Detail To Option", sender: nil)
   }
@@ -81,11 +96,25 @@ class ProductDetailViewController: BaseViewController {
   @IBAction func addCartButtonTapped() {
     performSegueWithIdentifier("From Product Detail To Option", sender: nil)
   }
+  
+  @IBAction func imageButtonTapped(sender: UIButton) {
+    let browser = IDMPhotoBrowser(photoURLs: imageUrls, animatedFromView: sender)
+    let selectedImageUrl = product?.productDetails[sender.tag].content
+    for (index, imageUrl) in imageUrls.enumerate() {
+      if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
+        browser.setInitialPageIndex(UInt(index))
+      }
+    }
+    browser.usePopAnimation = true
+    browser.displayArrowButton = true
+    browser.displayCounterLabel = true
+    presentViewController(browser, animated: true, completion: nil)
+  }
 }
 
 // MARK: UICollectionViewDataSource
 
-extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
+extension ProductDetailViewController {
   func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
     return ProductDetailTableViewSection.Count.rawValue
   }
@@ -101,8 +130,7 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell =
-    collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier(indexPath),
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier(indexPath),
       forIndexPath: indexPath)
     if let product = product {
       (cell as? ProductDetailCell)?.configureCell(product, indexPath: indexPath)
@@ -146,4 +174,5 @@ extension ProductDetailViewController: UICollectionViewDelegate {
       break
     }
   }
+
 }
