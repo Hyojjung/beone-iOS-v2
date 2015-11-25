@@ -107,7 +107,7 @@ class Product: BaseModel {
   
   private func assignProductDetails(productDetailsObject: AnyObject?) {
     if let productDetailsObject = productDetailsObject as? [[String: AnyObject]] {
-      productOrderableInfos.removeAll()
+      productDetails.removeAll()
       for productDetailObject in productDetailsObject {
         let productDetail = ProductDetail()
         productDetail.assignObject(productDetailObject)

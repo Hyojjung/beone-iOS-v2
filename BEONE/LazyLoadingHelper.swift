@@ -78,7 +78,7 @@ class ProductDetailImageView: LazyLoadingImageView {
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
     super.setImageWithAnimation(image, cacheType: cacheType)
     if let image = self.image {
-      let height = image.size.height / image.size.width * frame.size.width
+      let height = image.size.heightFromRatio(frame.size.width)
       changeHeightLayoutConstant(height)
     }
   }

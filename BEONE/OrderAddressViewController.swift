@@ -11,12 +11,6 @@ import UIKit
 class OrderAddressViewController: BaseViewController {
 
   // MARK: - Init & Deinit
-
-  deinit {
-    if BEONEManager.ordering {
-      // TODO: clearOrderingCartItems
-    }
-  }
   
   override func setUpView() {
     super.setUpView()
