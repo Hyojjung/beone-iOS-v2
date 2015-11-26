@@ -33,3 +33,10 @@
 
 "order view title" = "주소입력";
 "kakao button title" = "구경하기";
+
+"enter sender" = "보내는 분을 입력해주세요.";
+"enter sender phone" = "보내는 분의 번호를 입력해주세요.";
+"enter receiver" = "받는 분을 입력해주세요.";
+"enter receiver phone" = "받는 분의 번호를 입력해주세요.";
+"enter address" = "주소를 입력해주세요.";
+"enter detail address" = "상세주소를 입력해주세요.";

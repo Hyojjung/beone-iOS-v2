@@ -8,34 +8,46 @@
 
 import UIKit
 
+enum AddressType: String {
+  case Road = "R"
+  case Jibun = "J"
+}
+
+let kAddressPropertyKeyName = "receiverName"
+let kAddressPropertyKeyPhone = "receiverPhone"
+let kAddressPropertyKeyZipCode1 = "receiverZipcode01"
+let kAddressPropertyKeyZipCode2 = "receiverZipcode02"
+let kAddressPropertyKeyRoadAddress = "receiverRoadAddress"
+let kAddressPropertyKeyJibunAddress = "receiverJibunAddress"
+let kAddressPropertyKeyAddressType = "receiverAddressType"
+let kAddressPropertyKeyDetailAddress = "receiverDetailAddress"
+let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
+let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
+let kAddressPropertyKeyUserSelectedType = "userSelectedType"
+
 class Address: BaseModel {
-  private let kAddressPropertyKeyName = "receiverName"
-  private let kAddressPropertyKeyPhone = "receiverPhone"
-  private let kAddressPropertyKeyZipCode1 = "receiverZipcode01"
-  private let kAddressPropertyKeyZipCode2 = "receiverZipcode02"
-  private let kAddressPropertyKeyRoadAddress = "receiverRoadAddress"
-  private let kAddressPropertyKeyJibunAddress = "receiverJibunAddress"
-  private let kAddressPropertyKeyAddressType = "receiverAddressType"
-  private let kAddressPropertyKeyDetailAddress = "receiverDetailAddress"
-  private let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
-  private let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
-  
-  enum ReceiverAddressType: String {
-    case Road = "R"
-    case Jibun = "J"
-  }
-  
   var receiverName: String?
   var receiverPhone: String?
-  var receiverZipcode01: String?
-  var receiverZipcode02: String?
+  var zipcode01: String?
+  var zipcode02: String?
   var zonecode: String?
-  var receiverRoadAddress: String?
-  var receiverJibunAddress: String?
-  var receiverDetailAddress: String?
-  var receiverAddressType: String?
+  var roadAddress: String?
+  var jibunAddress: String?
+  var detailAddress: String?
+  var buildingName: String?
+  var addressType: AddressType?
   
   override func assignObject(data: AnyObject) {
-    print(data)
+    if let address = data as? [String: AnyObject] {
+      if let userSelectedType = address[kAddressPropertyKeyUserSelectedType] as? String {
+        addressType = AddressType(rawValue: userSelectedType)
+      }
+      zipcode01 = address["postcode1"] as? String
+      zipcode02 = address["postcode2"] as? String
+      zonecode = address["zonecode"] as? String
+      roadAddress = address["roadAddress"] as? String
+      jibunAddress = address["jibunAddress"] as? String
+      buildingName = address["buildingName"] as? String
+    }
   }
 }

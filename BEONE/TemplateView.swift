@@ -3,7 +3,13 @@ import UIKit
 
 class TemplateView: TemplateContentsView {
   private var templateContentsView = UIView()
-  private var backgroundImageView = LazyLoadingImageView()
+  private lazy var backgroundImageView: LazyLoadingImageView = {
+    let imageView = LazyLoadingImageView()
+    imageView.contentMode = .ScaleAspectFill
+    imageView.clipsToBounds = true
+    imageView.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Vertical)
+    return imageView
+  }()
   
   override func layoutView(template: Template) {
     configureViewHierarchy()
@@ -19,10 +25,8 @@ class TemplateView: TemplateContentsView {
   private func configureViewHierarchy() {
     if templateContentsView.superview == nil {
       addSubViewAndEdgeMarginLayout(templateContentsView)
-    } else {
-      templateContentsView.subviews.forEach { $0.removeFromSuperview() }
+      templateContentsView.addSubViewAndEdgeLayout(backgroundImageView)
     }
-    templateContentsView.addSubViewAndEdgeLayout(backgroundImageView)
   }
   
   private func configureStyle(style: TemplateStyle?) {

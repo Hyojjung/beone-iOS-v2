@@ -25,6 +25,21 @@ class MyInfo: NSManagedObject {
     }
   }
   
+  func fetch() {
+    if let userId = userId {
+      NetworkHelper.requestGet("users/\(userId)", parameter: nil, success: { (result) -> Void in
+        print(result)
+        if let myInfo = result[kObjectPropertyKeyId] as? [String: AnyObject] {
+          self.email = myInfo["email"] as? String
+          self.name = myInfo["name"] as? String
+          self.point = myInfo["point"] as? NSNumber
+          CoreDataHelper.sharedCoreDataHelper.saveContext()
+          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchMyInfoSuccess, object: nil)
+        }
+        }, failure: nil)
+    }
+  }
+  
   func logOut() {
     accessToken = nil
     refreshToken = nil

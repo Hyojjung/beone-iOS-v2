@@ -19,6 +19,7 @@ let kNotificationFetchProductSuccess = "NotificationFetchProductSuccess"
 let kNotificationPostCartItemSuccess = "NotificationPostCartItemSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
+let kNotificationFetchMyInfoSuccess = "NotificationFetchMyInfoSuccess"
 
 let kNotificationProductDetailImageTapped = "NotificationProductDetailImageTapped"
 let kNotificationKeyIndex = "NotificationKeyIndex"

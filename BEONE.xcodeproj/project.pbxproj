@@ -82,6 +82,8 @@
 		73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C151BF0CAE600308AF2 /* SigningHelper.swift */; };
 		7322626C1BF5880E008A47B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626A1BF5880E008A47B1 /* Fabric.framework */; };
 		7322626D1BF5880E008A47B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626B1BF5880E008A47B1 /* Crashlytics.framework */; };
+		73398AE11C05F14000F57D4A /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE01C05F14000F57D4A /* AddressList.swift */; };
+		73398AE51C06052B00F57D4A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE41C06052B00F57D4A /* Order.swift */; };
 		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
 		7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342416D1BFC285400BE21F5 /* BaseTableViewController.swift */; };
 		734241711BFC44ED00BE21F5 /* BEONEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734241701BFC44ED00BE21F5 /* BEONEManager.swift */; };
@@ -221,6 +223,8 @@
 		73168C151BF0CAE600308AF2 /* SigningHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningHelper.swift; sourceTree = "<group>"; };
 		7322626A1BF5880E008A47B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7322626B1BF5880E008A47B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		73398AE01C05F14000F57D4A /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
+		73398AE41C06052B00F57D4A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		7342416D1BFC285400BE21F5 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		734241701BFC44ED00BE21F5 /* BEONEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BEONEManager.swift; sourceTree = "<group>"; };
@@ -573,6 +577,8 @@
 			children = (
 				7309D74C1BFEF36700F9761A /* CartItem.swift */,
 				7309D7521BFF12B700F9761A /* Address.swift */,
+				73398AE01C05F14000F57D4A /* AddressList.swift */,
+				73398AE41C06052B00F57D4A /* Order.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -882,6 +888,7 @@
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
 				7388FA411C040C2A0015C3DF /* ProductDetail.swift in Sources */,
 				73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */,
+				73398AE51C06052B00F57D4A /* Order.swift in Sources */,
 				7388FA4E1C049CA40015C3DF /* ReviewListViewController.swift in Sources */,
 				73445E721BF9791C008BE2AC /* SettingViewController.swift in Sources */,
 				62FC6E941BDF41550071E1B1 /* SigningViewController.swift in Sources */,
@@ -914,6 +921,7 @@
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
+				73398AE11C05F14000F57D4A /* AddressList.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				620717441BE205840014B9AC /* NetworkStringFormatter.swift in Sources */,
 				620717791BE331790014B9AC /* Action.swift in Sources */,
