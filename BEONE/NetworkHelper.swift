@@ -148,14 +148,14 @@ class NetworkHelper: NSObject {
   static private func addNetworkCount() {
     networkCommunicationCount += 1
     if networkCommunicationCount <= 1 {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkStart, object: nil)
+      postNotification(kNotificationNetworkStart)
     }
   }
   
   static private func subtractNetworkCount() {
     networkCommunicationCount -= 1
     if networkCommunicationCount == 0 {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkEnd, object: nil)
+      postNotification(kNotificationNetworkEnd)
     }
   }
   

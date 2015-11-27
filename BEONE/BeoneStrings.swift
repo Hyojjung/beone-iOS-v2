@@ -17,5 +17,6 @@ let kOrderAddressViewIdentifier = "OrderAddressView"
 
 // MARK: - View Nib Names
 
+let kMainTitleViewNibName = "MainTitleView"
 let kSimpleProductViewNibName = "SimpleProductView"
 let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"

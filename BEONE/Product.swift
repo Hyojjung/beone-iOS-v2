@@ -88,7 +88,7 @@ class Product: BaseModel {
           shop.assignObject(shopObject)
         }
         if isInList {
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchProductSuccess, object: nil)
+          postNotification(kNotificationFetchProductSuccess)
         }
       }
     }

@@ -53,7 +53,7 @@ class Version: BaseModel {
               }
           }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchAppStoreVersionSuccess, object: nil)
+        self.postNotification(kNotificationFetchAppStoreVersionSuccess)
       }
     }
   }

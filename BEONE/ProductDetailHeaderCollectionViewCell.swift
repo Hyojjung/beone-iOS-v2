@@ -50,8 +50,7 @@ extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDatasource {
 
 extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDelegate {
   func didClickPage(csView: XLCCycleScrollView!, atIndex index: Int) {
-    NSNotificationCenter.defaultCenter().postNotificationName(kNotificationProductDetailImageTapped,
-      object: nil,
+    postNotification(kNotificationProductDetailImageTapped,
       userInfo: [kNotificationKeyIndex: index, kNotificationKeyView: csView])
   }
 }

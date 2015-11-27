@@ -42,7 +42,7 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
+        postNotification(kNotificationSigningSuccess)
       },
       failure: nil)
   }
@@ -59,13 +59,13 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
+        postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
         if error.statusCode == NetworkResponseCode.Invalid.rawValue &&
           error.errorKey == NetworkErrorKey.SnsInfos.rawValue &&
           error.errorCode == NetworkErrorCode.Invalid.rawValue {
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNeedSignUp, object: nil)
+            postNotification(kNotificationNeedSignUp)
         }
     })
   }
@@ -82,11 +82,11 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlUsers, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
+        postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
         if error.statusCode == NetworkResponseCode.Duplicated.rawValue {
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningFailure, object: nil)
+          postNotification(kNotificationSigningFailure)
         }
     })
   }
@@ -105,7 +105,7 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlUsers, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSigningSuccess, object: nil)
+        postNotification(kNotificationSigningSuccess)
       },
       failure:nil)
   }
@@ -151,12 +151,12 @@ class SigningHelper: NSObject {
   
   static func requestFindingPassword(email: String) {
     NetworkHelper.requestPost("users/password-reset", parameter: [kSigningParameterKeyEmail: email], success: { (result) -> Void in
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationRequestFindingPasswordSuccess, object: nil)
+      postNotification(kNotificationRequestFindingPasswordSuccess)
       },
       failure: { (error) -> Void in
         if let statusCode = error.statusCode {
           let userInfo = [kNotificationKeyErrorStatusCode: statusCode]
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationRequestFindingPasswordFailure, object: nil, userInfo: userInfo)
+          postNotification(kNotificationRequestFindingPasswordFailure, userInfo: userInfo)
         }
     })
   }
@@ -179,10 +179,7 @@ class SigningHelper: NSObject {
         var userInfo = [String: String]()
         userInfo[kNotificationKeyFacebookName] = result[kSigningParameterKeyName] as? String
         userInfo[kNotificationKeyFacebookEmail] = result[kSigningParameterKeyEmail] as? String
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchFacebookInfoSuccess,
-          object: nil,
-          userInfo: userInfo)
+        postNotification(kNotificationFetchFacebookInfoSuccess, userInfo: userInfo)
       }
     }
   }
@@ -207,10 +204,7 @@ class SigningHelper: NSObject {
     kakaoSessionMeTask() { (user) -> Void in
       var userInfo = [String: String]()
       userInfo[kNotificationKeyFacebookName] = user.propertyForKey("nickname") as? String
-      
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchKakaoInfoSuccess,
-        object: nil,
-        userInfo: userInfo)
+      postNotification(kNotificationFetchKakaoInfoSuccess, userInfo: userInfo)
     }
   }
 }

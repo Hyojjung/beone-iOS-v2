@@ -6,29 +6,7 @@ let kObjectPropertyKeyId = "id"
 class BaseModel: NSObject {
   var id: Int?
   
-  func assignObject(data: AnyObject) {
-    fatalError("Must Override")
-  }
-  
-  func post() {
-    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: postSuccess(), failure: postFailure())
-  }
-  
-  func postUrl() -> String {
-    fatalError("Must Override")
-  }
-  
-  func postParameter() -> AnyObject? {
-    return nil
-  }
-  
-  func postSuccess() -> NetworkSuccess? {
-    return nil
-  }
-  
-  func postFailure() -> NetworkFailure? {
-    return nil
-  }
+  // MARK: - Fetch Methods
   
   func fetch() {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
@@ -52,6 +30,34 @@ class BaseModel: NSObject {
     return nil
   }
   
+  func assignObject(data: AnyObject) {
+    print(data)
+  }
+  
+  // MARK: - Post Methods
+  
+  func post() {
+    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: postSuccess(), failure: postFailure())
+  }
+  
+  func postUrl() -> String {
+    fatalError("Must Override")
+  }
+  
+  func postParameter() -> AnyObject? {
+    return nil
+  }
+  
+  func postSuccess() -> NetworkSuccess? {
+    return nil
+  }
+  
+  func postFailure() -> NetworkFailure? {
+    return nil
+  }
+  
+  // MARK: - Put Methods
+  
   func put() {
     NetworkHelper.requestPut(putUrl(), parameter: putParameter(), success: putSuccess(), failure: putFailure())
   }
@@ -72,6 +78,9 @@ class BaseModel: NSObject {
     return nil
   }
   
+  
+  // MARK: - Delete Methods
+  
   func delete() {
     NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: deleteSuccess(), failure: deleteFailure())
   }
@@ -90,5 +99,17 @@ class BaseModel: NSObject {
   
   func deleteFailure() -> NetworkFailure? {
     return nil
+  }
+}
+
+extension NSObject {
+  func postNotification(name: String?, userInfo: [NSObject: AnyObject]? = nil) {
+    if let name = name {
+      NSNotificationCenter.defaultCenter().postNotificationName(name, object: nil, userInfo: userInfo)
+    }
+  }
+  
+  static func postNotification(name: String?, userInfo: [NSObject: AnyObject]? = nil) {
+    NSObject().postNotification(name, userInfo: userInfo)
   }
 }

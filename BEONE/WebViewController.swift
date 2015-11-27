@@ -41,9 +41,7 @@ extension WebViewController: UIWebViewDelegate {
     navigationType: UIWebViewNavigationType) -> Bool {
       if let url = request.URL?.absoluteString {
         if url.hasPrefix("beone://postcode.result") {
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationAddressSelected,
-            object: nil,
-            userInfo: [kNotificationKeyAddress: url])
+          postNotification(kNotificationAddressSelected, userInfo: [kNotificationKeyAddress: url])
           popView()
           return false
         }

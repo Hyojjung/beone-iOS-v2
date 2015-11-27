@@ -27,7 +27,7 @@ class PasswordFindingViewController: BaseViewController {
 
 extension PasswordFindingViewController {
   @IBAction func passwordFindButtonTapped() {
-    view.endEditing(true)
+    endEditing()
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage)
     } else if let email = emailTextField.text {

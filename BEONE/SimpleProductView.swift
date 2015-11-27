@@ -25,9 +25,7 @@ class SimpleProductView: UIView {
   
   @IBAction func orderButtonTapped() {
     if let productId = productId {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSegueToOption,
-        object: nil,
-        userInfo: [kNotificationKeyProductId: productId])
+      postNotification(kNotificationSegueToOption, userInfo: [kNotificationKeyProductId: productId])
     }
   }
 }

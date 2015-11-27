@@ -93,8 +93,7 @@ extension TableContentsView {
 extension TableContentsView: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     if let templateId = templateId, contents = contents, contentsId = contents[indexPath.row].id {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationDoAction,
-        object: nil,
+      postNotification(kNotificationDoAction,
         userInfo: [kNotificationKeyTemplateId: templateId, kNotificationKeyContentsId: contentsId])
     }
   }

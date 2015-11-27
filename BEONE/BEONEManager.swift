@@ -7,4 +7,6 @@ class BEONEManager: NSObject {
   
   static var selectedShop: Shop?
   static var selectedProduct: Product?
+  static var selectedLocation: Location?
+  static var sharedLocationList = LocationList()
 }

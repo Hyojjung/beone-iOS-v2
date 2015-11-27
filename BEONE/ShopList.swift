@@ -21,7 +21,7 @@ class ShopList: BaseListModel {
         shop.assignObject(shopObject)
         list.append(shop)
       }
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchShopListSuccess, object: nil)
+      postNotification(kNotificationFetchShopListSuccess)
     }
   }
 }

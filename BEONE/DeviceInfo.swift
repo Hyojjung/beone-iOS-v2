@@ -28,7 +28,7 @@ class DeviceInfo: BaseModel {
     return {(result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
         self.isReceivingPush = data[kDeviceInfoPropertyKeyIsReceivingPush]?.boolValue == true ? true : false
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchDeviceInfoSuccess, object: nil)
+        self.postNotification(kNotificationFetchDeviceInfoSuccess)
       }
     }
   }

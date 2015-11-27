@@ -141,7 +141,7 @@ extension SnsSignUpViewController {
     if textField == emailTextField {
       nameTextField.becomeFirstResponder()
     } else if textField == nameTextField {
-      view.endEditing(true)
+      endEditing()
     }
     return true
   }

@@ -60,7 +60,7 @@ extension Action {
       case .Webview:
         var userInfo = [String: AnyObject]()
         userInfo[kNotificationAlertKeyMessage] = content
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowWebView, object: nil, userInfo: userInfo)
+        postNotification(kNotificationShowWebView, userInfo: userInfo)
       case .Scheme:
         print("scheme")
       case .Alert:
@@ -69,7 +69,7 @@ extension Action {
         userInfo[kNotificationAlertKeyHasCancel] = hasCancel
         userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
         userInfo[kNotificationAlertKeyCancelAction] = cancelAction
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationShowAlert, object: nil, userInfo: userInfo)
+        postNotification(kNotificationShowAlert, userInfo: userInfo)
       case .Method:
         actionDelegate?.performSelector(Selector(stringLiteral: content))
       default:

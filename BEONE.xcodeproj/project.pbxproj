@@ -84,6 +84,12 @@
 		7322626D1BF5880E008A47B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626B1BF5880E008A47B1 /* Crashlytics.framework */; };
 		73398AE11C05F14000F57D4A /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE01C05F14000F57D4A /* AddressList.swift */; };
 		73398AE51C06052B00F57D4A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE41C06052B00F57D4A /* Order.swift */; };
+		73398AE81C068ED300F57D4A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE71C068ED300F57D4A /* Location.swift */; };
+		73398AEA1C068EF800F57D4A /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE91C068EF800F57D4A /* LocationList.swift */; };
+		73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AEF1C06EE3C00F57D4A /* MainTitleView.swift */; };
+		73398AF21C06EE5600F57D4A /* MainTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73398AF11C06EE5600F57D4A /* MainTitleView.xib */; };
+		73398AF51C07443800F57D4A /* SelectingPaymentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */; };
+		73398AF71C08202A00F57D4A /* DeliveryDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AF61C08202A00F57D4A /* DeliveryDateViewController.swift */; };
 		733D77FE1BE9E611003FFBF7 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */; };
 		7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342416D1BFC285400BE21F5 /* BaseTableViewController.swift */; };
 		734241711BFC44ED00BE21F5 /* BEONEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734241701BFC44ED00BE21F5 /* BEONEManager.swift */; };
@@ -225,6 +231,12 @@
 		7322626B1BF5880E008A47B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		73398AE01C05F14000F57D4A /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
 		73398AE41C06052B00F57D4A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		73398AE71C068ED300F57D4A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		73398AE91C068EF800F57D4A /* LocationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
+		73398AEF1C06EE3C00F57D4A /* MainTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
+		73398AF11C06EE5600F57D4A /* MainTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTitleView.xib; sourceTree = "<group>"; };
+		73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectingPaymentTypeViewController.swift; sourceTree = "<group>"; };
+		73398AF61C08202A00F57D4A /* DeliveryDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryDateViewController.swift; sourceTree = "<group>"; };
 		733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		7342416D1BFC285400BE21F5 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		734241701BFC44ED00BE21F5 /* BEONEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BEONEManager.swift; sourceTree = "<group>"; };
@@ -371,6 +383,7 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				73398AE61C068E6900F57D4A /* Location */,
 				7388FA441C045A520015C3DF /* Inquiry */,
 				7388FA3F1C040C060015C3DF /* Product */,
 				7309D7551BFF144B00F9761A /* DefaultModels */,
@@ -403,6 +416,7 @@
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				73398AF31C07425500F57D4A /* Order */,
 				7342416F1BFC285A00BE21F5 /* Base */,
 				62FC6E951BDF43CB0071E1B1 /* Signing */,
 				62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */,
@@ -415,7 +429,6 @@
 				73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */,
 				734241741BFC4FF400BE21F5 /* ShopViewController.swift */,
 				7309D74A1BFDC3F000F9761A /* OptionViewController.swift */,
-				7309D7501BFEFC6200F9761A /* OrderAddressViewController.swift */,
 				7388FA421C0458880015C3DF /* InquiryListViewController.swift */,
 				7388FA4D1C049CA40015C3DF /* ReviewListViewController.swift */,
 			);
@@ -428,6 +441,8 @@
 				7388FA561C057CEA0015C3DF /* Common */,
 				7388FA551C057C120015C3DF /* Cells */,
 				62EFE94D1BE0C5600035B2DE /* Template */,
+				73398AEF1C06EE3C00F57D4A /* MainTitleView.swift */,
+				73398AF11C06EE5600F57D4A /* MainTitleView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -601,6 +616,25 @@
 				73168C151BF0CAE600308AF2 /* SigningHelper.swift */,
 			);
 			name = Session;
+			sourceTree = "<group>";
+		};
+		73398AE61C068E6900F57D4A /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				73398AE71C068ED300F57D4A /* Location.swift */,
+				73398AE91C068EF800F57D4A /* LocationList.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		73398AF31C07425500F57D4A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				7309D7501BFEFC6200F9761A /* OrderAddressViewController.swift */,
+				73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */,
+				73398AF61C08202A00F57D4A /* DeliveryDateViewController.swift */,
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		7342416F1BFC285A00BE21F5 /* Base */ = {
@@ -790,6 +824,7 @@
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
 				620717511BE239AD0014B9AC /* TableContentsView.xib in Resources */,
 				734241731BFC4AB700BE21F5 /* Shop.storyboard in Resources */,
+				73398AF21C06EE5600F57D4A /* MainTitleView.xib in Resources */,
 				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
 				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				7309D73E1BFC980900F9761A /* SimpleProductView.xib in Resources */,
@@ -903,8 +938,11 @@
 				62EFE9371BE07AA90035B2DE /* BaseModel.swift in Sources */,
 				62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */,
 				7388FA481C045A720015C3DF /* InquiryList.swift in Sources */,
+				73398AF71C08202A00F57D4A /* DeliveryDateViewController.swift in Sources */,
 				7388FA3A1C0341820015C3DF /* Review.swift in Sources */,
+				73398AE81C068ED300F57D4A /* Location.swift in Sources */,
 				62EFE9451BE098B50035B2DE /* Contents.swift in Sources */,
+				73398AEA1C068EF800F57D4A /* LocationList.swift in Sources */,
 				73445E741BF97BF0008BE2AC /* DeviceInfo.swift in Sources */,
 				62EFE94F1BE0C5830035B2DE /* TextContentsView.swift in Sources */,
 				73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */,
@@ -949,8 +987,10 @@
 				7309D7531BFF12B700F9761A /* Address.swift in Sources */,
 				73445E7C1BFAEEF9008BE2AC /* ShopContentsView.swift in Sources */,
 				7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */,
+				73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */,
 				734241711BFC44ED00BE21F5 /* BEONEManager.swift in Sources */,
 				73F629A21BF1EB39001EA72F /* XLCCycleScrollView.m in Sources */,
+				73398AF51C07443800F57D4A /* SelectingPaymentTypeViewController.swift in Sources */,
 				620717481BE221830014B9AC /* ImageContentsView.swift in Sources */,
 				7388FA5C1C057E3B0015C3DF /* OptionCells.swift in Sources */,
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,

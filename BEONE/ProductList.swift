@@ -37,7 +37,7 @@ class ProductList: BaseListModel {
         product.assignObject(productObject)
         list.append(product)
       }
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchProductListSuccess, object: nil)
+      postNotification(kNotificationFetchProductListSuccess)
     }
   }
 }

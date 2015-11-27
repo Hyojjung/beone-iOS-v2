@@ -30,9 +30,7 @@ class ButtonContentsView: TemplateContentsView {
   @IBAction func buttonClicked(sender: AnyObject) { //Touch Up Inside action
     button.backgroundColor = unpressedBackgroundColor
     if let templateId = templateId {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationDoAction,
-        object: nil,
-        userInfo: [kNotificationKeyTemplateId: templateId])
+      postNotification(kNotificationDoAction, userInfo: [kNotificationKeyTemplateId: templateId])
     }
   }
   

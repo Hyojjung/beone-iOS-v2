@@ -14,14 +14,7 @@ class BaseViewController: UIViewController {
     return loadingView
   }()
   
-  lazy var tapRecognizer: UITapGestureRecognizer = {
-    let tapRecognizer = UITapGestureRecognizer(target: self, action: "endEditing")
-    return tapRecognizer
-  }()
-  
-  func endEditing() {
-    view.endEditing(true)
-  }
+  let locationList = LocationList()
   
   // MARK: - View Cycle
   
@@ -105,5 +98,9 @@ class BaseViewController: UIViewController {
   
   func stopIndicator() {
     loadingView.hide()
+  }
+  
+  func endEditing() {
+    view.endEditing(true)
   }
 }

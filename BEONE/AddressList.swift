@@ -1,10 +1,3 @@
-//
-//  AddressList.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 25..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 
@@ -17,6 +10,14 @@ class AddressList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    print(data)
+    if let addressList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+      list.removeAll()
+      for addressObject in addressList {
+        let address = Address()
+        address.assignObject(addressObject)
+        list.append(address)
+      }
+      postNotification(kNotificationFetchAddressListSuccess)
+    }
   }
 }

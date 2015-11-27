@@ -25,7 +25,7 @@ class CartItem: BaseModel {
     return {(result) -> Void in
       if let data = result as? [String: AnyObject] {
         self.id = data[kObjectPropertyKeyId] as? Int
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationPostCartItemSuccess, object: nil)
+        self.postNotification(kNotificationPostCartItemSuccess)
       }
     }
   }

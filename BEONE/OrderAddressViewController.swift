@@ -19,7 +19,7 @@ class OrderAddressViewController: BaseViewController {
   var addressList = AddressList()
   
   // MARK: - Init & Deinit
-
+  
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     addViewObservers()
@@ -31,11 +31,6 @@ class OrderAddressViewController: BaseViewController {
   
   // MARK: - BaseViewController Methods
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "", name: kNotificationFetchMyInfoSuccess, object: nil)
-  }
-  
   override func setUpView() {
     super.setUpView()
     
@@ -46,6 +41,14 @@ class OrderAddressViewController: BaseViewController {
     self.senderPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     self.receiverNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     self.receiverPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+  }
+  
+  override func addObservers() {
+    super.addObservers()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleValidationResult:",
+      name: kNotificationValidateAddressSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAddressList",
+      name: kNotificationFetchAddressListSuccess, object: nil)
   }
   
   override func removeObservers() {
@@ -71,7 +74,7 @@ extension OrderAddressViewController {
   }
   
   @IBAction func sendAddressButtonTapped() {
-    view.endEditing(true)
+    endEditing()
     if let error = errorMessage() {
       showAlertView(error)
     } else {
@@ -82,6 +85,7 @@ extension OrderAddressViewController {
       order.isSecret = secretButton.selected
       order.address = address
       order.deliveryMemo = deliveryMemoTextView.text
+      BEONEManager.selectedLocation?.validate(address.jibunAddress)
     }
   }
 }
@@ -102,10 +106,27 @@ extension OrderAddressViewController {
             addressComponentsDictionary[first] = component.last
           }
         }
-        self.address.assignObject(addressComponentsDictionary)
+        self.address.assign(addressComponentsDictionary)
         setUpAddressView()
       }
     }
+  }
+  
+  func handleValidationResult(notification: NSNotification) {
+    if let userInfo = notification.userInfo, isValid = userInfo[kNotificationKeyIsValid] as? Bool {
+      if isValid {
+        performSegueWithIdentifier("From Order Address To Order", sender: nil)
+      } else {
+        performSegueWithIdentifier("From Order Address To Invalid Address", sender: nil)
+      }
+    }
+  }
+  
+  func handleAddressList() {
+    if addressList.list.count > 0 {
+      address = addressList.list.first as! Address
+    }
+    setUpAddressView()
   }
 }
 
@@ -119,10 +140,7 @@ extension OrderAddressViewController {
       zonecodeLabel.text = "\(zipcode1) - \(zipcode2)"
     }
     
-    var addressString = address.addressType == .Jibun ? address.jibunAddress : address.roadAddress
-    if let buildingName = address.buildingName, address = addressString {
-      addressString = "\(address) (\(buildingName))"
-    }
+    let addressString = address.addressType == .Jibun ? address.jibunAddress : address.roadAddress
     if addressTextField.text != addressString {
       addressTextField.text = addressString
       detailAddressTextField.text = nil
@@ -132,6 +150,7 @@ extension OrderAddressViewController {
   func addViewObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAddress:",
       name: kNotificationAddressSelected, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpSenderWithMyInfo", name: kNotificationFetchMyInfoSuccess, object: nil)
   }
   
   func removeViewObservers() {
@@ -175,7 +194,7 @@ extension OrderAddressViewController {
   }
   
   func textFieldDidChange(textField: UITextField) {
-    if sameButton.selected && textField == senderNameTextField || textField == senderPhoneTextField {
+    if sameButton.selected && (textField == senderNameTextField || textField == senderPhoneTextField) {
       setUpSenderAndReceiverView()
     } else if sameButton.selected && textField == receiverNameTextField || textField == receiverPhoneTextField {
       sameButtonTapped(sameButton)
@@ -190,7 +209,7 @@ extension OrderAddressViewController {
     } else if textField == receiverNameTextField {
       receiverPhoneTextField.becomeFirstResponder()
     } else if textField == receiverPhoneTextField {
-      view.endEditing(true)
+      endEditing()
     }
     return true
   }

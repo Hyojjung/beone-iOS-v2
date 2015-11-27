@@ -184,6 +184,36 @@ extension UIView {
   }
 }
 
+// MARK: - CenterX Layout Methods
+
+extension UIView {
+  func addCenterXLayout(subView: UIView, constant: CGFloat) {
+    addCenterXMarginLayout(subView, constant: constant, layoutAttribute: .CenterX)
+  }
+  
+  func addCenterXLayout(subView: UIView) {
+    addCenterXLayout(subView, constant: 0)
+  }
+  
+  func addCenterXMarginLayout(subView: UIView, constant: CGFloat) {
+    addCenterXMarginLayout(subView, constant: constant, layoutAttribute: .CenterXWithinMargins)
+  }
+  
+  func addCenterXMarginLayout(subView: UIView) {
+    addCenterXMarginLayout(subView, constant: 0)
+  }
+  
+  private func addCenterXMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .CenterX,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: -constant))
+  }
+}
+
 extension UIViewController {
   func addVerticalLayoutGuideLayout(subView: UIView) {
     view.addConstraint(NSLayoutConstraint(item: subView,

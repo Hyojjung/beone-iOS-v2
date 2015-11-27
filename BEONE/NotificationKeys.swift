@@ -1,6 +1,4 @@
 
-let kNotificationDoAction = "NotificationDoAction"
-let kNotificationContentsViewLayouted = "NotificationContentsViewLayouted"
 let kNotificationSigningSuccess = "NotificationSigningSuccess"
 let kNotificationLogOutSuccess = "NotificationLogOutSuccess"
 let kNotificationSigningFailure = "NotificationSigningFailure"
@@ -20,9 +18,16 @@ let kNotificationPostCartItemSuccess = "NotificationPostCartItemSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 let kNotificationFetchMyInfoSuccess = "NotificationFetchMyInfoSuccess"
+let kNotificationFetchLocationListSuccess = "NotificationFetchLocationListSuccess"
+let kNotificationFetchAddressListSuccess = "NotificationFetchAddressListSuccess"
+let kNotificationValidateAddressSuccess = "NotificationValidateAddressSuccess"
 
 let kNotificationProductDetailImageTapped = "NotificationProductDetailImageTapped"
+let kNotificationLocationButtonTapped = "NotificationLocationButtonTapped"
+let kNotificationDoAction = "NotificationDoAction"
+let kNotificationContentsViewLayouted = "NotificationContentsViewLayouted"
 let kNotificationKeyIndex = "NotificationKeyIndex"
+let kNotificationKeyIsValid = "NotificationKeyIsValid"
 let kNotificationKeyView = "NotificationKeyView"
 
 let kNotificationShowAlert = "NotificationShowAlert"
