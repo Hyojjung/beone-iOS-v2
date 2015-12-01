@@ -14,10 +14,14 @@ class FirstViewController: TemplateListViewController {
   
   @IBAction func product(sender: AnyObject) {
     let product = Product()
-    product.id = 2
+    product.id = 6
     BEONEManager.selectedProduct = product
     
-    showViewController("ProductDetail", viewIdentifier: "productDetailView")
+    showProductView()
+  }
+  
+  @IBAction func cart(sender: AnyObject) {
+    showViewController("Cart", viewIdentifier: "CartView")
   }
   
   override func viewWillDisappear(animated: Bool) {
@@ -49,7 +53,7 @@ class FirstViewController: TemplateListViewController {
   }
 }
 
-// MARK: - Private Methods 
+// MARK: - Private Methods
 
 extension FirstViewController {
   func addTitleViewConstraints() {
@@ -96,7 +100,7 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kTemplateTableViewCellIdentifier, forIndexPath: indexPath) as! TemplateTableViewCell
+    let cell = tableView.cell(kTemplateTableViewCellIdentifier, indexPath: indexPath) as! TemplateTableViewCell
     cell.configureCell(templateList.list[indexPath.row] as! Template)
     return cell
   }

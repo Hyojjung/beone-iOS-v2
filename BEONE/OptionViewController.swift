@@ -19,6 +19,12 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Property
   
   private var product = BEONEManager.selectedProduct
+  private lazy var cartItem: CartItem = {
+    if let cartItem = BEONEManager.selectedCartItem {
+      return cartItem
+    }
+    return CartItem()
+  }()
   private var selectedProductOrderableInfo: ProductOrderableInfo?
   private var deliveryTypeNames = [String]()
   private var productQuantity = 1
@@ -40,7 +46,12 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Observer Actions
   
   func setUpProductData() {
-    if product?.productOrderableInfos.count == 1 {
+    if let cartItem = BEONEManager.selectedCartItem {
+      selectedProductOrderableInfo = cartItem.productOrderableInfo
+      if let quantity = cartItem.quantity {
+        productQuantity = quantity
+      }
+    } else if product?.productOrderableInfos.count == 1 {
       selectedProductOrderableInfo = product?.productOrderableInfos.first
     }
     deliveryTypeNames.removeAll()
@@ -56,7 +67,7 @@ class OptionViewController: BaseTableViewController {
   
   func handlePostCartItemSuccess() {
     if BEONEManager.ordering {
-      showViewController(kOrderStoryboardName, viewIdentifier: kOrderAddressViewIdentifier)
+      showOrderView()
     } else {
       popView()
     }
@@ -68,11 +79,14 @@ class OptionViewController: BaseTableViewController {
 extension OptionViewController {
   @IBAction func sendCart() {
     if let product = product, productOrderableInfo = selectedProductOrderableInfo {
-      let cartItem = CartItem()
-      cartItem.productId = product.id
-      cartItem.productOrderableInfoId = productOrderableInfo.id
+      cartItem.product = product
+      cartItem.productOrderableInfo = productOrderableInfo
       cartItem.quantity = productQuantity
-      cartItem.post()
+      if cartItem == BEONEManager.selectedCartItem {
+        cartItem.put()
+      } else {
+        cartItem.post()
+      }
     }
   }
   
@@ -113,8 +127,7 @@ extension OptionViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kOptionTableViewCellIdentifiers[indexPath.section],
-      forIndexPath: indexPath)
+    let cell = tableView.cell(kOptionTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)

@@ -29,7 +29,6 @@ class LocationList: BaseListModel {
   
   func locationNames() -> [String] {
     var names = [String]()
-    print(self)
     for location in list as! [Location] {
       if let locationName = location.name {
         names.append(locationName)

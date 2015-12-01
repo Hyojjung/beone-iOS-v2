@@ -13,10 +13,17 @@ let kOrderStoryboardName = "Order"
 let kSigningNavigationViewIdentifier = "SigningNavigationView"
 let kShopViewIdentifier = "ShopView"
 let kProductOptionViewIdentifier = "ProductOptionView"
-let kOrderAddressViewIdentifier = "OrderAddressView"
+let kProductDetailViewIdentifier = "ProductDetailView"
+let kDeliveryDateViewViewIdentifier = "DeliveryDateView"
 
 // MARK: - View Nib Names
 
 let kMainTitleViewNibName = "MainTitleView"
 let kSimpleProductViewNibName = "SimpleProductView"
 let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
+
+// MARK: - Cell Identifier
+
+let kDeliveryTypeCellIdentifier = "deliveryTypeCell"
+let kShopNameCellIdentifier = "shopNameCell"
+

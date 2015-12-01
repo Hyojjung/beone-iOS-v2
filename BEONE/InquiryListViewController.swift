@@ -27,7 +27,7 @@ extension InquiryListViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("myInquiryCell", forIndexPath: indexPath)
+    let cell = tableView.cell("myInquiryCell", indexPath: indexPath)
     (cell as? InquiryCell)?.configureCell(inquiryList.list[indexPath.row] as! Inquiry, indexPath: indexPath)
     return cell
   }

@@ -22,7 +22,7 @@ extension ReviewListViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell", forIndexPath: indexPath)
+    let cell = tableView.cell("reviewCell", indexPath: indexPath)
     return cell
   }
 }

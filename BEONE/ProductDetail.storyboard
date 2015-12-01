@@ -1159,7 +1159,7 @@
         <!--Product Detail View Controller-->
         <scene sceneID="bAb-sl-Qk0">
             <objects>
-                <viewController storyboardIdentifier="productDetailView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0O0-Tf-ajG" customClass="ProductDetailViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0O0-Tf-ajG" customClass="ProductDetailViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Zd-44-5M8"/>
                         <viewControllerLayoutGuide type="bottom" id="cNr-0v-VsF"/>

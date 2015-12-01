@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -36,11 +37,18 @@
                                                 <action selector="signInButtonTapped" destination="9pv-A4-QxB" id="40v-fV-r7z"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="product" id="wVF-ho-jtF">
-                                            <connections>
-                                                <action selector="product:" destination="9pv-A4-QxB" id="1gn-ok-oIj"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="cart" id="Qg8-9s-gli">
+                                                <connections>
+                                                    <action selector="cart:" destination="9pv-A4-QxB" id="Gs9-gR-7gg"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="product" id="wVF-ho-jtF">
+                                                <connections>
+                                                    <action selector="product:" destination="9pv-A4-QxB" id="1gn-ok-oIj"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

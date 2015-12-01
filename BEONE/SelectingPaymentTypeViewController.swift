@@ -1,10 +1,3 @@
-//
-//  SelectingPaymentTypeViewController.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 26..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 
@@ -58,7 +51,7 @@ extension SelectingPaymentTypeViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
+    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
     return cell
   }
   

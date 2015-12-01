@@ -98,8 +98,7 @@ extension SettingViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kSettingTableViewCellIdentifiers[indexPath.section],
-      forIndexPath: indexPath)
+    let cell = tableView.cell(kSettingTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
     
     switch SettingTableViewSection(rawValue: indexPath.section)! {
     case .Profile:

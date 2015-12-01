@@ -33,9 +33,9 @@ let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
 #endif
 
-enum NetworkErrorCode: String {
-  case TokenExpired = "1002"
-  case Invalid = "1001"
+enum NetworkErrorCode: Int {
+  case TokenExpired = 1101
+  case Invalid = 1100
 }
 
 enum NetworkErrorKey: String {
@@ -71,11 +71,12 @@ class NetworkHelper: NSObject {
       print("responseObject: \(responseObject)")
     #endif
     
-    if let responseObject = responseObject, statusCode = operation.response?.statusCode {
-      var errorCode: String? = nil
+    if let responseObject = responseObject as? [String: AnyObject],
+      statusCode = operation.response?.statusCode {
+      var errorCode: Int? = nil
       var errorKey: String? = nil
       if let errorObject = responseObject[kNetworkResponseKeyError] as? [String: String] {
-        errorCode = errorObject[kNetworkErrorKeyCode]
+        errorCode = responseObject[kNetworkErrorKeyCode] as? Int
         errorKey = errorObject[kNetworkErrorKeyKey]
       }
       let myInfo = MyInfo.sharedMyInfo()
@@ -83,15 +84,16 @@ class NetworkHelper: NSObject {
         // TODO: show alert view with "서버 점검 중"
       } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
         // TODO: show alert view with "something wrong in server"
-      } else if statusCode == NetworkResponseCode.Invalid.rawValue {
+      } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
         if errorCode != nil && errorKey != nil {
-          if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && myInfo.refreshToken == nil {
+          if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && !myInfo.isUser() {
             myInfo.accessToken = nil
             SigningHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
           } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
             myInfo.refreshToken = nil
             SigningHelper.signInForNonUser(success)
-          } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue {
+          } else if (errorCode == NetworkErrorCode.TokenExpired.rawValue || errorCode == NetworkErrorCode.Invalid.rawValue) &&
+            errorKey == NetworkErrorKey.AccessToken.rawValue {
             myInfo.accessToken = nil
             AuthenticationHelper.refreshToken(signingSuccess(operation, success: success, failure: failure))
           }

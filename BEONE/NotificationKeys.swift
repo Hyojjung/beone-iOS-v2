@@ -20,6 +20,8 @@ let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPass
 let kNotificationFetchMyInfoSuccess = "NotificationFetchMyInfoSuccess"
 let kNotificationFetchLocationListSuccess = "NotificationFetchLocationListSuccess"
 let kNotificationFetchAddressListSuccess = "NotificationFetchAddressListSuccess"
+let kNotificationFetchCartListSuccess = "NotificationFetchCartListSuccess"
+let kNotificationFetchOrderSuccess = "NotificationFetchOrderSuccess"
 let kNotificationValidateAddressSuccess = "NotificationValidateAddressSuccess"
 
 let kNotificationProductDetailImageTapped = "NotificationProductDetailImageTapped"

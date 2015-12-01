@@ -22,6 +22,7 @@ class Product: BaseModel {
   private let kProductPropertyKeyShop = "shop"
   private let kProductPropertyKeyProductOrderableInfos = "productOrderableInfos"
   private let kProductPropertyKeyProductDetails = "productDetails"
+  private let kProductPropertyKeyIsSoldOut = "isSoldOut"
   
   var mainImageUrl: String?
   var title: String?
@@ -82,6 +83,7 @@ class Product: BaseModel {
         precaution = product[kProductPropertyKeyPrecaution] as? String
         contact = product[kProductPropertyKeyContact] as? String
         onSale = product[kProductPropertyKeyOnSale] as? Bool
+        soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool
         assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
         assignProductDetails(product[kProductPropertyKeyProductDetails])
         if let shopObject = product[kProductPropertyKeyShop]{
@@ -144,6 +146,10 @@ extension Product {
     }
     return imageUrls
   }
+  
+  func isSoldOut() -> Bool {
+    return soldOut != nil && soldOut! == true
+  }
 }
 
 extension Int {
@@ -151,12 +157,18 @@ extension Int {
     case None = ""
     case English = " won"
     case Korean = " 원"
+    case KoreanFreeNotation = "무료"
   }
   
   func priceNotation(notationType: NotationType) -> String {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .DecimalStyle
-    if let priceNotation = formatter.stringFromNumber(NSNumber(integer: self)) {
+    if notationType == .KoreanFreeNotation && self == 0 {
+      return notationType.rawValue
+    } else if let priceNotation = formatter.stringFromNumber(NSNumber(integer: self)) {
+      if notationType == .KoreanFreeNotation {
+        return "\(priceNotation)\(NotationType.Korean.rawValue)"
+      }
       return "\(priceNotation)\(notationType.rawValue)"
     }
     return "0\(notationType.rawValue)"

@@ -80,6 +80,23 @@ extension UIViewController {
   func showSigningView() {
     presentViewController(kSigningStoryboardName, viewIdentifier: kSigningNavigationViewIdentifier)
   }
+  
+  func showOrderView() {
+    showViewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier)
+  }
+  
+  func showProductView() {
+    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier)
+  }
+  
+  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil,
+    ordering: Bool = false, rightOrdering: Bool = false) {
+      BEONEManager.selectedProduct = selectedProduct
+      BEONEManager.selectedCartItem = selectedCartItem
+      BEONEManager.ordering = ordering
+      BEONEManager.rightOrdering = rightOrdering
+    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+  }
 }
 
 extension UIViewController {
