@@ -11,14 +11,20 @@ class TemplateView: TemplateContentsView {
     return imageView
   }()
   
+  var contentView: TemplateContentsView?
+  
   override func layoutView(template: Template) {
     configureViewHierarchy()
     configureStyle(template.style)
     
     if let type = template.type,
       contentView = UIView.loadFromNibName(TemplateHelper.viewNibName(type)) as? TemplateContentsView {
-        templateContentsView.addSubViewAndEdgeMarginLayout(contentView)
-        contentView.layoutView(template)
+        if self.contentView?.className() != contentView.className() {
+          self.contentView?.removeFromSuperview()
+          self.contentView = contentView
+          templateContentsView.addSubViewAndEdgeMarginLayout(self.contentView!)
+        }
+        self.contentView?.layoutView(template)
     }
   }
   
@@ -30,6 +36,9 @@ class TemplateView: TemplateContentsView {
   }
   
   private func configureStyle(style: TemplateStyle?) {
+    backgroundImageView.image = nil
+    templateContentsView.backgroundColor = nil
+    templateContentsView.layoutMargins = UIEdgeInsetsZero
     if let style = style {
       layoutMargins = style.margin
       templateContentsView.layoutMargins = style.padding

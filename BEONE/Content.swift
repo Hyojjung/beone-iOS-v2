@@ -11,12 +11,16 @@ let kContentsPropertyKeyIsBold = "isBold"
 let kContentsPropertyKeyIsItalic = "isItalic"
 let kContentsPropertyKeyIsCancelLined = "isCancelLined"
 let kContentsPropertyKeySize = "size"
+let kContentsPropertyKeyTextSize = "textSize"
 let kContentsPropertyKeyImageUrl = "imageUrl"
 let kContentsPropertyKeyBackgroundImageUrl = "backgroundImageUrl"
 let kContentsPropertyKeyPressedBackgroundImageUrl = "pressedBackgroundImageUrl"
 let kContentsPropertyKeyPressedBackgroundColor = "pressedBackgroundColor"
 let kContentsPropertyKeyBorderColor = "borderColor"
 let kContentsPropertyKeyAction = "action"
+let kContentsPropertyKeyHasSpace = "hasSpace"
+let kContentsPropertyKeyRow = "row"
+let kContentsPropertyKeyColumn = "col"
 
 enum Alignment: String {
   case Left = "left"
@@ -24,8 +28,15 @@ enum Alignment: String {
   case Right = "right"
 }
 
-class Contents: BaseModel {
+class Content: BaseModel {
   var action = Action()
+  
+  lazy var items: [Content] = {
+    return [Content]()
+  }()
+  var hasSpace: Bool?
+  var row: Int?
+  var column: Int?
   
   var text: String?
   var alignment: Alignment?
@@ -39,6 +50,7 @@ class Contents: BaseModel {
   var pressedBackgroundColor: UIColor?
   var borderColor: UIColor?
   var size: CGFloat?
+  var textSize: CGFloat?
   var imageUrl: String?
   var backgroundImageUrl: String?
   var pressedBackgroundImageUrl: String?
@@ -59,6 +71,11 @@ class Contents: BaseModel {
       isItalic = contents[kContentsPropertyKeyIsItalic] as? Bool
       isCancelLined = contents[kContentsPropertyKeyIsCancelLined] as? Bool
       size = contents[kContentsPropertyKeySize] as? CGFloat
+      textSize = contents[kContentsPropertyKeyTextSize] as? CGFloat
+      hasSpace = contents[kContentsPropertyKeyHasSpace] as? Bool
+      row = contents[kContentsPropertyKeyRow] as? Int
+      column = contents[kContentsPropertyKeyColumn] as? Int
+      
       if let borderColor = contents[kContentsPropertyKeyBorderColor] as? String {
         self.borderColor = UIColor(rgba: borderColor)
       }
@@ -79,6 +96,14 @@ class Contents: BaseModel {
       }
       if let action = contents[kContentsPropertyKeyAction] {
         self.action.assignObject(action)
+      }
+      
+      if let itemsObject = contents["items"] as? [[String: AnyObject]] {
+        for itemObject in itemsObject {
+          let item = Content()
+          item.assignObject(itemObject)
+          items.append(item)
+        }
       }
     }
   }

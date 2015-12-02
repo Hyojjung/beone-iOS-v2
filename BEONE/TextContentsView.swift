@@ -9,16 +9,20 @@ class TextContentsView: TemplateContentsView {
   
   // MARK: - Override Methods
   
+  override func className() -> String {
+    return "Text"
+  }
+  
   override func layoutView(template: Template) {
-    if let textContents = template.contents.first, text = textContents.text {
-      configureLabelAlignment(textContents)
+    if let text = template.content.text {
+      configureLabelAlignment(template.content)
       
       let attributedString = NSMutableAttributedString(string: text)
-      configureUnderlined(attributedString, textContents: textContents)
-      configureCancelLined(attributedString, textContents: textContents)
-      configureBackgroundColor(attributedString, textContents: textContents)
-      configureTextColor(attributedString, textContents: textContents)
-      configureFontAndSize(attributedString, textContents: textContents)
+      configureUnderlined(attributedString, textContent: template.content)
+      configureCancelLined(attributedString, textContent: template.content)
+      configureBackgroundColor(attributedString, textContent: template.content)
+      configureTextColor(attributedString, textContent: template.content)
+      configureFontAndSize(attributedString, textContent: template.content)
       textLabel.attributedText = attributedString
     }
     templateId = template.id
@@ -34,7 +38,7 @@ class TextContentsView: TemplateContentsView {
   
   // MARK: - Private Methods
   
-  private func configureLabelAlignment(textContents: Contents?) {
+  private func configureLabelAlignment(textContents: Content?) {
     checkTextContents(textContents) { (textContents, _) -> Void in
       let alignment = textContents.alignment != nil ? textContents.alignment : Alignment.Left
       switch alignment! {
@@ -48,8 +52,8 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func configureFontAndSize(attributedString: NSMutableAttributedString, textContents: Contents?) {
-    checkTextContents(textContents) { (textContents, text) -> Void in
+  private func configureFontAndSize(attributedString: NSMutableAttributedString, textContent: Content?) {
+    checkTextContents(textContent) { (textContents, text) -> Void in
       let isBold = textContents.isBold != nil && textContents.isBold!
       let isItalic = textContents.isItalic != nil && textContents.isItalic!
       let size = textContents.size != nil ? textContents.size : kDefaultTextSize
@@ -72,8 +76,8 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func configureUnderlined(attributedString: NSMutableAttributedString, textContents: Contents?) {
-    checkTextContents(textContents) { (textContents, text) -> Void in
+  private func configureUnderlined(attributedString: NSMutableAttributedString, textContent: Content?) {
+    checkTextContents(textContent) { (textContents, text) -> Void in
       if textContents.isUnderlined != nil && textContents.isUnderlined! {
         attributedString.addAttribute(NSUnderlineStyleAttributeName,
           value: NSUnderlineStyle.StyleSingle.rawValue,
@@ -82,8 +86,8 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func configureCancelLined(attributedString: NSMutableAttributedString, textContents: Contents?) {
-    checkTextContents(textContents) { (textContents, text) -> Void in
+  private func configureCancelLined(attributedString: NSMutableAttributedString, textContent: Content?) {
+    checkTextContents(textContent) { (textContents, text) -> Void in
       if textContents.isCancelLined != nil && textContents.isCancelLined! {
         attributedString.addAttribute(NSStrikethroughStyleAttributeName,
           value: NSUnderlineStyle.StyleSingle.rawValue,
@@ -92,8 +96,8 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func configureBackgroundColor(attributedString: NSMutableAttributedString, textContents: Contents?) {
-    checkTextContents(textContents) { (textContents, text) -> Void in
+  private func configureBackgroundColor(attributedString: NSMutableAttributedString, textContent: Content?) {
+    checkTextContents(textContent) { (textContents, text) -> Void in
       if let backgroundColor = textContents.backgroundColor {
         attributedString.addAttribute(NSBackgroundColorAttributeName,
           value: backgroundColor,
@@ -102,8 +106,8 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func configureTextColor(attributedString: NSMutableAttributedString, textContents: Contents?) {
-    checkTextContents(textContents) { (textContents, text) -> Void in
+  private func configureTextColor(attributedString: NSMutableAttributedString, textContent: Content?) {
+    checkTextContents(textContent) { (textContents, text) -> Void in
       if let textColor = textContents.textColor {
         attributedString.addAttribute(NSForegroundColorAttributeName,
           value: textColor,
@@ -112,9 +116,9 @@ class TextContentsView: TemplateContentsView {
     }
   }
   
-  private func checkTextContents(textContents: Contents?, ifTextContents: (Contents, String) -> Void) {
-    if let textContents = textContents, text = textContents.text {
-      ifTextContents(textContents, text)
+  private func checkTextContents(textContent: Content?, ifTextContent: (Content, String) -> Void) {
+    if let textContent = textContent, text = textContent.text {
+      ifTextContent(textContent, text)
     }
   }
 }

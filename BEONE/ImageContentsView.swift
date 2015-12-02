@@ -6,6 +6,10 @@ class ImageContentsView: TemplateContentsView {
   
   // MARK: - Override Methods
   
+  override func className() -> String {
+    return "Image"
+  }
+  
   override func layoutView(template: Template) {
     imageView.changeHeightLayoutConstant(template.height)
     imageView.setTemplateImage(template)

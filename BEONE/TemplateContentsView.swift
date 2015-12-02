@@ -8,6 +8,10 @@ class TemplateContentsView: UIView, TemplateContentsViewProtocol {
   func layoutView(template: Template) {
     preconditionFailure("This method must be overriden")
   }
+  
+  func className() -> String {
+    preconditionFailure("This method must be overriden")
+  }
 }
 
 protocol TemplateContentsViewProtocol {

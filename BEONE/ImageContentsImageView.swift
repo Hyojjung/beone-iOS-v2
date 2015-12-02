@@ -18,7 +18,7 @@ class ImageContentsImageView: LazyLoadingImageView, TemplateContentsViewProtocol
   
   func setTemplateImage(template: Template) {
     templateId = template.id
-    setLazyLoaingImage(template.contents.first?.imageUrl)
+    setLazyLoaingImage(template.content.imageUrl)
   }
   
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {

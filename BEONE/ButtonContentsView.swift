@@ -7,23 +7,25 @@ class ButtonContentsView: TemplateContentsView {
   var unpressedBackgroundColor: UIColor?
   var pressedBackgroundColor: UIColor?
   
+  override func className() -> String {
+    return "Button"
+  }
+  
   override func layoutView(template: Template) {
-    if let buttonContents = template.contents.first {
-      button.setTitle(buttonContents.text, forState: .Normal)
-      button.setTitleColor(buttonContents.textColor, forState: .Normal)
-      button.setTitleColor(buttonContents.pressedTextColor, forState: .Highlighted)
-      button.backgroundColor = buttonContents.backgroundColor
-      unpressedBackgroundColor = buttonContents.backgroundColor
-      pressedBackgroundColor = buttonContents.pressedBackgroundColor
-      
-      if let borderColor = buttonContents.borderColor {
-        button.layer.borderColor = borderColor.CGColor
-        button.layer.borderWidth = 1
-      }
-      
-      button.sd_setBackgroundImageWithURL(buttonContents.backgroundImageUrl?.url(), forState: .Normal)
-      button.sd_setBackgroundImageWithURL(buttonContents.pressedBackgroundImageUrl?.url(), forState: .Highlighted)
+    button.setTitle(template.content.text, forState: .Normal)
+    button.setTitleColor(template.content.textColor, forState: .Normal)
+    button.setTitleColor(template.content.pressedTextColor, forState: .Highlighted)
+    button.backgroundColor = template.content.backgroundColor
+    unpressedBackgroundColor = template.content.backgroundColor
+    pressedBackgroundColor = template.content.pressedBackgroundColor
+    
+    if let borderColor = template.content.borderColor {
+      button.layer.borderColor = borderColor.CGColor
+      button.layer.borderWidth = 1
     }
+    
+    button.sd_setBackgroundImageWithURL(template.content.backgroundImageUrl?.url(), forState: .Normal)
+    button.sd_setBackgroundImageWithURL(template.content.pressedBackgroundImageUrl?.url(), forState: .Highlighted)
     templateId = template.id
   }
   

@@ -16,9 +16,7 @@ class OrderHelper: NSObject {
           if let data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
             BEONEManager.selectedOrder.assignObject(data)
           }
-        }, failure: { (error) -> Void in
-          print(error)
-      })
+        }, failure: nil)
     }
   }
 }

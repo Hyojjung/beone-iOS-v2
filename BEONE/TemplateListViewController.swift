@@ -33,10 +33,10 @@ extension TemplateListViewController {
     if let userInfo = notification.userInfo,
       templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber,
       templateHeight = userInfo[kNotificationKeyHeight] as? CGFloat {
-        for template in templateList.list as! [Template] {
+        for (index, template) in (templateList.list as! [Template]).enumerate() {
           if template.id == templateId {
             template.height = templateHeight
-            tableView.reloadData()
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
             break;
           }
         }
@@ -47,16 +47,16 @@ extension TemplateListViewController {
     if let userInfo = notification.userInfo, templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber {
       for template in templateList.list as! [Template] {
         if template.id == templateId {
-          if template.contents.count == 1 {
-            template.contents.first?.action.action()
-          } else if let contentsId = userInfo[kNotificationKeyContentsId] as? NSNumber {
-            for contents in template.contents {
-              if contents.id == contentsId {
-                contents.action.action()
-                break;
-              }
-            }
-          }
+//          if template.contents.count == 1 {
+//            template.contents.first?.action.action()
+//          } else if let contentsId = userInfo[kNotificationKeyContentsId] as? NSNumber {
+//            for contents in template.contents {
+//              if contents.id == contentsId {
+//                contents.action.action()
+//                break;
+//              }
+//            }
+//          }
           break;
         }
       }
