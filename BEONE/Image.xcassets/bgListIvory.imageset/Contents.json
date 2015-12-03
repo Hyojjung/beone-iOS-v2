@@ -1,20 +1,6 @@
 {
   "images" : [
     {
-      "resizing" : {
-        "mode" : "9-part",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1,
-          "height" : 1
-        },
-        "cap-insets" : {
-          "bottom" : 2,
-          "top" : 1,
-          "right" : 2,
-          "left" : 1
-        }
-      },
       "idiom" : "universal",
       "filename" : "bgListIvory.png",
       "scale" : "1x"
