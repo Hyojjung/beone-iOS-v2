@@ -4,7 +4,7 @@ import UIKit
 class OrderableItem: BaseModel {
   var price: Int?
   var quantity: Int?
-  var availableTimeRanges = [AvailableTimeRange]()
+  var availableTimeRangeList = AvailableTimeRangeList()
   let product = Product()
   var cartItemId: Int?
   var productOrderableInfo = ProductOrderableInfo()
@@ -14,11 +14,11 @@ class OrderableItem: BaseModel {
       id = orderableItemset[kObjectPropertyKeyId] as? Int
       
       if let availableTimeRangesObject = orderableItemset["availableTimeRanges"] as? [[String: AnyObject]] {
-        availableTimeRanges.removeAll()
+        availableTimeRangeList.list.removeAll()
         for availableTimeRangeObject in availableTimeRangesObject {
           let availableTimeRange = AvailableTimeRange()
           availableTimeRange.assignObject(availableTimeRangeObject)
-          availableTimeRanges.append(availableTimeRange)
+          availableTimeRangeList.list.append(availableTimeRange)
         }
       }
       
@@ -36,22 +36,10 @@ class OrderableItem: BaseModel {
     }
   }
   
-  func availableDeliveryDates() -> [(Int, Int)] {
-    var deliveryDates = [(Int, Int)]()
-    for availableTimeRange in availableTimeRanges {
-      if let (month, day) = availableTimeRange.startDateTime?.dateComponent() {
-        if !deliveryDates.contains({ $0.0 == month && $0.1 == day }) { // for delivery date tuple 0 : month, 1 : day
-          deliveryDates.append((month, day))
-        }
-      }
-    }
-    return deliveryDates
-  }
-  
   func availableDeliveryDatesString() -> String {
     var deliveryDatesString = String()
     var deliveryMonthes = [Int]()
-    for availableDeliveryDate in availableDeliveryDates() {
+    for availableDeliveryDate in availableTimeRangeList.availableDeliveryDates() {
         if deliveryMonthes.contains(availableDeliveryDate.0) {
           deliveryDatesString += ", \(availableDeliveryDate.1)일"
         } else {
@@ -60,12 +48,5 @@ class OrderableItem: BaseModel {
         } // for delivery date tuple 0 : month, 1 : day
     }
     return deliveryDatesString
-  }
-  
-  override func copy() -> AnyObject {
-    let orderableItem = OrderableItem()
-    orderableItem.quantity = quantity
-    orderableItem.price = price
-    return orderableItem
   }
 }

@@ -56,6 +56,7 @@ class SigningHelper: NSObject {
     parameter[kSigningParameterKeyUserId] = userId
     parameter[kSigningParameterKeySnsToken] = token
     parameter[kSigningParameterKeyUserType] = kUserTypeSns
+    print(parameter)
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
@@ -63,8 +64,8 @@ class SigningHelper: NSObject {
       },
       failure: { (error) -> Void in
         if error.statusCode == NetworkResponseCode.Invalid.rawValue &&
-          error.errorKey == NetworkErrorKey.SnsInfos.rawValue &&
-          error.errorCode == NetworkErrorCode.Invalid.rawValue {
+          error.errorKey == NetworkErrorKey.Uid.rawValue &&
+          error.errorCode == NetworkErrorCode.NothingMathed.rawValue {
             postNotification(kNotificationNeedSignUp)
         }
     })

@@ -99,6 +99,7 @@ class Content: BaseModel {
       }
       
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {
+        items.removeAll()
         for itemObject in itemsObject {
           let item = Content()
           item.assignObject(itemObject)

@@ -35,10 +35,14 @@ class Order: BaseModel {
     postNotification(kNotificationFetchOrderSuccess)
   }
   
-  override func copy() -> AnyObject {
-    let order = Order()
-    order.price = price
-    order.orderableItemSets = orderableItemSets.map { ($0.copy() as! OrderableItemSet) }
-    return order
+  func deliveryTypeCellHeight(index: Int) -> Bool {
+    if let deliveryTypeId = orderableItemSets[index].deliveryType.id {
+      for (idx, orderItemSet) in orderableItemSets.enumerate() where idx < index {
+        if orderItemSet.deliveryType.id == deliveryTypeId {
+          return false
+        }
+      }
+    }
+    return true
   }
 }

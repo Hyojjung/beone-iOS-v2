@@ -143,7 +143,7 @@
     let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
     if let cell = cell as? DeliveryTypeImageCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
-        cellHeight: deliveryTypeCellHeight(indexPath.section))
+        needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ShopNameCell {
       cell.configureCell(order.orderableItemSets[indexPath.section])
     } else if let cell = cell as? OrderableItemCell {
@@ -153,17 +153,6 @@
       cell.configureCell(selectedCartItemOrder)
     }
     return cell
-  }
-  
-  func deliveryTypeCellHeight(section: Int) -> CGFloat {
-    if let deliveryTypeId = order.orderableItemSets[section].deliveryType.id {
-      for (index, orderItemSet) in order.orderableItemSets.enumerate() where index < section {
-        if orderItemSet.deliveryType.id == deliveryTypeId {
-          return 0
-        }
-      }
-    }
-    return 50
   }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {

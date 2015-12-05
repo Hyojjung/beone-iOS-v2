@@ -1,11 +1,17 @@
  
  class DeliveryTypeImageCell: UITableViewCell {
   @IBOutlet weak var heightConstraintView: UIView!
+  @IBOutlet weak var backgroundImageView: UIImageView!
   @IBOutlet weak var deliveryTypeImageView: LazyLoadingImageView!
   
-  func configureCell(orderableItemSet: OrderableItemSet, cellHeight: CGFloat) {
+  func configureCell(orderableItemSet: OrderableItemSet, needCell: Bool) {
     deliveryTypeImageView.setLazyLoaingImage(orderableItemSet.deliveryType.thumbnailImageUrl)
-//    heightConstraintView.changeHeightLayoutConstant(cellHeight)
+    heightConstraintView.changeHeightLayoutConstant(needCell ? 50 : 1)
+    if needCell {
+      backgroundImageView.image = UIImage(named: "pat_cart_delivery")
+    } else {
+      backgroundImageView.image = nil
+    }
   }
  }
  

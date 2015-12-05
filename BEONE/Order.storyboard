@@ -23,7 +23,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" rowHeight="127" id="RnZ-qF-bwr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" rowHeight="127" id="RnZ-qF-bwr" customClass="OrderItemCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RnZ-qF-bwr" id="n7d-sy-CkT">
@@ -37,7 +37,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
                                                             <animations/>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T6N-9T-Rrb">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T6N-9T-Rrb" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                             <rect key="frame" x="14" y="13" width="50" height="50"/>
                                                             <animations/>
                                                             <constraints>
@@ -151,6 +151,12 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="productCountLabel" destination="kPo-fl-za5" id="yqw-iz-pZN"/>
+                                            <outlet property="productImageView" destination="T6N-9T-Rrb" id="w1S-Fb-bs6"/>
+                                            <outlet property="productNameLabel" destination="oAX-mj-HlO" id="yld-Ty-C8M"/>
+                                            <outlet property="productPriceLabel" destination="T3Q-a8-v4E" id="Dg7-cL-ODy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryDateTypeCell" rowHeight="48" id="WTe-gT-F3f">
                                         <rect key="frame" x="0.0" y="155" width="600" height="48"/>
@@ -221,7 +227,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" rowHeight="132" id="HK1-ov-pRW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" rowHeight="132" id="HK1-ov-pRW" customClass="TimeCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="203" width="600" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HK1-ov-pRW" id="gpP-e9-CYZ">
@@ -254,6 +260,7 @@
                                                             </state>
                                                             <connections>
                                                                 <action selector="showCalendar:" destination="hFb-vV-qJU" eventType="touchUpInside" id="heo-ax-aQ1"/>
+                                                                <action selector="showCalenderButtonTapped:" destination="1rw-Bd-JIM" eventType="touchUpInside" id="DOY-6W-QmL"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜를 선택하세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdC-6n-fUj">
@@ -385,6 +392,12 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dateButton" destination="0AR-ny-A2k" id="p4G-Ef-iw3"/>
+                                            <outlet property="dateLabel" destination="PdC-6n-fUj" id="bUR-OQ-mcu"/>
+                                            <outlet property="timeButton" destination="fTL-iJ-osh" id="BYZ-a6-D4x"/>
+                                            <outlet property="timeLabel" destination="BIH-b8-VAq" id="97i-5s-b7g"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertCell" rowHeight="16" id="OAG-yT-4ea">
                                         <rect key="frame" x="0.0" y="335" width="600" height="16"/>

@@ -1,10 +1,3 @@
-//
-//  DateFormatter.swift
-//  BOFlorist
-//
-//  Created by 효정 김 on 2015. 8. 29..
-//  Copyright (c) 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 //
@@ -40,13 +33,13 @@ extension NSDate {
 //    }
 //  }
 //  
-//  func rangeReservationDateString() -> String {
-//    let dateFormatter = NSDateFormatter()
-//    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
-//    dateFormatter.dateFormat = "M월 d일 ";
-//    return dateFormatter.stringFromDate(self)
-//  }
-//  
+  func rangeReservationDateString() -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
+    dateFormatter.dateFormat = "yyyy년 M월 d일 E요일";
+    return dateFormatter.stringFromDate(self)
+  }
+//
 //  func pushDateString() -> String {
 //    let dateFormatter = NSDateFormatter()
 //    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")

@@ -2,7 +2,7 @@
 import UIKit
 
 class OrderableItemSet: BaseModel {
-  var availableTimeRanges = [AvailableTimeRange]()
+  var availableTimeRangeList = AvailableTimeRangeList()
   var orderableItems = [OrderableItem]()
   var deliveryPrice: Int?
   let location = Location()
@@ -10,18 +10,18 @@ class OrderableItemSet: BaseModel {
   let shop = Shop()
   
   override func assignObject(data: AnyObject) {
-    if let orderableItemset = data as? [String: AnyObject] {
-      id = orderableItemset[kObjectPropertyKeyId] as? Int
-      if let availableTimeRangesObject = orderableItemset["availableTimeRanges"] as? [[String: AnyObject]] {
-        availableTimeRanges.removeAll()
+    if let orderableItemSet = data as? [String: AnyObject] {
+      id = orderableItemSet[kObjectPropertyKeyId] as? Int
+      if let availableTimeRangesObject = orderableItemSet["availableTimeRanges"] as? [[String: AnyObject]] {
+        availableTimeRangeList.list.removeAll()
         for availableTimeRangeObject in availableTimeRangesObject {
           let availableTimeRange = AvailableTimeRange()
           availableTimeRange.assignObject(availableTimeRangeObject)
-          availableTimeRanges.append(availableTimeRange)
+          availableTimeRangeList.list.append(availableTimeRange)
         }
       }
       
-      if let orderableItemsObject = orderableItemset["orderableItems"] as? [[String: AnyObject]] {
+      if let orderableItemsObject = orderableItemSet["orderableItems"] as? [[String: AnyObject]] {
         orderableItems.removeAll()
         for orderableItemObject in orderableItemsObject {
           let orderableItem = OrderableItem()
@@ -30,29 +30,22 @@ class OrderableItemSet: BaseModel {
         }
       }
       
-      if let deliveryPriceInfo = orderableItemset["deliveryPriceInfo"] as? [String: AnyObject] {
+      if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject] {
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int
       }
       
-      if let locationObject = orderableItemset["location"] {
+      if let locationObject = orderableItemSet["location"] {
         location.assignObject(locationObject)
       }
       
-      if let deliveryTypeObject = orderableItemset["deliveryType"] {
+      if let deliveryTypeObject = orderableItemSet["deliveryType"] {
         deliveryType.assignObject(deliveryTypeObject)
       }
       
-      if let shopObject = orderableItemset["shop"] {
+      if let shopObject = orderableItemSet["shop"] {
         shop.assignObject(shopObject)
       }
     }
-  }
-  
-  override func copy() -> AnyObject {
-    let orderableItemSet = OrderableItemSet()
-    orderableItemSet.orderableItems = orderableItems.map { ($0.copy() as! OrderableItem) }
-    orderableItemSet.deliveryPrice = deliveryPrice
-    return orderableItemSet
   }
 }
 

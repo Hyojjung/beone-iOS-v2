@@ -36,12 +36,13 @@ let kBaseUrl = "https://devapi.beone.kr/"
 enum NetworkErrorCode: Int {
   case TokenExpired = 1101
   case Invalid = 1100
+  case NothingMathed = 1001
 }
 
 enum NetworkErrorKey: String {
   case AccessToken = "accessToken"
   case RefreshToken = "refreshToken"
-  case SnsInfos = "snsInfos"
+  case Uid = "uid"
 }
 
 class NetworkHelper: NSObject {
