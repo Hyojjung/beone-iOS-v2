@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
         SigningHelper.signInForNonUser({ (result) -> Void in
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
+          self.postNotification(kNotificationGuestAuthenticationSuccess)
         })
       }
     }
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
         SigningHelper.signInForNonUser({ (result) -> Void in
-          NSNotificationCenter.defaultCenter().postNotificationName(kNotificationGuestAuthenticationSuccess, object: nil)
+          self.postNotification(kNotificationGuestAuthenticationSuccess)
         })
       }
     }

@@ -20,12 +20,11 @@ class LazyLoadingImageView: UIImageView {
       if let image = image {
         if imageType == .Thumbnail {
           self.setLazyLoaingImage(urlString, imageType: .Basic)
-        } else if imageType == .Original && !LazyLoadingHelper.originalImageUrls.contains(urlString) {
-          LazyLoadingHelper.originalImageUrls.append(urlString)
         }
         self.setImageWithAnimation(image, cacheType: cacheType)
       } else {
-        if imageType != .Original {
+        if imageType != .Original && !LazyLoadingHelper.originalImageUrls.contains(urlString) {
+          LazyLoadingHelper.originalImageUrls.append(urlString)
           self.setLazyLoaingImage(urlString, imageType: .Original)
         }
       }
@@ -49,8 +48,8 @@ class LazyLoadingImageView: UIImageView {
   
   
   func setLazyLoaingImage(urlString: String?) {
-    sd_cancelCurrentImageLoad()
     if let urlString = urlString {
+      sd_cancelCurrentImageLoad()
       if LazyLoadingHelper.originalImageUrls.contains(urlString) {
         setLazyLoaingImage(urlString, imageType: .Original)
       } else {
@@ -78,7 +77,7 @@ class ProductDetailImageView: LazyLoadingImageView {
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
     super.setImageWithAnimation(image, cacheType: cacheType)
     if let image = self.image {
-      let height = image.size.height / image.size.width * frame.size.width
+      let height = image.size.heightFromRatio(frame.size.width)
       changeHeightLayoutConstant(height)
     }
   }

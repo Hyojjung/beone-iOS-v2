@@ -22,6 +22,7 @@ class Product: BaseModel {
   private let kProductPropertyKeyShop = "shop"
   private let kProductPropertyKeyProductOrderableInfos = "productOrderableInfos"
   private let kProductPropertyKeyProductDetails = "productDetails"
+  private let kProductPropertyKeyIsSoldOut = "isSoldOut"
   
   var mainImageUrl: String?
   var title: String?
@@ -82,13 +83,14 @@ class Product: BaseModel {
         precaution = product[kProductPropertyKeyPrecaution] as? String
         contact = product[kProductPropertyKeyContact] as? String
         onSale = product[kProductPropertyKeyOnSale] as? Bool
+        soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool
         assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
         assignProductDetails(product[kProductPropertyKeyProductDetails])
         if let shopObject = product[kProductPropertyKeyShop]{
           shop.assignObject(shopObject)
         }
         if isInList {
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchProductSuccess, object: nil)
+          postNotification(kNotificationFetchProductSuccess)
         }
       }
     }
@@ -107,7 +109,7 @@ class Product: BaseModel {
   
   private func assignProductDetails(productDetailsObject: AnyObject?) {
     if let productDetailsObject = productDetailsObject as? [[String: AnyObject]] {
-      productOrderableInfos.removeAll()
+      productDetails.removeAll()
       for productDetailObject in productDetailsObject {
         let productDetail = ProductDetail()
         productDetail.assignObject(productDetailObject)
@@ -117,7 +119,7 @@ class Product: BaseModel {
   }
 }
 
-// MARK: - Private Methods
+// MARK: - Publice Methods
 
 extension Product {
   func priceAttributedString() -> NSAttributedString? {
@@ -131,6 +133,23 @@ extension Product {
     }
     return nil
   }
+  
+  func productDetailImageUrls() -> [String] {
+    var imageUrls = [String]()
+    for productDetail in productDetails {
+      if productDetail.detailType == .Image && productDetail.content != nil {
+        imageUrls.append(productDetail.content!)
+      }
+    }
+    if imageUrls.isEmpty && mainImageUrl != nil {
+      imageUrls.append(mainImageUrl!)
+    }
+    return imageUrls
+  }
+  
+  func isSoldOut() -> Bool {
+    return soldOut != nil && soldOut! == true
+  }
 }
 
 extension Int {
@@ -138,12 +157,18 @@ extension Int {
     case None = ""
     case English = " won"
     case Korean = " 원"
+    case KoreanFreeNotation = "무료"
   }
   
   func priceNotation(notationType: NotationType) -> String {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .DecimalStyle
-    if let priceNotation = formatter.stringFromNumber(NSNumber(integer: self)) {
+    if notationType == .KoreanFreeNotation && self == 0 {
+      return notationType.rawValue
+    } else if let priceNotation = formatter.stringFromNumber(NSNumber(integer: self)) {
+      if notationType == .KoreanFreeNotation {
+        return "\(priceNotation)\(NotationType.Korean.rawValue)"
+      }
       return "\(priceNotation)\(notationType.rawValue)"
     }
     return "0\(notationType.rawValue)"

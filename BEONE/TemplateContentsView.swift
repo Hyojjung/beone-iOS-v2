@@ -8,6 +8,10 @@ class TemplateContentsView: UIView, TemplateContentsViewProtocol {
   func layoutView(template: Template) {
     preconditionFailure("This method must be overriden")
   }
+  
+  func className() -> String {
+    preconditionFailure("This method must be overriden")
+  }
 }
 
 protocol TemplateContentsViewProtocol {
@@ -23,8 +27,7 @@ extension UIView {
           Int(constraint.constant) != Int(height) &&
           constraint.isMemberOfClass(NSLayoutConstraint) {
             constraint.constant = height
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationContentsViewLayouted,
-              object: nil,
+            postNotification(kNotificationContentsViewLayouted,
               userInfo: [kNotificationKeyTemplateId: templateId!, kNotificationKeyHeight: height])
             break;
         }

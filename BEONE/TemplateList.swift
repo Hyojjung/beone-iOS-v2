@@ -12,7 +12,7 @@ class TemplateList: BaseListModel {
           list.append(template)
         }
       }
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchTemplateListSuccess, object: nil)
+      postNotification(kNotificationFetchTemplateListSuccess)
     }
   }
   

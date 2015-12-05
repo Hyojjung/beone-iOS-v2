@@ -3,7 +3,10 @@ import UIKit
 
 class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var imageScrollView: XLCCycleScrollView!
-  let imageUrls = ["/resources/images/products/josephflower/10.jpg", "/resources/images/products/wilddelicious/02.jpg", "/resources/images/products/candlysophie/07.jpg"]
+  @IBOutlet weak var productNameLabel: UILabel!
+  var imageUrls: [String]?
+  
+  // TODO: - labels?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -11,32 +14,43 @@ class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
     imageScrollView.delegate = self
   }
   
+  func configureCell(product: Product) {
+    productNameLabel.text = product.title
+    imageUrls = product.productDetailImageUrls()
+    imageScrollView.reloadData()
+  }
 }
 
 // MARK: - XLCCycleScrollViewDatasource
 
 extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDatasource {
   func numberOfPages() -> Int {
-    return imageUrls.count
+    if let imageUrls = imageUrls {
+      return imageUrls.count
+    }
+    return 0
   }
   
-  func pageAtIndex(var index: Int) -> UIView! {
-    while index >= imageUrls.count && imageUrls.count != 0 {
-      index -= imageUrls.count
+  func pageAtIndex(index: Int) -> UIView! {
+    if let imageUrls = imageUrls {
+      let viewFrame = CGRectMake(0, 0, frame.width, frame.height)
+      let imageUrl = imageUrls[index]
+      let view = UIView(frame: viewFrame)
+      let imageView = LazyLoadingImageView()
+      imageView.frame = viewFrame
+      imageView.contentMode = .ScaleAspectFill
+      imageView.clipsToBounds = true
+      imageView.setLazyLoaingImage(imageUrl)
+      view.addSubview(imageView)
+      return view
     }
-    let viewFrame = CGRectMake(0, 0, frame.width, frame.height)
-    let imageUrl = imageUrls[index]
-    let view = UIView(frame: viewFrame)
-    let imageView = LazyLoadingImageView()
-    imageView.frame = viewFrame
-    imageView.contentMode = .ScaleAspectFill
-    imageView.clipsToBounds = true
-    imageView.setLazyLoaingImage(imageUrl)
-    view.addSubview(imageView)
-    return view
+    return nil
   }
 }
 
 extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDelegate {
-  
+  func didClickPage(csView: XLCCycleScrollView!, atIndex index: Int) {
+    postNotification(kNotificationProductDetailImageTapped,
+      userInfo: [kNotificationKeyIndex: index, kNotificationKeyView: csView])
+  }
 }

@@ -2,6 +2,10 @@
 import Foundation
 import CoreData
 
+let kMyInfoPropertyKeyEmail = "email"
+let kMyInfoPropertyKeyName = "name"
+let kMyInfoPropertyKeyPoint = "point"
+
 class MyInfo: NSManagedObject {
   
   private static let entityName = "MyInfo"
@@ -25,13 +29,27 @@ class MyInfo: NSManagedObject {
     }
   }
   
+  func fetch() {
+    if let userId = userId {
+      NetworkHelper.requestGet("users/\(userId)", parameter: nil, success: { (result) -> Void in
+        if let myInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+          self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
+          self.name = myInfo[kMyInfoPropertyKeyName] as? String
+          self.point = myInfo[kMyInfoPropertyKeyName] as? NSNumber
+          CoreDataHelper.sharedCoreDataHelper.saveContext()
+          self.postNotification(kNotificationFetchMyInfoSuccess)
+        }
+        }, failure: nil)
+    }
+  }
+  
   func logOut() {
     accessToken = nil
     refreshToken = nil
     userId = nil
     CoreDataHelper.sharedCoreDataHelper.saveContext()
     SigningHelper.signInForNonUser { (result) -> Void in
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationLogOutSuccess, object: nil)
+      self.postNotification(kNotificationLogOutSuccess)
     }
     // TODO: 실패하면 노답
   }

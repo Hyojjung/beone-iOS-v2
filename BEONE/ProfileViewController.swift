@@ -56,8 +56,7 @@ extension ProfileViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kProfileTableViewCellIdentifiers[indexPath.section],
-      forIndexPath: indexPath)
+    let cell = tableView.cell(kProfileTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
     
     return cell
   }

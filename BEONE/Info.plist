@@ -61,6 +61,7 @@
 	<string>bd09094081fd6407c0d04e0415afaf7c</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>kakaolink</string>
 		<string>storykompassauth</string>
 		<string>org-appextension-feature-password-management</string>
 		<string>fbauth2</string>

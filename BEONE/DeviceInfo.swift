@@ -1,10 +1,3 @@
-//
-//  DeviceInfo.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 16..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 
@@ -28,7 +21,7 @@ class DeviceInfo: BaseModel {
     return {(result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
         self.isReceivingPush = data[kDeviceInfoPropertyKeyIsReceivingPush]?.boolValue == true ? true : false
-        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationFetchDeviceInfoSuccess, object: nil)
+        self.postNotification(kNotificationFetchDeviceInfoSuccess)
       }
     }
   }

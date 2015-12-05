@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" selectionStyle="default" indentationWidth="10" reuseIdentifier="deliveryTypeCell" rowHeight="51" id="tT9-Wm-8tI" customClass="DeliveryTypeImageCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tableViewCell="tT9-Wm-8tI" id="xj1-9o-GyK">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6kv-95-bTM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pat_cart_delivery" translatesAutoresizingMaskIntoConstraints="NO" id="kQS-Ue-Ymn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kwU-Mu-jRd"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kwU-Mu-jRd"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-Db-nZY" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="295" id="I87-Zb-Amx"/>
+                                    <constraint firstAttribute="height" constant="50" id="Vlq-Cx-aPH"/>
+                                    <constraint firstAttribute="height" priority="999" constant="50" id="e9E-ll-OSA"/>
+                                    <constraint firstAttribute="width" constant="295" id="lDP-ky-wiH"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="I87-Zb-Amx"/>
+                                        <exclude reference="Vlq-Cx-aPH"/>
+                                        <exclude reference="e9E-ll-OSA"/>
+                                        <exclude reference="lDP-ky-wiH"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="50" id="5nm-eK-Mte"/>
+                            <constraint firstItem="8N9-Db-nZY" firstAttribute="top" secondItem="6kv-95-bTM" secondAttribute="top" id="6he-nD-meY"/>
+                            <constraint firstAttribute="trailing" secondItem="8N9-Db-nZY" secondAttribute="trailing" id="AOQ-UZ-tmY"/>
+                            <constraint firstItem="kQS-Ue-Ymn" firstAttribute="leading" secondItem="6kv-95-bTM" secondAttribute="leading" id="FOb-16-z3W"/>
+                            <constraint firstItem="kQS-Ue-Ymn" firstAttribute="top" secondItem="6kv-95-bTM" secondAttribute="top" id="U9Y-TY-hIk"/>
+                            <constraint firstAttribute="bottom" secondItem="8N9-Db-nZY" secondAttribute="bottom" id="VgK-xk-kIi"/>
+                            <constraint firstItem="8N9-Db-nZY" firstAttribute="leading" secondItem="6kv-95-bTM" secondAttribute="leading" id="dPY-D5-HD2"/>
+                            <constraint firstAttribute="bottom" secondItem="kQS-Ue-Ymn" secondAttribute="bottom" id="dzU-hR-6KH"/>
+                            <constraint firstAttribute="trailing" secondItem="kQS-Ue-Ymn" secondAttribute="trailing" id="nzr-fe-Gb2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="6kv-95-bTM" firstAttribute="top" secondItem="xj1-9o-GyK" secondAttribute="top" id="Arb-r1-GnL"/>
+                    <constraint firstAttribute="bottom" secondItem="6kv-95-bTM" secondAttribute="bottom" id="BE9-zl-JAw"/>
+                    <constraint firstItem="6kv-95-bTM" firstAttribute="leading" secondItem="xj1-9o-GyK" secondAttribute="leading" id="Xht-kp-rne"/>
+                    <constraint firstAttribute="trailing" secondItem="6kv-95-bTM" secondAttribute="trailing" id="fGy-bL-1RQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="kQS-Ue-Ymn" id="gjr-gM-sIO"/>
+                <outlet property="deliveryTypeImageView" destination="8N9-Db-nZY" id="OEB-Ee-wm4"/>
+                <outlet property="heightConstraintView" destination="6kv-95-bTM" id="9Gq-wO-2OT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pat_cart_delivery" width="25" height="25"/>
+    </resources>
+</document>

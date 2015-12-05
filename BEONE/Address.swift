@@ -1,41 +1,74 @@
-//
-//  Address.swift
-//  BEONE
-//
-//  Created by 김 효정 on 2015. 11. 20..
-//  Copyright © 2015년 효정 김. All rights reserved.
-//
 
 import UIKit
 
+enum AddressType: String {
+  case Road = "R"
+  case Jibun = "J"
+}
+
+let kAddressPropertyKeyName = "receiverName"
+let kAddressPropertyKeyPhone = "receiverPhone"
+let kAddressPropertyKeyZipCode1 = "receiverZipcode01"
+let kAddressPropertyKeyZipCode2 = "receiverZipcode02"
+let kAddressPropertyKeyReceiverRoadAddress = "receiverRoadAddress"
+let kAddressPropertyKeyReceiverJibunAddress = "receiverJibunAddress"
+let kAddressPropertyKeyAddressType = "receiverAddressType"
+let kAddressPropertyKeyDetailAddress = "receiverDetailAddress"
+let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
+let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
+let kAddressPropertyKeyReceiverAddressType = "receiverAddressType"
+let kAddressPropertyReceiverAddressTypeRoad = "road"
+
+let kAddressPropertyKeyUserSelectedType = "userSelectedType"
+let kAddressPropertyKeyPostcode1 = "postcode1"
+let kAddressPropertyKeyPostcode2 = "postcode2"
+let kAddressPropertyKeyZonecode = "zonecode"
+let kAddressPropertyKeyRoadAddress = "roadAddress"
+let kAddressPropertyKeyJibunAddress = "jibunAddress"
+let kAddressPropertyKeyBuildingName = "buildingName"
+
 class Address: BaseModel {
-  private let kAddressPropertyKeyName = "receiverName"
-  private let kAddressPropertyKeyPhone = "receiverPhone"
-  private let kAddressPropertyKeyZipCode1 = "receiverZipcode01"
-  private let kAddressPropertyKeyZipCode2 = "receiverZipcode02"
-  private let kAddressPropertyKeyRoadAddress = "receiverRoadAddress"
-  private let kAddressPropertyKeyJibunAddress = "receiverJibunAddress"
-  private let kAddressPropertyKeyAddressType = "receiverAddressType"
-  private let kAddressPropertyKeyDetailAddress = "receiverDetailAddress"
-  private let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
-  private let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
-  
-  enum ReceiverAddressType: String {
-    case Road = "R"
-    case Jibun = "J"
-  }
-  
   var receiverName: String?
   var receiverPhone: String?
-  var receiverZipcode01: String?
-  var receiverZipcode02: String?
+  var zipcode01: String?
+  var zipcode02: String?
   var zonecode: String?
-  var receiverRoadAddress: String?
-  var receiverJibunAddress: String?
-  var receiverDetailAddress: String?
-  var receiverAddressType: String?
+  var roadAddress: String?
+  var jibunAddress: String?
+  var detailAddress: String?
+  var addressType: AddressType?
   
   override func assignObject(data: AnyObject) {
-    print(data)
+    if let address = data as? [String: AnyObject] {
+      if let receiverAddressType = address[kAddressPropertyKeyReceiverAddressType] as? String {
+        addressType = receiverAddressType == kAddressPropertyReceiverAddressTypeRoad ? .Road : .Jibun
+      }
+      zipcode01 = address[kAddressPropertyKeyZipCode1] as? String
+      zipcode02 = address[kAddressPropertyKeyZipCode2] as? String
+      zonecode = address[kAddressPropertyKeyReceiverZonecode] as? String
+      roadAddress = address[kAddressPropertyKeyReceiverRoadAddress] as? String
+      jibunAddress = address[kAddressPropertyKeyReceiverJibunAddress] as? String
+      detailAddress = address[kAddressPropertyKeyDetailAddress] as? String
+      receiverName = address[kAddressPropertyKeyName] as? String
+      receiverPhone = address[kAddressPropertyKeyPhone] as? String
+    }
+  }
+  
+  func assign(address: [String: String]) {
+    if let userSelectedType = address[kAddressPropertyKeyUserSelectedType] {
+      addressType = AddressType(rawValue: userSelectedType)
+    }
+    zipcode01 = address[kAddressPropertyKeyPostcode1]
+    zipcode02 = address[kAddressPropertyKeyPostcode2]
+    zonecode = address[kAddressPropertyKeyZonecode]
+    roadAddress = address[kAddressPropertyKeyRoadAddress]
+    jibunAddress = address[kAddressPropertyKeyJibunAddress]
+    
+    if let buildingName = address[kAddressPropertyKeyBuildingName] {
+      if !buildingName.isEmpty {
+        roadAddress = "\(roadAddress) (\(buildingName))"
+        jibunAddress = "\(jibunAddress) (\(buildingName))"
+      }
+    }
   }
 }

@@ -18,10 +18,16 @@ class OptionViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  var product = BEONEManager.selectedProduct
-  var selectedProductOrderableInfo: ProductOrderableInfo?
-  var deliveryTypeNames = [String]()
-  var productQuantity = 1
+  private var product = BEONEManager.selectedProduct
+  private lazy var cartItem: CartItem = {
+    if let cartItem = BEONEManager.selectedCartItem {
+      return cartItem
+    }
+    return CartItem()
+  }()
+  private var selectedProductOrderableInfo: ProductOrderableInfo?
+  private var deliveryTypeNames = [String]()
+  private var productQuantity = 1
   
   // MARK: - BaseViewController Methods
   
@@ -29,7 +35,7 @@ class OptionViewController: BaseTableViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
       name: kNotificationFetchProductSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOrderView", name: kNotificationPostCartItemSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePostCartItemSuccess", name: kNotificationPostCartItemSuccess, object: nil)
   }
   
   override func setUpData() {
@@ -37,16 +43,15 @@ class OptionViewController: BaseTableViewController {
     product?.fetch()
   }
   
-  // MARK: - Init & Deinit
-  
-  deinit {
-    BEONEManager.ordering = false
-  }
-  
   // MARK: - Observer Actions
   
   func setUpProductData() {
-    if product?.productOrderableInfos.count == 1 {
+    if let cartItem = BEONEManager.selectedCartItem {
+      selectedProductOrderableInfo = cartItem.productOrderableInfo
+      if let quantity = cartItem.quantity {
+        productQuantity = quantity
+      }
+    } else if product?.productOrderableInfos.count == 1 {
       selectedProductOrderableInfo = product?.productOrderableInfos.first
     }
     deliveryTypeNames.removeAll()
@@ -60,19 +65,28 @@ class OptionViewController: BaseTableViewController {
     tableView.reloadData()
   }
   
-  func segueToOrderView() {
-    showViewController("Order", viewIdentifier: "OrderAddressView")
+  func handlePostCartItemSuccess() {
+    if BEONEManager.ordering {
+      showOrderView()
+    } else {
+      popView()
+    }
   }
-  
-  // MARK: - Actions
-  
+}
+
+// MARK: - Actions
+
+extension OptionViewController {
   @IBAction func sendCart() {
     if let product = product, productOrderableInfo = selectedProductOrderableInfo {
-      let cartItem = CartItem()
-      cartItem.productId = product.id
-      cartItem.productOrderableInfoId = productOrderableInfo.id
+      cartItem.product = product
+      cartItem.productOrderableInfo = productOrderableInfo
       cartItem.quantity = productQuantity
-      cartItem.post()
+      if cartItem == BEONEManager.selectedCartItem {
+        cartItem.put()
+      } else {
+        cartItem.post()
+      }
     }
   }
   
@@ -101,6 +115,8 @@ class OptionViewController: BaseTableViewController {
   }
 }
 
+// MARK: - UITableViewDataSource
+
 extension OptionViewController {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return OptionTableViewSection.Count.rawValue
@@ -111,8 +127,7 @@ extension OptionViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kOptionTableViewCellIdentifiers[indexPath.section],
-      forIndexPath: indexPath)
+    let cell = tableView.cell(kOptionTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)
@@ -140,46 +155,7 @@ extension OptionViewController {
   
   private func configureButtonCell(cell: UITableViewCell) {
     if let cell = cell as? ButtonCell {
-      cell.configureCell(BEONEManager.ordering)
+      cell.configureCell()
     }
-  }
-}
-
-class ProductCell: UITableViewCell {
-  @IBOutlet weak var mainImageView: LazyLoadingImageView!
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var actualPriceLabel: UILabel!
-  @IBOutlet weak var priceLabel: UILabel!
-  
-  func configureCell(product: Product) {
-    mainImageView.setLazyLoaingImage(product.mainImageUrl)
-    titleLabel.text = product.title
-    actualPriceLabel.text = product.actualPrice?.priceNotation(.English)
-    priceLabel.attributedText = product.priceAttributedString()
-  }
-}
-
-class CartItemInfoCell: UITableViewCell {
-  @IBOutlet weak var selectedDeliveryNameLabel: UILabel!
-  @IBOutlet weak var selectedQuantityLabel: UILabel!
-  @IBOutlet weak var quantitySelectButton: UIButton!
-  
-  func configureCell(productOrderableInfo: ProductOrderableInfo?, quantity: Int) {
-    selectedDeliveryNameLabel.text = productOrderableInfo == nil ?
-      NSLocalizedString("select delivery type", comment: "picker title") : productOrderableInfo?.name
-    selectedQuantityLabel.text = "\(quantity)"
-    quantitySelectButton.enabled = productOrderableInfo != nil
-  }
-}
-
-class ButtonCell: UITableViewCell {
-  @IBOutlet weak var addCartItemButton: UIButton!
-  
-  func configureCell(ordering: Bool) {
-    let buttonTitle = ordering ?
-      NSLocalizedString("order right now", comment: "button title") :
-      NSLocalizedString("add to cart", comment: "button title")
-    addCartItemButton.setTitle(buttonTitle, forState: .Normal)
-    addCartItemButton.setTitle(buttonTitle, forState: .Highlighted)
   }
 }

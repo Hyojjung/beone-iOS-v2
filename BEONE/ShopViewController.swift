@@ -42,11 +42,9 @@ class ShopViewController: BaseTableViewController {
   
   func segueToOpion(notification: NSNotification) {
     if let userInfo = notification.userInfo {
-      BEONEManager.ordering = true
       let product = Product()
       product.id = userInfo[kNotificationKeyProductId] as? Int
-      BEONEManager.selectedProduct = product
-      showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+      showOptionView(product, ordering: true, rightOrdering: true)
     }
   }
 }
@@ -62,8 +60,8 @@ extension ShopViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kShopTableViewCellIdentifiers[indexPath.section],
-      forIndexPath: indexPath)
+    let cell = tableView.cell(kShopTableViewCellIdentifiers[indexPath.section],
+      indexPath: indexPath)
     switch ShopTableViewSection(rawValue: indexPath.section)! {
     case .Summary:
       configureSummaryCell(cell)

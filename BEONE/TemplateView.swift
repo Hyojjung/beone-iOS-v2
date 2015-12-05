@@ -3,7 +3,15 @@ import UIKit
 
 class TemplateView: TemplateContentsView {
   private var templateContentsView = UIView()
-  private var backgroundImageView = LazyLoadingImageView()
+  private lazy var backgroundImageView: LazyLoadingImageView = {
+    let imageView = LazyLoadingImageView()
+    imageView.contentMode = .ScaleAspectFill
+    imageView.clipsToBounds = true
+    imageView.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Vertical)
+    return imageView
+  }()
+  
+  var contentView: TemplateContentsView?
   
   override func layoutView(template: Template) {
     configureViewHierarchy()
@@ -11,21 +19,26 @@ class TemplateView: TemplateContentsView {
     
     if let type = template.type,
       contentView = UIView.loadFromNibName(TemplateHelper.viewNibName(type)) as? TemplateContentsView {
-        templateContentsView.addSubViewAndEdgeMarginLayout(contentView)
-        contentView.layoutView(template)
+        if self.contentView?.className() != contentView.className() {
+          self.contentView?.removeFromSuperview()
+          self.contentView = contentView
+          templateContentsView.addSubViewAndEdgeMarginLayout(self.contentView!)
+        }
+        self.contentView?.layoutView(template)
     }
   }
   
   private func configureViewHierarchy() {
     if templateContentsView.superview == nil {
       addSubViewAndEdgeMarginLayout(templateContentsView)
-    } else {
-      templateContentsView.subviews.forEach { $0.removeFromSuperview() }
+      templateContentsView.addSubViewAndEdgeLayout(backgroundImageView)
     }
-    templateContentsView.addSubViewAndEdgeLayout(backgroundImageView)
   }
   
   private func configureStyle(style: TemplateStyle?) {
+    backgroundImageView.image = nil
+    templateContentsView.backgroundColor = nil
+    templateContentsView.layoutMargins = UIEdgeInsetsZero
     if let style = style {
       layoutMargins = style.margin
       templateContentsView.layoutMargins = style.padding

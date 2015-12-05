@@ -33,15 +33,16 @@ let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
 #endif
 
-enum NetworkErrorCode: String {
-  case TokenExpired = "1002"
-  case Invalid = "1001"
+enum NetworkErrorCode: Int {
+  case TokenExpired = 1101
+  case Invalid = 1100
+  case NothingMathed = 1001
 }
 
 enum NetworkErrorKey: String {
   case AccessToken = "accessToken"
   case RefreshToken = "refreshToken"
-  case SnsInfos = "snsInfos"
+  case Uid = "uid"
 }
 
 class NetworkHelper: NSObject {
@@ -71,42 +72,46 @@ class NetworkHelper: NSObject {
       print("responseObject: \(responseObject)")
     #endif
     
-    if let responseObject = responseObject, statusCode = operation.response?.statusCode {
-      var errorCode: String? = nil
-      var errorKey: String? = nil
-      if let errorObject = responseObject[kNetworkResponseKeyError] as? [String: String] {
-        errorCode = errorObject[kNetworkErrorKeyCode]
-        errorKey = errorObject[kNetworkErrorKeyKey]
-      }
-      let myInfo = MyInfo.sharedMyInfo()
-      if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
-        // TODO: show alert view with "서버 점검 중"
-      } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
-        // TODO: show alert view with "something wrong in server"
-      } else if statusCode == NetworkResponseCode.Invalid.rawValue {
-        if errorCode != nil && errorKey != nil {
-          if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && myInfo.refreshToken == nil {
-            myInfo.accessToken = nil
-            SigningHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
-          } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
-            myInfo.refreshToken = nil
-            SigningHelper.signInForNonUser(success)
-          } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue {
-            myInfo.accessToken = nil
-            AuthenticationHelper.refreshToken(signingSuccess(operation, success: success, failure: failure))
+    if let responseObject = responseObject as? [String: AnyObject],
+      statusCode = operation.response?.statusCode {
+        var errorCode: Int? = nil
+        var errorKey: String? = nil
+        if let errorObject = responseObject[kNetworkResponseKeyError] as? [String: String] {
+          errorCode = responseObject[kNetworkErrorKeyCode] as? Int
+          errorKey = errorObject[kNetworkErrorKeyKey]
+        }
+        let myInfo = MyInfo.sharedMyInfo()
+        if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
+          // TODO: show alert view with "서버 점검 중"
+        } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
+          // TODO: show alert view with "something wrong in server"
+        } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
+          if errorCode != nil && errorKey != nil {
+            if errorCode == NetworkErrorCode.Invalid.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && !myInfo.isUser() {
+              requestFailureRequest(operation, success: success, failure: failure)
+            } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && !myInfo.isUser() {
+              myInfo.accessToken = nil
+              SigningHelper.signInForNonUser(signingSuccess(operation, success: success, failure: failure))
+            } else if errorCode == NetworkErrorCode.TokenExpired.rawValue && errorKey == NetworkErrorKey.RefreshToken.rawValue {
+              myInfo.refreshToken = nil
+              SigningHelper.signInForNonUser(success)
+            } else if (errorCode == NetworkErrorCode.TokenExpired.rawValue || errorCode == NetworkErrorCode.Invalid.rawValue) &&
+              errorKey == NetworkErrorKey.AccessToken.rawValue {
+                myInfo.accessToken = nil
+                AuthenticationHelper.refreshToken(signingSuccess(operation, success: success, failure: failure))
+            }
           }
         }
-      }
-      
-      if let response = operation.response {
-        let networkError =
-        NetworkError(statusCode: response.statusCode, errorCode: errorCode, errorKey: errorKey, responseObject: responseObject)
         
-        if let failure = failure {
-          failure(error: networkError)
+        if let response = operation.response {
+          let networkError =
+          NetworkError(statusCode: response.statusCode, errorCode: errorCode, errorKey: errorKey, responseObject: responseObject)
+          
+          if let failure = failure {
+            failure(error: networkError)
+          }
+          // TODO: handle common error
         }
-        // TODO: handle common error
-      }
     } else {
       // TODO: show alert view with "check network"
     }
@@ -115,25 +120,28 @@ class NetworkHelper: NSObject {
   
   static private func signingSuccess(operation: AFHTTPRequestOperation, success: NetworkSuccess?, failure: NetworkFailure?) -> NetworkSuccess {
     return { (result) -> Void in
-      let parameter: AnyObject?
-      if let httpBody = operation.request.HTTPBody {
-        do {
-          try parameter = NSJSONSerialization.JSONObjectWithData(httpBody, options: .MutableContainers)
-        } catch {
-          parameter = nil
-        }
-      } else {
-        parameter = nil
-      }
-      
-      if let url = operation.request.URL?.absoluteString.stringByReplacingOccurrencesOfString(kBaseApiUrl, withString:""),
-        httpMethodString = operation.request.HTTPMethod,
-        method = NetworkMethod(rawValue: httpMethodString) {
-          request(method, url: url, parameter: parameter, success: success, failure: failure)
-      }
+      requestFailureRequest(operation, success: success, failure: failure)
     }
   }
   
+  static private func requestFailureRequest(operation: AFHTTPRequestOperation, success: NetworkSuccess?, failure: NetworkFailure?) {
+    let parameter: AnyObject?
+    if let httpBody = operation.request.HTTPBody {
+      do {
+        try parameter = NSJSONSerialization.JSONObjectWithData(httpBody, options: .MutableContainers)
+      } catch {
+        parameter = nil
+      }
+    } else {
+      parameter = nil
+    }
+    
+    if let url = operation.request.URL?.absoluteString.stringByReplacingOccurrencesOfString(kBaseApiUrl, withString:""),
+      httpMethodString = operation.request.HTTPMethod,
+      method = NetworkMethod(rawValue: httpMethodString) {
+        request(method, url: url, parameter: parameter, success: success, failure: failure)
+    }
+  }
   
   static private func handleSuccessDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, success: NetworkSuccess?) {
     #if DEBUG
@@ -148,14 +156,14 @@ class NetworkHelper: NSObject {
   static private func addNetworkCount() {
     networkCommunicationCount += 1
     if networkCommunicationCount <= 1 {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkStart, object: nil)
+      postNotification(kNotificationNetworkStart)
     }
   }
   
   static private func subtractNetworkCount() {
     networkCommunicationCount -= 1
     if networkCommunicationCount == 0 {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNetworkEnd, object: nil)
+      postNotification(kNotificationNetworkEnd)
     }
   }
   

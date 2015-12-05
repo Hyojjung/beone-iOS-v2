@@ -129,7 +129,7 @@ extension SignUpViewController {
     } else if textField == passwordTextField {
       passwordVerifyingTextField.becomeFirstResponder()
     } else if textField == passwordVerifyingTextField {
-      view.endEditing(true)
+      endEditing()
     }
     return true
   }

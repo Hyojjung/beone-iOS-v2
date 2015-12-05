@@ -38,7 +38,7 @@ extension ShopsViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kShopCellIdentifier , forIndexPath: indexPath) as! ShopCell
+    let cell = tableView.cell(kShopCellIdentifier , indexPath: indexPath) as! ShopCell
     if let shop = shopList.list[indexPath.row] as? Shop {
       cell.configureCell(shop)
     }

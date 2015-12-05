@@ -6,6 +6,10 @@ class ImageContentsView: TemplateContentsView {
   
   // MARK: - Override Methods
   
+  override func className() -> String {
+    return "Image"
+  }
+  
   override func layoutView(template: Template) {
     imageView.changeHeightLayoutConstant(template.height)
     imageView.setTemplateImage(template)
@@ -16,9 +20,7 @@ class ImageContentsView: TemplateContentsView {
   
   @IBAction func viewTapped() {
     if let templateId = templateId {
-      NSNotificationCenter.defaultCenter().postNotificationName(kNotificationDoAction,
-        object: nil,
-        userInfo: [kNotificationKeyTemplateId: templateId])
+      postNotification(kNotificationDoAction, userInfo: [kNotificationKeyTemplateId: templateId])
     }
   }
 }
