@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SettingViewController: BaseViewController {
+class SettingViewController: BaseTableViewController {
   
   // MARK: - Constant
   
@@ -45,17 +45,14 @@ class SettingViewController: BaseViewController {
   
   // MARK: - Property
   
-  @IBOutlet weak var tableView: UITableView!
-
   private let deviceInfo = DeviceInfo()
   private let version = Version()
   
   // MARK: - BaseViewController Methods
-
+  
   override func setUpView() {
     super.setUpView()
-    tableView.estimatedRowHeight = kTableViewDefaultHeight
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.dynamicHeightDelgate = self
   }
   
   override func setUpData() {
@@ -80,6 +77,7 @@ class SettingViewController: BaseViewController {
 // MARK: - Actions
 
 extension SettingViewController {
+  
   @IBAction func pushReceivingSwitchToggled() {
     deviceInfo.isReceivingPush = !deviceInfo.isReceivingPush
     deviceInfo.put()
@@ -89,6 +87,7 @@ extension SettingViewController {
 // MARK: - UITableViewDataSource
 
 extension SettingViewController {
+  
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return SettingTableViewSection.Count.rawValue
   }
@@ -98,47 +97,23 @@ extension SettingViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(kSettingTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
-    
-    switch SettingTableViewSection(rawValue: indexPath.section)! {
-    case .Profile:
-      configureProfileCell(cell)
-    case .Push:
-      configurePushCell(cell)
-    case .Version:
-        configureVersionCell(cell)
-    default:
-      break
-    }
+    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    configure(cell, indexPath: indexPath)
     return cell
-  }
-  
-  private func configureProfileCell(cell: UITableViewCell) {
-    let profileLabel = cell.viewWithTag(kProfileSectionProfileLabelTag) as? UILabel
-    profileLabel?.text = MyInfo.sharedMyInfo().isUser() ?
-      NSLocalizedString("my info", comment: "section name") : NSLocalizedString("sign in", comment: "section name")
-  }
-  
-  private func configurePushCell(cell: UITableViewCell) {
-    let pushSwitch = cell.viewWithTag(kPushSectionSwitchTag) as? UISwitch
-    pushSwitch?.on = deviceInfo.isReceivingPush
-  }
-  
-  private func configureVersionCell(cell: UITableViewCell) {
-    let versionLabel = cell.viewWithTag(kVersionSectionVersionLabelTag) as? UILabel
-    versionLabel?.text = version.version
-    
-    let needUpdate = version.needUpdate == true
-    let updateLabel = cell.viewWithTag(kVersionSectionUpgradeLabelTag) as? UILabel
-    updateLabel?.text = needUpdate ?
-      NSLocalizedString("need update", comment: "update label") : NSLocalizedString("latest version", comment: "update label")
-    cell.selectionStyle = needUpdate ? .Gray : .None
   }
 }
 
 // MARK: - UITableViewDelegate
 
 extension SettingViewController {
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if let tableView = tableView as? DynamicHeightTableView {
+      return tableView.heightForBasicCell(indexPath)
+    }
+    return 0
+  }
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     switch SettingTableViewSection(rawValue: indexPath.section)! {
     case .LogOut:
@@ -165,5 +140,49 @@ extension SettingViewController {
     logOutAction.content = "logOut"
     showAlertView(NSLocalizedString("sure log out", comment: "alert"), hasCancel: true,
       confirmAction: logOutAction, cancelAction: nil, delegate: MyInfo.sharedMyInfo())
+  }
+}
+
+// MARK: - DynamicHeightTableViewProtocol
+
+extension SettingViewController: DynamicHeightTableViewProtocol {
+ 
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    return kSettingTableViewCellIdentifiers[indexPath.section]
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    switch SettingTableViewSection(rawValue: indexPath.section)! {
+    case .Profile:
+      configureProfileCell(cell)
+    case .Push:
+      configurePushCell(cell)
+    case .Version:
+      configureVersionCell(cell)
+    default:
+      break
+    }
+  }
+
+  private func configureProfileCell(cell: UITableViewCell) {
+    let profileLabel = cell.viewWithTag(kProfileSectionProfileLabelTag) as? UILabel
+    profileLabel?.text = MyInfo.sharedMyInfo().isUser() ?
+      NSLocalizedString("my info", comment: "section name") : NSLocalizedString("sign in", comment: "section name")
+  }
+  
+  private func configurePushCell(cell: UITableViewCell) {
+    let pushSwitch = cell.viewWithTag(kPushSectionSwitchTag) as? UISwitch
+    pushSwitch?.on = deviceInfo.isReceivingPush
+  }
+  
+  private func configureVersionCell(cell: UITableViewCell) {
+    let versionLabel = cell.viewWithTag(kVersionSectionVersionLabelTag) as? UILabel
+    versionLabel?.text = version.version
+    
+    let needUpdate = version.needUpdate == true
+    let updateLabel = cell.viewWithTag(kVersionSectionUpgradeLabelTag) as? UILabel
+    updateLabel?.text = needUpdate ?
+      NSLocalizedString("need update", comment: "update label") : NSLocalizedString("latest version", comment: "update label")
+    cell.selectionStyle = needUpdate ? .Gray : .None
   }
 }

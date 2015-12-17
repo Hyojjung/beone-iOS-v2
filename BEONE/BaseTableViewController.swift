@@ -5,13 +5,12 @@ class BaseTableViewController: BaseViewController {
 
   // MARK: - Property
   
-  @IBOutlet weak var tableView: UITableView!
-
-  // MARK: - BaseViewController Methods
+  var dynamicHeightTableViewCells = [String: UITableViewCell]()
+  @IBOutlet weak var tableView: DynamicHeightTableView!
   
-  override func setUpView() {
-    super.setUpView()
-    tableView.estimatedRowHeight = kTableViewDefaultHeight
-    tableView.rowHeight = UITableViewAutomaticDimension
+  // MARK: - DynamicHeightTableViewProtocol
+
+  func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    cell.selectionStyle = .None
   }
 }

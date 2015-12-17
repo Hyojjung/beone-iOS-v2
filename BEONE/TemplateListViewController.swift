@@ -37,7 +37,6 @@ extension TemplateListViewController {
           if template.id == templateId {
             template.height = templateHeight
             let templateIndexPath = NSIndexPath(forRow: index, inSection: 0)
-            print(tableView.indexPathsForVisibleRows)
             if tableView.indexPathsForVisibleRows!.contains(templateIndexPath) {
               tableView.reloadRowsAtIndexPaths([templateIndexPath], withRowAnimation: .Automatic)
             }

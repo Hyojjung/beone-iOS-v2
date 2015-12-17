@@ -41,6 +41,7 @@ class FirstViewController: TemplateListViewController {
   
   override func setUpView() {
     super.setUpView()
+    tableView.dynamicHeightDelgate = self
     self.viewnavigationItem.titleView = mainTitleView
   }
   
@@ -100,9 +101,33 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(kTemplateTableViewCellIdentifier, indexPath: indexPath) as! TemplateTableViewCell
-    cell.configureCell(templateList.list[indexPath.row] as! Template)
+    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    configure(cell, indexPath: indexPath)
     return cell
   }
 }
 
+// MARK: - UITableViewDelegate
+
+extension FirstViewController {
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if let tableView = tableView as? DynamicHeightTableView {
+      return tableView.heightForBasicCell(indexPath)
+    }
+    return 0
+  }
+}
+
+extension FirstViewController: DynamicHeightTableViewProtocol {
+  
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    return kTemplateTableViewCellIdentifier
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? TemplateTableViewCell {
+      cell.configureCell(templateList.list[indexPath.row] as! Template)
+    }
+  }
+}

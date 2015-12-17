@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProfileViewController: BaseViewController {
+class ProfileViewController: BaseTableViewController {
   
   // MARK: - Constant
   
@@ -31,16 +31,10 @@ class ProfileViewController: BaseViewController {
     "addressCell",
     "logoCell"]
   
-  // MARK: - Property
-
-  @IBOutlet weak var tableView: UITableView!
-
-  // MARK: - BaseViewController Methods
   
   override func setUpView() {
     super.setUpView()
-    tableView.estimatedRowHeight = kTableViewDefaultHeight
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.dynamicHeightDelgate = self
   }
 }
 
@@ -56,8 +50,31 @@ extension ProfileViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(kProfileTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
-    
+    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    configure(cell, indexPath: indexPath)
     return cell
+  }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ProfileViewController {
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if let tableView = tableView as? DynamicHeightTableView {
+      return tableView.heightForBasicCell(indexPath)
+    }
+    return 0
+  }
+}
+
+extension ProfileViewController: DynamicHeightTableViewProtocol {
+  
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    return kProfileTableViewCellIdentifiers[indexPath.section]
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+
   }
 }

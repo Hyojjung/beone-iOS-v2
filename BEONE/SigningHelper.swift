@@ -56,7 +56,6 @@ class SigningHelper: NSObject {
     parameter[kSigningParameterKeyUserId] = userId
     parameter[kSigningParameterKeySnsToken] = token
     parameter[kSigningParameterKeyUserType] = kUserTypeSns
-    print(parameter)
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
