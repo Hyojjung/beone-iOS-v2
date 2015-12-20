@@ -43,6 +43,11 @@ class OptionViewController: BaseTableViewController {
     product?.fetch()
   }
   
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
+  
   // MARK: - Observer Actions
   
   func setUpProductData() {
@@ -127,7 +132,22 @@ extension OptionViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(kOptionTableViewCellIdentifiers[indexPath.section], indexPath: indexPath)
+    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    configure(cell, indexPath: indexPath)
+    return cell
+  }
+}
+
+
+// MARK: - DynamicHeightTableViewProtocol
+
+extension OptionViewController: DynamicHeightTableViewProtocol {
+  
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    return kOptionTableViewCellIdentifiers[indexPath.section]
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)
@@ -138,7 +158,6 @@ extension OptionViewController {
     default:
       break
     }
-    return cell
   }
   
   private func configureProductCell(cell: UITableViewCell) {

@@ -111,12 +111,12 @@ extension FirstViewController {
 
 extension FirstViewController {
   
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if let tableView = tableView as? DynamicHeightTableView {
-      return tableView.heightForBasicCell(indexPath)
-    }
-    return 0
-  }
+//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//    if let tableView = tableView as? DynamicHeightTableView {
+//      return tableView.heightForBasicCell(indexPath)
+//    }
+//    return 0
+//  }
 }
 
 extension FirstViewController: DynamicHeightTableViewProtocol {

@@ -2614,47 +2614,49 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" rowHeight="336" id="NlC-Id-nY5" customClass="ProductCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="336"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" rowHeight="210" id="NlC-Id-nY5" customClass="ProductCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="600" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NlC-Id-nY5" id="zDY-NL-Juj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="336"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C15-PQ-dZu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="336"/>
+                                                <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C15-PQ-dZu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-L2-MZr" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="336"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-L2-MZr" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" secondItem="5hS-L2-MZr" secondAttribute="height" multiplier="25:14" id="bN7-ke-Hm8"/>
                                                                 <constraint firstAttribute="height" constant="210" id="d1p-g9-Yvz"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
+                                                                    <exclude reference="bN7-ke-Hm8"/>
                                                                     <exclude reference="d1p-g9-Yvz"/>
                                                                 </mask>
                                                             </variation>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_shop_item" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-of-a6H">
-                                                            <rect key="frame" x="0.0" y="222" width="600" height="114"/>
+                                                            <rect key="frame" x="0.0" y="96" width="600" height="114"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="114" id="Q55-Qp-ooV"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofI-yv-Su6" userLabel="discount Price">
-                                                            <rect key="frame" x="549" y="300" width="38" height="18"/>
+                                                            <rect key="frame" x="549" y="174" width="38" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMr-9t-m8w">
-                                                            <rect key="frame" x="13" y="262" width="574" height="26"/>
+                                                            <rect key="frame" x="13" y="136" width="574" height="26"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                             <color key="textColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymj-6C-XZH">
-                                                            <rect key="frame" x="508" y="303" width="31" height="15"/>
+                                                            <rect key="frame" x="508" y="177" width="31" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2663,6 +2665,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="l0I-of-a6H" secondAttribute="bottom" id="1Vb-x7-rtd"/>
+                                                        <constraint firstItem="5hS-L2-MZr" firstAttribute="width" secondItem="C15-PQ-dZu" secondAttribute="width" id="4wU-PX-LrK"/>
                                                         <constraint firstAttribute="trailing" secondItem="ofI-yv-Su6" secondAttribute="trailing" constant="13" id="6nl-pT-2oC"/>
                                                         <constraint firstAttribute="width" secondItem="C15-PQ-dZu" secondAttribute="height" multiplier="375:210" priority="750" id="7VD-Io-gOt"/>
                                                         <constraint firstItem="5hS-L2-MZr" firstAttribute="top" secondItem="C15-PQ-dZu" secondAttribute="top" id="8nS-FM-F06"/>
@@ -2676,13 +2679,16 @@
                                                         <constraint firstAttribute="bottom" secondItem="5hS-L2-MZr" secondAttribute="bottom" id="es3-7B-ota"/>
                                                         <constraint firstItem="ofI-yv-Su6" firstAttribute="leading" secondItem="Ymj-6C-XZH" secondAttribute="trailing" constant="10" id="fpf-Z6-tUE"/>
                                                         <constraint firstItem="l0I-of-a6H" firstAttribute="leading" secondItem="C15-PQ-dZu" secondAttribute="leading" id="fxo-sn-spg"/>
+                                                        <constraint firstAttribute="height" constant="210" id="rDB-pc-789"/>
                                                         <constraint firstAttribute="height" priority="999" constant="210" id="rH6-OL-2TU"/>
                                                         <constraint firstItem="5hS-L2-MZr" firstAttribute="leading" secondItem="C15-PQ-dZu" secondAttribute="leading" id="yqB-UE-MzX"/>
                                                         <constraint firstItem="Ymj-6C-XZH" firstAttribute="bottom" secondItem="ofI-yv-Su6" secondAttribute="bottom" id="zvW-M6-CPa"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="7VD-Io-gOt"/>
                                                             <exclude reference="rH6-OL-2TU"/>
+                                                            <exclude reference="4wU-PX-LrK"/>
                                                             <exclude reference="Iw0-pd-hZt"/>
                                                         </mask>
                                                     </variation>
@@ -2696,6 +2702,11 @@
                                                 <constraint firstItem="C15-PQ-dZu" firstAttribute="leading" secondItem="zDY-NL-Juj" secondAttribute="leading" id="Mca-rr-BaD"/>
                                                 <constraint firstItem="C15-PQ-dZu" firstAttribute="width" secondItem="zDY-NL-Juj" secondAttribute="width" id="RC4-ij-aU4"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="RC4-ij-aU4"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="actualPriceLabel" destination="ofI-yv-Su6" id="t80-o7-C78"/>
@@ -2705,7 +2716,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartItemInfoCell" rowHeight="135" id="Odf-e7-xgo" customClass="CartItemInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="358" width="600" height="135"/>
+                                        <rect key="frame" x="0.0" y="232" width="600" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odf-e7-xgo" id="Yma-88-zlt">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="135"/>
@@ -2886,7 +2897,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonCell" rowHeight="65" id="ftb-ej-9KH" customClass="ButtonCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="493" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="367" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ftb-ej-9KH" id="6Qh-Ps-fr0">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>

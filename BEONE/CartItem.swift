@@ -70,11 +70,11 @@ class CartItem: BaseModel {
   
   // MARK: - Private Methods
   
-  private func parameter() -> [String: AnyObject] {
+  private func parameter() -> [[String: AnyObject]] {
     var parameter = [String: AnyObject]()
     parameter[kCartItemPropertyKeyQuantity] = quantity
     parameter[kCartItemPropertyKeyProductId] = product.id
     parameter[kCartItemPropertyKeyProductOrderableInfoId] = productOrderableInfo.id
-    return parameter
+    return [parameter]
   }
 }
