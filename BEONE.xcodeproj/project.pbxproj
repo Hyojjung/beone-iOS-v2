@@ -138,6 +138,11 @@
 		7388FA501C049D9F0015C3DF /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7388FA4F1C049D9F0015C3DF /* FloatingView.swift */; };
 		7388FA5C1C057E3B0015C3DF /* OptionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7388FA5B1C057E3B0015C3DF /* OptionCells.swift */; };
 		73BE22451C22BC3B003FA11C /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22441C22BC3B003FA11C /* DynamicHeightTableView.swift */; };
+		73BE22471C292E53003FA11C /* ProductOptionSetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22461C292E53003FA11C /* ProductOptionSetList.swift */; };
+		73BE224A1C293105003FA11C /* ProductOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22491C293105003FA11C /* ProductOptionSet.swift */; };
+		73BE224E1C29355B003FA11C /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE224D1C29355B003FA11C /* Option.swift */; };
+		73BE22521C29377B003FA11C /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22511C29377B003FA11C /* OptionItem.swift */; };
+		73BE22541C293A3A003FA11C /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22531C293A3A003FA11C /* Select.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -306,6 +311,11 @@
 		7388FA4F1C049D9F0015C3DF /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		7388FA5B1C057E3B0015C3DF /* OptionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCells.swift; sourceTree = "<group>"; };
 		73BE22441C22BC3B003FA11C /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
+		73BE22461C292E53003FA11C /* ProductOptionSetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionSetList.swift; sourceTree = "<group>"; };
+		73BE22491C293105003FA11C /* ProductOptionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOptionSet.swift; sourceTree = "<group>"; };
+		73BE224D1C29355B003FA11C /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		73BE22511C29377B003FA11C /* OptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
+		73BE22531C293A3A003FA11C /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -424,6 +434,7 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				73BE22481C2930F0003FA11C /* Option */,
 				73398AE61C068E6900F57D4A /* Location */,
 				7388FA441C045A520015C3DF /* Inquiry */,
 				7388FA3F1C040C060015C3DF /* Product */,
@@ -768,6 +779,18 @@
 			name = Product;
 			sourceTree = "<group>";
 		};
+		73BE22481C2930F0003FA11C /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				73BE22461C292E53003FA11C /* ProductOptionSetList.swift */,
+				73BE22491C293105003FA11C /* ProductOptionSet.swift */,
+				73BE224D1C29355B003FA11C /* Option.swift */,
+				73BE22511C29377B003FA11C /* OptionItem.swift */,
+				73BE22531C293A3A003FA11C /* Select.swift */,
+			);
+			name = Option;
+			sourceTree = "<group>";
+		};
 		73F629951BF19CD4001EA72F /* UIFloatLabelTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,6 +1104,9 @@
 				73398AF51C07443800F57D4A /* SelectingPaymentTypeViewController.swift in Sources */,
 				620717481BE221830014B9AC /* ImageContentsView.swift in Sources */,
 				7388FA5C1C057E3B0015C3DF /* OptionCells.swift in Sources */,
+				73BE224E1C29355B003FA11C /* Option.swift in Sources */,
+				73BE224A1C293105003FA11C /* ProductOptionSet.swift in Sources */,
+				73BE22471C292E53003FA11C /* ProductOptionSetList.swift in Sources */,
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,
 				73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */,
 				7388FA501C049D9F0015C3DF /* FloatingView.swift in Sources */,
@@ -1088,12 +1114,14 @@
 				62FC6E971BDF47160071E1B1 /* ViewControllerHelper.swift in Sources */,
 				736818F31C10640A009E433B /* CKCalendarView.m in Sources */,
 				6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */,
+				73BE22521C29377B003FA11C /* OptionItem.swift in Sources */,
 				62E5CF391BDDEE7100A99F4C /* NetworkError.swift in Sources */,
 				62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */,
 				62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */,
 				73445E781BFAC3F2008BE2AC /* BeoneStrings.swift in Sources */,
 				73398AFF1C082F2100F57D4A /* OrderHelper.swift in Sources */,
 				7309D73C1BFC97E000F9761A /* SimpleProductView.swift in Sources */,
+				73BE22541C293A3A003FA11C /* Select.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 				7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */,
 			);

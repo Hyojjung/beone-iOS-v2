@@ -61,6 +61,7 @@ class Product: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
+      print(data)
       let isInList = data[kNetworkResponseKeyData] != nil
       
       let productObejct = isInList ? data[kNetworkResponseKeyData] : data
