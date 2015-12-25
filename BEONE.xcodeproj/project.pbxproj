@@ -143,6 +143,13 @@
 		73BE224E1C29355B003FA11C /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE224D1C29355B003FA11C /* Option.swift */; };
 		73BE22521C29377B003FA11C /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22511C29377B003FA11C /* OptionItem.swift */; };
 		73BE22541C293A3A003FA11C /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22531C293A3A003FA11C /* Select.swift */; };
+		73BE22591C2F9E32003FA11C /* OptionSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BE22581C2F9E32003FA11C /* OptionSelectView.xib */; };
+		73BE225B1C30E087003FA11C /* OptionTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BE225A1C30E087003FA11C /* OptionTextView.xib */; };
+		73BE225F1C31040F003FA11C /* OptionStringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73BE225E1C31040F003FA11C /* OptionStringView.xib */; };
+		73BE22611C3104F8003FA11C /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22601C3104F8003FA11C /* OptionView.swift */; };
+		73BE22631C311634003FA11C /* OptionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22621C311634003FA11C /* OptionSelectView.swift */; };
+		73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22641C3116BD003FA11C /* OptionTypeView.swift */; };
+		73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22661C311BDE003FA11C /* OptionTextView.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -316,6 +323,13 @@
 		73BE224D1C29355B003FA11C /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		73BE22511C29377B003FA11C /* OptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
 		73BE22531C293A3A003FA11C /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
+		73BE22581C2F9E32003FA11C /* OptionSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionSelectView.xib; sourceTree = "<group>"; };
+		73BE225A1C30E087003FA11C /* OptionTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionTextView.xib; sourceTree = "<group>"; };
+		73BE225E1C31040F003FA11C /* OptionStringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionStringView.xib; sourceTree = "<group>"; };
+		73BE22601C3104F8003FA11C /* OptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		73BE22621C311634003FA11C /* OptionSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectView.swift; sourceTree = "<group>"; };
+		73BE22641C3116BD003FA11C /* OptionTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTypeView.swift; sourceTree = "<group>"; };
+		73BE22661C311BDE003FA11C /* OptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTextView.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -491,6 +505,7 @@
 		62E5CF321BDDEB7D00A99F4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				73BE22571C2D9699003FA11C /* Option */,
 				73BE22441C22BC3B003FA11C /* DynamicHeightTableView.swift */,
 				7388FA561C057CEA0015C3DF /* Common */,
 				7388FA551C057C120015C3DF /* Cells */,
@@ -791,6 +806,20 @@
 			name = Option;
 			sourceTree = "<group>";
 		};
+		73BE22571C2D9699003FA11C /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				73BE22581C2F9E32003FA11C /* OptionSelectView.xib */,
+				73BE22621C311634003FA11C /* OptionSelectView.swift */,
+				73BE225A1C30E087003FA11C /* OptionTextView.xib */,
+				73BE225E1C31040F003FA11C /* OptionStringView.xib */,
+				73BE22601C3104F8003FA11C /* OptionView.swift */,
+				73BE22641C3116BD003FA11C /* OptionTypeView.swift */,
+				73BE22661C311BDE003FA11C /* OptionTextView.swift */,
+			);
+			name = Option;
+			sourceTree = "<group>";
+		};
 		73F629951BF19CD4001EA72F /* UIFloatLabelTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +933,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73445E7E1BFAEF05008BE2AC /* ShopContentsView.xib in Resources */,
+				73BE225F1C31040F003FA11C /* OptionStringView.xib in Resources */,
 				7309D7451BFCA2C200F9761A /* SimpleProductsContentsView.xib in Resources */,
 				73F629A61BF43AE2001EA72F /* ButtonContentsView.xib in Resources */,
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
@@ -924,6 +954,7 @@
 				7309D73E1BFC980900F9761A /* SimpleProductView.xib in Resources */,
 				734C99121C0EE50000F888EA /* DeliveryTypeImageCell.xib in Resources */,
 				6207174D1BE227A50014B9AC /* beone-wildcard.crt in Resources */,
+				73BE22591C2F9E32003FA11C /* OptionSelectView.xib in Resources */,
 				73F629901BF1887B001EA72F /* ProductDetailHeaderCollectionViewCell.xib in Resources */,
 				7388FA4C1C04655F0015C3DF /* ProductDetail.storyboard in Resources */,
 				736818FB1C106433009E433B /* right_arrow@2x.png in Resources */,
@@ -938,6 +969,7 @@
 				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
 				73398AF91C08219000F57D4A /* Cart.storyboard in Resources */,
 				736818FA1C106433009E433B /* right_arrow.png in Resources */,
+				73BE225B1C30E087003FA11C /* OptionTextView.xib in Resources */,
 				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1020,6 +1052,7 @@
 				73EA254B1BE5FA840085382A /* BaseListModel.swift in Sources */,
 				620717821BE347E20014B9AC /* WebViewController.swift in Sources */,
 				73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */,
+				73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */,
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
 				736818FD1C107369009E433B /* AvailableTimeRangeList.swift in Sources */,
 				7388FA411C040C2A0015C3DF /* ProductDetail.swift in Sources */,
@@ -1096,6 +1129,7 @@
 				734241751BFC4FF400BE21F5 /* ShopViewController.swift in Sources */,
 				7388FA431C0458880015C3DF /* InquiryListViewController.swift in Sources */,
 				7309D7531BFF12B700F9761A /* Address.swift in Sources */,
+				73BE22611C3104F8003FA11C /* OptionView.swift in Sources */,
 				73445E7C1BFAEEF9008BE2AC /* ShopContentsView.swift in Sources */,
 				7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */,
 				73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */,
@@ -1108,6 +1142,7 @@
 				73BE224A1C293105003FA11C /* ProductOptionSet.swift in Sources */,
 				73BE22471C292E53003FA11C /* ProductOptionSetList.swift in Sources */,
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,
+				73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */,
 				73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */,
 				7388FA501C049D9F0015C3DF /* FloatingView.swift in Sources */,
 				73F6298C1BF18789001EA72F /* ProductDetailViewController.swift in Sources */,
@@ -1124,6 +1159,7 @@
 				73BE22541C293A3A003FA11C /* Select.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 				7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */,
+				73BE22631C311634003FA11C /* OptionSelectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

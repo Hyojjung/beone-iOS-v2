@@ -8,7 +8,7 @@ class CartItem: BaseModel {
   private let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
   private let kCartItemPropertyKeyQuantity = "quantity"
   
-  var quantity: Int?
+  var quantity = 1
   var product = Product()
   var productOrderableInfo = ProductOrderableInfo()
   
@@ -17,7 +17,9 @@ class CartItem: BaseModel {
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
-      quantity = data[kCartItemPropertyKeyQuantity] as? Int
+      if let qauntity = data[kCartItemPropertyKeyQuantity] as? Int {
+        self.quantity = qauntity
+      }
       if let productObject = data[kCartItemPropertyKeyProduct] {
         product.assignObject(productObject)
       }

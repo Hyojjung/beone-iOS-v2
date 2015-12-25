@@ -1,7 +1,7 @@
 
 import UIKit
 
-enum OptionType: String {
+enum OptionItemType: String {
   case Text = "text"
   case Select = "select"
   case String = "string"
@@ -9,7 +9,7 @@ enum OptionType: String {
 
 class OptionItem: BaseModel {
   var name: String?
-  var optionType: OptionType?
+  var type: OptionItemType?
   var value: String?
   
   var placeholder: String?
@@ -24,8 +24,8 @@ class OptionItem: BaseModel {
     if let optionItemObject = data as? [String: AnyObject] {
       id = optionItemObject[kObjectPropertyKeyId] as? Int
       name = optionItemObject["name"] as? String
-      if let optionType = optionItemObject["type"] as? String {
-        self.optionType = OptionType(rawValue: optionType)
+      if let type = optionItemObject["type"] as? String {
+        self.type = OptionItemType(rawValue: type)
       }
       value = optionItemObject["value"] as? String
       

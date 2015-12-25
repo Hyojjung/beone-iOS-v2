@@ -40,19 +40,19 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-c1-Bff">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNf-Nc-Tuq">
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNf-Nc-Tuq">
                                                             <rect key="frame" x="0.0" y="64" width="600" height="322"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" image="image_cart_empty" translatesAutoresizingMaskIntoConstraints="NO" id="pjr-sm-d8j">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" misplaced="YES" image="image_cart_empty" translatesAutoresizingMaskIntoConstraints="NO" id="pjr-sm-d8j">
                                                                     <rect key="frame" x="200" y="0.0" width="200" height="245"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좀 더 둘러보기 &gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWE-Ev-9cI">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="좀 더 둘러보기 &gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWE-Ev-9cI">
                                                                     <rect key="frame" x="247" y="302" width="106" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <color key="textColor" red="0.58431372549019611" green="0.51372549019607838" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 마음에 드는 꽃을 찾지 못하셨나요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbC-2s-fdf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="아직 마음에 드는 꽃을 찾지 못하셨나요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbC-2s-fdf">
                                                                     <rect key="frame" x="182" y="268" width="236" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -315,11 +315,11 @@
                                                         <constraint firstAttribute="width" constant="80" id="XSh-HJ-v2h"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="바로구매" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="바로구매" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.68627450980392157" green="0.59607843137254901" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="바로구매" backgroundImage="btn_gold_stroke_pressed"/>
+                                                    <state key="selected" title="바로구매" backgroundImage="btnGoldStrokePressed"/>
                                                     <connections>
                                                         <action selector="orderCartItemButtonTapped:" destination="kfh-AH-HYI" eventType="touchUpInside" id="bKE-lS-Nbk"/>
                                                     </connections>
@@ -361,11 +361,11 @@
                                                                 <constraint firstAttribute="height" priority="999" constant="39" id="WKw-ze-H7J"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <state key="normal" title="다시 선택" backgroundImage="btn_gold_stroke">
+                                                            <state key="normal" title="다시 선택" backgroundImage="btnGoldStroke">
                                                                 <color key="titleColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="selected" backgroundImage="btn_gold_stroke_pressed"/>
+                                                            <state key="selected" backgroundImage="btnGoldStrokePressed"/>
                                                             <state key="highlighted" title="다시 선택"/>
                                                         </button>
                                                     </subviews>
@@ -806,9 +806,9 @@
         <image name="bg_cart_item" width="3" height="4"/>
         <image name="bg_cart_totalcell" width="2" height="3"/>
         <image name="bg_list" width="3" height="3"/>
+        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btn_cart_trash" width="32" height="32"/>
-        <image name="btn_gold_stroke" width="11" height="11"/>
-        <image name="btn_gold_stroke_pressed" width="11" height="11"/>
         <image name="btn_submit_gold" width="2" height="2"/>
         <image name="btn_submit_gold_pressed" width="2" height="2"/>
         <image name="btn_submit_goldlight" width="2" height="2"/>

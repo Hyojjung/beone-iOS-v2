@@ -60,6 +60,16 @@ extension UIView {
       }
     }
   }
+  
+  func addHeightLayout(height: CGFloat) {
+    addConstraint(NSLayoutConstraint(item: self,
+      attribute: .Height,
+      relatedBy: .Equal,
+      toItem: nil,
+      attribute: .NotAnAttribute,
+      multiplier: 1,
+      constant: height))
+  }
 }
 
 // MARK: - Bottom Layout Methods

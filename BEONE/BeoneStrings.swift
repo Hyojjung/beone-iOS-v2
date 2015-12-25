@@ -27,3 +27,7 @@ let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
 let kDeliveryTypeCellIdentifier = "deliveryTypeCell"
 let kShopNameCellIdentifier = "shopNameCell"
 
+// MARK: - Segue Identifiers
+
+let kFromProductDetailToOptionSegueIdentifier = "From Product Detail To Option"
+ 

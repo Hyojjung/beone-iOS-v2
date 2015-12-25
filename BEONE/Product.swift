@@ -47,6 +47,7 @@ class Product: BaseModel {
   var summary: String?
   
   var productDetails = [ProductDetail]()
+  var productOptionSets = ProductOptionSetList()
   var productOrderableInfos = [ProductOrderableInfo]()
   var shop = Shop()
   
@@ -61,9 +62,7 @@ class Product: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
-      print(data)
       let isInList = data[kNetworkResponseKeyData] != nil
-      
       let productObejct = isInList ? data[kNetworkResponseKeyData] : data
       if let product = productObejct as? [String: AnyObject] {
         id = product[kObjectPropertyKeyId] as? Int
@@ -92,6 +91,9 @@ class Product: BaseModel {
         }
         if isInList {
           postNotification(kNotificationFetchProductSuccess)
+        }
+        if let productOptionSetObjects = product["productOptionSets"] as? [[String: AnyObject]] {
+          productOptionSets.assignObject(productOptionSetObjects)
         }
       }
     }

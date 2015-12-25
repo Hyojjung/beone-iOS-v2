@@ -8,26 +8,26 @@ class OptionViewController: BaseTableViewController {
   
   private enum OptionTableViewSection: Int {
     case Product
-    case CartItemInfo
+    case DeliveryInfo
+    case Option
+    case CartItemCount
     case Button
     case Count
   }
   
-  private let kOptionTableViewCellIdentifiers = ["productCell", "cartItemInfoCell", "buttonCell"]
+  private let kOptionTableViewCellIdentifiers =
+  ["productCell", "deliveryInfoCell", "optionCell", "cartItemCountCell", "buttonCell"]
   private let kQuantityStrings = ["1", "2", "3", "4", "5"]
   
   // MARK: - Property
   
-  private var product = BEONEManager.selectedProduct
-  private lazy var cartItem: CartItem = {
-    if let cartItem = BEONEManager.selectedCartItem {
-      return cartItem
-    }
-    return CartItem()
-  }()
+  var product: Product?
+  var cartItems = [CartItem]()
+  var isModifing = false
+  var isOrdering = false
+  
   private var selectedProductOrderableInfo: ProductOrderableInfo?
   private var deliveryTypeNames = [String]()
-  private var productQuantity = 1
   
   // MARK: - BaseViewController Methods
   
@@ -51,14 +51,19 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Observer Actions
   
   func setUpProductData() {
-    if let cartItem = BEONEManager.selectedCartItem {
-      selectedProductOrderableInfo = cartItem.productOrderableInfo
-      if let quantity = cartItem.quantity {
-        productQuantity = quantity
+    if isModifing && cartItems.count == 1 {
+      selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
+    } else if !isModifing {
+      if product?.productOrderableInfos.count == 1 {
+        selectedProductOrderableInfo = product?.productOrderableInfos.first
       }
-    } else if product?.productOrderableInfos.count == 1 {
-      selectedProductOrderableInfo = product?.productOrderableInfos.first
+      if product?.productOptionSets.list.count == 0 && cartItems.count == 0 {
+        let cartItem = CartItem()
+        cartItem.quantity = 1
+        cartItems.append(cartItem)
+      }
     }
+    
     deliveryTypeNames.removeAll()
     if let product = product {
       for productOrderableInfo in product.productOrderableInfos {
@@ -71,7 +76,7 @@ class OptionViewController: BaseTableViewController {
   }
   
   func handlePostCartItemSuccess() {
-    if BEONEManager.ordering {
+    if isOrdering {
       showOrderView()
     } else {
       popView()
@@ -83,16 +88,16 @@ class OptionViewController: BaseTableViewController {
 
 extension OptionViewController {
   @IBAction func sendCart() {
-    if let product = product, productOrderableInfo = selectedProductOrderableInfo {
-      cartItem.product = product
-      cartItem.productOrderableInfo = productOrderableInfo
-      cartItem.quantity = productQuantity
-      if cartItem == BEONEManager.selectedCartItem {
-        cartItem.put()
-      } else {
-        cartItem.post()
-      }
-    }
+    //    if let product = product, productOrderableInfo = selectedProductOrderableInfo {
+    //      cartItem.product = product
+    //      cartItem.productOrderableInfo = productOrderableInfo
+    //      cartItem.quantity = productQuantity
+    //      if cartItem == BEONEManager.selectedCartItem {
+    //        cartItem.put()
+    //      } else {
+    //        cartItem.post()
+    //      }
+    //    }
   }
   
   @IBAction func selectDeliveryTypeButtonTapped() {
@@ -101,22 +106,26 @@ extension OptionViewController {
       ActionSheetStringPicker(title: NSLocalizedString("select delivery type", comment: "picker title"),
         rows: deliveryTypeNames, initialSelection: 0, doneBlock: { (_, selectedIndex, _) -> Void in
           self.selectedProductOrderableInfo = self.product!.productOrderableInfos[selectedIndex]
-          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemInfo.rawValue),
+          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.DeliveryInfo.rawValue),
             withRowAnimation: .Automatic)
         }, cancelBlock: nil, origin: view)
       deliveryTypeActionSheet.showActionSheetPicker()
     }
   }
   
-  @IBAction func selectQuantityButtonTapped() {
-    let quantityActionSheet =
-    ActionSheetStringPicker(title: NSLocalizedString("select quantity", comment: "picker title"),
-      rows: kQuantityStrings, initialSelection: 0, doneBlock: { (_, selectedIndex, _) -> Void in
-        self.productQuantity = selectedIndex + 1
-        self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemInfo.rawValue),
-          withRowAnimation: .Automatic)
-      }, cancelBlock: nil, origin: view)
-    quantityActionSheet.showActionSheetPicker()
+  @IBAction func selectQuantityButtonTapped(sender: UIButton) {
+    if cartItems.count > sender.tag {
+      let cartItem = cartItems[sender.tag]
+      let quantityActionSheet =
+      ActionSheetStringPicker(title: NSLocalizedString("select quantity", comment: "picker title"),
+        rows: kQuantityStrings, initialSelection: cartItem.quantity - 1,
+        doneBlock: { (_, selectedIndex, _) -> Void in
+          cartItem.quantity = selectedIndex + 1
+          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemCount.rawValue),
+            withRowAnimation: .Automatic)
+        }, cancelBlock: nil, origin: view)
+      quantityActionSheet.showActionSheetPicker()
+    }
   }
 }
 
@@ -128,7 +137,12 @@ extension OptionViewController {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    switch OptionTableViewSection(rawValue: section)! {
+    case .CartItemCount:
+      return cartItems.count
+    default:
+      return 1
+    }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -151,10 +165,14 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)
-    case .CartItemInfo:
+    case .DeliveryInfo:
       configureCartItemInfoCell(cell)
     case .Button:
       configureButtonCell(cell)
+    case .CartItemCount:
+      configureCartItemCountCell(cell, indexPath: indexPath)
+    case .Option:
+      configureOptionCell(cell)
     default:
       break
     }
@@ -168,13 +186,25 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   
   private func configureCartItemInfoCell(cell: UITableViewCell) {
     if let cell = cell as? CartItemInfoCell {
-      cell.configureCell(selectedProductOrderableInfo, quantity: productQuantity)
+      cell.configureCell(selectedProductOrderableInfo)
     }
   }
   
   private func configureButtonCell(cell: UITableViewCell) {
     if let cell = cell as? ButtonCell {
       cell.configureCell()
+    }
+  }
+  
+  private func configureCartItemCountCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? CartItemCountCell {
+      cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
+    }
+  }
+  
+  private func configureOptionCell(cell: UITableViewCell) {
+    if let cell = cell as? OptionCell {
+      cell.configureCell(product?.productOptionSets)
     }
   }
 }

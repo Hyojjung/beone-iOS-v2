@@ -65,8 +65,11 @@ class ProductDetailViewController: BaseViewController {
     navigationController?.navigationBar.hidden = false
   }
   
-  override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
-    super.performSegueWithIdentifier(identifier, sender: sender)
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    super.prepareForSegue(segue, sender: sender)
+    if let destinationViewController = segue.destinationViewController as? OptionViewController {
+      destinationViewController.product = product
+    }
     removeObservers()
   }
   
@@ -118,12 +121,12 @@ class ProductDetailViewController: BaseViewController {
   
   @IBAction func orderButtonTapped() {
     BEONEManager.ordering = true
-    performSegueWithIdentifier("From Product Detail To Option", sender: nil)
+    performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: nil)
   }
   
   @IBAction func addCartButtonTapped() {
     BEONEManager.ordering = false
-    performSegueWithIdentifier("From Product Detail To Option", sender: nil)
+    performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: nil)
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {

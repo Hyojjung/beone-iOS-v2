@@ -158,18 +158,18 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="ZE7-jb-csV"/>
                                                     </constraints>
-                                                    <state key="normal" title="즉시" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="즉시" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="즉시" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="즉시" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="expressButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="ixi-6W-K1l"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-hn-d2z">
+                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-hn-d2z">
                                                     <rect key="frame" x="26" y="14" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yso-C8-5uA">
@@ -177,18 +177,18 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="N75-kn-l5g"/>
                                                     </constraints>
-                                                    <state key="normal" title="시간지정" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="시간지정" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="시간지정" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="시간지정" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="preferredDateDeliveryButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="EHe-Hq-r1b"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="frn-5n-4Z3">
+                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="frn-5n-4Z3">
                                                     <rect key="frame" x="314" y="14" width="22" height="16"/>
                                                 </imageView>
                                             </subviews>
@@ -1917,11 +1917,11 @@ IAo
                                                                 <constraint firstAttribute="height" constant="160" id="W7c-4Y-riI"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <state key="normal" title="카드추가" backgroundImage="btn_gold_stroke">
+                                                            <state key="normal" title="카드추가" backgroundImage="btnGoldStroke">
                                                                 <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="highlighted" title="카드추가" backgroundImage="btn_gold_stroke_pressed"/>
+                                                            <state key="highlighted" title="카드추가" backgroundImage="btnGoldStrokePressed"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="W7c-4Y-riI"/>
@@ -3993,18 +3993,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="LdS-mR-i3e"/>
                                                     </constraints>
-                                                    <state key="normal" title="간편 카드결제" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="간편 카드결제" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="간편 카드결제" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="간편 카드결제" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="mTv-nI-rKf"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="ER7-Xp-qtb">
+                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="ER7-Xp-qtb">
                                                     <rect key="frame" x="35" y="32" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSF-o7-396">
@@ -4013,18 +4013,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="soL-ky-uxQ"/>
                                                     </constraints>
-                                                    <state key="normal" title="모바일 소액결제" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="모바일 소액결제" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="모바일 소액결제" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="모바일 소액결제" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="smz-NW-ULz"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-An-6Xq">
+                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-An-6Xq">
                                                     <rect key="frame" x="35" y="82" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xv-th-kLL">
@@ -4033,18 +4033,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="Hvt-dR-tFA"/>
                                                     </constraints>
-                                                    <state key="normal" title="가상계좌" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="가상계좌" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="가상계좌" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="가상계좌" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="2R8-Jh-jdK"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-sW-yqv">
+                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-sW-yqv">
                                                     <rect key="frame" x="35" y="132" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxC-3Z-B2p">
@@ -4054,17 +4054,17 @@ IAo
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="Nws-HD-0Q5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="PayPal" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="PayPal" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
-                                                    <state key="selected" title="Paypal" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="Paypal" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="Vlb-dm-hRP"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="107" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="wef-7H-7Sb">
+                                                <imageView userInteractionEnabled="NO" tag="107" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="wef-7H-7Sb">
                                                     <rect key="frame" x="35" y="182" width="22" height="16"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'PayPal' 을 통해 달러로 결제하실 수 있습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC7-b4-ybB">
@@ -4121,18 +4121,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="JEC-mg-7Bp"/>
                                                     </constraints>
-                                                    <state key="normal" title="모바일 소액결제" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="모바일 소액결제" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="모바일 소액결제" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="모바일 소액결제" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="OGo-SS-HlX"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="L51-9h-sXH">
+                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="L51-9h-sXH">
                                                     <rect key="frame" x="35" y="82" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xec-jC-MFd">
@@ -4140,18 +4140,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="mJa-mg-0MP"/>
                                                     </constraints>
-                                                    <state key="normal" title="가상계좌" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="가상계좌" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="가상계좌" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="가상계좌" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="i9s-We-QXb"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="OHU-8B-jr6">
+                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="OHU-8B-jr6">
                                                     <rect key="frame" x="35" y="132" width="22" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeb-kf-KGl">
@@ -4160,18 +4160,18 @@ IAo
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="fMe-DX-CFG"/>
                                                     </constraints>
-                                                    <state key="normal" title="간편 카드결제" backgroundImage="btn_gold_stroke">
+                                                    <state key="normal" title="간편 카드결제" backgroundImage="btnGoldStroke">
                                                         <color key="titleColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="간편 카드결제" backgroundImage="btn_gold_stroke_pressed">
+                                                    <state key="selected" title="간편 카드결제" backgroundImage="btnGoldStrokePressed">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="Ssi-0b-sPG"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="gFI-Gx-kFf">
+                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="gFI-Gx-kFf">
                                                     <rect key="frame" x="35" y="32" width="22" height="16"/>
                                                 </imageView>
                                             </subviews>
@@ -4465,10 +4465,10 @@ IAo
         <image name="bg_coupon_dividebar" width="300" height="23"/>
         <image name="bg_list" width="3" height="3"/>
         <image name="bg_payment.jpg" width="35" height="35"/>
+        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btn_coupon_more" width="3" height="3"/>
         <image name="btn_delete_card" width="40" height="40"/>
-        <image name="btn_gold_stroke" width="11" height="11"/>
-        <image name="btn_gold_stroke_pressed" width="11" height="11"/>
         <image name="btn_submit_darkgrey" width="3" height="3"/>
         <image name="btn_submit_darkgrey_pressed" width="3" height="3"/>
         <image name="btn_submit_gold" width="2" height="2"/>
@@ -4477,9 +4477,9 @@ IAo
         <image name="checkbox_on" width="35" height="35"/>
         <image name="combobox_gold" width="29" height="35"/>
         <image name="fg_cart_soldout" width="60" height="60"/>
+        <image name="iconButtonChecked" width="3" height="3"/>
         <image name="icon_arrow_more" width="14" height="8"/>
         <image name="icon_btn_add" width="12" height="12"/>
-        <image name="icon_button_checked" width="22" height="16"/>
         <image name="image_address_cant_delivery" width="161" height="161"/>
         <image name="image_card_white" width="256" height="145"/>
         <image name="image_list_style_dash" width="5" height="1"/>
