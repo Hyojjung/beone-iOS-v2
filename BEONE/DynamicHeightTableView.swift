@@ -16,6 +16,7 @@ protocol DynamicHeightTableViewProtocol: NSObjectProtocol {
 }
 
 class DynamicHeightTableView: UITableView {
+  
   weak var dynamicHeightDelgate: DynamicHeightTableViewProtocol!
   
   // MARK: - UITableViewDynamicHeightHelper

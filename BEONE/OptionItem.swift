@@ -45,4 +45,22 @@ class OptionItem: BaseModel {
       }
     }
   }
+  
+  override func copy() -> AnyObject {
+    let optionItem = OptionItem()
+    optionItem.id = id
+    optionItem.name = name?.copy() as? String
+    optionItem.type = type
+    optionItem.value = value?.copy() as? String
+    optionItem.placeholder = placeholder?.copy() as? String
+    optionItem.maxLength = maxLength
+    optionItem.minLength = minLength
+    optionItem.isRequired = isRequired
+    
+    for select in selects {
+      let copiedSelect = select.copy()
+      optionItem.selects.append(copiedSelect as! Select)
+    }
+    return optionItem
+  }
 }

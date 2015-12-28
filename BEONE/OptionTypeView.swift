@@ -1,9 +1,15 @@
 
 import UIKit
 
+protocol OptionDelegate: NSObjectProtocol {
+  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool)
+}
+
 class OptionTypeView: UIView {
 
-  func layoutView(optionItem: OptionItem) {
+  weak var delegate: AnyObject?
+
+  func layoutView(optionItem: BaseModel) {
     
   }
 }

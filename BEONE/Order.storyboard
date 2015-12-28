@@ -169,8 +169,8 @@
                                                         <action selector="expressButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="ixi-6W-K1l"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-hn-d2z">
-                                                    <rect key="frame" x="26" y="14" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-hn-d2z">
+                                                    <rect key="frame" x="26" y="13" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yso-C8-5uA">
                                                     <rect key="frame" x="302" y="4" width="284" height="36"/>
@@ -188,8 +188,8 @@
                                                         <action selector="preferredDateDeliveryButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="EHe-Hq-r1b"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="frn-5n-4Z3">
-                                                    <rect key="frame" x="314" y="14" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="frn-5n-4Z3">
+                                                    <rect key="frame" x="314" y="13" width="24" height="19"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -439,7 +439,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="KKP-Yh-GhY" id="Sn4-CG-qDD"/>
-                        <segue destination="tel-f9-qfU" kind="show" id="h0Y-3Q-r7d"/>
+                        <segue destination="tel-f9-qfU" kind="show" identifier="From Date Seletor To Order Address" id="h0Y-3Q-r7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFS-NK-gaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4004,8 +4004,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="mTv-nI-rKf"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="ER7-Xp-qtb">
-                                                    <rect key="frame" x="35" y="32" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="ER7-Xp-qtb">
+                                                    <rect key="frame" x="35" y="31" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSF-o7-396">
                                                     <rect key="frame" x="14" y="70" width="572" height="40"/>
@@ -4024,8 +4024,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="smz-NW-ULz"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-An-6Xq">
-                                                    <rect key="frame" x="35" y="82" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-An-6Xq">
+                                                    <rect key="frame" x="35" y="81" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xv-th-kLL">
                                                     <rect key="frame" x="14" y="120" width="572" height="40"/>
@@ -4044,8 +4044,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="2R8-Jh-jdK"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-sW-yqv">
-                                                    <rect key="frame" x="35" y="132" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-sW-yqv">
+                                                    <rect key="frame" x="35" y="131" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxC-3Z-B2p">
                                                     <rect key="frame" x="14" y="170" width="572" height="40"/>
@@ -4064,8 +4064,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="Vlb-dm-hRP"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="107" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="wef-7H-7Sb">
-                                                    <rect key="frame" x="35" y="182" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="107" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="wef-7H-7Sb">
+                                                    <rect key="frame" x="35" y="181" width="24" height="19"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'PayPal' 을 통해 달러로 결제하실 수 있습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC7-b4-ybB">
                                                     <rect key="frame" x="189" y="218" width="223" height="17"/>
@@ -4132,8 +4132,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="OGo-SS-HlX"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="L51-9h-sXH">
-                                                    <rect key="frame" x="35" y="82" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="105" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="L51-9h-sXH">
+                                                    <rect key="frame" x="35" y="81" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xec-jC-MFd">
                                                     <rect key="frame" x="14" y="120" width="572" height="40"/>
@@ -4151,8 +4151,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="i9s-We-QXb"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="OHU-8B-jr6">
-                                                    <rect key="frame" x="35" y="132" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="106" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="OHU-8B-jr6">
+                                                    <rect key="frame" x="35" y="131" width="24" height="19"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeb-kf-KGl">
                                                     <rect key="frame" x="14" y="20" width="572" height="40"/>
@@ -4171,8 +4171,8 @@ IAo
                                                         <action selector="selectBuyWay:" destination="hFb-vV-qJU" eventType="touchUpInside" id="Ssi-0b-sPG"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="gFI-Gx-kFf">
-                                                    <rect key="frame" x="35" y="32" width="22" height="16"/>
+                                                <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="gFI-Gx-kFf">
+                                                    <rect key="frame" x="35" y="31" width="24" height="19"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -4477,7 +4477,7 @@ IAo
         <image name="checkbox_on" width="35" height="35"/>
         <image name="combobox_gold" width="29" height="35"/>
         <image name="fg_cart_soldout" width="60" height="60"/>
-        <image name="iconButtonChecked" width="3" height="3"/>
+        <image name="iconButtonChecked" width="24" height="19"/>
         <image name="icon_arrow_more" width="14" height="8"/>
         <image name="icon_btn_add" width="12" height="12"/>
         <image name="image_address_cant_delivery" width="161" height="161"/>

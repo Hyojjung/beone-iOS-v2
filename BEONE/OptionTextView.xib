@@ -8,13 +8,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OptionTextView" customModule="BEONE" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="108"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3u-Re-9mR">
                     <rect key="frame" x="83" y="0.0" width="517" height="108"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mSd-Tc-LBT">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgInputTextarea" translatesAutoresizingMaskIntoConstraints="NO" id="mSd-Tc-LBT">
                             <rect key="frame" x="0.0" y="0.0" width="517" height="108"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-dE-CZ5">
@@ -23,7 +23,7 @@
                             <color key="textColor" red="0.63137254901960782" green="0.58039215686274503" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-Kv-gkE">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-Kv-gkE" customClass="BeoneTextView" customModule="BEONE" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="517" height="108"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,7 +50,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="r3u-Re-9mR" secondAttribute="trailing" id="2q9-6l-YTY"/>
-                <constraint firstAttribute="bottom" secondItem="r3u-Re-9mR" secondAttribute="bottom" constant="10" id="HNO-2b-bPk"/>
+                <constraint firstAttribute="bottom" secondItem="r3u-Re-9mR" secondAttribute="bottom" id="HNO-2b-bPk"/>
                 <constraint firstItem="r3u-Re-9mR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="83" id="OrC-5r-SPZ"/>
                 <constraint firstItem="r3u-Re-9mR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wkW-pe-c5V"/>
             </constraints>
@@ -63,4 +63,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="bgInputTextarea" width="4" height="4"/>
+    </resources>
 </document>

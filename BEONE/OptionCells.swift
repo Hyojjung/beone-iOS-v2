@@ -46,10 +46,14 @@ class ButtonCell: UITableViewCell {
 
 
 class OptionCell: UITableViewCell {
+
+  weak var delegate: AnyObject?
+
   @IBOutlet weak var optionView: OptionView!
   
   func configureCell(productOptionSetList: ProductOptionSetList?) {
     if let productOptionSetList = productOptionSetList {
+      optionView.delegate = delegate
       optionView.layoutView(productOptionSetList)
     }
   }

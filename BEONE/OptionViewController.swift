@@ -23,6 +23,7 @@ class OptionViewController: BaseTableViewController {
   
   var product: Product?
   var cartItems = [CartItem]()
+  var selectedOption: ProductOptionSetList?
   var isModifing = false
   var isOrdering = false
   
@@ -62,6 +63,8 @@ class OptionViewController: BaseTableViewController {
         cartItem.quantity = 1
         cartItems.append(cartItem)
       }
+      
+      selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
     }
     
     deliveryTypeNames.removeAll()
@@ -204,7 +207,104 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   
   private func configureOptionCell(cell: UITableViewCell) {
     if let cell = cell as? OptionCell {
-      cell.configureCell(product?.productOptionSets)
+      cell.delegate = self
+      cell.configureCell(selectedOption)
+    }
+  }
+}
+
+extension OptionViewController: OptionDelegate {
+  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool) {
+    if isProductOptionSet {
+      var optionSetValues = [String]()
+      var initialSelection = 0
+      for (index, option) in selectedOption(optionId).options.enumerate() {
+        if let name = option.name {
+          optionSetValues.append(name)
+        }
+        if option.isSelected {
+          initialSelection = index
+        }
+      }
+      let optionActionSheet = ActionSheetStringPicker(title: NSLocalizedString("select option", comment: "picker title"),
+        rows: optionSetValues,
+        initialSelection: initialSelection,
+        doneBlock: { (_, selectedIndex, _) -> Void in
+          for (index, option) in self.selectedOption(optionId).options.enumerate() {
+            option.isSelected = index == selectedIndex
+          }
+          self.tableView.reloadData()
+        }, cancelBlock: nil,
+        origin: view)
+      optionActionSheet.showActionSheetPicker()
+    } else {
+      var selectValues = [String]()
+      var initialSelection = 0
+      for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
+        if let name = select.name {
+          selectValues.append(name)
+        }
+        if select.name == selectedOptionItem(optionId).name {
+          initialSelection = index
+        }
+      }
+      let optionActionSheet = ActionSheetStringPicker(title: NSLocalizedString("select option", comment: "picker title"),
+        rows: selectValues,
+        initialSelection: initialSelection,
+        doneBlock: { (_, selectedIndex, _) -> Void in
+          for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
+            if index == selectedIndex {
+              self.selectedOptionItem(optionId).value = select.name
+            }
+          }
+          self.tableView.reloadData()
+        }, cancelBlock: nil,
+        origin: view)
+      optionActionSheet.showActionSheetPicker()
+    }
+    
+  }
+  
+  func selectedOption(optionId: Int) -> ProductOptionSet {
+    for productOptionSet in selectedOption!.list as! [ProductOptionSet] {
+      if productOptionSet.id == optionId {
+        return productOptionSet
+      }
+    }
+    fatalError("no product option set")
+  }
+  
+  
+  func selectedOptionItem(optionId: Int) -> OptionItem {
+    for productOptionSet in selectedOption!.list as! [ProductOptionSet] {
+      for option in productOptionSet.options {
+        for optionItem in option.optionItems {
+          if optionItem.id == optionId {
+            return optionItem
+          }
+        }
+      }
+    }
+    fatalError("no product option set")
+  }
+}
+
+extension OptionViewController: UITextViewDelegate {
+  func textViewDidBeginEditing(textView: UITextView) {
+    if let textView = textView as? BeoneTextView {
+      textView.isHighlighted = true
+    }
+  }
+  
+  func textViewDidEndEditing(textView: UITextView) {
+    if let textView = textView as? BeoneTextView {
+      textView.isHighlighted = false
+    }
+  }
+  
+  func textViewDidChange(textView: UITextView) {
+    if let textView = textView as? BeoneTextView {
+      textView.isModiFying = !(textView.text == "" || textView.text == nil)
     }
   }
 }

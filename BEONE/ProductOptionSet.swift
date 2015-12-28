@@ -19,4 +19,15 @@ class ProductOptionSet: BaseModel {
       }
     }
   }
+  
+  override func copy() -> AnyObject {
+    let productOptionSet = ProductOptionSet()
+    productOptionSet.id = id
+    productOptionSet.name = name?.copy() as? String
+    for option in options {
+      let copiedOption = option.copy()
+      productOptionSet.options.append(copiedOption as! Option)
+    }
+    return productOptionSet
+  }
 }

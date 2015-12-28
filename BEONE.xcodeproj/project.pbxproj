@@ -150,6 +150,7 @@
 		73BE22631C311634003FA11C /* OptionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22621C311634003FA11C /* OptionSelectView.swift */; };
 		73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22641C3116BD003FA11C /* OptionTypeView.swift */; };
 		73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22661C311BDE003FA11C /* OptionTextView.swift */; };
+		73BE22691C3120C5003FA11C /* OptionStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22681C3120C5003FA11C /* OptionStringView.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA25481BE5F2770085382A /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */; };
@@ -330,6 +331,7 @@
 		73BE22621C311634003FA11C /* OptionSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSelectView.swift; sourceTree = "<group>"; };
 		73BE22641C3116BD003FA11C /* OptionTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTypeView.swift; sourceTree = "<group>"; };
 		73BE22661C311BDE003FA11C /* OptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTextView.swift; sourceTree = "<group>"; };
+		73BE22681C3120C5003FA11C /* OptionStringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionStringView.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA25461BE5F2770085382A /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
@@ -812,10 +814,11 @@
 				73BE22581C2F9E32003FA11C /* OptionSelectView.xib */,
 				73BE22621C311634003FA11C /* OptionSelectView.swift */,
 				73BE225A1C30E087003FA11C /* OptionTextView.xib */,
+				73BE22661C311BDE003FA11C /* OptionTextView.swift */,
 				73BE225E1C31040F003FA11C /* OptionStringView.xib */,
+				73BE22681C3120C5003FA11C /* OptionStringView.swift */,
 				73BE22601C3104F8003FA11C /* OptionView.swift */,
 				73BE22641C3116BD003FA11C /* OptionTypeView.swift */,
-				73BE22661C311BDE003FA11C /* OptionTextView.swift */,
 			);
 			name = Option;
 			sourceTree = "<group>";
@@ -1157,6 +1160,7 @@
 				73398AFF1C082F2100F57D4A /* OrderHelper.swift in Sources */,
 				7309D73C1BFC97E000F9761A /* SimpleProductView.swift in Sources */,
 				73BE22541C293A3A003FA11C /* Select.swift in Sources */,
+				73BE22691C3120C5003FA11C /* OptionStringView.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
 				7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */,
 				73BE22631C311634003FA11C /* OptionSelectView.swift in Sources */,

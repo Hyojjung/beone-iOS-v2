@@ -2,6 +2,7 @@
 import UIKit
 
 class Option: BaseModel {
+  
   var name: String?
   var isSelected = false
   var price = 0
@@ -32,5 +33,19 @@ class Option: BaseModel {
         }
       }
     }
+  }
+  
+  override func copy() -> AnyObject {
+    let option = Option()
+    option.id = id
+    option.isSelected = isSelected
+    option.price = price
+    option.isSoldOut = isSoldOut
+    option.name = name?.copy() as? String
+    for optionItem in optionItems {
+      let copiedOptionItem = optionItem.copy()
+      option.optionItems.append(copiedOptionItem as! OptionItem)
+    }
+    return option
   }
 }

@@ -7,17 +7,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OptionStringView" customModule="BEONE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVl-6l-Y9y">
-                    <rect key="frame" x="83" y="0.0" width="517" height="49"/>
+                    <rect key="frame" x="83" y="0.0" width="517" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="tO8-ao-vuL"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPt-xT-OAa">
-                    <rect key="frame" x="83" y="49" width="517" height="1"/>
+                    <rect key="frame" x="83" y="59" width="517" height="1"/>
                     <color key="backgroundColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="33c-08-n9N"/>
@@ -28,7 +31,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="aPt-xT-OAa" secondAttribute="trailing" id="608-ux-zFg"/>
                 <constraint firstItem="RVl-6l-Y9y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jar-Yr-A5Z"/>
-                <constraint firstAttribute="bottom" secondItem="aPt-xT-OAa" secondAttribute="bottom" constant="10" id="K8H-Uc-ell"/>
+                <constraint firstAttribute="bottom" secondItem="aPt-xT-OAa" secondAttribute="bottom" id="K8H-Uc-ell"/>
                 <constraint firstItem="aPt-xT-OAa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="83" id="en5-QU-sRC"/>
                 <constraint firstAttribute="trailing" secondItem="RVl-6l-Y9y" secondAttribute="trailing" id="lYs-XY-Tm8"/>
                 <constraint firstItem="RVl-6l-Y9y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="83" id="ptY-yC-Y5V"/>
@@ -36,6 +39,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textField" destination="RVl-6l-Y9y" id="JoO-5O-KS5"/>
+            </connections>
         </view>
     </objects>
 </document>

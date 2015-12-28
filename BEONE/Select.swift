@@ -18,4 +18,13 @@ class Select: BaseModel {
       }
     }
   }
+  
+  override func copy() -> AnyObject {
+    let select = Select()
+    select.id = id
+    select.name = name?.copy() as? String
+    select.price = price
+    select.isSoldOut = isSoldOut
+    return select
+  }
 }
