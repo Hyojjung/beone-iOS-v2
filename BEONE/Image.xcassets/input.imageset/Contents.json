@@ -1,18 +1,33 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 1,
+          "top" : 2,
+          "right" : 2,
+          "left" : 1
+        }
+      },
       "idiom" : "universal",
+      "filename" : "input.png",
       "scale" : "1x"
     },
     {
       "resizing" : {
         "mode" : "9-part",
         "center" : {
-          "mode" : "fill",
+          "mode" : "tile",
           "width" : 1,
           "height" : 1
         },
-        "capInsets" : {
+        "cap-insets" : {
           "bottom" : 4,
           "top" : 3,
           "right" : 4,
@@ -27,11 +42,11 @@
       "resizing" : {
         "mode" : "9-part",
         "center" : {
-          "mode" : "fill",
+          "mode" : "tile",
           "width" : 1,
           "height" : 1
         },
-        "capInsets" : {
+        "cap-insets" : {
           "bottom" : 6,
           "top" : 5,
           "right" : 6,
