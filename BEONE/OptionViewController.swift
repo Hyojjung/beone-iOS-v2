@@ -130,6 +130,17 @@ extension OptionViewController {
       quantityActionSheet.showActionSheetPicker()
     }
   }
+  
+  @IBAction func addCartItemButtonTapped() {
+    if selectedOption == nil || selectedOption!.isValid() == true {
+      let cartItem = CartItem()
+      cartItem.product.id = product?.id
+      cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
+      selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
+      cartItems.append(cartItem)
+      tableView.reloadData()
+    }
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -303,7 +314,9 @@ extension OptionViewController: UITextViewDelegate {
   }
   
   func textViewDidChange(textView: UITextView) {
-    if let textView = textView as? BeoneTextView {
+    if let textView = textView as? BeoneTextView, optionId = textView.optionId {
+      let optionItem = selectedOptionItem(optionId)
+      optionItem.value = textView.text
       textView.isModiFying = !(textView.text == "" || textView.text == nil)
     }
   }

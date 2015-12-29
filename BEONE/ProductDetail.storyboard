@@ -2863,6 +2863,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="btn_submit_darkgrey_pressed"/>
+                                                    <connections>
+                                                        <action selector="addCartItemButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="Ekl-J6-Z04"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3014,6 +3017,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="optionLabel" destination="oxE-s9-NCe" id="naD-6t-Xpk"/>
+                                            <outlet property="productNameLabel" destination="34y-su-izv" id="hF2-ow-sGZ"/>
                                             <outlet property="quantitySelectButton" destination="SPO-wu-B3u" id="ZPk-dV-Nnw"/>
                                             <outlet property="selectedQuantityLabel" destination="Td1-Tl-QEU" id="Jl6-Ya-ram"/>
                                         </connections>

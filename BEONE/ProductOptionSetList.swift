@@ -21,4 +21,24 @@ class ProductOptionSetList: BaseListModel {
     }
     return productOptionSetList
   }
+  
+  func isValid() -> Bool {
+    for productOptionSet in list as! [ProductOptionSet] {
+      if !productOptionSet.isValid() {
+        return false
+      }
+    }
+    return true
+  }
+  
+  func optionString() -> String {
+    var optionString = String()
+    for (index, productOptionSet) in (list as! [ProductOptionSet]).enumerate() {
+      optionString += productOptionSet.optionString()
+      if index != list.count - 1 {
+        optionString += "\n"
+      }
+    }
+    return optionString
+  }
 }

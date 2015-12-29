@@ -14,7 +14,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3u-Re-9mR">
                     <rect key="frame" x="83" y="0.0" width="517" height="108"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgInputTextarea" translatesAutoresizingMaskIntoConstraints="NO" id="mSd-Tc-LBT">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="mSd-Tc-LBT">
                             <rect key="frame" x="0.0" y="0.0" width="517" height="108"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-dE-CZ5">
@@ -64,6 +64,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bgInputTextarea" width="4" height="4"/>
+        <image name="input" width="4" height="4"/>
     </resources>
 </document>

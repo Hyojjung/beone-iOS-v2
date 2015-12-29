@@ -48,4 +48,22 @@ class Option: BaseModel {
     }
     return option
   }
+  
+  func isValid() -> Bool {
+    for optionItem in optionItems {
+      if !optionItem.isValid() {
+        return false
+      }
+    }
+    return true
+  }
+  
+  func optionString() -> String {
+    var optionString = String()
+    optionString += "\(name!)"
+    for optionItem in optionItems {
+      optionString += " / \(optionItem.value!)"
+    }
+    return optionString
+  }
 }

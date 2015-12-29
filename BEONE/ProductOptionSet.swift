@@ -30,4 +30,23 @@ class ProductOptionSet: BaseModel {
     }
     return productOptionSet
   }
+  
+  func isValid() -> Bool {
+    for option in options {
+      if option.isSelected && !option.isValid() {
+        return false
+      }
+    }
+    return true
+  }
+  
+  func optionString() -> String {
+    var optionString = String()
+    for option in options {
+      if option.isSelected {
+        optionString += "\(option.optionString())"
+      }
+    }
+    return optionString
+  }
 }

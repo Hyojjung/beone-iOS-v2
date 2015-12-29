@@ -25,10 +25,13 @@ class CartItemInfoCell: UITableViewCell {
 class CartItemCountCell: UITableViewCell {
   @IBOutlet weak var selectedQuantityLabel: UILabel!
   @IBOutlet weak var quantitySelectButton: UIButton!
+  @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var optionLabel: UILabel!
   
   func configureCell(cartItem: CartItem, indexPath: NSIndexPath) {
     selectedQuantityLabel.text = "\(cartItem.quantity)"
     quantitySelectButton.tag = indexPath.row
+    optionLabel.text = cartItem.selectedOption?.optionString()
   }
 }
 

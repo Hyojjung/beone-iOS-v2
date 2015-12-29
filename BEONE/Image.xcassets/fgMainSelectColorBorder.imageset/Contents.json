@@ -9,14 +9,14 @@
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 2,
-          "top" : 1,
-          "right" : 2,
-          "left" : 1
+          "bottom" : 18,
+          "top" : 17,
+          "right" : 18,
+          "left" : 17
         }
       },
       "idiom" : "universal",
-      "filename" : "bgInputTextarea.png",
+      "filename" : "fgMainSelectColorBorder.png",
       "scale" : "1x"
     },
     {
@@ -28,14 +28,14 @@
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 4,
-          "top" : 3,
-          "right" : 4,
-          "left" : 3
+          "bottom" : 36,
+          "top" : 35,
+          "right" : 36,
+          "left" : 35
         }
       },
       "idiom" : "universal",
-      "filename" : "bgInputTextarea@2x.png",
+      "filename" : "fgMainSelectColorBorder@2x.png",
       "scale" : "2x"
     },
     {
@@ -47,14 +47,14 @@
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 6,
-          "top" : 5,
-          "right" : 6,
-          "left" : 5
+          "bottom" : 54,
+          "top" : 53,
+          "right" : 54,
+          "left" : 53
         }
       },
       "idiom" : "universal",
-      "filename" : "bgInputTextarea@3x.png",
+      "filename" : "fgMainSelectColorBorder@3x.png",
       "scale" : "3x"
     }
   ],

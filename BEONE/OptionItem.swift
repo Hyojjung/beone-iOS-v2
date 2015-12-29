@@ -63,4 +63,23 @@ class OptionItem: BaseModel {
     }
     return optionItem
   }
+  
+  func isValid() -> Bool {
+    if value == nil {
+      return false
+    }
+    if type != .Select {
+      if let minLength = minLength {
+        if value?.characters.count < minLength {
+          return false
+        }
+      }
+      if let maxLength = maxLength {
+        if value?.characters.count > maxLength {
+          return false
+        }
+      }
+    }
+    return true
+  }
 }

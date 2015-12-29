@@ -11,6 +11,7 @@ class CartItem: BaseModel {
   var quantity = 1
   var product = Product()
   var productOrderableInfo = ProductOrderableInfo()
+  var selectedOption: ProductOptionSetList?
   
   // MARK: - BaseModel Methods (Fetch)
   
