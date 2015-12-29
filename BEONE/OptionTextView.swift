@@ -24,7 +24,7 @@ class BeoneTextView: UITextView {
     didSet {
       if let superview = superview!.superview as? OptionTextView {
         superview.backgroundImageView.image =
-          isHighlighted ? UIImage(named: "bgInputTextareaActive") : UIImage(named: "bgInputTextarea")
+          isHighlighted ? UIImage(named: "inputActive") : UIImage(named: "Input")
       }
     }
   }
