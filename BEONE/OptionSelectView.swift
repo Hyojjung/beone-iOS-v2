@@ -27,8 +27,8 @@ class OptionSelectView: OptionTypeView {
   }
   
   @IBAction func optionSelectButtonTapped(sender: UIButton) {
-    if let optionId = optionId {
-      (delegate as! OptionDelegate).optionSelectButtonTapped(optionId, isProductOptionSet: isProductOptionSet)
+    if let optionId = optionId, delegate = delegate as? OptionDelegate {
+      delegate.optionSelectButtonTapped(optionId, isProductOptionSet: isProductOptionSet, sender: sender)
     }
   }
 }

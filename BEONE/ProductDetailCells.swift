@@ -69,7 +69,7 @@ class DetailInfoCell: ProductDetailCell {
       quantityAndSize = "\(quantity)개 "
     }
     if let size = product.size {
-      quantityAndSize = quantityAndSize.stringByAppendingString(size)
+      quantityAndSize += size
     }
     return quantityAndSize
   }

@@ -2679,7 +2679,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="5hS-L2-MZr" secondAttribute="bottom" id="es3-7B-ota"/>
                                                         <constraint firstItem="ofI-yv-Su6" firstAttribute="leading" secondItem="Ymj-6C-XZH" secondAttribute="trailing" constant="8" id="fpf-Z6-tUE"/>
                                                         <constraint firstItem="l0I-of-a6H" firstAttribute="leading" secondItem="C15-PQ-dZu" secondAttribute="leading" id="fxo-sn-spg"/>
-                                                        <constraint firstAttribute="height" constant="190" id="rDB-pc-789"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="190" id="rDB-pc-789"/>
                                                         <constraint firstAttribute="height" priority="999" constant="210" id="rH6-OL-2TU"/>
                                                         <constraint firstItem="5hS-L2-MZr" firstAttribute="leading" secondItem="C15-PQ-dZu" secondAttribute="leading" id="yqB-UE-MzX"/>
                                                         <constraint firstItem="Ymj-6C-XZH" firstAttribute="bottom" secondItem="ofI-yv-Su6" secondAttribute="bottom" id="zvW-M6-CPa"/>
@@ -2715,7 +2715,7 @@
                                             <outlet property="titleLabel" destination="mMr-9t-m8w" id="8bv-1X-FQg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryInfoCell" rowHeight="113" id="Odf-e7-xgo" customClass="CartItemInfoCell" customModule="BEONE" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryInfoCell" rowHeight="113" id="Odf-e7-xgo" customClass="DeliveryInfoCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="212" width="600" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odf-e7-xgo" id="Yma-88-zlt">
@@ -2751,12 +2751,14 @@
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rn-IZ-Sdm">
                                                                     <rect key="frame" x="0.0" y="0.0" width="487" height="40"/>
-                                                                    <state key="normal" backgroundImage="btnSelectOn">
+                                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <state key="normal" backgroundImage="btnSelectOff">
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <state key="disabled" backgroundImage="combobox_gold_disalbed"/>
+                                                                    <state key="selected" backgroundImage="btnSelectOn"/>
                                                                     <connections>
-                                                                        <action selector="selectDeliveryTypeButtonTapped" destination="gh2-yY-KRU" eventType="touchUpInside" id="1U6-8b-VLL"/>
+                                                                        <action selector="selectDeliveryTypeButtonTapped:" destination="gh2-yY-KRU" eventType="touchUpInside" id="qC7-rT-CKR"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -2772,7 +2774,7 @@
                                                                 <constraint firstAttribute="bottom" secondItem="0rn-IZ-Sdm" secondAttribute="bottom" id="zmZ-Hq-BZu"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송 가능일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="506" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-bO-QUc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="배송 가능일" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-bO-QUc">
                                                             <rect key="frame" x="98" y="73" width="488" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2790,14 +2792,24 @@
                                                         <constraint firstAttribute="trailing" secondItem="ToZ-bO-QUc" secondAttribute="trailing" constant="14" id="OWe-dL-9Ve"/>
                                                         <constraint firstItem="ToZ-bO-QUc" firstAttribute="top" secondItem="VRW-34-Uhe" secondAttribute="bottom" priority="999" constant="14" id="Q9A-jz-hgB"/>
                                                         <constraint firstAttribute="bottom" secondItem="9yq-Ee-Mpi" secondAttribute="bottom" id="Sly-YD-bFe"/>
+                                                        <constraint firstItem="ToZ-bO-QUc" firstAttribute="leading" secondItem="qCL-nt-Sts" secondAttribute="leading" constant="98" id="Tag-aD-zqy"/>
                                                         <constraint firstItem="ToZ-bO-QUc" firstAttribute="top" secondItem="c7Q-Jy-zXC" secondAttribute="top" id="Z6M-Qc-Wr9"/>
                                                         <constraint firstItem="9yq-Ee-Mpi" firstAttribute="top" secondItem="qCL-nt-Sts" secondAttribute="top" id="aVl-l1-nq5"/>
+                                                        <constraint firstItem="c7Q-Jy-zXC" firstAttribute="top" secondItem="VRW-34-Uhe" secondAttribute="bottom" constant="14" id="e9q-e2-nIk"/>
                                                         <constraint firstItem="9yq-Ee-Mpi" firstAttribute="leading" secondItem="qCL-nt-Sts" secondAttribute="leading" id="hO2-tt-6B0"/>
                                                         <constraint firstItem="ToZ-bO-QUc" firstAttribute="leading" secondItem="VRW-34-Uhe" secondAttribute="leading" id="jYb-Fv-SmH"/>
+                                                        <constraint firstItem="ToZ-bO-QUc" firstAttribute="top" secondItem="VRW-34-Uhe" secondAttribute="bottom" constant="14" id="je6-gx-K2J"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="c7Q-Jy-zXC" secondAttribute="bottom" constant="16" id="r8X-Lp-dzy"/>
                                                         <constraint firstAttribute="bottom" secondItem="ToZ-bO-QUc" secondAttribute="bottom" constant="16" id="zMC-OP-WCg"/>
                                                         <constraint firstItem="VRW-34-Uhe" firstAttribute="top" secondItem="qCL-nt-Sts" secondAttribute="top" constant="19" id="zQJ-VM-1DW"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Q9A-jz-hgB"/>
+                                                            <exclude reference="Z6M-Qc-Wr9"/>
+                                                            <exclude reference="jYb-Fv-SmH"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2828,6 +2840,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="availableDeliveryDatesLabel" destination="ToZ-bO-QUc" id="bKp-vN-LWz"/>
                                             <outlet property="selectedDeliveryNameLabel" destination="9W7-6E-aHf" id="LR6-eg-38m"/>
                                         </connections>
                                     </tableViewCell>
@@ -2911,10 +2924,14 @@
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPO-wu-B3u">
                                                                     <rect key="frame" x="0.0" y="0.0" width="570" height="40"/>
-                                                                    <state key="normal" backgroundImage="btnSelectOn">
+                                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <state key="normal" backgroundImage="btnSelectOff">
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <state key="disabled" backgroundImage="combobox_gold_disalbed"/>
+                                                                    <state key="selected" backgroundImage="btnSelectOn">
+                                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="selectQuantityButtonTapped:" destination="gh2-yY-KRU" eventType="touchUpInside" id="Ulx-GV-tqv"/>
                                                                     </connections>
@@ -2959,6 +2976,9 @@
                                                                     <exclude reference="czf-5X-kOb"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="deleteCartItemButtonTapped:" destination="gh2-yY-KRU" eventType="touchUpInside" id="zZ2-QL-RNC"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3017,6 +3037,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="deleteButton" destination="nAB-OM-lG6" id="wqU-Sy-sYe"/>
                                             <outlet property="optionLabel" destination="oxE-s9-NCe" id="naD-6t-Xpk"/>
                                             <outlet property="productNameLabel" destination="34y-su-izv" id="hF2-ow-sGZ"/>
                                             <outlet property="quantitySelectButton" destination="SPO-wu-B3u" id="ZPk-dV-Nnw"/>
@@ -3034,7 +3055,7 @@
                                                     <rect key="frame" x="15" y="5" width="570" height="60"/>
                                                     <accessibility key="accessibilityConfiguration" label="addCartButton"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="TgT-YA-45q"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="60" id="TgT-YA-45q"/>
                                                     </constraints>
                                                     <state key="normal" title="장바구니에 담기" backgroundImage="btn_submit_gold">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3108,6 +3129,7 @@
         <image name="btnDeleteItem" width="42" height="42"/>
         <image name="btnGoldStroke" width="12" height="12"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
+        <image name="btnSelectOff" width="36" height="40"/>
         <image name="btnSelectOn" width="36" height="40"/>
         <image name="btn_back" width="40" height="40"/>
         <image name="btn_product_question_write" width="60" height="60"/>

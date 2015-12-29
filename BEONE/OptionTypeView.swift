@@ -2,7 +2,7 @@
 import UIKit
 
 protocol OptionDelegate: NSObjectProtocol {
-  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool)
+  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool, sender: UIButton)
 }
 
 class OptionTypeView: UIView {

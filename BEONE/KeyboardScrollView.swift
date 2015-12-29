@@ -8,8 +8,8 @@ class KeyboardScrollView: UIScrollView {
   
   // MARK: - Init & Deinit
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     tapRecognizer.addTarget(self, action: "handleScrollViewTapped")
     addGestureRecognizer(tapRecognizer)
     addKeyboardObservers()

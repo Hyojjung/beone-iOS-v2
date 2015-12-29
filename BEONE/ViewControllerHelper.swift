@@ -1,5 +1,6 @@
 
 import UIKit
+import ActionSheetPicker_3_0
 
 struct ActionSheetButton {
   let title: String
@@ -95,7 +96,7 @@ extension UIViewController {
       BEONEManager.selectedCartItem = selectedCartItem
       BEONEManager.ordering = ordering
       BEONEManager.rightOrdering = rightOrdering
-    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+      showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
   }
 }
 
@@ -130,5 +131,24 @@ extension UIFloatLabelTextField {
 extension UIViewController {
   func popView() {
     navigationController?.popViewControllerAnimated(true)
+  }
+}
+
+extension UIViewController {
+  func showActionSheet(title: String, rows: [String], initialSelection: Int = 0, sender: UIButton? = nil,
+    doneBlock: ActionStringDoneBlock? = nil, cancelBlock: ActionStringCancelBlock? = nil) {
+    sender?.selected = true
+    let actionSheet =
+    ActionSheetStringPicker(title: title,
+      rows: rows,
+      initialSelection: initialSelection,
+      doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
+        doneBlock?(actionSheet, selectedIndex, selectedString)
+        sender?.selected = false
+      }, cancelBlock: {(actionSheet) -> Void in
+        cancelBlock?(actionSheet)
+        sender?.selected = false
+      }, origin: view)
+    actionSheet.showActionSheetPicker()
   }
 }

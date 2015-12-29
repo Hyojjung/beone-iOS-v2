@@ -2,6 +2,11 @@
 import UIKit
 
 class CartItemList: BaseListModel {
+  private let kCartItemPropertyKeyProductId = "productId"
+  private let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
+  private let kCartItemPropertyKeyQuantity = "quantity"
+  private let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
+  
   var selectedCartItemIds = [Int]()
   
   // MARK: - BaseModel Methods (Fetch)
@@ -40,6 +45,25 @@ class CartItemList: BaseListModel {
     }
   }
   
+  // MARK: - BaseModel Methods (Post)
+  
+  override func postUrl() -> String {
+    return cartItemUrl()
+  }
+  
+  override func postParameter() -> AnyObject? {
+    return parameter()
+  }
+  
+  override func postSuccess() -> NetworkSuccess? {
+    return {(result) -> Void in
+      if let data = result as? [String: AnyObject] {
+        self.id = data[kObjectPropertyKeyId] as? Int
+        self.postNotification(kNotificationPostCartItemSuccess)
+      }
+    }
+  }
+  
   // MARK: - Private Methods
 
   private func cartItemUrl() -> String {
@@ -47,6 +71,21 @@ class CartItemList: BaseListModel {
       return "users/\((MyInfo.sharedMyInfo().userId)!)/cart-items"
     }
     return "cart-items"
+  }
+  
+  // MARK: - Private Methods
+  
+  private func parameter() -> [[String: AnyObject]] {
+    var parameter = [[String: AnyObject]]()
+    for cartItem in list as! [CartItem] {
+      var cartItemObject = [String: AnyObject]()
+      cartItemObject[kCartItemPropertyKeyQuantity] = cartItem.quantity
+      cartItemObject[kCartItemPropertyKeyProductId] = cartItem.product.id
+      cartItemObject[kCartItemPropertyKeyProductOptionSets] = cartItem.selectedOption?.serverFormat()
+      cartItemObject[kCartItemPropertyKeyProductOrderableInfoId] = cartItem.productOrderableInfo.id
+      parameter.append(cartItemObject)
+    }
+    return parameter
   }
   
   // MARK: - Public Methods

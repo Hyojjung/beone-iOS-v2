@@ -49,4 +49,17 @@ class ProductOptionSet: BaseModel {
     }
     return optionString
   }
+  
+  func serverFormat() -> [String: AnyObject] {
+    var serverFormat = [String: AnyObject]()
+    serverFormat["originalId"] = id
+    if options.count > 0 {
+      var optionsServerFormat = [[String: AnyObject]]()
+      for option in options {
+        optionsServerFormat.append(option.serverFormat())
+      }
+      serverFormat["options"] = optionsServerFormat
+    }
+    return serverFormat
+  }
 }

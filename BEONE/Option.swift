@@ -66,4 +66,18 @@ class Option: BaseModel {
     }
     return optionString
   }
+  
+  func serverFormat() -> [String: AnyObject] {
+    var serverFormat = [String: AnyObject]()
+    serverFormat["originalId"] = id
+    serverFormat["isSelected"] = isSelected
+    if isSelected && optionItems.count > 0 {
+      var optionItemsServerFormat = [[String: AnyObject]]()
+      for optionItem in optionItems {
+        optionItemsServerFormat.append(optionItem.serverFormat())
+      }
+      serverFormat["optionItems"] = optionItemsServerFormat
+    }
+    return serverFormat
+  }
 }

@@ -4,6 +4,9 @@
  let kSectionCellCount = 2 // delivery type cell + shop cell count
  
  class CartViewController: BaseTableViewController {
+  
+  @IBOutlet weak var orderButtonViewBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var allSelectButtonViewTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var allSelectButton: UIButton!
   let cartItemList = CartItemList()
   let order = Order()
@@ -19,6 +22,11 @@
       name: kNotificationFetchCartListSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpTableView",
       name: kNotificationFetchOrderSuccess, object: nil)
+  }
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
   }
  }
  
@@ -113,12 +121,19 @@
  extension CartViewController {
   func fetchOrderableInfo() {
     selectedCartItemOrder = order
-    BEONEManager.selectedOrder = order
-    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds)
+    if cartItemList.list.count > 0 {
+      BEONEManager.selectedOrder = order
+      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds)
+    } else {
+      order.orderableItemSets.removeAll()
+      setUpTableView()
+    }
   }
   
   func setUpTableView() {
     allSelectButton.selected = cartItemList.selectedCartItemIds == cartItemList.cartItemIds()
+    allSelectButtonViewTopConstraint.constant = order.orderableItemSets.count == 0 ? -45 : 0
+    orderButtonViewBottomConstraint.constant = order.orderableItemSets.count == 0 ? -49 : 0
     tableView.reloadData()
   }
  }
@@ -141,20 +156,14 @@
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
-    if let cell = cell as? DeliveryTypeImageCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section],
-        needCell: order.deliveryTypeCellHeight(indexPath.section))
-    } else if let cell = cell as? ShopNameCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section])
-    } else if let cell = cell as? OrderableItemCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount],
-        selectedCartItemIds: cartItemList.selectedCartItemIds)
-    } else if let cell = cell as? OrderPriceCell {
-      cell.configureCell(selectedCartItemOrder)
-    }
+    configure(cell, indexPath: indexPath)
     return cell
   }
   
+  
+ }
+ 
+ extension CartViewController: DynamicHeightTableViewProtocol {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if order.orderableItemSets.count == 0 {
       return "segueCell"
@@ -168,6 +177,20 @@
       return kShopNameCellIdentifier
     } else {
       return "productCell"
+    }
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? DeliveryTypeImageCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section],
+        needCell: order.deliveryTypeCellHeight(indexPath.section))
+    } else if let cell = cell as? ShopNameCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section])
+    } else if let cell = cell as? OrderableItemCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount],
+        selectedCartItemIds: cartItemList.selectedCartItemIds)
+    } else if let cell = cell as? OrderPriceCell {
+      cell.configureCell(selectedCartItemOrder)
     }
   }
  }

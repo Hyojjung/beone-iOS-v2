@@ -1,6 +1,5 @@
 
 import UIKit
-import ActionSheetPicker_3_0
 
 class OptionViewController: BaseTableViewController {
   
@@ -34,9 +33,14 @@ class OptionViewController: BaseTableViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
-      name: kNotificationFetchProductSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePostCartItemSuccess", name: kNotificationPostCartItemSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "setUpProductData",
+      name: kNotificationFetchProductSuccess,
+      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "handlePostCartItemSuccess",
+      name: kNotificationPostCartItemSuccess,
+      object: nil)
   }
   
   override func setUpData() {
@@ -60,22 +64,25 @@ class OptionViewController: BaseTableViewController {
       }
       if product?.productOptionSets.list.count == 0 && cartItems.count == 0 {
         let cartItem = CartItem()
-        cartItem.quantity = 1
         cartItems.append(cartItem)
       }
       
       selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
     }
     
+    setUpProductDeliveryTypeNames()
+    tableView.reloadData()
+  }
+  
+  private func setUpProductDeliveryTypeNames() {
     deliveryTypeNames.removeAll()
     if let product = product {
       for productOrderableInfo in product.productOrderableInfos {
-        if let name = productOrderableInfo.name {
+        if let name = productOrderableInfo.deliveryType.name {
           deliveryTypeNames.append(name)
         }
       }
     }
-    tableView.reloadData()
   }
   
   func handlePostCartItemSuccess() {
@@ -91,50 +98,63 @@ class OptionViewController: BaseTableViewController {
 
 extension OptionViewController {
   @IBAction func sendCart() {
-    //    if let product = product, productOrderableInfo = selectedProductOrderableInfo {
-    //      cartItem.product = product
-    //      cartItem.productOrderableInfo = productOrderableInfo
-    //      cartItem.quantity = productQuantity
-    //      if cartItem == BEONEManager.selectedCartItem {
-    //        cartItem.put()
-    //      } else {
-    //        cartItem.post()
-    //      }
-    //    }
+    if let productOrderableInfo = selectedProductOrderableInfo {
+      if cartItems.count > 0 {
+        if !isModifing {
+          for cartItem in cartItems {
+            cartItem.productOrderableInfo = productOrderableInfo
+          }
+          let cartItemList = CartItemList()
+          cartItemList.list = cartItems
+          cartItemList.post()
+        } else if cartItems.count == 1{
+          cartItems.first!.put()
+        }
+      } else {
+        showAlertView(NSLocalizedString("select option", comment: "alert title"))
+      }
+    } else {
+      showAlertView(NSLocalizedString("select delivery type", comment: "alert title"))
+    }
   }
   
-  @IBAction func selectDeliveryTypeButtonTapped() {
+  @IBAction func selectDeliveryTypeButtonTapped(sender: UIButton) {
     if deliveryTypeNames.count > 0 {
-      let deliveryTypeActionSheet =
-      ActionSheetStringPicker(title: NSLocalizedString("select delivery type", comment: "picker title"),
-        rows: deliveryTypeNames, initialSelection: 0, doneBlock: { (_, selectedIndex, _) -> Void in
+      showActionSheet(NSLocalizedString("select delivery type", comment: "picker title"),
+        rows: deliveryTypeNames,
+        initialSelection: 0,
+        sender: sender,
+        doneBlock: { (_, selectedIndex, _) -> Void in
           self.selectedProductOrderableInfo = self.product!.productOrderableInfos[selectedIndex]
-          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.DeliveryInfo.rawValue),
-            withRowAnimation: .Automatic)
-        }, cancelBlock: nil, origin: view)
-      deliveryTypeActionSheet.showActionSheetPicker()
+          self.tableView.reloadData()
+      })
     }
   }
   
   @IBAction func selectQuantityButtonTapped(sender: UIButton) {
     if cartItems.count > sender.tag {
       let cartItem = cartItems[sender.tag]
-      let quantityActionSheet =
-      ActionSheetStringPicker(title: NSLocalizedString("select quantity", comment: "picker title"),
-        rows: kQuantityStrings, initialSelection: cartItem.quantity - 1,
+      showActionSheet(NSLocalizedString("select quantity", comment: "picker title"),
+        rows: kQuantityStrings,
+        initialSelection: cartItem.quantity - 1,
+        sender: sender,
         doneBlock: { (_, selectedIndex, _) -> Void in
           cartItem.quantity = selectedIndex + 1
-          self.tableView.reloadSections(NSIndexSet(index: OptionTableViewSection.CartItemCount.rawValue),
-            withRowAnimation: .Automatic)
-        }, cancelBlock: nil, origin: view)
-      quantityActionSheet.showActionSheetPicker()
+          self.tableView.reloadData()
+      })
+    }
+  }
+  
+  @IBAction func deleteCartItemButtonTapped(sender: UIButton) {
+    if cartItems.count > sender.tag {
+      cartItems.removeAtIndex(sender.tag)
     }
   }
   
   @IBAction func addCartItemButtonTapped() {
     if selectedOption == nil || selectedOption!.isValid() == true {
       let cartItem = CartItem()
-      cartItem.product.id = product?.id
+      cartItem.product = product!
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
       selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
       cartItems.append(cartItem)
@@ -152,6 +172,8 @@ extension OptionViewController {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch OptionTableViewSection(rawValue: section)! {
+    case .Option:
+      return product?.productOptionSets.list.count == 0 ? 0 : 1
     case .CartItemCount:
       return cartItems.count
     default:
@@ -199,7 +221,7 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   }
   
   private func configureCartItemInfoCell(cell: UITableViewCell) {
-    if let cell = cell as? CartItemInfoCell {
+    if let cell = cell as? DeliveryInfoCell {
       cell.configureCell(selectedProductOrderableInfo)
     }
   }
@@ -225,53 +247,41 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
 }
 
 extension OptionViewController: OptionDelegate {
-  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool) {
+  func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool, sender: UIButton) {
+    var optionValues = [String]()
+    var initialSelection = 0
     if isProductOptionSet {
-      var optionSetValues = [String]()
-      var initialSelection = 0
       for (index, option) in selectedOption(optionId).options.enumerate() {
         if let name = option.name {
-          optionSetValues.append(name)
+          optionValues.append(name)
         }
         if option.isSelected {
           initialSelection = index
         }
       }
-      let optionActionSheet = ActionSheetStringPicker(title: NSLocalizedString("select option", comment: "picker title"),
-        rows: optionSetValues,
-        initialSelection: initialSelection,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          for (index, option) in self.selectedOption(optionId).options.enumerate() {
-            option.isSelected = index == selectedIndex
-          }
-          self.tableView.reloadData()
-        }, cancelBlock: nil,
-        origin: view)
-      optionActionSheet.showActionSheetPicker()
+      showActionSheet( NSLocalizedString("select option", comment: "picker title"), rows: optionValues, initialSelection: initialSelection, sender: sender, doneBlock: { (_, selectedIndex, _) -> Void in
+        for (index, option) in self.selectedOption(optionId).options.enumerate() {
+          option.isSelected = index == selectedIndex
+        }
+        self.tableView.reloadData()
+      })
     } else {
-      var selectValues = [String]()
-      var initialSelection = 0
       for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
         if let name = select.name {
-          selectValues.append(name)
+          optionValues.append(name)
         }
         if select.name == selectedOptionItem(optionId).name {
           initialSelection = index
         }
       }
-      let optionActionSheet = ActionSheetStringPicker(title: NSLocalizedString("select option", comment: "picker title"),
-        rows: selectValues,
-        initialSelection: initialSelection,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
-            if index == selectedIndex {
-              self.selectedOptionItem(optionId).value = select.name
-            }
+      showActionSheet( NSLocalizedString("select option", comment: "picker title"), rows: optionValues, initialSelection: initialSelection, sender: sender, doneBlock: { (_, selectedIndex, _) -> Void in
+        for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
+          if index == selectedIndex {
+            self.selectedOptionItem(optionId).value = select.name
           }
-          self.tableView.reloadData()
-        }, cancelBlock: nil,
-        origin: view)
-      optionActionSheet.showActionSheetPicker()
+        }
+        self.tableView.reloadData()
+      })
     }
     
   }
@@ -284,7 +294,6 @@ extension OptionViewController: OptionDelegate {
     }
     fatalError("no product option set")
   }
-  
   
   func selectedOptionItem(optionId: Int) -> OptionItem {
     for productOptionSet in selectedOption!.list as! [ProductOptionSet] {
@@ -301,10 +310,12 @@ extension OptionViewController: OptionDelegate {
 }
 
 extension OptionViewController: UITextViewDelegate {
-  func textViewDidBeginEditing(textView: UITextView) {
+  func textViewShouldBeginEditing(textView: UITextView) -> Bool {
     if let textView = textView as? BeoneTextView {
+      tableView.focusOffset = textView.convertPoint(textView.frame.origin, toView: tableView).y - 250
       textView.isHighlighted = true
     }
+    return true
   }
   
   func textViewDidEndEditing(textView: UITextView) {

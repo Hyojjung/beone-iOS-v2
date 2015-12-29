@@ -89,11 +89,11 @@ class Product: BaseModel {
         if let shopObject = product[kProductPropertyKeyShop]{
           shop.assignObject(shopObject)
         }
-        if isInList {
-          postNotification(kNotificationFetchProductSuccess)
-        }
         if let productOptionSetObjects = product["productOptionSets"] as? [[String: AnyObject]] {
           productOptionSets.assignObject(productOptionSetObjects)
+        }
+        if isInList {
+          postNotification(kNotificationFetchProductSuccess)
         }
       }
     }

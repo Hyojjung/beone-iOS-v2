@@ -30,28 +30,6 @@ class CartItem: BaseModel {
     }
   }
   
-  // MARK: - BaseModel Methods (Post)
-  
-  override func postUrl() -> String {
-    if let userId = MyInfo.sharedMyInfo().userId {
-      return "users/\(userId)/cart-items"
-    }
-    return "users/cart-items"
-  }
-  
-  override func postParameter() -> AnyObject? {
-    return parameter()
-  }
-  
-  override func postSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      if let data = result as? [String: AnyObject] {
-        self.id = data[kObjectPropertyKeyId] as? Int
-        self.postNotification(kNotificationPostCartItemSuccess)
-      }
-    }
-  }
-  
   // MARK: - BaseModel Methods (Put)
   
   override func putUrl() -> String {

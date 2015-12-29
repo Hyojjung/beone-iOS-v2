@@ -15,6 +15,12 @@ extension String {
   func date() -> NSDate? {
     return DateFormatterHelper.serverDateFormatter().dateFromString(self)
   }
+  
+  func day() -> NSDate? {
+    let serverDayFormatter = NSDateFormatter()
+    serverDayFormatter.dateFormat = "yyyy-MM-dd"
+    return serverDayFormatter.dateFromString(self)
+  }
 }
 
 extension NSDate {
@@ -83,7 +89,7 @@ extension NSDate {
 }
 
 class DateFormatterHelper: NSObject {
-  static func serverDateFormatter() -> NSDateFormatter{
+  static func serverDateFormatter() -> NSDateFormatter {
     let serverDateFormatter = NSDateFormatter()
     serverDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     return serverDateFormatter

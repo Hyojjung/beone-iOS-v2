@@ -22,7 +22,9 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdD-ZF-HjU">
                             <rect key="frame" x="0.0" y="0.0" width="517" height="40"/>
-                            <state key="normal" backgroundImage="btnSelectOn"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="btnSelectOff"/>
+                            <state key="selected" backgroundImage="btnSelectOn"/>
                             <connections>
                                 <action selector="optionSelectButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="CUR-qe-BCa"/>
                             </connections>
@@ -68,6 +70,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btnSelectOff" width="36" height="40"/>
         <image name="btnSelectOn" width="36" height="40"/>
     </resources>
 </document>

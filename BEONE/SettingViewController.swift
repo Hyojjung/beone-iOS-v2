@@ -107,13 +107,6 @@ extension SettingViewController {
 
 extension SettingViewController {
   
-//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//    if let tableView = tableView as? DynamicHeightTableView {
-//      return tableView.heightForBasicCell(indexPath)
-//    }
-//    return 0
-//  }
-  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     switch SettingTableViewSection(rawValue: indexPath.section)! {
     case .LogOut:

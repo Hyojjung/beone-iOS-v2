@@ -41,4 +41,12 @@ class ProductOptionSetList: BaseListModel {
     }
     return optionString
   }
+  
+  func serverFormat() -> [[String: AnyObject]] {
+    var serverFormat = [[String: AnyObject]]()
+    for productOptionSet in list as! [ProductOptionSet] {
+      serverFormat.append(productOptionSet.serverFormat())
+    }
+    return serverFormat
+  }
 }
