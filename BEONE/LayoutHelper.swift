@@ -16,29 +16,25 @@ extension UIView {
       attribute: .CenterY,
       multiplier: 1,
       constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .CenterX,
-      relatedBy: .Equal,
-      toItem: self,
-      attribute: .CenterX,
-      multiplier: 1,
-      constant: 0))
+    addCenterXLayout(subView)
   }
   
   func addSubViewAndEdgeLayout(subView: UIView) {
     addSubViewAndEnableAutoLayout(subView)
     addTopLayout(subView)
     addBottomLayout(subView)
-    addLeftLayout(subView)
-    addRightLayout(subView)
+    addConstraint(NSLayoutConstraint(item: subView, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1, constant: 0))
+    addConstraint(NSLayoutConstraint(item: subView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0))
+    //    addLeadingLayout(subView)
+    //    addTrailingLayout(subView)
   }
   
   func addSubViewAndEdgeMarginLayout(subView: UIView) {
     addSubViewAndEnableAutoLayout(subView)
     addTopMarginLayout(subView)
     addBottomMarginLayout(subView)
-    addLeftMarginLayout(subView)
-    addRightMarginLayout(subView)
+    addLeadingMarginLayout(subView)
+    addTrailingMarginLayout(subView)
   }
   
   func changeHeightLayoutConstant(height: CGFloat?) {
@@ -69,6 +65,56 @@ extension UIView {
       attribute: .NotAnAttribute,
       multiplier: 1,
       constant: height))
+  }
+  
+  func addWidthLayout(height: CGFloat) {
+    addConstraint(NSLayoutConstraint(item: self,
+      attribute: .Width,
+      relatedBy: .Equal,
+      toItem: nil,
+      attribute: .NotAnAttribute,
+      multiplier: 1,
+      constant: height))
+  }
+  
+  func addVerticalLayout(topView: UIView, bottomView: UIView, contsant: CGFloat = 0) {
+    addConstraint(NSLayoutConstraint(item: bottomView,
+      attribute: .Top,
+      relatedBy: .Equal,
+      toItem: topView,
+      attribute: .Bottom,
+      multiplier: 1,
+      constant: contsant))
+  }
+  
+  func addHorizontalLayout(leftView: UIView, rightView: UIView, contsant: CGFloat = 0) {
+    addConstraint(NSLayoutConstraint(item: rightView,
+      attribute: .Left,
+      relatedBy: .Equal,
+      toItem: leftView,
+      attribute: .Right,
+      multiplier: 1,
+      constant: contsant))
+  }
+  
+  func addLeftLayout(leftView: UIView, rightView: UIView, contsant: CGFloat = 0) {
+    addConstraint(NSLayoutConstraint(item: rightView,
+      attribute: .Left,
+      relatedBy: .Equal,
+      toItem: leftView,
+      attribute: .Left,
+      multiplier: 1,
+      constant: contsant))
+  }
+  
+  func addRightLayout(leftView: UIView, rightView: UIView, contsant: CGFloat = 0) {
+    addConstraint(NSLayoutConstraint(item: rightView,
+      attribute: .Right,
+      relatedBy: .Equal,
+      toItem: leftView,
+      attribute: .Right,
+      multiplier: 1,
+      constant: contsant))
   }
 }
 
@@ -137,23 +183,16 @@ extension UIView {
 // MARK: - Left Layout Methods
 
 extension UIView {
-  func addLeftLayout(subView: UIView, constant: CGFloat) {
-    addLeftMarginLayout(subView, constant: constant, layoutAttribute: .Left)
+  func addLeadingLayout(subView: UIView, constant: CGFloat = 0) {
+    addLeadingMarginLayout(subView, constant: constant, layoutAttribute: .Left)
   }
   
-  func addLeftLayout(subView: UIView) {
-    addLeftLayout(subView, constant: 0)
+  
+  func addLeadingMarginLayout(subView: UIView, constant: CGFloat = 0) {
+    addLeadingMarginLayout(subView, constant: constant, layoutAttribute: .LeftMargin)
   }
   
-  func addLeftMarginLayout(subView: UIView, constant: CGFloat) {
-    addLeftMarginLayout(subView, constant: constant, layoutAttribute: .LeftMargin)
-  }
-  
-  func addLeftMarginLayout(subView: UIView) {
-    addLeftMarginLayout(subView, constant: 0)
-  }
-  
-  private func addLeftMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+  private func addLeadingMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
     addConstraint(NSLayoutConstraint(item: subView,
       attribute: .Left,
       relatedBy: .Equal,
@@ -167,23 +206,15 @@ extension UIView {
 // MARK: - Right Layout Methods
 
 extension UIView {
-  func addRightLayout(subView: UIView, constant: CGFloat) {
-    addRightMarginLayout(subView, constant: constant, layoutAttribute: .Right)
+  func addTrailingLayout(subView: UIView, constant: CGFloat = 0) {
+    addTrailingMarginLayout(subView, constant: constant, layoutAttribute: .Right)
   }
   
-  func addRightLayout(subView: UIView) {
-    addRightLayout(subView, constant: 0)
+  func addTrailingMarginLayout(subView: UIView, constant: CGFloat = 0) {
+    addTrailingMarginLayout(subView, constant: constant, layoutAttribute: .RightMargin)
   }
   
-  func addRightMarginLayout(subView: UIView, constant: CGFloat) {
-    addRightMarginLayout(subView, constant: constant, layoutAttribute: .RightMargin)
-  }
-  
-  func addRightMarginLayout(subView: UIView) {
-    addRightMarginLayout(subView, constant: 0)
-  }
-  
-  private func addRightMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+  private func addTrailingMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
     addConstraint(NSLayoutConstraint(item: subView,
       attribute: .Right,
       relatedBy: .Equal,
@@ -197,25 +228,39 @@ extension UIView {
 // MARK: - CenterX Layout Methods
 
 extension UIView {
-  func addCenterXLayout(subView: UIView, constant: CGFloat) {
+  func addCenterXLayout(subView: UIView, constant: CGFloat = 0) {
     addCenterXMarginLayout(subView, constant: constant, layoutAttribute: .CenterX)
   }
   
-  func addCenterXLayout(subView: UIView) {
-    addCenterXLayout(subView, constant: 0)
-  }
-  
-  func addCenterXMarginLayout(subView: UIView, constant: CGFloat) {
+  func addCenterXMarginLayout(subView: UIView, constant: CGFloat = 0) {
     addCenterXMarginLayout(subView, constant: constant, layoutAttribute: .CenterXWithinMargins)
-  }
-  
-  func addCenterXMarginLayout(subView: UIView) {
-    addCenterXMarginLayout(subView, constant: 0)
   }
   
   private func addCenterXMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
     addConstraint(NSLayoutConstraint(item: subView,
       attribute: .CenterX,
+      relatedBy: .Equal,
+      toItem: self,
+      attribute: layoutAttribute,
+      multiplier: 1,
+      constant: -constant))
+  }
+}
+
+// MARK: - CenterY Layout Methods
+
+extension UIView {
+  func addCenterYLayout(subView: UIView, constant: CGFloat = 0) {
+    addCenterYMarginLayout(subView, constant: constant, layoutAttribute: .CenterY)
+  }
+  
+  func addCenterYMarginLayout(subView: UIView, constant: CGFloat = 0) {
+    addCenterYMarginLayout(subView, constant: constant, layoutAttribute: .CenterYWithinMargins)
+  }
+  
+  private func addCenterYMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
+    addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .CenterY,
       relatedBy: .Equal,
       toItem: self,
       attribute: layoutAttribute,

@@ -14,9 +14,10 @@ class OptionView: UIView {
         
         for option in productOptionSet.options {
           if option.isSelected {
-            for optionItem in option.optionItems {
-              beforeView = addOptionItemView(optionItem, beforeView: beforeView)
-            }
+            continue
+          }
+          for optionItem in option.optionItems {
+            beforeView = addOptionItemView(optionItem, beforeView: beforeView)
           }
         }
       }
@@ -68,17 +69,11 @@ class OptionView: UIView {
   
   func addView(view: UIView, beforeView: UIView?) {
     if let beforeView = beforeView {
-      addConstraint(NSLayoutConstraint(item: beforeView,
-        attribute: .Bottom,
-        relatedBy: .Equal,
-        toItem: view,
-        attribute: .Top,
-        multiplier: 1,
-        constant: -10))
+      addVerticalLayout(beforeView, bottomView: view, contsant: 10)
     } else {
       addTopLayout(view)
     }
-    addLeftLayout(view)
-    addRightLayout(view)
+    addLeadingLayout(view)
+    addTrailingLayout(view)
   }
 }

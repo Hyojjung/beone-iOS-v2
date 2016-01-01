@@ -13,4 +13,17 @@ class AvailableTimeRangeList: BaseListModel {
     }
     return deliveryDates
   }
+  
+  func availableDeliveryRanges(date: NSDate) -> [AvailableTimeRange] {
+    let dateComponent = date.dateComponent()
+    var availableTimeRanges = [AvailableTimeRange]()
+    for availableTimeRange in list as! [AvailableTimeRange] {
+      if let (month, day) = availableTimeRange.startDateTime?.dateComponent() {
+        if dateComponent.0 == month && dateComponent.1 == day {
+          availableTimeRanges.append(availableTimeRange)
+        }
+      }
+    }
+    return availableTimeRanges
+  }
 }

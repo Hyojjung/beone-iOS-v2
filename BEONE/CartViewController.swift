@@ -20,8 +20,6 @@
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchOrderableInfo",
       name: kNotificationFetchCartListSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpTableView",
-      name: kNotificationFetchOrderSuccess, object: nil)
   }
   
   override func setUpView() {
@@ -94,7 +92,7 @@
   func setUpSelectedCartItemOrder() {
     makeSelectedCartItemOrderUnique()
     BEONEManager.selectedOrder = selectedCartItemOrder
-    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: selectedCartItemOrder)
+    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order) { self.setUpTableView() }
   }
   
   func makeSelectedCartItemOrderUnique() {
@@ -104,9 +102,7 @@
   }
   
   func cartItem(cartItemId: Int) -> CartItem {
-    print(cartItemId)
     for cartItem in cartItemList.list as! [CartItem] {
-      print(cartItem.id)
       if cartItem.id == cartItemId {
         return cartItem
       }
@@ -121,7 +117,7 @@
   func fetchOrderableInfo() {
     selectedCartItemOrder = order
     if cartItemList.list.count > 0 {
-      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order)
+      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order) { self.setUpTableView() }
     } else {
       order.orderableItemSets.removeAll()
       setUpTableView()

@@ -87,7 +87,7 @@ class OptionViewController: BaseTableViewController {
   
   func handlePostCartItemSuccess() {
     if isOrdering {
-      showOrderView()
+      showOrderView(cartItems)
     } else {
       popView()
     }

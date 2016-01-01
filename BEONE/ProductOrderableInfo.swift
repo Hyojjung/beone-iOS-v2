@@ -29,20 +29,19 @@ class ProductOrderableInfo: BaseModel {
       var availableDatesString = String()
       var monthes = [Int]()
       for (index, availableDate) in availableDates.enumerate() {
-        if let dateComponent = availableDate.dateComponent() {
-          if !monthes.contains(dateComponent.0) {
-            if index != 0 {
-              availableDatesString += "일, "
-            }
-            monthes.append(dateComponent.0)
-            availableDatesString += "\(dateComponent.0)월 "
-          } else {
-            if index != 0 {
-              availableDatesString += ", "
-            }
+        let dateComponent = availableDate.dateComponent()
+        if !monthes.contains(dateComponent.0) {
+          if index != 0 {
+            availableDatesString += "일, "
           }
-          availableDatesString += "\(dateComponent.1)"
+          monthes.append(dateComponent.0)
+          availableDatesString += "\(dateComponent.0)월 "
+        } else {
+          if index != 0 {
+            availableDatesString += ", "
+          }
         }
+        availableDatesString += "\(dateComponent.1)"
       }
       availableDatesString += "일"
       return availableDatesString

@@ -3,7 +3,7 @@ import UIKit
 
 class DeliveryType: BaseModel {
   var name: String?
-  var reservable: Bool?
+  var isReservable = false
   var isDeliverable: Bool?
   var thumbnailImageUrl: String?
   
@@ -11,11 +11,9 @@ class DeliveryType: BaseModel {
     thumbnailImageUrl = data["thumbnailImageUrl"] as? String
     id = data[kObjectPropertyKeyId] as? Int
     name = data["name"] as? String
-    reservable = data["isReservable"] as? Bool
+    if let isReservable = data["isReservable"] as? Bool {
+      self.isReservable = isReservable
+    }
     isDeliverable = data["isDeliverable"] as? Bool
-  }
-  
-  func isReservable() -> Bool {
-    return reservable != nil && reservable! == true
   }
 }

@@ -29,6 +29,12 @@ class OrderAddressViewController: BaseViewController {
     removeViewObservers()
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let selectingPaymentTypeViewController = segue.destinationViewController as? SelectingPaymentTypeViewController {
+      selectingPaymentTypeViewController.order = order
+    }
+  }
+  
   // MARK: - BaseViewController Methods
   
   override func setUpView() {
@@ -126,6 +132,8 @@ extension OrderAddressViewController {
     if addressList.list.count > 0 {
       address = addressList.list.first as! Address
     }
+    receiverNameTextField.text = address.receiverName
+    receiverPhoneTextField.text = address.receiverPhone
     setUpAddressView()
   }
 }
@@ -143,7 +151,7 @@ extension OrderAddressViewController {
     let addressString = address.addressType == .Jibun ? address.jibunAddress : address.roadAddress
     if addressTextField.text != addressString {
       addressTextField.text = addressString
-      detailAddressTextField.text = nil
+      detailAddressTextField.text = address.detailAddress
     }
   }
   

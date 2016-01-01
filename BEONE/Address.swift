@@ -18,6 +18,7 @@ let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
 let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
 let kAddressPropertyKeyReceiverAddressType = "receiverAddressType"
 let kAddressPropertyReceiverAddressTypeRoad = "road"
+let kAddressPropertyReceiverAddressTypeJibun = "jibun"
 
 let kAddressPropertyKeyUserSelectedType = "userSelectedType"
 let kAddressPropertyKeyPostcode1 = "postcode1"

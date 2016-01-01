@@ -53,10 +53,15 @@ class ProductDetailViewController: BaseViewController {
   let reviewList = ReviewList()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
+  var isWaitingSigning = false
+  var isOrdering = false
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    // TODO: - Refresh Product
+    if isWaitingSigning {
+      addCart(isOrdering)
+    }
+    isWaitingSigning = false
     navigationController?.navigationBar.hidden = true
   }
   
@@ -121,11 +126,21 @@ class ProductDetailViewController: BaseViewController {
   }
   
   @IBAction func orderButtonTapped() {
-    performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: true)
+    addCart(true)
   }
   
   @IBAction func addCartButtonTapped() {
-    performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: false)
+    addCart(false)
+  }
+  
+  func addCart(isOrdering: Bool) {
+    if MyInfo.sharedMyInfo().isUser() {
+      performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: isOrdering)
+    } else {
+      isWaitingSigning = true
+      self.isOrdering = isOrdering
+      showSigningView()
+    }
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
@@ -247,5 +262,4 @@ extension ProductDetailViewController: UICollectionViewDelegate {
       break
     }
   }
-  
 }

@@ -3,6 +3,7 @@ import UIKit
 
 class OrderableItemSet: BaseModel {
   var availableTimeRangeList = AvailableTimeRangeList()
+  var selectedTimeRange: AvailableTimeRange?
   var orderableItems = [OrderableItem]()
   var deliveryPrice: Int?
   let location = Location()
@@ -13,12 +14,16 @@ class OrderableItemSet: BaseModel {
     if let orderableItemSet = data as? [String: AnyObject] {
       id = orderableItemSet[kObjectPropertyKeyId] as? Int
       if let availableTimeRangesObject = orderableItemSet["availableTimeRanges"] as? [[String: AnyObject]] {
-        availableTimeRangeList.list.removeAll()
+        var availableTimeRanges = [AvailableTimeRange]()
         for availableTimeRangeObject in availableTimeRangesObject {
           let availableTimeRange = AvailableTimeRange()
           availableTimeRange.assignObject(availableTimeRangeObject)
-          availableTimeRangeList.list.append(availableTimeRange)
+          availableTimeRanges.append(availableTimeRange)
         }
+        availableTimeRanges.sortInPlace {
+          return $0.startDateTime!.compare($1.startDateTime!) == .OrderedAscending
+        }
+        availableTimeRangeList.list = availableTimeRanges
       }
       
       if let orderableItemsObject = orderableItemSet["orderableItems"] as? [[String: AnyObject]] {

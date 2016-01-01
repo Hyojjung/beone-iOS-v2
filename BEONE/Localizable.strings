@@ -42,3 +42,6 @@
 "enter detail address" = "상세주소를 입력해주세요.";
 
 "select option" = "옵션을 선택해주세요.";
+
+"select delivery date" = "희망배송일을 선택해주세요.";
+"select time range" = "희망시간대를 선택해주세요.";
