@@ -228,7 +228,7 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   
   private func configureButtonCell(cell: UITableViewCell) {
     if let cell = cell as? ButtonCell {
-      cell.configureCell()
+      cell.configureCell(isOrdering)
     }
   }
   

@@ -44,7 +44,7 @@ class ShopViewController: BaseTableViewController {
     if let userInfo = notification.userInfo {
       let product = Product()
       product.id = userInfo[kNotificationKeyProductId] as? Int
-      showOptionView(product, ordering: true, rightOrdering: true)
+      showOptionView(product, rightOrdering: true)
     }
   }
 }

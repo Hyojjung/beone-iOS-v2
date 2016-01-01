@@ -47,8 +47,8 @@ class CartItemCountCell: UITableViewCell {
 class ButtonCell: UITableViewCell {
   @IBOutlet weak var addCartItemButton: UIButton!
   
-  func configureCell() {
-    let buttonTitle = BEONEManager.ordering ?
+  func configureCell(isOrdering: Bool) {
+    let buttonTitle = isOrdering ?
       NSLocalizedString("order right now", comment: "button title") :
       NSLocalizedString("add to cart", comment: "button title")
     addCartItemButton.setTitle(buttonTitle, forState: .Normal)

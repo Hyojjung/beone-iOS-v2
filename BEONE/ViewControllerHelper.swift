@@ -90,11 +90,9 @@ extension UIViewController {
     showViewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier)
   }
   
-  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil,
-    ordering: Bool = false, rightOrdering: Bool = false) {
+  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false) {
       BEONEManager.selectedProduct = selectedProduct
       BEONEManager.selectedCartItem = selectedCartItem
-      BEONEManager.ordering = ordering
       BEONEManager.rightOrdering = rightOrdering
       showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
   }
