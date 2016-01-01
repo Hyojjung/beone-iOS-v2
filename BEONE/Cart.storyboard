@@ -463,6 +463,7 @@
                                             <outlet property="deliveryDatesKeyView" destination="zRM-DS-uC4" id="ayF-zH-uAa"/>
                                             <outlet property="deliveryDatesLabelBottomConstraint" destination="xn2-5O-Aeg" id="Sfw-Sd-xwE"/>
                                             <outlet property="deliveryPriceLabel" destination="Hhm-zo-mjT" id="OVl-B4-zIW"/>
+                                            <outlet property="directOrderButton" destination="Gcp-hN-pLL" id="IaH-wU-5HD"/>
                                             <outlet property="optionModifyButton" destination="WYj-VT-Sfm" id="L6Z-73-UHO"/>
                                             <outlet property="optionSoldOutView" destination="7iP-7S-ysk" id="Mn8-YO-FbN"/>
                                             <outlet property="productActualPriceLabel" destination="vbK-WK-0uY" id="Ggf-8W-ne6"/>

@@ -1,18 +1,28 @@
 
 import UIKit
 
-class DeliveryDateViewController: BaseTableViewController, CKCalendarDelegate {
-  var order = BEONEManager.selectedOrder
+class DeliveryDateViewController: BaseTableViewController {
+  var order = Order()
+  var orderingCartItemIds = [Int]()
   var selectedOrderableItemSetIndex: Int?
   var selectedDates = [Int: NSDate]()
   var selectedTimeRange = [Int: NSDate]()
   
+  override func setUpData() {
+    super.setUpData()
+    OrderHelper.fetchOrderableInfo(orderingCartItemIds, order: order) { self.tableView.reloadData() }
+  }
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
+  
   lazy var calendarView: CKCalendarView = {
-    let calendarWidth = ViewControllerHelper.screenWidth - 20
-    let calendarView = CKCalendarView(viewWidth: calendarWidth)
+    let calendarView = CKCalendarView(viewWidth: ViewControllerHelper.screenWidth - 20)
     calendarView.delegate = self
-    calendarView.setMonthButtonColor(UIColor(colorLiteralRed: 246.0 / 255, green: 239.0 / 255, blue: 232.0 / 255, alpha: 1))
-    calendarView.titleColor = UIColor(colorLiteralRed: 246.0 / 255, green: 239.0 / 255, blue: 232.0 / 255, alpha: 1)
+    calendarView.setMonthButtonColor(lightGold)
+    calendarView.titleColor = lightGold
     return calendarView
   }()
   
@@ -22,7 +32,9 @@ class DeliveryDateViewController: BaseTableViewController, CKCalendarDelegate {
     view.addSubview(calendarView)
     calendarView.center = CGPointMake(view.center.x, view.center.y)
   }
-  
+}
+
+extension DeliveryDateViewController: CKCalendarDelegate {
   func calendar(calendar: CKCalendarView!, configureDateItem dateItem: CKDateItem!, forDate date: NSDate!) {
     if dateIsAble(date) {
       dateItem.backgroundColor = gold
@@ -62,7 +74,7 @@ class DeliveryDateViewController: BaseTableViewController, CKCalendarDelegate {
   // TODO: - time zone check
 }
 
-extension DeliveryDateViewController: UITableViewDataSource{
+extension DeliveryDateViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return order.orderableItemSets.count
   }
@@ -75,19 +87,14 @@ extension DeliveryDateViewController: UITableViewDataSource{
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
-    if let cell = cell as? DeliveryTypeImageCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section],
-        needCell: order.deliveryTypeCellHeight(indexPath.section))
-    } else if let cell = cell as? OrderItemCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - 2])
-    } else if let cell = cell as? TimeCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section, selectedDate: selectedDates[indexPath.section])
-    } else if let cell = cell as? ShopNameCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section])
-    }
+    configure(cell, indexPath: indexPath)
     return cell
   }
   
+
+}
+
+extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     let orderableItemSet = order.orderableItemSets[indexPath.section]
     if indexPath.row == 0 {
@@ -100,6 +107,19 @@ extension DeliveryDateViewController: UITableViewDataSource{
       return "alertCell"
     } else {
       return "itemCell"
+    }
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? DeliveryTypeImageCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section],
+        needCell: order.deliveryTypeCellHeight(indexPath.section))
+    } else if let cell = cell as? OrderItemCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - 2])
+    } else if let cell = cell as? TimeCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section, selectedDate: selectedDates[indexPath.section])
+    } else if let cell = cell as? ShopNameCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section])
     }
   }
 }

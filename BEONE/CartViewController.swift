@@ -67,28 +67,25 @@
     cartItemList.delete()
   }
   
-  @IBAction func orderCartItemButtonTapped(sender: AnyObject) {
-    showOrderView()
+  @IBAction func orderCartItemButtonTapped(sender: UIButton) {
+    showOrderView([cartItem(sender.tag)])
   }
   
   @IBAction func orderSelectedCartItemButtonTapped(sender: AnyObject) {
     BEONEManager.selectedOrder = selectedCartItemOrder
-    showOrderView()
+//    showOrderView()
   }
   
   @IBAction func productButtonTapped(sender: AnyObject) {
-    if let cartItem = cartItem(sender.tag) {
-      let product = Product()
-      product.id = cartItem.product.id
-      BEONEManager.selectedProduct = product
-      showProductView()
-    }
+    let product = Product()
+    product.id = cartItem(sender.tag).product.id
+    BEONEManager.selectedProduct = product
+    showProductView()
   }
   
   @IBAction func optionButtonTapped(sender: AnyObject) {
-    if let cartItem = cartItem(sender.tag) {
-      showOptionView(cartItem.product, selectedCartItem: cartItem)
-    }
+    let cartItem = self.cartItem(sender.tag)
+    showOptionView(cartItem.product, selectedCartItem: cartItem)
   }
   
   @IBAction func segueButtonTapped() {
@@ -97,7 +94,7 @@
   func setUpSelectedCartItemOrder() {
     makeSelectedCartItemOrderUnique()
     BEONEManager.selectedOrder = selectedCartItemOrder
-    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds)
+    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: selectedCartItemOrder)
   }
   
   func makeSelectedCartItemOrderUnique() {
@@ -106,13 +103,15 @@
     }
   }
   
-  func cartItem(cartItemId: Int) -> CartItem? {
+  func cartItem(cartItemId: Int) -> CartItem {
+    print(cartItemId)
     for cartItem in cartItemList.list as! [CartItem] {
+      print(cartItem.id)
       if cartItem.id == cartItemId {
         return cartItem
       }
     }
-    return nil
+    fatalError("no cart item with id")
   }
  }
  
@@ -122,8 +121,7 @@
   func fetchOrderableInfo() {
     selectedCartItemOrder = order
     if cartItemList.list.count > 0 {
-      BEONEManager.selectedOrder = order
-      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds)
+      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order)
     } else {
       order.orderableItemSets.removeAll()
       setUpTableView()

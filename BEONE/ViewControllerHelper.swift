@@ -82,8 +82,15 @@ extension UIViewController {
     presentViewController(kSigningStoryboardName, viewIdentifier: kSigningNavigationViewIdentifier)
   }
   
-  func showOrderView() {
-    showViewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier)
+  func showOrderView(orderingCartItems: [CartItem]) {
+    if let deliveryDateViewController = viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
+      for orderingCartItem in orderingCartItems {
+        if let id = orderingCartItem.id {
+          deliveryDateViewController.orderingCartItemIds.append(id)
+        }
+      }
+      showViewController(deliveryDateViewController, sender: nil)
+    }
   }
   
   func showProductView() {
@@ -91,10 +98,10 @@ extension UIViewController {
   }
   
   func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false) {
-      BEONEManager.selectedProduct = selectedProduct
-      BEONEManager.selectedCartItem = selectedCartItem
-      BEONEManager.rightOrdering = rightOrdering
-      showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+    BEONEManager.selectedProduct = selectedProduct
+    BEONEManager.selectedCartItem = selectedCartItem
+    BEONEManager.rightOrdering = rightOrdering
+    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
   }
 }
 
@@ -135,18 +142,18 @@ extension UIViewController {
 extension UIViewController {
   func showActionSheet(title: String, rows: [String], initialSelection: Int = 0, sender: UIButton? = nil,
     doneBlock: ActionStringDoneBlock? = nil, cancelBlock: ActionStringCancelBlock? = nil) {
-    sender?.selected = true
-    let actionSheet =
-    ActionSheetStringPicker(title: title,
-      rows: rows,
-      initialSelection: initialSelection,
-      doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
-        doneBlock?(actionSheet, selectedIndex, selectedString)
-        sender?.selected = false
-      }, cancelBlock: {(actionSheet) -> Void in
-        cancelBlock?(actionSheet)
-        sender?.selected = false
-      }, origin: view)
-    actionSheet.showActionSheetPicker()
+      sender?.selected = true
+      let actionSheet =
+      ActionSheetStringPicker(title: title,
+        rows: rows,
+        initialSelection: initialSelection,
+        doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
+          doneBlock?(actionSheet, selectedIndex, selectedString)
+          sender?.selected = false
+        }, cancelBlock: {(actionSheet) -> Void in
+          cancelBlock?(actionSheet)
+          sender?.selected = false
+        }, origin: view)
+      actionSheet.showActionSheetPicker()
   }
 }

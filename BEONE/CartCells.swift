@@ -40,6 +40,7 @@
   @IBOutlet weak var optionSoldOutView: UIView!
   @IBOutlet weak var deliveryDatesKeyView: UIView!
   @IBOutlet weak var deliveryDatesLabelBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var directOrderButton: UIButton!
   
   func configureCell(orderableItem: OrderableItem, selectedCartItemIds: [Int]) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
@@ -86,6 +87,7 @@
     productButton.tag = cartItemId
     deleteButton.tag = cartItemId
     reselectButton.tag = cartItemId
+    directOrderButton.tag = cartItemId
   }
  }
  
