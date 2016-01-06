@@ -82,7 +82,7 @@ class OptionItem: BaseModel {
     }
     return true
   }
-  
+
   func serverFormat() -> [String: AnyObject] {
     var serverFormat = [String: AnyObject]()
     serverFormat["originalId"] = id

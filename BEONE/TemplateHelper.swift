@@ -12,8 +12,6 @@ class TemplateHelper: NSObject {
       return "ImageContentsView"
     case .Button:
       return "ButtonContentsView"
-    case .Gap:
-      return "GapContentsView"
     case .Shop:
       return kShopContentsViewViewNibName
     case .Product:

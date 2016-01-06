@@ -2887,6 +2887,7 @@
                                                 <constraint firstItem="lgw-ej-ZRE" firstAttribute="top" secondItem="MLp-zM-68n" secondAttribute="top" constant="18" id="LYt-8J-K1g"/>
                                                 <constraint firstItem="O2r-vT-dxI" firstAttribute="top" secondItem="MLp-zM-68n" secondAttribute="top" id="SBw-F1-ahz"/>
                                                 <constraint firstAttribute="trailing" secondItem="SOt-nD-tCK" secondAttribute="trailing" constant="15" id="bnC-g9-MXr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lgw-ej-ZRE" secondAttribute="bottom" constant="81" id="crr-4I-kCA"/>
                                                 <constraint firstAttribute="trailing" secondItem="O2r-vT-dxI" secondAttribute="trailing" id="ez7-Hf-0aj"/>
                                                 <constraint firstItem="O2r-vT-dxI" firstAttribute="leading" secondItem="MLp-zM-68n" secondAttribute="leading" id="qyB-w9-wQs"/>
                                                 <constraint firstItem="SOt-nD-tCK" firstAttribute="top" secondItem="lgw-ej-ZRE" secondAttribute="bottom" constant="12" id="rSK-6E-Rk1"/>
@@ -2894,10 +2895,17 @@
                                                 <constraint firstAttribute="bottom" secondItem="O2r-vT-dxI" secondAttribute="bottom" constant="10" id="wKW-v7-VgO"/>
                                                 <constraint firstItem="lgw-ej-ZRE" firstAttribute="leading" secondItem="MLp-zM-68n" secondAttribute="leading" constant="15" id="xvk-bF-V1r"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="7QV-tg-Ye5"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="addCarItemButton" destination="SOt-nD-tCK" id="aOG-8K-7ie"/>
                                             <outlet property="optionView" destination="lgw-ej-ZRE" id="Awy-ao-s3R"/>
+                                            <outlet property="optionViewBottomMarginLayoutConstraint" destination="crr-4I-kCA" id="0p1-0C-yAW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartItemCountCell" rowHeight="167" id="qY8-cf-gIT" customClass="CartItemCountCell" customModule="BEONE" customModuleProvider="target">

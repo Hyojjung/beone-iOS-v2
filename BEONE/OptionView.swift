@@ -14,10 +14,9 @@ class OptionView: UIView {
         
         for option in productOptionSet.options {
           if option.isSelected {
-            continue
-          }
-          for optionItem in option.optionItems {
-            beforeView = addOptionItemView(optionItem, beforeView: beforeView)
+            for optionItem in option.optionItems {
+              beforeView = addOptionItemView(optionItem, beforeView: beforeView)
+            }
           }
         }
       }

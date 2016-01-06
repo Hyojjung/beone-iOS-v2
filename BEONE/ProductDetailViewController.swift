@@ -136,7 +136,7 @@ class ProductDetailViewController: BaseViewController {
   func addCart(isOrdering: Bool) {
     if MyInfo.sharedMyInfo().isUser() {
       performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: isOrdering)
-    } else {
+    } else if !isWaitingSigning {
       isWaitingSigning = true
       self.isOrdering = isOrdering
       showSigningView()

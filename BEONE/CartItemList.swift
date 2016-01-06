@@ -1,16 +1,17 @@
 
 import UIKit
 
+let kCartItemPropertyKeyProductId = "productId"
+let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
+let kCartItemPropertyKeyQuantity = "quantity"
+let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
+
 class CartItemList: BaseListModel {
-  private let kCartItemPropertyKeyProductId = "productId"
-  private let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
-  private let kCartItemPropertyKeyQuantity = "quantity"
-  private let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
   
   var selectedCartItemIds = [Int]()
   
   // MARK: - BaseModel Methods (Fetch)
-
+  
   override func assignObject(data: AnyObject) {
     if let cartItemList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       list.removeAll()
@@ -24,7 +25,7 @@ class CartItemList: BaseListModel {
       postNotification(kNotificationFetchCartListSuccess)
     }
   }
-
+  
   override func fetchUrl() -> String {
     return cartItemUrl()
   }
@@ -65,7 +66,7 @@ class CartItemList: BaseListModel {
   }
   
   // MARK: - Private Methods
-
+  
   private func cartItemUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
       return "users/\((MyInfo.sharedMyInfo().userId)!)/cart-items"
@@ -78,18 +79,13 @@ class CartItemList: BaseListModel {
   private func parameter() -> [[String: AnyObject]] {
     var parameter = [[String: AnyObject]]()
     for cartItem in list as! [CartItem] {
-      var cartItemObject = [String: AnyObject]()
-      cartItemObject[kCartItemPropertyKeyQuantity] = cartItem.quantity
-      cartItemObject[kCartItemPropertyKeyProductId] = cartItem.product.id
-      cartItemObject[kCartItemPropertyKeyProductOptionSets] = cartItem.selectedOption?.serverFormat()
-      cartItemObject[kCartItemPropertyKeyProductOrderableInfoId] = cartItem.productOrderableInfo.id
-      parameter.append(cartItemObject)
+      parameter.append(cartItem.parameter())
     }
     return parameter
   }
   
   // MARK: - Public Methods
-
+  
   func cartItemIds() -> [Int] {
     var cartItemIds = [Int]()
     for cartItem in list {

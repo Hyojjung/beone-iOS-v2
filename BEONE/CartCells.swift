@@ -41,13 +41,15 @@
   @IBOutlet weak var deliveryDatesKeyView: UIView!
   @IBOutlet weak var deliveryDatesLabelBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var directOrderButton: UIButton!
+  @IBOutlet weak var optionLabel: UILabel!
   
-  func configureCell(orderableItem: OrderableItem, selectedCartItemIds: [Int]) {
+  func configureCell(orderableItem: OrderableItem, cartItem: CartItem, selectedCartItemIds: [Int]) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
     productNameLabel.text = orderableItem.product.title
     productPriceLabel.attributedText = orderableItem.product.priceAttributedString()
     deliveryPriceLabel.text = orderableItem.productOrderableInfo.price?.priceNotation(.KoreanFreeNotation)
     productActualPriceLabel.text = orderableItem.product.actualPrice?.priceNotation(.Korean)
+    optionLabel.text = cartItem.selectedOption?.optionString()
     
     if let quantity = orderableItem.quantity {
       quantityLabel.text = "\(quantity)"

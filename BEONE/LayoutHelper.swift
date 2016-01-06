@@ -23,10 +23,8 @@ extension UIView {
     addSubViewAndEnableAutoLayout(subView)
     addTopLayout(subView)
     addBottomLayout(subView)
-    addConstraint(NSLayoutConstraint(item: subView, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1, constant: 0))
-    addConstraint(NSLayoutConstraint(item: subView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0))
-    //    addLeadingLayout(subView)
-    //    addTrailingLayout(subView)
+    addLeadingLayout(subView)
+    addTrailingLayout(subView)
   }
   
   func addSubViewAndEdgeMarginLayout(subView: UIView) {
@@ -121,22 +119,14 @@ extension UIView {
 // MARK: - Bottom Layout Methods
 
 extension UIView {
-  func addBottomLayout(subView: UIView, constant: CGFloat) {
+  func addBottomLayout(subView: UIView, constant: CGFloat = 0) {
     addBottomMarginLayout(subView, constant: constant, layoutAttribute: .Bottom)
   }
-  
-  func addBottomLayout(subView: UIView) {
-    addBottomLayout(subView, constant: 0)
-  }
-  
-  func addBottomMarginLayout(subView: UIView, constant: CGFloat) {
+ 
+  func addBottomMarginLayout(subView: UIView, constant: CGFloat = 0) {
     addBottomMarginLayout(subView, constant: constant, layoutAttribute: .BottomMargin)
   }
-  
-  func addBottomMarginLayout(subView: UIView) {
-    addBottomMarginLayout(subView, constant: 0)
-  }
-  
+ 
   private func addBottomMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
     let bottomMarginConstraint = NSLayoutConstraint(item: subView,
       attribute: .Bottom,
@@ -153,20 +143,12 @@ extension UIView {
 // MARK: - Top Layout Methods
 
 extension UIView {
-  func addTopLayout(subView: UIView, constant: CGFloat) {
+  func addTopLayout(subView: UIView, constant: CGFloat = 0) {
     addTopMarginLayout(subView, constant: constant, layoutAttribute: .Top)
   }
   
-  func addTopLayout(subView: UIView) {
-    addTopLayout(subView, constant: 0)
-  }
-  
-  func addTopMarginLayout(subView: UIView, constant: CGFloat) {
+  func addTopMarginLayout(subView: UIView, constant: CGFloat = 0) {
     addTopMarginLayout(subView, constant: constant, layoutAttribute: .TopMargin)
-  }
-  
-  func addTopMarginLayout(subView: UIView) {
-    addTopMarginLayout(subView, constant: 0)
   }
   
   private func addTopMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {

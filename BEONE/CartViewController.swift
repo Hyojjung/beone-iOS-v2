@@ -83,7 +83,7 @@
   
   @IBAction func optionButtonTapped(sender: AnyObject) {
     let cartItem = self.cartItem(sender.tag)
-    showOptionView(cartItem.product, selectedCartItem: cartItem)
+    showOptionView(cartItem.product, selectedCartItem: cartItem, isModifing: true)
   }
   
   @IBAction func segueButtonTapped() {
@@ -181,7 +181,9 @@
     } else if let cell = cell as? ShopNameCell {
       cell.configureCell(order.orderableItemSets[indexPath.section])
     } else if let cell = cell as? OrderableItemCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount],
+      let orderableItem = order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount]
+      cell.configureCell(orderableItem,
+        cartItem: self.cartItem(orderableItem.cartItemId!),
         selectedCartItemIds: cartItemList.selectedCartItemIds)
     } else if let cell = cell as? OrderPriceCell {
       cell.configureCell(selectedCartItemOrder)

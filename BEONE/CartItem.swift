@@ -2,17 +2,14 @@
 import UIKit
 
 class CartItem: BaseModel {
-  private let kCartItemPropertyKeyProductId = "productId"
   private let kCartItemPropertyKeyProduct = "product"
   private let kCartItemPropertyKeyProductOrderableInfo = "productOrderableInfo"
-  private let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
-  private let kCartItemPropertyKeyQuantity = "quantity"
   
   var quantity = 1
   var product = Product()
   var productOrderableInfo = ProductOrderableInfo()
   var selectedOption: ProductOptionSetList?
-  
+
   // MARK: - BaseModel Methods (Fetch)
   
   override func assignObject(data: AnyObject) {
@@ -26,6 +23,10 @@ class CartItem: BaseModel {
       }
       if let productOrderableInfoObject = data[kCartItemPropertyKeyProductOrderableInfo] {
         productOrderableInfo.assignObject(productOrderableInfoObject)
+      }
+      if let selectedOptionObject = data["productOptionSets"] as? [[String: AnyObject]] {
+        selectedOption = ProductOptionSetList()
+        selectedOption?.assignObject(selectedOptionObject)
       }
     }
   }
@@ -51,11 +52,12 @@ class CartItem: BaseModel {
   
   // MARK: - Private Methods
   
-  private func parameter() -> [[String: AnyObject]] {
+  func parameter() -> [String: AnyObject] {
     var parameter = [String: AnyObject]()
     parameter[kCartItemPropertyKeyQuantity] = quantity
     parameter[kCartItemPropertyKeyProductId] = product.id
     parameter[kCartItemPropertyKeyProductOrderableInfoId] = productOrderableInfo.id
-    return [parameter]
+    parameter[kCartItemPropertyKeyProductOptionSets] = selectedOption?.serverFormat()
+    return parameter
   }
 }

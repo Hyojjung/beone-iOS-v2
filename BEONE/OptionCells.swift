@@ -62,11 +62,16 @@ class OptionCell: UITableViewCell {
   weak var delegate: AnyObject?
   
   @IBOutlet weak var optionView: OptionView!
-  
-  func configureCell(productOptionSetList: ProductOptionSetList?) {
+  @IBOutlet weak var addCarItemButton: UIButton!
+  @IBOutlet weak var optionViewBottomMarginLayoutConstraint: NSLayoutConstraint!
+
+  func configureCell(productOptionSetList: ProductOptionSetList?, needButton: Bool) {
     if let productOptionSetList = productOptionSetList {
       optionView.delegate = delegate
       optionView.layoutView(productOptionSetList)
     }
+    addCarItemButton.enabled = needButton
+    addCarItemButton.alpha = needButton ? 1 : 0
+    optionViewBottomMarginLayoutConstraint.constant = needButton ? 81 : 12
   }
 }

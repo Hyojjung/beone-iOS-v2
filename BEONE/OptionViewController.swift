@@ -58,6 +58,9 @@ class OptionViewController: BaseTableViewController {
   func setUpProductData() {
     if isModifing && cartItems.count == 1 {
       selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
+      if let selectedOption = cartItems.first?.selectedOption {
+        self.selectedOption = selectedOption.copy() as? ProductOptionSetList
+      }
     } else if !isModifing {
       if product?.productOrderableInfos.count == 1 {
         selectedProductOrderableInfo = product?.productOrderableInfos.first
@@ -90,6 +93,7 @@ class OptionViewController: BaseTableViewController {
       showOrderView(cartItems)
     } else {
       popView()
+      // TODO: go to cart
     }
   }
 }
@@ -107,7 +111,8 @@ extension OptionViewController {
           let cartItemList = CartItemList()
           cartItemList.list = cartItems
           cartItemList.post()
-        } else if cartItems.count == 1{
+        } else if cartItems.count == 1 {
+          cartItems.first?.selectedOption = selectedOption
           cartItems.first!.put()
         }
       } else {
@@ -148,6 +153,7 @@ extension OptionViewController {
   @IBAction func deleteCartItemButtonTapped(sender: UIButton) {
     if cartItems.count > sender.tag {
       cartItems.removeAtIndex(sender.tag)
+      tableView.reloadData()
     }
   }
   
@@ -175,7 +181,7 @@ extension OptionViewController {
     case .Option:
       return product?.productOptionSets.list.count == 0 ? 0 : 1
     case .CartItemCount:
-      return cartItems.count
+      return isModifing ? 0 : cartItems.count
     default:
       return 1
     }
@@ -241,7 +247,7 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   private func configureOptionCell(cell: UITableViewCell) {
     if let cell = cell as? OptionCell {
       cell.delegate = self
-      cell.configureCell(selectedOption)
+      cell.configureCell(selectedOption, needButton: !isModifing)
     }
   }
 }
@@ -305,7 +311,7 @@ extension OptionViewController: OptionDelegate {
         }
       }
     }
-    fatalError("no product option set")
+    fatalError("no option item")
   }
 }
 

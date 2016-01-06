@@ -97,11 +97,17 @@ extension UIViewController {
     showViewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier)
   }
   
-  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false) {
-    BEONEManager.selectedProduct = selectedProduct
-    BEONEManager.selectedCartItem = selectedCartItem
+  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false, isModifing: Bool = false) {
     BEONEManager.rightOrdering = rightOrdering
-    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+    let optionViewController = viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+    if let optionViewController = optionViewController as? OptionViewController {
+      optionViewController.product = selectedProduct
+      optionViewController.isModifing = isModifing
+      if let selectedCartItem = selectedCartItem {
+        optionViewController.cartItems.append(selectedCartItem)
+      }
+      showViewController(optionViewController, sender: nil)
+    }
   }
 }
 

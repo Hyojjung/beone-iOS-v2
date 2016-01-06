@@ -11,7 +11,6 @@ enum TemplateType: String {
   case Text = "text"
   case Image = "image"
   case Button = "button"
-  case Gap
   case Shop = "shop"
   case Product
   case Review
