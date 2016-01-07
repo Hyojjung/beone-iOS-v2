@@ -22,7 +22,11 @@ class OptionItem: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let optionItemObject = data as? [String: AnyObject] {
-      id = optionItemObject[kObjectPropertyKeyId] as? Int
+      if let originalId = optionItemObject["originalId"] as? Int {
+        id = originalId
+      } else {
+        id = optionItemObject[kObjectPropertyKeyId] as? Int
+      }
       name = optionItemObject["name"] as? String
       if let type = optionItemObject["type"] as? String {
         self.type = OptionItemType(rawValue: type)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lqq-aI-WAN">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -23,6 +24,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="VXi-l4-2gA"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="5rM-1M-5pw"/>
                                 </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnb-2b-sEI">
@@ -136,32 +138,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="181" id="xVI-W1-zuB" customClass="ShopCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="181"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xVI-W1-zuB" id="Xh1-mP-wf6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="181"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sm3-X7-GAz">
-                                                    <rect key="frame" x="8" y="8" width="584" height="173"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sm3-X7-GAz" firstAttribute="leading" secondItem="Xh1-mP-wf6" secondAttribute="leading" constant="8" id="Che-pp-tNg"/>
-                                                <constraint firstItem="sm3-X7-GAz" firstAttribute="top" secondItem="Xh1-mP-wf6" secondAttribute="top" constant="8" id="DVV-3z-45v"/>
-                                                <constraint firstAttribute="trailing" secondItem="sm3-X7-GAz" secondAttribute="trailing" constant="8" id="h0M-iY-psg"/>
-                                                <constraint firstAttribute="bottom" secondItem="sm3-X7-GAz" secondAttribute="bottom" id="omT-N5-Np9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="shopView" destination="sm3-X7-GAz" id="8hW-A7-Vpb"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="fZQ-LG-5eG" id="CHg-C4-dJx"/>
                                     <outlet property="delegate" destination="fZQ-LG-5eG" id="erD-05-EOG"/>
@@ -1093,8 +1069,8 @@
     <resources>
         <image name="bg_list" width="3" height="3"/>
         <image name="bg_list_divider" width="3" height="3"/>
-        <image name="btnGoldStroke" width="3" height="3"/>
-        <image name="btnGoldStrokePressed" width="3" height="3"/>
+        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="icon_list_arrow" width="7" height="14"/>
         <image name="image_list_end" width="23" height="30"/>
         <image name="image_mypage_anniversary" width="320" height="100"/>

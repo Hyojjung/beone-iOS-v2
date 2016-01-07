@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableTemplateCell" id="8rR-Ry-x7v" customClass="TableTemplateCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="633"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8rR-Ry-x7v" id="dPV-wC-aG6">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="632"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ek6-J5-LDB">
+                        <rect key="frame" x="8" y="8" width="304" height="616"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-Vo-rHS" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="616"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="leD-7S-CuK">
+                                <rect key="frame" x="8" y="8" width="288" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="600" id="S3i-68-XUu"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mrf-h0-J6T">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rR-Ry-x7v" id="nf4-fe-ekN"/>
+                                    <outlet property="delegate" destination="8rR-Ry-x7v" id="gqx-G2-pYS"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="leD-7S-CuK" firstAttribute="top" secondItem="ek6-J5-LDB" secondAttribute="topMargin" id="9oZ-oP-mXI"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="leading" secondItem="ek6-J5-LDB" secondAttribute="leadingMargin" id="CIf-ba-LZT"/>
+                            <constraint firstAttribute="bottom" secondItem="8Ns-Vo-rHS" secondAttribute="bottom" id="JJe-NK-3p4"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="leading" secondItem="ek6-J5-LDB" secondAttribute="leading" id="NxC-ZT-LZD"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="top" secondItem="ek6-J5-LDB" secondAttribute="top" id="RyN-z9-paf"/>
+                            <constraint firstAttribute="bottom" secondItem="8Ns-Vo-rHS" secondAttribute="bottom" id="YQy-sC-6Wn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="leD-7S-CuK" secondAttribute="bottom" id="Ynx-op-Dgc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Ns-Vo-rHS" secondAttribute="trailing" id="Zek-lr-W7K"/>
+                            <constraint firstItem="leD-7S-CuK" firstAttribute="leading" secondItem="ek6-J5-LDB" secondAttribute="leadingMargin" id="aER-Sp-Akx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="leD-7S-CuK" secondAttribute="trailing" id="d5R-gf-FPD"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="top" secondItem="ek6-J5-LDB" secondAttribute="topMargin" id="g01-qZ-QMZ"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ns-Vo-rHS" secondAttribute="trailing" id="ggk-cr-kj1"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="top" secondItem="ek6-J5-LDB" secondAttribute="top" id="kkc-U9-MXp"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="8Ns-Vo-rHS" secondAttribute="bottom" id="pMH-YH-hBT"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ns-Vo-rHS" secondAttribute="trailing" id="yd0-LF-ZcC"/>
+                            <constraint firstItem="8Ns-Vo-rHS" firstAttribute="leading" secondItem="ek6-J5-LDB" secondAttribute="leading" id="zky-uw-iIs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CIf-ba-LZT"/>
+                                <exclude reference="JJe-NK-3p4"/>
+                                <exclude reference="NxC-ZT-LZD"/>
+                                <exclude reference="RyN-z9-paf"/>
+                                <exclude reference="Zek-lr-W7K"/>
+                                <exclude reference="g01-qZ-QMZ"/>
+                                <exclude reference="pMH-YH-hBT"/>
+                                <exclude reference="yd0-LF-ZcC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <gestureRecognizers/>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="ek6-J5-LDB" secondAttribute="trailing" id="EH9-oV-gm6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ek6-J5-LDB" secondAttribute="bottom" priority="999" id="GJN-mo-1Vq"/>
+                    <constraint firstItem="ek6-J5-LDB" firstAttribute="top" secondItem="dPV-wC-aG6" secondAttribute="topMargin" id="kxz-vr-hLo"/>
+                    <constraint firstItem="ek6-J5-LDB" firstAttribute="leading" secondItem="dPV-wC-aG6" secondAttribute="leadingMargin" id="vgl-8r-2Kf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="8Ns-Vo-rHS" id="OVg-Yt-qjV"/>
+                <outlet property="collectionView" destination="leD-7S-CuK" id="AHl-LL-MYH"/>
+                <outlet property="templateContentsView" destination="ek6-J5-LDB" id="Eka-rf-UVM"/>
+            </connections>
+            <point key="canvasLocation" x="-50" y="273"/>
+        </tableViewCell>
+    </objects>
+</document>

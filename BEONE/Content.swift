@@ -54,6 +54,7 @@ class Content: BaseModel {
   var imageUrl: String?
   var backgroundImageUrl: String?
   var pressedBackgroundImageUrl: String?
+  var padding = UIEdgeInsetsZero
   var model: BaseModel?
   
   // MARK: - Override Methods
@@ -96,6 +97,10 @@ class Content: BaseModel {
       }
       if let action = contents[kContentsPropertyKeyAction] {
         self.action.assignObject(action)
+      }
+      
+      if let padding = contents[kTemplateStylePropertyKeyPadding] as? String {
+        self.padding = padding.edgeInsets()
       }
       
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {

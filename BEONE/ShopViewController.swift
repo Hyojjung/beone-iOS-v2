@@ -30,6 +30,11 @@ class ShopViewController: BaseTableViewController {
     shopProductList.fetch()
   }
   
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
+  
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
@@ -49,6 +54,23 @@ class ShopViewController: BaseTableViewController {
   }
 }
 
+extension ShopViewController: DynamicHeightTableViewProtocol {
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
+    switch ShopTableViewSection(rawValue: indexPath.section)! {
+    case .Summary:
+      configureSummaryCell(cell)
+    case .Product:
+      configureProductCell(cell, indexPath: indexPath)
+    default:
+      break
+    }
+  }
+  
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    return kShopTableViewCellIdentifiers[indexPath.section]
+  }
+}
+
 extension ShopViewController {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return ShopTableViewSection.Count.rawValue
@@ -60,16 +82,8 @@ extension ShopViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(kShopTableViewCellIdentifiers[indexPath.section],
-      indexPath: indexPath)
-    switch ShopTableViewSection(rawValue: indexPath.section)! {
-    case .Summary:
-      configureSummaryCell(cell)
-    case .Product:
-      configureProductCell(cell, indexPath: indexPath)
-    default:
-      break
-    }
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
+
     return cell
   }
   

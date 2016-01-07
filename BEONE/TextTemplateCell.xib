@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="textTemplateCell" id="nlM-vJ-CQr" customClass="TextTemplateCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nlM-vJ-CQr" id="3fo-EI-wzS">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khg-bx-0H5">
+                        <rect key="frame" x="8" y="8" width="304" height="27"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jKI-z6-uAd" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="27"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxW-df-2f4">
+                                <rect key="frame" x="8" y="8" width="288" height="11"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jKI-z6-uAd" secondAttribute="bottom" id="1G9-fA-Lj1"/>
+                            <constraint firstAttribute="bottom" secondItem="jKI-z6-uAd" secondAttribute="bottom" id="3Qt-Sk-Wof"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jKI-z6-uAd" secondAttribute="trailing" id="5DM-ey-Z4f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TxW-df-2f4" secondAttribute="trailing" id="5co-H4-Yn6"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="top" secondItem="khg-bx-0H5" secondAttribute="top" id="6R0-0S-c7Z"/>
+                            <constraint firstItem="TxW-df-2f4" firstAttribute="top" secondItem="khg-bx-0H5" secondAttribute="topMargin" id="95H-k7-ear"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="jKI-z6-uAd" secondAttribute="bottom" id="GyH-sV-TN9"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="top" secondItem="khg-bx-0H5" secondAttribute="topMargin" id="HBT-Jv-3ML"/>
+                            <constraint firstAttribute="trailing" secondItem="jKI-z6-uAd" secondAttribute="trailing" id="MZ7-aB-sju"/>
+                            <constraint firstAttribute="trailing" secondItem="jKI-z6-uAd" secondAttribute="trailing" id="U5A-3k-17P"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="TxW-df-2f4" secondAttribute="bottom" id="U65-AU-TCp"/>
+                            <constraint firstAttribute="trailing" secondItem="TxW-df-2f4" secondAttribute="trailing" id="Voj-md-AZf"/>
+                            <constraint firstItem="TxW-df-2f4" firstAttribute="top" secondItem="khg-bx-0H5" secondAttribute="top" id="YGz-vo-b5b"/>
+                            <constraint firstItem="TxW-df-2f4" firstAttribute="leading" secondItem="khg-bx-0H5" secondAttribute="leading" id="bnz-l7-ma4"/>
+                            <constraint firstAttribute="bottom" secondItem="TxW-df-2f4" secondAttribute="bottom" id="ego-1w-gPv"/>
+                            <constraint firstItem="TxW-df-2f4" firstAttribute="leading" secondItem="khg-bx-0H5" secondAttribute="leadingMargin" id="iiI-dw-ftQ"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="leading" secondItem="khg-bx-0H5" secondAttribute="leading" id="kSy-bw-ZJX"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="top" secondItem="khg-bx-0H5" secondAttribute="top" id="nNE-oy-znp"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="leading" secondItem="khg-bx-0H5" secondAttribute="leading" id="typ-Qs-aK8"/>
+                            <constraint firstItem="jKI-z6-uAd" firstAttribute="leading" secondItem="khg-bx-0H5" secondAttribute="leadingMargin" id="wTj-SH-Ooy"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Voj-md-AZf"/>
+                                <exclude reference="YGz-vo-b5b"/>
+                                <exclude reference="bnz-l7-ma4"/>
+                                <exclude reference="ego-1w-gPv"/>
+                                <exclude reference="1G9-fA-Lj1"/>
+                                <exclude reference="5DM-ey-Z4f"/>
+                                <exclude reference="GyH-sV-TN9"/>
+                                <exclude reference="HBT-Jv-3ML"/>
+                                <exclude reference="MZ7-aB-sju"/>
+                                <exclude reference="nNE-oy-znp"/>
+                                <exclude reference="typ-Qs-aK8"/>
+                                <exclude reference="wTj-SH-Ooy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <gestureRecognizers/>
+                <constraints>
+                    <constraint firstItem="khg-bx-0H5" firstAttribute="leading" secondItem="3fo-EI-wzS" secondAttribute="leadingMargin" id="CWh-25-pDD"/>
+                    <constraint firstItem="khg-bx-0H5" firstAttribute="top" secondItem="3fo-EI-wzS" secondAttribute="topMargin" id="dY6-59-15z"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="khg-bx-0H5" secondAttribute="trailing" id="s1Z-CL-fiq"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="khg-bx-0H5" secondAttribute="bottom" priority="999" id="x8o-sd-f2h"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="jKI-z6-uAd" id="oni-yf-ODL"/>
+                <outlet property="label" destination="TxW-df-2f4" id="bEc-84-xPI"/>
+                <outlet property="templateContentsView" destination="khg-bx-0H5" id="gC8-cR-nty"/>
+            </connections>
+            <point key="canvasLocation" x="-50" y="273"/>
+        </tableViewCell>
+    </objects>
+</document>

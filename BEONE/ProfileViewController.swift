@@ -50,7 +50,7 @@ extension ProfileViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
   }
@@ -74,7 +74,7 @@ extension ProfileViewController: DynamicHeightTableViewProtocol {
     return kProfileTableViewCellIdentifiers[indexPath.section]
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
 
   }
 }

@@ -5,20 +5,24 @@ import SDWebImage
 let kDefaultImageViewWidth = CGFloat(600)
 
 class ImageContentsImageView: LazyLoadingImageView, TemplateContentsViewProtocol {
-  var isLayouted = false
   var templateId: NSNumber?
-  
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    if frame.width != kDefaultImageViewWidth {
-      isLayouted = true
-      modifyHeightConstraint()
-    }
-  }
   
   func setTemplateImage(template: Template) {
     templateId = template.id
-    setLazyLoaingImage(template.content.imageUrl)
+    
+    if let urlString = template.content.imageUrl {
+      
+      
+      if let image = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(LazyLoadingHelper.imageUrlString(urlString, imageType: .Basic)) {
+        self.image = image
+        modifyHeightConstraint()
+      } else if let image = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(LazyLoadingHelper.imageUrlString(urlString, imageType: ImageType.Original)) {
+        self.image = image
+        modifyHeightConstraint()
+      } else {
+        setLazyLoaingImage(template.content.imageUrl)
+      }
+    }
   }
   
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
@@ -27,9 +31,8 @@ class ImageContentsImageView: LazyLoadingImageView, TemplateContentsViewProtocol
   }
   
   func modifyHeightConstraint() {
-    if let image = image {
-      let height = image.size.heightFromRatio(frame.size.width)
-      layoutContentsView(isLayouted, templateId: templateId, height: height, contentsView: self)
+    if let height = image?.size.heightFromRatio(frame.size.width) {
+      layoutContentsView(templateId, height: height, contentsView: self)
     }
   }
 }

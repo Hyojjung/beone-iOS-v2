@@ -4,7 +4,7 @@ import UIKit
 protocol DynamicHeightTableViewProtocol: NSObjectProtocol {
   var dynamicHeightTableViewCells: [String: UITableViewCell] { get set }
   
-  func configure(cell: UITableViewCell, indexPath: NSIndexPath)
+  func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool)
   func cellIdentifier(indexPath: NSIndexPath) -> String
 }
 
@@ -19,10 +19,14 @@ class DynamicHeightTableView: UITableView {
     var cell = dynamicHeightDelgate.dynamicHeightTableViewCells[cellIdentifier]
     if cell == nil {
       cell = dequeueReusableCellWithIdentifier(cellIdentifier)
+      if cell == nil {
+        registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+      }
       dynamicHeightDelgate.dynamicHeightTableViewCells[cellIdentifier] = cell
     }
     if let cell = cell {
-      dynamicHeightDelgate.configure(cell, indexPath: indexPath)
+      dynamicHeightDelgate.configure(cell, indexPath: indexPath, forCalculateHeight: true)
       return calculateHeight(cell)
     }
     return 0

@@ -7,7 +7,11 @@ class ProductOptionSet: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let productOptionSetObject = data as? [String: AnyObject] {
-      id = productOptionSetObject[kObjectPropertyKeyId] as? Int
+      if let originalId = productOptionSetObject["originalId"] as? Int {
+        id = originalId
+      } else {
+        id = productOptionSetObject[kObjectPropertyKeyId] as? Int
+      }
       name = productOptionSetObject["name"] as? String
       if let optionObjects = productOptionSetObject["options"] as? [[String: AnyObject]] {
         options.removeAll()

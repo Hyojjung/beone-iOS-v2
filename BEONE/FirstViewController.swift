@@ -101,33 +101,24 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
   }
 }
 
-// MARK: - UITableViewDelegate
-
-extension FirstViewController {
-  
-//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//    if let tableView = tableView as? DynamicHeightTableView {
-//      return tableView.heightForBasicCell(indexPath)
-//    }
-//    return 0
-//  }
-}
-
 extension FirstViewController: DynamicHeightTableViewProtocol {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
-    return kTemplateTableViewCellIdentifier
+    if let template = templateList.list[indexPath.row] as? Template, cellIdentifier = template.type?.cellIdentifier() {
+      return cellIdentifier
+    }
+    fatalError("invalid template type")
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? TemplateTableViewCell {
-      cell.configureCell(templateList.list[indexPath.row] as! Template)
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+    if let cell = cell as? TemplateCell {
+      cell.configureCell(templateList.list[indexPath.row] as! Template, forCalculateHeight: forCalculateHeight)
     }
   }
 }

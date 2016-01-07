@@ -11,7 +11,11 @@ class Option: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let optionObject = data as? [String: AnyObject] {
-      id = optionObject[kObjectPropertyKeyId] as? Int
+      if let originalId = optionObject["originalId"] as? Int {
+        id = originalId
+      } else {
+        id = optionObject[kObjectPropertyKeyId] as? Int
+      }
       name = optionObject["name"] as? String
       
       if let actualPrice = optionObject["actualPrice"] as? Int {

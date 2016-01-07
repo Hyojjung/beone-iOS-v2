@@ -3,27 +3,25 @@ import UIKit
 
 let kDefaultTextSize = CGFloat(14)
 
-class TextContentsView: TemplateContentsView {
+class TextTemplateCell: TemplateCell {
   
-  @IBOutlet weak var textLabel: UILabel!
+  @IBOutlet weak var label: UILabel!
   
   // MARK: - Override Methods
   
-  override func className() -> String {
-    return "Text"
-  }
-  
-  override func layoutView(template: Template) {
+  override func configureCell(template: Template, forCalculateHeight: Bool) {
+    super.configureCell(template, forCalculateHeight: forCalculateHeight)
     if let text = template.content.text {
-      configureLabelAlignment(template.content)
-      
       let attributedString = NSMutableAttributedString(string: text)
+      if !forCalculateHeight {
+        configureBackgroundColor(attributedString, textContent: template.content)
+        configureTextColor(attributedString, textContent: template.content)
+      }
+      configureLabelAlignment(template.content)
       configureUnderlined(attributedString, textContent: template.content)
       configureCancelLined(attributedString, textContent: template.content)
-      configureBackgroundColor(attributedString, textContent: template.content)
-      configureTextColor(attributedString, textContent: template.content)
       configureFontAndSize(attributedString, textContent: template.content)
-      textLabel.attributedText = attributedString
+      label.attributedText = attributedString
     }
     templateId = template.id
   }
@@ -43,11 +41,11 @@ class TextContentsView: TemplateContentsView {
       let alignment = textContents.alignment != nil ? textContents.alignment : Alignment.Left
       switch alignment! {
       case .Left:
-        self.textLabel.textAlignment = .Left
+        self.label.textAlignment = .Left
       case .Center:
-        self.textLabel.textAlignment = .Center
+        self.label.textAlignment = .Center
       case .Right:
-        self.textLabel.textAlignment = .Right
+        self.label.textAlignment = .Right
       }
     }
   }

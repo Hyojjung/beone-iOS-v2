@@ -7,6 +7,11 @@ let kTemplatePropertyKeyCount = "count"
 let kTemplatePropertyKeyContents = "content"
 let kTemplatePropertyKeyTemplateItems = "templateItems"
 
+let kTextTemplateCellIdentifier = "textTemplateCell"
+let kImageTemplateCellIdentifier = "imageTemplateCell"
+let kButtonTemplateCellIdentifier = "buttonTemplateCell"
+let kTableTemplateCellIdentifier = "tableTemplateCell"
+
 enum TemplateType: String {
   case Text = "text"
   case Image = "image"
@@ -16,6 +21,21 @@ enum TemplateType: String {
   case Review
   case Banner
   case Table = "table"
+  
+  func cellIdentifier() -> String {
+    switch(self) {
+    case .Text:
+      return kTextTemplateCellIdentifier
+    case .Image:
+      return kImageTemplateCellIdentifier
+    case .Button:
+      return kButtonTemplateCellIdentifier
+    case .Table:
+      return kTableTemplateCellIdentifier
+    default:
+      fatalError("no cell identifier with template type")
+    }
+  }
 }
 
 class Template: BaseModel {
@@ -25,7 +45,6 @@ class Template: BaseModel {
   var content = Content()
   
   var count: Int?
-  var height: CGFloat?
   
   // MARK: - Override Methods
   

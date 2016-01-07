@@ -10,7 +10,7 @@ class BaseTableViewController: BaseViewController {
   
   // MARK: - DynamicHeightTableViewProtocol
 
-  func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+  func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
     cell.selectionStyle = .None
   }
   

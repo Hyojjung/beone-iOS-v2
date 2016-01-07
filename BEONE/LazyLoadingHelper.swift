@@ -71,6 +71,10 @@ class LazyLoadingHelper: NSObject {
     let urlString = imageType == .Original ? url : "\(url)?imageType=\(imageType.rawValue)"
     return urlString.url()
   }
+  
+  static func imageUrlString(url: String, imageType: ImageType) -> String {
+    return imageUrl(url, imageType: imageType).absoluteString
+  }
 }
 
 class ProductDetailImageView: LazyLoadingImageView {

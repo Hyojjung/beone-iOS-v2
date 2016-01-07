@@ -6,56 +6,52 @@ let kNoSpaceWidthCell = CGFloat(0)
 let kTableContentsCollectionViewCellNibName = "TableContentsCollectionViewCell"
 let kTableContentsCellIdentifier = "tableContentsCell"
 
-class TableContentsView: TemplateContentsView {
+class TableTemplateCell: TemplateCell {
   @IBOutlet weak var collectionView: UICollectionView!
-  private var lastWidth: CGFloat?
   private var content: Content?
   private var column: Int?
   private var row: Int?
   private var hasSpace: Bool?
   
-  var isRe = false
   private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
     let layout = UICollectionViewFlowLayout()
-    self.setUpCollectionViewFlowLayout(layout)
     self.collectionView.collectionViewLayout = layout
     return layout
   }()
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    if lastWidth != frame.size.width {
-      lastWidth = frame.size.width
-      isLayouted = true
-      setUpCollectionViewFlowLayout(collectionViewLayout)
-      collectionView.reloadData()
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    collectionView.registerNib(UINib(nibName: kTableContentsCollectionViewCellNibName, bundle: nil),
+      forCellWithReuseIdentifier: kTableContentsCellIdentifier)
+  }
+  
+  override func configureCell(template: Template, forCalculateHeight: Bool) {
+    super.configureCell(template, forCalculateHeight: forCalculateHeight)
+    if !forCalculateHeight {
+      templateId = template.id
+      content = template.content
     }
-  }
-  
-  override func className() -> String {
-    return "Table"
-  }
-  
-  override func layoutView(template: Template) {
-    collectionView.changeHeightLayoutConstant(template.height)
-    templateId = template.id
-    content = template.content
     hasSpace = template.content.hasSpace
     row = template.content.row
     column = template.content.column
-    layoutSubviews()
+    setUpCollectionViewFlowLayout(collectionViewLayout, forCalculateHeight: forCalculateHeight)
+    collectionView.reloadData()
   }
   
-  private func setUpCollectionViewFlowLayout(collectionViewLayout: UICollectionViewFlowLayout) {
+  private func setUpCollectionViewFlowLayout(collectionViewLayout: UICollectionViewFlowLayout, forCalculateHeight: Bool) {
     let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
-    collectionViewLayout.minimumInteritemSpacing = space
-    collectionViewLayout.minimumLineSpacing = space
+    if !forCalculateHeight {
+      collectionViewLayout.minimumInteritemSpacing = space
+      collectionViewLayout.minimumLineSpacing = space
+    }
     
-    if let lastWidth = self.lastWidth, column = self.column, row = self.row {
-      let itemWidth = (lastWidth - space * CGFloat(column - 1)) / CGFloat(column)
-      collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-      
+    if let column = self.column, row = self.row {
+      let itemWidth = (frame.width - space * CGFloat(column - 1)) / CGFloat(column)
+      if !forCalculateHeight {
+        collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+      }
       let height = itemWidth * CGFloat(row) + space * CGFloat(row - 1)
-      layoutContentsView(isLayouted, templateId: templateId, height: height, contentsView: collectionView)
+      layoutContentsView(templateId, height: height, contentsView: collectionView)
     }
   }
   
@@ -63,7 +59,7 @@ class TableContentsView: TemplateContentsView {
 
 // MARK: - UICollectionViewDataSource
 
-extension TableContentsView {
+extension TableTemplateCell {
   func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -73,16 +69,10 @@ extension TableContentsView {
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    if !isRe {
-      isRe = true
-      collectionView.registerNib(UINib(nibName: kTableContentsCollectionViewCellNibName, bundle: nil),
-        forCellWithReuseIdentifier: kTableContentsCellIdentifier)
-    }
-    
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kTableContentsCellIdentifier,
       forIndexPath: indexPath) as! TableContentsCollectionViewCell
-    if let content = content {
-      cell.configure(content.items[indexPath.row])
+    if content != nil && content?.items.count > indexPath.row {
+      cell.configure(content!.items[indexPath.row])
     }
     return cell
   }
@@ -90,7 +80,7 @@ extension TableContentsView {
 
 // MARK: - UICollectionViewDelegate
 
-extension TableContentsView: UICollectionViewDelegate {
+extension TableTemplateCell: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     if let templateId = templateId, content = content, contentsId = content.id {
       postNotification(kNotificationDoAction,

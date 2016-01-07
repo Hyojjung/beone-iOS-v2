@@ -8,7 +8,11 @@ class Select: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let selectObject = data as? [String: AnyObject] {
-      id = selectObject[kObjectPropertyKeyId] as? Int
+      if let originalId = selectObject["originalId"] as? Int {
+        id = originalId
+      } else {
+        id = selectObject[kObjectPropertyKeyId] as? Int
+      }
       name = selectObject["name"] as? String
       if let isSoldOut = selectObject["isSoldOut"] as? Bool {
         self.isSoldOut = isSoldOut

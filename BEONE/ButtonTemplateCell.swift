@@ -2,19 +2,21 @@
 import UIKit
 import SDWebImage
 
-class ButtonContentsView: TemplateContentsView {
+class ButtonTemplateCell: TemplateCell {
+  
   @IBOutlet weak var button: UIButton!
   var unpressedBackgroundColor: UIColor?
   var pressedBackgroundColor: UIColor?
   
-  override func className() -> String {
-    return "Button"
-  }
-  
-  override func layoutView(template: Template) {
+  override func configureCell(template: Template, forCalculateHeight: Bool) {
+    super.configureCell(template, forCalculateHeight: forCalculateHeight)
     button.setTitle(template.content.text, forState: .Normal)
     button.setTitleColor(template.content.textColor, forState: .Normal)
     button.setTitleColor(template.content.pressedTextColor, forState: .Highlighted)
+    if let textSize = template.content.textSize {
+      button.titleLabel?.font = UIFont.systemFontOfSize(textSize)
+    }
+    button.layoutMargins = template.content.padding
     button.backgroundColor = template.content.backgroundColor
     unpressedBackgroundColor = template.content.backgroundColor
     pressedBackgroundColor = template.content.pressedBackgroundColor

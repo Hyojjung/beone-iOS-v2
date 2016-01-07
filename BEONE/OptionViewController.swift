@@ -188,7 +188,7 @@ extension OptionViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.cell(cellIdentifier(indexPath), indexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
   }
@@ -203,7 +203,7 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
     return kOptionTableViewCellIdentifiers[indexPath.section]
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)

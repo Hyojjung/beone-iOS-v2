@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SimpleProductsContentsView: TemplateContentsView {
+class SimpleProductsContentsView: TemplateCell {
   @IBOutlet weak var firstProductView: UIView!
   @IBOutlet weak var secondProductView: UIView!
     
