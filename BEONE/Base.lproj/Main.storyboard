@@ -140,7 +140,7 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fZQ-LG-5eG" id="CHg-C4-dJx"/>
-                                    <outlet property="delegate" destination="fZQ-LG-5eG" id="erD-05-EOG"/>
+                                    <outlet property="delegate" destination="fZQ-LG-5eG" id="M7n-se-gUi"/>
                                 </connections>
                             </tableView>
                         </subviews>

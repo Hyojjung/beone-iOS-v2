@@ -11,7 +11,7 @@ class ShopViewController: BaseTableViewController {
     case Count
   }
   
-  private let kShopTableViewCellIdentifiers = ["shopSummaryCell", "productCell"]
+  private let kShopTableViewCellIdentifiers = ["shopSummaryCell", "productCoupleTemplateCell"]
   
   // MARK: - Property
   
@@ -27,6 +27,7 @@ class ShopViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    shop?.fetch()
     shopProductList.fetch()
   }
   
@@ -39,6 +40,8 @@ class ShopViewController: BaseTableViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
       name: kNotificationFetchProductListSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
+      name: kNotificationFetchShopSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOpion:",
       name: kNotificationSegueToOption, object: nil)
   }
@@ -55,12 +58,13 @@ class ShopViewController: BaseTableViewController {
 }
 
 extension ShopViewController: DynamicHeightTableViewProtocol {
+  
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
     switch ShopTableViewSection(rawValue: indexPath.section)! {
     case .Summary:
-      configureSummaryCell(cell)
+      configureSummaryCell(cell, forCalculateHeight: forCalculateHeight)
     case .Product:
-      configureProductCell(cell, indexPath: indexPath)
+      configureProductCell(cell, indexPath: indexPath, forCalculateHeight: forCalculateHeight)
     default:
       break
     }
@@ -83,24 +87,27 @@ extension ShopViewController {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
-
+    configure(cell, indexPath: indexPath, forCalculateHeight: false)
     return cell
   }
   
-  private func configureSummaryCell(cell: UITableViewCell) {
+  private func configureSummaryCell(cell: UITableViewCell, forCalculateHeight: Bool) {
     if let cell = cell as? ShopSummaryCell {
-      cell.configureCell(shop)
+      cell.configureCell(shop, forCalculateHeight: forCalculateHeight)
     }
   }
   
-  private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? ShopProductCell {
-      var products = [Product]()
-      products.append(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
-      if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-        products.append(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
+  private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
+    if let cell = cell as? ProductCoupleTemplateCell {
+      cell.configureDefaulStyle()
+      if !forCalculateHeight {
+        var products = [Product]()
+        products.append(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
+        if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
+          products.append(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
+        }
+        cell.configureView(products)
       }
-      cell.configureCell(products)
     }
   }
 }
@@ -112,26 +119,13 @@ class ShopSummaryCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var tagLabel: UILabel!
   
-  func configureCell(shop: Shop?) {
-    backgroundImageView.setLazyLoaingImage(shop?.backgroundImageUrl)
-    profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
-    profileImageView.makeCircleView()
+  func configureCell(shop: Shop?, forCalculateHeight: Bool) {
+    if !forCalculateHeight {
+      backgroundImageView.setLazyLoaingImage(shop?.backgroundImageUrl)
+      profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
+      profileImageView.makeCircleView()
+    }
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.summary
-  }
-}
-
-class ShopProductCell: UITableViewCell {
-  @IBOutlet weak var productView: UIView!
-  lazy var simpleProductsContentsView: SimpleProductsContentsView = {
-    let productsContentsView = UIView.loadFromNibName(kSimpleProductsContentsViewNibName) as! SimpleProductsContentsView
-    return productsContentsView
-  }()
-  
-  func configureCell(products: [Product]) {
-    if products.count > 0 && products.count <= kSimpleProductColumn && simpleProductsContentsView.superview == nil {
-      productView.addSubViewAndEdgeLayout(simpleProductsContentsView)
-    }
-    simpleProductsContentsView.configureView(products)
   }
 }

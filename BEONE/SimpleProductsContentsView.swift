@@ -5,12 +5,12 @@ class SimpleProductsContentsView: TemplateCell {
   @IBOutlet weak var firstProductView: UIView!
   @IBOutlet weak var secondProductView: UIView!
     
-  lazy var firstProductsContentsView: SimpleProductView = {
+  lazy var firstProductsContentsView: ProductSingleTemplateCell = {
     let simpleProductView = UIView.loadFromNibName(kSimpleProductViewNibName) as! SimpleProductView
     return simpleProductView
   }()
   
-  lazy var secondProductsContentsView: SimpleProductView = {
+  lazy var secondProductsContentsView: ProductSingleTemplateCell = {
     let simpleProductView = UIView.loadFromNibName(kSimpleProductViewNibName) as! SimpleProductView
     return simpleProductView
   }()

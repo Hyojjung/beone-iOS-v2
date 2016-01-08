@@ -1,7 +1,7 @@
 
 import UIKit
 
-class BaseTableViewController: BaseViewController {
+class BaseTableViewController: BaseViewController, UITableViewDelegate {
 
   // MARK: - Property
   

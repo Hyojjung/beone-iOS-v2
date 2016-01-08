@@ -1,10 +1,10 @@
 
 import UIKit
 
-protocol DynamicHeightTableViewProtocol: NSObjectProtocol {
+@objc protocol DynamicHeightTableViewProtocol: NSObjectProtocol {
   var dynamicHeightTableViewCells: [String: UITableViewCell] { get set }
   
-  func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool)
+  optional func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool)
   func cellIdentifier(indexPath: NSIndexPath) -> String
 }
 
@@ -26,7 +26,7 @@ class DynamicHeightTableView: UITableView {
       dynamicHeightDelgate.dynamicHeightTableViewCells[cellIdentifier] = cell
     }
     if let cell = cell {
-      dynamicHeightDelgate.configure(cell, indexPath: indexPath, forCalculateHeight: true)
+      dynamicHeightDelgate.configure?(cell, indexPath: indexPath, forCalculateHeight: true)
       return calculateHeight(cell)
     }
     return 0
@@ -36,6 +36,7 @@ class DynamicHeightTableView: UITableView {
     cell.setNeedsDisplay()
     cell.layoutIfNeeded()
     let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+    print(size.height)
     return size.height
   }
   

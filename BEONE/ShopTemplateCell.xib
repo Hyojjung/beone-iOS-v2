@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shopTemplateCell" id="73Z-dS-tcv" customClass="ShopTemplateCell" customModule="BEONE" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="shopTemplateCell" id="73Z-dS-tcv" customClass="ShopTemplateCell" customModule="BEONE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="577" height="384"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="73Z-dS-tcv" id="EE9-h4-49n">
@@ -98,16 +98,26 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-DG-ygg">
+                                        <rect key="frame" x="0.0" y="0.0" width="545" height="351"/>
+                                        <connections>
+                                            <action selector="shopButtonTapped" destination="73Z-dS-tcv" eventType="touchUpInside" id="zrU-Qe-8ZO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="YcI-DG-ygg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2Jj-GD-5xP"/>
                                     <constraint firstItem="gLF-jt-H4w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="61H-Wz-IRb"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="83D-yg-aDT"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HIl-H5-ucS"/>
+                                    <constraint firstAttribute="bottom" secondItem="YcI-DG-ygg" secondAttribute="bottom" id="KLe-0l-wP5"/>
                                     <constraint firstAttribute="trailing" secondItem="iGG-qx-tlY" secondAttribute="trailing" id="Uhd-0Z-KKH"/>
                                     <constraint firstAttribute="bottom" secondItem="iGG-qx-tlY" secondAttribute="bottom" id="bfq-Dk-0fi"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="dJA-ZB-oU1"/>
                                     <constraint firstItem="gLF-jt-H4w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="efW-4z-o5L"/>
+                                    <constraint firstItem="YcI-DG-ygg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="k4t-rE-i44"/>
+                                    <constraint firstAttribute="trailing" secondItem="YcI-DG-ygg" secondAttribute="trailing" id="wkC-Qw-NGK"/>
                                     <constraint firstAttribute="trailing" secondItem="gLF-jt-H4w" secondAttribute="trailing" constant="2" id="y4d-sg-z7X"/>
                                 </constraints>
                             </view>

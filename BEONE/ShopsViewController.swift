@@ -40,28 +40,30 @@ extension ShopsViewController {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
-    configure(cell, indexPath: indexPath, forCalculateHeight: false)
+    if let cell = cell as? ShopTemplateCell, shop = shopList.list[indexPath.row] as? Shop {
+      cell.delegate = self
+      cell.configureCell(shop)
+    }
     return cell
   }
 }
 
 extension ShopsViewController: DynamicHeightTableViewProtocol {
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
-    if let cell = cell as? ShopTemplateCell, shop = shopList.list[indexPath.row] as? Shop {
-      cell.configureCell(shop)
-    }
-  }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kShopCellIdentifier
   }
 }
 
-extension ShopsViewController: UITableViewDelegate {
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    if let shop = shopList.list[indexPath.row] as? Shop {
-      BEONEManager.selectedShop = shop
-      showViewController(kShopStoryboardName, viewIdentifier: kShopViewIdentifier)
+extension ShopsViewController: ShopTemplateCellDelegate {
+  
+  func shopButtonTapped(shopId: Int) {
+    for shop in shopList.list as! [Shop] {
+      if shopId == shop.id {
+        BEONEManager.selectedShop = shop
+        showViewController(kShopStoryboardName, viewIdentifier: kShopViewIdentifier)
+        break
+      }
     }
   }
 }

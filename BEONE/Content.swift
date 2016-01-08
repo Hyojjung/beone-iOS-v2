@@ -55,7 +55,7 @@ class Content: BaseModel {
   var backgroundImageUrl: String?
   var pressedBackgroundImageUrl: String?
   var padding = UIEdgeInsetsZero
-  var model: BaseModel?
+  var models: [BaseModel]?
   
   // MARK: - Override Methods
   
@@ -104,13 +104,23 @@ class Content: BaseModel {
       }
       
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {
-        items.removeAll()
-        for itemObject in itemsObject {
-          let item = Content()
-          item.assignObject(itemObject)
-          items.append(item)
+        if let _ = models as? [Product] {
+          self.models?.removeAll()
+          for itemObject in itemsObject {
+            let product = Product()
+            product.assignObject(itemObject)
+            self.models?.append(product)
+          }
+        } else {
+          items.removeAll()
+          for itemObject in itemsObject {
+            let item = Content()
+            item.assignObject(itemObject)
+            items.append(item)
+          }
         }
       }
+      
     }
   }
 }

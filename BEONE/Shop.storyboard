@@ -31,13 +31,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opd-Gn-gPP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="AcL-E2-Hm6" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" constant="190" id="4cx-D1-3Ra"/>
                                                                 <constraint firstAttribute="width" secondItem="AcL-E2-Hm6" secondAttribute="height" multiplier="375:190" id="GWJ-2C-eBx"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="GWJ-2C-eBx"/>
+                                                                </mask>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,12 +54,17 @@
                                                         <constraint firstItem="AcL-E2-Hm6" firstAttribute="top" secondItem="Opd-Gn-gPP" secondAttribute="top" id="fSZ-0H-t6N"/>
                                                         <constraint firstItem="AcL-E2-Hm6" firstAttribute="leading" secondItem="Opd-Gn-gPP" secondAttribute="leading" id="ryR-g1-jUl"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="VuW-hc-8uj"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O82-c7-Nfe">
-                                                    <rect key="frame" x="0.0" y="304" width="600" height="172"/>
+                                                    <rect key="frame" x="0.0" y="190" width="600" height="274"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderline" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-Ly-wXf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="172"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="274"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkF-s9-eIk">
                                                             <rect key="frame" x="38" y="69" width="524" height="24"/>
@@ -62,13 +73,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afR-GS-apE">
-                                                            <rect key="frame" x="38" y="127" width="524" height="16"/>
+                                                            <rect key="frame" x="38" y="229" width="524" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="1" green="0.63137254899999995" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwG-p6-Es3">
-                                                            <rect key="frame" x="38" y="98" width="524" height="19"/>
+                                                            <rect key="frame" x="38" y="98" width="524" height="121"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -99,7 +110,7 @@
                                                     </variation>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BV-Bw-FUj">
-                                                    <rect key="frame" x="253" y="256" width="95" height="95"/>
+                                                    <rect key="frame" x="253" y="142" width="95" height="95"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="G2d-sC-H4Z" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
@@ -122,43 +133,19 @@
                                                 <constraint firstItem="O82-c7-Nfe" firstAttribute="leading" secondItem="5W1-08-AMy" secondAttribute="leading" id="O0D-3a-bxk"/>
                                                 <constraint firstItem="1BV-Bw-FUj" firstAttribute="centerX" secondItem="5W1-08-AMy" secondAttribute="centerX" id="QSy-3j-dh0"/>
                                                 <constraint firstAttribute="trailing" secondItem="Opd-Gn-gPP" secondAttribute="trailing" id="QwM-ZY-wi7"/>
-                                                <constraint firstAttribute="bottom" secondItem="O82-c7-Nfe" secondAttribute="bottom" id="TS0-HT-6NZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="O82-c7-Nfe" secondAttribute="bottom" constant="12" id="TS0-HT-6NZ"/>
                                                 <constraint firstItem="O82-c7-Nfe" firstAttribute="top" secondItem="Opd-Gn-gPP" secondAttribute="bottom" id="Tgr-Bg-ez5"/>
                                                 <constraint firstAttribute="trailing" secondItem="O82-c7-Nfe" secondAttribute="trailing" id="kLP-6L-slm"/>
                                                 <constraint firstItem="Opd-Gn-gPP" firstAttribute="top" secondItem="5W1-08-AMy" secondAttribute="top" id="wXm-3f-yUx"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="backgroundImageView" destination="AcL-E2-Hm6" id="NWH-nt-8gI"/>
                                             <outlet property="descriptionLabel" destination="UwG-p6-Es3" id="RCP-gP-hEn"/>
                                             <outlet property="nameLabel" destination="qkF-s9-eIk" id="O2G-HH-i9o"/>
                                             <outlet property="profileImageView" destination="G2d-sC-H4Z" id="XeW-mQ-tvx"/>
                                             <outlet property="tagLabel" destination="afR-GS-apE" id="gPq-LO-6GZ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCell" rowHeight="476" id="HMt-nZ-HJY" customClass="ShopProductCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="504" width="600" height="476"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HMt-nZ-HJY" id="hXO-x8-8Jx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="476"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUJ-4E-RY2">
-                                                    <rect key="frame" x="7" y="7" width="586" height="469"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LUJ-4E-RY2" secondAttribute="trailing" constant="7" id="4YG-bO-0aw"/>
-                                                <constraint firstAttribute="bottom" secondItem="LUJ-4E-RY2" secondAttribute="bottom" id="Gwe-Ds-6Ug"/>
-                                                <constraint firstItem="LUJ-4E-RY2" firstAttribute="leading" secondItem="hXO-x8-8Jx" secondAttribute="leading" constant="7" id="gn5-Fl-i1d"/>
-                                                <constraint firstItem="LUJ-4E-RY2" firstAttribute="top" secondItem="hXO-x8-8Jx" secondAttribute="top" constant="7" id="yyo-zp-l61"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="productView" destination="LUJ-4E-RY2" id="xqG-Ef-U0k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

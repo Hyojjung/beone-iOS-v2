@@ -1,9 +1,9 @@
-
+ 
 import UIKit
-
+ 
 let kSimpleProductColumn = 2
-
-class SimpleProductView: UIView {
+ 
+class ProductCoupleView: UIView {
   @IBOutlet weak var imageView: LazyLoadingImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!

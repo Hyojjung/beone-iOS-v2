@@ -14,6 +14,7 @@ let kNotificationFetchTemplateListSuccess = "NotificationFetchTemplateListSucces
 let kNotificationFetchShopListSuccess = "NotificationFetchShopListSuccess"
 let kNotificationFetchProductListSuccess = "NotificationFetchProductListSuccess"
 let kNotificationFetchProductSuccess = "NotificationFetchProductSuccess"
+let kNotificationFetchShopSuccess = "NotificationFetchShopSuccess"
 let kNotificationPostCartItemSuccess = "NotificationPostCartItemSuccess"
 let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
 let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"

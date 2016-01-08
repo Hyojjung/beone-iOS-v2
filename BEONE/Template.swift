@@ -11,13 +11,14 @@ let kTextTemplateCellIdentifier = "textTemplateCell"
 let kImageTemplateCellIdentifier = "imageTemplateCell"
 let kButtonTemplateCellIdentifier = "buttonTemplateCell"
 let kTableTemplateCellIdentifier = "tableTemplateCell"
+let kProductCoupleTemplateCellIdentifier = "productCoupleTemplateCell"
 
 enum TemplateType: String {
   case Text = "text"
   case Image = "image"
   case Button = "button"
   case Shop = "shop"
-  case Product
+  case ProductCouple = "productCouple"
   case Review
   case Banner
   case Table = "table"
@@ -32,6 +33,8 @@ enum TemplateType: String {
       return kButtonTemplateCellIdentifier
     case .Table:
       return kTableTemplateCellIdentifier
+    case .ProductCouple:
+      return kProductCoupleTemplateCellIdentifier
     default:
       fatalError("no cell identifier with template type")
     }
@@ -59,6 +62,9 @@ class Template: BaseModel {
       count = template[kTemplatePropertyKeyCount] as? Int
       if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
         self.style.assignObject(style)
+      }
+      if type == .ProductCouple {
+        content.models = [Product]()
       }
       if let contentObject = template[kTemplatePropertyKeyContents] as? [String: AnyObject] {
         content.assignObject(contentObject)

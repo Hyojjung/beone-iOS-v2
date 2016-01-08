@@ -97,28 +97,12 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return templateList.list.count
+    return templates.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
-  }
-}
-
-extension FirstViewController: DynamicHeightTableViewProtocol {
-  
-  func cellIdentifier(indexPath: NSIndexPath) -> String {
-    if let template = templateList.list[indexPath.row] as? Template, cellIdentifier = template.type?.cellIdentifier() {
-      return cellIdentifier
-    }
-    fatalError("invalid template type")
-  }
-  
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
-    if let cell = cell as? TemplateCell {
-      cell.configureCell(templateList.list[indexPath.row] as! Template, forCalculateHeight: forCalculateHeight)
-    }
   }
 }

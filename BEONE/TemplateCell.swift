@@ -19,20 +19,22 @@ class TemplateCell: UITableViewCell, TemplateContentsViewProtocol {
   }
   
   private func configureStyle(style: TemplateStyle?, forCalculateHeight: Bool) {
-    if !forCalculateHeight {
-      templateContentsView.backgroundColor = UIColor.clearColor()
-      backgroundImageView.image = nil
-      if let style = style {
+    configureDefaulStyle()
+    if let style = style {
+      if !forCalculateHeight {
         templateContentsView.backgroundColor = style.backgroundColor
         backgroundImageView.setLazyLoaingImage(style.backgroundImageUrl)
       }
-    }
-    contentView.layoutMargins = UIEdgeInsetsZero
-    templateContentsView.layoutMargins = UIEdgeInsetsZero
-    if let style = style {
       contentView.layoutMargins = style.margin
       templateContentsView.layoutMargins = style.padding
     }
+  }
+  
+  func configureDefaulStyle() {
+    templateContentsView.backgroundColor = UIColor.clearColor()
+    backgroundImageView.image = nil
+    contentView.layoutMargins = UIEdgeInsetsZero
+    templateContentsView.layoutMargins = UIEdgeInsetsZero
   }
 }
 
@@ -47,8 +49,8 @@ extension UIView {
         if constraint.firstAttribute == .Height &&
           Int(constraint.constant) != Int(height) &&
           constraint.isMemberOfClass(NSLayoutConstraint) {
-//            print("constant: \(constraint.constant)")
-//            print("height: \(height)")
+            //            print("constant: \(constraint.constant)")
+            //            print("height: \(height)")
             constraint.constant = height
             postNotification(kNotificationContentsViewLayouted,
               userInfo: [kNotificationKeyTemplateId: templateId!])
