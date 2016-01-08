@@ -83,6 +83,8 @@
 		7323FD291C3B8B3E008B99DF /* OrderWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */; };
 		7323FD2B1C3BA130008B99DF /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD2A1C3BA130008B99DF /* PaymentInfo.swift */; };
 		7323FD2D1C3BB80D008B99DF /* OrderResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD2C1C3BB80D008B99DF /* OrderResultViewController.swift */; };
+		7325D95D1C400A8500E977E5 /* VBankResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7325D95C1C400A8500E977E5 /* VBankResultView.xib */; };
+		7325D95F1C400B5B00E977E5 /* MobileResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7325D95E1C400B5B00E977E5 /* MobileResultView.xib */; };
 		73398AE11C05F14000F57D4A /* AddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE01C05F14000F57D4A /* AddressList.swift */; };
 		73398AE51C06052B00F57D4A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE41C06052B00F57D4A /* Order.swift */; };
 		73398AE81C068ED300F57D4A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73398AE71C068ED300F57D4A /* Location.swift */; };
@@ -155,6 +157,15 @@
 		73BE22691C3120C5003FA11C /* OptionStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE22681C3120C5003FA11C /* OptionStringView.swift */; };
 		73BE226B1C328B9F003FA11C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE226A1C328B9F003FA11C /* CartViewController.swift */; };
 		73BE226D1C36CC23003FA11C /* TimeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE226C1C36CC23003FA11C /* TimeSelectView.swift */; };
+		73DF1D731C400D1F00DB3550 /* CardResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF1D721C400D1F00DB3550 /* CardResultView.xib */; };
+		73DF1D751C400D3600DB3550 /* EtcResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF1D741C400D3600DB3550 /* EtcResultView.xib */; };
+		73DF1D771C400D4400DB3550 /* PaypalResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF1D761C400D4400DB3550 /* PaypalResultView.xib */; };
+		73DF1D791C400D6800DB3550 /* OrderResultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF1D781C400D6800DB3550 /* OrderResultLabelView.xib */; };
+		73DF1D7B1C400DF200DB3550 /* VBankResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D7A1C400DF200DB3550 /* VBankResultView.swift */; };
+		73DF1D7D1C4011BF00DB3550 /* MobileResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D7C1C4011BF00DB3550 /* MobileResultView.swift */; };
+		73DF1D7F1C40131400DB3550 /* CardResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D7E1C40131400DB3550 /* CardResultView.swift */; };
+		73DF1D811C4014A300DB3550 /* EtcResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D801C4014A300DB3550 /* EtcResultView.swift */; };
+		73DF1D831C40153400DB3550 /* PaypalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D821C40153400DB3550 /* PaypalResultView.swift */; };
 		73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA25421BE4D5FF0085382A /* AlertViewController.swift */; };
 		73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EA25441BE4D7DD0085382A /* AlertViewController.xib */; };
 		73EA254B1BE5FA840085382A /* BaseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA254A1BE5FA840085382A /* BaseListModel.swift */; };
@@ -265,6 +276,8 @@
 		7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderWebViewController.swift; sourceTree = "<group>"; };
 		7323FD2A1C3BA130008B99DF /* PaymentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		7323FD2C1C3BB80D008B99DF /* OrderResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderResultViewController.swift; sourceTree = "<group>"; };
+		7325D95C1C400A8500E977E5 /* VBankResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VBankResultView.xib; sourceTree = "<group>"; };
+		7325D95E1C400B5B00E977E5 /* MobileResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileResultView.xib; sourceTree = "<group>"; };
 		73398AE01C05F14000F57D4A /* AddressList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressList.swift; sourceTree = "<group>"; };
 		73398AE41C06052B00F57D4A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		73398AE71C068ED300F57D4A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -338,6 +351,15 @@
 		73BE22681C3120C5003FA11C /* OptionStringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionStringView.swift; sourceTree = "<group>"; };
 		73BE226A1C328B9F003FA11C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		73BE226C1C36CC23003FA11C /* TimeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectView.swift; sourceTree = "<group>"; };
+		73DF1D721C400D1F00DB3550 /* CardResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardResultView.xib; sourceTree = "<group>"; };
+		73DF1D741C400D3600DB3550 /* EtcResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EtcResultView.xib; sourceTree = "<group>"; };
+		73DF1D761C400D4400DB3550 /* PaypalResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaypalResultView.xib; sourceTree = "<group>"; };
+		73DF1D781C400D6800DB3550 /* OrderResultLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderResultLabelView.xib; sourceTree = "<group>"; };
+		73DF1D7A1C400DF200DB3550 /* VBankResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VBankResultView.swift; sourceTree = "<group>"; };
+		73DF1D7C1C4011BF00DB3550 /* MobileResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileResultView.swift; sourceTree = "<group>"; };
+		73DF1D7E1C40131400DB3550 /* CardResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardResultView.swift; sourceTree = "<group>"; };
+		73DF1D801C4014A300DB3550 /* EtcResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtcResultView.swift; sourceTree = "<group>"; };
+		73DF1D821C40153400DB3550 /* PaypalResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaypalResultView.swift; sourceTree = "<group>"; };
 		73EA25421BE4D5FF0085382A /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		73EA25441BE4D7DD0085382A /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		73EA254A1BE5FA840085382A /* BaseListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListModel.swift; sourceTree = "<group>"; };
@@ -711,6 +733,17 @@
 			isa = PBXGroup;
 			children = (
 				7323FD261C3A068C008B99DF /* PaymentTypesView.swift */,
+				7325D95C1C400A8500E977E5 /* VBankResultView.xib */,
+				73DF1D7A1C400DF200DB3550 /* VBankResultView.swift */,
+				7325D95E1C400B5B00E977E5 /* MobileResultView.xib */,
+				73DF1D7C1C4011BF00DB3550 /* MobileResultView.swift */,
+				73DF1D721C400D1F00DB3550 /* CardResultView.xib */,
+				73DF1D7E1C40131400DB3550 /* CardResultView.swift */,
+				73DF1D741C400D3600DB3550 /* EtcResultView.xib */,
+				73DF1D801C4014A300DB3550 /* EtcResultView.swift */,
+				73DF1D761C400D4400DB3550 /* PaypalResultView.xib */,
+				73DF1D821C40153400DB3550 /* PaypalResultView.swift */,
+				73DF1D781C400D6800DB3550 /* OrderResultLabelView.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -950,6 +983,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73445E7E1BFAEF05008BE2AC /* ShopTemplateCell.xib in Resources */,
+				73DF1D791C400D6800DB3550 /* OrderResultLabelView.xib in Resources */,
 				73BE225F1C31040F003FA11C /* OptionStringView.xib in Resources */,
 				73F629A61BF43AE2001EA72F /* ButtonTemplateCell.xib in Resources */,
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
@@ -958,6 +992,8 @@
 				62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */,
 				62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */,
 				736818F81C106433009E433B /* left_arrow.png in Resources */,
+				73DF1D751C400D3600DB3550 /* EtcResultView.xib in Resources */,
+				73DF1D771C400D4400DB3550 /* PaypalResultView.xib in Resources */,
 				62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */,
 				6207174A1BE221970014B9AC /* ImageTemplateCell.xib in Resources */,
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
@@ -968,8 +1004,11 @@
 				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				7309D73E1BFC980900F9761A /* ProductCoupleTemplateCell.xib in Resources */,
 				734C99121C0EE50000F888EA /* DeliveryTypeImageCell.xib in Resources */,
+				7325D95F1C400B5B00E977E5 /* MobileResultView.xib in Resources */,
+				7325D95D1C400A8500E977E5 /* VBankResultView.xib in Resources */,
 				734D282E1C3E32A7007BDDE9 /* TextTemplateCell.xib in Resources */,
 				6207174D1BE227A50014B9AC /* beone-wildcard.crt in Resources */,
+				73DF1D731C400D1F00DB3550 /* CardResultView.xib in Resources */,
 				73BE22591C2F9E32003FA11C /* OptionSelectView.xib in Resources */,
 				73F629901BF1887B001EA72F /* ProductDetailHeaderCollectionViewCell.xib in Resources */,
 				7388FA4C1C04655F0015C3DF /* ProductDetail.storyboard in Resources */,
@@ -1069,6 +1108,8 @@
 				73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */,
 				73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */,
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
+				73DF1D7D1C4011BF00DB3550 /* MobileResultView.swift in Sources */,
+				73DF1D7F1C40131400DB3550 /* CardResultView.swift in Sources */,
 				736818FD1C107369009E433B /* AvailableTimeRangeList.swift in Sources */,
 				7388FA411C040C2A0015C3DF /* ProductDetail.swift in Sources */,
 				73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */,
@@ -1098,10 +1139,12 @@
 				73398B011C083FBB00F57D4A /* OrderableItemSet.swift in Sources */,
 				73398AEA1C068EF800F57D4A /* LocationList.swift in Sources */,
 				734D28301C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift in Sources */,
+				73DF1D811C4014A300DB3550 /* EtcResultView.swift in Sources */,
 				73445E741BF97BF0008BE2AC /* DeviceInfo.swift in Sources */,
 				62EFE94F1BE0C5830035B2DE /* TextTemplateCell.swift in Sources */,
 				73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */,
 				620717411BE2020A0014B9AC /* LazyLoadingHelper.swift in Sources */,
+				73DF1D831C40153400DB3550 /* PaypalResultView.swift in Sources */,
 				7323FD2D1C3BB80D008B99DF /* OrderResultViewController.swift in Sources */,
 				7388FA3C1C0341910015C3DF /* ReviewList.swift in Sources */,
 				73F629A41BF43892001EA72F /* ButtonTemplateCell.swift in Sources */,
@@ -1125,6 +1168,7 @@
 				62EFE9421BE093FB0035B2DE /* UIColorExtension.swift in Sources */,
 				62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */,
 				620717461BE21FCD0014B9AC /* TemplateCell.swift in Sources */,
+				73DF1D7B1C400DF200DB3550 /* VBankResultView.swift in Sources */,
 				7388FA461C045A630015C3DF /* Inquiry.swift in Sources */,
 				73398B0F1C0DEF0A00F57D4A /* BeoneExtension.swift in Sources */,
 				620717551BE3171F0014B9AC /* TableContentsCollectionViewCell.swift in Sources */,

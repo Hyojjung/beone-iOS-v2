@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nFv-QJ-xil" customClass="MobileResultView" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="101"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iu-bn-2FQ">
+                    <rect key="frame" x="11" y="15" width="25" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKq-H7-oVk">
+                    <rect key="frame" x="84" y="15" width="36" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="priceLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제일시" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGh-VU-3bY">
+                    <rect key="frame" x="11" y="42" width="49" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-DX-ltZ">
+                    <rect key="frame" x="84" y="42" width="36" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="paymentDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="희망배송일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0L-Qw-kLL">
+                    <rect key="frame" x="11" y="69" width="61" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Izi-St-ccf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Izi-St-ccf"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-oz-S09">
+                    <rect key="frame" x="84" y="69" width="504" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="preferredDeliveryDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Y0L-Qw-kLL" firstAttribute="top" secondItem="OGh-VU-3bY" secondAttribute="bottom" constant="10" id="5OF-nt-vfz"/>
+                <constraint firstItem="6Iu-bn-2FQ" firstAttribute="top" secondItem="nFv-QJ-xil" secondAttribute="top" constant="15" id="7JX-eO-AHA"/>
+                <constraint firstItem="OGh-VU-3bY" firstAttribute="centerY" secondItem="a8b-DX-ltZ" secondAttribute="centerY" id="8Oq-bE-5q2"/>
+                <constraint firstItem="lKq-H7-oVk" firstAttribute="leading" secondItem="6Iu-bn-2FQ" secondAttribute="trailing" constant="48" id="9m4-cF-A41"/>
+                <constraint firstItem="OGh-VU-3bY" firstAttribute="leading" secondItem="nFv-QJ-xil" secondAttribute="leading" constant="11" id="JJA-rl-NRY"/>
+                <constraint firstItem="Y0L-Qw-kLL" firstAttribute="top" secondItem="OGh-VU-3bY" secondAttribute="bottom" constant="10" id="KZr-Qm-pKC"/>
+                <constraint firstItem="ux6-oz-S09" firstAttribute="centerY" secondItem="Y0L-Qw-kLL" secondAttribute="centerY" id="NUk-Gr-k7q"/>
+                <constraint firstItem="OGh-VU-3bY" firstAttribute="top" secondItem="6Iu-bn-2FQ" secondAttribute="bottom" constant="37" id="Oc8-ad-ooY"/>
+                <constraint firstAttribute="bottom" secondItem="Y0L-Qw-kLL" secondAttribute="bottom" constant="10" id="UUc-51-FfI"/>
+                <constraint firstAttribute="bottom" secondItem="ux6-oz-S09" secondAttribute="bottom" constant="15" id="UcT-mF-PPL"/>
+                <constraint firstItem="lKq-H7-oVk" firstAttribute="centerY" secondItem="6Iu-bn-2FQ" secondAttribute="centerY" id="Wu9-tK-ZD9"/>
+                <constraint firstItem="Y0L-Qw-kLL" firstAttribute="leading" secondItem="nFv-QJ-xil" secondAttribute="leading" constant="11" id="XNC-iN-hhB"/>
+                <constraint firstItem="Y0L-Qw-kLL" firstAttribute="top" secondItem="ux6-oz-S09" secondAttribute="top" id="XVF-nU-r6U"/>
+                <constraint firstItem="6Iu-bn-2FQ" firstAttribute="leading" secondItem="nFv-QJ-xil" secondAttribute="leading" constant="11" id="YFI-4f-tRJ"/>
+                <constraint firstAttribute="bottom" secondItem="Y0L-Qw-kLL" secondAttribute="bottom" constant="10" id="aF8-6h-6nW"/>
+                <constraint firstItem="ux6-oz-S09" firstAttribute="leading" secondItem="a8b-DX-ltZ" secondAttribute="leading" id="fH1-hD-kJc"/>
+                <constraint firstItem="lKq-H7-oVk" firstAttribute="leading" secondItem="a8b-DX-ltZ" secondAttribute="leading" id="ft9-q0-d5o"/>
+                <constraint firstAttribute="trailing" secondItem="ux6-oz-S09" secondAttribute="trailing" constant="12" id="iuk-gU-mpJ"/>
+                <constraint firstItem="OGh-VU-3bY" firstAttribute="top" secondItem="6Iu-bn-2FQ" secondAttribute="bottom" constant="10" id="lgI-ge-dIF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Oc8-ad-ooY"/>
+                    <exclude reference="KZr-Qm-pKC"/>
+                    <exclude reference="UUc-51-FfI"/>
+                    <exclude reference="aF8-6h-6nW"/>
+                    <exclude reference="NUk-Gr-k7q"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="deliveryDateKeyLabel" destination="Y0L-Qw-kLL" id="2es-8o-yNL"/>
+                <outlet property="deliveryDateLabel" destination="ux6-oz-S09" id="Atn-qf-b6J"/>
+                <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="UcT-mF-PPL" id="ntQ-5y-x4P"/>
+                <outlet property="paidAtLabel" destination="a8b-DX-ltZ" id="ovR-Nh-oQm"/>
+                <outlet property="priceLabel" destination="lKq-H7-oVk" id="KfR-zJ-uct"/>
+            </connections>
+            <point key="canvasLocation" x="358" y="715"/>
+        </view>
+    </objects>
+</document>

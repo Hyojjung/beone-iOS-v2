@@ -57,7 +57,18 @@ extension NSDate {
   func serverDateString() -> String {
     return DateFormatterHelper.serverDateFormatter().stringFromDate(self)
   }
-  //
+  
+  func dueDateDateString() -> String {
+    return paidAtDateString() + "까지"
+  }
+  
+  func paidAtDateString() -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
+    dateFormatter.dateFormat = "yyyy년 MMM d일 HH시 mm분"
+    return dateFormatter.stringFromDate(self)
+  }
+  
   func dateComponent() -> (Int, Int) {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
       calendar.timeZone = NSTimeZone(forSecondsFromGMT: 9 * 60 * 60)
