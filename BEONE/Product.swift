@@ -26,24 +26,25 @@ class Product: BaseModel {
   
   var mainImageUrl: String?
   var title: String?
-  var actualPrice: Int?
-  var price: Int?
+  var actualPrice = 0
+  var price = 0
   var subtitle: String?
   var composition: String?
   var contact: String?
   var countryInfo: String?
   var keepingMethod: String?
-  var onSale: Bool?
+  var onSale = false
   var precaution: String?
-  var quantity: Int?
+  var quantity = 1
+  var discountPercent: Int?
   var productCode: String?
-  var rate: Double?
+  var rate = 0.0
   var relatedLawInfo: String?
   var shelfLife: String?
   var shopId: Int?
   var significantlyUpdatedAt: NSDate?
   var size: String?
-  var soldOut: Bool?
+  var soldOut = false
   var summary: String?
   
   var productDetails = [ProductDetail]()
@@ -68,9 +69,23 @@ class Product: BaseModel {
         id = product[kObjectPropertyKeyId] as? Int
         mainImageUrl = product[kProductPropertyKeyMainImageUrl] as? String
         title = product[kProductPropertyKeyTitle] as? String
-        actualPrice = product[kProductPropertyKeyActualPrice] as? Int
-        price = product[kProductPropertyKeyPrice] as? Int
-        quantity = product[kProductPropertyKeyQuantity] as? Int
+        if let actualPrice = product[kProductPropertyKeyActualPrice] as? Int {
+          self.actualPrice = actualPrice
+        }
+        if let price = product[kProductPropertyKeyPrice] as? Int {
+          self.price = price
+        }
+        if let onSale = product[kProductPropertyKeyOnSale] as? Bool {
+          self.onSale = onSale
+        }
+        if price != 0 && onSale {
+          let price = CGFloat(self.price)
+          let actualPrice = CGFloat(self.actualPrice)
+          discountPercent = Int((price - actualPrice) / price * 100)
+        }
+        if let quantity = product[kProductPropertyKeyQuantity] as? Int {
+          self.quantity = quantity
+        }
         subtitle = product[kProductPropertyKeySubtitle] as? String
         summary = product[kProductPropertyKeySummary] as? String
         productCode = product[kProductPropertyKeyProductCode] as? String
@@ -82,8 +97,9 @@ class Product: BaseModel {
         keepingMethod = product[kProductPropertyKeyKeepingMethod] as? String
         precaution = product[kProductPropertyKeyPrecaution] as? String
         contact = product[kProductPropertyKeyContact] as? String
-        onSale = product[kProductPropertyKeyOnSale] as? Bool
-        soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool
+        if let soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool {
+          self.soldOut = soldOut
+        }
         assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
         assignProductDetails(product[kProductPropertyKeyProductDetails])
         if let shopObject = product[kProductPropertyKeyShop]{
@@ -126,12 +142,12 @@ class Product: BaseModel {
 
 extension Product {
   func priceAttributedString() -> NSAttributedString? {
-    let priceString = price?.priceNotation(.None)
-    if onSale != nil && onSale! && priceString != nil {
-      let originalPrice = NSMutableAttributedString(string: priceString!)
+    let priceString = price.priceNotation(.None)
+    if onSale {
+      let originalPrice = NSMutableAttributedString(string: priceString)
       originalPrice.addAttribute(NSStrikethroughStyleAttributeName,
         value: NSUnderlineStyle.StyleSingle.rawValue,
-        range: NSMakeRange(0, priceString!.characters.count))
+        range: NSMakeRange(0, priceString.characters.count))
       return originalPrice
     }
     return nil
@@ -148,10 +164,6 @@ extension Product {
       imageUrls.append(mainImageUrl!)
     }
     return imageUrls
-  }
-  
-  func isSoldOut() -> Bool {
-    return soldOut != nil && soldOut! == true
   }
 }
 

@@ -5,7 +5,7 @@ class OrderableItemSet: BaseModel {
   var availableTimeRangeList = AvailableTimeRangeList()
   var selectedTimeRange: AvailableTimeRange?
   var orderableItems = [OrderableItem]()
-  var deliveryPrice: Int?
+  var deliveryPrice = 0
   let location = Location()
   let deliveryType = DeliveryType()
   let shop = Shop()
@@ -35,8 +35,9 @@ class OrderableItemSet: BaseModel {
         }
       }
       
-      if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject] {
-        deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int
+      if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
+        deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {
+        self.deliveryPrice = deliveryPrice
       }
       
       if let locationObject = orderableItemSet["location"] {

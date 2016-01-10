@@ -6,9 +6,7 @@ class ProductCoupleTemplateCell: TemplateCell {
   @IBOutlet weak var secondProductView: ProductCoupleView!
   
   func configureView(products: [Product]) {
-    contentView.layoutMargins = UIEdgeInsetsZero
-    templateContentsView.layoutMargins = UIEdgeInsetsZero
-    
+    configureDefaulStyle()
     firstProductView.configureView(products.first)
     secondProductView.alpha = products.count > 1 ? 1 : 0
     if products.count > 1 {
@@ -16,12 +14,10 @@ class ProductCoupleTemplateCell: TemplateCell {
     }
   }
   
-  override func configureCell(template: Template, forCalculateHeight: Bool) {
-    configureDefaulStyle()
+  override func configureCell(template: Template) {
+    super.configureCell(template)
     if let products = template.content.models as? [Product] {
-      if !forCalculateHeight {
-        configureView(products)
-      }
+      configureView(products)
     }
   }
 }

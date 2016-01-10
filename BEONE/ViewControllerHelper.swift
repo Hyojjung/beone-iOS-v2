@@ -17,6 +17,16 @@ class ViewControllerHelper: NSObject {
   static var screenHeight: CGFloat = {
     return UIScreen.mainScreen().bounds.height
   }()
+  
+  static func heightFromRatio(template: Template?, imageSize: CGSize?) -> CGFloat? {
+    if let imageSize = imageSize, template = template {
+      let width = ViewControllerHelper.screenWidth -
+        (template.style.margin.left + template.style.margin.right +
+          template.style.padding.left + template.style.padding.right)
+      return imageSize.height / imageSize.width * width
+    }
+    return nil
+  }
 }
 
 extension UIView {

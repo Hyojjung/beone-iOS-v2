@@ -5,12 +5,11 @@ class BaseTableViewController: BaseViewController, UITableViewDelegate {
 
   // MARK: - Property
   
-  var dynamicHeightTableViewCells = [String: UITableViewCell]()
   @IBOutlet weak var tableView: DynamicHeightTableView!
   
   // MARK: - DynamicHeightTableViewProtocol
 
-  func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+  func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     cell.selectionStyle = .None
   }
   

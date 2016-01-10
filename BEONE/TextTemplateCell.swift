@@ -9,14 +9,12 @@ class TextTemplateCell: TemplateCell {
   
   // MARK: - Override Methods
   
-  override func configureCell(template: Template, forCalculateHeight: Bool) {
-    super.configureCell(template, forCalculateHeight: forCalculateHeight)
+  override func configureCell(template: Template) {
+    super.configureCell(template)
     if let text = template.content.text {
       let attributedString = NSMutableAttributedString(string: text)
-      if !forCalculateHeight {
         configureBackgroundColor(attributedString, textContent: template.content)
         configureTextColor(attributedString, textContent: template.content)
-      }
       configureLabelAlignment(template.content)
       configureUnderlined(attributedString, textContent: template.content)
       configureCancelLined(attributedString, textContent: template.content)
@@ -24,6 +22,29 @@ class TextTemplateCell: TemplateCell {
       label.attributedText = attributedString
     }
     templateId = template.id
+  }
+  
+  override func calculatedHeight(template: Template) -> CGFloat {
+    var height: CGFloat = 0
+    height += template.style.margin.top + template.style.margin.bottom
+    height += template.style.padding.top + template.style.padding.bottom
+    
+    let label = UILabel()
+    var labelFrame = label.frame
+    labelFrame.size.width = ViewControllerHelper.screenWidth -
+      (template.style.margin.left + template.style.margin.right +
+        template.style.padding.left + template.style.padding.right)
+    
+    label.numberOfLines = 0
+    label.frame = labelFrame
+    if let size = template.content.size {
+      label.font = UIFont.systemFontOfSize(size)
+    }
+    label.text = template.content.text
+    label.sizeToFit()
+    
+    height += label.frame.height
+    return height
   }
   
   // MARK: - Actions

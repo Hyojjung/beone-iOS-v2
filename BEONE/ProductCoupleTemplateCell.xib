@@ -28,17 +28,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBd-Jb-cKC">
                                         <rect key="frame" x="3" y="0.0" width="273" height="168"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
-                                                <rect key="frame" x="236" y="8" width="29" height="29"/>
-                                                <state key="normal" image="btnFavoriteOff"/>
-                                                <state key="selected" image="btnFavoriteOn"/>
-                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="13k-ss-nzn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="273" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="87b-Bf-hxY"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
+                                                <rect key="frame" x="236" y="8" width="29" height="29"/>
+                                                <state key="normal" image="btnFavoriteOff"/>
+                                                <state key="selected" image="btnFavoriteOn"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -146,17 +146,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7l-Qv-rZ7">
                                         <rect key="frame" x="3" y="0.0" width="273" height="168"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
-                                                <rect key="frame" x="236" y="8" width="29" height="29"/>
-                                                <state key="normal" image="btnFavoriteOff"/>
-                                                <state key="selected" image="btnFavoriteOn"/>
-                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="zx1-p5-x5m" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="273" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="y6b-8y-Ubo"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
+                                                <rect key="frame" x="236" y="8" width="29" height="29"/>
+                                                <state key="normal" image="btnFavoriteOff"/>
+                                                <state key="selected" image="btnFavoriteOn"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>

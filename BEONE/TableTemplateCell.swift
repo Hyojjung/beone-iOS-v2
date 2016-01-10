@@ -13,48 +13,54 @@ class TableTemplateCell: TemplateCell {
   private var row: Int?
   private var hasSpace: Bool?
   
-  private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
-    let layout = UICollectionViewFlowLayout()
-    self.collectionView.collectionViewLayout = layout
-    return layout
-  }()
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     collectionView.registerNib(UINib(nibName: kTableContentsCollectionViewCellNibName, bundle: nil),
       forCellWithReuseIdentifier: kTableContentsCellIdentifier)
   }
   
-  override func configureCell(template: Template, forCalculateHeight: Bool) {
-    super.configureCell(template, forCalculateHeight: forCalculateHeight)
-    if !forCalculateHeight {
-      templateId = template.id
-      content = template.content
-    }
+  override func configureCell(template: Template) {
+    super.configureCell(template)
+    templateId = template.id
+    content = template.content
     hasSpace = template.content.hasSpace
     row = template.content.row
     column = template.content.column
-    setUpCollectionViewFlowLayout(collectionViewLayout, forCalculateHeight: forCalculateHeight)
+    setUpCollectionViewFlowLayout()
     collectionView.reloadData()
   }
   
-  private func setUpCollectionViewFlowLayout(collectionViewLayout: UICollectionViewFlowLayout, forCalculateHeight: Bool) {
-    let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
-    if !forCalculateHeight {
+  private func setUpCollectionViewFlowLayout() {
+    if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+      let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
       collectionViewLayout.minimumInteritemSpacing = space
       collectionViewLayout.minimumLineSpacing = space
-    }
-    
-    if let column = self.column, row = self.row {
-      let itemWidth = (frame.width - space * CGFloat(column - 1)) / CGFloat(column)
-      if !forCalculateHeight {
+      
+      if let column = self.column{
+        let itemWidth = (frame.width - space * CGFloat(column - 1)) / CGFloat(column)
         collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
       }
-      let height = itemWidth * CGFloat(row) + space * CGFloat(row - 1)
-      layoutContentsView(templateId, height: height, contentsView: collectionView)
     }
   }
   
+  override func calculatedHeight(template: Template) -> CGFloat {
+    var height: CGFloat = 0
+    height += template.style.margin.top + template.style.margin.bottom
+    height += template.style.padding.top + template.style.padding.bottom
+    
+    let space = template.content.hasSpace != nil && template.content.hasSpace! ?
+      kSpaceWidthCell : kNoSpaceWidthCell
+    if let column = template.content.column, row = template.content.row {
+      let viewWidth = ViewControllerHelper.screenWidth -
+        (template.style.margin.left + template.style.margin.right +
+          template.style.padding.left + template.style.padding.right)
+      
+      let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
+      
+      height += itemWidth * CGFloat(row) + space * CGFloat(row - 1)
+    }
+    return height
+  }
 }
 
 // MARK: - UICollectionViewDataSource

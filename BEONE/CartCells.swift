@@ -1,5 +1,5 @@
  
- class DeliveryTypeImageCell: UITableViewCell {
+ class DeliveryTypeCell: UITableViewCell {
   @IBOutlet weak var heightConstraintView: UIView!
   @IBOutlet weak var backgroundImageView: UIImageView!
   @IBOutlet weak var deliveryTypeImageView: LazyLoadingImageView!
@@ -48,7 +48,7 @@
     productNameLabel.text = orderableItem.product.title
     productPriceLabel.attributedText = orderableItem.product.priceAttributedString()
     deliveryPriceLabel.text = orderableItem.productOrderableInfo.price?.priceNotation(.KoreanFreeNotation)
-    productActualPriceLabel.text = orderableItem.product.actualPrice?.priceNotation(.Korean)
+    productActualPriceLabel.text = orderableItem.product.actualPrice.priceNotation(.Korean)
     optionLabel.text = cartItem.selectedOption?.optionString()
     
     if let quantity = orderableItem.quantity {
@@ -73,7 +73,7 @@
     if let cartItemId = orderableItem.cartItemId {
       configureButtonTag(cartItemId)
     }
-    optionSoldOutView.alpha = orderableItem.product.isSoldOut() ? 1.0 : 0.0
+    optionSoldOutView.alpha = orderableItem.product.soldOut ? 1.0 : 0.0
   }
   
   private func configureAvailableDeliveryDatesView(orderableItem: OrderableItem) {
@@ -93,7 +93,7 @@
   }
  }
  
- class OrderPriceCell: UITableViewCell {
+ class CartPriceCell: UITableViewCell {
   @IBOutlet weak var totalItemPriceLabel: UILabel!
   @IBOutlet weak var totalDeliveryPriceLabel: UILabel!
   @IBOutlet weak var totalPriceLabel: UILabel!
@@ -107,9 +107,7 @@
           totalItemPrice += quantity * price
         }
       }
-      if let deliveryPrice = orderableItemSet.deliveryPrice {
-        totalDeliveryPrice += deliveryPrice
-      }
+      totalDeliveryPrice += orderableItemSet.deliveryPrice
     }
     
     totalDeliveryPriceLabel.text = totalDeliveryPrice.priceNotation(.KoreanFreeNotation)

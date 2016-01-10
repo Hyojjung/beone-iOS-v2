@@ -4,10 +4,10 @@ import UIKit
 class ShopsViewController: BaseTableViewController {
   
   // MARK: - Constant
-
+  
   private let kShopMargin = CGFloat(8)
   private let kShopCellIdentifier = "shopTemplateCell"
-
+  
   // MARK: - Property
   
   private let shopList = ShopList()
@@ -42,13 +42,17 @@ extension ShopsViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
     if let cell = cell as? ShopTemplateCell, shop = shopList.list[indexPath.row] as? Shop {
       cell.delegate = self
-      cell.configureCell(shop)
+      cell.configureView(shop)
     }
     return cell
   }
 }
 
 extension ShopsViewController: DynamicHeightTableViewProtocol {
+  
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kShopCellIdentifier

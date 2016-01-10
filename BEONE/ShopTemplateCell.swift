@@ -15,24 +15,21 @@ class ShopTemplateCell: TemplateCell {
   @IBOutlet weak var productCountLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
   
-  override func configureCell(template: Template, forCalculateHeight: Bool) {
-    super.configureCell(template, forCalculateHeight: forCalculateHeight)
-    if let shop = template.content.models as? Shop {
-      configureViews(shop)
+  override func configureCell(template: Template) {
+    super.configureCell(template)
+    if let shops = template.content.models as? [Shop] {
+      configureView(shops.first)
     }
   }
   
-  func configureCell(shop: Shop) {
-    contentView.layoutMargins = UIEdgeInsetsZero
-    templateContentsView.layoutMargins = UIEdgeInsetsZero
-    configureViews(shop)
-  }
-  
-  private func configureViews(shop: Shop) {
-    shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
-    nameLabel.text = shop.name
-    descriptionLabel.text = shop.summary
-    shopId = shop.id
+  func configureView(shop: Shop?) {
+    configureDefaulStyle()
+    if let shop = shop {
+      shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
+      nameLabel.text = shop.name
+      descriptionLabel.text = shop.summary
+      shopId = shop.id
+    }
     // TODO: Product Count
   }
 }

@@ -109,14 +109,22 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewProtocol {
       return "nothingCell"
     case .PaymentTypes:
       return "paymentTypeCell"
+    case .Price:
+      return "priceCell"
     default:
       return kSelectingPaymentTypeTableViewCellIdentifiers[indexPath.section]
     }
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes {
       cell.configureCell(paymentTypes, selectedPaymentTypeId: selectedPaymentTypeId, delegate: self)
+    } else if let cell = cell as? OrderPriceCell {
+      cell.configureCell(order)
     }
   }
 }
@@ -132,5 +140,28 @@ class PaymentTypeCell: UITableViewCell {
     paymentTypesView.delegate = delegate
     paymentTypesView.layoutView(paymentTypes, selectedPaymentTypeId: selectedPaymentTypeId)
     paymentTypeView.addSubViewAndEdgeLayout(paymentTypesView)
+  }
+}
+
+class OrderPriceCell: UITableViewCell {
+  
+  @IBOutlet weak var productsPriceLabel: UILabel!
+  @IBOutlet weak var deliveryPriceLabel: UILabel!
+  @IBOutlet weak var usedPointLabel: UILabel!
+  @IBOutlet weak var usedCouponLabel: UILabel!
+  @IBOutlet weak var totalPriceLabel: UILabel!
+  
+  func configureCell(order: Order) {
+    print(order.usedPoint)
+    print(order.price)
+    print(order.actualPrice)
+    print(order.discountPrice)
+    var deliveryPrice = 0
+    for orderableItemSet in order.orderableItemSets {
+      deliveryPrice += orderableItemSet.deliveryPrice
+    }
+    let productsPrice = order.price - deliveryPrice
+    let usedCoupon = order.discountPrice - order.usedPoint
+    
   }
 }

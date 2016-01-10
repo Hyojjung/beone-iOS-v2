@@ -1,10 +1,8 @@
 
 import UIKit
 
-@objc protocol DynamicHeightTableViewProtocol: NSObjectProtocol {
-  var dynamicHeightTableViewCells: [String: UITableViewCell] { get set }
-  
-  optional func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool)
+protocol DynamicHeightTableViewProtocol: NSObjectProtocol {  
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat?
   func cellIdentifier(indexPath: NSIndexPath) -> String
 }
 
@@ -16,27 +14,25 @@ class DynamicHeightTableView: UITableView {
   
   func heightForBasicCell(indexPath: NSIndexPath) -> CGFloat {
     let cellIdentifier = dynamicHeightDelgate.cellIdentifier(indexPath)
-    var cell = dynamicHeightDelgate.dynamicHeightTableViewCells[cellIdentifier]
-    if cell == nil {
-      cell = dequeueReusableCellWithIdentifier(cellIdentifier)
+    var cell = dequeueReusableCellWithIdentifier(cellIdentifier)
       if cell == nil {
         registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
         cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
       }
-      dynamicHeightDelgate.dynamicHeightTableViewCells[cellIdentifier] = cell
-    }
     if let cell = cell {
-      dynamicHeightDelgate.configure?(cell, indexPath: indexPath, forCalculateHeight: true)
-      return calculateHeight(cell)
+      return calculateHeight(cell, indexPath: indexPath)
     }
     return 0
   }
   
-  private func calculateHeight(cell: UITableViewCell) -> CGFloat {
+  private func calculateHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat {
+    if let height = dynamicHeightDelgate.calculatedHeight(cell, indexPath: indexPath) {
+      return height
+    }
     cell.setNeedsDisplay()
     cell.layoutIfNeeded()
     let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-    print(size.height)
+    print(cell)
     return size.height
   }
   

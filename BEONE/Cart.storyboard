@@ -186,7 +186,7 @@
                                                 <imageView userInteractionEnabled="NO" tag="109" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="fg_cart_soldout" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-LQ-RwN">
                                                     <rect key="frame" x="45" y="13" width="70" height="70"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-4U-B3M">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-4U-B3M">
                                                     <rect key="frame" x="129" y="20" width="417" height="20"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -510,7 +510,7 @@
                                             <outlet property="selectButton" destination="5Tf-Fh-48D" id="LkW-12-3ee"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="174" id="vd7-d7-3uc" customClass="OrderPriceCell" customModule="BEONE" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="174" id="vd7-d7-3uc" customClass="CartPriceCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="749" width="600" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vd7-d7-3uc" id="cTd-t8-naY">
@@ -666,43 +666,6 @@
                                             <outlet property="totalItemPriceLabel" destination="4Bm-JK-ltZ" id="isp-KD-QAd"/>
                                             <outlet property="totalPriceLabel" destination="rx5-SR-6fB" id="6aY-hl-oOz"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="spaceCell" rowHeight="49" id="hJm-sa-RqL">
-                                        <rect key="frame" x="0.0" y="923" width="600" height="49"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hJm-sa-RqL" id="GSh-VU-3Qk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCp-TC-d8f">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="49" id="QEJ-wg-NEJ"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="pCp-TC-d8f" firstAttribute="top" secondItem="GSh-VU-3Qk" secondAttribute="topMargin" constant="-8" id="JHV-wk-xSP"/>
-                                                <constraint firstItem="pCp-TC-d8f" firstAttribute="leading" secondItem="GSh-VU-3Qk" secondAttribute="leadingMargin" constant="-8" id="LA9-8v-tcM"/>
-                                                <constraint firstItem="pCp-TC-d8f" firstAttribute="top" secondItem="GSh-VU-3Qk" secondAttribute="top" id="Lbh-N4-8Uv"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="pCp-TC-d8f" secondAttribute="bottom" constant="-8" id="aql-IP-1Km"/>
-                                                <constraint firstAttribute="trailing" secondItem="pCp-TC-d8f" secondAttribute="trailing" constant="-8" id="idr-N6-7cb"/>
-                                                <constraint firstAttribute="trailing" secondItem="pCp-TC-d8f" secondAttribute="trailing" id="oqQ-2A-pMd"/>
-                                                <constraint firstAttribute="bottom" secondItem="pCp-TC-d8f" secondAttribute="bottom" id="oua-1W-RwD"/>
-                                                <constraint firstItem="pCp-TC-d8f" firstAttribute="leading" secondItem="GSh-VU-3Qk" secondAttribute="leading" id="vkr-ho-jaX"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="JHV-wk-xSP"/>
-                                                    <exclude reference="LA9-8v-tcM"/>
-                                                    <exclude reference="aql-IP-1Km"/>
-                                                    <exclude reference="idr-N6-7cb"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

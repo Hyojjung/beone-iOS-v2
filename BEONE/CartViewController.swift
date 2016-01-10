@@ -11,9 +11,24 @@
   let cartItemList = CartItemList()
   let order = Order()
   var selectedCartItemOrder = Order()
+  var isWaitingSigning = false
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    if !MyInfo.sharedMyInfo().isUser() {
+      if isWaitingSigning {
+        popView()
+      } else {
+        isWaitingSigning = true
+        showSigningView()
+      }
+    }
+  }
   
   override func setUpData() {
-    cartItemList.fetch()
+    if MyInfo.sharedMyInfo().isUser(){
+      cartItemList.fetch()
+    }
   }
   
   override func addObservers() {
@@ -24,6 +39,7 @@
   
   override func setUpView() {
     super.setUpView()
+    setUpButtonView()
     tableView.dynamicHeightDelgate = self
   }
  }
@@ -125,10 +141,14 @@
   }
   
   func setUpTableView() {
+    setUpButtonView()
     allSelectButton.selected = cartItemList.selectedCartItemIds == cartItemList.cartItemIds()
+    tableView.reloadData()
+  }
+  
+  func setUpButtonView() {
     allSelectButtonViewTopConstraint.constant = order.orderableItemSets.count == 0 ? -45 : 0
     orderButtonViewBottomConstraint.constant = order.orderableItemSets.count == 0 ? -49 : 0
-    tableView.reloadData()
   }
  }
  
@@ -137,7 +157,7 @@
     if order.orderableItemSets.count == 0 {
       return 1
     }
-    return order.orderableItemSets.count + 2
+    return order.orderableItemSets.count + 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,8 +183,6 @@
       return "segueCell"
     } else if indexPath.section == order.orderableItemSets.count {
       return "priceCell"
-    } else if indexPath.section == order.orderableItemSets.count + 1 {
-      return "spaceCell"
     } else if indexPath.row == 0 {
       return kDeliveryTypeCellIdentifier
     } else if indexPath.row == 1 {
@@ -174,8 +192,12 @@
     }
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
-    if let cell = cell as? DeliveryTypeImageCell {
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? DeliveryTypeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
         needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ShopNameCell {
@@ -185,7 +207,7 @@
       cell.configureCell(orderableItem,
         cartItem: self.cartItem(orderableItem.cartItemId!),
         selectedCartItemIds: cartItemList.selectedCartItemIds)
-    } else if let cell = cell as? OrderPriceCell {
+    } else if let cell = cell as? CartPriceCell {
       cell.configureCell(selectedCartItemOrder)
     }
   }

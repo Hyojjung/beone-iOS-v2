@@ -203,7 +203,11 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
     return kOptionTableViewCellIdentifiers[indexPath.section]
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     switch OptionTableViewSection(rawValue: indexPath.section)! {
     case .Product:
       configureProductCell(cell)

@@ -25,7 +25,7 @@ class PriceCell: ProductDetailCell {
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
-    actualPriceLabel.text = product.actualPrice?.priceNotation(.Korean)
+    actualPriceLabel.text = product.actualPrice.priceNotation(.Korean)
     priceLabel.attributedText = product.priceAttributedString()
   }
 }
@@ -65,9 +65,7 @@ class DetailInfoCell: ProductDetailCell {
   
   private func productQantityAndSizeString(product: Product) -> String {
     var quantityAndSize = String()
-    if let quantity = product.quantity {
-      quantityAndSize = "\(quantity)개 "
-    }
+    quantityAndSize = "\(product.quantity)개 "
     if let size = product.size {
       quantityAndSize += size
     }
@@ -87,7 +85,7 @@ class ProductDesctriptionCell: ProductDetailCell {
     imageView.image = nil
     titleLabel.text = nil
     descriptionLabel.text = nil
-
+    
     imageButton.enabled = productDetail.detailType == .Image
     imageButton.tag = indexPath.row
     

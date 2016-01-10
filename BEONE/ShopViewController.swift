@@ -59,12 +59,16 @@ class ShopViewController: BaseTableViewController {
 
 extension ShopViewController: DynamicHeightTableViewProtocol {
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     switch ShopTableViewSection(rawValue: indexPath.section)! {
     case .Summary:
-      configureSummaryCell(cell, forCalculateHeight: forCalculateHeight)
+      configureSummaryCell(cell)
     case .Product:
-      configureProductCell(cell, indexPath: indexPath, forCalculateHeight: forCalculateHeight)
+      configureProductCell(cell, indexPath: indexPath)
     default:
       break
     }
@@ -87,27 +91,25 @@ extension ShopViewController {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
-    configure(cell, indexPath: indexPath, forCalculateHeight: false)
+    configure(cell, indexPath: indexPath)
     return cell
   }
   
-  private func configureSummaryCell(cell: UITableViewCell, forCalculateHeight: Bool) {
+  private func configureSummaryCell(cell: UITableViewCell) {
     if let cell = cell as? ShopSummaryCell {
-      cell.configureCell(shop, forCalculateHeight: forCalculateHeight)
+      cell.configureCell(shop)
     }
   }
   
-  private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool) {
+  private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? ProductCoupleTemplateCell {
       cell.configureDefaulStyle()
-      if !forCalculateHeight {
-        var products = [Product]()
-        products.append(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
-        if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-          products.append(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
-        }
-        cell.configureView(products)
+      var products = [Product]()
+      products.append(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
+      if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
+        products.append(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
       }
+      cell.configureView(products)
     }
   }
 }
@@ -119,12 +121,10 @@ class ShopSummaryCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var tagLabel: UILabel!
   
-  func configureCell(shop: Shop?, forCalculateHeight: Bool) {
-    if !forCalculateHeight {
-      backgroundImageView.setLazyLoaingImage(shop?.backgroundImageUrl)
-      profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
-      profileImageView.makeCircleView()
-    }
+  func configureCell(shop: Shop?) {
+    backgroundImageView.setLazyLoaingImage(shop?.backgroundImageUrl)
+    profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
+    profileImageView.makeCircleView()
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.summary
   }

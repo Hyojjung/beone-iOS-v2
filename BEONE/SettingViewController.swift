@@ -140,11 +140,15 @@ extension SettingViewController {
 
 extension SettingViewController: DynamicHeightTableViewProtocol {
  
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kSettingTableViewCellIdentifiers[indexPath.section]
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     switch SettingTableViewSection(rawValue: indexPath.section)! {
     case .Profile:
       configureProfileCell(cell)

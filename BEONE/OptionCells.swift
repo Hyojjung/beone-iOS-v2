@@ -8,7 +8,7 @@ class ProductCell: UITableViewCell {
   func configureCell(product: Product) {
     mainImageView.setLazyLoaingImage(product.mainImageUrl)
     titleLabel.text = product.title
-    actualPriceLabel.text = product.actualPrice?.priceNotation(.English)
+    actualPriceLabel.text = product.actualPrice.priceNotation(.English)
     priceLabel.attributedText = product.priceAttributedString()
   }
 }

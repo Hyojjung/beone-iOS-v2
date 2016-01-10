@@ -3846,7 +3846,7 @@ IAo
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="priceCell" rowHeight="195" id="TpF-ef-QNc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="priceCell" rowHeight="195" id="TpF-ef-QNc" customClass="OrderPriceCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="355" width="600" height="195"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TpF-ef-QNc" id="L6N-A1-N0A">
@@ -3978,6 +3978,13 @@ IAo
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="deliveryPriceLabel" destination="FYR-Jl-oef" id="azs-bY-hrp"/>
+                                            <outlet property="productsPriceLabel" destination="7YG-l4-9Jr" id="OGm-YR-8rN"/>
+                                            <outlet property="totalPriceLabel" destination="IuN-f2-QgQ" id="zn0-Bb-TvL"/>
+                                            <outlet property="usedCouponLabel" destination="AZx-14-wEx" id="my6-dI-W7G"/>
+                                            <outlet property="usedPointLabel" destination="9Sg-5l-Bwp" id="DDV-0V-450"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentTypeCell" rowHeight="178" id="fHf-10-BD0" customClass="PaymentTypeCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="550" width="600" height="178"/>
@@ -4292,6 +4299,6 @@ IAo
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QJE-KL-dke"/>
-        <segue reference="idX-5D-GCx"/>
+        <segue reference="fZD-E2-d3W"/>
     </inferredMetricsTieBreakers>
 </document>

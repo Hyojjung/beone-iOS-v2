@@ -163,8 +163,12 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
     }
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
-    if let cell = cell as? DeliveryTypeImageCell {
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? DeliveryTypeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
         needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? OrderItemCell {

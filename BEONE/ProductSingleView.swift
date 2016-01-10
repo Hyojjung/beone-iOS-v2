@@ -15,11 +15,10 @@ class ProductCoupleView: UIView {
     if let product = product {
       imageView.setLazyLoaingImage(product.mainImageUrl)
       nameLabel.text = product.title
-      priceLabel.text = product.actualPrice?.priceNotation(.English)
+      priceLabel.text = product.actualPrice.priceNotation(.English)
+      originalPriceLabel.attributedText = product.priceAttributedString()
       summaryLabel.text = product.subtitle
       productId = product.id
-      
-      originalPriceLabel.attributedText = product.priceAttributedString()
     }
   }
   

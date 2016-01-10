@@ -8,8 +8,8 @@ class ButtonTemplateCell: TemplateCell {
   var unpressedBackgroundColor: UIColor?
   var pressedBackgroundColor: UIColor?
   
-  override func configureCell(template: Template, forCalculateHeight: Bool) {
-    super.configureCell(template, forCalculateHeight: forCalculateHeight)
+  override func configureCell(template: Template) {
+    super.configureCell(template)
     button.setTitle(template.content.text, forState: .Normal)
     button.setTitleColor(template.content.textColor, forState: .Normal)
     button.setTitleColor(template.content.pressedTextColor, forState: .Highlighted)
@@ -29,6 +29,25 @@ class ButtonTemplateCell: TemplateCell {
     button.sd_setBackgroundImageWithURL(template.content.backgroundImageUrl?.url(), forState: .Normal)
     button.sd_setBackgroundImageWithURL(template.content.pressedBackgroundImageUrl?.url(), forState: .Highlighted)
     templateId = template.id
+  }
+  
+  override func calculatedHeight(template: Template) -> CGFloat? {
+    var height: CGFloat = 0
+    height += template.style.margin.top + template.style.margin.bottom
+    height += template.style.padding.top + template.style.padding.bottom
+    
+    let button = UIButton()
+    if let textSize = template.content.textSize {
+      button.titleLabel?.font = UIFont.systemFontOfSize(textSize)
+    }
+    button.layoutMargins = template.content.padding
+    if template.content.borderColor != nil{
+      button.layer.borderWidth = 1
+    }
+    button.sizeToFit()
+    
+    height += button.frame.height
+    return height
   }
   
   @IBAction func buttonClicked(sender: AnyObject) { //Touch Up Inside action

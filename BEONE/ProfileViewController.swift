@@ -70,11 +70,15 @@ extension ProfileViewController {
 
 extension ProfileViewController: DynamicHeightTableViewProtocol {
   
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kProfileTableViewCellIdentifiers[indexPath.section]
   }
   
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath, forCalculateHeight: Bool = false) {
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
 
   }
 }

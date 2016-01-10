@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxW-df-2f4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxW-df-2f4">
                                 <rect key="frame" x="8" y="8" width="288" height="11"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -55,10 +55,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Voj-md-AZf"/>
-                                <exclude reference="YGz-vo-b5b"/>
-                                <exclude reference="bnz-l7-ma4"/>
-                                <exclude reference="ego-1w-gPv"/>
                                 <exclude reference="1G9-fA-Lj1"/>
                                 <exclude reference="5DM-ey-Z4f"/>
                                 <exclude reference="GyH-sV-TN9"/>
@@ -67,6 +63,10 @@
                                 <exclude reference="nNE-oy-znp"/>
                                 <exclude reference="typ-Qs-aK8"/>
                                 <exclude reference="wTj-SH-Ooy"/>
+                                <exclude reference="Voj-md-AZf"/>
+                                <exclude reference="YGz-vo-b5b"/>
+                                <exclude reference="bnz-l7-ma4"/>
+                                <exclude reference="ego-1w-gPv"/>
                             </mask>
                         </variation>
                     </view>

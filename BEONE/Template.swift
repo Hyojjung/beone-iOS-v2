@@ -12,6 +12,7 @@ let kImageTemplateCellIdentifier = "imageTemplateCell"
 let kButtonTemplateCellIdentifier = "buttonTemplateCell"
 let kTableTemplateCellIdentifier = "tableTemplateCell"
 let kProductCoupleTemplateCellIdentifier = "productCoupleTemplateCell"
+let kProductSingleTemplateCellIdentifier = "productSingleTemplateCell"
 
 enum TemplateType: String {
   case Text = "text"
@@ -19,6 +20,7 @@ enum TemplateType: String {
   case Button = "button"
   case Shop = "shop"
   case ProductCouple = "productCouple"
+  case ProductSingle = "productSingle"
   case Review
   case Banner
   case Table = "table"
@@ -35,6 +37,8 @@ enum TemplateType: String {
       return kTableTemplateCellIdentifier
     case .ProductCouple:
       return kProductCoupleTemplateCellIdentifier
+    case .ProductSingle:
+      return kProductSingleTemplateCellIdentifier
     default:
       fatalError("no cell identifier with template type")
     }
@@ -47,24 +51,23 @@ class Template: BaseModel {
   var style = TemplateStyle()
   var content = Content()
   
-  var count: Int?
+  var height: CGFloat?
   
   // MARK: - Override Methods
   
   init(type: TemplateType) {
     super.init()
     self.type = type
+    if type == .ProductCouple || type == .ProductSingle {
+      content.models = [Product]()
+    }
   }
   
   override func assignObject(data: AnyObject) {
     if let template = data as? [String: AnyObject] {
       id = template[kObjectPropertyKeyId] as? Int
-      count = template[kTemplatePropertyKeyCount] as? Int
       if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
         self.style.assignObject(style)
-      }
-      if type == .ProductCouple {
-        content.models = [Product]()
       }
       if let contentObject = template[kTemplatePropertyKeyContents] as? [String: AnyObject] {
         content.assignObject(contentObject)

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TemplateCell: UITableViewCell, TemplateContentsViewProtocol {
+class TemplateCell: UITableViewCell {
   var templateId: NSNumber?
   
   @IBOutlet weak var templateContentsView: UIView!
@@ -14,20 +14,12 @@ class TemplateCell: UITableViewCell, TemplateContentsViewProtocol {
     backgroundImageView.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Vertical)
   }
   
-  func configureCell(template: Template, forCalculateHeight: Bool) {
-    configureStyle(template.style, forCalculateHeight: forCalculateHeight)
+  func calculatedHeight(template: Template) -> CGFloat? {
+    return nil
   }
   
-  private func configureStyle(style: TemplateStyle?, forCalculateHeight: Bool) {
-    configureDefaulStyle()
-    if let style = style {
-      if !forCalculateHeight {
-        templateContentsView.backgroundColor = style.backgroundColor
-        backgroundImageView.setLazyLoaingImage(style.backgroundImageUrl)
-      }
-      contentView.layoutMargins = style.margin
-      templateContentsView.layoutMargins = style.padding
-    }
+  func configureCell(template: Template) {
+    configureStyle(template.style)
   }
   
   func configureDefaulStyle() {
@@ -36,27 +28,16 @@ class TemplateCell: UITableViewCell, TemplateContentsViewProtocol {
     contentView.layoutMargins = UIEdgeInsetsZero
     templateContentsView.layoutMargins = UIEdgeInsetsZero
   }
-}
-
-protocol TemplateContentsViewProtocol {
-  var templateId: NSNumber? { get set }
-}
-
-extension UIView {
-  func layoutContentsView(templateId: NSNumber?, height: CGFloat, contentsView: UIView) {
-    if templateId != nil {
-      for constraint in contentsView.constraints {
-        if constraint.firstAttribute == .Height &&
-          Int(constraint.constant) != Int(height) &&
-          constraint.isMemberOfClass(NSLayoutConstraint) {
-            //            print("constant: \(constraint.constant)")
-            //            print("height: \(height)")
-            constraint.constant = height
-            postNotification(kNotificationContentsViewLayouted,
-              userInfo: [kNotificationKeyTemplateId: templateId!])
-            break;
-        }
-      }
+  
+  // MARK: - Private Methods
+  
+  private func configureStyle(style: TemplateStyle?) {
+    configureDefaulStyle()
+    if let style = style {
+      templateContentsView.backgroundColor = style.backgroundColor
+      backgroundImageView.setLazyLoaingImage(style.backgroundImageUrl)
+      contentView.layoutMargins = style.margin
+      templateContentsView.layoutMargins = style.padding
     }
   }
 }

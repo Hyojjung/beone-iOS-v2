@@ -2,9 +2,9 @@
 import UIKit
 
 enum ProductDetailType: String {
-  case Image = "1"
-  case Text = "2"
-  case Title = "3"
+  case Image = "image"
+  case Text = "text"
+  case Title = "title"
 }
 
 class ProductDetail: BaseModel {

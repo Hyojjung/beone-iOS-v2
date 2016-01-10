@@ -65,10 +65,10 @@ class Address: BaseModel {
     roadAddress = address[kAddressPropertyKeyRoadAddress]
     jibunAddress = address[kAddressPropertyKeyJibunAddress]
     
-    if let buildingName = address[kAddressPropertyKeyBuildingName] {
+    if let buildingName = address[kAddressPropertyKeyBuildingName], roadAddress = roadAddress, jibunAddress = jibunAddress {
       if !buildingName.isEmpty {
-        roadAddress = "\(roadAddress) (\(buildingName))"
-        jibunAddress = "\(jibunAddress) (\(buildingName))"
+        self.roadAddress = "\(roadAddress) (\(buildingName))"
+        self.jibunAddress = "\(jibunAddress) (\(buildingName))"
       }
     }
   }
