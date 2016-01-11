@@ -152,16 +152,16 @@ class OrderPriceCell: UITableViewCell {
   @IBOutlet weak var totalPriceLabel: UILabel!
   
   func configureCell(order: Order) {
-    print(order.usedPoint)
-    print(order.price)
-    print(order.actualPrice)
-    print(order.discountPrice)
+//    print(order.usedPoint)
+//    print(order.price)
+//    print(order.actualPrice)
+//    print(order.discountPrice)
     var deliveryPrice = 0
     for orderableItemSet in order.orderableItemSets {
       deliveryPrice += orderableItemSet.deliveryPrice
     }
-    let productsPrice = order.price - deliveryPrice
-    let usedCoupon = order.discountPrice - order.usedPoint
+//    let productsPrice = order.price - deliveryPrice
+//    let usedCoupon = order.discountPrice - order.usedPoint
     
   }
 }

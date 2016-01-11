@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductPropertyColorTypeValueView" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="81" height="122"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWm-Sm-lo3">
+                    <rect key="frame" x="0.0" y="0.0" width="81" height="81"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kWm-Sm-lo3" secondAttribute="height" multiplier="1:1" id="bZw-79-pSw"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ob-f7-EZD">
+                    <rect key="frame" x="4" y="85" width="73" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-cd-DtG">
+                    <rect key="frame" x="4" y="103" width="73" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.72941176470588232" green="0.62745098039215685" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-aX-lcG">
+                    <rect key="frame" x="0.0" y="0.0" width="81" height="122"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="34" maxX="0.0" maxY="0.0"/>
+                    <state key="selected" image="fgMainSelectColorChecked" backgroundImage="fgMainSelectColorBorder"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Zud-aX-lcG" secondAttribute="bottom" id="FOq-O8-aOJ"/>
+                <constraint firstAttribute="trailing" secondItem="hvx-cd-DtG" secondAttribute="trailing" constant="4" id="FvF-bs-4Xh"/>
+                <constraint firstItem="hvx-cd-DtG" firstAttribute="top" secondItem="0Ob-f7-EZD" secondAttribute="bottom" constant="2" id="INP-18-aWd"/>
+                <constraint firstItem="0Ob-f7-EZD" firstAttribute="top" secondItem="kWm-Sm-lo3" secondAttribute="bottom" constant="4" id="Mwy-A9-gKN"/>
+                <constraint firstItem="hvx-cd-DtG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="Soq-Lz-Axg"/>
+                <constraint firstItem="kWm-Sm-lo3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="a2V-l4-NpE"/>
+                <constraint firstAttribute="trailing" secondItem="kWm-Sm-lo3" secondAttribute="trailing" id="aI8-bs-EaZ"/>
+                <constraint firstItem="0Ob-f7-EZD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="hYx-VX-Tbq"/>
+                <constraint firstAttribute="trailing" secondItem="Zud-aX-lcG" secondAttribute="trailing" id="k0D-Ug-gFz"/>
+                <constraint firstItem="kWm-Sm-lo3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="msw-Vw-cnS"/>
+                <constraint firstItem="Zud-aX-lcG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pnj-oN-gyL"/>
+                <constraint firstAttribute="bottom" secondItem="hvx-cd-DtG" secondAttribute="bottom" constant="4" id="tKJ-tw-pgO"/>
+                <constraint firstItem="Zud-aX-lcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vlA-qM-OwG"/>
+                <constraint firstAttribute="trailing" secondItem="0Ob-f7-EZD" secondAttribute="trailing" constant="4" id="whL-gG-ZzS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="colorView" destination="kWm-Sm-lo3" id="s8c-g1-hl5"/>
+                <outlet property="nameLabel" destination="0Ob-f7-EZD" id="H25-RT-8gL"/>
+                <outlet property="selectButton" destination="Zud-aX-lcG" id="oJg-jz-eG5"/>
+                <outlet property="subTitleLabel" destination="hvx-cd-DtG" id="2Kw-kg-kJO"/>
+            </connections>
+            <point key="canvasLocation" x="336.5" y="419"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="fgMainSelectColorBorder" width="36" height="36"/>
+        <image name="fgMainSelectColorChecked" width="24" height="19"/>
+    </resources>
+</document>

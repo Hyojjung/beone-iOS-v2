@@ -12,6 +12,13 @@ class BaseModel: NSObject {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
+  func get(getSuccess: (model: BaseModel) -> Void) {
+    NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
+      self.assignObject(result)
+      getSuccess(model: self)
+      }, failure: nil)
+  }
+  
   func fetchUrl() -> String {
     fatalError("Must Override")
   }

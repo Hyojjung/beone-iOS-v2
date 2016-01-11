@@ -32,7 +32,6 @@ class DynamicHeightTableView: UITableView {
     cell.setNeedsDisplay()
     cell.layoutIfNeeded()
     let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-    print(cell)
     return size.height
   }
   
