@@ -58,8 +58,10 @@ class CartItemList: BaseListModel {
   
   override func postSuccess() -> NetworkSuccess? {
     return {(result) -> Void in
-      if let data = result as? [String: AnyObject] {
-        self.id = data[kObjectPropertyKeyId] as? Int
+      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+        for (index, cartItem) in self.list.enumerate() {
+          cartItem.id = data[index][kObjectPropertyKeyId] as? Int
+        }
         self.postNotification(kNotificationPostCartItemSuccess)
       }
     }

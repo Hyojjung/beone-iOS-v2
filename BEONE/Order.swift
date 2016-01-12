@@ -4,21 +4,56 @@ import UIKit
 class Order: BaseModel {
   var senderName: String?
   var senderPhone: String?
-  var isSecret: Bool?
-  var address: Address?
+  var isSecret = false
+  var address = Address()
   var deliveryMemo: String?
-  var price: Int?
-  var discountPrice: Int?
-  var actualPrice: Int?
+  var price = 0
+  var discountPrice = 0
+  var actualPrice = 0
   var orderableItemSets = [OrderableItemSet]()
   var paymentInfos = [PaymentInfo]()
   var cartItemIds = [Int]()
   var title: String?
   var orderCode: String?
-  var usedPoint: Int?
+  var usedPoint = 0
   
   override func assignObject(data: AnyObject) {
-    if let orderableItemsetsObject = data["orderableItemSets"] as? [[String: AnyObject]] {
+    assignOrderableItemSets(data["orderableItemSets"])
+    address.assignObject(data)
+
+    if let paymentInfoObjects = data["paymentInfos"] as? [[String: AnyObject]] {
+      paymentInfos.removeAll()
+      for paymentInfoObject in paymentInfoObjects {
+        let paymentInfo = PaymentInfo()
+        paymentInfo.assignObject(paymentInfoObject)
+        paymentInfos.append(paymentInfo)
+      }
+    }
+    
+    id = data[kObjectPropertyKeyId] as? Int
+    title = data["title"] as? String
+    senderName = data["senderName"] as? String
+    senderPhone = data["senderPhone"] as? String
+    orderCode = data["orderCode"] as? String
+    if let usedPoint = data["usedPoint"] as? Int {
+      self.usedPoint = usedPoint
+    }
+    if let isSecret = data["isSecret"] as? Bool {
+      self.isSecret = isSecret
+    }
+    if let price = data["price"] as? Int {
+      self.price = price
+    }
+    if let discountPrice = data["discountPrice"] as? Int {
+      self.discountPrice = discountPrice
+    }
+    if let actualPrice = data["actualPrice"] as? Int {
+      self.actualPrice = actualPrice
+    }
+  }
+  
+  func assignOrderableItemSets(data: AnyObject?) {
+    if let orderableItemsetsObject = data as? [[String: AnyObject]] {
       orderableItemSets.removeAll()
       for orderableItemsetObject in orderableItemsetsObject {
         let orderableItemset = OrderableItemSet()
@@ -34,28 +69,6 @@ class Order: BaseModel {
         }
       }
     }
-    
-    if let paymentInfoObjects = data["paymentInfos"] as? [[String: AnyObject]] {
-      paymentInfos.removeAll()
-      for paymentInfoObject in paymentInfoObjects {
-        let paymentInfo = PaymentInfo()
-        paymentInfo.assignObject(paymentInfoObject)
-        paymentInfos.append(paymentInfo)
-      }
-    }
-    
-    id = data[kObjectPropertyKeyId] as? Int
-    title = data["title"] as? String
-    senderName = data["senderName"] as? String
-    senderPhone = data["senderPhone"] as? String
-    orderCode = data["orderCode"] as? String
-    usedPoint = data["usedPoint"] as? Int
-    isSecret = data["isSecret"] as? Bool
-    price = data["price"] as? Int
-    discountPrice = data["discountPrice"] as? Int
-    actualPrice = data["actualPrice"] as? Int
-    address = Address()
-    address?.assignObject(data)
   }
   
   func deliveryTypeCellHeight(index: Int) -> Bool {
@@ -87,16 +100,16 @@ class Order: BaseModel {
     parameter["senderName"] = senderName
     parameter["senderPhone"] = senderPhone
     parameter["isSecret"] = isSecret
-    parameter["receiverName"] = address?.receiverName
-    parameter["receiverPhone"] = address?.receiverPhone
-    parameter["receiverZipcode01"] = address?.zipcode01
-    parameter["receiverZipcode02"] = address?.zipcode02
-    parameter["receiverZonecode"] = address?.zonecode
-    parameter["receiverRoadAddress"] = address?.roadAddress
-    parameter["receiverJibunAddress"] = address?.jibunAddress
-    parameter["receiverAddressType"] = address?.addressType == .Road ?
+    parameter["receiverName"] = address.receiverName
+    parameter["receiverPhone"] = address.receiverPhone
+    parameter["receiverZipcode01"] = address.zipcode01
+    parameter["receiverZipcode02"] = address.zipcode02
+    parameter["receiverZonecode"] = address.zonecode
+    parameter["receiverRoadAddress"] = address.roadAddress
+    parameter["receiverJibunAddress"] = address.jibunAddress
+    parameter["receiverAddressType"] = address.addressType == .Road ?
       kAddressPropertyReceiverAddressTypeRoad : kAddressPropertyReceiverAddressTypeJibun
-    parameter["receiverDetailAddress"] = address?.detailAddress
+    parameter["receiverDetailAddress"] = address.detailAddress
     parameter["deliveryMemo"] = deliveryMemo
     parameter["cartItemIds"] = cartItemIds
     parameter["price"] = price
