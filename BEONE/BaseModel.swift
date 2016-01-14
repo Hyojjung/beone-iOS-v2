@@ -12,10 +12,10 @@ class BaseModel: NSObject {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
-  func get(getSuccess: (model: BaseModel) -> Void) {
+  func get(getSuccess: () -> Void) {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
       self.assignObject(result)
-      getSuccess(model: self)
+      getSuccess()
       }, failure: nil)
   }
   

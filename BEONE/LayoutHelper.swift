@@ -75,14 +75,15 @@ extension UIView {
       constant: height))
   }
   
-  func addWidthLayout(height: CGFloat) {
+  func addWidthLayout(width: CGFloat = 0, multiplier: CGFloat = 1, view: UIView? = nil) {
+    let layoutAttribute: NSLayoutAttribute = view == nil ? .NotAnAttribute : .Width
     addConstraint(NSLayoutConstraint(item: self,
       attribute: .Width,
       relatedBy: .Equal,
-      toItem: nil,
-      attribute: .NotAnAttribute,
-      multiplier: 1,
-      constant: height))
+      toItem: view,
+      attribute: layoutAttribute,
+      multiplier: multiplier,
+      constant: width))
   }
   
   func addVerticalLayout(topView: UIView, bottomView: UIView, contsant: CGFloat = 0) {

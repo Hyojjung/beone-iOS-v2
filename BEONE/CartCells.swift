@@ -112,6 +112,6 @@
     
     totalDeliveryPriceLabel.text = totalDeliveryPrice.priceNotation(.KoreanFreeNotation)
     totalItemPriceLabel.text = totalItemPrice.priceNotation(.Korean)
-    totalPriceLabel.text = order.price?.priceNotation(.Korean)
+    totalPriceLabel.text = order.price.priceNotation(.Korean)
   }
  }

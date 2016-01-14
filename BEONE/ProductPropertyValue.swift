@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProductPropertyValue: BaseModel {
+class ProductPropertyValue: BaseModel, SearchValueProtocol {
   var color: UIColor?
   var subTitle: String?
   var name: String?

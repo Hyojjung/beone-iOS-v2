@@ -21,6 +21,8 @@ let kDeliveryDateViewViewIdentifier = "DeliveryDateView"
 let kMainTitleViewNibName = "MainTitleView"
 let kSimpleProductViewNibName = "SimpleProductView"
 let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
+let kProductPropertyNameTypeValueViewNibName = "ProductPropertyNameTypeValueView"
+let kProductPropertyColorTypeValueViewNibName = "ProductPropertyColorTypeValueView"
 
 // MARK: - Cell Identifier
 
