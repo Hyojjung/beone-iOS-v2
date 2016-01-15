@@ -17,6 +17,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="4Kp-K3-krC"/>
                     </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,6 +27,9 @@
                             <exclude reference="4Kp-K3-krC"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="selectSearchValueButtonTapped:" destination="6W9-O9-FkA" eventType="touchUpInside" id="QlK-in-Avk"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -4,7 +4,7 @@ import UIKit
 let kValueColorViewHeight = CGFloat(122)
 let kValueColorViewVerticalInterval = CGFloat(5)
 
-class ProductPropertyColorTypeValueView: ProductPropertyValueView {
+class ProductPropertyColorTypeValueView: SearchValueView {
   
   @IBOutlet weak var colorView: UIView!
   @IBOutlet weak var nameLabel: UILabel!

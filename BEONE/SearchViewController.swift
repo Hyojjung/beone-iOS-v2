@@ -18,10 +18,10 @@ class SearchViewController: BaseTableViewController {
   
   private let kSearchTableViewCellIdentifiers = ["productCountCell",
     "priceCell",
-    "productPropertyCell",
-    "productPropertyCell",
+    "searchPropertyCell",
+    "searchPropertyCell",
     "moreUsageButtonCell",
-    "colorCell",
+    "searchPropertyCell",
     "searchButtonCell"]
   
   // MARK: - Property
@@ -32,6 +32,8 @@ class SearchViewController: BaseTableViewController {
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
   var showingMore = false
+  var minPrice: Int?
+  var maxPrice: Int?
   
   override func setUpData() {
     productPropertyList.get { () -> Void in
@@ -41,6 +43,8 @@ class SearchViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
     appSetting.get { () -> Void in
+      self.minPrice = self.appSetting.searchMinPrice
+      self.maxPrice = self.appSetting.searchMaxPrice
       self.tableView.reloadData()
     }
   }
@@ -57,6 +61,46 @@ extension SearchViewController {
   @IBAction func moreButtonTapped() {
     showingMore = true
     tableView.reloadData()
+  }
+  
+  @IBAction func minPriceSelectButtonTapped(sender: UIButton) {
+    selectPrice(sender, isMin: true) { (selectedValue) -> Void in
+      self.minPrice = selectedValue
+      if self.minPrice >= self.maxPrice {
+        self.maxPrice = self.minPrice! + self.appSetting.searchPriceUnit
+      }
+    }
+  }
+  
+  @IBAction func maxPriceSelectButtonTapped(sender: UIButton) {
+    selectPrice(sender, isMin: false) { (selectedValue) -> Void in
+      self.maxPrice = selectedValue
+      if self.minPrice >= self.maxPrice {
+        self.minPrice = self.maxPrice! - self.appSetting.searchPriceUnit
+      }
+    }
+  }
+  
+  func selectPrice(sender: UIButton, isMin: Bool, donBlock: (Int) -> Void) {
+    var rows = [String]()
+    var initialSelection = 0
+    for i in 0..<((appSetting.searchMaxPrice - appSetting.searchMinPrice) / appSetting.searchPriceUnit) {
+      let index = isMin ? i : i + 1
+      let price = appSetting.searchMinPrice + index * appSetting.searchPriceUnit
+      if maxPrice == price {
+        initialSelection = i
+      }
+      rows.append("\(price)")
+    }
+    let actionSheetTitle = isMin ?
+      NSLocalizedString("select min price", comment: "action sheet title") :
+      NSLocalizedString("select max price", comment: "action sheet title")
+    showActionSheet(actionSheetTitle, rows: rows, initialSelection: initialSelection, sender: sender, doneBlock: { (_, _, selectedValue) -> Void in
+      if let selectedValue = selectedValue as? String {
+        donBlock(Int(selectedValue)!)
+      }
+      self.tableView.reloadData()
+    })
   }
 }
 
@@ -78,19 +122,24 @@ extension SearchViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? ProductPropertyCell {
+    if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
         cell.configureCell(tagList.name,
           subTitle: tagList.subTitle,
           searchValues: tagList.list,
-          selectedSearchValueIds: selectedTagIds)
+          selectedSearchValueIds: selectedTagIds,
+          delegate: self)
       } else if let productProperty = productProperty(indexPath) {
         cell.configureCell(productProperty.name,
           subTitle: productProperty.subTitle,
           searchValues: productProperty.values,
           selectedSearchValueIds: selectedProductPropertyValueIds,
+          delegate: self,
           displayType: productProperty.displayType)
       }
+    } else if let cell = cell as? SearchPriceCell {
+      cell.configureCell(self,
+        minPrice: minPrice, maxPrice: maxPrice, minBoundPrice: appSetting.searchMinPrice, maxBoundPrice: appSetting.searchMaxPrice)
     }
     return cell
   }
@@ -119,7 +168,7 @@ extension SearchViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    if let cell = cell as? ProductPropertyCell {
+    if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
         return cell.calculatedHeight(tagList.list, subTitle: tagList.subTitle)
       } else if let productProperty = productProperty(indexPath) {
@@ -131,22 +180,70 @@ extension SearchViewController: DynamicHeightTableViewProtocol {
   }
 }
 
-class ProductPropertyCell: UITableViewCell {
+extension SearchViewController: SearchValueDelegate {
+  func searchValueTapped(id: Int, isTag: Bool) {
+    if isTag {
+      if !selectedTagIds.contains(id) {
+        selectedTagIds.append(id)
+      } else {
+        selectedTagIds.removeObject(id)
+      }
+    } else {
+      if !selectedProductPropertyValueIds.contains(id) {
+        selectedProductPropertyValueIds.append(id)
+      } else {
+        selectedProductPropertyValueIds.removeObject(id)
+      }
+    }
+  }
+}
+
+class SearchPriceCell: SearchFilterCell {
   
-  @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var subTitleLabel: UILabel!
+  @IBOutlet weak var minPriceSelectButton: UIButton!
+  @IBOutlet weak var maxPriceSelectButton: UIButton!
+  
+  func configureCell(delegate: AnyObject,
+    minPrice: Int?, maxPrice: Int?, minBoundPrice: Int, maxBoundPrice: Int) {
+      let minPriceValue = minPrice == nil ? minBoundPrice : minPrice
+      let maxPriceValue = maxPrice == nil ? maxBoundPrice : maxPrice
+      
+      minPriceSelectButton.setTitle("\(minPriceValue!)", forState: .Normal)
+      minPriceSelectButton.setTitle("\(minPriceValue!)", forState: .Selected)
+      maxPriceSelectButton.setTitle("\(maxPriceValue!)", forState: .Normal)
+      maxPriceSelectButton.setTitle("\(maxPriceValue!)", forState: .Selected)
+  }
+}
+
+class SearchPropertyCell: SearchFilterCell {
+  
   @IBOutlet weak var valuesView: UIView!
   
-  func configureCell(name: String?, subTitle: String?, searchValues: [BaseModel], selectedSearchValueIds: [Int],
+  func configureCell(name: String?, subTitle: String?, searchValues: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
     displayType: ProductPropertyDisplayType? = nil) {
       nameLabel.text = name
       subTitleLabel.text = subTitle
       valuesView.subviews.forEach { $0.removeFromSuperview() }
       let productPropertyNameTypeValuesView = ProductPropertyValuesView()
       productPropertyNameTypeValuesView.layoutView(searchValues,
-        selectedProductPropertyValueIds: selectedSearchValueIds, displayType: displayType)
+        selectedSearchValueIds: selectedSearchValueIds, delegate: delegate, displayType: displayType)
       valuesView.addSubViewAndEdgeLayout(productPropertyNameTypeValuesView)
   }
+  
+  func calculatedHeight(searchValues: [BaseModel], subTitle: String?, displayType: ProductPropertyDisplayType? = nil) -> CGFloat {
+    var height = 97 + Int(calculatedSubTitleHeight(subTitle))
+    let rowCount = (searchValues.count - 1) / kRowValueButtonCount + 1
+    let viewHeight = displayType == .Color ? kValueColorViewHeight : kValueButtonHeight
+    let verticalInterval = displayType == .Color ? kValueColorViewVerticalInterval : kValueButtonVerticalInterval
+    height += rowCount * Int(viewHeight)
+    height += (rowCount - 1) * Int(verticalInterval)
+    return CGFloat(height)
+  }
+}
+
+class SearchFilterCell: UITableViewCell {
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var subTitleLabel: UILabel!
   
   func calculatedSubTitleHeight(description: String?) -> CGFloat {
     let descriptionLabel = UILabel()
@@ -159,15 +256,5 @@ class ProductPropertyCell: UITableViewCell {
     descriptionLabel.sizeToFit()
     
     return descriptionLabel.frame.height
-  }
-  
-  func calculatedHeight(searchValues: [BaseModel], subTitle: String?, displayType: ProductPropertyDisplayType? = nil) -> CGFloat {
-    var height = 97 + Int(calculatedSubTitleHeight(subTitle))
-    let rowCount = (searchValues.count - 1) / kRowValueButtonCount + 1
-    let viewHeight = displayType == .Color ? kValueColorViewHeight : kValueButtonHeight
-    let verticalInterval = displayType == .Color ? kValueColorViewVerticalInterval : kValueButtonVerticalInterval
-    height += rowCount * Int(viewHeight)
-    height += (rowCount - 1) * Int(verticalInterval)
-    return CGFloat(height)
   }
 }

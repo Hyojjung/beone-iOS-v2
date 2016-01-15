@@ -73,9 +73,7 @@ extension FirstViewController {
         initialSelection = index
       }
     }
-    
-    let locationActionSheet =
-    ActionSheetStringPicker(title: NSLocalizedString("select quantity", comment: "picker title"),
+    showActionSheet(NSLocalizedString("select location", comment: "picker title"),
       rows: BEONEManager.sharedLocationList.locationNames(),
       initialSelection: initialSelection,
       doneBlock: { (_, selectedIndex, _) -> Void in
@@ -83,9 +81,7 @@ extension FirstViewController {
           BEONEManager.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as? Location
           self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
         }
-      }, cancelBlock: nil,
-      origin: view)
-    locationActionSheet.showActionSheetPicker()
+    })
   }
 }
 

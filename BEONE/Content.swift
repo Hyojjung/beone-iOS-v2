@@ -104,12 +104,12 @@ class Content: BaseModel {
       }
       
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {
-        if let _ = models as? [Product] {
-          self.models?.removeAll()
+        if models is [Product] {
+          models?.removeAll()
           for itemObject in itemsObject {
             let product = Product()
             product.assignObject(itemObject)
-            self.models?.append(product)
+            models?.append(product)
           }
         } else {
           items.removeAll()
