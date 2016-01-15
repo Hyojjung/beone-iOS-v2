@@ -35,6 +35,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="81" height="122"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="34" maxX="0.0" maxY="0.0"/>
                     <state key="selected" image="fgMainSelectColorChecked" backgroundImage="fgMainSelectColorBorder"/>
+                    <connections>
+                        <action selector="selectSearchValueButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="fk9-UI-yS6"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

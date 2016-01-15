@@ -7,38 +7,38 @@ let kViewHorizontalInterval = CGFloat(8)
 
 class ProductPropertyValuesView: UIView {
   
-  var views = [ProductPropertyValueView]()
+  var views = [SearchValueView]()
   
-  func layoutView(productPropertyValueList: [BaseModel], selectedProductPropertyValueIds: [Int],
+  func layoutView(productPropertyValueList: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
     displayType: ProductPropertyDisplayType? = nil) {
-    var beforeView: UIView?
-    var beforeRowLeftView: UIView?
-    
-    for (index, productPropertyValue) in productPropertyValueList.enumerate() {
-      let view = propertyValueView(productPropertyValue, displayType: displayType)
-      view.configureView(productPropertyValue, isSelected: selectedProductPropertyValueIds.contains(productPropertyValue.id!))
+      var beforeView: UIView?
+      var beforeRowLeftView: UIView?
       
-      beforeRowLeftView = self.beforeRowLeftView(view,
-        count: productPropertyValueList.count,
-        index: index,
-        beforeRowLeftView: beforeRowLeftView,
-        beforeView: beforeView)
-      beforeView = view
-      
-      views.append(view)
-    }
-    configureSubViewsWidthLayout(views)
+      for (index, productPropertyValue) in productPropertyValueList.enumerate() {
+        let view = searchValueView(productPropertyValue, displayType: displayType)
+        view.needBackgoundColor = displayType != .Color
+        view.delegate = delegate as? SearchValueDelegate
+        view.configureView(productPropertyValue, isSelected: selectedSearchValueIds.contains(productPropertyValue.id!))
+        beforeRowLeftView = self.beforeRowLeftView(view,
+          count: productPropertyValueList.count,
+          index: index,
+          beforeRowLeftView: beforeRowLeftView,
+          beforeView: beforeView)
+        beforeView = view
+        
+        views.append(view)
+      }
+      configureSubViewsWidthLayout(views)
   }
   
-  private func propertyValueView(productPropertyValue: BaseModel,
-    displayType: ProductPropertyDisplayType?) -> ProductPropertyValueView {
+  private func searchValueView(productPropertyValue: BaseModel, displayType: ProductPropertyDisplayType?) -> SearchValueView {
     let nibName: String
     if displayType == .Color {
       nibName = kProductPropertyColorTypeValueViewNibName
     } else {
       nibName = kProductPropertyNameTypeValueViewNibName
     }
-    return UIView.loadFromNibName(nibName) as! ProductPropertyValueView
+    return UIView.loadFromNibName(nibName) as! SearchValueView
   }
   
   private func configureSubViewsWidthLayout(views: [UIView]) {

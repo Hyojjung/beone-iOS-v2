@@ -27,6 +27,7 @@
 
 "select delivery type" = "배송수단을 선택해주세요.";
 "select quantity" = "수량을 선택해주세요.";
+"select location" = "지역을 선택해주세요.";
 
 "order right now" = "바로구매";
 "add to cart" = "장바구니에 담기";
@@ -45,3 +46,5 @@
 
 "select delivery date" = "희망배송일을 선택해주세요.";
 "select time range" = "희망시간대를 선택해주세요.";
+"select min price" = "최소 가격대를 선택해주세요.";
+"select max price" = "최대 가격대를 선택해주세요.";
