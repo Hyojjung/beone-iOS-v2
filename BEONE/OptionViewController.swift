@@ -204,52 +204,26 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? DeliveryInfoCell {
+      return cell.calculatedHeight(selectedProductOrderableInfo)
+    } else if let cell = cell as? CartItemCountCell {
+      return cell.calculatedHeight(cartItems[indexPath.row])
+    } else if let cell = cell as? OptionCell {
+      return cell.calculatedHeight(selectedOption, needButton: !isModifing)
+    }
     return nil
   }
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    switch OptionTableViewSection(rawValue: indexPath.section)! {
-    case .Product:
-      configureProductCell(cell)
-    case .DeliveryInfo:
-      configureCartItemInfoCell(cell)
-    case .Button:
-      configureButtonCell(cell)
-    case .CartItemCount:
-      configureCartItemCountCell(cell, indexPath: indexPath)
-    case .Option:
-      configureOptionCell(cell)
-    default:
-      break
-    }
-  }
-  
-  private func configureProductCell(cell: UITableViewCell) {
     if let cell = cell as? ProductCell, product = product {
       cell.configureCell(product)
-    }
-  }
-  
-  private func configureCartItemInfoCell(cell: UITableViewCell) {
-    if let cell = cell as? DeliveryInfoCell {
+    } else if let cell = cell as? DeliveryInfoCell {
       cell.configureCell(selectedProductOrderableInfo)
-    }
-  }
-  
-  private func configureButtonCell(cell: UITableViewCell) {
-    if let cell = cell as? ButtonCell {
+    } else if let cell = cell as? ButtonCell {
       cell.configureCell(isOrdering)
-    }
-  }
-  
-  private func configureCartItemCountCell(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? CartItemCountCell {
+    } else if let cell = cell as? CartItemCountCell {
       cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
-    }
-  }
-  
-  private func configureOptionCell(cell: UITableViewCell) {
-    if let cell = cell as? OptionCell {
+    } else if let cell = cell as? OptionCell {
       cell.delegate = self
       cell.configureCell(selectedOption, needButton: !isModifing)
     }

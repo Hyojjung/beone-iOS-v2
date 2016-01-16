@@ -10,6 +10,6 @@ class OptionTypeView: UIView {
   weak var delegate: AnyObject?
 
   func layoutView(optionItem: BaseModel) {
-    
+    fatalError("It must be overriden")
   }
 }

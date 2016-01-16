@@ -30,19 +30,16 @@ class TextTemplateCell: TemplateCell {
     height += template.style.padding.top + template.style.padding.bottom
     
     let label = UILabel()
-    var labelFrame = label.frame
-    labelFrame.size.width = ViewControllerHelper.screenWidth -
-      (template.style.margin.left + template.style.margin.right +
-        template.style.padding.left + template.style.padding.right)
-    
-    label.numberOfLines = 0
-    label.frame = labelFrame
     if let size = template.content.size {
       label.font = UIFont.systemFontOfSize(size)
     }
     label.text = template.content.text
-    label.sizeToFit()
     
+    let width = ViewControllerHelper.screenWidth -
+      (template.style.margin.left + template.style.margin.right +
+        template.style.padding.left + template.style.padding.right)
+    label.setWidth(width)
+
     height += label.frame.height
     return height
   }

@@ -265,13 +265,9 @@ class SearchFilterCell: UITableViewCell {
   
   func calculatedSubTitleHeight(description: String?) -> CGFloat {
     let descriptionLabel = UILabel()
-    var frame = descriptionLabel.frame
-    frame.size.width = ViewControllerHelper.screenWidth - 24
-    descriptionLabel.numberOfLines = 0
-    descriptionLabel.frame = frame
     descriptionLabel.font = UIFont.systemFontOfSize(13)
     descriptionLabel.text = description
-    descriptionLabel.sizeToFit()
+    descriptionLabel.setWidth(ViewControllerHelper.screenWidth - 24)
     
     return descriptionLabel.frame.height
   }

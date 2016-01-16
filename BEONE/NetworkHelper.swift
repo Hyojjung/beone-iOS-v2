@@ -65,7 +65,6 @@ class NetworkHelper: NSObject {
       }
   }
   
-  
   static private func handleErrorDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError, success: NetworkSuccess?, failure: NetworkFailure?) {
     #if DEBUG
       print("\(operation.response?.statusCode) \(operation.request.URL)")
