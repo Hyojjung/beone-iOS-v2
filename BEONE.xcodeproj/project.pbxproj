@@ -80,6 +80,7 @@
 		73168C161BF0CAE600308AF2 /* SigningHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73168C151BF0CAE600308AF2 /* SigningHelper.swift */; };
 		7322626C1BF5880E008A47B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626A1BF5880E008A47B1 /* Fabric.framework */; };
 		7322626D1BF5880E008A47B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7322626B1BF5880E008A47B1 /* Crashlytics.framework */; };
+		73239A7E1C4A9E99001FBCBD /* CartItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73239A7D1C4A9E99001FBCBD /* CartItemManager.swift */; };
 		7323FD241C3A0237008B99DF /* PaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD231C3A0237008B99DF /* PaymentType.swift */; };
 		7323FD271C3A068C008B99DF /* PaymentTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD261C3A068C008B99DF /* PaymentTypesView.swift */; };
 		7323FD291C3B8B3E008B99DF /* OrderWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */; };
@@ -288,6 +289,7 @@
 		73168C151BF0CAE600308AF2 /* SigningHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningHelper.swift; sourceTree = "<group>"; };
 		7322626A1BF5880E008A47B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7322626B1BF5880E008A47B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		73239A7D1C4A9E99001FBCBD /* CartItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemManager.swift; sourceTree = "<group>"; };
 		7323FD231C3A0237008B99DF /* PaymentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentType.swift; sourceTree = "<group>"; };
 		7323FD261C3A068C008B99DF /* PaymentTypesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTypesView.swift; sourceTree = "<group>"; };
 		7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderWebViewController.swift; sourceTree = "<group>"; };
@@ -506,6 +508,8 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				734241701BFC44ED00BE21F5 /* BEONEManager.swift */,
+				73239A7C1C4A9E6C001FBCBD /* Cart */,
 				7311234E1C4637E900ABD75B /* Search */,
 				73BE22481C2930F0003FA11C /* Option */,
 				73398AE61C068E6900F57D4A /* Location */,
@@ -728,11 +732,9 @@
 		7309D7541BFF143A00F9761A /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				7309D74C1BFEF36700F9761A /* CartItem.swift */,
 				7309D7521BFF12B700F9761A /* Address.swift */,
 				73398AE01C05F14000F57D4A /* AddressList.swift */,
 				73398AE41C06052B00F57D4A /* Order.swift */,
-				73398AFC1C08248400F57D4A /* CartItemList.swift */,
 				73398AFE1C082F2100F57D4A /* OrderHelper.swift */,
 				73398B001C083FBB00F57D4A /* OrderableItemSet.swift */,
 				73398B021C08431400F57D4A /* AvailableTimeRange.swift */,
@@ -774,6 +776,16 @@
 				73168C151BF0CAE600308AF2 /* SigningHelper.swift */,
 			);
 			name = Session;
+			sourceTree = "<group>";
+		};
+		73239A7C1C4A9E6C001FBCBD /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				7309D74C1BFEF36700F9761A /* CartItem.swift */,
+				73398AFC1C08248400F57D4A /* CartItemList.swift */,
+				73239A7D1C4A9E99001FBCBD /* CartItemManager.swift */,
+			);
+			name = Cart;
 			sourceTree = "<group>";
 		};
 		7323FD251C3A0678008B99DF /* Order */ = {
@@ -840,7 +852,6 @@
 		7388FA3F1C040C060015C3DF /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				734241701BFC44ED00BE21F5 /* BEONEManager.swift */,
 				7309D73F1BFC9F6600F9761A /* Product.swift */,
 				7309D7461BFCB1A400F9761A /* ProductList.swift */,
 				7309D7481BFDB1DE00F9761A /* ProductOrderableInfo.swift */,
@@ -1177,6 +1188,7 @@
 				73DF1D7F1C40131400DB3550 /* CardResultView.swift in Sources */,
 				736818FD1C107369009E433B /* AvailableTimeRangeList.swift in Sources */,
 				7388FA411C040C2A0015C3DF /* ProductDetail.swift in Sources */,
+				73239A7E1C4A9E99001FBCBD /* CartItemManager.swift in Sources */,
 				73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */,
 				73398AE51C06052B00F57D4A /* Order.swift in Sources */,
 				7388FA4E1C049CA40015C3DF /* ReviewListViewController.swift in Sources */,

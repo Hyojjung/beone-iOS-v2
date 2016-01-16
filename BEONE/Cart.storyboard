@@ -316,7 +316,7 @@
                                                             <rect key="frame" x="570" y="45" width="8" height="19"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABD-Vq-eEj">
-                                                            <rect key="frame" x="129" y="12" width="463" height="16"/>
+                                                            <rect key="frame" x="129" y="12" width="433" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -330,6 +330,7 @@
                                                         <constraint firstItem="OEy-Cz-kFD" firstAttribute="leading" secondItem="Ugj-K1-QKL" secondAttribute="leading" constant="45" id="7OP-nA-ZXz"/>
                                                         <constraint firstItem="XOE-d5-ual" firstAttribute="top" secondItem="Ugj-K1-QKL" secondAttribute="top" constant="10" id="8u3-uF-Vc8"/>
                                                         <constraint firstItem="zr4-ca-Cqu" firstAttribute="leading" secondItem="Ugj-K1-QKL" secondAttribute="leading" constant="45" id="FGQ-rU-yxa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="OVx-dz-Xw5" secondAttribute="trailing" constant="38" id="FjW-Cg-gw9"/>
                                                         <constraint firstItem="OEy-Cz-kFD" firstAttribute="top" secondItem="Ugj-K1-QKL" secondAttribute="top" constant="10" id="GTF-aB-XYs"/>
                                                         <constraint firstItem="zRM-DS-uC4" firstAttribute="top" secondItem="OVx-dz-Xw5" secondAttribute="top" constant="-2" id="GbV-IG-KW2"/>
                                                         <constraint firstAttribute="trailing" secondItem="WYj-VT-Sfm" secondAttribute="trailing" id="Jou-uG-Wr7"/>
@@ -344,7 +345,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="zr4-ca-Cqu" secondAttribute="bottom" constant="10" id="YPO-PN-8bR"/>
                                                         <constraint firstItem="XOE-d5-ual" firstAttribute="centerY" secondItem="f1n-z9-eo0" secondAttribute="centerY" id="aeU-yy-lGn"/>
                                                         <constraint firstAttribute="bottom" secondItem="WYj-VT-Sfm" secondAttribute="bottom" id="cGJ-Sa-4ZU"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ABD-Vq-eEj" secondAttribute="trailing" constant="8" id="f9i-Gu-Ul4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ABD-Vq-eEj" secondAttribute="trailing" constant="38" id="f9i-Gu-Ul4"/>
                                                         <constraint firstAttribute="height" constant="86" id="iww-xV-jGf"/>
                                                         <constraint firstItem="zRM-DS-uC4" firstAttribute="leading" secondItem="XOE-d5-ual" secondAttribute="leading" id="lFl-DY-4py"/>
                                                         <constraint firstItem="ABD-Vq-eEj" firstAttribute="top" secondItem="OEy-Cz-kFD" secondAttribute="top" constant="2" id="qMm-7H-ho2"/>
@@ -360,6 +361,7 @@
                                                             <exclude reference="0Pu-vw-xhA"/>
                                                             <exclude reference="8u3-uF-Vc8"/>
                                                             <exclude reference="whC-4M-G7g"/>
+                                                            <exclude reference="Nwn-Nk-0K1"/>
                                                         </mask>
                                                     </variation>
                                                 </view>

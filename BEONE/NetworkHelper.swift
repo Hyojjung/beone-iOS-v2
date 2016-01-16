@@ -237,7 +237,7 @@ extension NetworkHelper {
     })
   }
   
-  static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+  static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
     #if DEBUG
       print("DELETE \(url)")
     #endif

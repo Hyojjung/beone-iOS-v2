@@ -9,6 +9,7 @@
   @IBOutlet weak var allSelectButtonViewTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var allSelectButton: UIButton!
   let cartItemList = CartItemList()
+  var selectedCartItemIds = [Int]()
   let order = Order()
   var selectedCartItemOrder = Order()
   var isWaitingSigning = false
@@ -50,13 +51,13 @@
   @IBAction func selectAllButtonTapped(sender: UIButton) {
     sender.selected = !sender.selected
     if !sender.selected {
-      cartItemList.selectedCartItemIds.removeAll()
+      selectedCartItemIds.removeAll()
       makeSelectedCartItemOrderUnique()
       selectedCartItemOrder.price = 0
       selectedCartItemOrder.orderableItemSets.removeAll()
       tableView.reloadData()
     } else {
-      cartItemList.selectedCartItemIds = cartItemList.cartItemIds()
+      selectedCartItemIds = cartItemList.cartItemIds()
       setUpSelectedCartItemOrder()
     }
   }
@@ -64,21 +65,27 @@
   @IBAction func selectCartItemButtonTapped(sender: UIButton) {
     sender.selected = !sender.selected
     if !sender.selected {
-      cartItemList.selectedCartItemIds.removeObject(sender.tag)
+      selectedCartItemIds.removeObject(sender.tag)
     } else {
-      cartItemList.selectedCartItemIds.append(sender.tag)
+      selectedCartItemIds.append(sender.tag)
     }
     setUpSelectedCartItemOrder()
   }
   
   @IBAction func removeCartItemButtonTapped(sender: AnyObject) {
-    cartItemList.selectedCartItemIds.removeAll()
-    cartItemList.selectedCartItemIds.append(sender.tag)
-    cartItemList.delete()
+    selectedCartItemIds.removeAll()
+    selectedCartItemIds.append(sender.tag)
+    deleteCartItem()
   }
   
   @IBAction func removeSelectedCartItemsButtonTapped() {
-    cartItemList.delete()
+    deleteCartItem()
+  }
+  
+  func deleteCartItem() {
+    CartItemManager.removeCartItem(selectedCartItemIds) { () -> Void in
+      self.cartItemList.fetch()
+    }
   }
   
   @IBAction func orderCartItemButtonTapped(sender: UIButton) {
@@ -87,7 +94,11 @@
   
   @IBAction func orderSelectedCartItemButtonTapped(sender: AnyObject) {
     BEONEManager.selectedOrder = selectedCartItemOrder
-//    showOrderView()
+    var selectedCartItems = [CartItem]()
+    for selectedCartItemId in selectedCartItemIds {
+      selectedCartItems.append(cartItem(selectedCartItemId))
+    }
+    showOrderView(selectedCartItems)
   }
   
   @IBAction func productButtonTapped(sender: AnyObject) {
@@ -108,7 +119,7 @@
   func setUpSelectedCartItemOrder() {
     makeSelectedCartItemOrderUnique()
     BEONEManager.selectedOrder = selectedCartItemOrder
-    OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order) { self.setUpTableView() }
+    OrderHelper.fetchOrderableInfo(selectedCartItemIds, order: order) { self.setUpTableView() }
   }
   
   func makeSelectedCartItemOrderUnique() {
@@ -131,9 +142,15 @@
  
  extension CartViewController {
   func fetchOrderableInfo() {
+    selectedCartItemIds.removeAll()
+    
+    for cartItem in cartItemList.list {
+      selectedCartItemIds.append(cartItem.id!)
+    }
+    
     selectedCartItemOrder = order
     if cartItemList.list.count > 0 {
-      OrderHelper.fetchOrderableInfo(cartItemList.selectedCartItemIds, order: order) { self.setUpTableView() }
+      OrderHelper.fetchOrderableInfo(selectedCartItemIds, order: order) { self.setUpTableView() }
     } else {
       order.orderableItemSets.removeAll()
       setUpTableView()
@@ -142,7 +159,7 @@
   
   func setUpTableView() {
     setUpButtonView()
-    allSelectButton.selected = cartItemList.selectedCartItemIds == cartItemList.cartItemIds()
+    allSelectButton.selected = selectedCartItemIds == cartItemList.cartItemIds()
     tableView.reloadData()
   }
   
@@ -174,7 +191,6 @@
     return cell
   }
   
-  
  }
  
  extension CartViewController: DynamicHeightTableViewProtocol {
@@ -193,6 +209,12 @@
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? DeliveryTypeCell {
+      return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
+    } else if let cell = cell as? OrderableItemCell {
+      let orderableItem = order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount]
+      return cell.calculatedHeight(orderableItem, cartItem: self.cartItem(orderableItem.cartItemId!))
+    }
     return nil
   }
   
@@ -206,7 +228,7 @@
       let orderableItem = order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount]
       cell.configureCell(orderableItem,
         cartItem: self.cartItem(orderableItem.cartItemId!),
-        selectedCartItemIds: cartItemList.selectedCartItemIds)
+        selectedCartItemIds: selectedCartItemIds)
     } else if let cell = cell as? CartPriceCell {
       cell.configureCell(selectedCartItemOrder)
     }

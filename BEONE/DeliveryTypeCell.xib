@@ -58,6 +58,11 @@
                             <constraint firstAttribute="bottom" secondItem="kQS-Ue-Ymn" secondAttribute="bottom" id="dzU-hR-6KH"/>
                             <constraint firstAttribute="trailing" secondItem="kQS-Ue-Ymn" secondAttribute="trailing" id="nzr-fe-Gb2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5nm-eK-Mte"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
