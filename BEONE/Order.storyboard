@@ -43,7 +43,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAX-mj-HlO">
-                                                            <rect key="frame" x="81" y="18" width="40" height="20"/>
+                                                            <rect key="frame" x="81" y="18" width="511" height="20"/>
                                                             <accessibility key="accessibilityConfiguration" label="productTitleLabel"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,6 +102,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="SA9-z0-4Sl" secondAttribute="bottom" id="Cv3-KD-rud"/>
                                                         <constraint firstItem="gMA-3S-buY" firstAttribute="top" secondItem="T6N-9T-Rrb" secondAttribute="bottom" constant="45" id="D39-v6-NYh"/>
                                                         <constraint firstItem="T3Q-a8-v4E" firstAttribute="centerY" secondItem="69h-Kf-s0F" secondAttribute="centerY" id="Fu4-K8-u0R"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oAX-mj-HlO" secondAttribute="trailing" constant="8" id="GRJ-Gu-zuw"/>
                                                         <constraint firstItem="gMA-3S-buY" firstAttribute="top" secondItem="T6N-9T-Rrb" secondAttribute="bottom" constant="13" id="GVq-uH-Q6n"/>
                                                         <constraint firstAttribute="bottom" secondItem="T3Q-a8-v4E" secondAttribute="bottom" constant="15" id="H5q-qQ-Zsv"/>
                                                         <constraint firstAttribute="trailing" secondItem="T3Q-a8-v4E" secondAttribute="trailing" constant="14" id="O4Z-TF-TCA"/>
@@ -399,7 +400,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="parcelLabelCell" rowHeight="53" id="P2c-k7-QFE">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="parcelLabelCell" rowHeight="53" id="P2c-k7-QFE" customClass="ParcelLabelCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="351" width="600" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P2c-k7-QFE" id="U4S-1m-fC9">
@@ -407,7 +408,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="본 상품은 택배배송 상품입니다. 출고일은 상품에 따라 다릅니다." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-4z-Bk7">
-                                                    <rect key="frame" x="14" y="8" width="572" height="37"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -415,9 +416,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Wa4-4z-Bk7" secondAttribute="bottom" constant="8" id="7uE-dW-TwW"/>
-                                                <constraint firstAttribute="trailing" secondItem="Wa4-4z-Bk7" secondAttribute="trailing" constant="14" id="MKl-uG-u3O"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wa4-4z-Bk7" secondAttribute="trailing" constant="8" id="MKl-uG-u3O"/>
                                                 <constraint firstItem="Wa4-4z-Bk7" firstAttribute="top" secondItem="U4S-1m-fC9" secondAttribute="top" constant="8" id="Zk8-SN-1ab"/>
-                                                <constraint firstItem="Wa4-4z-Bk7" firstAttribute="leading" secondItem="U4S-1m-fC9" secondAttribute="leading" constant="14" id="mKq-C2-waa"/>
+                                                <constraint firstItem="Wa4-4z-Bk7" firstAttribute="leading" secondItem="U4S-1m-fC9" secondAttribute="leading" constant="8" id="mKq-C2-waa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

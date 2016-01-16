@@ -9,6 +9,13 @@ class DeliveryDateViewController: BaseTableViewController {
   var selectedDates = [Int: NSDate]()
   var selectedTimeRanges = [Int: AvailableTimeRange]()
   var timeSelectView: TimeSelectView?
+  lazy var calendarView: CKCalendarView = {
+    let calendarView = CKCalendarView(viewWidth: ViewControllerHelper.screenWidth - 20)
+    calendarView.delegate = self
+    calendarView.setMonthButtonColor(lightGold)
+    calendarView.titleColor = lightGold
+    return calendarView
+  }()
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let orderAddressViewController = segue.destinationViewController as? OrderAddressViewController {
@@ -25,14 +32,11 @@ class DeliveryDateViewController: BaseTableViewController {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
   }
-  
-  lazy var calendarView: CKCalendarView = {
-    let calendarView = CKCalendarView(viewWidth: ViewControllerHelper.screenWidth - 20)
-    calendarView.delegate = self
-    calendarView.setMonthButtonColor(lightGold)
-    calendarView.titleColor = lightGold
-    return calendarView
-  }()
+}
+
+// MARK: - Actions
+
+extension DeliveryDateViewController {
   
   @IBAction func showCalenderButtonTapped(sender: UIButton) {
     selectedOrderableItemSetIndex = sender.tag
@@ -78,6 +82,7 @@ class DeliveryDateViewController: BaseTableViewController {
 }
 
 extension DeliveryDateViewController: CKCalendarDelegate {
+  
   func calendar(calendar: CKCalendarView!, configureDateItem dateItem: CKDateItem!, forDate date: NSDate!) {
     if dateIsAble(date) {
       dateItem.backgroundColor = gold
@@ -164,6 +169,11 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? DeliveryTypeCell {
+      return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
+    } else if let cell = cell as? ParcelLabelCell {
+      return cell.calculatedHeight()
+    }
     return nil
   }
   
@@ -214,5 +224,16 @@ class TimeCell: UITableViewCell {
       timeLabel.text = selectedTimeRange != nil ?
         selectedTimeRange!.timeRangeNotation() :
         NSLocalizedString("select time range", comment: "button title")
+  }
+}
+
+class ParcelLabelCell: UITableViewCell {
+  func calculatedHeight() -> CGFloat {
+    let optionLabel = UILabel()
+    optionLabel.font = UIFont.systemFontOfSize(14)
+    optionLabel.text = "본 상품은 택배배송 상품입니다. 출고일은 상품에 따라 다릅니다."
+    optionLabel.setWidth(ViewControllerHelper.screenWidth - 16)
+    
+    return optionLabel.frame.height + 16
   }
 }

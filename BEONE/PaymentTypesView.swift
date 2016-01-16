@@ -1,6 +1,9 @@
 
 import UIKit
 
+let kPaymentTypeButtonHeight = CGFloat(50)
+let kPaymentTypeButtonInterval = CGFloat(11)
+
 protocol PaymentTypesViewDelegate: NSObjectProtocol {
   func selectPaymentTypeButtonTapped(paymentTypeId: Int)
 }
@@ -11,13 +14,14 @@ class PaymentTypesView: UIView {
   
   func layoutView(paymentTypes: [PaymentType], selectedPaymentTypeId: Int?) {
     var beforeView: UIView?
+    print(paymentTypes.count)
     for (index, paymentType) in paymentTypes.enumerate() {
       let paymentTypeView = self.paymentTypeView(paymentType, isSelected: paymentType.id == selectedPaymentTypeId)
       addSubViewAndEnableAutoLayout(paymentTypeView)
       addLeadingLayout(paymentTypeView)
       addTrailingLayout(paymentTypeView)
       if let beforeView = beforeView {
-        addVerticalLayout(beforeView, bottomView: paymentTypeView, contsant: 11)
+        addVerticalLayout(beforeView, bottomView: paymentTypeView, contsant: kPaymentTypeButtonInterval)
       } else {
         addTopLayout(paymentTypeView)
       }
@@ -73,7 +77,7 @@ class PaymentTypeView: UIView {
   }
   
   func layoutView() {
-    addHeightLayout(50)
+    addHeightLayout(kPaymentTypeButtonHeight)
     addSubViewAndEdgeLayout(paymentTypeButton)
     addSubViewAndEnableAutoLayout(checkedImageView)
     addCenterYLayout(checkedImageView)

@@ -117,6 +117,9 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes {
+      return cell.calculatedHeight(paymentTypes)
+    }
     return nil
   }
   
@@ -140,6 +143,12 @@ class PaymentTypeCell: UITableViewCell {
     paymentTypesView.delegate = delegate
     paymentTypesView.layoutView(paymentTypes, selectedPaymentTypeId: selectedPaymentTypeId)
     paymentTypeView.addSubViewAndEdgeLayout(paymentTypesView)
+  }
+  
+  func calculatedHeight(paymentTypes: [PaymentType]) -> CGFloat {
+    let height = 104 + paymentTypes.count * Int(kPaymentTypeButtonHeight) + (paymentTypes.count - 1) * Int(kPaymentTypeButtonInterval)
+    print(height)
+    return CGFloat(height)
   }
 }
 
