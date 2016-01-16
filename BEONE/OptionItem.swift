@@ -11,6 +11,7 @@ class OptionItem: BaseModel {
   var name: String?
   var type: OptionItemType?
   var value: String?
+  var selectedName: String?
   
   var placeholder: String?
   var minLength: Int?
@@ -45,6 +46,9 @@ class OptionItem: BaseModel {
           let select = Select()
           select.assignObject(selectObject)
           selects.append(select)
+          if select.name == value {
+            selectedName = select.selectName()
+          }
         }
       }
     }
@@ -57,6 +61,7 @@ class OptionItem: BaseModel {
     optionItem.type = type
     optionItem.value = value?.copy() as? String
     optionItem.placeholder = placeholder?.copy() as? String
+    optionItem.selectedName = selectedName?.copy() as? String
     optionItem.maxLength = maxLength
     optionItem.minLength = minLength
     optionItem.isRequired = isRequired

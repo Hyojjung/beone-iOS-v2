@@ -490,7 +490,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="ProductTotalPriceLabel" destination="VuK-Zn-iSD" id="jl7-HC-F3j"/>
                                             <outlet property="deleteButton" destination="io1-fl-Lh5" id="euV-iP-W0p"/>
                                             <outlet property="deliverableDateLabel" destination="OVx-dz-Xw5" id="Gfc-lc-0xQ"/>
                                             <outlet property="deliveryDatesKeyView" destination="zRM-DS-uC4" id="ayF-zH-uAa"/>
@@ -505,6 +504,7 @@
                                             <outlet property="productImageView" destination="YDA-jJ-b7n" id="faB-Dp-ZR8"/>
                                             <outlet property="productNameLabel" destination="rmx-4U-B3M" id="WvX-1a-pAT"/>
                                             <outlet property="productPriceLabel" destination="W8Z-22-dca" id="1fA-Vo-c3Q"/>
+                                            <outlet property="productTotalPriceLabel" destination="VuK-Zn-iSD" id="81d-ah-fDh"/>
                                             <outlet property="quantityLabel" destination="f1n-z9-eo0" id="2jz-ii-1Ho"/>
                                             <outlet property="reselectButton" destination="yd6-tv-q5G" id="zhW-1S-mlL"/>
                                             <outlet property="selectButton" destination="5Tf-Fh-48D" id="LkW-12-3ee"/>

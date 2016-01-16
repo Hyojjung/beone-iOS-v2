@@ -104,10 +104,10 @@ extension OptionViewController {
   @IBAction func sendCart() {
     if let productOrderableInfo = selectedProductOrderableInfo {
       if cartItems.count > 0 {
+        for cartItem in cartItems {
+          cartItem.productOrderableInfo = productOrderableInfo
+        }
         if !isModifing {
-          for cartItem in cartItems {
-            cartItem.productOrderableInfo = productOrderableInfo
-          }
           let cartItemList = CartItemList()
           cartItemList.list = cartItems
           cartItemList.post()
@@ -124,10 +124,16 @@ extension OptionViewController {
   }
   
   @IBAction func selectDeliveryTypeButtonTapped(sender: UIButton) {
+    var initialSelection = 0
+    for (index, productOrderableInfo) in product!.productOrderableInfos.enumerate() {
+      if productOrderableInfo.id == selectedProductOrderableInfo?.id {
+        initialSelection = index
+      }
+    }
     if deliveryTypeNames.count > 0 {
       showActionSheet(NSLocalizedString("select delivery type", comment: "picker title"),
         rows: deliveryTypeNames,
-        initialSelection: 0,
+        initialSelection: initialSelection,
         sender: sender,
         doneBlock: { (_, selectedIndex, _) -> Void in
           self.selectedProductOrderableInfo = self.product!.productOrderableInfos[selectedIndex]
@@ -236,7 +242,7 @@ extension OptionViewController: OptionDelegate {
     var initialSelection = 0
     if isProductOptionSet {
       for (index, option) in selectedOption(optionId).options.enumerate() {
-        if let name = option.name {
+        if let name = option.optionName() {
           optionValues.append(name)
         }
         if option.isSelected {
@@ -251,7 +257,7 @@ extension OptionViewController: OptionDelegate {
       })
     } else {
       for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
-        if let name = select.name {
+        if let name = select.selectName() {
           optionValues.append(name)
         }
         if select.name == selectedOptionItem(optionId).name {
@@ -262,6 +268,7 @@ extension OptionViewController: OptionDelegate {
         for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
           if index == selectedIndex {
             self.selectedOptionItem(optionId).value = select.name
+            self.selectedOptionItem(optionId).selectedName = select.selectName()
           }
         }
         self.tableView.reloadData()

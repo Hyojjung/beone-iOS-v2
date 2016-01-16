@@ -31,7 +31,7 @@
   @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var deliverableDateLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
-  @IBOutlet weak var ProductTotalPriceLabel: UILabel!
+  @IBOutlet weak var productTotalPriceLabel: UILabel!
   @IBOutlet weak var selectButton: UIButton!
   @IBOutlet weak var optionModifyButton: UIButton!
   @IBOutlet weak var productButton: UIButton!
@@ -56,10 +56,7 @@
     } else {
       quantityLabel.text = "0"
     }
-    if let price = orderableItem.price, quantity = orderableItem.quantity {
-      let productTotalPrice = price * quantity
-      ProductTotalPriceLabel.text = productTotalPrice.priceNotation(.Korean)
-    }
+    productTotalPriceLabel.text = orderableItem.price?.priceNotation(.Korean)
     
     configureAvailableDeliveryDatesView(orderableItem)
     
