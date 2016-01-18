@@ -4212,6 +4212,7 @@ IAo
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="Ad1-T1-bl4"/>
                                                 <exclude reference="xI3-jT-mvL"/>
                                             </mask>
                                         </variation>
@@ -4257,6 +4258,10 @@ IAo
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="resultImageView" destination="kwv-A1-cRX" id="d7r-v7-WfO"/>
+                        <outlet property="resultView" destination="XQc-a0-o9Y" id="OO3-aL-nQI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q52-HQ-iuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
