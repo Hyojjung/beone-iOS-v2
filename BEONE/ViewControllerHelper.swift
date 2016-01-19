@@ -88,6 +88,21 @@ extension UIViewController {
     }
   }
   
+  func showLocationPicker(selectedLocation: Location? = BEONEManager.selectedLocation, doneBlock: (Int) -> Void) {
+    var initialSelection = 0
+    for (index, location) in (BEONEManager.sharedLocationList.list as! [Location]).enumerate() {
+      if location == selectedLocation {
+        initialSelection = index
+      }
+    }
+    showActionSheet(NSLocalizedString("select location", comment: "picker title"),
+      rows: BEONEManager.sharedLocationList.locationNames(),
+      initialSelection: initialSelection,
+      doneBlock: { (_, selectedIndex, _) -> Void in
+        doneBlock(selectedIndex)
+    })
+  }
+  
   func showSigningView() {
     presentViewController(kSigningStoryboardName, viewIdentifier: kSigningNavigationViewIdentifier)
   }

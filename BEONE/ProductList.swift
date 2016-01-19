@@ -28,7 +28,7 @@ class ProductList: BaseListModel {
   
   override func fetchParameter() -> AnyObject? {
     var parameter = [String: AnyObject]()
-//    parameter["locationId"] = BEONEManager.selectedLocation?.id
+    parameter["locationId"] = BEONEManager.selectedLocation?.id
     parameter["productPropertyValueIds"] = productPropertyValueIds
     parameter["tagIds"] = tagIds
     parameter["minPrice"] = minPrice
@@ -38,7 +38,6 @@ class ProductList: BaseListModel {
   
   override func assignObject(data: AnyObject) {
     list.removeAll()
-    print(data)
     if let productList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       for productObject in productList {
         let product = Product()

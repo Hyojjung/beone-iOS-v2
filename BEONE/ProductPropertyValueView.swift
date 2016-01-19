@@ -13,18 +13,23 @@ class SearchValueView: UIView {
   var needBackgoundColor = false
   
   func configureView(searchValue: BaseModel, isSelected: Bool) {
-    selectButton.selected = isSelected
     if let id = searchValue.id {
       selectButton.tag = id
     }
     isTag = searchValue is Tag
+    configureButton(isSelected)
   }
   
   @IBAction func selectSearchValueButtonTapped(sender: UIButton) {
     delegate?.searchValueTapped(sender.tag, isTag: isTag)
-    sender.selected = !sender.selected
+    configureButton(!sender.selected)
+  }
+  
+  func configureButton(isSelected: Bool) {
+    selectButton.selected = isSelected
     if needBackgoundColor {
-      sender.backgroundColor = sender.selected ? selectedProductPropertyValueButtonColor : productPropertyValueButtonColor
+      selectButton.backgroundColor = selectButton.selected ?
+        selectedProductPropertyValueButtonColor : productPropertyValueButtonColor
     }
   }
 }

@@ -49,7 +49,7 @@ class FirstViewController: TemplateListViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(templateList, selector: "fetch",
       name: kNotificationGuestAuthenticationSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLocationPicker",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLocationPickerView",
       name: kNotificationLocationButtonTapped, object: nil)
   }
 }
@@ -66,22 +66,11 @@ extension FirstViewController {
 // MARK: - Observer Actions
 
 extension FirstViewController {
-  func showLocationPicker() {
-    var initialSelection = 0
-    for (index, location) in (BEONEManager.sharedLocationList.list as! [Location]).enumerate() {
-      if location == BEONEManager.selectedLocation {
-        initialSelection = index
-      }
+  func showLocationPickerView() {
+    showLocationPicker { (selectedIndex) -> Void in
+      BEONEManager.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as? Location
+      self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
-    showActionSheet(NSLocalizedString("select location", comment: "picker title"),
-      rows: BEONEManager.sharedLocationList.locationNames(),
-      initialSelection: initialSelection,
-      doneBlock: { (_, selectedIndex, _) -> Void in
-        if initialSelection != selectedIndex {
-          BEONEManager.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as? Location
-          self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
-        }
-    })
   }
 }
 

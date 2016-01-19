@@ -26,17 +26,21 @@ class SearchViewController: BaseTableViewController {
   
   // MARK: - Property
   
+  var showingMore = false
+
+  var productList = ProductList()
+
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
   var appSetting = AppSetting()
-  var productList = ProductList()
+  
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
-  var showingMore = false
   var minPrice = kDefaultMinPrice
   var maxPrice = kDefaultMaxPrice
   
   override func setUpData() {
+    super.setUpData()
     productPropertyList.get { () -> Void in
       self.tableView.reloadData()
     }
@@ -51,6 +55,7 @@ class SearchViewController: BaseTableViewController {
   }
   
   override func setUpView() {
+    super.setUpView()
     self.tableView.dynamicHeightDelgate = self
   }
   
@@ -60,7 +65,7 @@ class SearchViewController: BaseTableViewController {
     productList.productPropertyValueIds = selectedProductPropertyValueIds
     productList.tagIds = selectedTagIds
     productList.get { () -> Void in
-      print(self.productList.list.count)
+      
     }
   }
 }
@@ -98,6 +103,18 @@ extension SearchViewController {
     }
   }
   
+  @IBAction func searchButtonTapped() {
+    if let searchResultViewController =
+      viewController(kSearchStoryboardName, viewIdentifier: kSearchResultViewViewIdentifier) as? SearchResultViewController {
+        searchResultViewController.productList = productList
+        searchResultViewController.selectedTagIds = selectedTagIds
+        searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
+        searchResultViewController.minPrice = minPrice
+        searchResultViewController.maxPrice = maxPrice
+        showViewController(searchResultViewController, sender: nil)
+    }
+  }
+  
   func selectPrice(sender: UIButton, isMin: Bool, donBlock: (Int) -> Void) {
     var rows = [String]()
     var initialSelection = 0
@@ -109,14 +126,19 @@ extension SearchViewController {
       }
       rows.append("\(price)")
     }
+    
     let actionSheetTitle = isMin ?
       NSLocalizedString("select min price", comment: "action sheet title") :
       NSLocalizedString("select max price", comment: "action sheet title")
-    showActionSheet(actionSheetTitle, rows: rows, initialSelection: initialSelection, sender: sender, doneBlock: { (_, _, selectedValue) -> Void in
-      if let selectedValue = selectedValue as? String {
-        donBlock(Int(selectedValue)!)
-      }
-      self.tableView.reloadData()
+    showActionSheet(actionSheetTitle,
+      rows: rows,
+      initialSelection: initialSelection,
+      sender: sender,
+      doneBlock: { (_, _, selectedValue) -> Void in
+        if let selectedValue = selectedValue as? String {
+          donBlock(Int(selectedValue)!)
+        }
+        self.tableView.reloadData()
     })
   }
 }

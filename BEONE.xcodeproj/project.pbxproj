@@ -22,6 +22,7 @@
 		6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207177C1BE33DD50014B9AC /* LayoutHelper.swift */; };
 		620717821BE347E20014B9AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717801BE347E20014B9AC /* WebViewController.swift */; };
 		620717831BE347E20014B9AC /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717811BE347E20014B9AC /* WebViewController.xib */; };
+		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SearchViewController.swift */; };
@@ -225,6 +226,7 @@
 		6207177C1BE33DD50014B9AC /* LayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		620717801BE347E20014B9AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		620717811BE347E20014B9AC /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +462,13 @@
 			name = StringExtension;
 			sourceTree = "<group>";
 		};
+		621A71161C4DFDBF004AF8E7 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		62E5CF011BDDE19100A99F4C = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +554,7 @@
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				621A71161C4DFDBF004AF8E7 /* New Group */,
 				73398AF31C07425500F57D4A /* Order */,
 				7342416F1BFC285A00BE21F5 /* Base */,
 				62FC6E951BDF43CB0071E1B1 /* Signing */,
@@ -561,6 +571,7 @@
 				7388FA421C0458880015C3DF /* InquiryListViewController.swift */,
 				7388FA4D1C049CA40015C3DF /* ReviewListViewController.swift */,
 				73BE226A1C328B9F003FA11C /* CartViewController.swift */,
+				621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1223,6 +1234,7 @@
 				73445E741BF97BF0008BE2AC /* DeviceInfo.swift in Sources */,
 				62EFE94F1BE0C5830035B2DE /* TextTemplateCell.swift in Sources */,
 				73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */,
+				621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */,
 				620717411BE2020A0014B9AC /* LazyLoadingHelper.swift in Sources */,
 				73DF1D941C438CEC00DB3550 /* ProductPropertyColorTypeValueView.swift in Sources */,
 				73DF1D831C40153400DB3550 /* PaypalResultView.swift in Sources */,

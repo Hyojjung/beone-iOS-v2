@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGP-F8-qv2" id="2db-BO-P33">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="599"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-ok-fs3">
@@ -82,12 +82,15 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exf-ck-6sB">
                                                 <rect key="frame" x="8" y="345" width="263" height="30"/>
-                                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="TkX-hj-knf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="바로구매"/>
+                                                <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
+                                                    <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
                                                 <connections>
                                                     <action selector="orderButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="qlF-k5-RXt"/>
                                                 </connections>
@@ -200,12 +203,15 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-Wi-3xX">
                                                 <rect key="frame" x="8" y="345" width="263" height="30"/>
-                                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="f8H-zk-1dz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="바로구매"/>
+                                                <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
+                                                    <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
                                                 <connections>
                                                     <action selector="orderButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="YGt-jq-6on"/>
                                                 </connections>
@@ -319,6 +325,8 @@
         <image name="bgListWhiteShadow" width="11" height="10"/>
         <image name="btnFavoriteOff" width="29" height="29"/>
         <image name="btnFavoriteOn" width="29" height="28"/>
+        <image name="btnGreyLine" width="12" height="12"/>
+        <image name="btnGreyLinePressed" width="12" height="12"/>
         <image name="image_post_thumbnail" width="320" height="179"/>
     </resources>
 </document>
