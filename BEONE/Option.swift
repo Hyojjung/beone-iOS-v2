@@ -53,6 +53,15 @@ class Option: BaseModel {
     return option
   }
   
+  func optionName() -> String? {
+    if price == 0 {
+      return name
+    } else if let name = name {
+      return name + " (+ \(price.priceNotation(.Korean)))"
+    }
+    return nil
+  }
+  
   func isValid() -> Bool {
     for optionItem in optionItems {
       if !optionItem.isValid() {

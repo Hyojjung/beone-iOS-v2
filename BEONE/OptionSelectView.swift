@@ -13,13 +13,13 @@ class OptionSelectView: OptionTypeView {
     optionId = optionItem.id
     if let optionItem = optionItem as? OptionItem {
       nameLabel.text = optionItem.name
-      valueLabel.text = optionItem.value
+      valueLabel.text = optionItem.selectedName
       isProductOptionSet = false
     } else if let productOptionSet = optionItem as? ProductOptionSet {
       nameLabel.text = productOptionSet.name
       for option in productOptionSet.options {
         if option.isSelected {
-          valueLabel.text = option.name
+          valueLabel.text = option.optionName()
         }
       }
       isProductOptionSet = true

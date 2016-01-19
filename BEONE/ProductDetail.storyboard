@@ -2774,7 +2774,7 @@
                                                                 <constraint firstAttribute="bottom" secondItem="0rn-IZ-Sdm" secondAttribute="bottom" id="zmZ-Hq-BZu"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="배송 가능일" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-bO-QUc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="배송 가능일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-bO-QUc">
                                                             <rect key="frame" x="98" y="73" width="488" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2887,7 +2887,7 @@
                                                 <constraint firstItem="lgw-ej-ZRE" firstAttribute="top" secondItem="MLp-zM-68n" secondAttribute="top" constant="18" id="LYt-8J-K1g"/>
                                                 <constraint firstItem="O2r-vT-dxI" firstAttribute="top" secondItem="MLp-zM-68n" secondAttribute="top" id="SBw-F1-ahz"/>
                                                 <constraint firstAttribute="trailing" secondItem="SOt-nD-tCK" secondAttribute="trailing" constant="15" id="bnC-g9-MXr"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lgw-ej-ZRE" secondAttribute="bottom" constant="81" id="crr-4I-kCA"/>
+                                                <constraint firstAttribute="bottom" secondItem="lgw-ej-ZRE" secondAttribute="bottom" constant="89" id="crr-4I-kCA"/>
                                                 <constraint firstAttribute="trailing" secondItem="O2r-vT-dxI" secondAttribute="trailing" id="ez7-Hf-0aj"/>
                                                 <constraint firstItem="O2r-vT-dxI" firstAttribute="leading" secondItem="MLp-zM-68n" secondAttribute="leading" id="qyB-w9-wQs"/>
                                                 <constraint firstItem="SOt-nD-tCK" firstAttribute="top" secondItem="lgw-ej-ZRE" secondAttribute="bottom" constant="12" id="rSK-6E-Rk1"/>

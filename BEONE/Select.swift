@@ -31,4 +31,13 @@ class Select: BaseModel {
     select.isSoldOut = isSoldOut
     return select
   }
+  
+  func selectName() -> String? {
+    if price == 0 {
+      return name
+    } else if let name = name {
+      return name + " (+ \(price.priceNotation(.Korean)))"
+    }
+    return nil
+  }
 }

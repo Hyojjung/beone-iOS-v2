@@ -29,11 +29,12 @@ class SearchViewController: BaseTableViewController {
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
   var appSetting = AppSetting()
+  var productList = ProductList()
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
   var showingMore = false
-  var minPrice: Int?
-  var maxPrice: Int?
+  var minPrice = kDefaultMinPrice
+  var maxPrice = kDefaultMaxPrice
   
   override func setUpData() {
     productPropertyList.get { () -> Void in
@@ -52,6 +53,16 @@ class SearchViewController: BaseTableViewController {
   override func setUpView() {
     self.tableView.dynamicHeightDelgate = self
   }
+  
+  func setUpProductList() {
+    productList.maxPrice = maxPrice * kPriceUnit
+    productList.minPrice = minPrice * kPriceUnit
+    productList.productPropertyValueIds = selectedProductPropertyValueIds
+    productList.tagIds = selectedTagIds
+    productList.get { () -> Void in
+      print(self.productList.list.count)
+    }
+  }
 }
 
 // MARK: - Actions
@@ -65,18 +76,24 @@ extension SearchViewController {
   
   @IBAction func minPriceSelectButtonTapped(sender: UIButton) {
     selectPrice(sender, isMin: true) { (selectedValue) -> Void in
-      self.minPrice = selectedValue
-      if self.minPrice >= self.maxPrice {
-        self.maxPrice = self.minPrice! + self.appSetting.searchPriceUnit
+      if selectedValue != self.minPrice {
+        self.minPrice = selectedValue
+        if self.minPrice >= self.maxPrice {
+          self.maxPrice = self.minPrice + self.appSetting.searchPriceUnit
+        }
+        self.setUpProductList()
       }
     }
   }
   
   @IBAction func maxPriceSelectButtonTapped(sender: UIButton) {
     selectPrice(sender, isMin: false) { (selectedValue) -> Void in
-      self.maxPrice = selectedValue
-      if self.minPrice >= self.maxPrice {
-        self.minPrice = self.maxPrice! - self.appSetting.searchPriceUnit
+      if selectedValue != self.maxPrice {
+        self.maxPrice = selectedValue
+        if self.minPrice >= self.maxPrice {
+          self.minPrice = self.maxPrice - self.appSetting.searchPriceUnit
+        }
+        self.setUpProductList()
       }
     }
   }
@@ -195,6 +212,7 @@ extension SearchViewController: SearchValueDelegate {
         selectedProductPropertyValueIds.removeObject(id)
       }
     }
+    self.setUpProductList()
   }
 }
 
@@ -247,14 +265,9 @@ class SearchFilterCell: UITableViewCell {
   
   func calculatedSubTitleHeight(description: String?) -> CGFloat {
     let descriptionLabel = UILabel()
-    var frame = descriptionLabel.frame
-    frame.size.width = ViewControllerHelper.screenWidth - 24
-    descriptionLabel.numberOfLines = 0
-    descriptionLabel.frame = frame
     descriptionLabel.font = UIFont.systemFontOfSize(13)
     descriptionLabel.text = description
-    descriptionLabel.sizeToFit()
-    
+    descriptionLabel.setWidth(ViewControllerHelper.screenWidth - 24)
     return descriptionLabel.frame.height
   }
 }

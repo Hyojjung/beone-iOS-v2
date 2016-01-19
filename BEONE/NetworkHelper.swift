@@ -65,7 +65,6 @@ class NetworkHelper: NSObject {
       }
   }
   
-  
   static private func handleErrorDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError, success: NetworkSuccess?, failure: NetworkFailure?) {
     #if DEBUG
       print("\(operation.response?.statusCode) \(operation.request.URL)")
@@ -238,7 +237,7 @@ extension NetworkHelper {
     })
   }
   
-  static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+  static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
     #if DEBUG
       print("DELETE \(url)")
     #endif

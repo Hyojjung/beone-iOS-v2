@@ -7,20 +7,16 @@ let kCartItemPropertyKeyQuantity = "quantity"
 let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
 
 class CartItemList: BaseListModel {
-  
-  var selectedCartItemIds = [Int]()
-  
+    
   // MARK: - BaseModel Methods (Fetch)
   
   override func assignObject(data: AnyObject) {
     if let cartItemList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       list.removeAll()
-      selectedCartItemIds.removeAll()
       for cartItemObejct in cartItemList {
         let cartItem = CartItem()
         cartItem.assignObject(cartItemObejct)
         list.append(cartItem)
-        selectedCartItemIds.append(cartItem.id!)
       }
       postNotification(kNotificationFetchCartListSuccess)
     }
@@ -28,22 +24,6 @@ class CartItemList: BaseListModel {
   
   override func fetchUrl() -> String {
     return cartItemUrl()
-  }
-  
-  // MARK: - BaseModel Methods (Delete)
-  
-  override func deleteUrl() -> String {
-    return cartItemUrl()
-  }
-  
-  override func deleteParameter() -> AnyObject? {
-    return ["ids": selectedCartItemIds]
-  }
-  
-  override func deleteSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      self.fetch()
-    }
   }
   
   // MARK: - BaseModel Methods (Post)

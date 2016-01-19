@@ -9,6 +9,7 @@ class OrderWebViewController: BaseViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let orderResultViewController = segue.destinationViewController as? OrderResultViewController {
+      print(sender)
       orderResultViewController.orderResult = sender as? [String: AnyObject]
     }
   }
@@ -51,6 +52,7 @@ extension OrderWebViewController: UIWebViewDelegate {
             parameter[orderResultKey] = orderResultComponent.componentsSeparatedByString("=").last
           }
         }
+        parameter["orderId"] = order?.id
         performSegueWithIdentifier("From Order Web To Order Result", sender: parameter)
       }
     }

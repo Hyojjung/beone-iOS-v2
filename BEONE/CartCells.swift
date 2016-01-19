@@ -6,12 +6,15 @@
   
   func configureCell(orderableItemSet: OrderableItemSet, needCell: Bool) {
     deliveryTypeImageView.setLazyLoaingImage(orderableItemSet.deliveryType.thumbnailImageUrl)
-    heightConstraintView.changeHeightLayoutConstant(needCell ? 50 : 1)
     if needCell {
       backgroundImageView.image = UIImage(named: "pat_cart_delivery")
     } else {
       backgroundImageView.image = nil
     }
+  }
+  
+  func calculatedHeight(needCell: Bool) -> CGFloat {
+    return needCell ? 50 : 1
   }
  }
  
@@ -31,7 +34,7 @@
   @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var deliverableDateLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
-  @IBOutlet weak var ProductTotalPriceLabel: UILabel!
+  @IBOutlet weak var productTotalPriceLabel: UILabel!
   @IBOutlet weak var selectButton: UIButton!
   @IBOutlet weak var optionModifyButton: UIButton!
   @IBOutlet weak var productButton: UIButton!
@@ -42,6 +45,29 @@
   @IBOutlet weak var deliveryDatesLabelBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var directOrderButton: UIButton!
   @IBOutlet weak var optionLabel: UILabel!
+  
+  func calculatedHeight(orderableItem: OrderableItem, cartItem: CartItem) -> CGFloat {
+    configureAvailableDeliveryDatesView(orderableItem)
+    var height = CGFloat(231)
+    if let option = cartItem.selectedOption {
+      let optionLabel = UILabel()
+      optionLabel.font = UIFont.systemFontOfSize(13)
+      optionLabel.text = option.optionString()
+      optionLabel.setWidth(ViewControllerHelper.screenWidth - 167)
+      
+      height += optionLabel.frame.height + 7
+    }
+    let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
+    if !availableDeliveryDatesString.isEmpty {
+      let availableDeliveryDatesLabel = UILabel()
+      availableDeliveryDatesLabel.font = UIFont.systemFontOfSize(13)
+      availableDeliveryDatesLabel.text = availableDeliveryDatesString
+      availableDeliveryDatesLabel.setWidth(ViewControllerHelper.screenWidth - 167)
+      
+      height += availableDeliveryDatesLabel.frame.height + 7
+    }
+    return height
+  }
   
   func configureCell(orderableItem: OrderableItem, cartItem: CartItem, selectedCartItemIds: [Int]) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
@@ -56,10 +82,7 @@
     } else {
       quantityLabel.text = "0"
     }
-    if let price = orderableItem.price, quantity = orderableItem.quantity {
-      let productTotalPrice = price * quantity
-      ProductTotalPriceLabel.text = productTotalPrice.priceNotation(.Korean)
-    }
+    productTotalPriceLabel.text = orderableItem.price?.priceNotation(.Korean)
     
     configureAvailableDeliveryDatesView(orderableItem)
     
@@ -103,9 +126,7 @@
     var totalDeliveryPrice = 0
     for orderableItemSet in order.orderableItemSets {
       for orderableItem in orderableItemSet.orderableItems {
-        if let quantity = orderableItem.quantity, price = orderableItem.price {
-          totalItemPrice += quantity * price
-        }
+        totalItemPrice += orderableItem.price!
       }
       totalDeliveryPrice += orderableItemSet.deliveryPrice
     }

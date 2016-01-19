@@ -32,7 +32,6 @@ class MyInfo: NSManagedObject {
   func fetch() {
     if let userId = userId {
       NetworkHelper.requestGet("users/\(userId)", parameter: nil, success: { (result) -> Void in
-        print(result)
         if let myInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
           self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
           self.name = myInfo[kMyInfoPropertyKeyName] as? String

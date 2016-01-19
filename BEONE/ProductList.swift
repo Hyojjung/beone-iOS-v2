@@ -8,6 +8,10 @@ class ProductList: BaseListModel {
   }
   
   var type = Type.None
+  var productPropertyValueIds: [Int]?
+  var tagIds: [Int]?
+  var minPrice: Int?
+  var maxPrice: Int?
   
   override func fetchUrl() -> String {
     switch type {
@@ -22,8 +26,19 @@ class ProductList: BaseListModel {
     }
   }
   
+  override func fetchParameter() -> AnyObject? {
+    var parameter = [String: AnyObject]()
+//    parameter["locationId"] = BEONEManager.selectedLocation?.id
+    parameter["productPropertyValueIds"] = productPropertyValueIds
+    parameter["tagIds"] = tagIds
+    parameter["minPrice"] = minPrice
+    parameter["maxPrice"] = maxPrice
+    return parameter
+  }
+  
   override func assignObject(data: AnyObject) {
     list.removeAll()
+    print(data)
     if let productList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       for productObject in productList {
         let product = Product()
