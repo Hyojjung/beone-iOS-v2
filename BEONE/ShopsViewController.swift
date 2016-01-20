@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ShopsViewController: BaseTableViewController {
+class ShopsViewController: MainTabViewController {
   
   // MARK: - Constant
   
@@ -17,13 +17,13 @@ class ShopsViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
-    shopList.fetch()
   }
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchShopListSuccess, object: nil)
+  override func setUpData() {
+    super.setUpData()
+    shopList.get { () -> Void in
+      self.tableView.reloadData()
+    }
   }
 }
 

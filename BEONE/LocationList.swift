@@ -14,9 +14,7 @@ class LocationList: BaseListModel {
         location.assignObject(locationObject)
         list.append(location)
       }
-      // TODO: - default?
       BEONEManager.selectedLocation = list.first as? Location
-      postNotification(kNotificationFetchLocationListSuccess)
     }
   }
   

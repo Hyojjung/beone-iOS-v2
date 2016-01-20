@@ -1,12 +1,11 @@
 
 import UIKit
-import ActionSheetPicker_3_0
 
-class FirstViewController: TemplateListViewController {
-  @IBOutlet weak var navigationBar: UINavigationBar!
-  @IBOutlet weak var viewnavigationItem: UINavigationItem!
+class FirstViewController: MainTabViewController {
   
-  private var mainTitleView = UIView.loadFromNibName(kMainTitleViewNibName) as! MainTitleView
+  // MARK: - Property
+  
+  var templateList = TemplateList()
   
   @IBAction func signInButtonTapped() {
     showSigningView()
@@ -24,53 +23,28 @@ class FirstViewController: TemplateListViewController {
     showViewController("Cart", viewIdentifier: "CartView")
   }
   
-  override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
-    navigationController?.navigationBarHidden = false
-  }
-  
   // MARK: - BaseViewController
   
   override func setUpData() {
     super.setUpData()
-    BEONEManager.sharedLocationList.fetch()
-    navigationController?.navigationBarHidden = true
-    templateList.fetch()
-    LocationList().fetch()
+    templateList.get { () -> Void in
+      self.tableView.reloadData()
+    }
   }
   
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
-    self.viewnavigationItem.titleView = mainTitleView
   }
   
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(templateList, selector: "fetch",
       name: kNotificationGuestAuthenticationSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLocationPickerView",
-      name: kNotificationLocationButtonTapped, object: nil)
-  }
-}
-
-// MARK: - Private Methods
-
-extension FirstViewController {
-  func addTitleViewConstraints() {
-    navigationBar.addCenterXLayout(view)
-    navigationBar.addBottomLayout(view)
-  }
-}
-
-// MARK: - Observer Actions
-
-extension FirstViewController {
-  func showLocationPickerView() {
-    showLocationPicker { (selectedIndex) -> Void in
-      BEONEManager.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as? Location
-      self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
-    }
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange",
+      name: kNotificationContentsViewLayouted, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:",
+      name: kNotificationDoAction, object: nil)
   }
 }
 
@@ -82,12 +56,53 @@ extension FirstViewController {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return templates.count
+    return templateList.filterdTemplates.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
+  }
+}
+
+extension FirstViewController: DynamicHeightTableViewProtocol {
+  
+  func cellIdentifier(indexPath: NSIndexPath) -> String {
+    if let cellIdentifier = templateList.filterdTemplates[indexPath.row].type?.cellIdentifier() {
+      return cellIdentifier
+    }
+    fatalError("invalid template type")
+  }
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? TemplateCell {
+      cell.configureCell(templateList.filterdTemplates[indexPath.row])
+    }
+  }
+  
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? TemplateCell {
+      return cell.calculatedHeight(templateList.filterdTemplates[indexPath.row])
+    }
+    return nil
+  }
+}
+
+// MARK: - Observer Actions
+
+extension FirstViewController {
+  func handleLayoutChange() {
+    tableView.reloadData()
+  }
+  
+  func handleAction(notification: NSNotification) {
+    if let userInfo = notification.userInfo, templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber {
+      for template in templateList.list as! [Template] {
+        if template.id == templateId {
+          break;
+        }
+      }
+    }
   }
 }

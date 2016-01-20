@@ -28,14 +28,10 @@
   
   override func setUpData() {
     if MyInfo.sharedMyInfo().isUser(){
-      cartItemList.fetch()
+      cartItemList.get({ () -> Void in
+        self.fetchOrderableInfo()
+      })
     }
-  }
-  
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchOrderableInfo",
-      name: kNotificationFetchCartListSuccess, object: nil)
   }
   
   override func setUpView() {
@@ -84,7 +80,7 @@
   
   func deleteCartItem() {
     CartItemManager.removeCartItem(selectedCartItemIds) { () -> Void in
-      self.cartItemList.fetch()
+      self.setUpData()
     }
   }
   

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SearchViewController: BaseTableViewController {
+class SearchViewController: MainTabViewController {
   
   // MARK: - Constant
   
@@ -52,6 +52,7 @@ class SearchViewController: BaseTableViewController {
       self.maxPrice = self.appSetting.searchMaxPrice
       self.tableView.reloadData()
     }
+  setUpProductList()
   }
   
   override func setUpView() {
@@ -64,8 +65,9 @@ class SearchViewController: BaseTableViewController {
     productList.minPrice = minPrice * kPriceUnit
     productList.productPropertyValueIds = selectedProductPropertyValueIds
     productList.tagIds = selectedTagIds
+    productList.noData = true
     productList.get { () -> Void in
-      
+      self.tableView.reloadData()
     }
   }
 }
@@ -179,6 +181,8 @@ extension SearchViewController: UITableViewDataSource {
     } else if let cell = cell as? SearchPriceCell {
       cell.configureCell(self,
         minPrice: minPrice, maxPrice: maxPrice, minBoundPrice: appSetting.searchMinPrice, maxBoundPrice: appSetting.searchMaxPrice)
+    } else if let cell = cell as? ProductsCountCell, locationName = BEONEManager.selectedLocation?.name {
+      cell.configureCell(locationName, productCount: productList.total)
     }
     return cell
   }
@@ -214,6 +218,14 @@ extension SearchViewController: DynamicHeightTableViewProtocol {
         return cell.calculatedHeight(productProperty.values, subTitle: productProperty.subTitle,
           displayType: productProperty.displayType)
       }
+    } else if cell is ProductsCountCell {
+      return 73
+    } else if cell is SearchPriceCell {
+      return 180
+    } else if indexPath.section == SearchTableViewSection.MoreUsageButton.rawValue {
+      return 56
+    } else if indexPath.section == SearchTableViewSection.SearchButton.rawValue {
+      return 73
     }
     return nil
   }
@@ -235,6 +247,15 @@ extension SearchViewController: SearchValueDelegate {
       }
     }
     self.setUpProductList()
+  }
+}
+
+class ProductsCountCell: UITableViewCell {
+  
+  @IBOutlet weak var countLabel: UILabel!
+  
+  func configureCell(locationName: String, productCount: Int) {
+    countLabel.text = "\(locationName)지역 \(productCount)개의 상품"
   }
 }
 
@@ -282,6 +303,7 @@ class SearchPropertyCell: SearchFilterCell {
 }
 
 class SearchFilterCell: UITableViewCell {
+  
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var subTitleLabel: UILabel!
   

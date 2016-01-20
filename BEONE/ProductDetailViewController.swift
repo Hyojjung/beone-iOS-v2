@@ -85,13 +85,13 @@ class ProductDetailViewController: BaseViewController {
     collectionView?.registerNib(UINib(nibName: kProductDetailHeaderCellNibName, bundle: nil),
       forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader,
       withReuseIdentifier: kProductDetailHeaderCellIdentifier)
-    product?.fetch()
+    product?.get({ () -> Void in
+      self.setUpProductData()
+    })
   }
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpProductData",
-      name: kNotificationFetchProductSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleShowImageNotification:",
       name: kNotificationProductDetailImageTapped, object: nil)
   }

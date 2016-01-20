@@ -12,6 +12,7 @@ class ProductList: BaseListModel {
   var tagIds: [Int]?
   var minPrice: Int?
   var maxPrice: Int?
+  var noData = false
   
   override func fetchUrl() -> String {
     switch type {
@@ -33,18 +34,22 @@ class ProductList: BaseListModel {
     parameter["tagIds"] = tagIds
     parameter["minPrice"] = minPrice
     parameter["maxPrice"] = maxPrice
+    parameter["noData"] = noData
     return parameter
   }
   
   override func assignObject(data: AnyObject) {
     list.removeAll()
+    print(data)
     if let productList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
       for productObject in productList {
         let product = Product()
         product.assignObject(productObject)
         list.append(product)
       }
-      postNotification(kNotificationFetchProductListSuccess)
+    }
+    if let total = data["total"] as? Int{
+      self.total = total
     }
   }
 }

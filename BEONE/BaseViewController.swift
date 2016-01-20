@@ -14,8 +14,6 @@ class BaseViewController: UIViewController {
     return loadingView
   }()
   
-  let locationList = LocationList()
-  
   // MARK: - View Cycle
   
   override func viewDidLoad() {

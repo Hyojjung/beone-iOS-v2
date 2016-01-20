@@ -18,7 +18,6 @@ class AddressList: BaseListModel {
         address.assignObject(addressObject)
         list.append(address)
       }
-      postNotification(kNotificationFetchAddressListSuccess)
     }
   }
 }

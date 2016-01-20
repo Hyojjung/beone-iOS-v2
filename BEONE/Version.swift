@@ -46,7 +46,6 @@ class Version: BaseModel {
               }
           }
         }
-        self.postNotification(kNotificationFetchAppStoreVersionSuccess)
       }
     }
   }

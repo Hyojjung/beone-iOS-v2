@@ -23,6 +23,7 @@
 		620717821BE347E20014B9AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717801BE347E20014B9AC /* WebViewController.swift */; };
 		620717831BE347E20014B9AC /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717811BE347E20014B9AC /* WebViewController.xib */; };
 		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
+		626B6EF21C4F41C800F29FD5 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SearchViewController.swift */; };
@@ -124,7 +125,6 @@
 		73445E7C1BFAEEF9008BE2AC /* ShopTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E7B1BFAEEF9008BE2AC /* ShopTemplateCell.swift */; };
 		73445E7E1BFAEF05008BE2AC /* ShopTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73445E7D1BFAEF05008BE2AC /* ShopTemplateCell.xib */; };
 		73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */; };
-		73445E821BFAFB82008BE2AC /* TemplateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */; };
 		73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E831BFAFE8F008BE2AC /* Shop.swift */; };
 		73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73445E851BFAFEAE008BE2AC /* ShopList.swift */; };
 		734C99121C0EE50000F888EA /* DeliveryTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734C99111C0EE50000F888EA /* DeliveryTypeCell.xib */; };
@@ -227,6 +227,7 @@
 		620717801BE347E20014B9AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		620717811BE347E20014B9AC /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -334,7 +335,6 @@
 		73445E7B1BFAEEF9008BE2AC /* ShopTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTemplateCell.swift; sourceTree = "<group>"; };
 		73445E7D1BFAEF05008BE2AC /* ShopTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTemplateCell.xib; sourceTree = "<group>"; };
 		73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopsViewController.swift; sourceTree = "<group>"; };
-		73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateListViewController.swift; sourceTree = "<group>"; };
 		73445E831BFAFE8F008BE2AC /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		73445E851BFAFEAE008BE2AC /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		734C99111C0EE50000F888EA /* DeliveryTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTypeCell.xib; sourceTree = "<group>"; };
@@ -572,6 +572,7 @@
 				7388FA4D1C049CA40015C3DF /* ReviewListViewController.swift */,
 				73BE226A1C328B9F003FA11C /* CartViewController.swift */,
 				621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */,
+				626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -844,7 +845,6 @@
 			isa = PBXGroup;
 			children = (
 				62FC6E911BDF40AC0071E1B1 /* BaseViewController.swift */,
-				73445E811BFAFB82008BE2AC /* TemplateListViewController.swift */,
 				7342416D1BFC285400BE21F5 /* BaseTableViewController.swift */,
 			);
 			name = Base;
@@ -1192,6 +1192,7 @@
 			files = (
 				73EA254B1BE5FA840085382A /* BaseListModel.swift in Sources */,
 				620717821BE347E20014B9AC /* WebViewController.swift in Sources */,
+				626B6EF21C4F41C800F29FD5 /* MainTabViewController.swift in Sources */,
 				73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */,
 				73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */,
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
@@ -1243,7 +1244,6 @@
 				73F629A41BF43892001EA72F /* ButtonTemplateCell.swift in Sources */,
 				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,
 				73EA25511BE781120085382A /* ImageContentsImageView.swift in Sources */,
-				73445E821BFAFB82008BE2AC /* TemplateListViewController.swift in Sources */,
 				73DF1D891C43486000DB3550 /* ProductProperty.swift in Sources */,
 				62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */,
 				62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */,

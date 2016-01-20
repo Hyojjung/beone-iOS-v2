@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProfileViewController: BaseTableViewController {
+class ProfileViewController: MainTabViewController {
   
   // MARK: - Constant
   
@@ -54,18 +54,6 @@ extension ProfileViewController {
     configure(cell, indexPath: indexPath)
     return cell
   }
-}
-
-// MARK: - UITableViewDelegate
-
-extension ProfileViewController {
-  
-//  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//    if let tableView = tableView as? DynamicHeightTableView {
-//      return tableView.heightForBasicCell(indexPath)
-//    }
-//    return 0
-//  }
 }
 
 extension ProfileViewController: DynamicHeightTableViewProtocol {

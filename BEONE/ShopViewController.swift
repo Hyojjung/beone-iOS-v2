@@ -27,8 +27,12 @@ class ShopViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shop?.fetch()
-    shopProductList.fetch()
+    shop?.get({ () -> Void in
+      self.tableView.reloadData()
+    })
+    shopProductList.get { () -> Void in
+      self.tableView.reloadData()
+    }
   }
   
   override func setUpView() {
@@ -38,10 +42,6 @@ class ShopViewController: BaseTableViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchProductListSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchShopSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOpion:",
       name: kNotificationSegueToOption, object: nil)
   }

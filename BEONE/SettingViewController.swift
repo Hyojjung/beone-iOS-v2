@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SettingViewController: BaseTableViewController {
+class SettingViewController: MainTabViewController {
   
   // MARK: - Constant
   
@@ -57,16 +57,16 @@ class SettingViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    version.fetch()
-    deviceInfo.fetch()
+    version.get { () -> Void in
+      self.tableView.reloadData()
+    }
+    deviceInfo.get { () -> Void in
+      self.tableView.reloadData()
+    }
   }
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchAppStoreVersionSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationFetchDeviceInfoSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
       name: kNotificationLogOutSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",

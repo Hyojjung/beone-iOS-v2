@@ -18,7 +18,6 @@ class CartItemList: BaseListModel {
         cartItem.assignObject(cartItemObejct)
         list.append(cartItem)
       }
-      postNotification(kNotificationFetchCartListSuccess)
     }
   }
   

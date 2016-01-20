@@ -34,10 +34,6 @@ class OptionViewController: BaseTableViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "setUpProductData",
-      name: kNotificationFetchProductSuccess,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
       selector: "handlePostCartItemSuccess",
       name: kNotificationPostCartItemSuccess,
       object: nil)
@@ -45,7 +41,9 @@ class OptionViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    product?.fetch()
+    product?.get({ () -> Void in
+      self.setUpProductData()
+    })
   }
   
   override func setUpView() {

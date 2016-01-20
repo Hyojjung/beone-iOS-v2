@@ -14,7 +14,6 @@ class ShopList: BaseListModel {
         shop.assignObject(shopObject)
         list.append(shop)
       }
-      postNotification(kNotificationFetchShopListSuccess)
     }
   }
 }

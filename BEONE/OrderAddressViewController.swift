@@ -40,7 +40,9 @@ class OrderAddressViewController: BaseViewController {
   override func setUpView() {
     super.setUpView()
     
-    addressList.fetch()
+    addressList.get { () -> Void in
+      self.handleAddressList()
+    }
     MyInfo.sharedMyInfo().fetch()
     
     self.senderNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
@@ -53,8 +55,6 @@ class OrderAddressViewController: BaseViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleValidationResult:",
       name: kNotificationValidateAddressSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAddressList",
-      name: kNotificationFetchAddressListSuccess, object: nil)
   }
   
   override func removeObservers() {
