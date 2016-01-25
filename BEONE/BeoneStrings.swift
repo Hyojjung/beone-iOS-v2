@@ -9,6 +9,7 @@ let kProductDetailStoryboardName = "ProductDetail"
 let kOrderStoryboardName = "Order"
 let kSearchStoryboardName = "Search"
 let kMainStoryboardName = "Main"
+let kProfileStoryboardName = "Profile"
 
 // MARK: - View Controller Identifiers
 
@@ -19,6 +20,7 @@ let kProductDetailViewIdentifier = "ProductDetailView"
 let kDeliveryDateViewViewIdentifier = "DeliveryDateView"
 let kSearchResultViewViewIdentifier = "SearchResultView"
 let kSearchViewViewIdentifier = "SearchView"
+let kProfileViewViewIdentifier = "ProfileView"
 
 // MARK: - View Nib Names
 

@@ -46,6 +46,13 @@ extension NSDate {
     dateFormatter.dateFormat = "yyyy년 M월 d일 E요일";
     return dateFormatter.stringFromDate(self)
   }
+  
+  func briefDateString() -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
+    dateFormatter.dateFormat = "yyyy.MM.dd";
+    return dateFormatter.stringFromDate(self)
+  }
   //
   //  func pushDateString() -> String {
   //    let dateFormatter = NSDateFormatter()
