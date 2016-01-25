@@ -22,6 +22,8 @@ class PaymentInfo: BaseModel {
   var expiredAt: NSDate?
   var paidAt: NSDate?
   
+  var paymentType = PaymentType()
+  
   override func fetchUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)"
   }
@@ -30,7 +32,9 @@ class PaymentInfo: BaseModel {
     if let data = data as? [String: AnyObject] {
       let paymentInfoObejct = data[kNetworkResponseKeyData] != nil ? data[kNetworkResponseKeyData] : data
       if let paymentInfo = paymentInfoObejct as? [String: AnyObject] {
-        print(data)
+        if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
+          self.paymentType.assignObject(paymentType)
+        }
         id = paymentInfo[kObjectPropertyKeyId] as? Int
         
         if let price = paymentInfo["actualPrice"] as? Int {

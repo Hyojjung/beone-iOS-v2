@@ -591,23 +591,6 @@
                                                 <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="873-kh-3xD" userLabel="배송헤더">
-                                                <rect key="frame" x="0.0" y="211" width="600" height="50"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송지 정보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-19-PLh">
-                                                        <rect key="frame" x="14" y="15" width="74" height="20"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                        <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.95294117649999999" green="0.93333333330000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="TMQ-u9-uEn"/>
-                                                    <constraint firstAttribute="centerY" secondItem="yPk-19-PLh" secondAttribute="centerY" constant="-0.25" id="mlf-jR-ElB"/>
-                                                    <constraint firstItem="yPk-19-PLh" firstAttribute="leading" secondItem="873-kh-3xD" secondAttribute="leading" constant="14" id="t5K-qP-Ynb"/>
-                                                </constraints>
-                                            </view>
                                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61K-g6-ld0">
                                                 <rect key="frame" x="7" y="268" width="35" height="35"/>
                                                 <accessibility key="accessibilityConfiguration" label="sameButton"/>
@@ -925,6 +908,23 @@
                                                     <constraint firstItem="V6b-ja-teN" firstAttribute="top" secondItem="6Ol-Xu-JYu" secondAttribute="top" id="r9z-Pd-oYA"/>
                                                     <constraint firstItem="V6b-ja-teN" firstAttribute="leading" secondItem="6Ol-Xu-JYu" secondAttribute="leading" id="uZc-5N-s92"/>
                                                     <constraint firstItem="8Ai-nO-EM5" firstAttribute="top" secondItem="V6b-ja-teN" secondAttribute="bottom" constant="4" id="wLI-ov-yXB"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="873-kh-3xD" userLabel="배송헤더">
+                                                <rect key="frame" x="0.0" y="211" width="600" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송지 정보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-19-PLh">
+                                                        <rect key="frame" x="14" y="15" width="74" height="20"/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                        <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.95294117649999999" green="0.93333333330000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="TMQ-u9-uEn"/>
+                                                    <constraint firstAttribute="centerY" secondItem="yPk-19-PLh" secondAttribute="centerY" constant="-0.25" id="mlf-jR-ElB"/>
+                                                    <constraint firstItem="yPk-19-PLh" firstAttribute="leading" secondItem="873-kh-3xD" secondAttribute="leading" constant="14" id="t5K-qP-Ynb"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1305,7 +1305,7 @@ IAo
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f48-j7-ZeL">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f48-j7-ZeL">
                                                     <rect key="frame" x="98" y="65" width="25" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1505,7 +1505,7 @@ IAo
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIa-zU-Tt9">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIa-zU-Tt9">
                                                     <rect key="frame" x="98" y="65" width="25" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2262,7 +2262,7 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="7bS-5D-7O0"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-3c-z1Q">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-3c-z1Q">
                                                     <rect key="frame" x="218" y="5" width="120" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="6kx-Ue-zJb"/>
@@ -2498,7 +2498,7 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="9tL-Xh-zBq"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
                                                     <rect key="frame" x="260" y="5" width="160" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="m4C-Dv-z0d"/>
@@ -3878,7 +3878,7 @@ IAo
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-MS-H78">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="결제금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-MS-H78">
                                                     <rect key="frame" x="479" y="168" width="49" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -4305,6 +4305,6 @@ IAo
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QJE-KL-dke"/>
-        <segue reference="fZD-E2-d3W"/>
+        <segue reference="i4O-W2-Gwz"/>
     </inferredMetricsTieBreakers>
 </document>

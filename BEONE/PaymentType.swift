@@ -1,6 +1,15 @@
 
 import UIKit
 
+enum PaymentTypeId: Int {
+  case ISPCard = 1
+  case Mobile
+  case VBank
+  case Card
+  case PayPal = 21
+  case KakaoPay = 31
+}
+
 class PaymentType: BaseModel {
   var isAvailable = false
   var isWebViewTransaction = false

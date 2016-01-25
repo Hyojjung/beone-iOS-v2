@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CardResultView: UIView {
+class CardResultView: OrderResultView {
   
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var bankLabel: UILabel!
@@ -11,7 +11,7 @@ class CardResultView: UIView {
   @IBOutlet weak var deliveryDateKeyLabel: UILabel!
   @IBOutlet weak var deliveryDateLabelBottomLayoutConstraint: NSLayoutConstraint!
   
-  func layoutView(paymentInfo: PaymentInfo) {
+  override func layoutView(paymentInfo: PaymentInfo) {
     priceLabel.text = paymentInfo.price.priceNotation(.Korean)
     bankLabel.text = paymentInfo.bankName
     paidAtLabel.text = paymentInfo.paidAt?.paidAtDateString()

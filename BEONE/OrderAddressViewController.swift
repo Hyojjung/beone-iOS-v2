@@ -85,6 +85,8 @@ extension OrderAddressViewController {
       showAlertView(error)
     } else {
       address.detailAddress = detailAddressTextField.text
+      address.receiverName = receiverNameTextField.text
+      address.receiverPhone = receiverPhoneTextField.text
       
       order.senderName = senderNameTextField.text
       order.senderPhone = senderPhoneTextField.text

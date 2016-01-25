@@ -28,14 +28,19 @@ class ProductList: BaseListModel {
   }
   
   override func fetchParameter() -> AnyObject? {
-    var parameter = [String: AnyObject]()
-    parameter["locationId"] = BEONEManager.selectedLocation?.id
-    parameter["productPropertyValueIds"] = productPropertyValueIds
-    parameter["tagIds"] = tagIds
-    parameter["minPrice"] = minPrice
-    parameter["maxPrice"] = maxPrice
-    parameter["noData"] = noData
-    return parameter
+    switch type {
+    case .Shop:
+      return nil
+    case .None:
+      var parameter = [String: AnyObject]()
+      parameter["locationId"] = BEONEManager.selectedLocation?.id
+      parameter["productPropertyValueIds"] = productPropertyValueIds
+      parameter["tagIds"] = tagIds
+      parameter["minPrice"] = minPrice
+      parameter["maxPrice"] = maxPrice
+      parameter["noData"] = noData
+      return parameter
+    }
   }
   
   override func assignObject(data: AnyObject) {

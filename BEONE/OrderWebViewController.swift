@@ -10,6 +10,7 @@ class OrderWebViewController: BaseViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let orderResultViewController = segue.destinationViewController as? OrderResultViewController {
       print(sender)
+      orderResultViewController.orderingCartItemIds = order?.cartItemIds
       orderResultViewController.orderResult = sender as? [String: AnyObject]
     }
   }
