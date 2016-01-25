@@ -1,27 +1,11 @@
 
 import UIKit
 
-class FirstViewController: MainTabViewController {
+class FirstViewController: BaseTableViewController {
   
   // MARK: - Property
   
   var templateList = TemplateList()
-  
-  @IBAction func signInButtonTapped() {
-    showSigningView()
-  }
-  
-  @IBAction func product(sender: AnyObject) {
-    let product = Product()
-    product.id = 6
-    BEONEManager.selectedProduct = product
-    
-    showProductView()
-  }
-  
-  @IBAction func cart(sender: AnyObject) {
-    showViewController("Cart", viewIdentifier: "CartView")
-  }
   
   // MARK: - BaseViewController
   

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ShopsViewController: MainTabViewController {
+class ShopsViewController: BaseTableViewController {
   
   // MARK: - Constant
   

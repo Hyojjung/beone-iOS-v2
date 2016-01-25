@@ -9,6 +9,10 @@ class OrderableItemSet: BaseModel {
   let location = Location()
   let deliveryType = DeliveryType()
   let shop = Shop()
+  lazy var order: Order = {
+    let order = Order()
+    return order
+  }()
   
   override func assignObject(data: AnyObject) {
     if let orderableItemSet = data as? [String: AnyObject] {
@@ -50,6 +54,10 @@ class OrderableItemSet: BaseModel {
       
       if let shopObject = orderableItemSet["shop"] {
         shop.assignObject(shopObject)
+      }
+      
+      if let order = orderableItemSet["order"] {
+        self.order.assignObject(order)
       }
     }
   }

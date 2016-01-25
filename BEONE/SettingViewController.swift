@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SettingViewController: MainTabViewController {
+class SettingViewController: BaseTableViewController {
   
   // MARK: - Constant
   

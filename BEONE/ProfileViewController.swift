@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProfileViewController: MainTabViewController {
+class ProfileViewController: BaseTableViewController {
   
   // MARK: - Constant
   

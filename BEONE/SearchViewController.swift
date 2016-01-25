@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SearchViewController: MainTabViewController {
+class SearchViewController: BaseTableViewController {
   
   // MARK: - Constant
   
