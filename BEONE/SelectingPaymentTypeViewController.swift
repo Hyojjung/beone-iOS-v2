@@ -64,6 +64,9 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   @IBAction func orderButtonTapped() {
     if let paymentTypeId = selectedPaymentTypeId, paymentTypes = paymentTypes {
       var selectedPaymentType: PaymentType?
+      if selectedPaymentTypeId == PaymentTypeId.Card.rawValue {
+        performSegueWithIdentifier("From Order To Billing", sender: nil)
+      }
       for paymentType in paymentTypes {
         if paymentTypeId == paymentType.id {
           selectedPaymentType = paymentType

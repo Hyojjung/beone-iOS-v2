@@ -1460,9 +1460,9 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="L1m-fY-P4W"/>
+                                        <exclude reference="hKc-PH-UHf"/>
                                         <exclude reference="nYu-eN-fUB"/>
                                         <exclude reference="rc9-2y-9hm"/>
-                                        <exclude reference="hKc-PH-UHf"/>
                                     </mask>
                                 </variation>
                             </view>
