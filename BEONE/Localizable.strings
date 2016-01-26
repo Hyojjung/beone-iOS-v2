@@ -48,3 +48,12 @@
 "select time range" = "희망시간대를 선택해주세요.";
 "select min price" = "최소 가격대를 선택해주세요.";
 "select max price" = "최대 가격대를 선택해주세요.";
+
+"input coupon number" = "쿠폰번호를 입력해주세요.";
+"coupon conflict" = "이미 등록된 쿠폰입니다.";
+"check coupon number" = "쿠폰번호를 다시 확인해주세요.";
+
+"expired" = "(기간만료)";
+"used" = "(사용됨)";
+"expired today" = "(오늘만료)";
+"day left" = "일 남음)";

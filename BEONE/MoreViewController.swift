@@ -14,4 +14,12 @@ class MoreViewController: BaseViewController {
   @IBAction func showHelpViewButtonTapped() {
     showViewController("Help", viewIdentifier: "HelpView")
   }
+  
+  @IBAction func showCouponViewButtonTapped() {
+    showViewController("Coupon", viewIdentifier: "CouponView")
+  }
+  
+  @IBAction func showSettingViewButtonTapped(sender: AnyObject) {
+    showViewController("Setting", viewIdentifier: "SettingView")
+  }
 }

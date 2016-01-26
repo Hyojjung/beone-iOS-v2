@@ -13,6 +13,9 @@ let selectedProductPropertyValueButtonColor = UIColor(red:208.0 / 255, green:165
 let kTableViewDefaultHeight = CGFloat(44)
 let kCollectionViewDefaultSize = CGSize(width: ViewControllerHelper.screenWidth, height: kTableViewDefaultHeight)
 
+let kInputActiveImageName = "inputActive"
+let kInputImageName = "input"
+
 extension UILabel {
   func setWidth(width: CGFloat) {
     var labelFrame = frame

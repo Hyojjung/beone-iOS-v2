@@ -47,6 +47,14 @@ class BaseModel: NSObject {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: postSuccess(), failure: postFailure())
   }
   
+  func post(postSuccess: (AnyObject?) -> Void, postFailure: ((NetworkError) -> Void)? = nil) {
+    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
+      postSuccess(result)
+      }, failure: {(error) -> Void in
+        postFailure?(error)
+    })
+  }
+  
   func postUrl() -> String {
     fatalError("Must Override")
   }

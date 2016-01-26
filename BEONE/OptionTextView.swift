@@ -30,7 +30,7 @@ class BeoneTextView: UITextView {
     didSet {
       if let superview = superview!.superview as? OptionTextView {
         superview.backgroundImageView.image =
-          isHighlighted ? UIImage(named: "inputActive") : UIImage(named: "input")
+          isHighlighted ? UIImage(named: kInputActiveImageName) : UIImage(named: kInputImageName)
       }
     }
   }
