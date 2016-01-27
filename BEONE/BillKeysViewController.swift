@@ -17,6 +17,8 @@ class BillKeysViewController: BaseTableViewController {
     "addCardCell",
     "infoCell"]
   
+  // MARK: - Variable
+
   var billKeyList = BillKeyList()
   
   override func setUpView() {

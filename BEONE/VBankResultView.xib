@@ -202,14 +202,12 @@
             <connections>
                 <outlet property="accountLabel" destination="uRl-9w-Y3B" id="Iqp-1i-b5A"/>
                 <outlet property="bankLabel" destination="Qpq-iu-Z2T" id="MmE-OF-duU"/>
-                <outlet property="couponLabel" destination="7CF-xt-zwh" id="CrT-Sg-hsZ"/>
                 <outlet property="deliveryDateKeyLabel" destination="bQB-sE-tFj" id="JlF-qb-Pz2"/>
                 <outlet property="deliveryDateLabel" destination="yka-36-kLT" id="j7k-6S-Joa"/>
                 <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="uGd-gn-wKO" id="rMz-2t-l0W"/>
                 <outlet property="expiredAtLabel" destination="PIU-6D-exD" id="cgV-Oi-Ikd"/>
                 <outlet property="issureNameLabel" destination="jE9-4G-kxM" id="FwR-mV-Mg2"/>
                 <outlet property="priceLabel" destination="I1W-se-Wia" id="4s8-Fo-xE1"/>
-                <outlet property="usedPointLabel" destination="1ok-a9-sg4" id="jRA-dq-k1D"/>
             </connections>
             <point key="canvasLocation" x="480" y="350"/>
         </view>

@@ -19,7 +19,7 @@ class CouponList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let coupons = data["data"] as? [[String: AnyObject]] {
+    if let coupons = data as? [[String: AnyObject]] {
       list.removeAll()
       for couponObject in coupons {
         let coupon = Coupon()

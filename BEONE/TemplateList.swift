@@ -6,7 +6,7 @@ class TemplateList: BaseListModel {
   
   override func assignObject(data: AnyObject) {
     list.removeAll()
-    if let templateList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+    if let templateList = data as? [[String: AnyObject]] {
       for templateObject in templateList {
         if let type = templateObject[kTemplatePropertyKeyType] as? String, templateType = TemplateType(rawValue: type) {
           let template = Template(type: templateType)

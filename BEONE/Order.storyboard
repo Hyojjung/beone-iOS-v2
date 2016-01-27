@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" rowHeight="127" id="RnZ-qF-bwr" customClass="OrderItemCell" customModule="BEONE" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" rowHeight="127" id="RnZ-qF-bwr" customClass="OrderOrderableItemCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RnZ-qF-bwr" id="n7d-sy-CkT">
@@ -32,9 +32,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGw-lD-ZKR">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_item" translatesAutoresizingMaskIntoConstraints="NO" id="SA9-z0-4Sl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
-                                                        </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T6N-9T-Rrb" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                             <rect key="frame" x="14" y="13" width="50" height="50"/>
                                                             <constraints>
@@ -89,6 +86,9 @@
                                                             <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_item" translatesAutoresizingMaskIntoConstraints="NO" id="SA9-z0-4Sl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1300,13 +1300,13 @@ IAo
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-N2-Vtq">
-                                                    <rect key="frame" x="98" y="48" width="21" height="15"/>
+                                                    <rect key="frame" x="98" y="48" width="21" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f48-j7-ZeL">
-                                                    <rect key="frame" x="98" y="65" width="25" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f48-j7-ZeL">
+                                                    <rect key="frame" x="98" y="64" width="25" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1500,13 +1500,13 @@ IAo
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-J9-Tgg">
-                                                    <rect key="frame" x="98" y="48" width="21" height="15"/>
+                                                    <rect key="frame" x="98" y="48" width="21" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIa-zU-Tt9">
-                                                    <rect key="frame" x="98" y="65" width="25" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIa-zU-Tt9">
+                                                    <rect key="frame" x="98" y="64" width="25" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1518,7 +1518,7 @@ IAo
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUN-fp-mwe">
-                                                    <rect key="frame" x="0.0" y="97" width="600" height="86"/>
+                                                    <rect key="frame" x="0.0" y="97" width="600" height="87"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7A-Jc-ALs">
                                                             <rect key="frame" x="14" y="10" width="70" height="20"/>
@@ -1563,13 +1563,13 @@ IAo
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="nDh-YA-iWT">
-                                                            <rect key="frame" x="98" y="35" width="458" height="16"/>
+                                                            <rect key="frame" x="98" y="35" width="458" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ra-ef-KRo">
-                                                            <rect key="frame" x="14" y="56" width="70" height="20"/>
+                                                            <rect key="frame" x="14" y="57" width="70" height="20"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송비" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-wY-Esx">
                                                                     <rect key="frame" x="8" y="3" width="32" height="15"/>
@@ -1587,7 +1587,7 @@ IAo
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-4d-clO">
-                                                            <rect key="frame" x="98" y="58" width="33" height="16"/>
+                                                            <rect key="frame" x="98" y="59" width="33" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1626,13 +1626,13 @@ IAo
                                                     </variation>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_1" translatesAutoresizingMaskIntoConstraints="NO" id="RRR-KM-PmE">
-                                                    <rect key="frame" x="15" y="183" width="570" height="1"/>
+                                                    <rect key="frame" x="15" y="184" width="570" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="NdI-1n-sDq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="108" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWK-p4-bch">
-                                                    <rect key="frame" x="14" y="204" width="43" height="20"/>
+                                                    <rect key="frame" x="14" y="205" width="43" height="19"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1801,7 +1801,7 @@ IAo
         <!--Bill Keys View Controller-->
         <scene sceneID="WnS-Re-tMW">
             <objects>
-                <viewController storyboardIdentifier="billKeyListView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wrh-P3-yd1" customClass="BillKeysViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillKeysView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wrh-P3-yd1" customClass="BillKeysViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gvX-G8-Ykh"/>
                         <viewControllerLayoutGuide type="bottom" id="fF0-l0-9L1"/>
@@ -2109,7 +2109,7 @@ IAo
         <!-- -->
         <scene sceneID="9iJ-9V-K7G">
             <objects>
-                <viewController title=" " automaticallyAdjustsScrollViewInsets="NO" id="7B2-Fp-fOE" customClass="BOBillKeyAddingViewController" sceneMemberID="viewController">
+                <viewController title=" " automaticallyAdjustsScrollViewInsets="NO" id="7B2-Fp-fOE" customClass="AddingBillKeyViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kaV-sp-R9G"/>
                         <viewControllerLayoutGuide type="bottom" id="Cl7-Hu-pPj"/>
@@ -2153,9 +2153,6 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
-                                                    <connections>
-                                                        <action selector="personalButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="yRW-Rn-ixD"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3F-xq-8lN">
                                                     <rect key="frame" x="132" y="53" width="26" height="18"/>
@@ -2172,9 +2169,6 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
-                                                    <connections>
-                                                        <action selector="corporationButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="XL1-wp-plk"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="법인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckU-K5-3iQ">
                                                     <rect key="frame" x="253" y="53" width="26" height="18"/>
@@ -2245,7 +2239,7 @@ IAo
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="Udk-nU-Lf2">
-                                                    <rect key="frame" x="94" y="5" width="119" height="35"/>
+                                                    <rect key="frame" x="94" y="5" width="120" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="3Nr-NA-1sy"/>
                                                         <constraint firstAttribute="height" constant="35" id="5aX-KX-wFn"/>
@@ -2262,8 +2256,8 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="7bS-5D-7O0"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-3c-z1Q">
-                                                    <rect key="frame" x="218" y="5" width="120" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-3c-z1Q">
+                                                    <rect key="frame" x="219" y="5" width="119" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="6kx-Ue-zJb"/>
                                                         <constraint firstAttribute="height" constant="35" id="8fW-gB-nrN"/>
@@ -2376,9 +2370,6 @@ IAo
                                                             <state key="normal" backgroundImage="combobox_gold">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="monthPickerButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="8rU-uZ-tb0"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="112" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00월" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-Q4-RXa">
                                                             <rect key="frame" x="12" y="10" width="28" height="16"/>
@@ -2411,9 +2402,6 @@ IAo
                                                             <state key="normal" backgroundImage="combobox_gold">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="yearPickerButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="opS-fb-doc"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="113" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irR-6r-Qhl">
                                                             <rect key="frame" x="12" y="10" width="44" height="16"/>
@@ -2498,8 +2486,8 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="9tL-Xh-zBq"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
-                                                    <rect key="frame" x="260" y="5" width="160" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
+                                                    <rect key="frame" x="260" y="5" width="161" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="m4C-Dv-z0d"/>
                                                         <constraint firstAttribute="height" constant="35" id="uyp-Df-soL"/>
@@ -2517,7 +2505,7 @@ IAo
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp">
-                                                    <rect key="frame" x="425" y="5" width="161" height="35"/>
+                                                    <rect key="frame" x="426" y="5" width="160" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="PCi-kN-kEf"/>
                                                         <constraint firstAttribute="width" constant="46" id="ys2-YH-z3Y"/>
@@ -2840,9 +2828,6 @@ IAo
                                                             <exclude reference="ldE-Se-DSP"/>
                                                         </mask>
                                                     </variation>
-                                                    <connections>
-                                                        <action selector="toggleAgree:" destination="7B2-Fp-fOE" eventType="touchUpInside" id="gOO-TX-U77"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" tag="114" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80r-gF-1mw">
                                                     <rect key="frame" x="14" y="45" width="197" height="27"/>
@@ -2940,9 +2925,6 @@ IAo
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="showBillingPolicyView" destination="7B2-Fp-fOE" eventType="touchUpInside" id="iWD-WL-TCn"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" tag="115" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nV-Vm-hqc">
                                                     <rect key="frame" x="14" y="72" width="136" height="27"/>
@@ -3055,9 +3037,6 @@ IAo
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="showCardPolicyView" destination="7B2-Fp-fOE" eventType="touchUpInside" id="zFy-bh-mCk"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3099,9 +3078,6 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="btn_submit_gold_pressed"/>
-                                                    <connections>
-                                                        <action selector="sendCardInfomation" destination="7B2-Fp-fOE" eventType="touchUpInside" id="uKP-xh-N3X"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3134,7 +3110,7 @@ IAo
                     </view>
                     <navigationItem key="navigationItem" id="15B-XN-oTK"/>
                     <connections>
-                        <outlet property="billKeyAddingTableView" destination="K6Q-1j-sAE" id="gIz-2H-g3C"/>
+                        <outlet property="tableView" destination="K6Q-1j-sAE" id="zs6-ml-98q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXG-vc-SJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3878,42 +3854,42 @@ IAo
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="결제금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-MS-H78">
-                                                    <rect key="frame" x="479" y="168" width="49" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-MS-H78">
+                                                    <rect key="frame" x="480" y="168" width="49" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YG-l4-9Jr">
-                                                    <rect key="frame" x="550" y="20" width="36" height="17"/>
+                                                    <rect key="frame" x="551" y="20" width="35" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="totalProductPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYR-Jl-oef">
-                                                    <rect key="frame" x="550" y="51" width="36" height="17"/>
+                                                    <rect key="frame" x="551" y="51" width="35" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="totalDeliveryPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sg-5l-Bwp">
-                                                    <rect key="frame" x="550" y="82" width="36" height="17"/>
+                                                    <rect key="frame" x="551" y="82" width="35" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="pointToUseLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZx-14-wEx">
-                                                    <rect key="frame" x="550" y="113" width="36" height="17"/>
+                                                    <rect key="frame" x="551" y="113" width="35" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="couponDiscountedPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuN-f2-QgQ">
-                                                    <rect key="frame" x="543" y="166" width="43" height="20"/>
+                                                    <rect key="frame" x="544" y="166" width="42" height="20"/>
                                                     <accessibility key="accessibilityConfiguration" label="priceToPayLabel"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -4089,7 +4065,7 @@ IAo
         <!--결제하기-->
         <scene sceneID="xBc-Uf-GYi">
             <objects>
-                <viewController storyboardIdentifier="orderWebView" title="결제하기" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5dr-bt-1ZH" customClass="OrderWebViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderWebView" title="결제하기" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5dr-bt-1ZH" customClass="OrderWebViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4HR-do-yYI"/>
                         <viewControllerLayoutGuide type="bottom" id="Xje-6H-J1G"/>
@@ -4304,7 +4280,7 @@ IAo
         <image name="stroke_1" width="2" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QJE-KL-dke"/>
+        <segue reference="qDD-6n-GFy"/>
         <segue reference="i4O-W2-Gwz"/>
     </inferredMetricsTieBreakers>
 </document>

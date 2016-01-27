@@ -7,7 +7,7 @@ class HelpList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let helps = data["data"] as? [[String: AnyObject]] {
+    if let helps = data as? [[String: AnyObject]] {
       list.removeAll()
       for helpObject in helps {
         let help = Help()

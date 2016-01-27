@@ -5,6 +5,7 @@ class OrderWebViewController: BaseViewController {
   
   @IBOutlet weak var orderWebView: UIWebView!
   var paymentTypeId: Int?
+  var paymentInfoId: Int?
   var order: Order?
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -26,8 +27,9 @@ class OrderWebViewController: BaseViewController {
             break
           }
         }
-        if let mainPaymentInfo = mainPaymentInfo {
-          let url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/payment-infos/\(mainPaymentInfo.id!)/transactions/new?paymentTypeId=\(paymentTypeId)"
+        let selectedPaymentInfoId = self.paymentInfoId != nil ? self.paymentInfoId : mainPaymentInfo?.id
+        if let selectedPaymentInfoId = selectedPaymentInfoId {
+          let url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/payment-infos/\(selectedPaymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
           
           let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())
           orderWebViewUrlRequest.setValue(MyInfo.sharedMyInfo().accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)

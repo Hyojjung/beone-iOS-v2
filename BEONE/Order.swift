@@ -5,6 +5,7 @@ class Order: BaseModel {
   var senderName: String?
   var senderPhone: String?
   var isSecret = false
+  var isPayable = false
   var address = Address()
   var deliveryMemo: String?
   var price = 0
@@ -15,10 +16,18 @@ class Order: BaseModel {
   var cartItemIds = [Int]()
   var title: String?
   var orderCode: String?
+  var createdAt: NSDate?
   var usedPoint = 0
   
+  override func fetchUrl() -> String {
+    if MyInfo.sharedMyInfo().isUser() {
+      return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(id!)"
+    }
+    return "orders"
+  }
+  
   override func assignObject(data: AnyObject) {
-    assignOrderableItemSets(data["orderableItemSets"])
+    assignOrderableItemSets(data)
     address.assignObject(data)
 
     if let paymentInfoObjects = data["paymentInfos"] as? [[String: AnyObject]] {
@@ -32,6 +41,7 @@ class Order: BaseModel {
     
     id = data[kObjectPropertyKeyId] as? Int
     title = data["title"] as? String
+    deliveryMemo = data["deliveryMemo"] as? String
     senderName = data["senderName"] as? String
     senderPhone = data["senderPhone"] as? String
     orderCode = data["orderCode"] as? String
@@ -40,6 +50,9 @@ class Order: BaseModel {
     }
     if let isSecret = data["isSecret"] as? Bool {
       self.isSecret = isSecret
+    }
+    if let isPayable = data["isPayable"] as? Bool {
+      self.isPayable = isPayable
     }
     if let price = data["price"] as? Int {
       self.price = price
@@ -50,22 +63,32 @@ class Order: BaseModel {
     if let actualPrice = data["actualPrice"] as? Int {
       self.actualPrice = actualPrice
     }
+    if let createdAt = data["createdAt"] as? String {
+      self.createdAt = createdAt.date()
+    }
   }
   
   func assignOrderableItemSets(data: AnyObject?) {
-    if let orderableItemsetsObject = data as? [[String: AnyObject]] {
-      orderableItemSets.removeAll()
-      for orderableItemsetObject in orderableItemsetsObject {
-        let orderableItemset = OrderableItemSet()
-        orderableItemset.assignObject(orderableItemsetObject)
-        orderableItemSets.append(orderableItemset)
+    if let data = data as? [String: AnyObject] {
+      var orderableItemsetsObject = data["orderDeliveryItemSets"] as? [[String: AnyObject]]
+      if orderableItemsetsObject == nil {
+        orderableItemsetsObject = data["orderableItemSets"] as? [[String: AnyObject]]
       }
       
-      orderableItemSets.sortInPlace{
-        if $0.deliveryType.id == $1.deliveryType.id {
-          return $0.shop.id > $1.shop.id
-        } else {
-          return $0.deliveryType.id > $1.deliveryType.id
+      if let orderableItemsetsObject = orderableItemsetsObject {
+        orderableItemSets.removeAll()
+        for orderableItemsetObject in orderableItemsetsObject {
+          let orderableItemset = OrderableItemSet()
+          orderableItemset.assignObject(orderableItemsetObject)
+          orderableItemSets.append(orderableItemset)
+        }
+        
+        orderableItemSets.sortInPlace{
+          if $0.deliveryType.id == $1.deliveryType.id {
+            return $0.shop.id > $1.shop.id
+          } else {
+            return $0.deliveryType.id > $1.deliveryType.id
+          }
         }
       }
     }

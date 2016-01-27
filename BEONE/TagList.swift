@@ -11,7 +11,7 @@ class TagList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let tagGroup = data[kNetworkResponseKeyData] as? [String: AnyObject] {
+    if let tagGroup = data as? [String: AnyObject] {
       name = tagGroup["name"] as? String
       subTitle = tagGroup["description"] as? String
       if let tagObjects = tagGroup["tags"] as? [[String: AnyObject]] {

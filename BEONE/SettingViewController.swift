@@ -57,6 +57,7 @@ class SettingViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    // TODO: - version
     version.get { () -> Void in
       self.tableView.reloadData()
     }

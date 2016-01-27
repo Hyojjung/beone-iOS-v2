@@ -19,15 +19,14 @@ class Version: BaseModel {
     }
   }
   
-  override func fetchUrl() -> String {
+  override func get(getSuccess: () -> Void) {
+    let url: String
     if let appID = infoDictionary()?[kBundleIdentifier] {
-      return "http://itunes.apple.com/lookup?bundleId=\(appID)"
+      url = "http://itunes.apple.com/lookup?bundleId=\(appID)"
+    } else {
+      url = "noVersion"
     }
-    return "noVersion"
-  }
-  
-  override func fetchSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
+    NetworkHelper.requestGet(url, parameter: fetchParameter(), success: { (result) -> Void in
       if result[kAppPropertyKeyResultCount] as? Int >= 1 {
         if let results = result[kAppPropertyKeyResults] as? [[String: AnyObject]], firstResult = results.first {
           let appStoreVersion = firstResult[kAppPropertyKeyBOVersion] as? String
@@ -47,9 +46,9 @@ class Version: BaseModel {
           }
         }
       }
-    }
+      getSuccess()
+      }, failure: nil)
   }
-  
   func infoDictionary() -> [String : AnyObject]? {
     return NSBundle.mainBundle().infoDictionary
   }

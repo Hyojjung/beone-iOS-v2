@@ -7,10 +7,17 @@ class OrderableItem: BaseModel {
   var availableTimeRangeList = AvailableTimeRangeList()
   let product = Product()
   var cartItemId: Int?
+  var productPrice: Int?
+  var productImageUrl: String?
+  var productTitle: String?
+  var shopName: String?
   var productOrderableInfo = ProductOrderableInfo()
-  
+  var itemImageUrls = [String]()
+  var selectedOption: ProductOptionSetList?
+
   override func assignObject(data: AnyObject) {
     if let orderableItemset = data as? [String: AnyObject] {
+      print(data)
       id = orderableItemset[kObjectPropertyKeyId] as? Int
       if let availableTimeRangesObject = orderableItemset["availableTimeRanges"] as? [[String: AnyObject]] {
         availableTimeRangeList.list.removeAll()
@@ -21,9 +28,15 @@ class OrderableItem: BaseModel {
         }
       }
       
+      if let itemImageUrls = data["itemImageUrls"] as? [String] {
+        self.itemImageUrls = itemImageUrls
+      }
       price = data["actualPrice"] as? Int
       quantity = data["quantity"] as? Int
+      productPrice = data["productPrice"] as? Int
       cartItemId = data["cartItemId"] as? Int
+      productImageUrl = data["productImageUrl"] as? String
+      productTitle = data["productTitle"] as? String
       
       if let productObject = orderableItemset["product"] {
         product.assignObject(productObject)
@@ -31,6 +44,11 @@ class OrderableItem: BaseModel {
       
       if let productOrderableInfoObject = orderableItemset["productOrderableInfo"] {
         productOrderableInfo.assignObject(productOrderableInfoObject)
+      }
+      
+      if let selectedOptionObject = data["productOptionSets"] as? [[String: AnyObject]] {
+        selectedOption = ProductOptionSetList()
+        selectedOption?.assignObject(selectedOptionObject)
       }
     }
   }

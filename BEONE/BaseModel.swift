@@ -14,7 +14,10 @@ class BaseModel: NSObject {
   
   func get(getSuccess: () -> Void) {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
-      self.assignObject(result)
+      let data = result[kNetworkResponseKeyData]
+      if data != nil {
+        self.assignObject(data!!)
+      }
       getSuccess()
       }, failure: nil)
   }

@@ -10,7 +10,7 @@ class AddressList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let addressList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+    if let addressList = data as? [[String: AnyObject]] {
       print(addressList)
       list.removeAll()
       for addressObject in addressList {

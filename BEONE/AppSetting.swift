@@ -16,7 +16,7 @@ class AppSetting: BaseModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let appSettingObject = data[kNetworkResponseKeyData] as? [String: AnyObject] {
+    if let appSettingObject = data as? [String: AnyObject] {
       if let searchMaxPrice = appSettingObject["searchMaxPrice"] as? Int {
         self.searchMaxPrice = searchMaxPrice / kPriceUnit
       }

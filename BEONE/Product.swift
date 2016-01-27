@@ -62,51 +62,48 @@ class Product: BaseModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let data = data as? [String: AnyObject] {
-      let productObejct = data[kNetworkResponseKeyData] != nil ? data[kNetworkResponseKeyData] : data
-      if let product = productObejct as? [String: AnyObject] {
-        id = product[kObjectPropertyKeyId] as? Int
-        mainImageUrl = product[kProductPropertyKeyMainImageUrl] as? String
-        title = product[kProductPropertyKeyTitle] as? String
-        if let actualPrice = product[kProductPropertyKeyActualPrice] as? Int {
-          self.actualPrice = actualPrice
-        }
-        if let price = product[kProductPropertyKeyPrice] as? Int {
-          self.price = price
-        }
-        if let onSale = product[kProductPropertyKeyOnSale] as? Bool {
-          self.onSale = onSale
-        }
-        if price != 0 && onSale {
-          let price = CGFloat(self.price)
-          let actualPrice = CGFloat(self.actualPrice)
-          discountPercent = Int((price - actualPrice) / price * 100)
-        }
-        if let quantity = product[kProductPropertyKeyQuantity] as? Int {
-          self.quantity = quantity
-        }
-        subtitle = product[kProductPropertyKeySubtitle] as? String
-        summary = product[kProductPropertyKeySummary] as? String
-        productCode = product[kProductPropertyKeyProductCode] as? String
-        countryInfo = product[kProductPropertyKeyCountryInfo] as? String
-        size = product[kProductPropertyKeySize] as? String
-        shelfLife = product[kProductPropertyKeyShelfLife] as? String
-        composition = product[kProductPropertyKeyComposition] as? String
-        relatedLawInfo = product[kProductPropertyKeyRelatedLayInfo] as? String
-        keepingMethod = product[kProductPropertyKeyKeepingMethod] as? String
-        precaution = product[kProductPropertyKeyPrecaution] as? String
-        contact = product[kProductPropertyKeyContact] as? String
-        if let soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool {
-          self.soldOut = soldOut
-        }
-        assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
-        assignProductDetails(product[kProductPropertyKeyProductDetails])
-        if let shopObject = product[kProductPropertyKeyShop]{
-          shop.assignObject(shopObject)
-        }
-        if let productOptionSetObjects = product["productOptionSets"] as? [[String: AnyObject]] {
-          productOptionSets.assignObject(productOptionSetObjects)
-        }
+    if let product = data as? [String: AnyObject] {
+      id = product[kObjectPropertyKeyId] as? Int
+      mainImageUrl = product[kProductPropertyKeyMainImageUrl] as? String
+      title = product[kProductPropertyKeyTitle] as? String
+      if let actualPrice = product[kProductPropertyKeyActualPrice] as? Int {
+        self.actualPrice = actualPrice
+      }
+      if let price = product[kProductPropertyKeyPrice] as? Int {
+        self.price = price
+      }
+      if let onSale = product[kProductPropertyKeyOnSale] as? Bool {
+        self.onSale = onSale
+      }
+      if price != 0 && onSale {
+        let price = CGFloat(self.price)
+        let actualPrice = CGFloat(self.actualPrice)
+        discountPercent = Int((price - actualPrice) / price * 100)
+      }
+      if let quantity = product[kProductPropertyKeyQuantity] as? Int {
+        self.quantity = quantity
+      }
+      subtitle = product[kProductPropertyKeySubtitle] as? String
+      summary = product[kProductPropertyKeySummary] as? String
+      productCode = product[kProductPropertyKeyProductCode] as? String
+      countryInfo = product[kProductPropertyKeyCountryInfo] as? String
+      size = product[kProductPropertyKeySize] as? String
+      shelfLife = product[kProductPropertyKeyShelfLife] as? String
+      composition = product[kProductPropertyKeyComposition] as? String
+      relatedLawInfo = product[kProductPropertyKeyRelatedLayInfo] as? String
+      keepingMethod = product[kProductPropertyKeyKeepingMethod] as? String
+      precaution = product[kProductPropertyKeyPrecaution] as? String
+      contact = product[kProductPropertyKeyContact] as? String
+      if let soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool {
+        self.soldOut = soldOut
+      }
+      assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
+      assignProductDetails(product[kProductPropertyKeyProductDetails])
+      if let shopObject = product[kProductPropertyKeyShop]{
+        shop.assignObject(shopObject)
+      }
+      if let productOptionSetObjects = product["productOptionSets"] as? [[String: AnyObject]] {
+        productOptionSets.assignObject(productOptionSetObjects)
       }
     }
   }

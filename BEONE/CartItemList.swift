@@ -11,7 +11,7 @@ class CartItemList: BaseListModel {
   // MARK: - BaseModel Methods (Fetch)
   
   override func assignObject(data: AnyObject) {
-    if let cartItemList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+    if let cartItemList = data as? [[String: AnyObject]] {
       list.removeAll()
       for cartItemObejct in cartItemList {
         let cartItem = CartItem()

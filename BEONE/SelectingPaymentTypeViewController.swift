@@ -42,17 +42,6 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     }
   }
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePostOrderSuccess",
-      name: kNotificationPostOrderSuccess, object: nil)
-    
-  }
-  
-  func handlePostOrderSuccess() {
-    performSegueWithIdentifier("From Order To Order Web", sender: nil)
-  }
-  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
     if let orderWebViewController = segue.destinationViewController as? OrderWebViewController {
@@ -75,7 +64,9 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       }
       if let selectedPaymentType = selectedPaymentType {
         if selectedPaymentType.isWebViewTransaction {
-          order.post()
+          order.post({ (result) -> Void in
+            self.performSegueWithIdentifier("From Order To Order Web", sender: nil)
+          })
         }
       }
     }

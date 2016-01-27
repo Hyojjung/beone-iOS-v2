@@ -13,15 +13,12 @@ class Shop: BaseModel {
   var summary: String?
   
   override func assignObject(data: AnyObject) {
-    if let data = data as? [String: AnyObject] {
-      let shop = data[kNetworkResponseKeyData] != nil ? data[kNetworkResponseKeyData] : data
-      if let shop = shop as? [String: AnyObject] {
-        id = shop[kObjectPropertyKeyId] as? Int
-        backgroundImageUrl = shop[kShopPropertyKeyBackgroundImageUrl] as? String
-        name = shop[kShopPropertyKeyName] as? String
-        profileImageUrl = shop[kShopPropertyKeyProfileImageUrl] as? String
-        summary = shop[kShopPropertyKeyDescription] as? String
-      }
+    if let shop = data as? [String: AnyObject] {
+      id = shop[kObjectPropertyKeyId] as? Int
+      backgroundImageUrl = shop[kShopPropertyKeyBackgroundImageUrl] as? String
+      name = shop[kShopPropertyKeyName] as? String
+      profileImageUrl = shop[kShopPropertyKeyProfileImageUrl] as? String
+      summary = shop[kShopPropertyKeyDescription] as? String
     }
   }
   

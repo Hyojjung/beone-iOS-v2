@@ -72,4 +72,18 @@ class Address: BaseModel {
       }
     }
   }
+  
+  func addressString() -> String {
+    var address: String
+    if addressType == .Road {
+      address = roadAddress!
+    } else {
+      address = jibunAddress!
+    }
+    
+    if let detailAddress = detailAddress {
+      address += detailAddress
+    }
+    return address
+  }
 }

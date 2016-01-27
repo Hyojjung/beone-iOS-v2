@@ -23,9 +23,16 @@
 		620717821BE347E20014B9AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717801BE347E20014B9AC /* WebViewController.swift */; };
 		620717831BE347E20014B9AC /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717811BE347E20014B9AC /* WebViewController.xib */; };
 		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
+		622DE1121C58B6A800F0C9DF /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1111C58B6A800F0C9DF /* OrderViewController.swift */; };
+		622DE1151C5A58FF00F0C9DF /* AddingBillKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */; };
+		622DE1171C5B383200F0C9DF /* OrderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1161C5B383200F0C9DF /* OrderCells.swift */; };
 		623AAD941C57CC180095731B /* BillKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD931C57CC180095731B /* BillKey.swift */; };
 		623AAD961C57D0CA0095731B /* BillKeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD951C57D0CA0095731B /* BillKeyList.swift */; };
 		623AAD981C57D1CF0095731B /* BillKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD971C57D1CF0095731B /* BillKeysViewController.swift */; };
+		623AAD9A1C5858850095731B /* OrderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 623AAD991C5858850095731B /* OrderList.storyboard */; };
+		623AAD9C1C5858980095731B /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9B1C5858980095731B /* OrdersViewController.swift */; };
+		623AAD9E1C5858BB0095731B /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9D1C5858BB0095731B /* OrderList.swift */; };
+		623AADA01C585D3D0095731B /* BaseUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */; };
 		626B6EF21C4F41C800F29FD5 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */; };
 		6286FB5F1C560AE900845BE4 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB5E1C560AE900845BE4 /* SideBarViewController.swift */; };
 		6286FB611C560BA400845BE4 /* SideBarViewContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB601C560BA400845BE4 /* SideBarViewContents.swift */; };
@@ -249,9 +256,16 @@
 		620717801BE347E20014B9AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		620717811BE347E20014B9AC /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		622DE1111C58B6A800F0C9DF /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingBillKeyViewController.swift; sourceTree = "<group>"; };
+		622DE1161C5B383200F0C9DF /* OrderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCells.swift; sourceTree = "<group>"; };
 		623AAD931C57CC180095731B /* BillKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKey.swift; sourceTree = "<group>"; };
 		623AAD951C57D0CA0095731B /* BillKeyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKeyList.swift; sourceTree = "<group>"; };
 		623AAD971C57D1CF0095731B /* BillKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKeysViewController.swift; sourceTree = "<group>"; };
+		623AAD991C5858850095731B /* OrderList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderList.storyboard; sourceTree = "<group>"; };
+		623AAD9B1C5858980095731B /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		623AAD9D1C5858BB0095731B /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
+		623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUserViewController.swift; sourceTree = "<group>"; };
 		626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		6286FB5E1C560AE900845BE4 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		6286FB601C560BA400845BE4 /* SideBarViewContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewContents.swift; sourceTree = "<group>"; };
@@ -507,11 +521,21 @@
 			name = StringExtension;
 			sourceTree = "<group>";
 		};
-		621A71161C4DFDBF004AF8E7 /* New Group */ = {
+		621A71161C4DFDBF004AF8E7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */,
 			);
-			name = "New Group";
+			name = Base;
+			sourceTree = "<group>";
+		};
+		622DE1131C58B6B500F0C9DF /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				623AAD9B1C5858980095731B /* OrdersViewController.swift */,
+				622DE1111C58B6A800F0C9DF /* OrderViewController.swift */,
+			);
+			name = OrderList;
 			sourceTree = "<group>";
 		};
 		62E5CF011BDDE19100A99F4C = {
@@ -608,7 +632,7 @@
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				621A71161C4DFDBF004AF8E7 /* New Group */,
+				621A71161C4DFDBF004AF8E7 /* Base */,
 				73398AF31C07425500F57D4A /* Order */,
 				7342416F1BFC285A00BE21F5 /* Base */,
 				62FC6E951BDF43CB0071E1B1 /* Signing */,
@@ -633,7 +657,7 @@
 				6286FB721C56780100845BE4 /* HelpViewController.swift */,
 				6286FB7C1C5747E700845BE4 /* CouponsViewController.swift */,
 				6286FB871C57589300845BE4 /* AddingCouponViewController.swift */,
-				623AAD971C57D1CF0095731B /* BillKeysViewController.swift */,
+				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -675,6 +699,7 @@
 		62E5CF351BDDEBA100A99F4C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				623AAD991C5858850095731B /* OrderList.storyboard */,
 				6286FB661C5645B500845BE4 /* Coupon.storyboard */,
 				6286FB671C5645B500845BE4 /* Help.storyboard */,
 				6286FB681C5645B500845BE4 /* Notice.storyboard */,
@@ -812,6 +837,8 @@
 		7309D7541BFF143A00F9761A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				7323FD2A1C3BA130008B99DF /* PaymentInfo.swift */,
+				623AAD9D1C5858BB0095731B /* OrderList.swift */,
 				7309D7521BFF12B700F9761A /* Address.swift */,
 				73398AE01C05F14000F57D4A /* AddressList.swift */,
 				73398AE41C06052B00F57D4A /* Order.swift */,
@@ -883,6 +910,7 @@
 				73DF1D761C400D4400DB3550 /* PaypalResultView.xib */,
 				73DF1D821C40153400DB3550 /* PaypalResultView.swift */,
 				73DF1D781C400D6800DB3550 /* OrderResultLabelView.xib */,
+				622DE1161C5B383200F0C9DF /* OrderCells.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -899,11 +927,12 @@
 		73398AF31C07425500F57D4A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				622DE1131C58B6B500F0C9DF /* OrderList */,
 				7309D7501BFEFC6200F9761A /* OrderAddressViewController.swift */,
 				73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */,
 				73398AF61C08202A00F57D4A /* DeliveryDateViewController.swift */,
+				623AAD971C57D1CF0095731B /* BillKeysViewController.swift */,
 				7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */,
-				7323FD2A1C3BA130008B99DF /* PaymentInfo.swift */,
 				7323FD2C1C3BB80D008B99DF /* OrderResultViewController.swift */,
 			);
 			name = Order;
@@ -1185,6 +1214,7 @@
 				73ED3BB81C4A25CC00D0B742 /* Search.storyboard in Resources */,
 				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,
 				6286FB8A1C579D7D00845BE4 /* Setting.storyboard in Resources */,
+				623AAD9A1C5858850095731B /* OrderList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1274,6 +1304,7 @@
 				736818FD1C107369009E433B /* AvailableTimeRangeList.swift in Sources */,
 				7388FA411C040C2A0015C3DF /* ProductDetail.swift in Sources */,
 				6286FB881C57589300845BE4 /* AddingCouponViewController.swift in Sources */,
+				623AAD9C1C5858980095731B /* OrdersViewController.swift in Sources */,
 				73239A7E1C4A9E99001FBCBD /* CartItemManager.swift in Sources */,
 				73168C131BF0A83700308AF2 /* PasswordFindingViewController.swift in Sources */,
 				73398AE51C06052B00F57D4A /* Order.swift in Sources */,
@@ -1284,6 +1315,7 @@
 				6207177B1BE339EA0014B9AC /* TemplateHelper.swift in Sources */,
 				7309D7511BFEFC6200F9761A /* OrderAddressViewController.swift in Sources */,
 				73398B091C0844D900F57D4A /* OrderableItem.swift in Sources */,
+				623AADA01C585D3D0095731B /* BaseUserViewController.swift in Sources */,
 				6207174F1BE231490014B9AC /* TableTemplateCell.swift in Sources */,
 				73DF1D8B1C43487900DB3550 /* ProductPropertyList.swift in Sources */,
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,
@@ -1331,6 +1363,7 @@
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
+				622DE1171C5B383200F0C9DF /* OrderCells.swift in Sources */,
 				73398AE11C05F14000F57D4A /* AddressList.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				620717441BE205840014B9AC /* NetworkStringFormatter.swift in Sources */,
@@ -1372,6 +1405,7 @@
 				6286FB7D1C5747E700845BE4 /* CouponsViewController.swift in Sources */,
 				73398AFD1C08248400F57D4A /* CartItemList.swift in Sources */,
 				734241751BFC4FF400BE21F5 /* ShopViewController.swift in Sources */,
+				623AAD9E1C5858BB0095731B /* OrderList.swift in Sources */,
 				7388FA431C0458880015C3DF /* InquiryListViewController.swift in Sources */,
 				7309D7531BFF12B700F9761A /* Address.swift in Sources */,
 				73BE22611C3104F8003FA11C /* OptionView.swift in Sources */,
@@ -1386,6 +1420,7 @@
 				73BE224E1C29355B003FA11C /* Option.swift in Sources */,
 				6286FB6D1C56462F00845BE4 /* NoticeViewController.swift in Sources */,
 				73BE224A1C293105003FA11C /* ProductOptionSet.swift in Sources */,
+				622DE1121C58B6A800F0C9DF /* OrderViewController.swift in Sources */,
 				6286FB861C57569F00845BE4 /* SWRevealViewController.m in Sources */,
 				73BE22471C292E53003FA11C /* ProductOptionSetList.swift in Sources */,
 				6286FB771C5679C300845BE4 /* HelpList.swift in Sources */,
@@ -1393,6 +1428,7 @@
 				732B73B41C45650300C98D3F /* AppSetting.swift in Sources */,
 				73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */,
 				73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */,
+				622DE1151C5A58FF00F0C9DF /* AddingBillKeyViewController.swift in Sources */,
 				7388FA501C049D9F0015C3DF /* FloatingView.swift in Sources */,
 				6286FB711C5646A300845BE4 /* NoticeList.swift in Sources */,
 				73F6298C1BF18789001EA72F /* ProductDetailViewController.swift in Sources */,

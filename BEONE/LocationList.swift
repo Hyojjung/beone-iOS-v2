@@ -7,7 +7,7 @@ class LocationList: BaseListModel {
   }
   
   override func assignObject(data: AnyObject) {
-    if let locationList = data[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+    if let locationList = data as? [[String: AnyObject]] {
       list.removeAll()
       for locationObject in locationList {
         let location = Location()

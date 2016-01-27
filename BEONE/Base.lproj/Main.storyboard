@@ -1257,7 +1257,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-0y-fgI">
-                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1304,7 +1304,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT9-WO-9aN">
-                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1343,7 +1343,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도움말" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9c-XU-kgU">
-                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1383,7 +1383,7 @@
                                 <rect key="frame" x="450" y="64" width="150" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-EG-Pup">
-                                        <rect key="frame" x="51" y="97" width="49" height="17"/>
+                                        <rect key="frame" x="51" y="97" width="48.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1429,7 +1429,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-W3-S8x">
-                                        <rect key="frame" x="63" y="97" width="25" height="17"/>
+                                        <rect key="frame" x="63" y="97" width="24.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1438,7 +1438,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <state key="normal" backgroundImage="btnLinePcolor"/>
                                         <connections>
-                                            <action selector="showSettingViewButtonTapped:" destination="dna-2A-h1W" eventType="touchUpInside" id="oRm-ou-x0n"/>
+                                            <action selector="showSettingViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="i1W-u6-KEV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1466,20 +1466,68 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-HT-pEu">
+                                <rect key="frame" x="150" y="214" width="150" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarDday" translatesAutoresizingMaskIntoConstraints="NO" id="lWU-dS-vbF">
+                                        <rect key="frame" x="53" y="53" width="44" height="44"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reL-wE-WMB">
+                                        <rect key="frame" x="51" y="97" width="49" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AX-ig-G8G">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <state key="normal" backgroundImage="btnLinePcolor"/>
+                                        <connections>
+                                            <action selector="showOrdersViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="M2S-9n-Ir5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3hA-bA-cJW"/>
+                                    <constraint firstAttribute="width" constant="126" id="7eq-Hg-Yzb"/>
+                                    <constraint firstItem="5AX-ig-G8G" firstAttribute="top" secondItem="h9w-HT-pEu" secondAttribute="top" id="BAJ-D9-le6"/>
+                                    <constraint firstAttribute="bottom" secondItem="5AX-ig-G8G" secondAttribute="bottom" id="FQy-mZ-grg"/>
+                                    <constraint firstAttribute="trailing" secondItem="5AX-ig-G8G" secondAttribute="trailing" id="JS1-WU-Hc1"/>
+                                    <constraint firstAttribute="width" secondItem="h9w-HT-pEu" secondAttribute="height" multiplier="1:1" id="TJP-DP-GIh"/>
+                                    <constraint firstItem="reL-wE-WMB" firstAttribute="centerX" secondItem="h9w-HT-pEu" secondAttribute="centerX" id="Vsa-dR-J1K"/>
+                                    <constraint firstAttribute="height" constant="134" id="b7c-H4-K7N"/>
+                                    <constraint firstItem="reL-wE-WMB" firstAttribute="top" secondItem="lWU-dS-vbF" secondAttribute="bottom" id="cxe-Is-LIF"/>
+                                    <constraint firstItem="lWU-dS-vbF" firstAttribute="centerX" secondItem="h9w-HT-pEu" secondAttribute="centerX" id="fCc-9U-q2I"/>
+                                    <constraint firstItem="5AX-ig-G8G" firstAttribute="leading" secondItem="h9w-HT-pEu" secondAttribute="leading" id="kNN-0r-s91"/>
+                                    <constraint firstItem="lWU-dS-vbF" firstAttribute="centerY" secondItem="h9w-HT-pEu" secondAttribute="centerY" id="rXK-aj-oRQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7eq-Hg-Yzb"/>
+                                        <exclude reference="TJP-DP-GIh"/>
+                                        <exclude reference="b7c-H4-K7N"/>
+                                        <exclude reference="3hA-bA-cJW"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="h9w-HT-pEu" firstAttribute="leading" secondItem="yaL-9t-uce" secondAttribute="trailing" id="4gX-cO-A4O"/>
                             <constraint firstItem="yaL-9t-uce" firstAttribute="top" secondItem="FfX-m4-jiN" secondAttribute="bottom" id="6Db-5C-6Hw"/>
                             <constraint firstItem="LNP-aP-Sew" firstAttribute="leading" secondItem="Fgn-JM-uxm" secondAttribute="trailing" id="7qV-Nf-eUs"/>
                             <constraint firstItem="LNP-aP-Sew" firstAttribute="leading" secondItem="Aph-6s-ams" secondAttribute="trailing" id="8R7-1x-guB"/>
                             <constraint firstItem="Aph-6s-ams" firstAttribute="top" secondItem="PGT-Sg-b2G" secondAttribute="bottom" id="Ddq-vH-yU8"/>
+                            <constraint firstItem="h9w-HT-pEu" firstAttribute="top" secondItem="Fgn-JM-uxm" secondAttribute="bottom" id="EJm-jQ-xFq"/>
                             <constraint firstItem="LNP-aP-Sew" firstAttribute="width" secondItem="FfX-m4-jiN" secondAttribute="width" id="JxS-YG-gao"/>
                             <constraint firstAttribute="trailing" secondItem="LNP-aP-Sew" secondAttribute="trailing" id="KZ4-ZR-elo"/>
+                            <constraint firstItem="h9w-HT-pEu" firstAttribute="width" secondItem="h9w-HT-pEu" secondAttribute="height" multiplier="1:1" id="OrJ-Z9-2XH"/>
                             <constraint firstItem="FfX-m4-jiN" firstAttribute="top" secondItem="PGT-Sg-b2G" secondAttribute="bottom" id="QtA-1f-iB4"/>
                             <constraint firstItem="FfX-m4-jiN" firstAttribute="top" secondItem="PGT-Sg-b2G" secondAttribute="bottom" id="RnQ-Hd-EMx"/>
                             <constraint firstItem="LNP-aP-Sew" firstAttribute="top" secondItem="PGT-Sg-b2G" secondAttribute="bottom" id="Thg-PL-tmF"/>
                             <constraint firstItem="Aph-6s-ams" firstAttribute="width" secondItem="FfX-m4-jiN" secondAttribute="width" id="W4h-Hj-RF9"/>
                             <constraint firstItem="Fgn-JM-uxm" firstAttribute="leading" secondItem="FfX-m4-jiN" secondAttribute="trailing" id="Yv1-Iz-lk6"/>
+                            <constraint firstItem="h9w-HT-pEu" firstAttribute="width" secondItem="FfX-m4-jiN" secondAttribute="width" id="bsD-I5-dKL"/>
                             <constraint firstItem="Aph-6s-ams" firstAttribute="leading" secondItem="Fgn-JM-uxm" secondAttribute="trailing" id="c3F-Fs-pj0"/>
                             <constraint firstItem="yaL-9t-uce" firstAttribute="width" secondItem="yaL-9t-uce" secondAttribute="height" multiplier="1:1" id="eBn-kI-UOA"/>
                             <constraint firstItem="LNP-aP-Sew" firstAttribute="trailing" secondItem="Aph-6s-ams" secondAttribute="leading" id="g8w-kq-P2a"/>

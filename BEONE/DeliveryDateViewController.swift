@@ -181,7 +181,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
     if let cell = cell as? DeliveryTypeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
         needCell: order.deliveryTypeCellHeight(indexPath.section))
-    } else if let cell = cell as? OrderItemCell {
+    } else if let cell = cell as? OrderOrderableItemCell {
       cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - 2])
     } else if let cell = cell as? TimeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section,
@@ -192,7 +192,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
   }
 }
 
-class OrderItemCell: UITableViewCell {
+class OrderOrderableItemCell: UITableViewCell {
   @IBOutlet weak var productImageView: LazyLoadingImageView!
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productCountLabel: UILabel!

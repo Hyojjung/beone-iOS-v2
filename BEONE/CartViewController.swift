@@ -3,7 +3,7 @@
  
  let kSectionCellCount = 2 // delivery type cell + shop cell count
  
- class CartViewController: BaseTableViewController {
+ class CartViewController: BaseUserViewController {
   
   @IBOutlet weak var orderButtonViewBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var allSelectButtonViewTopConstraint: NSLayoutConstraint!
@@ -12,19 +12,6 @@
   var selectedCartItemIds = [Int]()
   let order = Order()
   var selectedCartItemOrder = Order()
-  var isWaitingSigning = false
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    if !MyInfo.sharedMyInfo().isUser() {
-      if isWaitingSigning {
-        popView()
-      } else {
-        isWaitingSigning = true
-        showSigningView()
-      }
-    }
-  }
   
   override func setUpData() {
     if MyInfo.sharedMyInfo().isUser(){

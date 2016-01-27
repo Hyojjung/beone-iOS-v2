@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CouponsViewController: BaseTableViewController {
+class CouponsViewController: BaseUserViewController {
   
   // MARK: - Constant
   
@@ -28,7 +28,6 @@ class CouponsViewController: BaseTableViewController {
     "moreCell"]
   
   var isMoreShow = false
-  var isWaitingSigning = false
   
   lazy var usableCouponList: CouponList = {
     let couponList = CouponList()
@@ -36,18 +35,6 @@ class CouponsViewController: BaseTableViewController {
     return couponList
   }()
   var unusableCouponList = CouponList()
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    if !MyInfo.sharedMyInfo().isUser() {
-      if isWaitingSigning {
-        popView()
-      } else {
-        isWaitingSigning = true
-        showSigningView()
-      }
-    }
-  }
   
   override func setUpView() {
     super.setUpView()
