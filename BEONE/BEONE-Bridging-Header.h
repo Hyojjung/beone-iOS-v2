@@ -8,3 +8,6 @@
 #import "XLCCycleScrollView.h"
 #import "CKCalendarView.h"
 #import "SWRevealViewController.h"
+#import "NSData+AES.h"
+#import "NSData+Base64.h"
+#import "NSString+Base64.h"

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--비밀의화원-->
@@ -1209,11 +1210,18 @@
                                 <action selector="toggleRevealViewPositionButtonTapped:" destination="49e-Tb-3d3" id="DRQ-hx-g6y"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="iconNavCart" id="Y77-FT-kcE">
-                            <connections>
-                                <action selector="cart:" destination="49e-Tb-3d3" id="Flm-S3-Hbo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="iconNavCart" id="Y77-FT-kcE">
+                                <connections>
+                                    <action selector="cart:" destination="49e-Tb-3d3" id="Flm-S3-Hbo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="XsD-2q-4UZ">
+                                <connections>
+                                    <action selector="product:" destination="49e-Tb-3d3" id="r9S-Wc-phu"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -1503,10 +1511,10 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="3hA-bA-cJW"/>
                                         <exclude reference="7eq-Hg-Yzb"/>
                                         <exclude reference="TJP-DP-GIh"/>
                                         <exclude reference="b7c-H4-K7N"/>
-                                        <exclude reference="3hA-bA-cJW"/>
                                     </mask>
                                 </variation>
                             </view>

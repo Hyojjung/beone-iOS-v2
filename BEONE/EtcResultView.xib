@@ -58,9 +58,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="deliveryDateKeyLabel" destination="yNk-a4-CMP" id="f6J-uF-Xdd"/>
                 <outlet property="deliveryDateLabel" destination="b8b-az-b2J" id="iUL-3F-Oyj"/>
-                <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="4AJ-6y-66H" id="AEa-Lo-AD1"/>
                 <outlet property="priceLabel" destination="0Kz-eU-j2C" id="OTW-e9-Qhu"/>
             </connections>
         </view>

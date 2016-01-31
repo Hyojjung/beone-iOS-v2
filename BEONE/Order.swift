@@ -13,6 +13,7 @@ class Order: BaseModel {
   var actualPrice = 0
   var orderableItemSets = [OrderableItemSet]()
   var paymentInfos = [PaymentInfo]()
+  var mainPaymentInfo: PaymentInfo?
   var cartItemIds = [Int]()
   var title: String?
   var orderCode: String?
@@ -36,6 +37,9 @@ class Order: BaseModel {
         let paymentInfo = PaymentInfo()
         paymentInfo.assignObject(paymentInfoObject)
         paymentInfos.append(paymentInfo)
+        if paymentInfo.isMainPayment {
+          mainPaymentInfo = paymentInfo
+        }
       }
     }
     
@@ -94,6 +98,29 @@ class Order: BaseModel {
     }
   }
   
+  func deliveryDateString() -> String {
+    var deliveryDateString = String()
+    for (i, orderItemSet) in orderableItemSets.enumerate() {
+      for (index, orderItem) in orderItemSet.orderableItems.enumerate() {
+        deliveryDateString += orderItem.productTitle!
+        if index < orderItemSet.orderableItems.count - 1 {
+          deliveryDateString += ", "
+        } else {
+          deliveryDateString += " : "
+        }
+      }
+      if let selectedTimeRange = orderItemSet.selectedTimeRange {
+        deliveryDateString += selectedTimeRange.timeRangeNotation()
+      } else {
+        deliveryDateString += "택배배송"
+      }
+      if i < orderableItemSets.count - 1 {
+        deliveryDateString += "\n"
+      }
+    }
+    return deliveryDateString
+  }
+  
   func deliveryTypeCellHeight(index: Int) -> Bool {
     if let deliveryTypeId = orderableItemSets[index].deliveryType.id {
       for (idx, orderItemSet) in orderableItemSets.enumerate() where idx < index {
@@ -138,6 +165,7 @@ class Order: BaseModel {
     parameter["price"] = price
     parameter["discountPrice"] = discountPrice
     parameter["orderDeliveryItemSets"] = orderDeliveryItemSetParameter()
+    print(parameter)
     return parameter
   }
   

@@ -14,9 +14,8 @@ class BaseModel: NSObject {
   
   func get(getSuccess: () -> Void) {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
-      let data = result[kNetworkResponseKeyData]
-      if data != nil {
-        self.assignObject(data!!)
+      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] {
+        self.assignObject(data)
       }
       getSuccess()
       }, failure: nil)
@@ -101,6 +100,12 @@ class BaseModel: NSObject {
   
   func delete() {
     NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: deleteSuccess(), failure: deleteFailure())
+  }
+  
+  func remove(deleteSuccess: () -> Void) {
+    NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: { (result) -> Void in
+      deleteSuccess()
+      }, failure: nil)
   }
   
   func deleteUrl() -> String {

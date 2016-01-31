@@ -4,7 +4,6 @@ import UIKit
 class DeliveryDateViewController: BaseTableViewController {
   
   var order = Order()
-  var orderingCartItemIds = [Int]()
   var selectedOrderableItemSetIndex = 0
   var selectedDates = [Int: NSDate]()
   var selectedTimeRanges = [Int: AvailableTimeRange]()
@@ -19,13 +18,14 @@ class DeliveryDateViewController: BaseTableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let orderAddressViewController = segue.destinationViewController as? OrderAddressViewController {
+      print(order.cartItemIds)
       orderAddressViewController.order = order
     }
   }
   
   override func setUpData() {
     super.setUpData()
-    OrderHelper.fetchOrderableInfo(orderingCartItemIds, order: order) { self.tableView.reloadData() }
+    OrderHelper.fetchOrderableInfo(order) { self.tableView.reloadData() }
   }
   
   override func setUpView() {

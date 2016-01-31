@@ -10,7 +10,7 @@ extension String {
     return stringByReplacingOccurrencesOfString(" ", withString: "")
   }
   
-  private func urlForm() -> String {
+  func urlForm() -> String {
     return !isUrlString() ? kBaseUrl.stringByAppendingString(self) : self;
   }
   

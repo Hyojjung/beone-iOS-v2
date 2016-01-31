@@ -46,6 +46,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     super.prepareForSegue(segue, sender: sender)
     if let orderWebViewController = segue.destinationViewController as? OrderWebViewController {
       orderWebViewController.order = order
+      orderWebViewController.paymentInfoId = order.mainPaymentInfo?.id
       orderWebViewController.paymentTypeId = selectedPaymentTypeId
     }
   }
@@ -65,7 +66,10 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       if let selectedPaymentType = selectedPaymentType {
         if selectedPaymentType.isWebViewTransaction {
           order.post({ (result) -> Void in
-            self.performSegueWithIdentifier("From Order To Order Web", sender: nil)
+            if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+              self.order.assignObject(data)
+              self.performSegueWithIdentifier("From Order To Order Web", sender: nil)
+            }
           })
         }
       }

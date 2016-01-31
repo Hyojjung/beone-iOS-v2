@@ -97,7 +97,7 @@ extension NSDate {
   func year() -> Int {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
       calendar.timeZone = NSTimeZone(forSecondsFromGMT: 9 * 60 * 60)
-      let components = calendar.components([.Hour], fromDate: self)
+      let components = calendar.components([.Year], fromDate: self)
       return components.year
     }
     fatalError("no date component")

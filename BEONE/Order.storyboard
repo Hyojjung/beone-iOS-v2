@@ -32,6 +32,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGw-lD-ZKR">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_item" translatesAutoresizingMaskIntoConstraints="NO" id="SA9-z0-4Sl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
+                                                        </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T6N-9T-Rrb" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                             <rect key="frame" x="14" y="13" width="50" height="50"/>
                                                             <constraints>
@@ -86,9 +89,6 @@
                                                             <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_item" translatesAutoresizingMaskIntoConstraints="NO" id="SA9-z0-4Sl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
-                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1814,7 +1814,7 @@ IAo
                                 <rect key="frame" x="0.0" y="20" width="600" height="980"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="156" id="z6Z-ie-XkS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="156" id="z6Z-ie-XkS" customClass="BillKeyCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z6Z-ie-XkS" id="lJm-oy-mhh">
@@ -1839,22 +1839,22 @@ IAo
                                                             <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wf6-xd-oXt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="145"/>
-                                                            <state key="normal">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="selectBillKey:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="y3i-RX-sq5"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-un-oly">
                                                             <rect key="frame" x="212" y="2" width="40" height="40"/>
                                                             <state key="normal" image="btn_delete_card">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="deleteBillKey:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="vjQ-0R-qBc"/>
+                                                                <action selector="deleteCardButtonTapped:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="f8n-PE-DL3"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wf6-xd-oXt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="145"/>
+                                                            <state key="normal">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="selectCardButtonTapped:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="t4r-yt-2QQ"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1904,7 +1904,7 @@ IAo
                                                             </state>
                                                             <state key="selected" image="radio_on"/>
                                                             <connections>
-                                                                <action selector="selectBillKey:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="f9e-1s-wFd"/>
+                                                                <action selector="selectCardButtonTapped:" destination="Wrh-P3-yd1" eventType="touchUpInside" id="Rhb-wp-OZb"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1942,6 +1942,14 @@ IAo
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="billKeyImageView" destination="fxc-FX-xWf" id="6z2-Ut-ZB6"/>
+                                            <outlet property="cardButton" destination="Wf6-xd-oXt" id="0d8-Uv-Iqg"/>
+                                            <outlet property="cardNameLabel" destination="gUD-m6-9I1" id="Hme-Tc-PaC"/>
+                                            <outlet property="cardNumberLabel" destination="QEB-3k-nW4" id="J9T-DR-uzX"/>
+                                            <outlet property="deleteCardButton" destination="hjd-un-oly" id="xuS-0F-R7J"/>
+                                            <outlet property="selectButton" destination="eeo-HP-tkK" id="WW5-xf-EgV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCardCell" rowHeight="62" id="ZdW-Xf-SAj">
                                         <rect key="frame" x="0.0" y="178" width="600" height="62"/>
@@ -2073,7 +2081,7 @@ IAo
                                 </state>
                                 <state key="highlighted" title="결제하기" backgroundImage="btn_submit_gold_pressed"/>
                                 <connections>
-                                    <action selector="pay" destination="Wrh-P3-yd1" eventType="touchUpInside" id="CQa-V0-2zU"/>
+                                    <action selector="payButtonTapped" destination="Wrh-P3-yd1" eventType="touchUpInside" id="Wxc-iP-R3w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2106,10 +2114,10 @@ IAo
             </objects>
             <point key="canvasLocation" x="2038" y="1075"/>
         </scene>
-        <!-- -->
+        <!--카드등록-->
         <scene sceneID="9iJ-9V-K7G">
             <objects>
-                <viewController title=" " automaticallyAdjustsScrollViewInsets="NO" id="7B2-Fp-fOE" customClass="AddingBillKeyViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="카드등록" automaticallyAdjustsScrollViewInsets="NO" id="7B2-Fp-fOE" customClass="AddingBillKeyViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kaV-sp-R9G"/>
                         <viewControllerLayoutGuide type="bottom" id="Cl7-Hu-pPj"/>
@@ -2122,7 +2130,7 @@ IAo
                                 <rect key="frame" x="0.0" y="20" width="600" height="980"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardTypeCell" rowHeight="84" id="xlZ-Qg-ore">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="billKeyTypeCell" rowHeight="84" id="xlZ-Qg-ore" customClass="BillKeyTypeCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xlZ-Qg-ore" id="PLw-bo-FvI">
@@ -2153,6 +2161,9 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
+                                                    <connections>
+                                                        <action selector="selectPersonalCardButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="v5Q-GE-aVf"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3F-xq-8lN">
                                                     <rect key="frame" x="132" y="53" width="26" height="18"/>
@@ -2169,6 +2180,9 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
+                                                    <connections>
+                                                        <action selector="selectCorporationCardButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="laZ-9N-bnG"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="법인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckU-K5-3iQ">
                                                     <rect key="frame" x="253" y="53" width="26" height="18"/>
@@ -2218,6 +2232,10 @@ IAo
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="corporationTypeButton" destination="5dh-2L-fla" id="8Li-Aq-eeg"/>
+                                            <outlet property="personalTypeButton" destination="0T7-W2-Y10" id="ZnW-dO-J9Y"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cardNumberCell" rowHeight="44" id="oGa-7j-HOD">
                                         <rect key="frame" x="0.0" y="106" width="600" height="44"/>
@@ -2229,15 +2247,6 @@ IAo
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-Vb-ih0">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드번호" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffw-LU-vgh">
-                                                    <rect key="frame" x="14" y="13" width="80" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="jvu-Bx-RBa"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="Udk-nU-Lf2">
                                                     <rect key="frame" x="94" y="5" width="120" height="35"/>
                                                     <constraints>
@@ -2310,6 +2319,15 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="HW6-ue-tMC"/>
                                                     </connections>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드번호" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffw-LU-vgh">
+                                                    <rect key="frame" x="14" y="13" width="80" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="jvu-Bx-RBa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2343,7 +2361,7 @@ IAo
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="expiredDateCell" rowHeight="44" id="hpn-8R-Mzj">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="expiredDateCell" rowHeight="44" id="hpn-8R-Mzj" customClass="ExpiredDateCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hpn-8R-Mzj" id="yI1-aU-no4">
@@ -2365,12 +2383,6 @@ IAo
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNY-Lz-GnM">
                                                     <rect key="frame" x="94" y="4" width="80" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-hV-g6J">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="35"/>
-                                                            <state key="normal" backgroundImage="combobox_gold">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="112" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00월" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-Q4-RXa">
                                                             <rect key="frame" x="12" y="10" width="28" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2380,18 +2392,10 @@ IAo
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="leading" secondItem="tNY-Lz-GnM" secondAttribute="leading" id="Aze-Yp-2Ps"/>
                                                         <constraint firstAttribute="width" constant="80" id="DlC-5y-ZMZ"/>
-                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="top" secondItem="tNY-Lz-GnM" secondAttribute="top" id="Eiu-We-fpC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Hzd-hV-g6J" secondAttribute="trailing" id="GTL-BA-Mlj"/>
-                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="top" secondItem="tNY-Lz-GnM" secondAttribute="top" id="HgX-cY-98J"/>
                                                         <constraint firstAttribute="centerY" secondItem="Zti-Q4-RXa" secondAttribute="centerY" id="LXl-1K-rD1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Hzd-hV-g6J" secondAttribute="trailing" id="Uw9-cC-XuU"/>
                                                         <constraint firstAttribute="height" priority="999" constant="35" id="jgT-md-3da"/>
                                                         <constraint firstItem="Zti-Q4-RXa" firstAttribute="leading" secondItem="tNY-Lz-GnM" secondAttribute="leading" constant="12" id="ncW-Ng-lW5"/>
-                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="leading" secondItem="tNY-Lz-GnM" secondAttribute="leading" id="pff-zj-GJr"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Hzd-hV-g6J" secondAttribute="bottom" id="sXs-RP-wST"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Hzd-hV-g6J" secondAttribute="bottom" id="wEJ-3x-IcM"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-yK-MBN">
@@ -2426,6 +2430,15 @@ IAo
                                                         <constraint firstItem="5qn-cZ-GOY" firstAttribute="leading" secondItem="Uyg-yK-MBN" secondAttribute="leading" id="wcP-Oh-T8J"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-hV-g6J">
+                                                    <rect key="frame" x="94" y="4" width="80" height="35"/>
+                                                    <state key="normal" backgroundImage="combobox_gold">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectMonthButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="0I1-az-gEo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2448,8 +2461,12 @@ IAo
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="expiredMonthLabel" destination="Zti-Q4-RXa" id="WKx-W8-8nF"/>
+                                            <outlet property="expiredYearLabel" destination="irR-6r-Qhl" id="Yjx-VE-ARk"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyNumberCell" rowHeight="44" id="vXB-ud-V40">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="corporationNumberCell" rowHeight="44" id="vXB-ud-V40">
                                         <rect key="frame" x="0.0" y="194" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vXB-ud-V40" id="QUk-05-SEw">
@@ -2468,26 +2485,8 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-yn-9CZ">
-                                                    <rect key="frame" x="94" y="5" width="161" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="46" id="CMq-xj-5El"/>
-                                                        <constraint firstAttribute="height" constant="35" id="GJv-OS-L14"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="CMq-xj-5El"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="9tL-Xh-zBq"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
-                                                    <rect key="frame" x="260" y="5" width="161" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
+                                                    <rect key="frame" x="259" y="5" width="161" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="m4C-Dv-z0d"/>
                                                         <constraint firstAttribute="height" constant="35" id="uyp-Df-soL"/>
@@ -2504,8 +2503,8 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="ufJ-Kw-srp"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp">
-                                                    <rect key="frame" x="426" y="5" width="160" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp">
+                                                    <rect key="frame" x="425" y="5" width="160.5" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="PCi-kN-kEf"/>
                                                         <constraint firstAttribute="width" constant="46" id="ys2-YH-z3Y"/>
@@ -2520,6 +2519,24 @@ IAo
                                                     </variation>
                                                     <connections>
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="BRt-6c-MOH"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-yn-9CZ">
+                                                    <rect key="frame" x="94" y="5" width="160.5" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="CMq-xj-5El"/>
+                                                        <constraint firstAttribute="height" constant="35" id="GJv-OS-L14"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="CMq-xj-5El"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="9tL-Xh-zBq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -2571,7 +2588,12 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앞 2자리" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="LH5-Ve-YJi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="● ●" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M85-eZ-dRP">
+                                                    <rect key="frame" x="164" y="12" width="24.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앞 2자리" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="LH5-Ve-YJi">
                                                     <rect key="frame" x="94" y="4" width="64" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="Xd2-kI-45P"/>
@@ -2590,11 +2612,6 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="vRd-4I-4AC"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="● ●" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M85-eZ-dRP">
-                                                    <rect key="frame" x="164" y="12" width="25" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2637,7 +2654,7 @@ IAo
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="Tcg-VD-N3V">
                                                             <rect key="frame" x="0.0" y="0.0" width="492" height="35"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" 예) 900101" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O7B-P2-iQq">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" 예) 900101" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O7B-P2-iQq">
                                                             <rect key="frame" x="4" y="0.0" width="484" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="46" id="Qs7-bA-sVl"/>
@@ -2716,7 +2733,7 @@ IAo
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-SA-O1b">
                                                             <rect key="frame" x="0.0" y="0.0" width="492" height="35"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="(선택) 카드별명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxz-cz-F29">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="(선택) 카드별명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxz-cz-F29">
                                                             <rect key="frame" x="4" y="0.0" width="484" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="4Jj-KA-zpb"/>
@@ -2828,6 +2845,9 @@ IAo
                                                             <exclude reference="ldE-Se-DSP"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="toggleAgreementButtonTapped:" destination="7B2-Fp-fOE" eventType="touchUpInside" id="wbz-3H-nqN"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" tag="114" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80r-gF-1mw">
                                                     <rect key="frame" x="14" y="45" width="197" height="27"/>
@@ -2925,6 +2945,9 @@ IAo
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showPrivacyPolicyViewButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="ykT-uZ-1vS"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" tag="115" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nV-Vm-hqc">
                                                     <rect key="frame" x="14" y="72" width="136" height="27"/>
@@ -3037,6 +3060,9 @@ IAo
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showCardInfoPolicyViewButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="0Wa-UF-ZsO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3078,6 +3104,9 @@ IAo
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="btn_submit_gold_pressed"/>
+                                                    <connections>
+                                                        <action selector="postBillKeyButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="IVC-zU-X4u"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3110,7 +3139,7 @@ IAo
                     </view>
                     <navigationItem key="navigationItem" id="15B-XN-oTK"/>
                     <connections>
-                        <outlet property="tableView" destination="K6Q-1j-sAE" id="zs6-ml-98q"/>
+                        <outlet property="tableView" destination="K6Q-1j-sAE" id="ejM-fD-Tab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXG-vc-SJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4230,13 +4259,16 @@ IAo
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="fsu-C1-gEm">
                             <color key="tintColor" red="0.63137254899999995" green="0.52549019610000003" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="closeViewButtonTapped:" destination="rtA-Z2-FlT" id="2Sz-3f-1yc"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="resultImageView" destination="kwv-A1-cRX" id="d7r-v7-WfO"/>
-                        <outlet property="resultView" destination="XQc-a0-o9Y" id="OO3-aL-nQI"/>
+                        <outlet property="resultView" destination="XQc-a0-o9Y" id="YVb-VF-mKb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q52-HQ-iuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

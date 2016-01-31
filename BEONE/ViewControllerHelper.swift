@@ -107,13 +107,9 @@ extension UIViewController {
     presentViewController(kSigningStoryboardName, viewIdentifier: kSigningNavigationViewIdentifier)
   }
   
-  func showOrderView(orderingCartItems: [CartItem]) {
+  func showOrderView(orderingCartItemIds: [Int]) {
     if let deliveryDateViewController = viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
-      for orderingCartItem in orderingCartItems {
-        if let id = orderingCartItem.id {
-          deliveryDateViewController.orderingCartItemIds.append(id)
-        }
-      }
+      deliveryDateViewController.order.cartItemIds = orderingCartItemIds
       showViewController(deliveryDateViewController, sender: nil)
     }
   }

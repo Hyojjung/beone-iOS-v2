@@ -88,7 +88,11 @@ class OptionViewController: BaseTableViewController {
   
   func handlePostCartItemSuccess() {
     if isOrdering {
-      showOrderView(cartItems)
+      var cartItemIds = [Int]()
+      for cartItem in cartItems {
+        cartItemIds.append(cartItem.id!)
+      }
+      showOrderView(cartItemIds)
     } else {
       popView()
       // TODO: go to cart

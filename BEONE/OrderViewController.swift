@@ -272,7 +272,7 @@ extension OrderViewController: DynamicHeightTableViewProtocol {
     optionLabel.font = UIFont.systemFontOfSize(12)
     optionLabel.text = orderItem.selectedOption?.optionString()
     optionLabel.setWidth(ViewControllerHelper.screenWidth - 113)
-    return 175 + optionLabel.frame.height
+    return 152 + optionLabel.frame.height
   }
   
   func calculatedAddressInfoCellHeight() -> CGFloat {

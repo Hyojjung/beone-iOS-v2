@@ -45,7 +45,7 @@ class AccountInfoCell: UITableViewCell {
   func configureCell(paymentInfo: PaymentInfo) {
     dueDateLabel.text = paymentInfo.expiredAt?.paidAtDateString()
     priceLabel.text = paymentInfo.price.priceNotation(.Korean)
-    //    accountIssureLabel.text = paymentInfo.
+    accountIssureLabel.text = paymentInfo.vbankIssuerName
     bankLabel.text = paymentInfo.bankName
     accountNumberLabel.text = paymentInfo.account
   }

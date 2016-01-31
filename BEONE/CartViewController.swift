@@ -40,7 +40,7 @@
       selectedCartItemOrder.orderableItemSets.removeAll()
       tableView.reloadData()
     } else {
-      selectedCartItemIds = cartItemList.cartItemIds()
+      selectedCartItemIds = CartItemManager.cartItemIds(cartItemList.list)
       setUpSelectedCartItemOrder()
     }
   }
@@ -72,16 +72,11 @@
   }
   
   @IBAction func orderCartItemButtonTapped(sender: UIButton) {
-    showOrderView([cartItem(sender.tag)])
+    showOrderView([sender.tag])
   }
   
   @IBAction func orderSelectedCartItemButtonTapped(sender: AnyObject) {
-    BEONEManager.selectedOrder = selectedCartItemOrder
-    var selectedCartItems = [CartItem]()
-    for selectedCartItemId in selectedCartItemIds {
-      selectedCartItems.append(cartItem(selectedCartItemId))
-    }
-    showOrderView(selectedCartItems)
+    showOrderView(selectedCartItemIds)
   }
   
   @IBAction func productButtonTapped(sender: AnyObject) {
@@ -101,8 +96,8 @@
   
   func setUpSelectedCartItemOrder() {
     makeSelectedCartItemOrderUnique()
-    BEONEManager.selectedOrder = selectedCartItemOrder
-    OrderHelper.fetchOrderableInfo(selectedCartItemIds, order: order) { self.setUpTableView() }
+    order.cartItemIds = selectedCartItemIds
+    OrderHelper.fetchOrderableInfo(order) { self.setUpTableView() }
   }
   
   func makeSelectedCartItemOrderUnique() {
@@ -133,7 +128,8 @@
     
     selectedCartItemOrder = order
     if cartItemList.list.count > 0 {
-      OrderHelper.fetchOrderableInfo(selectedCartItemIds, order: order) { self.setUpTableView() }
+      order.cartItemIds = selectedCartItemIds
+      OrderHelper.fetchOrderableInfo(order) { self.setUpTableView() }
     } else {
       order.orderableItemSets.removeAll()
       setUpTableView()
@@ -142,7 +138,7 @@
   
   func setUpTableView() {
     setUpButtonView()
-    allSelectButton.selected = selectedCartItemIds == cartItemList.cartItemIds()
+    allSelectButton.selected = selectedCartItemIds == CartItemManager.cartItemIds(cartItemList.list)
     tableView.reloadData()
   }
   

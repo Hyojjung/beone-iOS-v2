@@ -9,33 +9,29 @@ class OrderWebViewController: BaseViewController {
   var order: Order?
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let orderResultViewController = segue.destinationViewController as? OrderResultViewController {
+    if let orderResultViewController = segue.destinationViewController as? OrderResultViewController, order = order {
       print(sender)
-      orderResultViewController.orderingCartItemIds = order?.cartItemIds
+      for paymentInfo in order.paymentInfos {
+        if self.paymentInfoId == paymentInfo.id {
+          orderResultViewController.paymentInfo = paymentInfo
+          break;
+        }
+      }
       orderResultViewController.orderResult = sender as? [String: AnyObject]
+      orderResultViewController.order = order
     }
   }
   
   override func setUpView() {
     super.setUpView()
     AuthenticationHelper.refreshToken { (result) -> Void in
-      if let order = self.order, paymentTypeId = self.paymentTypeId {
-        var mainPaymentInfo: PaymentInfo?
-        for paymentInfo in order.paymentInfos {
-          if paymentInfo.isMainPayment {
-            mainPaymentInfo = paymentInfo
-            break
-          }
-        }
-        let selectedPaymentInfoId = self.paymentInfoId != nil ? self.paymentInfoId : mainPaymentInfo?.id
-        if let selectedPaymentInfoId = selectedPaymentInfoId {
-          let url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/payment-infos/\(selectedPaymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
-          
-          let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())
-          orderWebViewUrlRequest.setValue(MyInfo.sharedMyInfo().accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
-          orderWebViewUrlRequest.setValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
-          self.orderWebView.loadRequest(orderWebViewUrlRequest)
-        }
+      if let order = self.order, paymentTypeId = self.paymentTypeId, paymentInfoId = self.paymentInfoId {
+        let url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/payment-infos/\(paymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
+        
+        let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())
+        orderWebViewUrlRequest.setValue(MyInfo.sharedMyInfo().accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
+        orderWebViewUrlRequest.setValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
+        self.orderWebView.loadRequest(orderWebViewUrlRequest)
       }
     }
   }
@@ -56,7 +52,9 @@ extension OrderWebViewController: UIWebViewDelegate {
           }
         }
         parameter["orderId"] = order?.id
-        performSegueWithIdentifier("From Order Web To Order Result", sender: parameter)
+        order!.get({ () -> Void in
+          self.performSegueWithIdentifier("From Order Web To Order Result", sender: parameter)
+        })
       }
     }
     return true

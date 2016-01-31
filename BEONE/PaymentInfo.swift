@@ -20,7 +20,7 @@ class PaymentInfo: BaseModel {
   var orderId: Int?
   
   var bankName: String?
-  var issureName: String?
+  var vbankIssuerName: String?
   var account: String?
   var paypalEmail: String?
   var cardNumber: String?
@@ -35,6 +35,7 @@ class PaymentInfo: BaseModel {
   }
   
   override func assignObject(data: AnyObject) {
+    print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
         self.paymentType.assignObject(paymentType)
@@ -54,6 +55,7 @@ class PaymentInfo: BaseModel {
       if let expiredAt = paymentInfo["vbankExpiredAt"] as? String {
         self.expiredAt = expiredAt.date()
       }
+      vbankIssuerName = paymentInfo["vbankIssuerName"] as? String
       bankName = paymentInfo["vbankIssuerBankName"] as? String
       account = paymentInfo["vbankIssuerAccount"] as? String
       if let isMainPayment = paymentInfo["isMainPayment"] as? Bool {

@@ -11,4 +11,14 @@ class CartItemManager: NSObject {
       })
     }
   }
+  
+  static func cartItemIds(cartItems: [BaseModel]) -> [Int] {
+    var cartItemIds = [Int]()
+    for cartItem in cartItems {
+      if let cartItemId = cartItem.id {
+        cartItemIds.append(cartItemId)
+      }
+    }
+    return cartItemIds
+  }
 }

@@ -1,6 +1,5 @@
 
 import UIKit
-import SWRevealViewController
 
 class MainTabViewController: UITabBarController {
   
@@ -16,7 +15,9 @@ class MainTabViewController: UITabBarController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    BEONEManager.sharedLocationList.fetch()
+    BEONEManager.sharedLocationList.get { () -> Void in
+      self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
+    }
   }
   
   @IBAction func signInButtonTapped() {

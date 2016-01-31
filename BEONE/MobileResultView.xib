@@ -92,9 +92,7 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="deliveryDateKeyLabel" destination="Y0L-Qw-kLL" id="2es-8o-yNL"/>
                 <outlet property="deliveryDateLabel" destination="ux6-oz-S09" id="Atn-qf-b6J"/>
-                <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="UcT-mF-PPL" id="ntQ-5y-x4P"/>
                 <outlet property="paidAtLabel" destination="a8b-DX-ltZ" id="ovR-Nh-oQm"/>
                 <outlet property="priceLabel" destination="lKq-H7-oVk" id="KfR-zJ-uct"/>
             </connections>

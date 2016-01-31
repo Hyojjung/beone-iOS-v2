@@ -65,15 +65,4 @@ class CartItemList: BaseListModel {
     return parameter
   }
   
-  // MARK: - Public Methods
-  
-  func cartItemIds() -> [Int] {
-    var cartItemIds = [Int]()
-    for cartItem in list {
-      if let cartItemId = cartItem.id {
-        cartItemIds.append(cartItemId)
-      }
-    }
-    return cartItemIds
-  }
 }

@@ -111,9 +111,7 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="deliveryDateKeyLabel" destination="Yx1-bh-phK" id="3lD-zg-6dS"/>
                 <outlet property="deliveryDateLabel" destination="dBH-au-5Vj" id="aCL-Bk-qcO"/>
-                <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="cCP-e0-fSE" id="dOF-zi-8o9"/>
                 <outlet property="paidAtLabel" destination="lxS-tN-ahL" id="UKI-w9-W1D"/>
                 <outlet property="paypalEmailLabel" destination="Jbr-e8-8NH" id="2Jw-et-K0z"/>
                 <outlet property="priceLabel" destination="bBg-5h-Bbk" id="ras-jt-pRD"/>

@@ -9,5 +9,4 @@ class BEONEManager: NSObject {
   static var selectedCartItem: CartItem?
   static var selectedLocation: Location?
   static var sharedLocationList = LocationList()
-  static var selectedOrder = Order()
 }

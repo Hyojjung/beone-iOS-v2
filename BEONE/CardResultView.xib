@@ -122,9 +122,7 @@
             <connections>
                 <outlet property="bankLabel" destination="KFt-VR-QUM" id="PJr-2r-kzW"/>
                 <outlet property="cardNumberLabel" destination="Dcb-rJ-Kp1" id="V9d-iF-UdK"/>
-                <outlet property="deliveryDateKeyLabel" destination="TbP-x3-eVt" id="0Ld-sf-kEQ"/>
                 <outlet property="deliveryDateLabel" destination="ovn-3D-LLj" id="kDJ-TK-gPV"/>
-                <outlet property="deliveryDateLabelBottomLayoutConstraint" destination="gyM-dW-AWS" id="zMM-4H-r7D"/>
                 <outlet property="paidAtLabel" destination="Pwq-QC-l5C" id="7uX-AN-ASL"/>
                 <outlet property="priceLabel" destination="yNa-om-rTI" id="RvM-Yb-nWX"/>
             </connections>
