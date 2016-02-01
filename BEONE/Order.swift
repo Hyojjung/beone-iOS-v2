@@ -44,6 +44,7 @@ class Order: BaseModel {
     }
     
     id = data[kObjectPropertyKeyId] as? Int
+    print(id)
     title = data["title"] as? String
     deliveryMemo = data["deliveryMemo"] as? String
     senderName = data["senderName"] as? String

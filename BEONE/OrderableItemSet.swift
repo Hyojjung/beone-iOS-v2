@@ -4,6 +4,7 @@ import UIKit
 class OrderableItemSet: BaseModel {
   var availableTimeRangeList = AvailableTimeRangeList()
   var selectedTimeRange: AvailableTimeRange?
+  var title: String?
   var orderableItems = [OrderableItem]()
   var deliveryPrice = 0
   let location = Location()
@@ -24,6 +25,7 @@ class OrderableItemSet: BaseModel {
   override func assignObject(data: AnyObject) {
     if let orderableItemSet = data as? [String: AnyObject] {
       id = orderableItemSet[kObjectPropertyKeyId] as? Int
+      title = orderableItemSet["title"] as? String
 
       assignAvailableTimeRanges(orderableItemSet["availableTimeRanges"])
       assignStatus(orderableItemSet["status"])

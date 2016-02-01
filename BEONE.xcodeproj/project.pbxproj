@@ -24,6 +24,7 @@
 		620717831BE347E20014B9AC /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717811BE347E20014B9AC /* WebViewController.xib */; };
 		62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */; };
 		62122D731C5EFE5900B9850E /* QuickSelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62122D721C5EFE5900B9850E /* QuickSelectProductView.xib */; };
+		62122D751C5F0A8100B9850E /* StatusHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62122D741C5F0A8100B9850E /* StatusHistory.swift */; };
 		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
 		622DE1121C58B6A800F0C9DF /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1111C58B6A800F0C9DF /* OrderViewController.swift */; };
 		622DE1151C5A58FF00F0C9DF /* AddingBillKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */; };
@@ -263,6 +264,7 @@
 		620717811BE347E20014B9AC /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpeedOrder.storyboard; sourceTree = "<group>"; };
 		62122D721C5EFE5900B9850E /* QuickSelectProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickSelectProductView.xib; sourceTree = "<group>"; };
+		62122D741C5F0A8100B9850E /* StatusHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusHistory.swift; sourceTree = "<group>"; };
 		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		622DE1111C58B6A800F0C9DF /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingBillKeyViewController.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				6286FB7A1C573C0C00845BE4 /* Coupon.swift */,
 				623AAD931C57CC180095731B /* BillKey.swift */,
 				623AAD951C57D0CA0095731B /* BillKeyList.swift */,
+				62122D741C5F0A8100B9850E /* StatusHistory.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1439,6 +1442,7 @@
 				73BE22611C3104F8003FA11C /* OptionView.swift in Sources */,
 				622DE1211C5E61CF00F0C9DF /* NSData+Base64.m in Sources */,
 				73445E7C1BFAEEF9008BE2AC /* ShopTemplateCell.swift in Sources */,
+				62122D751C5F0A8100B9850E /* StatusHistory.swift in Sources */,
 				7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */,
 				73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */,
 				734241711BFC44ED00BE21F5 /* BEONEManager.swift in Sources */,

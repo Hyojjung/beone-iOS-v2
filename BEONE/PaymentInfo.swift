@@ -35,7 +35,6 @@ class PaymentInfo: BaseModel {
   }
   
   override func assignObject(data: AnyObject) {
-    print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
         self.paymentType.assignObject(paymentType)

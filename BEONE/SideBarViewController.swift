@@ -81,3 +81,23 @@ extension SideBarViewController: DynamicHeightTableViewProtocol {
     }
   }
 }
+
+class LatestOrderDeliveryItemSetCell: UITableViewCell {
+  
+  @IBOutlet weak var orderCodeLabel: UILabel!
+  @IBOutlet weak var receiverNameLabel: UILabel!
+  @IBOutlet weak var orderNameLabel: UILabel!
+  
+  @IBOutlet weak var itemPreparingStatusImageView: UIImageView!
+  @IBOutlet weak var firstLineImageView: UIImageView!
+  @IBOutlet weak var deliveringStatusImageView: UIImageView!
+  @IBOutlet weak var secondLineImageView: UIImageView!
+  @IBOutlet weak var deliveryDoneStatusImageView: UIImageView!
+  
+  @IBOutlet weak var itemPreparingLabel: UILabel!
+  @IBOutlet weak var itemPreparingTimeLabel: UILabel!
+  @IBOutlet weak var deliveringLabel: UILabel!
+  @IBOutlet weak var deliveringTimeLabel: UILabel!
+  @IBOutlet weak var deliveryDoneLabel: UILabel!
+  @IBOutlet weak var deliveryDoneTimeLabel: UILabel!
+}

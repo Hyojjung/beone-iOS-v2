@@ -17,7 +17,6 @@ class OrderableItem: BaseModel {
 
   override func assignObject(data: AnyObject) {
     if let orderableItemset = data as? [String: AnyObject] {
-      print(data)
       id = orderableItemset[kObjectPropertyKeyId] as? Int
       if let availableTimeRangesObject = orderableItemset["availableTimeRanges"] as? [[String: AnyObject]] {
         availableTimeRangeList.list.removeAll()
