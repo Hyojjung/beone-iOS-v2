@@ -73,17 +73,33 @@ class Address: BaseModel {
     }
   }
   
-  func addressString() -> String {
-    var address: String
+  func zipCode() -> String? {
+    if let zonecode = zonecode {
+      return zonecode
+    } else if let zipcode01 = zipcode01, zipcode02 = zipcode02 {
+      return zipcode01 + zipcode02
+    }
+    return nil
+  }
+  
+  func fullAddressString(splitLine: Bool = false) -> String? {
+    if let address = addressString() {
+      if let detailAddress = detailAddress {
+        if splitLine {
+          return address + "\n" + detailAddress
+        }
+        return address + detailAddress
+      }
+      return address
+    }
+    return nil
+  }
+  
+  func addressString() -> String? {
     if addressType == .Road {
-      address = roadAddress!
+      return roadAddress
     } else {
-      address = jibunAddress!
+      return jibunAddress
     }
-    
-    if let detailAddress = detailAddress {
-      address += detailAddress
-    }
-    return address
   }
 }

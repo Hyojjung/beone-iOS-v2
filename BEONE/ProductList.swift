@@ -45,7 +45,6 @@ class ProductList: BaseListModel {
   
   override func assignObject(data: AnyObject) {
     list.removeAll()
-    print(data)
     if let productList = data as? [[String: AnyObject]] {
       for productObject in productList {
         let product = Product()

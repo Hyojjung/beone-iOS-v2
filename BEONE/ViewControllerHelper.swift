@@ -78,11 +78,12 @@ extension UIViewController {
     }
   }
   
-  func showWebView(urlString: String?, title: String?) {
+  func showWebView(urlString: String?, title: String?, addressDelegate: AddressDelegate? = nil) {
     if let urlString = urlString {
       let webViewController = WebViewController()
       webViewController.url = urlString
       webViewController.title = title
+      webViewController.addressDelegate = addressDelegate
       navigationController?.pushViewController(webViewController, animated: true)
       navigationController?.navigationBar.hidden = false
     }

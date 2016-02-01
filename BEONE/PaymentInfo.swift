@@ -29,6 +29,8 @@ class PaymentInfo: BaseModel {
   var paymentStatus = PaymentStatus.Success
   
   var paymentType = PaymentType()
+  var billKeyInfoId: Int?
+  var paypalPaymentId: Int?
   
   override func fetchUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)"
@@ -66,6 +68,19 @@ class PaymentInfo: BaseModel {
       }
       
       title = paymentInfo["title"] as? String
+      orderId = paymentInfo["orderId"] as? Int
     }
+  }
+  
+  override func postUrl() -> String {
+    return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)/transactions"
+  }
+  
+  override func postParameter() -> AnyObject? {
+    var parameter = [String: AnyObject]()
+    parameter["paymentTypeId"] = paymentType.id
+    parameter["billKeyInfoId"] = billKeyInfoId
+    parameter["paypalPaymentId"] = paypalPaymentId
+    return parameter
   }
 }

@@ -4,12 +4,17 @@ import UIKit
 let kPrivacyPolicyUrlString = "policies/privacy"
 let kServicePolicyUrlString = "policies/service"
 
+protocol AddressDelegate: NSObjectProtocol {
+  func handleAddress(address: Address)
+}
+
 class WebViewController: BaseViewController {
   
   // MARK: - Property
   
   @IBOutlet weak var webView: UIWebView!
   var url: String?
+  weak var addressDelegate: AddressDelegate?
   
   // MARK: - BaseViewController Methods
   
@@ -42,6 +47,21 @@ extension WebViewController: UIWebViewDelegate {
       if let url = request.URL?.absoluteString {
         if url.hasPrefix("beone://postcode.result") {
           postNotification(kNotificationAddressSelected, userInfo: [kNotificationKeyAddress: url])
+          var addressObject = url.componentsSeparatedByString("?").last
+          addressObject = addressObject?.stringByRemovingPercentEncoding
+          addressObject = addressObject?.stringByReplacingOccurrencesOfString("+", withString: " ")
+          var addressComponentsDictionary = [String: String]()
+          if let addressComponents = addressObject?.componentsSeparatedByString("&") {
+            for addressComponent in addressComponents {
+              let component = addressComponent.componentsSeparatedByString("=")
+              if let first = component.first {
+                addressComponentsDictionary[first] = component.last
+              }
+            }
+            let address = Address()
+            address.assign(addressComponentsDictionary)
+            addressDelegate?.handleAddress(address)
+          }
           popView()
           return false
         }

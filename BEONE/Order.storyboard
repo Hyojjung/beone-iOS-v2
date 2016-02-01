@@ -2105,7 +2105,7 @@ IAo
                     <navigationItem key="navigationItem" id="AlD-MR-8xp"/>
                     <connections>
                         <outlet property="tableView" destination="HI0-0L-YIT" id="kOg-yr-Gz1"/>
-                        <segue destination="rtA-Z2-FlT" kind="show" identifier="From Bill Key List To Order Result By Show" id="i4O-W2-Gwz">
+                        <segue destination="rtA-Z2-FlT" kind="show" identifier="From Bill Key List To Order Result" id="i4O-W2-Gwz">
                             <nil key="action"/>
                         </segue>
                     </connections>

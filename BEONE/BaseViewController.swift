@@ -44,6 +44,7 @@ class BaseViewController: UIViewController {
   // MARK: - Private Methods
   
   func setUpView() {
+    view.backgroundColor = bgColor
     UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(backButtonOffset,
       forBarMetrics: .Default)
   }

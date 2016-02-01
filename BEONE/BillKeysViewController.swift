@@ -2,7 +2,7 @@
 import UIKit
 
 class BillKeysViewController: BaseTableViewController {
-
+  
   // MARK: - Constant
   
   private enum BillKeyTableViewSection: Int {
@@ -18,10 +18,20 @@ class BillKeysViewController: BaseTableViewController {
     "infoCell"]
   
   // MARK: - Variable
-
+  
   var billKeyList = BillKeyList()
   var order = Order()
   var selectedBillKey: BillKey?
+  var paymentInfo: PaymentInfo?
+  var paymentSuccess = false
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let orderResultViewController = segue.destinationViewController as? OrderResultViewController {
+      orderResultViewController.paymentInfo = paymentInfo
+      orderResultViewController.isSuccess = paymentSuccess
+      orderResultViewController.order = order
+    }
+  }
   
   override func setUpView() {
     super.setUpView()
@@ -47,7 +57,24 @@ class BillKeysViewController: BaseTableViewController {
   }
   
   @IBAction func payButtonTapped() {
-
+    order.post({ (result) -> Void in
+      if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+        self.order.assignObject(data)
+        
+        self.order.mainPaymentInfo?.paymentType.id = PaymentTypeId.Card.rawValue
+        self.order.mainPaymentInfo?.billKeyInfoId = self.selectedBillKey?.id
+        self.paymentInfo = self.order.mainPaymentInfo
+        self.order.mainPaymentInfo?.post({ (result) -> Void in
+          self.paymentSuccess = true
+          self.order.get({ () -> Void in
+            self.performSegueWithIdentifier("From Bill Key List To Order Result", sender: nil)            
+          })
+          }, postFailure: { (_) -> Void in
+            
+        })
+      }
+      }, postFailure: { (_) -> Void in
+    })
   }
 }
 

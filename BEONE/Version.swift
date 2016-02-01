@@ -19,7 +19,7 @@ class Version: BaseModel {
     }
   }
   
-  override func get(getSuccess: () -> Void) {
+  override func get(getSuccess: (() -> Void)? = nil) {
     let url: String
     if let appID = infoDictionary()?[kBundleIdentifier] {
       url = "http://itunes.apple.com/lookup?bundleId=\(appID)"
@@ -46,7 +46,7 @@ class Version: BaseModel {
           }
         }
       }
-      getSuccess()
+      getSuccess?()
       }, failure: nil)
   }
   func infoDictionary() -> [String : AnyObject]? {

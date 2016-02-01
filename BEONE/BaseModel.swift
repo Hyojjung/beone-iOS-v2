@@ -12,12 +12,12 @@ class BaseModel: NSObject {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
   }
   
-  func get(getSuccess: () -> Void) {
+  func get(getSuccess: (() -> Void)? = nil) {
     NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] {
         self.assignObject(data)
       }
-      getSuccess()
+      getSuccess?()
       }, failure: nil)
   }
   

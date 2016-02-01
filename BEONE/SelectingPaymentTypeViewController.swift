@@ -48,6 +48,8 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       orderWebViewController.order = order
       orderWebViewController.paymentInfoId = order.mainPaymentInfo?.id
       orderWebViewController.paymentTypeId = selectedPaymentTypeId
+    } else if let billKeysViewController = segue.destinationViewController as? BillKeysViewController {
+      billKeysViewController.order = order
     }
   }
   

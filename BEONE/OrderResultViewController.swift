@@ -6,13 +6,15 @@ class OrderResultViewController: BaseViewController {
   @IBOutlet weak var resultImageView: UIImageView!
   @IBOutlet weak var resultView: UIView!
   var orderResult: [String: AnyObject]?
+  var isSuccess = false
   var paymentInfo: PaymentInfo?
   var order = Order() {
     didSet {
       if let isSuccess = orderResult?["isSuccess"] as? String {
-        if isSuccess == "true" {
-          CartItemManager.removeCartItem(order.cartItemIds)
-        }
+        self.isSuccess = isSuccess == "true"
+      }
+      if self.isSuccess {
+        CartItemManager.removeCartItem(order.cartItemIds)
       }
     }
   }
@@ -69,15 +71,13 @@ class OrderResultViewController: BaseViewController {
   }
   
   private func configureResultLabel() {
-    if let isSuccess = orderResult?["isSuccess"] as? String {
-      orderResultView.orderResultLabel.text = nil
-      if isSuccess == "true" {
-        if PaymentTypeId.VBank.rawValue == paymentInfo?.paymentType.id {
-          orderResultView.orderResultLabel.text = NSLocalizedString("pay message", comment: "result label")
-        }
-      } else {
-        orderResultView.orderResultLabel.text = NSLocalizedString("order cancel", comment: "result label")
+    orderResultView.orderResultLabel.text = nil
+    if isSuccess {
+      if PaymentTypeId.VBank.rawValue == paymentInfo?.paymentType.id {
+        orderResultView.orderResultLabel.text = NSLocalizedString("pay message", comment: "result label")
       }
+    } else {
+      orderResultView.orderResultLabel.text = NSLocalizedString("order cancel", comment: "result label")
     }
   }
 }

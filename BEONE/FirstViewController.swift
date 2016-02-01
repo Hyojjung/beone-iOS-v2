@@ -30,6 +30,10 @@ class FirstViewController: BaseTableViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:",
       name: kNotificationDoAction, object: nil)
   }
+  
+  @IBAction func showSpeedOrder() {
+    showViewController("SpeedOrder", viewIdentifier: "SpeedOrderView")
+  }
 }
 
 // MARK: - UITableViewDataSource

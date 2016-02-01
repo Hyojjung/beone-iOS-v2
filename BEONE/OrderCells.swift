@@ -119,7 +119,7 @@ class AddressInfoCell: UITableViewCell {
   func configureCell(order: Order) {
     receiverNameLabel.text = order.address.receiverName
     receiverPhoneLabel.text = order.address.receiverPhone
-    addressLabel.text = order.address.addressString()
+    addressLabel.text = order.address.fullAddressString()
     deliveryMemoLabel.text = order.deliveryMemo
     
     if order.deliveryMemo == nil  {

@@ -76,7 +76,7 @@ extension OrderAddressViewController {
   }
   
   @IBAction func segueToAddressViewButtonTapped() {
-    showWebView("postcodes", title: NSLocalizedString("order view title", comment: "view title"))
+    showWebView("postcodes", title: NSLocalizedString("order view title", comment: "view title"), addressDelegate: self)
   }
   
   @IBAction func sendAddressButtonTapped() {
@@ -100,25 +100,15 @@ extension OrderAddressViewController {
 
 // MARK: - Observer Methods
 
-extension OrderAddressViewController {
-  func handleAddress(notification: NSNotification) {
-    if let userInfo = notification.userInfo, addressUrl = userInfo[kNotificationKeyAddress] {
-      var address = addressUrl.componentsSeparatedByString("?").last
-      address = address?.stringByRemovingPercentEncoding
-      address = address?.stringByReplacingOccurrencesOfString("+", withString: " ")
-      var addressComponentsDictionary = [String: String]()
-      if let addressComponents = address?.componentsSeparatedByString("&") {
-        for addressComponent in addressComponents {
-          let component = addressComponent.componentsSeparatedByString("=")
-          if let first = component.first {
-            addressComponentsDictionary[first] = component.last
-          }
-        }
-        self.address.assign(addressComponentsDictionary)
-        setUpAddressView()
-      }
-    }
+extension OrderAddressViewController: AddressDelegate {
+  
+  func handleAddress(address: Address) {
+    self.address = address
+    setUpAddressView()
   }
+}
+
+extension OrderAddressViewController {
   
   func handleValidationResult(notification: NSNotification) {
     if let userInfo = notification.userInfo, isValid = userInfo[kNotificationKeyIsValid] as? Bool {
@@ -158,8 +148,6 @@ extension OrderAddressViewController {
   }
   
   func addViewObservers() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAddress:",
-      name: kNotificationAddressSelected, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpSenderWithMyInfo", name: kNotificationFetchMyInfoSuccess, object: nil)
   }
   

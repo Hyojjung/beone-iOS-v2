@@ -15,6 +15,13 @@ class ProductProperty: BaseModel {
   var values = [ProductPropertyValue]()
   var subTitle: String?
   
+  override func fetchUrl() -> String {
+    if let alias = alias {
+      return "product-properties/\(alias)"
+    }
+    return "product-properties"
+  }
+  
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
@@ -47,5 +54,13 @@ class ProductProperty: BaseModel {
       }
     }
     return productProperty
+  }
+  
+  func valueTitles() -> [String] {
+    var valueTitles = [String]()
+    for value in values {
+      valueTitles.append(value.name!)
+    }
+    return valueTitles
   }
 }

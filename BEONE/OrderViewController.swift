@@ -280,7 +280,7 @@ extension OrderViewController: DynamicHeightTableViewProtocol {
     
     let addressLabel = UILabel()
     addressLabel.font = UIFont.systemFontOfSize(12)
-    addressLabel.text = order.address.addressString()
+    addressLabel.text = order.address.fullAddressString()
     addressLabel.setWidth(ViewControllerHelper.screenWidth - 113)
     
     height += addressLabel.frame.height
