@@ -22,6 +22,8 @@
 		6207177D1BE33DD50014B9AC /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6207177C1BE33DD50014B9AC /* LayoutHelper.swift */; };
 		620717821BE347E20014B9AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620717801BE347E20014B9AC /* WebViewController.swift */; };
 		620717831BE347E20014B9AC /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620717811BE347E20014B9AC /* WebViewController.xib */; };
+		62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */; };
+		62122D731C5EFE5900B9850E /* QuickSelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62122D721C5EFE5900B9850E /* QuickSelectProductView.xib */; };
 		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
 		622DE1121C58B6A800F0C9DF /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1111C58B6A800F0C9DF /* OrderViewController.swift */; };
 		622DE1151C5A58FF00F0C9DF /* AddingBillKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */; };
@@ -259,6 +261,8 @@
 		6207177C1BE33DD50014B9AC /* LayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		620717801BE347E20014B9AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		620717811BE347E20014B9AC /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpeedOrder.storyboard; sourceTree = "<group>"; };
+		62122D721C5EFE5900B9850E /* QuickSelectProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickSelectProductView.xib; sourceTree = "<group>"; };
 		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		622DE1111C58B6A800F0C9DF /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingBillKeyViewController.swift; sourceTree = "<group>"; };
@@ -685,6 +689,7 @@
 				73398AEF1C06EE3C00F57D4A /* MainTitleView.swift */,
 				73398AF11C06EE5600F57D4A /* MainTitleView.xib */,
 				73BE226C1C36CC23003FA11C /* TimeSelectView.swift */,
+				62122D721C5EFE5900B9850E /* QuickSelectProductView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				73ED3BB71C4A25CC00D0B742 /* Search.storyboard */,
 				6286FB621C5643FD00845BE4 /* Profile.storyboard */,
 				6286FB891C579D7D00845BE4 /* Setting.storyboard */,
+				62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -1193,6 +1199,7 @@
 				736818F81C106433009E433B /* left_arrow.png in Resources */,
 				73DF1D751C400D3600DB3550 /* EtcResultView.xib in Resources */,
 				73DF1D771C400D4400DB3550 /* PaypalResultView.xib in Resources */,
+				62122D731C5EFE5900B9850E /* QuickSelectProductView.xib in Resources */,
 				62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */,
 				6207174A1BE221970014B9AC /* ImageTemplateCell.xib in Resources */,
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
@@ -1227,6 +1234,7 @@
 				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
 				6286FB631C5643FD00845BE4 /* Profile.storyboard in Resources */,
 				73398AF91C08219000F57D4A /* Cart.storyboard in Resources */,
+				62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */,
 				736818FA1C106433009E433B /* right_arrow.png in Resources */,
 				73BE225B1C30E087003FA11C /* OptionTextView.xib in Resources */,
 				73ED3BB81C4A25CC00D0B742 /* Search.storyboard in Resources */,

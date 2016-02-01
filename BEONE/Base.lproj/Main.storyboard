@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kpg-HD-frD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kpg-HD-frD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -28,13 +28,19 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="5rM-1M-5pw"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
+                                <rect key="frame" x="497" y="448" width="83" height="83"/>
+                                <state key="normal" image="btnSpeedorder"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="43d-VB-8Up" secondAttribute="bottom" id="ESP-4o-RSW"/>
                             <constraint firstAttribute="trailing" secondItem="43d-VB-8Up" secondAttribute="trailing" id="MwT-4a-W8b"/>
+                            <constraint firstAttribute="trailing" secondItem="Nxn-bk-sQG" secondAttribute="trailing" constant="20" id="Qma-c9-QK0"/>
                             <constraint firstItem="43d-VB-8Up" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Yft-bV-8ZH"/>
                             <constraint firstItem="43d-VB-8Up" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="fBP-FA-pQ4"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Nxn-bk-sQG" secondAttribute="bottom" constant="20" id="rDH-U9-N9E"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="비밀의화원" id="uAN-3Y-9zI"/>
@@ -1265,7 +1271,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-0y-fgI">
-                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1312,7 +1318,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT9-WO-9aN">
-                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1351,7 +1357,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도움말" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9c-XU-kgU">
-                                        <rect key="frame" x="57" y="97" width="36.5" height="17"/>
+                                        <rect key="frame" x="57" y="97" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1391,7 +1397,7 @@
                                 <rect key="frame" x="450" y="64" width="150" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-EG-Pup">
-                                        <rect key="frame" x="51" y="97" width="48.5" height="17"/>
+                                        <rect key="frame" x="51" y="97" width="49" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1437,7 +1443,7 @@
                                         <rect key="frame" x="53" y="53" width="44" height="44"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-W3-S8x">
-                                        <rect key="frame" x="63" y="97" width="24.5" height="17"/>
+                                        <rect key="frame" x="63" y="97" width="25" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1582,6 +1588,7 @@
         <image name="btnSelectOn" width="36" height="40"/>
         <image name="btnSidebarCircle" width="93" height="93"/>
         <image name="btnSidebarCirclePressed" width="93" height="93"/>
+        <image name="btnSpeedorder" width="83" height="83"/>
         <image name="iconNavCart" width="26" height="26"/>
         <image name="iconSidebarDday" width="44" height="44"/>
         <image name="iconSidebarFavorite" width="44" height="44"/>

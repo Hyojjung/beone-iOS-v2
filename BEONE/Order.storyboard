@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -2504,7 +2504,7 @@ IAo
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp">
-                                                    <rect key="frame" x="425" y="5" width="160.5" height="35"/>
+                                                    <rect key="frame" x="425" y="5" width="161" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="PCi-kN-kEf"/>
                                                         <constraint firstAttribute="width" constant="46" id="ys2-YH-z3Y"/>
@@ -2522,7 +2522,7 @@ IAo
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-yn-9CZ">
-                                                    <rect key="frame" x="94" y="5" width="160.5" height="35"/>
+                                                    <rect key="frame" x="94" y="5" width="161" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="CMq-xj-5El"/>
                                                         <constraint firstAttribute="height" constant="35" id="GJv-OS-L14"/>
@@ -2589,7 +2589,7 @@ IAo
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="● ●" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M85-eZ-dRP">
-                                                    <rect key="frame" x="164" y="12" width="24.5" height="19.5"/>
+                                                    <rect key="frame" x="164" y="12" width="25" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
