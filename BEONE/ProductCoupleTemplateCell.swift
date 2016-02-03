@@ -8,7 +8,7 @@ class ProductCoupleTemplateCell: TemplateCell {
   func configureView(products: [Product]) {
     configureDefaulStyle()
     firstProductView.configureView(products.first)
-    secondProductView.alpha = products.count > 1 ? 1 : 0
+    secondProductView.configureAlpha(products.count > 1)
     if products.count > 1 {
       secondProductView.configureView(products.last)
     }

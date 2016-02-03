@@ -174,11 +174,11 @@ extension AddingBillKeyViewController {
       }) { (error) -> Void in
         if error.statusCode == NetworkResponseCode.Invalid.rawValue ||
           error.statusCode == NetworkResponseCode.CannotGoThrough.rawValue {
-          if let responseObject = error.responseObject as? [String: AnyObject],
-            error = responseObject["error"] as? [String: AnyObject],
-            key = error["alert"] as? String {
-              self.showAlertView("'" + key + "' 다시 확인해주세요.")
-          }
+            if let responseObject = error.responseObject as? [String: AnyObject],
+              error = responseObject["error"] as? [String: AnyObject],
+              key = error["alert"] as? String {
+                self.showAlertView("'" + key + "' 다시 확인해주세요.")
+            }
         }
     }
   }
@@ -201,33 +201,41 @@ extension AddingBillKeyViewController {
   }
   
   @IBAction func selectMonthButtonTapped() {
-    showActionSheet("월을 선택해주세요", rows: monthArray, initialSelection: 0, sender: nil, doneBlock: { (_, index, _) -> Void in
-      self.billKey.expiredMonth = index + 1
-      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-        withRowAnimation: .Automatic)
-      
-      if self.isGoingDown {
-        self.selectYearButtonTapped()
-      } else {
-        let cardNumberLastTextField = self.view.viewWithTag(kCardNumberLastTextFieldTag) as! UITextField
-        cardNumberLastTextField.becomeFirstResponder()
-      }
-      }, cancelBlock: nil)
+    showActionSheet(NSLocalizedString("select month", comment: "action sheet title"),
+      rows: monthArray,
+      initialSelection: 0,
+      sender: nil,
+      doneBlock: { (_, index, _) -> Void in
+        self.billKey.expiredMonth = index + 1
+        self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
+          withRowAnimation: .Automatic)
+        
+        if self.isGoingDown {
+          self.selectYearButtonTapped()
+        } else {
+          let cardNumberLastTextField = self.view.viewWithTag(kCardNumberLastTextFieldTag) as! UITextField
+          cardNumberLastTextField.becomeFirstResponder()
+        }
+    })
   }
   
   @IBAction func selectYearButtonTapped() {
-    showActionSheet("년을 선택해주세요", rows: yearArray, initialSelection: 0, sender: nil, doneBlock: { (_, index, _) -> Void in
-      self.billKey.expiredYear = NSDate().year() + index
-      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-        withRowAnimation: .Automatic)
-      
-      if self.isGoingDown {
-        let afterButtonTextField = self.view.viewWithTag(kAfterYearButtonTextFieldTag) as! UITextField
-        afterButtonTextField.becomeFirstResponder()
-      } else {
-        self.selectMonthButtonTapped()
-      }
-      }, cancelBlock: nil)
+    showActionSheet(NSLocalizedString("select year", comment: "action sheet title"),
+      rows: yearArray,
+      initialSelection: 0,
+      sender: nil,
+      doneBlock: { (_, index, _) -> Void in
+        self.billKey.expiredYear = NSDate().year() + index
+        self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
+          withRowAnimation: .Automatic)
+        
+        if self.isGoingDown {
+          let afterButtonTextField = self.view.viewWithTag(kAfterYearButtonTextFieldTag) as! UITextField
+          afterButtonTextField.becomeFirstResponder()
+        } else {
+          self.selectMonthButtonTapped()
+        }
+    })
   }
   
   @IBAction func selectPersonalCardButtonTapped() {

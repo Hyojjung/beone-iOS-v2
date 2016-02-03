@@ -46,7 +46,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     super.prepareForSegue(segue, sender: sender)
     if let orderWebViewController = segue.destinationViewController as? OrderWebViewController {
       orderWebViewController.order = order
-      orderWebViewController.paymentInfoId = order.mainPaymentInfo?.id
+      orderWebViewController.paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id
       orderWebViewController.paymentTypeId = selectedPaymentTypeId
     } else if let billKeysViewController = segue.destinationViewController as? BillKeysViewController {
       billKeysViewController.order = order
@@ -57,7 +57,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     if let paymentTypeId = selectedPaymentTypeId, paymentTypes = paymentTypes {
       var selectedPaymentType: PaymentType?
       if selectedPaymentTypeId == PaymentTypeId.Card.rawValue {
-        performSegueWithIdentifier("From Order To Billing", sender: nil)
+        showBillKeysView(order)
       }
       for paymentType in paymentTypes {
         if paymentTypeId == paymentType.id {

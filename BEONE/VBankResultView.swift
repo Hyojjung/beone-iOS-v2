@@ -10,9 +10,9 @@ class VBankResultView: OrderResultView {
   
   override func layoutView(order: Order, paymentInfo: PaymentInfo) {
     super.layoutView(order, paymentInfo: paymentInfo)
-    bankLabel.text = paymentInfo.bankName
+    bankLabel.text = paymentInfo.vbankIssuerBankName
     issureNameLabel.text = paymentInfo.vbankIssuerName
-    accountLabel.text = paymentInfo.account
-    expiredAtLabel.text = paymentInfo.expiredAt?.dueDateDateString()
+    accountLabel.text = paymentInfo.vbankIssuerAccount
+    expiredAtLabel.text = paymentInfo.vbankExpiredAt?.dueDateDateString()
   }
 }

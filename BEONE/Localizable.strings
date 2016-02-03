@@ -58,5 +58,12 @@
 "expired today" = "(오늘만료)";
 "day left" = "일 남음)";
 
+"order failure" = "다시 한 번 시도해 주시겠어요?";
 "order cancel" = "결정이 힘드시면 비밀의화원에 도움을 요청하세요!";
 "pay message" = "입금완료시 상품제작이 시작됩니다.\n입금이 늦을경우 해당일에 상품을 받으실 수 없습니다.";
+
+"pay cancel" = "취소하기";
+"pay" = "결제하기";
+
+"select month" = "월을 선택해주세요.";
+"select year" = "년을 선택해주세요.";

@@ -78,7 +78,7 @@ extension SearchResultViewController {
   @IBAction func showSearchModalButtonTapped() {
     if isQuickOrdering {
       let searchViewController = viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier)
-      showViewController(searchViewController, sender: nil)
+      navigationController?.showViewController(searchViewController, sender: nil)
     } else {
       popView()
     }
@@ -156,7 +156,7 @@ class SearchCell: UITableViewCell {
         maxPrice: maxPrice)
       searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
       
-      searchButton.alpha = isQuickOrdering ? 1 : 0
+      searchButton.configureAlpha(isQuickOrdering)
   }
   
   private func searchValueStrings(selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],

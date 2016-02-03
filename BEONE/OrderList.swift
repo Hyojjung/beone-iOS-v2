@@ -10,6 +10,12 @@ class OrderList: BaseListModel {
     return "orders"
   }
   
+  override func fetchParameter() -> AnyObject? {
+    var parameter = [String: AnyObject]()
+    parameter["orderListType"] = "visible"
+    return parameter
+  }
+  
   override func assignObject(data: AnyObject) {
     if let orders = data as? [[String: AnyObject]] {
       list.removeAll()

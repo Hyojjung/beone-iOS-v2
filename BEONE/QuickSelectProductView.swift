@@ -13,7 +13,7 @@ class QuickSelectProductView: UIView {
 
   func layoutView(product: Product) {
     productImageView.setLazyLoaingImage(product.mainImageUrl)
-    saleView.alpha = product.onSale ? 1 : 0
+    saleView.configureAlpha(product.onSale)
     if let discountPercent = product.discountPercent {
       discountPercentLabel.text = "\(discountPercent)%"
     }

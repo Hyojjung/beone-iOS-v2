@@ -113,7 +113,7 @@ extension SearchViewController {
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
         searchResultViewController.minPrice = minPrice
         searchResultViewController.maxPrice = maxPrice
-        showViewController(searchResultViewController, sender: nil)
+        navigationController?.showViewController(searchResultViewController, sender: nil)
     }
   }
   

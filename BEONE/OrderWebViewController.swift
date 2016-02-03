@@ -7,26 +7,13 @@ class OrderWebViewController: BaseViewController {
   var paymentTypeId: Int?
   var paymentInfoId: Int?
   var order: Order?
-  
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let orderResultViewController = segue.destinationViewController as? OrderResultViewController, order = order {
-      print(sender)
-      for paymentInfo in order.paymentInfos {
-        if self.paymentInfoId == paymentInfo.id {
-          orderResultViewController.paymentInfo = paymentInfo
-          break;
-        }
-      }
-      orderResultViewController.orderResult = sender as? [String: AnyObject]
-      orderResultViewController.order = order
-    }
-  }
-  
+
   override func setUpView() {
     super.setUpView()
     AuthenticationHelper.refreshToken { (result) -> Void in
       if let order = self.order, paymentTypeId = self.paymentTypeId, paymentInfoId = self.paymentInfoId {
-        let url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/payment-infos/\(paymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
+        var url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)"
+        url += "/orders/\(order.id!)/payment-infos/\(paymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
         
         let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())
         orderWebViewUrlRequest.setValue(MyInfo.sharedMyInfo().accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
@@ -43,19 +30,11 @@ extension OrderWebViewController: UIWebViewDelegate {
     let urlProtocol = url?.componentsSeparatedByString("://").first
     print(url)
     if urlProtocol == "cmbeone" {
-      if let orderResultQuery = url?.componentsSeparatedByString("?").last {
-        let orderResultComponents = orderResultQuery.componentsSeparatedByString("&")
-        var parameter = [String: AnyObject]()
-        for orderResultComponent in orderResultComponents {
-          if let orderResultKey = orderResultComponent.componentsSeparatedByString("=").first {
-            parameter[orderResultKey] = orderResultComponent.componentsSeparatedByString("=").last
-          }
-        }
-        parameter["orderId"] = order?.id
-        order!.get({ () -> Void in
-          self.performSegueWithIdentifier("From Order Web To Order Result", sender: parameter)
-        })
+      if let order = order, paymentInfoId = paymentInfoId {
+        showOrderResultView(order, paymentInfoId: paymentInfoId, orderResult: url?.jsonObject())
       }
+    } else if url == "beone://payment.cancelled" {
+      showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Canceled.rawValue])
     }
     return true
   }

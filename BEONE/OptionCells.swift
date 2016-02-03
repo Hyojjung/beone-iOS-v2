@@ -96,7 +96,7 @@ class OptionCell: UITableViewCell {
       optionView.layoutView(productOptionSetList)
     }
     addCarItemButton.enabled = needButton
-    addCarItemButton.alpha = needButton ? 1 : 0
+    addCarItemButton.configureAlpha(needButton)
     optionViewBottomMarginLayoutConstraint.constant = needButton ? 89 : 20
   }
   

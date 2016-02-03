@@ -9,7 +9,7 @@ class CardResultView: OrderResultView {
   
   override func layoutView(order: Order, paymentInfo: PaymentInfo) {
     super.layoutView(order, paymentInfo: paymentInfo)
-    bankLabel.text = paymentInfo.bankName
+    bankLabel.text = paymentInfo.cardName
     paidAtLabel.text = paymentInfo.paidAt?.paidAtDateString()
     cardNumberLabel.text = paymentInfo.cardNumber
   }

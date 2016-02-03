@@ -49,9 +49,14 @@ class OrderableItemSet: BaseModel {
         }
       }
       
+      if let reservation = orderableItemSet["reservation"] as? [String: AnyObject] {
+        selectedTimeRange = AvailableTimeRange()
+        selectedTimeRange?.assignObject(reservation)
+      }
+      
       if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {
-        self.deliveryPrice = deliveryPrice
+          self.deliveryPrice = deliveryPrice
       }
       
       if let locationObject = orderableItemSet["location"] {

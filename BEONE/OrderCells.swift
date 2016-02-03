@@ -20,7 +20,7 @@ class ImageCell: UITableViewCell {
     
     for i in kOrderItemCellRowImageCount..<(kOrderItemCellRowImageCount * kOrderItemCellColumnImageCount) {
       if let imageView = viewWithTag(i + kImageViewBaseTag) {
-        imageView.alpha = orderItem.itemImageUrls.count < kOrderItemCellRowImageCount ? 0 : 1
+        imageView.configureAlpha(orderItem.itemImageUrls.count >= kOrderItemCellRowImageCount)
       }
     }
     
@@ -43,11 +43,11 @@ class AccountInfoCell: UITableViewCell {
   @IBOutlet weak var accountNumberLabel: UILabel!
   
   func configureCell(paymentInfo: PaymentInfo) {
-    dueDateLabel.text = paymentInfo.expiredAt?.paidAtDateString()
-    priceLabel.text = paymentInfo.price.priceNotation(.Korean)
+    dueDateLabel.text = paymentInfo.vbankExpiredAt?.paidAtDateString()
+    priceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
     accountIssureLabel.text = paymentInfo.vbankIssuerName
-    bankLabel.text = paymentInfo.bankName
-    accountNumberLabel.text = paymentInfo.account
+    bankLabel.text = paymentInfo.vbankIssuerBankName
+    accountNumberLabel.text = paymentInfo.vbankIssuerAccount
   }
 }
 
@@ -91,7 +91,7 @@ class OrderItemSerInfoCell: UITableViewCell {
     deliveryTrackingButton.tag = index
     orderDoneButton.tag = index
     orderDoneButton.enabled = orderItemSet.isCompletable
-    orderDoneButton.alpha = orderItemSet.isCompletable ? 1 : 0
+    orderDoneButton.configureAlpha(orderItemSet.isCompletable)
     deliveryTrackingInfoTrailingLayoutConstraint.constant = orderItemSet.isCompletable ? 102 : 14
   }
 }
@@ -156,8 +156,8 @@ class PaymentInfoCell: UITableViewCell {
     } else {
       paidAtLabel.text = "미결제"
     }
-    totalPriceLabel.text = paymentInfo.price.priceNotation(.Korean)
-    payButton.alpha = paymentInfo.paymentStatus == .Waiting ? 1 : 0
+    totalPriceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
+    payButton.configureAlpha(paymentInfo.paymentStatus == .Waiting)
     payButton.enabled = paymentInfo.paymentStatus == .Waiting
     payButton.tag = paymentInfo.id!
   }

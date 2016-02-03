@@ -5,20 +5,19 @@ class Order: BaseModel {
   var senderName: String?
   var senderPhone: String?
   var isSecret = false
-  var isPayable = false
   var address = Address()
   var deliveryMemo: String?
   var price = 0
   var discountPrice = 0
   var actualPrice = 0
   var orderableItemSets = [OrderableItemSet]()
-  var paymentInfos = [PaymentInfo]()
-  var mainPaymentInfo: PaymentInfo?
+  var paymentInfoList = PaymentInfoList()
   var cartItemIds = [Int]()
   var title: String?
   var orderCode: String?
   var createdAt: NSDate?
   var usedPoint = 0
+  var isCancellable = false
   
   override func fetchUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
@@ -28,47 +27,40 @@ class Order: BaseModel {
   }
   
   override func assignObject(data: AnyObject) {
-    assignOrderableItemSets(data)
-    address.assignObject(data)
-
-    if let paymentInfoObjects = data["paymentInfos"] as? [[String: AnyObject]] {
-      paymentInfos.removeAll()
-      for paymentInfoObject in paymentInfoObjects {
-        let paymentInfo = PaymentInfo()
-        paymentInfo.assignObject(paymentInfoObject)
-        paymentInfos.append(paymentInfo)
-        if paymentInfo.isMainPayment {
-          mainPaymentInfo = paymentInfo
-        }
+    if let data = data as? [String: AnyObject] {
+      assignOrderableItemSets(data)
+      address.assignObject(data)
+      if let paymentInfos = data["paymentInfos"] {
+        paymentInfoList.assignObject(paymentInfos)
       }
-    }
-    
-    id = data[kObjectPropertyKeyId] as? Int
-    title = data["title"] as? String
-    deliveryMemo = data["deliveryMemo"] as? String
-    senderName = data["senderName"] as? String
-    senderPhone = data["senderPhone"] as? String
-    orderCode = data["orderCode"] as? String
-    if let usedPoint = data["usedPoint"] as? Int {
-      self.usedPoint = usedPoint
-    }
-    if let isSecret = data["isSecret"] as? Bool {
-      self.isSecret = isSecret
-    }
-    if let isPayable = data["isPayable"] as? Bool {
-      self.isPayable = isPayable
-    }
-    if let price = data["price"] as? Int {
-      self.price = price
-    }
-    if let discountPrice = data["discountPrice"] as? Int {
-      self.discountPrice = discountPrice
-    }
-    if let actualPrice = data["actualPrice"] as? Int {
-      self.actualPrice = actualPrice
-    }
-    if let createdAt = data["createdAt"] as? String {
-      self.createdAt = createdAt.date()
+      
+      id = data[kObjectPropertyKeyId] as? Int
+      title = data["title"] as? String
+      deliveryMemo = data["deliveryMemo"] as? String
+      senderName = data["senderName"] as? String
+      senderPhone = data["senderPhone"] as? String
+      orderCode = data["orderCode"] as? String
+      if let usedPoint = data["usedPoint"] as? Int {
+        self.usedPoint = usedPoint
+      }
+      if let isSecret = data["isSecret"] as? Bool {
+        self.isSecret = isSecret
+      }
+      if let isCancellable = data["isCancellable"] as? Bool {
+        self.isCancellable = isCancellable
+      }
+      if let price = data["price"] as? Int {
+        self.price = price
+      }
+      if let discountPrice = data["discountPrice"] as? Int {
+        self.discountPrice = discountPrice
+      }
+      if let actualPrice = data["actualPrice"] as? Int {
+        self.actualPrice = actualPrice
+      }
+      if let createdAt = data["createdAt"] as? String {
+        self.createdAt = createdAt.date()
+      }
     }
   }
   
@@ -110,7 +102,7 @@ class Order: BaseModel {
         }
       }
       if let selectedTimeRange = orderItemSet.selectedTimeRange {
-        deliveryDateString += selectedTimeRange.timeRangeNotation()
+        deliveryDateString += selectedTimeRange.dateNotation()
       } else {
         deliveryDateString += "택배배송"
       }

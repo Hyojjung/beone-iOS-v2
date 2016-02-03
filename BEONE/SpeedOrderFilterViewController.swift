@@ -32,9 +32,9 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     if let speedOrderAddressViewController = segue.destinationViewController as? SpeedOrderAddressViewController {
       speedOrderAddressViewController.addressDelegate = self
     } else if let quickSelectResultsViewController = segue.destinationViewController as? QuickSelectResultsViewController,
-    selectedUsageIndex = selectedUsageIndex {
-      quickSelectResultsViewController.productList.productPropertyValueIds = [Int]()
-      quickSelectResultsViewController.productList.productPropertyValueIds!.append(usageValues.values[selectedUsageIndex].id!)
+      selectedUsageIndex = selectedUsageIndex {
+        quickSelectResultsViewController.productList.productPropertyValueIds = [Int]()
+        quickSelectResultsViewController.productList.productPropertyValueIds!.append(usageValues.values[selectedUsageIndex].id!)
     }
   }
   
@@ -50,7 +50,10 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   @IBAction func selectUsageButtonTapped() {
     let initialSelection = selectedUsageIndex != nil ? selectedUsageIndex! : 0
-    showActionSheet("용도를 선택해 주세요", rows: usageValues.valueTitles(), initialSelection: initialSelection, sender: nil,
+    showActionSheet("용도를 선택해 주세요",
+      rows: usageValues.valueTitles(),
+      initialSelection: initialSelection,
+      sender: nil,
       doneBlock: { (_, index, _) -> Void in
         self.selectedUsageIndex = index
         self.tableView.reloadData()

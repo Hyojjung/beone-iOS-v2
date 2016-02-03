@@ -2105,9 +2105,6 @@ IAo
                     <navigationItem key="navigationItem" id="AlD-MR-8xp"/>
                     <connections>
                         <outlet property="tableView" destination="HI0-0L-YIT" id="kOg-yr-Gz1"/>
-                        <segue destination="rtA-Z2-FlT" kind="show" identifier="From Bill Key List To Order Result" id="i4O-W2-Gwz">
-                            <nil key="action"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umw-MF-nuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4082,9 +4079,6 @@ IAo
                         <segue destination="N8h-Th-hks" kind="show" identifier="From Order To Select Coupon By Show" id="DD7-CJ-p4N">
                             <nil key="action"/>
                         </segue>
-                        <segue destination="rtA-Z2-FlT" kind="show" identifier="From Order To Order Result By Show" id="fZD-E2-d3W">
-                            <nil key="action"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bD4-x6-pVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4128,152 +4122,11 @@ IAo
                     <navigationItem key="navigationItem" id="DFe-Ht-65x"/>
                     <connections>
                         <outlet property="orderWebView" destination="LdU-72-qtO" id="djd-gW-NeY"/>
-                        <segue destination="rtA-Z2-FlT" kind="show" identifier="From Order Web To Order Result" id="idX-5D-GCx">
-                            <nil key="action"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RX-cd-c0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2058" y="-83"/>
-        </scene>
-        <!--Order Result View Controller-->
-        <scene sceneID="CJn-GN-pOG">
-            <objects>
-                <viewController storyboardIdentifier="orderResultView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rtA-Z2-FlT" customClass="OrderResultViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gdh-8T-HZ6"/>
-                        <viewControllerLayoutGuide type="bottom" id="bK1-5f-I6v"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wcj-yJ-oHo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHv-t2-lPn">
-                                <rect key="frame" x="0.0" y="64" width="600" height="892"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="vgl-XO-oBT">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="892"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-U9-70C">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_payment.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ysk-f0-jEx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_payment_success" translatesAutoresizingMaskIntoConstraints="NO" id="kwv-A1-cRX">
-                                                        <rect key="frame" x="207" y="49" width="186" height="32"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="ysk-f0-jEx" secondAttribute="trailing" id="Fek-6M-N2m"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ysk-f0-jEx" secondAttribute="bottom" id="J8A-LD-hnB"/>
-                                                    <constraint firstAttribute="centerY" secondItem="kwv-A1-cRX" secondAttribute="centerY" id="QW6-bJ-ieb"/>
-                                                    <constraint firstAttribute="centerX" secondItem="kwv-A1-cRX" secondAttribute="centerX" id="bU0-E5-YdU"/>
-                                                    <constraint firstItem="ysk-f0-jEx" firstAttribute="top" secondItem="jeX-U9-70C" secondAttribute="top" id="cfI-w3-EWL"/>
-                                                    <constraint firstItem="ysk-f0-jEx" firstAttribute="leading" secondItem="jeX-U9-70C" secondAttribute="leading" id="eFG-rY-aoM"/>
-                                                    <constraint firstAttribute="height" constant="130" id="nBW-hv-AWi"/>
-                                                </constraints>
-                                            </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="image_product_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yun-AK-rj1">
-                                                <rect key="frame" x="283" y="112" width="35" height="35"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8f-IR-NrG">
-                                                <rect key="frame" x="14" y="835" width="572" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="Lr0-cI-N4I"/>
-                                                </constraints>
-                                                <state key="normal" title="닫기" backgroundImage="btn_submit_darkgrey">
-                                                    <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted" title="닫기" backgroundImage="btn_submit_darkgrey_pressed"/>
-                                            </button>
-                                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-a0-o9Y">
-                                                <rect key="frame" x="14" y="157" width="572" height="664"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="664" placeholder="YES" id="6fu-fF-vfs"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="XQc-a0-o9Y" secondAttribute="trailing" constant="14" id="4af-I0-YOS"/>
-                                            <constraint firstItem="P8f-IR-NrG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XQc-a0-o9Y" secondAttribute="bottom" constant="14" id="Ad1-T1-bl4"/>
-                                            <constraint firstAttribute="bottom" secondItem="P8f-IR-NrG" secondAttribute="bottom" constant="12" id="Cs1-oJ-si9"/>
-                                            <constraint firstItem="P8f-IR-NrG" firstAttribute="leading" secondItem="vgl-XO-oBT" secondAttribute="leading" constant="14" id="I4g-8i-ZBY"/>
-                                            <constraint firstAttribute="trailing" secondItem="jeX-U9-70C" secondAttribute="trailing" id="K01-9y-pe5"/>
-                                            <constraint firstAttribute="centerX" secondItem="yun-AK-rj1" secondAttribute="centerX" id="Lvi-ku-WCl"/>
-                                            <constraint firstItem="XQc-a0-o9Y" firstAttribute="leading" secondItem="vgl-XO-oBT" secondAttribute="leading" constant="14" id="UHl-Tt-u1H"/>
-                                            <constraint firstItem="yun-AK-rj1" firstAttribute="top" secondItem="jeX-U9-70C" secondAttribute="bottom" constant="-18" id="Xgt-1l-rPp"/>
-                                            <constraint firstItem="jeX-U9-70C" firstAttribute="leading" secondItem="vgl-XO-oBT" secondAttribute="leading" id="Yae-uO-gwy"/>
-                                            <constraint firstItem="XQc-a0-o9Y" firstAttribute="top" secondItem="yun-AK-rj1" secondAttribute="bottom" constant="10" id="d4Y-7q-pDk"/>
-                                            <constraint firstItem="P8f-IR-NrG" firstAttribute="top" secondItem="XQc-a0-o9Y" secondAttribute="bottom" constant="14" placeholder="YES" id="dMr-rN-Pgl"/>
-                                            <constraint firstItem="jeX-U9-70C" firstAttribute="top" secondItem="vgl-XO-oBT" secondAttribute="top" id="gxp-2K-Ffv"/>
-                                            <constraint firstAttribute="trailing" secondItem="P8f-IR-NrG" secondAttribute="trailing" constant="14" id="hCD-SU-WXx"/>
-                                            <constraint firstItem="P8f-IR-NrG" firstAttribute="top" secondItem="XQc-a0-o9Y" secondAttribute="bottom" constant="30" id="xI3-jT-mvL"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Ad1-T1-bl4"/>
-                                                <exclude reference="xI3-jT-mvL"/>
-                                            </mask>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="vgl-XO-oBT" secondAttribute="bottom" id="7Kz-a9-VjO"/>
-                                    <constraint firstItem="vgl-XO-oBT" firstAttribute="width" secondItem="IHv-t2-lPn" secondAttribute="width" id="Hjm-kz-k88"/>
-                                    <constraint firstItem="vgl-XO-oBT" firstAttribute="top" secondItem="IHv-t2-lPn" secondAttribute="top" id="Hxi-YF-Sdb"/>
-                                    <constraint firstItem="vgl-XO-oBT" firstAttribute="height" secondItem="IHv-t2-lPn" secondAttribute="height" id="Jnt-Ac-gJ3"/>
-                                    <constraint firstItem="vgl-XO-oBT" firstAttribute="leading" secondItem="IHv-t2-lPn" secondAttribute="leading" id="P2t-Tv-FPT"/>
-                                    <constraint firstItem="vgl-XO-oBT" firstAttribute="height" secondItem="IHv-t2-lPn" secondAttribute="height" id="gSR-Y0-wcL"/>
-                                    <constraint firstAttribute="trailing" secondItem="vgl-XO-oBT" secondAttribute="trailing" id="guf-Uv-T3S"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Jnt-Ac-gJ3"/>
-                                        <exclude reference="gSR-Y0-wcL"/>
-                                    </mask>
-                                </variation>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <accessibility key="accessibilityConfiguration" label="orderResultView">
-                            <bool key="isElement" value="YES"/>
-                        </accessibility>
-                        <constraints>
-                            <constraint firstItem="IHv-t2-lPn" firstAttribute="top" secondItem="gdh-8T-HZ6" secondAttribute="bottom" id="GIf-mu-WvT"/>
-                            <constraint firstAttribute="width" secondItem="IHv-t2-lPn" secondAttribute="width" id="KmO-9V-nFm"/>
-                            <constraint firstItem="bK1-5f-I6v" firstAttribute="top" secondItem="IHv-t2-lPn" secondAttribute="bottom" id="Ntu-RC-4z2"/>
-                            <constraint firstItem="IHv-t2-lPn" firstAttribute="leading" secondItem="wcj-yJ-oHo" secondAttribute="leading" id="Rdl-Zy-sY5"/>
-                            <constraint firstAttribute="trailing" secondItem="IHv-t2-lPn" secondAttribute="trailing" id="S8y-X5-k7a"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rdd-qN-aoh">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="dQs-kI-ath">
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="fsu-C1-gEm">
-                            <color key="tintColor" red="0.63137254899999995" green="0.52549019610000003" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="closeViewButtonTapped:" destination="rtA-Z2-FlT" id="2Sz-3f-1yc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="resultImageView" destination="kwv-A1-cRX" id="d7r-v7-WfO"/>
-                        <outlet property="resultView" destination="XQc-a0-o9Y" id="YVb-VF-mKb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q52-HQ-iuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2808" y="86"/>
         </scene>
     </scenes>
     <resources>
@@ -4282,15 +4135,12 @@ IAo
         <image name="bg_coupon" width="52" height="52"/>
         <image name="bg_coupon_dividebar" width="300" height="23"/>
         <image name="bg_list" width="3" height="3"/>
-        <image name="bg_payment.jpg" width="35" height="35"/>
         <image name="btnGoldStroke" width="12" height="12"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btnRectPcolor" width="3" height="3"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btn_coupon_more" width="3" height="3"/>
         <image name="btn_delete_card" width="40" height="40"/>
-        <image name="btn_submit_darkgrey" width="3" height="3"/>
-        <image name="btn_submit_darkgrey_pressed" width="3" height="3"/>
         <image name="btn_submit_gold" width="2" height="2"/>
         <image name="btn_submit_gold_pressed" width="2" height="2"/>
         <image name="checkbox_off" width="35" height="35"/>
@@ -4303,8 +4153,6 @@ IAo
         <image name="image_address_cant_delivery" width="161" height="161"/>
         <image name="image_card_white" width="256" height="145"/>
         <image name="image_list_style_dash" width="5" height="1"/>
-        <image name="image_payment_success" width="186" height="32"/>
-        <image name="image_product_logo" width="35" height="35"/>
         <image name="input" width="4" height="4"/>
         <image name="pat_cart_delivery" width="25" height="25"/>
         <image name="radio_off" width="35" height="35"/>
@@ -4313,6 +4161,5 @@ IAo
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qDD-6n-GFy"/>
-        <segue reference="i4O-W2-Gwz"/>
     </inferredMetricsTieBreakers>
 </document>

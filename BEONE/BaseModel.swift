@@ -51,6 +51,7 @@ class BaseModel: NSObject {
   
   func post(postSuccess: (AnyObject?) -> Void, postFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
+      
       postSuccess(result)
       }, failure: {(error) -> Void in
         postFailure?(error)

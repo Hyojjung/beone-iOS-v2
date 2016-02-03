@@ -92,8 +92,8 @@ extension OrderViewController {
   
   private func setUpBankUnpaiedPaymentInfos() {
     bankUnpaiedPaymentInfos.removeAll()
-    for paymentInfo in order.paymentInfos {
-      if !paymentInfo.isPaid && paymentInfo.paymentType.id == PaymentTypeId.VBank.rawValue {
+    for paymentInfo in order.paymentInfoList.list as! [PaymentInfo] {
+      if paymentInfo.paidAt == nil && paymentInfo.paymentType.id == PaymentTypeId.VBank.rawValue {
         bankUnpaiedPaymentInfos.append(paymentInfo)
       }
     }
@@ -136,26 +136,7 @@ extension OrderViewController {
 extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
-    if let paymentTypes = paymentTypes {
-      var actionSheetButtons = [ActionSheetButton]()
-      for paymentType in paymentTypes {
-        let paymentTypeButton = ActionSheetButton(title: paymentType.name!)
-          {(_) -> Void in
-            if paymentType.id == PaymentTypeId.Card.rawValue {
-              self.showViewController("Order", viewIdentifier: "BillKeysView")
-            } else {
-              if let orderWebViewController = self.viewController("Order", viewIdentifier: "OrderWebView") as? OrderWebViewController {
-                orderWebViewController.order = self.order
-                orderWebViewController.paymentTypeId = paymentType.id
-                orderWebViewController.paymentInfoId = sender.tag
-                self.showViewController(orderWebViewController, sender: nil)
-              }
-            }
-        }
-        actionSheetButtons.append(paymentTypeButton)
-      }
-      showActionSheet(actionSheetButtons)
-    }
+    showPayment(paymentTypes, order: order, paymentInfoId: sender.tag)
   }
 }
 
@@ -177,7 +158,7 @@ extension OrderViewController: UITableViewDataSource {
     } else if let cell = cell as? AddressInfoCell {
       cell.configureCell(order)
     } else if let cell = cell as? PaymentInfoCell {
-      cell.configureCell(order.paymentInfos[indexPath.row])
+      cell.configureCell(order.paymentInfoList.list[indexPath.row] as! PaymentInfo)
     } else if let cell = cell as? OrderItemSetShopNameCell {
       cell.configureCell(orderItemSet(indexPath.section))
     } else if let cell = cell as? AccountInfoCell {
@@ -197,7 +178,7 @@ extension OrderViewController: UITableViewDataSource {
       section < order.orderableItemSets.count + OrderTableViewSection.Shop.rawValue {
         return orderItemSet(section).orderableItems.count + 2
     } else if section == OrderTableViewSection.PaymentInfo.rawValue {
-      return order.paymentInfos.count
+      return order.paymentInfoList.list.count
     } else if section == OrderTableViewSection.Buttons.rawValue && returnableOrderItemSets.isEmpty {
       return 0
     }

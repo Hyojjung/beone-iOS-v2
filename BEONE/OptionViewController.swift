@@ -251,11 +251,15 @@ extension OptionViewController: OptionDelegate {
           initialSelection = index
         }
       }
-      showActionSheet( NSLocalizedString("select option", comment: "picker title"), rows: optionValues, initialSelection: initialSelection, sender: sender, doneBlock: { (_, selectedIndex, _) -> Void in
-        for (index, option) in self.selectedOption(optionId).options.enumerate() {
-          option.isSelected = index == selectedIndex
-        }
-        self.tableView.reloadData()
+      showActionSheet( NSLocalizedString("select option", comment: "picker title"),
+        rows: optionValues,
+        initialSelection: initialSelection,
+        sender: sender,
+        doneBlock: { (_, selectedIndex, _) -> Void in
+          for (index, option) in self.selectedOption(optionId).options.enumerate() {
+            option.isSelected = index == selectedIndex
+          }
+          self.tableView.reloadData()
       })
     } else {
       for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
@@ -266,14 +270,18 @@ extension OptionViewController: OptionDelegate {
           initialSelection = index
         }
       }
-      showActionSheet( NSLocalizedString("select option", comment: "picker title"), rows: optionValues, initialSelection: initialSelection, sender: sender, doneBlock: { (_, selectedIndex, _) -> Void in
-        for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
-          if index == selectedIndex {
-            self.selectedOptionItem(optionId).value = select.name
-            self.selectedOptionItem(optionId).selectedName = select.selectName()
+      showActionSheet( NSLocalizedString("select option", comment: "picker title"),
+        rows: optionValues,
+        initialSelection: initialSelection,
+        sender: sender,
+        doneBlock: { (_, selectedIndex, _) -> Void in
+          for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
+            if index == selectedIndex {
+              self.selectedOptionItem(optionId).value = select.name
+              self.selectedOptionItem(optionId).selectedName = select.selectName()
+            }
           }
-        }
-        self.tableView.reloadData()
+          self.tableView.reloadData()
       })
     }
     

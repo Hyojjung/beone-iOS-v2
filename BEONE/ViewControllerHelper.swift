@@ -111,7 +111,7 @@ extension UIViewController {
   func showOrderView(orderingCartItemIds: [Int]) {
     if let deliveryDateViewController = viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
       deliveryDateViewController.order.cartItemIds = orderingCartItemIds
-      showViewController(deliveryDateViewController, sender: nil)
+      navigationController?.showViewController(deliveryDateViewController, sender: nil)
     }
   }
   
@@ -128,7 +128,7 @@ extension UIViewController {
       if let selectedCartItem = selectedCartItem {
         optionViewController.cartItems.append(selectedCartItem)
       }
-      showViewController(optionViewController, sender: nil)
+      navigationController?.showViewController(optionViewController, sender: nil)
     }
   }
 }
@@ -143,7 +143,7 @@ extension UIViewController {
   
   func showViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
-      showViewController(viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
+      navigationController?.showViewController(viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
     }
   }
   
@@ -168,8 +168,12 @@ extension UIViewController {
 }
 
 extension UIViewController {
-  func showActionSheet(title: String, rows: [String], initialSelection: Int = 0, sender: UIButton? = nil,
-    doneBlock: ActionStringDoneBlock? = nil, cancelBlock: ActionStringCancelBlock? = nil) {
+  func showActionSheet(title: String,
+    rows: [String],
+    initialSelection: Int = 0,
+    sender: UIButton? = nil,
+    doneBlock: ActionStringDoneBlock? = nil,
+    cancelBlock: ActionStringCancelBlock? = nil) {
       sender?.selected = true
       let actionSheet =
       ActionSheetStringPicker(title: title,
@@ -182,6 +186,48 @@ extension UIViewController {
           cancelBlock?(actionSheet)
           sender?.selected = false
         }, origin: view)
+      
       actionSheet.showActionSheetPicker()
+  }
+  
+  func showPayment(paymentTypes: [PaymentType]?, order: Order, paymentInfoId: Int) {
+    if let paymentTypes = paymentTypes {
+      var actionSheetButtons = [ActionSheetButton]()
+      for paymentType in paymentTypes {
+        let paymentTypeButton = ActionSheetButton(title: paymentType.name!)
+          {(_) -> Void in
+            if paymentType.id == PaymentTypeId.Card.rawValue {
+              self.showBillKeysView(order, paymentInfoId: paymentInfoId)
+            } else {
+              if let orderWebViewController = self.viewController("Order", viewIdentifier: "OrderWebView") as? OrderWebViewController {
+                orderWebViewController.order = order
+                orderWebViewController.paymentTypeId = paymentType.id
+                orderWebViewController.paymentInfoId = paymentInfoId
+                self.navigationController?.showViewController(orderWebViewController, sender: nil)
+              }
+            }
+        }
+        actionSheetButtons.append(paymentTypeButton)
+      }
+      showActionSheet(actionSheetButtons)
+    }
+  }
+  
+  func showBillKeysView(order: Order, paymentInfoId: Int? = nil) {
+    if let billKeysViewController = viewController("Order", viewIdentifier: "BillKeysView") as? BillKeysViewController {
+      billKeysViewController.order = order
+      billKeysViewController.paymentInfoId = paymentInfoId
+      navigationController?.showViewController(billKeysViewController, sender: nil)
+    }
+  }
+  
+  func showOrderResultView(order: Order? = nil, paymentInfoId: Int? = nil, orderResult: [String: AnyObject]? = nil) {
+    let orderResultViewController = OrderResultViewController()
+    if let order = order {
+      orderResultViewController.order = order
+    }
+    orderResultViewController.paymentInfoId = paymentInfoId
+    orderResultViewController.orderResult = orderResult
+    navigationController?.showViewController(orderResultViewController, sender: nil)
   }
 }

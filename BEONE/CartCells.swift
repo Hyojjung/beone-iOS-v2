@@ -96,13 +96,13 @@
     if let cartItemId = orderableItem.cartItemId {
       configureButtonTag(cartItemId)
     }
-    optionSoldOutView.alpha = orderableItem.product.soldOut ? 1.0 : 0.0
+    optionSoldOutView.configureAlpha(orderableItem.product.soldOut)
   }
   
   private func configureAvailableDeliveryDatesView(orderableItem: OrderableItem) {
     let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
     deliverableDateLabel.text = availableDeliveryDatesString
-    deliveryDatesKeyView.alpha = availableDeliveryDatesString.isEmpty ? 0 : 1
+    deliveryDatesKeyView.configureAlpha(!availableDeliveryDatesString.isEmpty)
     deliveryDatesLabelBottomConstraint.constant = availableDeliveryDatesString.isEmpty ? 0 : 7
   }
   

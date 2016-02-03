@@ -5,6 +5,7 @@ import CoreData
 let kMyInfoPropertyKeyEmail = "email"
 let kMyInfoPropertyKeyName = "name"
 let kMyInfoPropertyKeyPoint = "point"
+let kMyInfoPropertyKeyPhone = "phone"
 
 class MyInfo: NSManagedObject {
   
@@ -35,6 +36,7 @@ class MyInfo: NSManagedObject {
         if let myInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
           self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
           self.name = myInfo[kMyInfoPropertyKeyName] as? String
+          self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
           self.point = myInfo[kMyInfoPropertyKeyName] as? NSNumber
           CoreDataHelper.sharedCoreDataHelper.saveContext()
           self.postNotification(kNotificationFetchMyInfoSuccess)

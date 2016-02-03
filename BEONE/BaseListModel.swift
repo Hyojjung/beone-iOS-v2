@@ -17,5 +17,13 @@ class BaseListModel: BaseModel {
     }
     return false
   }
+  
+  func model(id: Int?) -> BaseModel? {
+    for model in list {
+      if model.id == id {
+        return model
+      }
+    }
+    return nil
+  }
 }
-

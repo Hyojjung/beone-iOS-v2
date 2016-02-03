@@ -17,4 +17,17 @@ extension String {
   func url() -> NSURL {
     return NSURL(string: trimedString().urlForm())!
   }
+  
+  func jsonObject() -> [String: AnyObject] {
+    var parameter = [String: AnyObject]()
+    if let query = componentsSeparatedByString("?").last {
+      let components = query.componentsSeparatedByString("&")
+      for component in components {
+        if let key = component.componentsSeparatedByString("=").first {
+          parameter[key] = component.componentsSeparatedByString("=").last
+        }
+      }
+    }
+    return parameter
+  }
 }

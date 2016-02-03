@@ -15,7 +15,7 @@ class OrderHelper: NSObject {
   }
   
   static func fetchPaymentTypeList(fetchSuccess: (paymentTypes: [PaymentType]) -> Void) {
-    NetworkHelper.requestGet("payment-types", parameter: nil, success: { (result) -> Void in
+    NetworkHelper.requestGet("payment-types", parameter: ["isAvailable": true], success: { (result) -> Void in
       var paymentTypes = [PaymentType]()
       if let paymentTypeObjects = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
         for paymentTypeObject in paymentTypeObjects {

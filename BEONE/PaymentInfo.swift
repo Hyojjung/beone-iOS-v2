@@ -12,23 +12,32 @@ enum PaymentStatus: String {
 }
 
 class PaymentInfo: BaseModel {
-  var price = 0
+  var actualPrice = 0
   var currencyType = CurrencyType.KRW
+  
+  var isCancellable = false
+  var isPayable = false
   var isMainPayment = false
-  var isPaid = false
+  var isSuccess = false
+  
   var title: String?
   var orderId: Int?
-  
-  var bankName: String?
+  var paymentType = PaymentType()
+
   var vbankIssuerName: String?
-  var account: String?
-  var paypalEmail: String?
+  var vbankIssuerAccount: String?
+  var vbankIssuerBankName: String?
+  var vbankExpiredAt: NSDate?
+
   var cardNumber: String?
-  var expiredAt: NSDate?
+  var cardName: String?
+
+  
+  
+  var paypalEmail: String?
   var paidAt: NSDate?
   var paymentStatus = PaymentStatus.Success
   
-  var paymentType = PaymentType()
   var billKeyInfoId: Int?
   var paypalPaymentId: Int?
   
@@ -38,37 +47,58 @@ class PaymentInfo: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let paymentInfo = data as? [String: AnyObject] {
-      if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
-        self.paymentType.assignObject(paymentType)
-      }
       id = paymentInfo[kObjectPropertyKeyId] as? Int
       
-      if let price = paymentInfo["actualPrice"] as? Int {
-        self.price = price
+      if let actualPrice = paymentInfo["actualPrice"] as? Int {
+        self.actualPrice = actualPrice
       }
       if let currencyTypeString = paymentInfo["currencyType"] as? String,
         currencyType = CurrencyType(rawValue: currencyTypeString) {
           self.currencyType = currencyType
       }
-      if let paidAt = paymentInfo["paidAt"] as? String {
-        self.paidAt = paidAt.date()
-      }
-      if let expiredAt = paymentInfo["vbankExpiredAt"] as? String {
-        self.expiredAt = expiredAt.date()
-      }
-      vbankIssuerName = paymentInfo["vbankIssuerName"] as? String
-      bankName = paymentInfo["vbankIssuerBankName"] as? String
-      account = paymentInfo["vbankIssuerAccount"] as? String
+      
       if let isMainPayment = paymentInfo["isMainPayment"] as? Bool {
         self.isMainPayment = isMainPayment
       }
+      if let isCancellable = paymentInfo["isCancellable"] as? Bool {
+        self.isCancellable = isCancellable
+      }
+      if let isPayable = paymentInfo["isPayable"] as? Bool {
+        self.isPayable = isPayable
+      }
+      if let isSuccess = paymentInfo["isSuccess"] as? Bool {
+        self.isSuccess = isSuccess
+      }
+      title = paymentInfo["title"] as? String
+      orderId = paymentInfo["orderId"] as? Int
+
+      if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
+        self.paymentType.assignObject(paymentType)
+      }
+      vbankIssuerName = paymentInfo["vbankIssuerName"] as? String
+      vbankIssuerBankName = paymentInfo["vbankIssuerBankName"] as? String
+      vbankIssuerAccount = paymentInfo["vbankIssuerAccount"] as? String
+      if let vbankExpiredAt = paymentInfo["vbankExpiredAt"] as? String {
+        self.vbankExpiredAt = vbankExpiredAt.date()
+      }
+      
+      cardNumber = paymentInfo["cardNumber"] as? String
+      cardName = paymentInfo["cardName"] as? String
+
+      if let paidAt = paymentInfo["paidAt"] as? String {
+        self.paidAt = paidAt.date()
+      }
+
+      
+      
+      
+
+
       if let status = paymentInfo["status"] as? String,
         paymentStatus = PaymentStatus(rawValue: status) {
         self.paymentStatus = paymentStatus
       }
       
-      title = paymentInfo["title"] as? String
-      orderId = paymentInfo["orderId"] as? Int
     }
   }
   

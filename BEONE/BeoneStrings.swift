@@ -25,10 +25,16 @@ let kProfileViewViewIdentifier = "ProfileView"
 // MARK: - View Nib Names
 
 let kMainTitleViewNibName = "MainTitleView"
+let kCardResultViewNibName = "CardResultView"
+let kMobileResultViewNibName = "MobileResultView"
+let kVBankResultViewNibName = "VBankResultView"
+let kPaypalResultViewNibName = "PaypalResultView"
+let kEtcResultViewNibName = "EtcResultView"
 let kSimpleProductViewNibName = "SimpleProductView"
 let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
 let kProductPropertyNameTypeValueViewNibName = "ProductPropertyNameTypeValueView"
 let kProductPropertyColorTypeValueViewNibName = "ProductPropertyColorTypeValueView"
+let kOrderResultLabelViewNibName = "OrderResultLabelView"
 
 // MARK: - Cell Identifier
 

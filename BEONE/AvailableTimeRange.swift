@@ -32,4 +32,12 @@ class AvailableTimeRange: BaseModel {
     }
     return timeRangeNotation
   }
+  
+  func dateNotation() -> String {
+    let timeRangeNotation = self.timeRangeNotation()
+    if let startDateTime = startDateTime {
+      return startDateTime.rangeReservationDateString() + timeRangeNotation
+    }
+    return timeRangeNotation
+  }
 }

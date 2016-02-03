@@ -16,6 +16,9 @@ let kCollectionViewDefaultSize = CGSize(width: ViewControllerHelper.screenWidth,
 
 let kInputActiveImageName = "inputActive"
 let kInputImageName = "input"
+let kImagePaymentCancelImageName = "image_payment_cancel"
+let kImagePaymentFailImageName = "image_payment_fail"
+let kImagePaymentSuccessImageName = "image_payment_success"
 
 extension UILabel {
   func setWidth(width: CGFloat) {
@@ -24,5 +27,11 @@ extension UILabel {
     numberOfLines = 0
     frame = labelFrame
     sizeToFit()
+  }
+}
+
+extension UIView {
+  func configureAlpha(condition: Bool) {
+    alpha = condition ? 1 : 0
   }
 }

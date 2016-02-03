@@ -49,6 +49,17 @@ class OrdersViewController: BaseUserViewController {
   }
   
   @IBAction func orderActionButtonTapped(sender: UIButton) {
+    if let order = orderList.list[sender.tag] as? Order, orderId = order.id,
+      paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id {
+      paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
+    }
+  }
+}
+
+extension OrdersViewController: AddintionalPaymentDelegate {
+  
+  func paymentButtonTapped(orderId: Int, paymentInfoId: Int) {
+    
   }
 }
 
@@ -61,7 +72,7 @@ extension OrdersViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? OrderCell, order = orderList.list[indexPath.row] as? Order {
-      cell.configureCell(order, row: indexPath.row)
+      cell.configureCell(order, row: indexPath.row, addintionalPaymentDelegate: self)
     }
     return cell
   }
@@ -86,7 +97,9 @@ extension OrdersViewController: DynamicHeightTableViewProtocol {
       case .Top:
         return 130
       case .Order:
-        return 180
+        if let order = orderList.list[indexPath.row] as? Order {
+          return 180 + CGFloat(order.paymentInfoList.list.count - 1) * 100
+        }
       default:
         return 46
       }
@@ -104,16 +117,43 @@ class OrderCell: UITableViewCell {
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var orderButton: UIButton!
   @IBOutlet weak var orderDetailButton: UIButton!
+  @IBOutlet weak var paymentsView: UIView!
   
-  func configureCell(order: Order, row: Int) {
+  func configureCell(order: Order, row: Int, addintionalPaymentDelegate: AddintionalPaymentDelegate) {
     createdAtLabel.text = order.createdAt?.briefDateString()
     orderCodeLabel.text = order.orderCode
     orderTitleLabel.text = order.title
     orderPriceLabel.text = order.actualPrice.priceNotation(.Korean)
     let orderableItem = order.orderableItemSets.first?.orderableItems.first
     orderImageView.setLazyLoaingImage(orderableItem?.productImageUrl)
+    layoutPaymentsView(order.paymentInfoList.list as! [PaymentInfo],
+      addintionalPaymentDelegate: addintionalPaymentDelegate)
     
     orderButton.tag = row
     orderDetailButton.tag = row
+  }
+  
+  private func layoutPaymentsView(paymentInfos: [PaymentInfo], addintionalPaymentDelegate: AddintionalPaymentDelegate) {
+    paymentsView.subviews.forEach { $0.removeFromSuperview() }
+    var beforeView: UIView? = nil
+    for (index, paymentInfo) in paymentInfos.enumerate() {
+      if !paymentInfo.isMainPayment {
+        let paymentInfoView = UIView.loadFromNibName("AdditionalPaymentView") as! AdditionalPaymentView
+        paymentInfoView.addintionalPaymentDelegate = addintionalPaymentDelegate
+        paymentInfoView.configureView(paymentInfo)
+        paymentsView.addSubViewAndEnableAutoLayout(paymentInfoView)
+        paymentsView.addLeadingLayout(paymentInfoView)
+        paymentsView.addTrailingLayout(paymentInfoView)
+        if index == 1 {
+          paymentsView.addTopLayout(paymentInfoView)
+        } else if let beforeView = beforeView {
+          paymentsView.addVerticalLayout(beforeView, bottomView: paymentInfoView)
+        }
+        if index == paymentInfos.count - 1 {
+          paymentsView.addBottomLayout(paymentInfoView)
+        }
+        beforeView = paymentInfoView
+      }
+    }
   }
 }

@@ -19,19 +19,11 @@ class BillKeysViewController: BaseTableViewController {
   
   // MARK: - Variable
   
-  var billKeyList = BillKeyList()
   var order = Order()
-  var selectedBillKey: BillKey?
-  var paymentInfo: PaymentInfo?
-  var paymentSuccess = false
-  
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let orderResultViewController = segue.destinationViewController as? OrderResultViewController {
-      orderResultViewController.paymentInfo = paymentInfo
-      orderResultViewController.isSuccess = paymentSuccess
-      orderResultViewController.order = order
-    }
-  }
+  private var billKeyList = BillKeyList()
+  private var selectedBillKey: BillKey?
+  private var paymentInfo: PaymentInfo?
+  var paymentInfoId: Int?
   
   override func setUpView() {
     super.setUpView()
@@ -40,6 +32,7 @@ class BillKeysViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    paymentInfo = order.paymentInfoList.model(paymentInfoId) as? PaymentInfo
     billKeyList.get { () -> Void in
       self.tableView.reloadData()
     }
@@ -57,24 +50,31 @@ class BillKeysViewController: BaseTableViewController {
   }
   
   @IBAction func payButtonTapped() {
-    order.post({ (result) -> Void in
-      if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-        self.order.assignObject(data)
-        
-        self.order.mainPaymentInfo?.paymentType.id = PaymentTypeId.Card.rawValue
-        self.order.mainPaymentInfo?.billKeyInfoId = self.selectedBillKey?.id
-        self.paymentInfo = self.order.mainPaymentInfo
-        self.order.mainPaymentInfo?.post({ (result) -> Void in
-          self.paymentSuccess = true
-          self.order.get({ () -> Void in
-            self.performSegueWithIdentifier("From Bill Key List To Order Result", sender: nil)            
-          })
-          }, postFailure: { (_) -> Void in
-            
-        })
-      }
-      }, postFailure: { (_) -> Void in
-    })
+    if order.id == nil {
+      order.post({ (result) -> Void in
+        if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+          self.order.assignObject(data)
+          self.paymentInfo = self.order.paymentInfoList.mainPaymentInfo
+          
+          self.payPaymentInfo()
+        }
+        }, postFailure: { (_) -> Void in
+      })
+    } else {
+      payPaymentInfo()
+    }
+  }
+  
+  func payPaymentInfo() {
+    if let paymentInfo = paymentInfo {
+      paymentInfo.paymentType.id = PaymentTypeId.Card.rawValue
+      paymentInfo.billKeyInfoId = self.selectedBillKey?.id
+      paymentInfo.post({ (result) -> Void in
+        print(paymentInfo.id)
+        self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
+        }, postFailure: { (_) -> Void in
+      })
+    }
   }
 }
 
