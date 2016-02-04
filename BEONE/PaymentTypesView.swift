@@ -14,7 +14,6 @@ class PaymentTypesView: UIView {
   
   func layoutView(paymentTypes: [PaymentType], selectedPaymentTypeId: Int?) {
     var beforeView: UIView?
-    print(paymentTypes.count)
     for (index, paymentType) in paymentTypes.enumerate() {
       let paymentTypeView = self.paymentTypeView(paymentType, isSelected: paymentType.id == selectedPaymentTypeId)
       addSubViewAndEnableAutoLayout(paymentTypeView)

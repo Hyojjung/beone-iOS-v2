@@ -64,7 +64,7 @@ class OrderItemCell: UITableViewCell {
     productImageView.setLazyLoaingImage(orderItem.productImageUrl)
     productTitleLabel.text = orderItem.productTitle
     productPriceLabel.text = orderItem.productPrice?.priceNotation(.Korean)
-    qauntityLabel.text = "\(orderItem.quantity!)"
+    qauntityLabel.text = "\(orderItem.quantity)"
     optionLabel.text = orderItem.selectedOption?.optionString()
     // TODO: - option message
   }
@@ -85,12 +85,11 @@ class OrderItemSerInfoCell: UITableViewCell {
     deliveryStatusLabel.text = orderItemSet.statusName
     // TODO: - deliveryInfo
     deliveryPriceLabel.text = orderItemSet.deliveryPrice.priceNotation(.Korean)
-    totalPriceLabel.text = orderItemSet.actualPrice?.priceNotation(.Korean)
+    totalPriceLabel.text = orderItemSet.actualPrice.priceNotation(.Korean)
     
     deliveryInfoButton.tag = index
     deliveryTrackingButton.tag = index
     orderDoneButton.tag = index
-    orderDoneButton.enabled = orderItemSet.isCompletable
     orderDoneButton.configureAlpha(orderItemSet.isCompletable)
     deliveryTrackingInfoTrailingLayoutConstraint.constant = orderItemSet.isCompletable ? 102 : 14
   }
@@ -158,7 +157,6 @@ class PaymentInfoCell: UITableViewCell {
     }
     totalPriceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
     payButton.configureAlpha(paymentInfo.paymentStatus == .Waiting)
-    payButton.enabled = paymentInfo.paymentStatus == .Waiting
     payButton.tag = paymentInfo.id!
   }
 }

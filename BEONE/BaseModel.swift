@@ -51,7 +51,6 @@ class BaseModel: NSObject {
   
   func post(postSuccess: (AnyObject?) -> Void, postFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
-      
       postSuccess(result)
       }, failure: {(error) -> Void in
         postFailure?(error)
@@ -76,8 +75,12 @@ class BaseModel: NSObject {
   
   // MARK: - Put Methods
   
-  func put() {
-    NetworkHelper.requestPut(putUrl(), parameter: putParameter(), success: putSuccess(), failure: putFailure())
+  func put(putSuccess: ((AnyObject?) -> Void)? = nil, putFailure: ((NetworkError) -> Void)? = nil) {
+    NetworkHelper.requestPut(putUrl(), parameter: putParameter(), success: { (result) -> Void in
+      putSuccess?(result)
+      }) { (error) -> Void in
+        putFailure?(error)
+    }
   }
   
   func putUrl() -> String {

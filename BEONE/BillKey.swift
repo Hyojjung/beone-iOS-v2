@@ -47,7 +47,6 @@ class BillKey: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
-      print(data)
       id = data[kObjectPropertyKeyId] as? Int
       cardNumber = data["cardNumber"] as? String
       cardCompanyName = data["cardCompanyName"] as? String

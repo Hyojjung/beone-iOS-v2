@@ -18,7 +18,7 @@ class OrderResultViewController: BaseViewController {
   private var paymentInfo: PaymentInfo?
   
   var paymentInfoId: Int?
-  var order = Order()
+  var order: Order?
   var status = OrderStatus.Success
   var orderResult: [String: AnyObject]? {
     didSet {
@@ -46,13 +46,14 @@ class OrderResultViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    if status == .Canceled {
+    if status == .Canceled || status == .Failure {
       configureFailureResultView()
-    } else {
+    } else if let order = order {
+      order.isDone = true
       order.get { () -> Void in
-        self.paymentInfo = self.order.paymentInfoList.model(self.paymentInfoId) as? PaymentInfo
+        self.paymentInfo = order.paymentInfoList.model(self.paymentInfoId) as? PaymentInfo
         if self.paymentInfo?.isSuccess == true {
-          CartItemManager.removeCartItem(self.order.cartItemIds)
+          CartItemManager.removeCartItem(order.cartItemIds)
           self.configureSuccessResultView()
         }
       }
@@ -74,19 +75,19 @@ extension OrderResultViewController {
       resultView.subviews.forEach { $0.removeFromSuperview() }
       if let paymentInfoViewNibName = paymentInfoViewNibName(),
         resultInfoView = UIView.loadFromNibName(paymentInfoViewNibName) as? OrderResultView {
-        resultInfoView.layoutView(order, paymentInfo: paymentInfo)
-        resultView.addSubViewAndEnableAutoLayout(resultInfoView)
-        resultView.addTopLayout(resultInfoView)
-        resultView.addLeadingLayout(resultInfoView)
-        resultView.addTrailingLayout(resultInfoView)
-        
-        configureResultLabel()
-        resultView.addSubViewAndEnableAutoLayout(orderResultView)
-        resultView.addBottomLayout(orderResultView)
-        resultView.addLeadingLayout(orderResultView)
-        resultView.addTrailingLayout(orderResultView)
-        
-        resultView.addVerticalLayout(resultInfoView, bottomView: orderResultView, contsant: 8)
+          resultInfoView.layoutView(order!, paymentInfo: paymentInfo)
+          resultView.addSubViewAndEnableAutoLayout(resultInfoView)
+          resultView.addTopLayout(resultInfoView)
+          resultView.addLeadingLayout(resultInfoView)
+          resultView.addTrailingLayout(resultInfoView)
+          
+          configureResultLabel()
+          resultView.addSubViewAndEnableAutoLayout(orderResultView)
+          resultView.addBottomLayout(orderResultView)
+          resultView.addLeadingLayout(orderResultView)
+          resultView.addTrailingLayout(orderResultView)
+          
+          resultView.addVerticalLayout(resultInfoView, bottomView: orderResultView, contsant: 8)
       }
     }
   }

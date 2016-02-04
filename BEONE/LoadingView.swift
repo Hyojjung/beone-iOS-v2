@@ -3,21 +3,26 @@ import UIKit
 
 class LoadingView: UIView {
   
-  let indicator = UIActivityIndicatorView()
-  let blurEffectView = UIVisualEffectView()
+  private let indicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView()
+    indicator.color = darkGold
+    return indicator
+  }()
+  private let blurEffectView: UIVisualEffectView = {
+    let blurEffectView = UIVisualEffectView()
+    blurEffectView.effect = UIBlurEffect(style: .Light)
+    return blurEffectView
+  }()
   
   func layout() {
-    translatesAutoresizingMaskIntoConstraints = false
     hide()
-    
     backgroundColor = UIColor.clearColor()
-    let blurEffect = UIBlurEffect(style: .Light)
-    blurEffectView.effect = blurEffect
+    translatesAutoresizingMaskIntoConstraints = false
+
     addSubViewAndEdgeLayout(blurEffectView)
     // background view
     
     addSubViewAndCenterLayout(indicator)
-    indicator.color = darkGold
     indicator.startAnimating()
     // indicator
   }

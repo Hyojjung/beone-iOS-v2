@@ -49,7 +49,7 @@ class ProductDetailViewController: BaseViewController {
     "buttonSpaceCell"]
   
   @IBOutlet weak var collectionView: UICollectionView!
-  let product = BEONEManager.selectedProduct
+  let product = Product()
   let reviewList = ReviewList()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
@@ -85,7 +85,7 @@ class ProductDetailViewController: BaseViewController {
     collectionView?.registerNib(UINib(nibName: kProductDetailHeaderCellNibName, bundle: nil),
       forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader,
       withReuseIdentifier: kProductDetailHeaderCellIdentifier)
-    product?.get({ () -> Void in
+    product.get({ () -> Void in
       self.setUpProductData()
     })
   }
@@ -112,11 +112,9 @@ class ProductDetailViewController: BaseViewController {
   }
   
   func setUpProductData() {
-    if let imageUrls = product?.productDetailImageUrls() {
-      self.imageUrls.removeAll()
-      for imageUrl in imageUrls {
-        self.imageUrls.append(imageUrl.url())
-      }
+    self.imageUrls.removeAll()
+    for imageUrl in product.productDetailImageUrls() {
+      self.imageUrls.append(imageUrl.url())
     }
     collectionView.reloadData()
   }
@@ -144,7 +142,7 @@ class ProductDetailViewController: BaseViewController {
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
-    let selectedImageUrl = product?.productDetails[sender.tag].content
+    let selectedImageUrl = product.productDetails[sender.tag].content
     for (index, imageUrl) in imageUrls.enumerate() {
       if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
         showImage(index, view: sender)
@@ -153,7 +151,7 @@ class ProductDetailViewController: BaseViewController {
   }
   
   @IBAction func shareButtonTapped() {
-    if let productId = product?.id, mainImageUrl = product?.mainImageUrl, summary = product?.summary, title = product?.title {
+    if let productId = product.id, mainImageUrl = product.mainImageUrl, summary = product.summary, title = product.title {
       loadingView.show()
       SDWebImageDownloader.sharedDownloader().downloadImageWithURL(mainImageUrl.url(),
         options: .ContinueInBackground, progress: nil) { (image, data, error, finished) -> Void in
@@ -209,7 +207,7 @@ extension ProductDetailViewController {
     if ProductDetailTableViewSection(rawValue: section) == .Review {
       return reviewList.list.count == 0 ? 1 : reviewList.list.count
     } else if ProductDetailTableViewSection(rawValue: section) == .Description {
-      return product?.productDetails.count != nil ? (product?.productDetails.count)! : 0
+      return product.productDetails.count
     } else {
       return 1
     }
@@ -218,8 +216,8 @@ extension ProductDetailViewController {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier(indexPath),
       forIndexPath: indexPath)
-    if let product = product {
-      (cell as? ProductDetailCell)?.configureCell(product, indexPath: indexPath)
+    if let cell = cell as? ProductDetailCell {
+      cell.configureCell(product, indexPath: indexPath)
     }
     return cell
   }
@@ -228,8 +226,8 @@ extension ProductDetailViewController {
     let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind,
       withReuseIdentifier: kProductDetailHeaderCellIdentifier,
       forIndexPath: indexPath)
-    if let product = product {
-      (cell as? ProductDetailHeaderCollectionViewCell)?.configureCell(product)
+    if let cell = cell as? ProductDetailHeaderCollectionViewCell {
+      cell.configureCell(product)
     }
     return cell
   }
@@ -256,7 +254,7 @@ extension ProductDetailViewController: UICollectionViewDelegate {
     case .Review:
       performSegueWithIdentifier("From Product Detail To Review", sender: nil)
     case .Shop:
-      BEONEManager.selectedShop = product?.shop
+      BEONEManager.selectedShop = product.shop
       showViewController("Shop", viewIdentifier: "ShopView")
     default:
       break

@@ -2,7 +2,7 @@
 extension Array {
   mutating func removeObject<U: Equatable>(object: U) {
     var index: Int?
-    for (idx, objectToCompare) in self.enumerate() {
+    for (idx, objectToCompare) in enumerate() {
       if let to = objectToCompare as? U {
         if object == to {
           index = idx
@@ -10,9 +10,28 @@ extension Array {
       }
     }
     
-    if(index != nil) {
-      self.removeAtIndex(index!)
+    if let index = index {
+      self.removeAtIndex(index)
     }
+  }
+  
+  func hasEqualObjects<U: Equatable>(objects: [U]) -> Bool {
+    if self.count == objects.count {
+      for objectToCompare in self {
+        for (index, object) in objects.enumerate() {
+          if let objectToCompare = objectToCompare as? U {
+            if object == objectToCompare {
+              break
+            }
+          }
+          if index == objects.count - 1 {
+            return false
+          }
+        }
+      }
+      return true
+    }
+    return false
   }
 }
 
@@ -25,16 +44,4 @@ extension String {
     }
     return bigCamelCaseString
   }
-}
-
-extension UITableView {
-//  func cell(cellIdentifier: String, indexPath: NSIndexPath) -> UITableViewCell {
-//    let cell = dequeueReusableCellWithIdentifier(cellIdentifier)
-//    if let cell = cell {
-//      return cell
-//    } else {
-//      registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
-//      return dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-//    }
-//  }
 }

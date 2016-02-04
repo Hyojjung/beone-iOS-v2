@@ -3,22 +3,33 @@ import UIKit
 
 class DeliveryDateViewController: BaseTableViewController {
   
-  var order = Order()
+  let order: Order = {
+    let order = Order()
+    order.isDone = false
+    return order
+  }()
   var selectedOrderableItemSetIndex = 0
   var selectedDates = [Int: NSDate]()
   var selectedTimeRanges = [Int: AvailableTimeRange]()
-  var timeSelectView: TimeSelectView?
-  lazy var calendarView: CKCalendarView = {
-    let calendarView = CKCalendarView(viewWidth: ViewControllerHelper.screenWidth - 20)
-    calendarView.delegate = self
-    calendarView.setMonthButtonColor(lightGold)
-    calendarView.titleColor = lightGold
-    return calendarView
+  
+  lazy var deliveryTimeSelectViewController: DeliveryTimeSelectViewController = {
+    let deliveryTimeSelectViewController = DeliveryTimeSelectViewController()
+    deliveryTimeSelectViewController.delegate = self
+    deliveryTimeSelectViewController.modalPresentationStyle = .OverCurrentContext
+    deliveryTimeSelectViewController.modalTransitionStyle = .CrossDissolve
+    return deliveryTimeSelectViewController
+  }()
+  
+  lazy var calendarViewController: CalendarViewController = {
+    let calendarViewController = CalendarViewController()
+    calendarViewController.delegate = self
+    calendarViewController.modalPresentationStyle = .OverCurrentContext
+    calendarViewController.modalTransitionStyle = .CrossDissolve
+    return calendarViewController
   }()
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let orderAddressViewController = segue.destinationViewController as? OrderAddressViewController {
-      print(order.cartItemIds)
       orderAddressViewController.order = order
     }
   }
@@ -40,22 +51,18 @@ extension DeliveryDateViewController {
   
   @IBAction func showCalenderButtonTapped(sender: UIButton) {
     selectedOrderableItemSetIndex = sender.tag
-    calendarView.selectedDate = selectedDates[selectedOrderableItemSetIndex]
-    view.addSubview(calendarView)
-    calendarView.center = CGPointMake(view.center.x, view.center.y)
+    calendarViewController.selectedDate = selectedDates[selectedOrderableItemSetIndex]
+    presentViewController(calendarViewController, animated: true, completion: nil)
   }
   
   @IBAction func selectTimeButtonTapped(sender: UIButton) {
     selectedOrderableItemSetIndex = sender.tag
     if selectedDates[selectedOrderableItemSetIndex] != nil {
-      let availableTimeRanges = self.availableTimeRanges()
-      timeSelectView = TimeSelectView()
-      timeSelectView?.delegate = self
-      timeSelectView?.layoutView(availableTimeRanges, selectedTimeRange: selectedTimeRanges[selectedOrderableItemSetIndex])
-      view.addSubViewAndEnableAutoLayout(timeSelectView!)
-      view.addTopLayout(timeSelectView!, constant: 64)
-      view.addLeadingLayout(timeSelectView!)
-      view.addTrailingLayout(timeSelectView!)
+      deliveryTimeSelectViewController.availableTimeRanges = availableTimeRanges()
+      deliveryTimeSelectViewController.selectedTimeRange = selectedTimeRanges[selectedOrderableItemSetIndex]
+      presentViewController(deliveryTimeSelectViewController, animated: true, completion: nil)
+    } else {
+      showAlertView("희망배송일을 선택해주세요.")
     }
   }
   
@@ -103,26 +110,25 @@ extension DeliveryDateViewController: CKCalendarDelegate {
       selectedTimeRanges[selectedOrderableItemSetIndex] = nil
       tableView.reloadData()
     }
-    calendarView.removeFromSuperview()
+    dismissViewControllerAnimated(true, completion: nil)
   }
   
   func dateIsAble(date: NSDate) -> Bool {
     for ableDate in order.orderableItemSets[selectedOrderableItemSetIndex].availableTimeRangeList.availableDeliveryDates() {
       let dateComponent = date.dateComponent()
-      if dateComponent.0 == ableDate.0 && dateComponent.1 == ableDate.1 {
+      if dateComponent.month == ableDate.month && dateComponent.day == ableDate.day {
         return true
       }
     }
     return false
   }
   
-  // TODO: - time zone check
 }
 
 extension DeliveryDateViewController: TimeSelectViewDelegate {
   func selectTimeRangeButtonTapped(index: Int) {
     selectedTimeRanges[selectedOrderableItemSetIndex] = availableTimeRanges()[index]
-    timeSelectView?.removeFromSuperview()
+    dismissViewControllerAnimated(true, completion: nil)
     tableView.reloadData()
   }
 }
@@ -161,7 +167,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
       } else if indexPath.row == orderableItemSet.orderableItems.count + 3 {
         return "alertCell"
       } else {
-        return "itemCell"
+        return "orderOrderableItemCell"
       }
     } else {
       return "buttonCell"
@@ -169,7 +175,17 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    if let cell = cell as? DeliveryTypeCell {
+    if cell is OrderOrderableItemCell {
+      return 97
+    } else if cell.reuseIdentifier == kDeliveryTypeCellIdentifier {
+      return 60
+    } else if cell.reuseIdentifier == "timeCell" {
+      return 157
+    } else if cell.reuseIdentifier == "alertCell" {
+      return 50
+    } else if cell.reuseIdentifier == "buttonCell" {
+      return 97
+    } else if let cell = cell as? DeliveryTypeCell {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ParcelLabelCell {
       return cell.calculatedHeight()
@@ -193,22 +209,22 @@ extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
 }
 
 class OrderOrderableItemCell: UITableViewCell {
+  
   @IBOutlet weak var productImageView: LazyLoadingImageView!
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productCountLabel: UILabel!
-  @IBOutlet weak var productPriceLabel: UILabel!
+  @IBOutlet weak var productOptionLabel: UILabel!
   
   func configureCell(orderableItem: OrderableItem) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
     productNameLabel.text = orderableItem.product.title
-    if let quantity = orderableItem.quantity {
-      productCountLabel.text = "\(quantity) 개"
-    }
-    productPriceLabel.text = orderableItem.price?.priceNotation(.Korean)
+    productCountLabel.text = "\(orderableItem.quantity) 개"
+    productOptionLabel.text = orderableItem.selectedOption?.optionString()
   }
 }
 
 class TimeCell: UITableViewCell {
+  
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var dateButton: UIButton!
@@ -232,8 +248,8 @@ class ParcelLabelCell: UITableViewCell {
     let optionLabel = UILabel()
     optionLabel.font = UIFont.systemFontOfSize(14)
     optionLabel.text = "본 상품은 택배배송 상품입니다. 출고일은 상품에 따라 다릅니다."
-    optionLabel.setWidth(ViewControllerHelper.screenWidth - 16)
+    optionLabel.setWidth(ViewControllerHelper.screenWidth - 30)
     
-    return optionLabel.frame.height + 16
+    return optionLabel.frame.height + 43
   }
 }

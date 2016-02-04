@@ -22,13 +22,13 @@ class ProductOptionSetList: BaseListModel {
     return productOptionSetList
   }
   
-  func isValid() -> Bool {
+  func validationMessage() -> String? {
     for productOptionSet in list as! [ProductOptionSet] {
-      if !productOptionSet.isValid() {
-        return false
+      if let validationMessage = productOptionSet.validationMessage() {
+        return validationMessage
       }
     }
-    return true
+    return nil
   }
   
   func optionString() -> String {

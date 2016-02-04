@@ -48,6 +48,7 @@
 "select time range" = "희망시간대를 선택해주세요.";
 "select min price" = "최소 가격대를 선택해주세요.";
 "select max price" = "최대 가격대를 선택해주세요.";
+"select discount way" = "할인방법을 선택해주세요.";
 
 "input coupon number" = "쿠폰번호를 입력해주세요.";
 "coupon conflict" = "이미 등록된 쿠폰입니다.";
@@ -67,3 +68,14 @@
 
 "select month" = "월을 선택해주세요.";
 "select year" = "년을 선택해주세요.";
+
+"too much point" = "보유포인트보다 많은 포인트는 사용할 수 없습니다.";
+"use more than 1000 point" = "1,000 point이하는 사용할 수 없습니다.";
+"use more 100 unit point" = "100 point이하 단위는 사용할 수 없습니다.";
+"use less than total price" = "총 금액보다 많은 포인트는 사용할 수 없습니다.";
+
+"length" = " 길이는 ";
+"more than" = "자 이상이어야 합니다.";
+"less than" = "자 이하여야 합니다.";
+"insert" = " 입력해주세요.";
+"select" = " 선택해주세요.";

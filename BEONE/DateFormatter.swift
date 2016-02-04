@@ -8,7 +8,7 @@ import UIKit
 //  case DateComponentTypeHour
 //}
 //
-//let kClockTime = 60.0
+let kKoreanTimeZone = 9 * 60 * 60
 //let kHalfHour = 30.0
 let kNoonTime = 12
 
@@ -25,21 +25,7 @@ extension String {
 }
 
 extension NSDate {
-  //  func preferredDeliveryDateString() -> String {
-  //    let dateFormatter = NSDateFormatter()
-  //    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
-  //    if dayIntervalFromNow() == 0 {
-  //      dateFormatter.dateFormat = "오늘 a h:mm";
-  //      return dateFormatter.stringFromDate(self)
-  //    } else if dayIntervalFromNow() == 1 {
-  //      dateFormatter.dateFormat = "내일 a h:mm";
-  //      return dateFormatter.stringFromDate(self)
-  //    } else {
-  //      dateFormatter.dateFormat = "M월 d일 (E) a h:mm";
-  //      return dateFormatter.stringFromDate(self)
-  //    }
-  //  }
-  //
+  
   func rangeReservationDateString() -> String {
     let dateFormatter = NSDateFormatter()
     dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
@@ -53,14 +39,7 @@ extension NSDate {
     dateFormatter.dateFormat = "yyyy.MM.dd";
     return dateFormatter.stringFromDate(self)
   }
-  //
-  //  func pushDateString() -> String {
-  //    let dateFormatter = NSDateFormatter()
-  //    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
-  //    dateFormatter.dateFormat = "yyyy.MM.dd a h:mm";
-  //    return dateFormatter.stringFromDate(self)
-  //  }
-  //
+  
   func serverDateString() -> String {
     return DateFormatterHelper.serverDateFormatter().stringFromDate(self)
   }
@@ -76,9 +55,9 @@ extension NSDate {
     return dateFormatter.stringFromDate(self)
   }
   
-  func dateComponent() -> (Int, Int) {
+  func dateComponent() -> (month: Int, day: Int) {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: 9 * 60 * 60)
+      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
       let components = calendar.components([.Month, .Day], fromDate: self)
       return (components.month, components.day)
     }
@@ -87,7 +66,7 @@ extension NSDate {
   
   func hour() -> Int {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: 9 * 60 * 60)
+      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
       let components = calendar.components([.Hour], fromDate: self)
       return components.hour
     }
@@ -96,7 +75,7 @@ extension NSDate {
   
   func year() -> Int {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: 9 * 60 * 60)
+      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
       let components = calendar.components([.Year], fromDate: self)
       return components.year
     }
@@ -109,27 +88,39 @@ extension NSDate {
     return components.hour
   }
   
-  //
-  //  func day() -> NSDate {
-  //    let (year, month, day, _, _) = self.dateComponent()
-  //    let component = NSDateComponents()
-  //    component.year = year
-  //    component.month = month
-  //    component.day = day
-  //    return NSCalendar.currentCalendar().dateFromComponents(component)!
-  //  }
-  //
-  //  func dayIntervalFromNow() -> Int {
-  //    let calendar: NSCalendar = NSCalendar.currentCalendar()
-  //    let date = NSDate().day()
-  //    let components = calendar.components([.Day], fromDate: date, toDate: self, options: [])
-  //    return components.day
-  //  }
-  //
-  //  func rangeReservationStartDate(startHour: Int) -> NSDate {
-  //    let timeInterval = NSTimeInterval(Double(startHour - 9) * kClockTime * kClockTime)
-  //    return self.dateByAddingTimeInterval(timeInterval)
-  //  }
+  func orderItemSetProgressedAt() -> String? {
+    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
+      let dateComponents = calendar.components([.Day, .Hour], fromDate: self, toDate: NSDate(), options: [])
+      if let dayPassed = self.dayPassed(from: NSDate()) {
+        if dayPassed == 0 {
+          return "\(dateComponents.hour)시간 전"
+        } else if dayPassed == 1 {
+          return "하루 전"
+        } else if dayPassed == 2 {
+          return "이틀 전"
+        } else {
+          return "\(dayPassed)일 전"
+        }
+      }
+    }
+    return nil
+  }
+  
+  func dayPassed(from date: NSDate) -> Int? {
+    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
+      let dateComponents = calendar.components([.Day, .Hour], fromDate: self, toDate: date, options: [])
+      let earlyDate = calendar.dateByAddingUnit([.Hour],
+        value: dateComponents.hour,
+        toDate: self,
+        options: [])
+      if earlyDate?.briefDateString() != self.briefDateString() {
+        return dateComponents.day + 1
+      } else {
+        return dateComponents.day
+      }
+    }
+    return nil
+  }
 }
 
 class DateFormatterHelper: NSObject {

@@ -2,8 +2,16 @@
 import UIKit
 
 enum AddressType: String {
-  case Road = "R"
-  case Jibun = "J"
+  case Road = "road"
+  case Jibun = "jibun"
+  
+  static func addressType(with daumApiAddressTypeNotation: String?) -> AddressType {
+    if daumApiAddressTypeNotation == "J" {
+      return Jibun
+    } else {
+      return Road
+    }
+  }
 }
 
 let kAddressPropertyKeyName = "receiverName"
@@ -17,8 +25,6 @@ let kAddressPropertyKeyDetailAddress = "receiverDetailAddress"
 let kAddressPropertyKeyDeliveryPoint = "deliveryPoint"
 let kAddressPropertyKeyReceiverZonecode = "receiverZonecode"
 let kAddressPropertyKeyReceiverAddressType = "receiverAddressType"
-let kAddressPropertyReceiverAddressTypeRoad = "road"
-let kAddressPropertyReceiverAddressTypeJibun = "jibun"
 
 let kAddressPropertyKeyUserSelectedType = "userSelectedType"
 let kAddressPropertyKeyPostcode1 = "postcode1"
@@ -41,9 +47,7 @@ class Address: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let address = data as? [String: AnyObject] {
-      if let receiverAddressType = address[kAddressPropertyKeyReceiverAddressType] as? String {
-        addressType = receiverAddressType == kAddressPropertyReceiverAddressTypeRoad ? .Road : .Jibun
-      }
+      addressType = AddressType.addressType(with: address[kAddressPropertyKeyReceiverAddressType] as? String)
       zipcode01 = address[kAddressPropertyKeyZipCode1] as? String
       zipcode02 = address[kAddressPropertyKeyZipCode2] as? String
       zonecode = address[kAddressPropertyKeyReceiverZonecode] as? String
@@ -56,9 +60,7 @@ class Address: BaseModel {
   }
   
   func assign(address: [String: String]) {
-    if let userSelectedType = address[kAddressPropertyKeyUserSelectedType] {
-      addressType = AddressType(rawValue: userSelectedType)
-    }
+    addressType = AddressType.addressType(with: address[kAddressPropertyKeyUserSelectedType])
     zipcode01 = address[kAddressPropertyKeyPostcode1]
     zipcode02 = address[kAddressPropertyKeyPostcode2]
     zonecode = address[kAddressPropertyKeyZonecode]

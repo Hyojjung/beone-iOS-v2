@@ -30,18 +30,24 @@ class MyInfo: NSManagedObject {
     }
   }
   
-  func fetch() {
+  func get(getSuccess: (() -> Void)? = nil) {
     if let userId = userId {
       NetworkHelper.requestGet("users/\(userId)", parameter: nil, success: { (result) -> Void in
         if let myInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-          self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
-          self.name = myInfo[kMyInfoPropertyKeyName] as? String
-          self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
-          self.point = myInfo[kMyInfoPropertyKeyName] as? NSNumber
-          CoreDataHelper.sharedCoreDataHelper.saveContext()
-          self.postNotification(kNotificationFetchMyInfoSuccess)
+          self.assignObject(myInfo)
+          getSuccess?()
         }
         }, failure: nil)
+    }
+  }
+  
+  func assignObject(data: AnyObject) {
+    if let myInfo = data as? [String: AnyObject] {
+      self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
+      self.name = myInfo[kMyInfoPropertyKeyName] as? String
+      self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
+      self.point = myInfo[kMyInfoPropertyKeyPoint] as? NSNumber
+      CoreDataHelper.sharedCoreDataHelper.saveContext()
     }
   }
   

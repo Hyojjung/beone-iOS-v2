@@ -20,16 +20,8 @@ class MainTabViewController: UITabBarController {
     }
   }
   
-  @IBAction func signInButtonTapped() {
-    showSigningView()
-  }
-  
   @IBAction func product(sender: AnyObject) {
-    let product = Product()
-    product.id = 6
-    BEONEManager.selectedProduct = product
-    
-    showProductView()
+    showProductView(6)
   }
   
   @IBAction func cart(sender: AnyObject) {

@@ -11,8 +11,10 @@ class TimeSelectView: UIView {
   weak var delegate: TimeSelectViewDelegate?
   
   func layoutView(timeRanges: [AvailableTimeRange], selectedTimeRange: AvailableTimeRange?) {
-    backgroundColor = gold
     if let startDateTime = timeRanges.first?.startDateTime, endDateTime = timeRanges.last?.endDateTime {
+      subviews.forEach { $0.removeFromSuperview() }
+      hourLines.removeAll()
+
       addHourViews(startDateTime, endDateTime: endDateTime)
       addHourSelectViews(timeRanges, selectedTimeRange: selectedTimeRange, startDateTime: startDateTime)
     }
@@ -95,6 +97,7 @@ extension TimeSelectView {
   private func lineView() -> UIView {
     let lineView = UIView()
     lineView.backgroundColor = UIColor.whiteColor()
+    lineView.alpha = 0.3
     lineView.addHeightLayout(1)
     hourLines.append(lineView)
     return lineView

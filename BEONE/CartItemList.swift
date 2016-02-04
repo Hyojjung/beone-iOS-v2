@@ -26,22 +26,13 @@ class CartItemList: BaseListModel {
   }
   
   // MARK: - BaseModel Methods (Post)
-  
-  override func postUrl() -> String {
-    return cartItemUrl()
-  }
-  
-  override func postParameter() -> AnyObject? {
-    return parameter()
-  }
-  
+
   override func postSuccess() -> NetworkSuccess? {
     return {(result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
         for (index, cartItem) in self.list.enumerate() {
           cartItem.id = data[index][kObjectPropertyKeyId] as? Int
         }
-        self.postNotification(kNotificationPostCartItemSuccess)
       }
     }
   }
@@ -54,15 +45,4 @@ class CartItemList: BaseListModel {
     }
     return "cart-items"
   }
-  
-  // MARK: - Private Methods
-  
-  private func parameter() -> [[String: AnyObject]] {
-    var parameter = [[String: AnyObject]]()
-    for cartItem in list as! [CartItem] {
-      parameter.append(cartItem.parameter())
-    }
-    return parameter
-  }
-  
 }

@@ -2,8 +2,8 @@
 import UIKit
 
 class OrderableItem: BaseModel {
-  var price: Int?
-  var quantity: Int?
+  var actualPrice = 0
+  var quantity = 1
   var availableTimeRangeList = AvailableTimeRangeList()
   let product = Product()
   var cartItemId: Int?
@@ -30,8 +30,12 @@ class OrderableItem: BaseModel {
       if let itemImageUrls = data["itemImageUrls"] as? [String] {
         self.itemImageUrls = itemImageUrls
       }
-      price = data["actualPrice"] as? Int
-      quantity = data["quantity"] as? Int
+      if let actualPrice = data["actualPrice"] as? Int {
+        self.actualPrice = actualPrice
+      }
+      if let quantity = data["quantity"] as? Int {
+        self.quantity = quantity
+      }
       productPrice = data["productPrice"] as? Int
       cartItemId = data["cartItemId"] as? Int
       productImageUrl = data["productImageUrl"] as? String

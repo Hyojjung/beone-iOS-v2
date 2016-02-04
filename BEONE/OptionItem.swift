@@ -9,7 +9,7 @@ enum OptionItemType: String {
 
 class OptionItem: BaseModel {
   var name: String?
-  var type: OptionItemType?
+  var type = OptionItemType.Select
   var value: String?
   var selectedName: String?
   
@@ -29,8 +29,8 @@ class OptionItem: BaseModel {
         id = optionItemObject[kObjectPropertyKeyId] as? Int
       }
       name = optionItemObject["name"] as? String
-      if let type = optionItemObject["type"] as? String {
-        self.type = OptionItemType(rawValue: type)
+      if let typeString = optionItemObject["type"] as? String, type = OptionItemType(rawValue: typeString) {
+        self.type = type
       }
       value = optionItemObject["value"] as? String
       
@@ -73,23 +73,31 @@ class OptionItem: BaseModel {
     return optionItem
   }
   
-  func isValid() -> Bool {
-    if value == nil {
-      return false
-    }
-    if type != .Select {
-      if let minLength = minLength {
-        if value?.characters.count < minLength {
-          return false
+  func validationMessage() -> String? {
+    if let name = name {
+      if value == nil {
+        if type == .Select {
+          return "\(name)" + NSLocalizedString("select", comment: "error message")
+        } else {
+          return "\(name)" + NSLocalizedString("insert", comment: "error message")
         }
       }
-      if let maxLength = maxLength {
-        if value?.characters.count > maxLength {
-          return false
+      if type != .Select {
+        if let minLength = minLength {
+          if value?.characters.count < minLength {
+            return "\(name)" + NSLocalizedString("length", comment: "error message")
+              + "\(minLength)" + NSLocalizedString("more than", comment: "error message")
+          }
+        }
+        if let maxLength = maxLength {
+          if value?.characters.count > maxLength {
+            return "\(name)" + NSLocalizedString("length", comment: "error message")
+              + "\(maxLength)" + NSLocalizedString("less than", comment: "error message")
+          }
         }
       }
     }
-    return true
+    return nil
   }
 
   func serverFormat() -> [String: AnyObject] {

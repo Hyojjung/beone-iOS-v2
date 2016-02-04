@@ -40,7 +40,9 @@ class BillKeysViewController: BaseTableViewController {
   
   @IBAction func deleteCardButtonTapped(sender: UIButton) {
     billKeyList.list[sender.tag].remove { () -> Void in
-      self.tableView.reloadData()
+      self.billKeyList.get { () -> Void in
+        self.tableView.reloadData()
+      }
     }
   }
   
@@ -50,29 +52,13 @@ class BillKeysViewController: BaseTableViewController {
   }
   
   @IBAction func payButtonTapped() {
-    if order.id == nil {
-      order.post({ (result) -> Void in
-        if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-          self.order.assignObject(data)
-          self.paymentInfo = self.order.paymentInfoList.mainPaymentInfo
-          
-          self.payPaymentInfo()
-        }
-        }, postFailure: { (_) -> Void in
-      })
-    } else {
-      payPaymentInfo()
-    }
-  }
-  
-  func payPaymentInfo() {
     if let paymentInfo = paymentInfo {
       paymentInfo.paymentType.id = PaymentTypeId.Card.rawValue
       paymentInfo.billKeyInfoId = self.selectedBillKey?.id
       paymentInfo.post({ (result) -> Void in
-        print(paymentInfo.id)
         self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
         }, postFailure: { (_) -> Void in
+          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
       })
     }
   }

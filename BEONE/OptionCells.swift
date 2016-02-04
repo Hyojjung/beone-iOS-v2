@@ -51,19 +51,20 @@ class CartItemCountCell: UITableViewCell {
   
   func configureCell(cartItem: CartItem, indexPath: NSIndexPath) {
     selectedQuantityLabel.text = "\(cartItem.quantity)개"
-    productNameLabel.text = cartItem.product.title
+    productNameLabel.text = cartItem.selectedOption != nil ? cartItem.product.title : nil
     optionLabel.text = cartItem.selectedOption?.optionString()
     quantitySelectButton.tag = indexPath.row
     deleteButton.tag = indexPath.row
+    deleteButton.configureAlpha(cartItem.selectedOption != nil)
   }
   
   func calculatedHeight(cartItem: CartItem) -> CGFloat {
-    var height = CGFloat(149)
+    var height = cartItem.selectedOption != nil ? CGFloat(149) : CGFloat(100)
     let label = UILabel()
     label.font = UIFont.systemFontOfSize(15)
     label.text = cartItem.selectedOption?.optionString()
     label.setWidth(ViewControllerHelper.screenWidth - 30)
-
+    
     height += label.frame.height
     return height
   }
@@ -95,7 +96,6 @@ class OptionCell: UITableViewCell {
       optionView.delegate = delegate
       optionView.layoutView(productOptionSetList)
     }
-    addCarItemButton.enabled = needButton
     addCarItemButton.configureAlpha(needButton)
     optionViewBottomMarginLayoutConstraint.constant = needButton ? 89 : 20
   }
@@ -112,17 +112,15 @@ class OptionCell: UITableViewCell {
           for option in productOptionSet.options {
             if option.isSelected {
               for optionItem in option.optionItems {
-                if let type = optionItem.type {
-                  switch type {
-                  case .Text:
-                    height += 108
-                  case .String:
-                    height += 59
-                  case .Select:
-                    height += 40
-                  }
-                  height += 10
+                switch optionItem.type {
+                case .Text:
+                  height += 108
+                case .String:
+                  height += 59
+                case .Select:
+                  height += 40
                 }
+                height += 10
               }
             }
           }

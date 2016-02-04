@@ -25,8 +25,10 @@ class CartItem: BaseModel {
         productOrderableInfo.assignObject(productOrderableInfoObject)
       }
       if let selectedOptionObject = data["productOptionSets"] as? [[String: AnyObject]] {
-        selectedOption = ProductOptionSetList()
-        selectedOption?.assignObject(selectedOptionObject)
+        if !selectedOptionObject.isEmpty {
+          selectedOption = ProductOptionSetList()
+          selectedOption?.assignObject(selectedOptionObject)
+        }
       }
     }
   }
@@ -42,12 +44,6 @@ class CartItem: BaseModel {
   
   override func putParameter() -> AnyObject? {
     return parameter()
-  }
-  
-  override func putSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      self.postNotification(kNotificationPostCartItemSuccess)
-    }
   }
   
   // MARK: - Private Methods

@@ -1,3 +1,5 @@
+
+let kSectionCellCount = 2 // delivery type cell + shop cell count
  
  class DeliveryTypeCell: UITableViewCell {
   @IBOutlet weak var heightConstraintView: UIView!
@@ -25,38 +27,23 @@
     nameLabel.text = orderableItemSet.shop.name
   }
  }
- 
- class OrderableItemCell: UITableViewCell {
-  @IBOutlet weak var productImageView: LazyLoadingImageView!
-  @IBOutlet weak var productNameLabel: UILabel!
-  @IBOutlet weak var productPriceLabel: UILabel!
-  @IBOutlet weak var productActualPriceLabel: UILabel!
-  @IBOutlet weak var quantityLabel: UILabel!
-  @IBOutlet weak var deliverableDateLabel: UILabel!
-  @IBOutlet weak var deliveryPriceLabel: UILabel!
-  @IBOutlet weak var productTotalPriceLabel: UILabel!
-  @IBOutlet weak var selectButton: UIButton!
+
+class CartOrderableItemCell: OrderableItemCell {
+  
   @IBOutlet weak var optionModifyButton: UIButton!
   @IBOutlet weak var productButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var reselectButton: UIButton!
   @IBOutlet weak var optionSoldOutView: UIView!
   @IBOutlet weak var deliveryDatesKeyView: UIView!
-  @IBOutlet weak var deliveryDatesLabelBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var minusButton: UIButton!
+  @IBOutlet weak var addButton: UIButton!
   @IBOutlet weak var directOrderButton: UIButton!
-  @IBOutlet weak var optionLabel: UILabel!
-  
-  func calculatedHeight(orderableItem: OrderableItem, cartItem: CartItem) -> CGFloat {
-    configureAvailableDeliveryDatesView(orderableItem)
-    var height = CGFloat(231)
-    if let option = cartItem.selectedOption {
-      let optionLabel = UILabel()
-      optionLabel.font = UIFont.systemFontOfSize(13)
-      optionLabel.text = option.optionString()
-      optionLabel.setWidth(ViewControllerHelper.screenWidth - 167)
-      
-      height += optionLabel.frame.height + 7
-    }
+  @IBOutlet weak var deliverableDateLabel: UILabel!
+  @IBOutlet weak var selectButton: UIButton!
+
+  override func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
+    var height = super.calculatedHeight(orderableItem, selectedOption: selectedOption)
     let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
     if !availableDeliveryDatesString.isEmpty {
       let availableDeliveryDatesLabel = UILabel()
@@ -69,50 +56,89 @@
     return height
   }
   
-  func configureCell(orderableItem: OrderableItem, cartItem: CartItem, selectedCartItemIds: [Int]) {
-    productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
-    productNameLabel.text = orderableItem.product.title
-    productPriceLabel.attributedText = orderableItem.product.priceAttributedString()
-    deliveryPriceLabel.text = orderableItem.productOrderableInfo.price?.priceNotation(.KoreanFreeNotation)
-    productActualPriceLabel.text = orderableItem.product.actualPrice.priceNotation(.Korean)
-    optionLabel.text = cartItem.selectedOption?.optionString()
+  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?, selectedCartItemIds: [Int]?) {
+    super.configureCell(orderableItem, selectedOption: selectedOption)
     
-    if let quantity = orderableItem.quantity {
-      quantityLabel.text = "\(quantity)"
-    } else {
-      quantityLabel.text = "0"
-    }
-    productTotalPriceLabel.text = orderableItem.price?.priceNotation(.Korean)
-    
-    configureAvailableDeliveryDatesView(orderableItem)
-    
-    selectButton.selected = false
-    for cartItemId in selectedCartItemIds {
-      if cartItemId == orderableItem.cartItemId {
-        selectButton.selected = true
-        break
+    selectButton?.selected = false
+    if let selectedCartItemIds = selectedCartItemIds {
+      for cartItemId in selectedCartItemIds {
+        if cartItemId == orderableItem.cartItemId {
+          selectButton?.selected = true
+          break
+        }
       }
     }
     if let cartItemId = orderableItem.cartItemId {
       configureButtonTag(cartItemId)
     }
-    optionSoldOutView.configureAlpha(orderableItem.product.soldOut)
+    optionSoldOutView?.configureAlpha(orderableItem.product.soldOut)
+    
+    configureAvailableDeliveryDatesView(orderableItem)
   }
   
   private func configureAvailableDeliveryDatesView(orderableItem: OrderableItem) {
     let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
-    deliverableDateLabel.text = availableDeliveryDatesString
-    deliveryDatesKeyView.configureAlpha(!availableDeliveryDatesString.isEmpty)
-    deliveryDatesLabelBottomConstraint.constant = availableDeliveryDatesString.isEmpty ? 0 : 7
+    deliverableDateLabel?.text = availableDeliveryDatesString
+    deliveryDatesKeyView?.configureAlpha(!availableDeliveryDatesString.isEmpty)
+    deliveryDatesLabelBottomConstraint?.constant = availableDeliveryDatesString.isEmpty ? 0 : 7
   }
   
   private func configureButtonTag(cartItemId: Int) {
-    selectButton.tag = cartItemId
-    optionModifyButton.tag = cartItemId
-    productButton.tag = cartItemId
-    deleteButton.tag = cartItemId
-    reselectButton.tag = cartItemId
-    directOrderButton.tag = cartItemId
+    minusButton?.tag = cartItemId
+    addButton?.tag = cartItemId
+    selectButton?.tag = cartItemId
+    optionModifyButton?.tag = cartItemId
+    productButton?.tag = cartItemId
+    deleteButton?.tag = cartItemId
+    reselectButton?.tag = cartItemId
+    directOrderButton?.tag = cartItemId
+  }
+}
+
+ class OrderableItemCell: UITableViewCell {
+  
+  @IBOutlet weak var productImageView: LazyLoadingImageView!
+  @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var productPriceLabel: UILabel!
+  @IBOutlet weak var productActualPriceLabel: UILabel!
+  @IBOutlet weak var quantityLabel: UILabel!
+  @IBOutlet weak var deliveryPriceLabel: UILabel!
+  @IBOutlet weak var productTotalPriceLabel: UILabel!
+  @IBOutlet weak var deliveryDatesLabelBottomConstraint: NSLayoutConstraint?
+  @IBOutlet weak var optionKeyViewBottomConstraint: NSLayoutConstraint?
+  @IBOutlet weak var optionLabel: UILabel!
+  @IBOutlet weak var optionKeyView: UIView!
+
+  func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
+    var height = CGFloat(208)
+    if let option = selectedOption {
+      let optionLabel = UILabel()
+      optionLabel.font = UIFont.systemFontOfSize(13)
+      optionLabel.text = option.optionString()
+      optionLabel.setWidth(ViewControllerHelper.screenWidth - 167)
+      height += optionLabel.frame.height + 10
+    }
+    
+    let productNameLabel = UILabel()
+    productNameLabel.font = UIFont.systemFontOfSize(16)
+    productNameLabel.text = orderableItem.product.title
+    productNameLabel.setWidth(ViewControllerHelper.screenWidth - 183)
+    height += productNameLabel.frame.height
+    
+    return height
+  }
+  
+  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) {
+    productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
+    productNameLabel.text = orderableItem.product.title
+    productPriceLabel.attributedText = orderableItem.product.priceAttributedString()
+    deliveryPriceLabel.text = orderableItem.productOrderableInfo.price?.priceNotation(.KoreanFreeNotation)
+    productActualPriceLabel.text = orderableItem.product.actualPrice.priceNotation(.Korean)
+    optionLabel.text = selectedOption?.optionString()
+    optionKeyView.configureAlpha(selectedOption != nil && !selectedOption!.list.isEmpty)
+    
+    quantityLabel.text = "\(orderableItem.quantity)"
+    productTotalPriceLabel.text = orderableItem.actualPrice.priceNotation(.Korean)
   }
  }
  
@@ -122,17 +148,9 @@
   @IBOutlet weak var totalPriceLabel: UILabel!
   
   func configureCell(order: Order) {
-    var totalItemPrice = 0
-    var totalDeliveryPrice = 0
-    for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
-        totalItemPrice += orderableItem.price!
-      }
-      totalDeliveryPrice += orderableItemSet.deliveryPrice
-    }
-    
+    let (totalItemPrice, totalDeliveryPrice) = order.prices()
     totalDeliveryPriceLabel.text = totalDeliveryPrice.priceNotation(.KoreanFreeNotation)
     totalItemPriceLabel.text = totalItemPrice.priceNotation(.Korean)
-    totalPriceLabel.text = order.price.priceNotation(.Korean)
+    totalPriceLabel.text = order.actualPrice.priceNotation(.Korean)
   }
  }

@@ -31,14 +31,6 @@ class OptionViewController: BaseTableViewController {
   
   // MARK: - BaseViewController Methods
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handlePostCartItemSuccess",
-      name: kNotificationPostCartItemSuccess,
-      object: nil)
-  }
-  
   override func setUpData() {
     super.setUpData()
     product?.get({ () -> Void in
@@ -54,6 +46,8 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Observer Actions
   
   func setUpProductData() {
+    setUpProductDeliveryTypeNames()
+    
     if isModifing && cartItems.count == 1 {
       selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
       if let selectedOption = cartItems.first?.selectedOption {
@@ -64,14 +58,12 @@ class OptionViewController: BaseTableViewController {
         selectedProductOrderableInfo = product?.productOrderableInfos.first
       }
       if product?.productOptionSets.list.count == 0 && cartItems.count == 0 {
-        let cartItem = CartItem()
-        cartItems.append(cartItem)
+        addCartItemButtonTapped()
+        return
       }
-      
       selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
     }
     
-    setUpProductDeliveryTypeNames()
     tableView.reloadData()
   }
   
@@ -110,12 +102,14 @@ extension OptionViewController {
           cartItem.productOrderableInfo = productOrderableInfo
         }
         if !isModifing {
-          let cartItemList = CartItemList()
-          cartItemList.list = cartItems
-          cartItemList.post()
+          CartItemManager.postCartItems(cartItems, postSuccess: { () -> Void in
+            self.handlePostCartItemSuccess()
+          })
         } else if cartItems.count == 1 {
           cartItems.first?.selectedOption = selectedOption
-          cartItems.first!.put()
+          cartItems.first!.put({ (result) -> Void in
+            self.handlePostCartItemSuccess()
+          })
         }
       } else {
         showAlertView(NSLocalizedString("select option", comment: "alert title"))
@@ -166,7 +160,10 @@ extension OptionViewController {
   }
   
   @IBAction func addCartItemButtonTapped() {
-    if selectedOption == nil || selectedOption!.isValid() == true {
+    let validationMessage = selectedOption?.validationMessage()
+    if let validationMessage = selectedOption?.validationMessage() {
+      showAlertView(validationMessage)
+    } else if selectedOption == nil {
       let cartItem = CartItem()
       cartItem.product = product!
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList

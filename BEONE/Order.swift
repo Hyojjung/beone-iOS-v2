@@ -5,6 +5,7 @@ class Order: BaseModel {
   var senderName: String?
   var senderPhone: String?
   var isSecret = false
+  var isDone = true
   var address = Address()
   var deliveryMemo: String?
   var price = 0
@@ -28,23 +29,25 @@ class Order: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
+      if isDone {
+        address.assignObject(data)
+        deliveryMemo = data["deliveryMemo"] as? String
+        senderName = data["senderName"] as? String
+        senderPhone = data["senderPhone"] as? String
+        orderCode = data["orderCode"] as? String
+        if let isSecret = data["isSecret"] as? Bool {
+          self.isSecret = isSecret
+        }
+      }
+      
       assignOrderableItemSets(data)
-      address.assignObject(data)
       if let paymentInfos = data["paymentInfos"] {
         paymentInfoList.assignObject(paymentInfos)
       }
-      
       id = data[kObjectPropertyKeyId] as? Int
       title = data["title"] as? String
-      deliveryMemo = data["deliveryMemo"] as? String
-      senderName = data["senderName"] as? String
-      senderPhone = data["senderPhone"] as? String
-      orderCode = data["orderCode"] as? String
       if let usedPoint = data["usedPoint"] as? Int {
         self.usedPoint = usedPoint
-      }
-      if let isSecret = data["isSecret"] as? Bool {
-        self.isSecret = isSecret
       }
       if let isCancellable = data["isCancellable"] as? Bool {
         self.isCancellable = isCancellable
@@ -66,19 +69,21 @@ class Order: BaseModel {
   
   func assignOrderableItemSets(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {
-      var orderableItemsetsObject = data["orderDeliveryItemSets"] as? [[String: AnyObject]]
-      if orderableItemsetsObject == nil {
-        orderableItemsetsObject = data["orderableItemSets"] as? [[String: AnyObject]]
+      var orderItemSetObjects: [[String: AnyObject]]? = nil
+      if isDone {
+        orderItemSetObjects = data["orderDeliveryItemSets"] as? [[String: AnyObject]]
+      } else {
+        orderItemSetObjects = data["orderableItemSets"] as? [[String: AnyObject]]
       }
-      
-      if let orderableItemsetsObject = orderableItemsetsObject {
+      if let orderItemSetObjects = orderItemSetObjects {
         orderableItemSets.removeAll()
-        for orderableItemsetObject in orderableItemsetsObject {
+        for orderItemSetObject in orderItemSetObjects {
           let orderableItemset = OrderableItemSet()
-          orderableItemset.assignObject(orderableItemsetObject)
+          orderableItemset.isDone = isDone
+          orderableItemset.assignObject(orderItemSetObject)
           orderableItemSets.append(orderableItemset)
+          
         }
-        
         orderableItemSets.sortInPlace{
           if $0.deliveryType.id == $1.deliveryType.id {
             return $0.shop.id > $1.shop.id
@@ -149,15 +154,13 @@ class Order: BaseModel {
     parameter["receiverZonecode"] = address.zonecode
     parameter["receiverRoadAddress"] = address.roadAddress
     parameter["receiverJibunAddress"] = address.jibunAddress
-    parameter["receiverAddressType"] = address.addressType == .Road ?
-      kAddressPropertyReceiverAddressTypeRoad : kAddressPropertyReceiverAddressTypeJibun
+    parameter["receiverAddressType"] = address.addressType?.rawValue
     parameter["receiverDetailAddress"] = address.detailAddress
     parameter["deliveryMemo"] = deliveryMemo
     parameter["cartItemIds"] = cartItemIds
     parameter["price"] = price
     parameter["discountPrice"] = discountPrice
     parameter["orderDeliveryItemSets"] = orderDeliveryItemSetParameter()
-    print(parameter)
     return parameter
   }
   
@@ -171,8 +174,23 @@ class Order: BaseModel {
         orderableItemSet.selectedTimeRange?.startDateTime?.serverDateString()
       orderDeliveryItemSet["reservationEndDateTime"] =
         orderableItemSet.selectedTimeRange?.endDateTime?.serverDateString()
+      print(orderDeliveryItemSet)
       orderDeliveryItemSets.append(orderDeliveryItemSet)
     }
     return orderDeliveryItemSets
+  }
+}
+
+extension Order {
+  func prices() -> (totalItemPrice: Int, totalDeliveryPrice: Int) {
+    var totalItemPrice = 0
+    var totalDeliveryPrice = 0
+    for orderableItemSet in orderableItemSets {
+      for orderableItem in orderableItemSet.orderableItems {
+        totalItemPrice += orderableItem.actualPrice
+      }
+      totalDeliveryPrice += orderableItemSet.deliveryPrice
+    }
+    return (totalItemPrice, totalDeliveryPrice)
   }
 }

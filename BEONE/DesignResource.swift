@@ -8,6 +8,8 @@ let lightGold = UIColor(red: 246.0 / 255, green: 239.0 / 255, blue: 232.0 / 255,
 let grey = UIColor(red: 100.0 / 255.0, green: 100.0 / 255.0, blue: 100.0 / 255.0, alpha: 1.0)
 let blueGrey = UIColor(red:68.0 / 255, green:68.0 / 255, blue:68.0 / 255, alpha:1)
 let bgColor = UIColor(red:241.0 / 255, green:238.0 / 255, blue:234.0 / 255, alpha:1)
+let taupe = UIColor(red:186.0 / 255, green:160.0 / 255, blue:130.0 / 255, alpha:1)
+let warmGrey = UIColor(red:158.0 / 255, green:158.0 / 255, blue:158.0 / 255, alpha:1)
 let productPropertyValueButtonColor = UIColor(red:241.0 / 255, green:236.0 / 255, blue:230.0 / 255, alpha:1)
 let selectedProductPropertyValueButtonColor = UIColor(red:208.0 / 255, green:165.0 / 255, blue:114.0 / 255, alpha:1)
 
@@ -33,5 +35,8 @@ extension UILabel {
 extension UIView {
   func configureAlpha(condition: Bool) {
     alpha = condition ? 1 : 0
+    if let button = self as? UIButton {
+      button.enabled = condition
+    }
   }
 }

@@ -12,7 +12,7 @@ class Coupon: BaseModel {
   var summary: String?
   var dayLeft: String?
   var usable = false
-
+  
   override func postUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
       return "users/\(MyInfo.sharedMyInfo().userId!)/coupons"
@@ -29,7 +29,6 @@ class Coupon: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject], prototype = data["prototype"] as? [String: AnyObject] {
-      print(data)
       id = data[kObjectPropertyKeyId] as? Int
       title = prototype["title"] as? String
       subTitle = prototype["subtitle"] as? String
@@ -49,24 +48,14 @@ class Coupon: BaseModel {
         return NSLocalizedString("expired", comment: "day left desctiption")
       } else if !usable {
         return NSLocalizedString("used", comment: "day left desctiption")
-      } else {
-        if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-          let dateComponents = calendar.components([.Day, .Hour], fromDate: date, toDate: expiredAt, options: [])
-          let earlyDate = calendar.dateByAddingUnit([.Hour],
-            value: dateComponents.hour,
-            toDate: date,
-            options: [])
-          if earlyDate?.briefDateString() != date.briefDateString() {
-            return "(\(dateComponents.day + 1)" + NSLocalizedString("day left", comment: "day left desctiption")
-          } else if dateComponents.day == 0 {
-            return NSLocalizedString("expired today", comment: "day left desctiption")
-          } else {
-            return "(\(dateComponents.day)" + NSLocalizedString("day left", comment: "day left desctiption")
-          }
+      } else if let dayPassed = date.dayPassed(from: expiredAt) {
+        if dayPassed == 0 {
+          return NSLocalizedString("expired today", comment: "day left desctiption")
+        } else {
+          return "(\(dayPassed)" + NSLocalizedString("day left", comment: "day left desctiption")
         }
       }
     }
     return nil
   }
-  
 }

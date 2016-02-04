@@ -2,9 +2,9 @@
 import UIKit
 
 class OptionView: UIView {
-
+  
   weak var delegate: AnyObject?
-
+  
   func layoutView(productOptionSetList: ProductOptionSetList) {
     subviews.forEach { $0.removeFromSuperview() }
     var beforeView: UIView?
@@ -37,7 +37,7 @@ class OptionView: UIView {
     if let productOptionSetSelectView = UIView.loadFromNibName("OptionSelectView") as? OptionTypeView {
       productOptionSetSelectView.delegate = delegate
       productOptionSetSelectView.layoutView(productOptionSet)
-
+      
       addSubViewAndEnableAutoLayout(productOptionSetSelectView)
       addView(productOptionSetSelectView, beforeView: beforeView)
       return productOptionSetSelectView
@@ -46,24 +46,21 @@ class OptionView: UIView {
   }
   
   func addOptionItemView(optionItem: OptionItem, beforeView: UIView?) -> UIView {
-    if let type = optionItem.type {
-      let optionItemView: OptionTypeView
-      switch type {
-      case .Text:
-        optionItemView = UIView.loadFromNibName("OptionTextView") as! OptionTypeView
-      case .String:
-        optionItemView = UIView.loadFromNibName("OptionStringView") as! OptionTypeView
-      case .Select:
-        optionItemView = UIView.loadFromNibName("OptionSelectView") as! OptionTypeView
-      }
-      optionItemView.delegate = delegate
-      optionItemView.layoutView(optionItem)
-      
-      addSubViewAndEnableAutoLayout(optionItemView)
-      addView(optionItemView, beforeView: beforeView)
-      return optionItemView
+    let optionItemView: OptionTypeView
+    switch optionItem.type {
+    case .Text:
+      optionItemView = UIView.loadFromNibName("OptionTextView") as! OptionTypeView
+    case .String:
+      optionItemView = UIView.loadFromNibName("OptionStringView") as! OptionTypeView
+    case .Select:
+      optionItemView = UIView.loadFromNibName("OptionSelectView") as! OptionTypeView
     }
-    fatalError("optionItem must have type")
+    optionItemView.delegate = delegate
+    optionItemView.layoutView(optionItem)
+    
+    addSubViewAndEnableAutoLayout(optionItemView)
+    addView(optionItemView, beforeView: beforeView)
+    return optionItemView
   }
   
   func addView(view: UIView, beforeView: UIView?) {

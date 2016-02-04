@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deleteCouponButtonCell" rowHeight="80" id="oHR-eJ-YtK">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oHR-eJ-YtK" id="7NB-Hd-3CL">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOh-rv-YYJ">
+                        <rect key="frame" x="15" y="18" width="570" height="62"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="mmh-FU-dIg">
+                                <rect key="frame" x="0.0" y="0.0" width="570" height="62"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰 사용하지 않기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dy-E6-a7h">
+                                <rect key="frame" x="237" y="23" width="97" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTS-GG-Uih">
+                                <rect key="frame" x="0.0" y="0.0" width="570" height="62"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mmh-FU-dIg" secondAttribute="bottom" priority="999" id="7DO-9j-FCS"/>
+                            <constraint firstItem="rTS-GG-Uih" firstAttribute="leading" secondItem="cOh-rv-YYJ" secondAttribute="leading" id="8F1-2u-ZrT"/>
+                            <constraint firstItem="mmh-FU-dIg" firstAttribute="top" secondItem="cOh-rv-YYJ" secondAttribute="top" id="FXP-VQ-mC8"/>
+                            <constraint firstAttribute="trailing" secondItem="mmh-FU-dIg" secondAttribute="trailing" id="HRz-Xh-bEp"/>
+                            <constraint firstAttribute="trailing" secondItem="rTS-GG-Uih" secondAttribute="trailing" id="KX8-Yb-heb"/>
+                            <constraint firstItem="rTS-GG-Uih" firstAttribute="top" secondItem="cOh-rv-YYJ" secondAttribute="top" id="Ug5-c7-CX0"/>
+                            <constraint firstAttribute="centerX" secondItem="1Dy-E6-a7h" secondAttribute="centerX" id="d71-ez-gEX"/>
+                            <constraint firstItem="1Dy-E6-a7h" firstAttribute="top" secondItem="cOh-rv-YYJ" secondAttribute="top" constant="23" id="goy-l0-QVv"/>
+                            <constraint firstItem="mmh-FU-dIg" firstAttribute="leading" secondItem="cOh-rv-YYJ" secondAttribute="leading" id="hsc-Ok-HCf"/>
+                            <constraint firstAttribute="bottom" secondItem="rTS-GG-Uih" secondAttribute="bottom" id="k72-6V-57r"/>
+                            <constraint firstAttribute="centerY" secondItem="1Dy-E6-a7h" secondAttribute="centerY" id="qRQ-Uc-oZ6"/>
+                            <constraint firstAttribute="bottom" secondItem="1Dy-E6-a7h" secondAttribute="bottom" constant="23" id="wth-1G-ens"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="cOh-rv-YYJ" secondAttribute="bottom" priority="999" id="Px9-Cz-2OT"/>
+                    <constraint firstItem="cOh-rv-YYJ" firstAttribute="top" secondItem="7NB-Hd-3CL" secondAttribute="top" constant="18" id="W3Z-V4-DE6"/>
+                    <constraint firstItem="cOh-rv-YYJ" firstAttribute="leading" secondItem="7NB-Hd-3CL" secondAttribute="leading" constant="15" id="bkh-ha-T4U"/>
+                    <constraint firstAttribute="trailing" secondItem="cOh-rv-YYJ" secondAttribute="trailing" priority="999" constant="15" id="rg9-Qd-ztz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bg_coupon" width="52" height="52"/>
+    </resources>
+</document>

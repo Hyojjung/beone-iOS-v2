@@ -8,9 +8,10 @@ enum ReviewListType {
 
 class ReviewList: BaseListModel {
   var type = ReviewListType.Default
+  var productId: Int?
   
   override func fetchUrl() -> String {
-    if let productId = BEONEManager.selectedProduct?.id {
+    if let productId = productId {
       return "products/\(productId)/reviews"
     }
     return "reviews"

@@ -18,7 +18,6 @@ class Location: BaseModel {
       NetworkHelper.requestGet("locations/\(id!)/validation",
         parameter: ["jibunAddress": jibunAddress],
         success: { (result) -> Void in
-          print(result)
           if let data = result[kNetworkResponseKeyData] as? [String: AnyObject],
             isValid = data[kLocationValidationPropertyKeyIsValid] as? Bool {
               self.postNotification(kNotificationValidateAddressSuccess, userInfo: [kNotificationKeyIsValid: isValid])

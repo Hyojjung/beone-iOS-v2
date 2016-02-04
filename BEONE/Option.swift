@@ -62,13 +62,13 @@ class Option: BaseModel {
     return nil
   }
   
-  func isValid() -> Bool {
+  func validationMessage() -> String? {
     for optionItem in optionItems {
-      if !optionItem.isValid() {
-        return false
+      if let validationMessage = optionItem.validationMessage() {
+        return validationMessage
       }
     }
-    return true
+    return nil
   }
   
   func optionString() -> String {

@@ -65,6 +65,16 @@ extension UIView {
       constant: 0))
   }
   
+  func addEqualHeightLayout(view1: UIView, view2: UIView) {
+    addConstraint(NSLayoutConstraint(item: view1,
+      attribute: .Height,
+      relatedBy: .Equal,
+      toItem: view2,
+      attribute: .Height,
+      multiplier: 1,
+      constant: 0))
+  }
+  
   func addHeightLayout(height: CGFloat) {
     addConstraint(NSLayoutConstraint(item: self,
       attribute: .Height,

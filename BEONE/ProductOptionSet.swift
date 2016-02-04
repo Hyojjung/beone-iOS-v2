@@ -35,13 +35,15 @@ class ProductOptionSet: BaseModel {
     return productOptionSet
   }
   
-  func isValid() -> Bool {
+  func validationMessage() -> String? {
     for option in options {
-      if option.isSelected && !option.isValid() {
-        return false
+      if option.isSelected {
+        if let validationMessage = option.validationMessage() {
+          return validationMessage
+        }
       }
     }
-    return true
+    return nil
   }
   
   func optionString() -> String {

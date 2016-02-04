@@ -2,6 +2,9 @@
 import UIKit
 
 class OrderAddressViewController: BaseViewController {
+  
+  let kScrollViewAdjustHeight = CGFloat(98)
+  
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var senderNameTextField: UITextField!
   @IBOutlet weak var senderPhoneTextField: UITextField!
@@ -20,18 +23,13 @@ class OrderAddressViewController: BaseViewController {
   
   // MARK: - Init & Deinit
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    addViewObservers()
-  }
-  
-  deinit {
-    removeViewObservers()
-  }
-  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let selectingPaymentTypeViewController = segue.destinationViewController as? SelectingPaymentTypeViewController {
       selectingPaymentTypeViewController.order = order
+    } else if let invalidAddressViewController = segue.destinationViewController as? InvalidAddressViewController,
+      orderableCartItemIds = sender as? [Int] {
+        invalidAddressViewController.order = order
+        invalidAddressViewController.orderableCartItemIds = orderableCartItemIds
     }
   }
   
@@ -43,23 +41,15 @@ class OrderAddressViewController: BaseViewController {
     addressList.get { () -> Void in
       self.handleAddressList()
     }
-    MyInfo.sharedMyInfo().fetch()
+    MyInfo.sharedMyInfo().get { () -> Void in
+      self.senderNameTextField.text = MyInfo.sharedMyInfo().name
+      self.senderPhoneTextField.text = MyInfo.sharedMyInfo().phone
+    }
     
     self.senderNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     self.senderPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     self.receiverNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     self.receiverPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-  }
-  
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleValidationResult:",
-      name: kNotificationValidateAddressSuccess, object: nil)
-  }
-  
-  override func removeObservers() {
-    super.removeObservers()
-    addViewObservers()
   }
 }
 
@@ -84,16 +74,18 @@ extension OrderAddressViewController {
     if let error = errorMessage() {
       showAlertView(error)
     } else {
-      address.detailAddress = detailAddressTextField.text
-      address.receiverName = receiverNameTextField.text
-      address.receiverPhone = receiverPhoneTextField.text
+      setUpAddress()
       
-      order.senderName = senderNameTextField.text
-      order.senderPhone = senderPhoneTextField.text
-      order.isSecret = secretButton.selected
-      order.address = address
-      order.deliveryMemo = deliveryMemoTextView.text
-      BEONEManager.selectedLocation?.validate(address.jibunAddress)
+      OrderHelper.fetchDeliverableCartItems(order.cartItemIds,
+        address: order.address.addressString()!,
+        addressType: order.address.addressType!,
+        fetchSuccess: { (cartItemIds) -> Void in
+          if cartItemIds.hasEqualObjects(self.order.cartItemIds) {
+            self.performSegueWithIdentifier("From Order Address To Order", sender: nil)
+          } else {
+            self.performSegueWithIdentifier("From Order Address To Invalid Address", sender: cartItemIds)
+          }
+      })
     }
   }
 }
@@ -110,59 +102,50 @@ extension OrderAddressViewController: AddressDelegate {
 
 extension OrderAddressViewController {
   
-  func handleValidationResult(notification: NSNotification) {
-    if let userInfo = notification.userInfo, isValid = userInfo[kNotificationKeyIsValid] as? Bool {
-      if isValid {
-        performSegueWithIdentifier("From Order Address To Order", sender: nil)
-      } else {
-        performSegueWithIdentifier("From Order Address To Invalid Address", sender: nil)
-      }
-    }
-  }
-  
   func handleAddressList() {
     if addressList.list.count > 0 {
       address = addressList.list.first as! Address
     }
-    receiverNameTextField.text = address.receiverName
-    receiverPhoneTextField.text = address.receiverPhone
     setUpAddressView()
+  }
+  
+  func setUpAddress() {
+    address.detailAddress = detailAddressTextField.text
+    address.receiverName = receiverNameTextField.text
+    address.receiverPhone = receiverPhoneTextField.text
+    
+    order.senderName = senderNameTextField.text
+    order.senderPhone = senderPhoneTextField.text
+    order.isSecret = secretButton.selected
+    order.address = address
+    order.deliveryMemo = deliveryMemoTextView.text
   }
 }
 
 // MARK: - Private Methods
 
 extension OrderAddressViewController {
+  
   func setUpAddressView() {
+    receiverNameTextField.text = address.receiverName
+    receiverPhoneTextField.text = address.receiverPhone
+    
     if let zonecode = address.zonecode {
       zonecodeLabel.text = zonecode
     } else if let zipcode1 = address.zipcode01, zipcode2 = address.zipcode02 {
       zonecodeLabel.text = "\(zipcode1) - \(zipcode2)"
     }
     
-    let addressString = address.addressType == .Jibun ? address.jibunAddress : address.roadAddress
+    let addressString = address.addressString()
     if addressTextField.text != addressString {
       addressTextField.text = addressString
       detailAddressTextField.text = address.detailAddress
     }
   }
   
-  func addViewObservers() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpSenderWithMyInfo", name: kNotificationFetchMyInfoSuccess, object: nil)
-  }
-  
-  func removeViewObservers() {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-  
   func setUpSenderAndReceiverView() {
     receiverNameTextField.text = senderNameTextField.text
     receiverPhoneTextField.text = senderPhoneTextField.text
-  }
-  
-  func setUpSenderWithMyInfo() {
-    senderNameTextField.text = MyInfo.sharedMyInfo().name
-    senderPhoneTextField.text = MyInfo.sharedMyInfo().phone
   }
   
   func errorMessage() -> String? {
@@ -187,7 +170,8 @@ extension OrderAddressViewController {
 
 extension OrderAddressViewController {
   func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-    scrollView.focusOffset = textField.convertPoint(textField.frame.origin, toView: scrollView).y - 98
+    scrollView.focusOffset =
+      textField.convertPoint(textField.frame.origin, toView: scrollView).y - kScrollViewAdjustHeight
     return true
   }
   
@@ -217,7 +201,8 @@ extension OrderAddressViewController {
 
 extension OrderAddressViewController {
   func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-    scrollView.focusOffset = textView.convertPoint(textView.frame.origin, toView: scrollView).y - 98
+    scrollView.focusOffset =
+      textView.convertPoint(textView.frame.origin, toView: scrollView).y - kScrollViewAdjustHeight
     return true
   }
 }

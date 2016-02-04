@@ -39,7 +39,7 @@ class OrderViewController: BaseTableViewController {
   var orderItemsWithImages = [OrderableItem]()
   var bankUnpaiedPaymentInfos = [PaymentInfo]()
   var returnableOrderItemSets = [OrderableItemSet]()
-  var paymentTypes: [PaymentType]?
+  var paymentTypeList: PaymentTypeList?
   
   // MARK: - BaseViewController Methods
   
@@ -54,8 +54,8 @@ class OrderViewController: BaseTableViewController {
       self.setUpOrder()
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypeList() {(paymentTypes) -> Void in
-      self.paymentTypes = paymentTypes
+    OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
+      self.paymentTypeList = paymentTypeList
     }
   }
 }
@@ -136,7 +136,7 @@ extension OrderViewController {
 extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
-    showPayment(paymentTypes, order: order, paymentInfoId: sender.tag)
+    showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: sender.tag)
   }
 }
 

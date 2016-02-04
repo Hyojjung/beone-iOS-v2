@@ -115,8 +115,13 @@ extension UIViewController {
     }
   }
   
-  func showProductView() {
-    showViewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier)
+  func showProductView(productId: Int?) {
+    if let productDetailViewController =
+      viewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier) as? ProductDetailViewController,
+    productId = productId {
+      productDetailViewController.product.id = productId
+        showViewController(productDetailViewController, sender: nil)
+    }
   }
   
   func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false, isModifing: Bool = false) {
@@ -199,12 +204,7 @@ extension UIViewController {
             if paymentType.id == PaymentTypeId.Card.rawValue {
               self.showBillKeysView(order, paymentInfoId: paymentInfoId)
             } else {
-              if let orderWebViewController = self.viewController("Order", viewIdentifier: "OrderWebView") as? OrderWebViewController {
-                orderWebViewController.order = order
-                orderWebViewController.paymentTypeId = paymentType.id
-                orderWebViewController.paymentInfoId = paymentInfoId
-                self.navigationController?.showViewController(orderWebViewController, sender: nil)
-              }
+              self.showOrderWebView(order, paymentTypeId: paymentType.id!, paymentInfoId: paymentInfoId)
             }
         }
         actionSheetButtons.append(paymentTypeButton)
@@ -213,7 +213,7 @@ extension UIViewController {
     }
   }
   
-  func showBillKeysView(order: Order, paymentInfoId: Int? = nil) {
+  func showBillKeysView(order: Order, paymentInfoId: Int) {
     if let billKeysViewController = viewController("Order", viewIdentifier: "BillKeysView") as? BillKeysViewController {
       billKeysViewController.order = order
       billKeysViewController.paymentInfoId = paymentInfoId
@@ -223,11 +223,17 @@ extension UIViewController {
   
   func showOrderResultView(order: Order? = nil, paymentInfoId: Int? = nil, orderResult: [String: AnyObject]? = nil) {
     let orderResultViewController = OrderResultViewController()
-    if let order = order {
-      orderResultViewController.order = order
-    }
+    orderResultViewController.order = order
     orderResultViewController.paymentInfoId = paymentInfoId
     orderResultViewController.orderResult = orderResult
     navigationController?.showViewController(orderResultViewController, sender: nil)
+  }
+  
+  func showOrderWebView(order: Order, paymentTypeId: Int, paymentInfoId: Int? = nil) {
+    let orderWebViewController = OrderWebViewController()
+    orderWebViewController.order = order
+    orderWebViewController.paymentInfoId = paymentInfoId
+    orderWebViewController.paymentTypeId = paymentTypeId
+    navigationController?.showViewController(orderWebViewController, sender: nil)
   }
 }
