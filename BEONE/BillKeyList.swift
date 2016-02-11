@@ -3,7 +3,7 @@ import UIKit
 
 class BillKeyList: BaseListModel {
 
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
       return "users/\(MyInfo.sharedMyInfo().userId!)/bill-key-infos"
     }

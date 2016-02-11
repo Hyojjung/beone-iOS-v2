@@ -51,10 +51,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    
-    
     var pair = [Int: AvailableTimeRange]()
-    
     for orderableItemSet in order.orderableItemSets {
       for orderableItem in orderableItemSet.orderableItems {
         if let cartItemId = orderableItem.cartItemId {
@@ -64,8 +61,6 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
         }
       }
     }
-    
-    
     OrderHelper.fetchOrderableInfo(order) { () -> Void in
       for orderableItemSet in self.order.orderableItemSets {
         for orderableItem in orderableItemSet.orderableItems {
@@ -115,7 +110,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       } else if point > order.actualPrice {
         showAlertView(NSLocalizedString("use less than total price", comment: "alert title"))
       } else {
-        OrderHelper.fetchCalculatedPrice(order.actualPrice, point: point, fetchSuccess: { (actualPrice, discountPrice) -> Void in
+        OrderHelper.fetchCalculatedPrice(order.actualPrice, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
           self.orderActualPrice = actualPrice
           self.orderDiscountPrice = discountPrice
           self.tableView.reloadData()

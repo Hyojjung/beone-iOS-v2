@@ -84,7 +84,7 @@ extension UIViewController {
       webViewController.url = urlString
       webViewController.title = title
       webViewController.addressDelegate = addressDelegate
-      navigationController?.pushViewController(webViewController, animated: true)
+      navigationController?.showViewController(webViewController, sender: nil)
       navigationController?.navigationBar.hidden = false
     }
   }

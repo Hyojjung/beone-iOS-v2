@@ -32,13 +32,7 @@ class ProductPropertyValuesView: UIView {
   }
   
   private func searchValueView(productPropertyValue: BaseModel, displayType: ProductPropertyDisplayType?) -> SearchValueView {
-    let nibName: String
-    if displayType == .Color {
-      nibName = kProductPropertyColorTypeValueViewNibName
-    } else {
-      nibName = kProductPropertyNameTypeValueViewNibName
-    }
-    return UIView.loadFromNibName(nibName) as! SearchValueView
+    return UIView.loadFromNibName(ProductPropertyViewHelper.viewNibName(displayType)) as! SearchValueView
   }
   
   private func configureSubViewsWidthLayout(views: [UIView]) {
@@ -77,8 +71,8 @@ extension ProductPropertyValuesView {
   private func configureTopLayout(view: UIView, index: Int, beforeRowLeftView: UIView?) {
     if index / kRowValueButtonCount == 0 {
       addTopLayout(view)
-    } else if let beforeRowLeftView = beforeRowLeftView {
-      let verticalInterval = kValueButtonVerticalInterval
+    } else if let beforeRowLeftView = beforeRowLeftView as? SearchValueView {
+      let verticalInterval = ProductPropertyViewHelper.buttonInterval(beforeRowLeftView.viewDisplayType)
       addVerticalLayout(beforeRowLeftView, bottomView: view, contsant: verticalInterval)
     }
   }
@@ -94,6 +88,32 @@ extension ProductPropertyValuesView {
       addLeadingLayout(view)
     } else if let beforeView = beforeView {
       addHorizontalLayout(beforeView, rightView: view, contsant: kViewHorizontalInterval)
+    }
+  }
+}
+
+class ProductPropertyViewHelper {
+  static func buttonViewHeight(displayType: ProductPropertyDisplayType?) -> CGFloat {
+    if displayType == .Color {
+      return 41 + (ViewControllerHelper.screenWidth - 48) / 4
+    } else {
+      return 23
+    }
+  }
+  
+  static func buttonInterval(displayType: ProductPropertyDisplayType?) -> CGFloat {
+    if displayType == .Color {
+      return 5
+    } else {
+      return 18
+    }
+  }
+  
+  static func viewNibName(displayType: ProductPropertyDisplayType?) -> String {
+    if displayType == .Color {
+      return kProductPropertyColorTypeValueViewNibName
+    } else {
+      return kProductPropertyNameTypeValueViewNibName
     }
   }
 }

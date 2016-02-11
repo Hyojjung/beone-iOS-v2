@@ -5,8 +5,9 @@ class SideBarViewContents: BaseModel {
   
   var progressingOrderCount = 0
   var orderDeliveryItemSets = [OrderableItemSet]()
+  var recentProducts = ProductList()
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "app-view-data/sidebar"
   }
   
@@ -21,11 +22,17 @@ class SideBarViewContents: BaseModel {
         self.progressingOrderCount = progressingOrderCount
       }
       
+      orderDeliveryItemSets.removeAll()
       if let orderDeliveryItemSet = data["latestOrderDeliveryItemSet"] as? [String: AnyObject] {
-        orderDeliveryItemSets.removeAll()
         let latestOrderDeliveryItemSet = OrderableItemSet()
         latestOrderDeliveryItemSet.assignObject(orderDeliveryItemSet)
         orderDeliveryItemSets.append(latestOrderDeliveryItemSet)
+      }
+      
+      if let recentProducts = data["recentProducts"] {
+        self.recentProducts.assignObject(recentProducts)
+      } else {
+        recentProducts.list.removeAll()
       }
     }
   }

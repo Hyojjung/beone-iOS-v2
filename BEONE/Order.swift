@@ -20,7 +20,7 @@ class Order: BaseModel {
   var usedPoint = 0
   var isCancellable = false
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
       return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(id!)"
     }

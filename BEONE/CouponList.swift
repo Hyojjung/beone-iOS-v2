@@ -5,14 +5,14 @@ class CouponList: BaseListModel {
   
   var isUsableCouponList = false
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
       return "users/\(MyInfo.sharedMyInfo().userId!)/coupons"
     }
     return "coupons"
   }
   
-  override func fetchParameter() -> AnyObject? {
+  override func getParameter() -> AnyObject? {
     var parameter = [String: AnyObject]()
     parameter["statuses"] = isUsableCouponList ? ["usable"] : ["used", "expired"]
     return parameter

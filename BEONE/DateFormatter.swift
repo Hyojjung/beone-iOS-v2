@@ -90,10 +90,17 @@ extension NSDate {
   
   func orderItemSetProgressedAt() -> String? {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      let dateComponents = calendar.components([.Day, .Hour], fromDate: self, toDate: NSDate(), options: [])
+      let dateComponents = calendar.components([.Day, .Hour, .Minute], fromDate: self, toDate: NSDate(), options: [])
       if let dayPassed = self.dayPassed(from: NSDate()) {
         if dayPassed == 0 {
-          return "\(dateComponents.hour)시간 전"
+          if dateComponents.hour < 1 {
+            if dateComponents.minute < 1 {
+              return "방금 전"
+            }
+            return "\(dateComponents.minute)분 전"
+          } else {
+            return "\(dateComponents.hour)시간 전" // TODO: 분단위 표기?
+          }
         } else if dayPassed == 1 {
           return "하루 전"
         } else if dayPassed == 2 {

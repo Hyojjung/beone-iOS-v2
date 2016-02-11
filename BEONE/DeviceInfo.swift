@@ -4,6 +4,7 @@ import UIKit
 let kDeviceInfoPropertyKeyIsReceivingPush = "isReceivingPush"
 
 class DeviceInfo: BaseModel {
+  
   var isReceivingPush = false
   
   private func url() -> String {
@@ -13,11 +14,11 @@ class DeviceInfo: BaseModel {
     return "device-infos"
   }
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return url()
   }
   
-  override func fetchSuccess() -> NetworkSuccess? {
+  override func getSuccess() -> NetworkSuccess? {
     return {(result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
         self.isReceivingPush = data[kDeviceInfoPropertyKeyIsReceivingPush]?.boolValue == true ? true : false
@@ -31,17 +32,5 @@ class DeviceInfo: BaseModel {
   
   override func putParameter() -> AnyObject? {
     return [kDeviceInfoPropertyKeyIsReceivingPush: isReceivingPush]
-  }
-  
-  override func putSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      self.fetch()
-    }
-  }
-  
-  override func putFailure() -> NetworkFailure? {
-    return {(error) -> Void in
-      self.fetch()
-    }
   }
 }

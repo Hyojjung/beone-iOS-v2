@@ -6,7 +6,7 @@ class TagList: BaseListModel {
   var name: String?
   var subTitle: String?
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "tag-groups/filter"
   }
   

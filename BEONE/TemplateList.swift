@@ -44,7 +44,7 @@ class TemplateList: BaseListModel {
     }
   }
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "app-views/main/template-items"
   }
 }

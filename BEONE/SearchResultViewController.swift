@@ -42,6 +42,10 @@ class SearchResultViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    productList.noData = false
+    productList.get { () -> Void in
+      self.tableView.reloadData()
+    }
     productPropertyList.get { () -> Void in
       self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
         withRowAnimation: .Automatic)
@@ -49,16 +53,6 @@ class SearchResultViewController: BaseTableViewController {
     tagList.get { () -> Void in
       self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
         withRowAnimation: .Automatic)
-    }
-  }
-  
-  func setUpProductList() {
-    productList.maxPrice = maxPrice * kPriceUnit
-    productList.minPrice = minPrice * kPriceUnit
-    productList.productPropertyValueIds = selectedProductPropertyValueIds
-    productList.tagIds = selectedTagIds
-    productList.get { () -> Void in
-      
     }
   }
 }
@@ -70,8 +64,10 @@ extension SearchResultViewController {
   @IBAction func selectLocationButtonTapped() {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
       self.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as! Location
-      self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
-        withRowAnimation: .Automatic)
+      self.productList.locationId = self.selectedLocation.id
+      self.productList.get({ () -> Void in
+        self.tableView.reloadData()
+      })
     }
   }
   

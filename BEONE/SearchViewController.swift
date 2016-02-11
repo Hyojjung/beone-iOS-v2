@@ -32,7 +32,7 @@ class SearchViewController: BaseTableViewController {
 
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
-  var appSetting = AppSetting()
+  var productSearchData = ProductSearchData()
   
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
@@ -47,9 +47,9 @@ class SearchViewController: BaseTableViewController {
     tagList.get { () -> Void in
       self.tableView.reloadData()
     }
-    appSetting.get { () -> Void in
-      self.minPrice = self.appSetting.searchMinPrice
-      self.maxPrice = self.appSetting.searchMaxPrice
+    productSearchData.get { () -> Void in
+      self.minPrice = self.productSearchData.minPrice
+      self.maxPrice = self.productSearchData.maxPrice
       self.tableView.reloadData()
     }
   setUpProductList()
@@ -86,7 +86,7 @@ extension SearchViewController {
       if selectedValue != self.minPrice {
         self.minPrice = selectedValue
         if self.minPrice >= self.maxPrice {
-          self.maxPrice = self.minPrice + self.appSetting.searchPriceUnit
+          self.maxPrice = self.minPrice + self.productSearchData.priceUnit
         }
         self.setUpProductList()
       }
@@ -98,7 +98,7 @@ extension SearchViewController {
       if selectedValue != self.maxPrice {
         self.maxPrice = selectedValue
         if self.minPrice >= self.maxPrice {
-          self.minPrice = self.maxPrice - self.appSetting.searchPriceUnit
+          self.minPrice = self.maxPrice - self.productSearchData.priceUnit
         }
         self.setUpProductList()
       }
@@ -120,9 +120,9 @@ extension SearchViewController {
   func selectPrice(sender: UIButton, isMin: Bool, donBlock: (Int) -> Void) {
     var rows = [String]()
     var initialSelection = 0
-    for i in 0..<((appSetting.searchMaxPrice - appSetting.searchMinPrice) / appSetting.searchPriceUnit) {
+    for i in 0..<((productSearchData.maxPrice - productSearchData.minPrice) / productSearchData.priceUnit) {
       let index = isMin ? i : i + 1
-      let price = appSetting.searchMinPrice + index * appSetting.searchPriceUnit
+      let price = productSearchData.minPrice + index * productSearchData.priceUnit
       if maxPrice == price {
         initialSelection = i
       }
@@ -180,7 +180,7 @@ extension SearchViewController: UITableViewDataSource {
       }
     } else if let cell = cell as? SearchPriceCell {
       cell.configureCell(self,
-        minPrice: minPrice, maxPrice: maxPrice, minBoundPrice: appSetting.searchMinPrice, maxBoundPrice: appSetting.searchMaxPrice)
+        minPrice: minPrice, maxPrice: maxPrice, minBoundPrice: productSearchData.minPrice, maxBoundPrice: productSearchData.maxPrice)
     } else if let cell = cell as? ProductsCountCell, locationName = BEONEManager.selectedLocation?.name {
       cell.configureCell(locationName, productCount: productList.total)
     }
@@ -294,9 +294,9 @@ class SearchPropertyCell: SearchFilterCell {
   func calculatedHeight(searchValues: [BaseModel], subTitle: String?, displayType: ProductPropertyDisplayType? = nil) -> CGFloat {
     var height = 97 + Int(calculatedSubTitleHeight(subTitle))
     let rowCount = (searchValues.count - 1) / kRowValueButtonCount + 1
-    let viewHeight = displayType == .Color ? kValueColorViewHeight : kValueButtonHeight
-    let verticalInterval = displayType == .Color ? kValueColorViewVerticalInterval : kValueButtonVerticalInterval
+    let viewHeight = ProductPropertyViewHelper.buttonViewHeight(displayType)
     height += rowCount * Int(viewHeight)
+    let verticalInterval = ProductPropertyViewHelper.buttonInterval(displayType)
     height += (rowCount - 1) * Int(verticalInterval)
     return CGFloat(height)
   }

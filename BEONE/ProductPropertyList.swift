@@ -2,7 +2,7 @@
 import UIKit
 
 class ProductPropertyList: BaseListModel {
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "product-properties"
   }
   

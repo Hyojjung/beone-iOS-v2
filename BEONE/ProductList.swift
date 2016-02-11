@@ -12,9 +12,12 @@ class ProductList: BaseListModel {
   var tagIds: [Int]?
   var minPrice: Int?
   var maxPrice: Int?
+  lazy var locationId: Int? = {
+    return BEONEManager.selectedLocation?.id
+  }()
   var noData = false
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     switch type {
     case .Shop:
       if let shopId = BEONEManager.selectedShop?.id {
@@ -27,13 +30,13 @@ class ProductList: BaseListModel {
     }
   }
   
-  override func fetchParameter() -> AnyObject? {
+  override func getParameter() -> AnyObject? {
     switch type {
     case .Shop:
       return nil
     case .None:
       var parameter = [String: AnyObject]()
-      parameter["locationId"] = BEONEManager.selectedLocation?.id
+      parameter["locationId"] = locationId
       parameter["productPropertyValueIds"] = productPropertyValueIds
       parameter["tagIds"] = tagIds
       parameter["minPrice"] = minPrice

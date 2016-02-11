@@ -2,6 +2,7 @@
 import UIKit
 
 class OrderableItemSet: BaseModel {
+  
   var actualPrice = 0
   var selectedTimeRange: AvailableTimeRange?
   var title: String?
@@ -34,6 +35,7 @@ class OrderableItemSet: BaseModel {
     let order = Order()
     return order
   }()
+  let orderDeliveryInfo = OrderDeliveryInfo()
   
   var statusName: String?
   var isCancellable = false
@@ -60,7 +62,7 @@ class OrderableItemSet: BaseModel {
       if let actualPrice = orderableItemSet["actualPrice"] as? Int {
         self.actualPrice = actualPrice
       }
-
+      
       if let shop = orderableItemSet["shop"] {
         self.shop.assignObject(shop)
       }
@@ -76,9 +78,28 @@ class OrderableItemSet: BaseModel {
       }
       if let order = orderableItemSet["order"] {
         self.order.assignObject(order)
+      } else {
+        order.id = orderableItemSet["orderId"] as? Int
+      }
+      if let orderDeliveryInfo = orderableItemSet["orderDeliveryInfo"] {
+        self.orderDeliveryInfo.assignObject(orderDeliveryInfo)
       }
     }
   }
+  
+  override func putUrl() -> String {
+    if MyInfo.sharedMyInfo().isUser() {
+      return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(order.id!)/order-delivery-item-sets/\(id!)/status"
+    }
+    return "users/orders/order-delivery-item-sets/status"
+  }
+  
+  override func putParameter() -> AnyObject? {
+    return ["statusId": 16]
+  }
+}
+
+extension OrderableItemSet {
   
   private func assignOrderItems(data: [String: AnyObject]) {
     let orderItemObjects: [[String: AnyObject]]
@@ -95,7 +116,6 @@ class OrderableItemSet: BaseModel {
       orderableItems.append(orderableItem)
     }
   }
-  
   
   private func assignAvailableTimeRanges(availableTimeRangesObject: AnyObject?) {
     if let availableTimeRangesObject = availableTimeRangesObject as? [[String: AnyObject]] {

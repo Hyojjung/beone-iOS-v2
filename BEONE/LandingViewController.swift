@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FirstViewController: BaseTableViewController {
+class LandingViewController: BaseTableViewController {
   
   // MARK: - Property
   
@@ -38,7 +38,7 @@ class FirstViewController: BaseTableViewController {
 
 // MARK: - UITableViewDataSource
 
-extension FirstViewController {
+extension LandingViewController {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -54,7 +54,7 @@ extension FirstViewController {
   }
 }
 
-extension FirstViewController: DynamicHeightTableViewProtocol {
+extension LandingViewController: DynamicHeightTableViewProtocol {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if let cellIdentifier = templateList.filterdTemplates[indexPath.row].type?.cellIdentifier() {
@@ -79,7 +79,7 @@ extension FirstViewController: DynamicHeightTableViewProtocol {
 
 // MARK: - Observer Actions
 
-extension FirstViewController {
+extension LandingViewController {
   func handleLayoutChange() {
     tableView.reloadData()
   }

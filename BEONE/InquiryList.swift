@@ -5,7 +5,7 @@ class InquiryList: BaseListModel {
   
   var productId: Int?
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if let productId = productId {
       return "products/\(productId)/inquiries"
     }

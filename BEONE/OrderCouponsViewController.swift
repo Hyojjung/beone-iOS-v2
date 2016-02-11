@@ -28,7 +28,7 @@ class OrderCouponsViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     if let order = order {
-      OrderHelper.fetchAvailableCoupons(order.cartItemIds, couponList: couponList, fetchSuccess: { () -> Void in
+      OrderHelper.fetchAvailableCoupons(order.cartItemIds, couponList: couponList, getSuccess: { () -> Void in
         self.tableView.reloadData()
       })
     }

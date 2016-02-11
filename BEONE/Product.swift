@@ -54,7 +54,7 @@ class Product: BaseModel {
   
   // MARK: - BaseModel Methods
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if let id = id {
       return "products/\(id)"
     }

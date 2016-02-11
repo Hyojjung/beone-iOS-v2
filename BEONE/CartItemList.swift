@@ -21,7 +21,7 @@ class CartItemList: BaseListModel {
     }
   }
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return cartItemUrl()
   }
   

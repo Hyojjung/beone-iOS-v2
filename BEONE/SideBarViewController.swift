@@ -11,6 +11,8 @@ class SideBarViewController: BaseTableViewController {
     case Buttons
     case ProgressingOrderCount
     case LatestOrderDeliveryItemSet
+    case RecentProductsCount
+    case RecentProduct
     case Count
   }
   
@@ -19,8 +21,8 @@ class SideBarViewController: BaseTableViewController {
     "buttonsCell",
     "progressingOrderCountCell",
     "orderItemSetCell",
-    "searchPropertyCell",
-    "searchButtonCell"]
+    "recentProductsCountCell",
+    "recentProductCell"]
   
   var sideBarViewContents = SideBarViewContents()
   
@@ -43,6 +45,23 @@ class SideBarViewController: BaseTableViewController {
       showSigningView()
     }
   }
+  
+  @IBAction func deliveryTrackingButtonTapped() {
+    if let url = sideBarViewContents.orderDeliveryItemSets.first?.orderDeliveryInfo.deliveryTrackingUrl {
+      let webViewController = WebViewController()
+      webViewController.url = url
+      webViewController.isModal = true
+      presentViewController(webViewController, animated: true, completion: nil)
+    }
+  }
+  
+  @IBAction func orderDoneButtonTapped() {
+    sideBarViewContents.orderDeliveryItemSets.first?.put({ (_) -> Void in
+      self.sideBarViewContents.get({ () -> Void in
+        self.tableView.reloadData()
+      })
+    })
+  }
 }
 
 extension SideBarViewController: UITableViewDataSource {
@@ -56,8 +75,14 @@ extension SideBarViewController: UITableViewDataSource {
       cell.configureCell(sideBarViewContents.orderDeliveryItemSets[indexPath.row])
     } else if let cell = cell as? UserInfoCell {
       cell.configureCell()
-    } else if let cell = cell as? ProgressingOrderCountCell {
-      cell.configureCell(sideBarViewContents.progressingOrderCount)
+    } else if let cell = cell as? CountCell {
+      if cell.reuseIdentifier == "progressingOrderCountCell" {
+        cell.configureCell(sideBarViewContents.progressingOrderCount)
+      } else {
+        cell.configureCell(sideBarViewContents.recentProducts.list.count)
+      }
+    } else if let cell = cell as? SideBarProductCell {
+      cell.configureCell(sideBarViewContents.recentProducts.list[indexPath.row] as! Product)
     }
     return cell
   }
@@ -65,6 +90,14 @@ extension SideBarViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == SideBarTableViewSection.LatestOrderDeliveryItemSet.rawValue {
       return sideBarViewContents.orderDeliveryItemSets.count
+    } else if section == SideBarTableViewSection.ProgressingOrderCount.rawValue &&
+      sideBarViewContents.progressingOrderCount == 0 {
+        return 0
+    } else if section == SideBarTableViewSection.RecentProductsCount.rawValue &&
+      sideBarViewContents.recentProducts.list.count == 0 {
+        return 0
+    } else if section == SideBarTableViewSection.RecentProduct.rawValue {
+      return sideBarViewContents.recentProducts.list.count
     }
     return 1
   }
@@ -79,10 +112,12 @@ extension SideBarViewController: DynamicHeightTableViewProtocol {
       return 64
     case .Buttons:
       return 158
-    case .ProgressingOrderCount:
+    case .ProgressingOrderCount, .RecentProductsCount:
       return 40
     case .LatestOrderDeliveryItemSet:
       return 221
+    case .RecentProduct:
+      return 84
     default:
       return nil
     }
@@ -130,6 +165,7 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   @IBOutlet weak var deliveringTimeLabel: UILabel!
   @IBOutlet weak var deliveryDoneLabel: UILabel!
   @IBOutlet weak var deliveryDoneTimeLabel: UILabel!
+  @IBOutlet weak var orderDoneButtonLeadingLayoutConstraint: NSLayoutConstraint!
   
   func configureCell(orderItemSet: OrderableItemSet) {
     orderCodeLabel.text = orderItemSet.order.orderCode
@@ -139,7 +175,7 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
     } else {
       receiverNameLabel.text = nil
     }
-
+    
     if let firstProgress = orderItemSet.progresses.first {
       configureViews(firstProgress,
         statusImageView: itemPreparingStatusImageView,
@@ -160,6 +196,12 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
         lineImageView: secondLineImageView,
         statusNameLabel: deliveryDoneLabel,
         statusTimeLabel: deliveryDoneTimeLabel)
+    }
+    
+    if orderItemSet.orderDeliveryInfo.traceDisplayType == .WebView {
+      orderDoneButtonLeadingLayoutConstraint.constant = (ViewControllerHelper.screenWidth - 55) / 2 + 2
+    } else {
+      orderDoneButtonLeadingLayoutConstraint.constant = 0
     }
   }
   
@@ -204,10 +246,25 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   }
 }
 
-class ProgressingOrderCountCell: UITableViewCell {
+class CountCell: UITableViewCell {
   @IBOutlet weak var countLabel: UILabel!
   
   func configureCell(count: Int) {
     countLabel.text = "\(count)"
+  }
+}
+
+class SideBarProductCell: UITableViewCell {
+  
+  @IBOutlet weak var productImageView: LazyLoadingImageView!
+  @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var productActualPriceLabel: UILabel!
+  @IBOutlet weak var productPriceLabel: UILabel!
+  
+  func configureCell(product: Product) {
+    productImageView.setLazyLoaingImage(product.mainImageUrl)
+    productNameLabel.text = product.title
+    productActualPriceLabel.text = product.actualPrice.priceNotation(.English)
+    productPriceLabel.attributedText = product.priceAttributedString()
   }
 }

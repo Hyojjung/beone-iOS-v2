@@ -15,7 +15,7 @@ class ProductProperty: BaseModel {
   var values = [ProductPropertyValue]()
   var subTitle: String?
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     if let alias = alias {
       return "product-properties/\(alias)"
     }

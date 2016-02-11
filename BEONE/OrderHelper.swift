@@ -2,19 +2,19 @@
 import UIKit
 
 class OrderHelper: NSObject {
-  static func fetchOrderableInfo(order: Order, fetchSuccess: () -> Void) {
+  static func fetchOrderableInfo(order: Order, getSuccess: () -> Void) {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/orderable",
         parameter: ["cartItemIds": order.cartItemIds], success: { (result) -> Void in
           if let data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
             order.assignObject(data)
-            fetchSuccess()
+            getSuccess()
           }
         }, failure: nil)
     }
   }
   
-  static func fetchPaymentTypeList(fetchSuccess: (paymentTypeList: PaymentTypeList) -> Void) {
+  static func fetchPaymentTypeList(getSuccess: (paymentTypeList: PaymentTypeList) -> Void) {
     NetworkHelper.requestGet("payment-types", parameter: ["isAvailable": true], success: { (result) -> Void in
       let paymentTypeList = PaymentTypeList()
       if let paymentTypeObjects = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
@@ -23,7 +23,7 @@ class OrderHelper: NSObject {
           paymentType.assignObject(paymentTypeObject)
           paymentTypeList.list.append(paymentType)
         }
-        fetchSuccess(paymentTypeList: paymentTypeList)
+        getSuccess(paymentTypeList: paymentTypeList)
       }
       }, failure: nil)
   }
@@ -32,7 +32,7 @@ class OrderHelper: NSObject {
   static func fetchDeliverableCartItems(cartItemIds: [Int],
     address: String,
     addressType: AddressType,
-    fetchSuccess: (cartItemIds: [Int]) -> Void) {
+    getSuccess: (cartItemIds: [Int]) -> Void) {
       if MyInfo.sharedMyInfo().isUser() {
         NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/deliverable-cart-items",
           parameter: ["cartItemIds": cartItemIds, "address": address, "addressType": addressType.rawValue],
@@ -45,13 +45,13 @@ class OrderHelper: NSObject {
                     cartItemIds.append(cartItemId)
                   }
                 }
-                fetchSuccess(cartItemIds: cartItemIds)
+                getSuccess(cartItemIds: cartItemIds)
             }
           }, failure: nil)
       }
   }
   
-  static func fetchCalculatedPrice(price: Int, couponIds: [Int]? = nil, point: Int? = nil, fetchSuccess: (actualPrice: Int, discountPrice: Int) -> Void) {
+  static func fetchCalculatedPrice(price: Int, couponIds: [Int]? = nil, point: Int? = nil, getSuccess: (actualPrice: Int, discountPrice: Int) -> Void) {
     if MyInfo.sharedMyInfo().isUser() {
       var parameter = [String: AnyObject]()
       parameter["price"] = price
@@ -64,13 +64,13 @@ class OrderHelper: NSObject {
             data = result[kNetworkResponseKeyData] as? [String: AnyObject],
             actualPrice = data["actualPrice"] as? Int,
             discountPrice = data["discountPrice"] as? Int {
-              fetchSuccess(actualPrice: actualPrice, discountPrice: discountPrice)
+              getSuccess(actualPrice: actualPrice, discountPrice: discountPrice)
           }
         }, failure: nil)
     }
   }
   
-  static func fetchAvailableCoupons(cartItemIds: [Int], couponList: CouponList, fetchSuccess: () -> Void) {
+  static func fetchAvailableCoupons(cartItemIds: [Int], couponList: CouponList, getSuccess: () -> Void) {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/available-coupons",
         parameter: ["cartItemIds": cartItemIds],
@@ -78,7 +78,7 @@ class OrderHelper: NSObject {
           if let result = result as? [String: AnyObject],
             data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
             couponList.assignObject(data)
-              fetchSuccess()
+              getSuccess()
           }
         }, failure: nil)
     }

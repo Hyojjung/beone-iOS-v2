@@ -7,6 +7,8 @@ protocol SearchValueDelegate: NSObjectProtocol {
 
 class SearchValueView: UIView {
   
+  var viewDisplayType = ProductPropertyDisplayType.Name
+  
   @IBOutlet weak var selectButton: UIButton!
   weak var delegate: SearchValueDelegate?
   var isTag = false

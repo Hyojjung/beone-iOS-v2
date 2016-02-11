@@ -12,14 +12,17 @@ class WebViewController: BaseViewController {
   
   // MARK: - Property
   
+  @IBOutlet weak var closeButton: UIButton!
   @IBOutlet weak var webView: UIWebView!
   var url: String?
   weak var addressDelegate: AddressDelegate?
+  var isModal = false
   
   // MARK: - BaseViewController Methods
   
   override func setUpView() {
     super.setUpView()
+    closeButton.configureAlpha(isModal)
     automaticallyAdjustsScrollViewInsets = false
     addVerticalLayoutGuideLayout(webView)
   }
@@ -32,6 +35,10 @@ class WebViewController: BaseViewController {
       loadingView.show()
       webView.loadRequest(request)
     }
+  }
+  
+  @IBAction func closeButtonTapped() {
+    presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
 }
 

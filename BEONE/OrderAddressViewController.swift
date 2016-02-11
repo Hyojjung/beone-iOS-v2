@@ -79,7 +79,7 @@ extension OrderAddressViewController {
       OrderHelper.fetchDeliverableCartItems(order.cartItemIds,
         address: order.address.addressString()!,
         addressType: order.address.addressType!,
-        fetchSuccess: { (cartItemIds) -> Void in
+        getSuccess: { (cartItemIds) -> Void in
           if cartItemIds.hasEqualObjects(self.order.cartItemIds) {
             self.performSegueWithIdentifier("From Order Address To Order", sender: nil)
           } else {

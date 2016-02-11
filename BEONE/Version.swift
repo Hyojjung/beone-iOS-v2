@@ -26,7 +26,7 @@ class Version: BaseModel {
     } else {
       url = "noVersion"
     }
-    NetworkHelper.requestGet(url, parameter: fetchParameter(), success: { (result) -> Void in
+    NetworkHelper.requestGet(url, parameter: getParameter(), success: { (result) -> Void in
       if result[kAppPropertyKeyResultCount] as? Int >= 1 {
         if let results = result[kAppPropertyKeyResults] as? [[String: AnyObject]], firstResult = results.first {
           let appStoreVersion = firstResult[kAppPropertyKeyBOVersion] as? String

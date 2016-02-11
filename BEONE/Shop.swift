@@ -22,7 +22,7 @@ class Shop: BaseModel {
     }
   }
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "shops/\(id!)"
   }
 }

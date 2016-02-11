@@ -8,12 +8,8 @@ class BaseModel: NSObject {
   
   // MARK: - Fetch Methods
   
-  func fetch() {
-    NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: fetchSuccess(), failure: fetchFailure())
-  }
-  
   func get(getSuccess: (() -> Void)? = nil) {
-    NetworkHelper.requestGet(fetchUrl(), parameter: fetchParameter(), success: { (result) -> Void in
+    NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
       if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] {
         self.assignObject(data)
       }
@@ -21,21 +17,21 @@ class BaseModel: NSObject {
       }, failure: nil)
   }
   
-  func fetchUrl() -> String {
+  func getUrl() -> String {
     fatalError("Must Override")
   }
   
-  func fetchParameter() -> AnyObject? {
+  func getParameter() -> AnyObject? {
     return nil
   }
   
-  func fetchSuccess() -> NetworkSuccess? {
+  func getSuccess() -> NetworkSuccess? {
     return { (result) -> Void in
       self.assignObject(result)
     }
   }
   
-  func fetchFailure() -> NetworkFailure? {
+  func getFailure() -> NetworkFailure? {
     return nil
   }
   
@@ -44,10 +40,6 @@ class BaseModel: NSObject {
   }
   
   // MARK: - Post Methods
-  
-  func post() {
-    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: postSuccess(), failure: postFailure())
-  }
   
   func post(postSuccess: (AnyObject?) -> Void, postFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in

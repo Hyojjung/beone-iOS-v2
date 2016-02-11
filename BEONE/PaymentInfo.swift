@@ -41,7 +41,7 @@ class PaymentInfo: BaseModel {
   var billKeyInfoId: Int?
   var paypalPaymentId: Int?
   
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)"
   }
   

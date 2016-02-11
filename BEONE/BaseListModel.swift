@@ -9,6 +9,20 @@ class BaseListModel: BaseModel {
   var page: Int?
   var list = [BaseModel]()
   
+  override func get(getSuccess: (() -> Void)? = nil) {
+    NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
+      if let result = result as? [String: AnyObject] {
+        if let total = result["total"] as? Int {
+          self.total = total
+        }
+        if let data = result[kNetworkResponseKeyData] {
+          self.assignObject(data)
+        }
+      }
+      getSuccess?()
+      }, failure: nil)
+  }
+  
   func needFetch(index: Int) -> Bool {
     if let count = count {
       if count < total && index / kDefaultCountPerPage == 0 && count == index {

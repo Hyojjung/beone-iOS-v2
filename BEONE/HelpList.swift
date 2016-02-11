@@ -2,7 +2,7 @@
 import UIKit
 
 class HelpList: BaseListModel {
-  override func fetchUrl() -> String {
+  override func getUrl() -> String {
     return "helps"
   }
   
