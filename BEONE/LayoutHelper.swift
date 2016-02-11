@@ -143,11 +143,11 @@ extension UIView {
   func addBottomLayout(subView: UIView, constant: CGFloat = 0) {
     addBottomMarginLayout(subView, constant: constant, layoutAttribute: .Bottom)
   }
- 
+  
   func addBottomMarginLayout(subView: UIView, constant: CGFloat = 0) {
     addBottomMarginLayout(subView, constant: constant, layoutAttribute: .BottomMargin)
   }
- 
+  
   private func addBottomMarginLayout(subView: UIView, constant: CGFloat, layoutAttribute: NSLayoutAttribute) {
     let bottomMarginConstraint = NSLayoutConstraint(item: subView,
       attribute: .Bottom,
@@ -274,18 +274,22 @@ extension UIView {
 
 extension UIViewController {
   func addVerticalLayoutGuideLayout(subView: UIView) {
-    view.addConstraint(NSLayoutConstraint(item: subView,
-      attribute: .Top,
-      relatedBy: .Equal,
-      toItem: topLayoutGuide,
-      attribute: .Bottom,
-      multiplier: 1,
-      constant: 0))
+    addTopLayoutGuideLayout(subView)
     view.addConstraint(NSLayoutConstraint(item: subView,
       attribute: .Bottom,
       relatedBy: .Equal,
       toItem: bottomLayoutGuide,
       attribute: .Top,
+      multiplier: 1,
+      constant: 0))
+  }
+  
+  func addTopLayoutGuideLayout(subView: UIView) {
+    view.addConstraint(NSLayoutConstraint(item: subView,
+      attribute: .Top,
+      relatedBy: .Equal,
+      toItem: topLayoutGuide,
+      attribute: .Bottom,
       multiplier: 1,
       constant: 0))
   }

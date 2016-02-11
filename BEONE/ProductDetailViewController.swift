@@ -75,6 +75,8 @@ class ProductDetailViewController: BaseViewController {
     if let destinationViewController = segue.destinationViewController as? OptionViewController, isOrdering = sender as? Bool {
       destinationViewController.product = product
       destinationViewController.isOrdering = isOrdering
+    } else if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
+      inquiryListViewController.product = product
     }
     removeObservers()
   }

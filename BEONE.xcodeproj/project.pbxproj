@@ -62,6 +62,8 @@
 		625EDDB61C69EF730009377A /* OrderCouponsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625EDDB51C69EF730009377A /* OrderCouponsViewController.xib */; };
 		625EDDB81C69EFDB0009377A /* DeleteCouponButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625EDDB71C69EFDB0009377A /* DeleteCouponButtonCell.xib */; };
 		626B6EF21C4F41C800F29FD5 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */; };
+		627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E22191C6C623900FBB91D /* InquiryEditViewController.swift */; };
+		627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */; };
 		6286FB5F1C560AE900845BE4 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB5E1C560AE900845BE4 /* SideBarViewController.swift */; };
 		6286FB611C560BA400845BE4 /* SideBarViewContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB601C560BA400845BE4 /* SideBarViewContents.swift */; };
 		6286FB631C5643FD00845BE4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB621C5643FD00845BE4 /* Profile.storyboard */; };
@@ -325,6 +327,8 @@
 		625EDDB51C69EF730009377A /* OrderCouponsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCouponsViewController.xib; sourceTree = "<group>"; };
 		625EDDB71C69EFDB0009377A /* DeleteCouponButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteCouponButtonCell.xib; sourceTree = "<group>"; };
 		626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		627E22191C6C623900FBB91D /* InquiryEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InquiryEditViewController.swift; sourceTree = "<group>"; };
+		627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InquiryEditViewController.xib; sourceTree = "<group>"; };
 		6286FB5E1C560AE900845BE4 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		6286FB601C560BA400845BE4 /* SideBarViewContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewContents.swift; sourceTree = "<group>"; };
 		6286FB621C5643FD00845BE4 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -738,6 +742,8 @@
 				6286FB871C57589300845BE4 /* AddingCouponViewController.swift */,
 				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
 				622AE9641C5F26D6009F1A50 /* QuickSelectResultsViewController.swift */,
+				627E22191C6C623900FBB91D /* InquiryEditViewController.swift */,
+				627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1307,6 +1313,7 @@
 				73DF1D731C400D1F00DB3550 /* CardResultView.xib in Resources */,
 				73BE22591C2F9E32003FA11C /* OptionSelectView.xib in Resources */,
 				73F629901BF1887B001EA72F /* ProductDetailHeaderCollectionViewCell.xib in Resources */,
+				627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */,
 				7388FA4C1C04655F0015C3DF /* ProductDetail.storyboard in Resources */,
 				736818FB1C106433009E433B /* right_arrow@2x.png in Resources */,
 				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
@@ -1485,6 +1492,7 @@
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
+				627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */,
 				622DE1171C5B383200F0C9DF /* OrderCells.swift in Sources */,
 				73398AE11C05F14000F57D4A /* AddressList.swift in Sources */,
 				622AE9681C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift in Sources */,

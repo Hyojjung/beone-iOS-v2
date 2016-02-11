@@ -160,10 +160,9 @@ extension OptionViewController {
   }
   
   @IBAction func addCartItemButtonTapped() {
-    let validationMessage = selectedOption?.validationMessage()
     if let validationMessage = selectedOption?.validationMessage() {
       showAlertView(validationMessage)
-    } else if selectedOption == nil {
+    } else {
       let cartItem = CartItem()
       cartItem.product = product!
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList

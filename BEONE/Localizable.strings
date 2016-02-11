@@ -79,3 +79,6 @@
 "less than" = "자 이하여야 합니다.";
 "insert" = " 입력해주세요.";
 "select" = " 선택해주세요.";
+"enter inquiry" = "문의를 작성해주세요.";
+"modify inquiry" = "문의수정";
+"add inquiry" = "문의작성";

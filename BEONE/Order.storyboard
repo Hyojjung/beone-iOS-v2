@@ -244,11 +244,11 @@
                                                     <exclude reference="jKT-my-AzT"/>
                                                     <exclude reference="BeT-mI-lij"/>
                                                     <exclude reference="Zbm-Ja-dzt"/>
-                                                    <exclude reference="Zkx-3E-GKQ"/>
                                                     <exclude reference="3MX-gP-inU"/>
                                                     <exclude reference="TOQ-90-Yr4"/>
                                                     <exclude reference="jNb-zF-q8g"/>
                                                     <exclude reference="zad-6b-f7D"/>
+                                                    <exclude reference="Zkx-3E-GKQ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
