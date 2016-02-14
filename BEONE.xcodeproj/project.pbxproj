@@ -50,7 +50,6 @@
 		623AAD9A1C5858850095731B /* OrderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 623AAD991C5858850095731B /* OrderList.storyboard */; };
 		623AAD9C1C5858980095731B /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9B1C5858980095731B /* OrdersViewController.swift */; };
 		623AAD9E1C5858BB0095731B /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9D1C5858BB0095731B /* OrderList.swift */; };
-		623AADA01C585D3D0095731B /* BaseUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */; };
 		623D498E1C6B318300400ED0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D498D1C6B318300400ED0 /* CalendarView.swift */; };
 		623D49901C6B40C300400ED0 /* DeliveryTimeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D498F1C6B40C300400ED0 /* DeliveryTimeSelectViewController.swift */; };
 		623D49921C6B40CE00400ED0 /* DeliveryTimeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623D49911C6B40CE00400ED0 /* DeliveryTimeSelectViewController.xib */; };
@@ -320,7 +319,6 @@
 		623AAD991C5858850095731B /* OrderList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderList.storyboard; sourceTree = "<group>"; };
 		623AAD9B1C5858980095731B /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		623AAD9D1C5858BB0095731B /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
-		623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUserViewController.swift; sourceTree = "<group>"; };
 		623D498D1C6B318300400ED0 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		623D498F1C6B40C300400ED0 /* DeliveryTimeSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTimeSelectViewController.swift; sourceTree = "<group>"; };
 		623D49911C6B40CE00400ED0 /* DeliveryTimeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTimeSelectViewController.xib; sourceTree = "<group>"; };
@@ -595,7 +593,6 @@
 		621A71161C4DFDBF004AF8E7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				623AAD9F1C585D3D0095731B /* BaseUserViewController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -1469,7 +1466,6 @@
 				7309D7511BFEFC6200F9761A /* OrderAddressViewController.swift in Sources */,
 				73398B091C0844D900F57D4A /* OrderableItem.swift in Sources */,
 				622AE9701C61D6BB009F1A50 /* PaymentInfoList.swift in Sources */,
-				623AADA01C585D3D0095731B /* BaseUserViewController.swift in Sources */,
 				6207174F1BE231490014B9AC /* TableTemplateCell.swift in Sources */,
 				73DF1D8B1C43487900DB3550 /* ProductPropertyList.swift in Sources */,
 				62E5CF381BDDEE7100A99F4C /* NetworkHelper.swift in Sources */,

@@ -6,6 +6,8 @@ class BaseViewController: UIViewController {
   // MARK: - Property
   
   private let backButtonOffset = UIOffsetMake(0, -60)
+  private var isWaitingSigning = false
+  private var signingShowViewController: UIViewController? = nil
   
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
@@ -23,16 +25,53 @@ class BaseViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    ViewControllerHelper.showingNavigationViewController = self.navigationController
-#if RELEASE
-    let tracker = GAI.sharedInstance().defaultTracker
-    tracker.set(kGAIScreenName, value: self.title)
+    #if RELEASE
+      let tracker = GAI.sharedInstance().defaultTracker
+      tracker.set(kGAIScreenName, value: self.title)
+      
+      let builder = GAIDictionaryBuilder.createScreenView()
+      tracker.send(builder.build() as [NSObject : AnyObject])
+    #endif
     
-    let builder = GAIDictionaryBuilder.createScreenView()
-    tracker.send(builder.build() as [NSObject : AnyObject])
-#endif
+    if !MyInfo.sharedMyInfo().isUser() {
+      signingShowViewController = nil
+      if !isWaitingSigning {
+        isWaitingSigning = true
+      }
+    } else if let signingShowViewController = signingShowViewController {
+      showViewController(signingShowViewController, sender: nil)
+      self.signingShowViewController = nil
+    }
+    
     addObservers()
     setUpData()
+  }
+  
+  func showUserViewController(storyboardName: String, viewIdentifier: String) {
+    let viewController = self.viewController(storyboardName, viewIdentifier: viewIdentifier)
+    showUserViewController(viewController)
+  }
+  
+  func showUserViewController(viewController: UIViewController) {
+    if !MyInfo.sharedMyInfo().isUser() {
+      signingShowViewController = viewController
+      showSigningView()
+    } else {
+      showViewController(viewController, sender: nil)
+    }
+  }
+  
+  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil,
+    rightOrdering: Bool = false, isModifing: Bool = false) {
+      let optionViewController = viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+      if let optionViewController = optionViewController as? OptionViewController {
+        optionViewController.product = selectedProduct
+        optionViewController.isModifing = isModifing
+        if let selectedCartItem = selectedCartItem {
+          optionViewController.cartItems.append(selectedCartItem)
+        }
+        showUserViewController(optionViewController)
+      }
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -81,7 +120,7 @@ class BaseViewController: UIViewController {
         hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
         confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
         cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action,
-      delegate: self)
+        delegate: self)
     }
   }
   

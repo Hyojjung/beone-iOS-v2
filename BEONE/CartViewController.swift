@@ -1,7 +1,7 @@
  
  import UIKit
  
- class CartViewController: BaseUserViewController {
+ class CartViewController: BaseTableViewController {
   
   @IBOutlet weak var orderButtonViewBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var allSelectButtonViewTopConstraint: NSLayoutConstraint!

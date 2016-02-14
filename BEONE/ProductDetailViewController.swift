@@ -53,15 +53,9 @@ class ProductDetailViewController: BaseViewController {
   let reviewList = ReviewList()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
-  var isWaitingSigning = false
-  var isOrdering = false
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    if isWaitingSigning {
-      addCart(isOrdering)
-    }
-    isWaitingSigning = false
     navigationController?.navigationBar.hidden = true
   }
   
@@ -72,10 +66,7 @@ class ProductDetailViewController: BaseViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
-    if let destinationViewController = segue.destinationViewController as? OptionViewController, isOrdering = sender as? Bool {
-      destinationViewController.product = product
-      destinationViewController.isOrdering = isOrdering
-    } else if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
+    if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
       inquiryListViewController.product = product
     }
     removeObservers()
@@ -134,13 +125,7 @@ class ProductDetailViewController: BaseViewController {
   }
   
   func addCart(isOrdering: Bool) {
-    if MyInfo.sharedMyInfo().isUser() {
-      performSegueWithIdentifier(kFromProductDetailToOptionSegueIdentifier, sender: isOrdering)
-    } else if !isWaitingSigning {
-      isWaitingSigning = true
-      self.isOrdering = isOrdering
-      showSigningView()
-    }
+    showOptionView(product, rightOrdering: isOrdering)
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
@@ -256,8 +241,7 @@ extension ProductDetailViewController: UICollectionViewDelegate {
     case .Review:
       performSegueWithIdentifier("From Product Detail To Review", sender: nil)
     case .Shop:
-      BEONEManager.selectedShop = product.shop
-      showViewController("Shop", viewIdentifier: "ShopView")
+      showShopView(product.shop.id)
     default:
       break
     }

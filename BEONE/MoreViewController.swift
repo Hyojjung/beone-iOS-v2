@@ -16,13 +16,13 @@ class MoreViewController: BaseViewController {
   }
   
   @IBAction func showCouponViewButtonTapped() {
-    showViewController("Coupon", viewIdentifier: "CouponView")
+    showUserViewController("Coupon", viewIdentifier: "CouponView")
   }
   
   @IBAction func showSettingViewButtonTapped() {
     showViewController("Setting", viewIdentifier: "SettingView")
   }
   @IBAction func showOrdersViewButtonTapped() {
-    showViewController("OrderList", viewIdentifier: "OrdersView")
+    showUserViewController("OrderList", viewIdentifier: "OrdersView")
   }
 }

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class OrdersViewController: BaseUserViewController {
+class OrdersViewController: BaseTableViewController {
   
   // MARK: - Constant
   

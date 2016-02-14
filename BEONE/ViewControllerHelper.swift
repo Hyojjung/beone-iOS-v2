@@ -8,7 +8,6 @@ struct ActionSheetButton {
 }
 
 class ViewControllerHelper: NSObject {
-  static var showingNavigationViewController: UINavigationController?
   
   static var screenWidth: CGFloat = {
     return UIScreen.mainScreen().bounds.width
@@ -123,19 +122,6 @@ extension UIViewController {
         showViewController(productDetailViewController, sender: nil)
     }
   }
-  
-  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil, rightOrdering: Bool = false, isModifing: Bool = false) {
-    BEONEManager.rightOrdering = rightOrdering
-    let optionViewController = viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
-    if let optionViewController = optionViewController as? OptionViewController {
-      optionViewController.product = selectedProduct
-      optionViewController.isModifing = isModifing
-      if let selectedCartItem = selectedCartItem {
-        optionViewController.cartItems.append(selectedCartItem)
-      }
-      navigationController?.showViewController(optionViewController, sender: nil)
-    }
-  }
 }
 
 extension UIViewController {
@@ -145,16 +131,16 @@ extension UIViewController {
         animated: true, completion: nil)
     }
   }
+
+  func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
+    let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+    return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
+  }
   
   func showViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
       navigationController?.showViewController(viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
     }
-  }
-  
-  func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
-    let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-    return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
   }
 }
 
@@ -235,5 +221,11 @@ extension UIViewController {
     orderWebViewController.paymentInfoId = paymentInfoId
     orderWebViewController.paymentTypeId = paymentTypeId
     navigationController?.showViewController(orderWebViewController, sender: nil)
+  }
+  
+  func showShopView(shopId: Int?) {
+    let shopViewController = viewController("Shop", viewIdentifier: "ShopView") as! ShopViewController
+    shopViewController.shop.id = shopId
+    showViewController(shopViewController, sender: nil)
   }
 }

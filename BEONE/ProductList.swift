@@ -12,6 +12,7 @@ class ProductList: BaseListModel {
   var tagIds: [Int]?
   var minPrice: Int?
   var maxPrice: Int?
+  var shopId: Int?
   lazy var locationId: Int? = {
     return BEONEManager.selectedLocation?.id
   }()
@@ -20,7 +21,7 @@ class ProductList: BaseListModel {
   override func getUrl() -> String {
     switch type {
     case .Shop:
-      if let shopId = BEONEManager.selectedShop?.id {
+      if let shopId = shopId {
         return "shops/\(shopId)/products"
       } else {
         return "products"

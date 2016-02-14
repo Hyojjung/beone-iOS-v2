@@ -15,8 +15,7 @@ class ShopViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  var shop = BEONEManager.selectedShop
-  
+  var shop = Shop()
   lazy var shopProductList: ProductList = {
     let productList = ProductList()
     productList.type = .Shop
@@ -27,7 +26,7 @@ class ShopViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shop?.get({ () -> Void in
+    shop.get({ () -> Void in
       self.tableView.reloadData()
     })
     shopProductList.get { () -> Void in

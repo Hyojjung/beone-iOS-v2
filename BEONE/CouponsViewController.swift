@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CouponsViewController: BaseUserViewController {
+class CouponsViewController: BaseTableViewController {
   
   // MARK: - Constant
   

@@ -23,7 +23,7 @@ class LandingViewController: BaseTableViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(templateList, selector: "fetch",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpData",
       name: kNotificationGuestAuthenticationSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange",
       name: kNotificationContentsViewLayouted, object: nil)

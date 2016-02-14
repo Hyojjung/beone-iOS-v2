@@ -64,8 +64,7 @@ extension ShopsViewController: ShopTemplateCellDelegate {
   func shopButtonTapped(shopId: Int) {
     for shop in shopList.list as! [Shop] {
       if shopId == shop.id {
-        BEONEManager.selectedShop = shop
-        showViewController(kShopStoryboardName, viewIdentifier: kShopViewIdentifier)
+        showShopView(shop.id)
         break
       }
     }
