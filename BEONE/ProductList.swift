@@ -13,6 +13,7 @@ class ProductList: BaseListModel {
   var minPrice: Int?
   var maxPrice: Int?
   var shopId: Int?
+  var address: Address?
   lazy var locationId: Int? = {
     return BEONEManager.selectedLocation?.id
   }()
@@ -43,6 +44,8 @@ class ProductList: BaseListModel {
       parameter["minPrice"] = minPrice
       parameter["maxPrice"] = maxPrice
       parameter["noData"] = noData
+      parameter["address"] = address?.addressString()
+      parameter["addressType"] = address?.addressType?.rawValue
       return parameter
     }
   }

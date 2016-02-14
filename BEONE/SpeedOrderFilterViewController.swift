@@ -21,20 +21,23 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   var address: Address?
   var selectedUsageIndex: Int?
-  lazy var usageValues: ProductProperty = {
-    let useValues = ProductProperty()
-    useValues.alias = "usage"
-    return useValues
+  var selectedDeliveryDateIndex: Int?
+  var productSearchData = ProductSearchData()
+  var productPropertyList: ProductPropertyList = {
+    let productPropertyList = ProductPropertyList()
+    productPropertyList.forQuickSearch = true
+    return productPropertyList
   }()
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: segue)
     if let speedOrderAddressViewController = segue.destinationViewController as? SpeedOrderAddressViewController {
       speedOrderAddressViewController.addressDelegate = self
-    } else if let quickSelectResultsViewController = segue.destinationViewController as? QuickSelectResultsViewController,
-      selectedUsageIndex = selectedUsageIndex {
-        quickSelectResultsViewController.productList.productPropertyValueIds = [Int]()
-        quickSelectResultsViewController.productList.productPropertyValueIds!.append(usageValues.values[selectedUsageIndex].id!)
+    } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController,
+      selectedUsageIndex = selectedUsageIndex, productProperty = productPropertyList.list.first as? ProductProperty {
+        speedOrderResultsViewController.productList.productPropertyValueIds = [Int]()
+        speedOrderResultsViewController.productList.address = address
+        speedOrderResultsViewController.productList.productPropertyValueIds!.append(productProperty.values[selectedUsageIndex].id!)
     }
   }
   
@@ -45,17 +48,30 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    usageValues.get()
+    productPropertyList.get()
+    productSearchData.get()
   }
   
   @IBAction func selectUsageButtonTapped() {
-    let initialSelection = selectedUsageIndex != nil ? selectedUsageIndex! : 0
-    showActionSheet("용도를 선택해 주세요",
-      rows: usageValues.valueTitles(),
-      initialSelection: initialSelection,
+    if let productProperty = productPropertyList.list.first as? ProductProperty {
+      showActionSheet("용도를 선택해 주세요",
+        rows: productProperty.valueTitles(),
+        initialSelection: selectedUsageIndex,
+        sender: nil,
+        doneBlock: { (_, index, _) -> Void in
+          self.selectedUsageIndex = index
+          self.tableView.reloadData()
+      })
+    }
+  }
+  
+  @IBAction func selectDeliveryDateButtonTapped() {
+    showActionSheet("배송 받으실 날짜를 선택해 주세요",
+      rows: productSearchData.reservationDateOptionsNames(),
+      initialSelection: selectedDeliveryDateIndex,
       sender: nil,
       doneBlock: { (_, index, _) -> Void in
-        self.selectedUsageIndex = index
+        self.selectedDeliveryDateIndex = index
         self.tableView.reloadData()
     })
   }
@@ -84,10 +100,13 @@ extension SpeedOrderFilterViewController: UITableViewDataSource {
       cell.configureCell(address)
     } else if let cell = cell as? UsageCell {
       var usageValue: ProductPropertyValue? = nil
-      if let selectedUsageIndex = selectedUsageIndex {
-        usageValue = usageValues.values[selectedUsageIndex]
+      if let selectedUsageIndex = selectedUsageIndex,
+        productProperty = productPropertyList.list.first as? ProductProperty {
+          usageValue = productProperty.values[selectedUsageIndex]
       }
       cell.configureCell(usageValue)
+    } else if let cell = cell as? DeliveryDateCell, selectedDeliveryDateIndex = selectedDeliveryDateIndex {
+      cell.configureCell(productSearchData.reservationDateOptions[selectedDeliveryDateIndex].name)
     }
     return cell
   }
@@ -133,6 +152,19 @@ class UsageCell: UITableViewCell {
       usageLabel.text = usage.name
     } else {
       usageLabel.text = "용도 (선택)"
+    }
+  }
+}
+
+class DeliveryDateCell: UITableViewCell {
+  
+  @IBOutlet weak var deliveryDateLabel: UILabel!
+  
+  func configureCell(deliveryDateTitle: String?) {
+    if let deliveryDateTitle = deliveryDateTitle {
+      deliveryDateLabel.text = deliveryDateTitle
+    } else {
+      deliveryDateLabel.text = "배송 받으실 날짜를 선택해 주세요"
     }
   }
 }

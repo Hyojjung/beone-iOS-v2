@@ -204,7 +204,7 @@ extension AddingBillKeyViewController {
     endEditing()
     showActionSheet(NSLocalizedString("select month", comment: "action sheet title"),
       rows: monthArray,
-      initialSelection: 0,
+      initialSelection: billKey.expiredMonth - 1,
       sender: nil,
       doneBlock: { (_, index, _) -> Void in
         self.billKey.expiredMonth = index + 1
@@ -222,9 +222,10 @@ extension AddingBillKeyViewController {
   
   @IBAction func selectYearButtonTapped() {
     endEditing()
+    let initialSelection = NSDate().year() - billKey.expiredYear
     showActionSheet(NSLocalizedString("select year", comment: "action sheet title"),
       rows: yearArray,
-      initialSelection: 0,
+      initialSelection: initialSelection,
       sender: nil,
       doneBlock: { (_, index, _) -> Void in
         self.billKey.expiredYear = NSDate().year() + index

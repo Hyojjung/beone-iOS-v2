@@ -85,7 +85,7 @@
   
   @IBAction func optionButtonTapped(sender: AnyObject) {
     let cartItem = self.cartItem(sender.tag)
-    showOptionView(cartItem.product, selectedCartItem: cartItem, isModifing: true)
+    showOptionView(cartItem.product.id, selectedCartItem: cartItem, isModifing: true)
   }
   
   @IBAction func segueButtonTapped() {

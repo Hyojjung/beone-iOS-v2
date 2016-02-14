@@ -40,4 +40,14 @@ class ProductSearchData: BaseModel {
       }
     }
   }
+  
+  func reservationDateOptionsNames() -> [String] {
+    var reservationDateOptionsNames = [String]()
+    for reservationDateOption in reservationDateOptions {
+      if let name = reservationDateOption.name {
+        reservationDateOptionsNames.append(name)
+      }
+    }
+    return reservationDateOptionsNames
+  }
 }

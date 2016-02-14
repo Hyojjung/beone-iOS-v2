@@ -49,9 +49,7 @@ class ShopViewController: BaseTableViewController {
   
   func segueToOpion(notification: NSNotification) {
     if let userInfo = notification.userInfo {
-      let product = Product()
-      product.id = userInfo[kNotificationKeyProductId] as? Int
-      showOptionView(product, rightOrdering: true)
+      showOptionView(userInfo[kNotificationKeyProductId] as? Int, rightOrdering: true)
     }
   }
 }

@@ -46,6 +46,7 @@ class Product: BaseModel {
   var size: String?
   var soldOut = false
   var summary: String?
+  var reviewCount = 1
   
   var productDetails = [ProductDetail]()
   var productOptionSets = ProductOptionSetList()

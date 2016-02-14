@@ -20,7 +20,7 @@ class OptionViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  var product: Product?
+  var product = Product()
   var cartItems = [CartItem]()
   var selectedOption: ProductOptionSetList?
   var isModifing = false
@@ -33,7 +33,7 @@ class OptionViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    product?.get({ () -> Void in
+    product.get({ () -> Void in
       self.setUpProductData()
     })
   }
@@ -54,14 +54,14 @@ class OptionViewController: BaseTableViewController {
         self.selectedOption = selectedOption.copy() as? ProductOptionSetList
       }
     } else if !isModifing {
-      if product?.productOrderableInfos.count == 1 {
-        selectedProductOrderableInfo = product?.productOrderableInfos.first
+      if product.productOrderableInfos.count == 1 {
+        selectedProductOrderableInfo = product.productOrderableInfos.first
       }
-      if product?.productOptionSets.list.count == 0 && cartItems.count == 0 {
+      if product.productOptionSets.list.count == 0 && cartItems.count == 0 {
         addCartItemButtonTapped()
         return
       }
-      selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
     }
     
     tableView.reloadData()
@@ -69,11 +69,9 @@ class OptionViewController: BaseTableViewController {
   
   private func setUpProductDeliveryTypeNames() {
     deliveryTypeNames.removeAll()
-    if let product = product {
-      for productOrderableInfo in product.productOrderableInfos {
-        if let name = productOrderableInfo.deliveryType.name {
-          deliveryTypeNames.append(name)
-        }
+    for productOrderableInfo in product.productOrderableInfos {
+      if let name = productOrderableInfo.deliveryType.name {
+        deliveryTypeNames.append(name)
       }
     }
   }
@@ -121,7 +119,7 @@ extension OptionViewController {
   
   @IBAction func selectDeliveryTypeButtonTapped(sender: UIButton) {
     var initialSelection = 0
-    for (index, productOrderableInfo) in product!.productOrderableInfos.enumerate() {
+    for (index, productOrderableInfo) in product.productOrderableInfos.enumerate() {
       if productOrderableInfo.id == selectedProductOrderableInfo?.id {
         initialSelection = index
       }
@@ -132,7 +130,7 @@ extension OptionViewController {
         initialSelection: initialSelection,
         sender: sender,
         doneBlock: { (_, selectedIndex, _) -> Void in
-          self.selectedProductOrderableInfo = self.product!.productOrderableInfos[selectedIndex]
+          self.selectedProductOrderableInfo = self.product.productOrderableInfos[selectedIndex]
           self.tableView.reloadData()
       })
     }
@@ -164,9 +162,9 @@ extension OptionViewController {
       showAlertView(validationMessage)
     } else {
       let cartItem = CartItem()
-      cartItem.product = product!
+      cartItem.product = product
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
-      selectedOption = product?.productOptionSets.copy() as? ProductOptionSetList
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
       cartItems.append(cartItem)
       tableView.reloadData()
     }
@@ -183,7 +181,7 @@ extension OptionViewController {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch OptionTableViewSection(rawValue: section)! {
     case .Option:
-      return product?.productOptionSets.list.count == 0 ? 0 : 1
+      return product.productOptionSets.list.count == 0 ? 0 : 1
     case .CartItemCount:
       return isModifing ? 0 : cartItems.count
     default:
@@ -219,7 +217,7 @@ extension OptionViewController: DynamicHeightTableViewProtocol {
   }
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? ProductCell, product = product {
+    if let cell = cell as? ProductCell {
       cell.configureCell(product)
     } else if let cell = cell as? DeliveryInfoCell {
       cell.configureCell(selectedProductOrderableInfo)

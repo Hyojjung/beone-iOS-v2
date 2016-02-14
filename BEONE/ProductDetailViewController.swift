@@ -125,7 +125,7 @@ class ProductDetailViewController: BaseViewController {
   }
   
   func addCart(isOrdering: Bool) {
-    showOptionView(product, rightOrdering: isOrdering)
+    showOptionView(product.id, rightOrdering: isOrdering)
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {

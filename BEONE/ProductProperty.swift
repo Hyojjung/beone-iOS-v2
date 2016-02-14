@@ -10,24 +10,15 @@ enum ProductPropertyDisplayType: String {
 
 class ProductProperty: BaseModel {
   var name: String?
-  var alias: String?
   var displayType: ProductPropertyDisplayType?
   var values = [ProductPropertyValue]()
   var subTitle: String?
-  
-  override func getUrl() -> String {
-    if let alias = alias {
-      return "product-properties/\(alias)"
-    }
-    return "product-properties"
-  }
   
   override func assignObject(data: AnyObject) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
       subTitle = data["description"] as? String
       name = data["name"] as? String
-      alias = data["alias"] as? String
       if let displayType = data["displayType"] as? String {
         self.displayType = ProductPropertyDisplayType(rawValue: displayType)
       }

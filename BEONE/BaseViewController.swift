@@ -61,11 +61,11 @@ class BaseViewController: UIViewController {
     }
   }
   
-  func showOptionView(selectedProduct: Product, selectedCartItem: CartItem? = nil,
+  func showOptionView(selectedProductId: Int?, selectedCartItem: CartItem? = nil,
     rightOrdering: Bool = false, isModifing: Bool = false) {
       let optionViewController = viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
       if let optionViewController = optionViewController as? OptionViewController {
-        optionViewController.product = selectedProduct
+        optionViewController.product.id = selectedProductId
         optionViewController.isModifing = isModifing
         if let selectedCartItem = selectedCartItem {
           optionViewController.cartItems.append(selectedCartItem)

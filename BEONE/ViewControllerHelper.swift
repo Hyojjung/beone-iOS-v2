@@ -161,15 +161,16 @@ extension UIViewController {
 extension UIViewController {
   func showActionSheet(title: String,
     rows: [String],
-    initialSelection: Int = 0,
+    initialSelection: Int?,
     sender: UIButton? = nil,
     doneBlock: ActionStringDoneBlock? = nil,
     cancelBlock: ActionStringCancelBlock? = nil) {
       sender?.selected = true
+      let selectedIndex = initialSelection == nil ? 0 : initialSelection
       let actionSheet =
       ActionSheetStringPicker(title: title,
         rows: rows,
-        initialSelection: initialSelection,
+        initialSelection: selectedIndex!,
         doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
           doneBlock?(actionSheet, selectedIndex, selectedString)
           sender?.selected = false
