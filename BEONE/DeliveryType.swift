@@ -4,7 +4,6 @@ import UIKit
 class DeliveryType: BaseModel {
   var name: String?
   var isReservable = false
-  var isDeliverable: Bool?
   var thumbnailImageUrl: String?
   
   override func assignObject(data: AnyObject) {
@@ -14,6 +13,5 @@ class DeliveryType: BaseModel {
     if let isReservable = data["isReservable"] as? Bool {
       self.isReservable = isReservable
     }
-    isDeliverable = data["isDeliverable"] as? Bool
   }
 }

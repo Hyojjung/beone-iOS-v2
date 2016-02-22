@@ -33,6 +33,10 @@ extension Array {
     }
     return false
   }
+  
+  func isInRange(index: Int) -> Bool {
+    return index + 1 < count
+  }
 }
 
 extension String {

@@ -7,15 +7,15 @@ class OptionView: UIView {
   
   func layoutView(productOptionSetList: ProductOptionSetList) {
     subviews.forEach { $0.removeFromSuperview() }
-    var beforeView: UIView?
+    var previousView: UIView?
     for (index, productOptionSet) in productOptionSetList.list.enumerate() {
       if let productOptionSet = productOptionSet as? ProductOptionSet {
-        beforeView = addProductOptionSetSelectView(productOptionSet, beforeView: beforeView)
+        previousView = addProductOptionSetSelectView(productOptionSet, previousView: previousView)
         
         for option in productOptionSet.options {
           if option.isSelected {
             for optionItem in option.optionItems {
-              beforeView = addOptionItemView(optionItem, beforeView: beforeView)
+              previousView = addOptionItemView(optionItem, previousView: previousView)
             }
           }
         }
@@ -25,27 +25,27 @@ class OptionView: UIView {
         lineView.backgroundColor = lightGold
         lineView.addHeightLayout(1)
         addSubViewAndEnableAutoLayout(lineView)
-        addView(lineView, beforeView: beforeView)
-        beforeView = lineView
-      } else if let beforeView = beforeView {
-        addBottomLayout(beforeView)
+        addView(lineView, previousView: previousView)
+        previousView = lineView
+      } else if let previousView = previousView {
+        addBottomLayout(previousView)
       }
     }
   }
   
-  func addProductOptionSetSelectView(productOptionSet: ProductOptionSet, beforeView: UIView?) -> UIView {
+  func addProductOptionSetSelectView(productOptionSet: ProductOptionSet, previousView: UIView?) -> UIView {
     if let productOptionSetSelectView = UIView.loadFromNibName("OptionSelectView") as? OptionTypeView {
       productOptionSetSelectView.delegate = delegate
       productOptionSetSelectView.layoutView(productOptionSet)
       
       addSubViewAndEnableAutoLayout(productOptionSetSelectView)
-      addView(productOptionSetSelectView, beforeView: beforeView)
+      addView(productOptionSetSelectView, previousView: previousView)
       return productOptionSetSelectView
     }
     fatalError("must load view with name OptionSelectView")
   }
   
-  func addOptionItemView(optionItem: OptionItem, beforeView: UIView?) -> UIView {
+  func addOptionItemView(optionItem: OptionItem, previousView: UIView?) -> UIView {
     let optionItemView: OptionTypeView
     switch optionItem.type {
     case .Text:
@@ -59,13 +59,13 @@ class OptionView: UIView {
     optionItemView.layoutView(optionItem)
     
     addSubViewAndEnableAutoLayout(optionItemView)
-    addView(optionItemView, beforeView: beforeView)
+    addView(optionItemView, previousView: previousView)
     return optionItemView
   }
   
-  func addView(view: UIView, beforeView: UIView?) {
-    if let beforeView = beforeView {
-      addVerticalLayout(beforeView, bottomView: view, contsant: 10)
+  func addView(view: UIView, previousView: UIView?) {
+    if let previousView = previousView {
+      addVerticalLayout(previousView, bottomView: view, contsant: 10)
     } else {
       addTopLayout(view)
     }

@@ -13,19 +13,19 @@ class PaymentTypesView: UIView {
   weak var delegate: PaymentTypesViewDelegate?
   
   func layoutView(paymentTypes: [PaymentType], selectedPaymentTypeId: Int?) {
-    var beforeView: UIView?
+    var previousView: UIView?
     for (index, paymentType) in paymentTypes.enumerate() {
       let paymentTypeView = self.paymentTypeView(paymentType, isSelected: paymentType.id == selectedPaymentTypeId)
       addSubViewAndEnableAutoLayout(paymentTypeView)
       addLeadingLayout(paymentTypeView)
       addTrailingLayout(paymentTypeView)
-      if let beforeView = beforeView {
-        addVerticalLayout(beforeView, bottomView: paymentTypeView, contsant: kPaymentTypeButtonInterval)
+      if let previousView = previousView {
+        addVerticalLayout(previousView, bottomView: paymentTypeView, contsant: kPaymentTypeButtonInterval)
       } else {
         addTopLayout(paymentTypeView)
       }
       
-      beforeView = paymentTypeView
+      previousView = paymentTypeView
       
       if index == paymentTypes.count - 1 {
         addBottomLayout(paymentTypeView)

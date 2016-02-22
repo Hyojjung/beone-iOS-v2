@@ -21,7 +21,7 @@ class SpeedOrderResultsViewController: BaseViewController {
   }
   
   private func setUpContentViews() {
-    var beforeView: UIView?
+    var previousView: UIView?
     for (index, product) in (productList.list as! [Product]).enumerate() {
       let productView = UIView.loadFromNibName("SpeedOrderProductView") as! SpeedOrderProductView
       productView.delegate = self
@@ -31,9 +31,9 @@ class SpeedOrderResultsViewController: BaseViewController {
       if index == 0 {
         speedOrderProductsScrollView.addLeadingLayout(productView)
       } else {
-        speedOrderProductsScrollView.addHorizontalLayout(beforeView!, rightView: productView)
+        speedOrderProductsScrollView.addHorizontalLayout(previousView!, rightView: productView)
       }
-      beforeView = productView
+      previousView = productView
     }
     
     if let speedOrderNoProductView = UIView.loadFromNibName("SpeedOrderNoProductView") {
@@ -42,7 +42,7 @@ class SpeedOrderResultsViewController: BaseViewController {
       if productList.list.count == 0 {
         speedOrderProductsScrollView.addLeadingLayout(speedOrderNoProductView)
       } else {
-        speedOrderProductsScrollView.addHorizontalLayout(beforeView!, rightView: speedOrderNoProductView)
+        speedOrderProductsScrollView.addHorizontalLayout(previousView!, rightView: speedOrderNoProductView)
       }
     }
   }
@@ -60,9 +60,9 @@ class SpeedOrderResultsViewController: BaseViewController {
 extension SpeedOrderResultsViewController: UIScrollViewDelegate {
 
   func scrollViewDidScroll(scrollView: UIScrollView) {
-    let beforePage = productsScrollViewPageControl.currentPage
+    let previousPage = productsScrollViewPageControl.currentPage
     productsScrollViewPageControl.currentPage = Int(scrollView.contentOffset.x / ViewControllerHelper.screenWidth)
-    if beforePage != productsScrollViewPageControl.currentPage {
+    if previousPage != productsScrollViewPageControl.currentPage {
       configureReviewLabels()
     }
   }

@@ -3,7 +3,7 @@ import UIKit
 
 let kCardNumberFirstTextFieldTag = 100
 let kCardNumberLastTextFieldTag = 103
-let kAfterYearButtonTextFieldTag = 105
+let kNextYearButtonTextFieldTag = 105
 let kBirthdayTextFieldTag = 106
 let kCardNameTextFieldTag = 108
 
@@ -121,7 +121,7 @@ extension AddingBillKeyViewController {
       birthdayTextField.becomeFirstResponder()
     } else {
       endEditing()
-      if tag == kAfterYearButtonTextFieldTag {
+      if tag == kNextYearButtonTextFieldTag {
         selectYearButtonTapped()
       }
     }
@@ -156,14 +156,14 @@ extension AddingBillKeyViewController {
     let cardNameTextField = view.viewWithTag(kCardNameTextFieldTag) as! UITextField
     billKey.name = cardNameTextField.text
     if billKey.type == .Personal {
-      let passwordTextField = view.viewWithTag(kAfterYearButtonTextFieldTag) as! UITextField
+      let passwordTextField = view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
       billKey.password = passwordTextField.text
       
       let birthdayTextField = view.viewWithTag(kBirthdayTextFieldTag) as! UITextField
       billKey.idNumber = birthdayTextField.text
     } else {
       var corporationNumber = String()
-      for i in kAfterYearButtonTextFieldTag..<(kAfterYearButtonTextFieldTag + 3) {
+      for i in kNextYearButtonTextFieldTag..<(kNextYearButtonTextFieldTag + 3) {
         let textField = view.viewWithTag(i) as! UITextField
         corporationNumber += textField.text!
       }
@@ -233,8 +233,8 @@ extension AddingBillKeyViewController {
           withRowAnimation: .Automatic)
         
         if self.isGoingDown {
-          let afterButtonTextField = self.view.viewWithTag(kAfterYearButtonTextFieldTag) as! UITextField
-          afterButtonTextField.becomeFirstResponder()
+          let nextButtonTextField = self.view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
+          nextButtonTextField.becomeFirstResponder()
         } else {
           self.selectMonthButtonTapped()
         }
@@ -270,9 +270,9 @@ extension AddingBillKeyViewController: UITextFieldDelegate {
       return false
     } else if textField.text != nil && range.length == 0 {
       if tag >= kCardNumberFirstTextFieldTag && tag <= kCardNumberLastTextFieldTag && stringLength > 4 ||
-        ((tag == kAfterYearButtonTextFieldTag && billKey.type == .Personal) || tag == kAfterYearButtonTextFieldTag + 1 && billKey.type == .Corporation) && stringLength > 2 ||
-        tag == kAfterYearButtonTextFieldTag && billKey.type == .Corporation && stringLength > 3 ||
-        tag == kAfterYearButtonTextFieldTag + 2 && billKey.type == .Corporation && stringLength > 5 ||
+        ((tag == kNextYearButtonTextFieldTag && billKey.type == .Personal) || tag == kNextYearButtonTextFieldTag + 1 && billKey.type == .Corporation) && stringLength > 2 ||
+        tag == kNextYearButtonTextFieldTag && billKey.type == .Corporation && stringLength > 3 ||
+        tag == kNextYearButtonTextFieldTag + 2 && billKey.type == .Corporation && stringLength > 5 ||
         tag == kBirthdayTextFieldTag && billKey.type == .Personal && stringLength > 6 {
           return false
       }

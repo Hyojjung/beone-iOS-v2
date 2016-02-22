@@ -4,18 +4,19 @@ import UIKit
 class OrderableItemSet: BaseModel {
   
   var actualPrice = 0
+  var deliveryPrice = 0
   var selectedTimeRange: AvailableTimeRange?
   var title: String?
-  var deliveryPrice = 0
-  var progresses: [OrderItemSetProgress] = {
+  
+  lazy var progresses: [OrderItemSetProgress] = {
     var progresses = [OrderItemSetProgress]()
     return progresses
   }()
-  var orderableItems: [OrderableItem] = {
+  lazy var orderableItems: [OrderableItem] = {
     var orderableItems = [OrderableItem]()
     return orderableItems
   }()
-  var availableTimeRangeList: AvailableTimeRangeList = {
+  lazy var availableTimeRangeList: AvailableTimeRangeList = {
     let availableTimeRangeList = AvailableTimeRangeList()
     return availableTimeRangeList
   }()
@@ -35,7 +36,10 @@ class OrderableItemSet: BaseModel {
     let order = Order()
     return order
   }()
-  let orderDeliveryInfo = OrderDeliveryInfo()
+  lazy var orderDeliveryInfo: OrderDeliveryInfo = {
+    let orderDeliveryInfo = OrderDeliveryInfo()
+    return orderDeliveryInfo
+  }()
   
   var statusName: String?
   var isCancellable = false
@@ -46,25 +50,24 @@ class OrderableItemSet: BaseModel {
   
   override func assignObject(data: AnyObject) {
     if let orderableItemSet = data as? [String: AnyObject] {
-      if isDone {
-        if let reservation = orderableItemSet["reservation"] as? [String: AnyObject] {
-          selectedTimeRange = AvailableTimeRange()
-          selectedTimeRange?.assignObject(reservation)
-        }
+      id = orderableItemSet[kObjectPropertyKeyId] as? Int
+      title = orderableItemSet["title"] as? String
+      
+      if let reservation = orderableItemSet["reservation"] as? [String: AnyObject] {
+        selectedTimeRange = AvailableTimeRange()
+        selectedTimeRange?.assignObject(reservation)
       }
+      if let shop = orderableItemSet["shop"] {
+        self.shop.assignObject(shop)
+      }
+      
       assignAvailableTimeRanges(orderableItemSet["availableTimeRanges"])
       assignStatus(orderableItemSet["status"])
       assignOrderItems(orderableItemSet)
       assignProgresses(orderableItemSet["progresses"])
-      id = orderableItemSet[kObjectPropertyKeyId] as? Int
-      title = orderableItemSet["title"] as? String
       
       if let actualPrice = orderableItemSet["actualPrice"] as? Int {
         self.actualPrice = actualPrice
-      }
-      
-      if let shop = orderableItemSet["shop"] {
-        self.shop.assignObject(shop)
       }
       if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {
@@ -149,7 +152,12 @@ extension OrderableItemSet {
       }
     }
   }
-  
+}
+
+// MARK: - Progress Methods
+
+extension OrderableItemSet {
+
   private func assignProgresses(progressObjects: AnyObject?) {
     if let progressObjects = progressObjects as? [[String: AnyObject]] {
       var progresses = [OrderItemSetProgress]()
@@ -160,36 +168,34 @@ extension OrderableItemSet {
       }
       // assign
       self.progresses.removeAll()
-      for progress in progresses {
-        if progress.progressType == .Waiting {
-          self.progresses.append(progress)
-          break
-        }
+      rangeProgresses(with: .Waiting)
+      rangeProgresses(with: .Progressing)
+      rangeProgresses(with: .Done)
+      // range
+      organizeProgressesStatus()
+    }
+  }
+  
+  private func rangeProgresses(with progressType: ProgressType) {
+    for progress in progresses {
+      if progress.progressType == progressType {
+        self.progresses.append(progress)
+        break
       }
-      for progress in progresses {
-        if progress.progressType == .Progressing {
-          self.progresses.append(progress)
-          break
-        }
-      }
-      for progress in progresses {
-        if progress.progressType == .Done {
-          self.progresses.append(progress)
-          break
-        }
-      }
-      // 정렬
-      for (index, progress) in self.progresses.enumerate() {
-        if progress.progressedAt != nil {
-          progress.progressStatus = .Done
-          if index + 1 < self.progresses.count {
-            let afterProgress = self.progresses[index + 1]
-            if afterProgress.progressedAt == nil {
-              progress.progressStatus = .Progressing
-            }
-          } else {
+    }
+  }
+  
+  private func organizeProgressesStatus() {
+    for (index, progress) in self.progresses.enumerate() {
+      if progress.progressedAt != nil {
+        progress.progressStatus = .Done
+        if progresses.isInRange(index) {
+          let nextProgress = self.progresses[index + 1]
+          if nextProgress.progressedAt == nil {
             progress.progressStatus = .Progressing
           }
+        } else {
+          progress.progressStatus = .Progressing
         }
       }
     }

@@ -11,20 +11,20 @@ class ProductPropertyValuesView: UIView {
   
   func layoutView(productPropertyValueList: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
     displayType: ProductPropertyDisplayType? = nil) {
-      var beforeView: UIView?
-      var beforeRowLeftView: UIView?
+      var previousView: UIView?
+      var previousRowLeftMostView: UIView?
       
       for (index, productPropertyValue) in productPropertyValueList.enumerate() {
         let view = searchValueView(productPropertyValue, displayType: displayType)
         view.needBackgoundColor = displayType != .Color
         view.delegate = delegate as? SearchValueDelegate
         view.configureView(productPropertyValue, isSelected: selectedSearchValueIds.contains(productPropertyValue.id!))
-        beforeRowLeftView = self.beforeRowLeftView(view,
+        previousRowLeftMostView = self.previousRowLeftMostView(view,
           count: productPropertyValueList.count,
           index: index,
-          beforeRowLeftView: beforeRowLeftView,
-          beforeView: beforeView)
-        beforeView = view
+          previousRowLeftMostView: previousRowLeftMostView,
+          previousView: previousView)
+        previousView = view
         
         views.append(view)
       }
@@ -54,26 +54,26 @@ class ProductPropertyValuesView: UIView {
 // MARK: - Layout Methods
 
 extension ProductPropertyValuesView {
-  private func beforeRowLeftView(view: UIView, count: Int, index: Int, beforeRowLeftView: UIView?, beforeView: UIView?) -> UIView? {
+  private func previousRowLeftMostView(view: UIView, count: Int, index: Int, previousRowLeftMostView: UIView?, previousView: UIView?) -> UIView? {
     addSubViewAndEnableAutoLayout(view)
     
-    configureTopLayout(view, index: index, beforeRowLeftView: beforeRowLeftView)
+    configureTopLayout(view, index: index, previousRowLeftMostView: previousRowLeftMostView)
     configureBottomLayout(view, count: count, index: index)
-    configureLeftLayout(view, index: index, beforeView: beforeView)
+    configureLeftLayout(view, index: index, previousView: previousView)
     
     if index % kRowValueButtonCount == kRowValueButtonCount - 1 {
       addTrailingLayout(view)
       return view
     }
-    return beforeRowLeftView
+    return previousRowLeftMostView
   }
   
-  private func configureTopLayout(view: UIView, index: Int, beforeRowLeftView: UIView?) {
+  private func configureTopLayout(view: UIView, index: Int, previousRowLeftMostView: UIView?) {
     if index / kRowValueButtonCount == 0 {
       addTopLayout(view)
-    } else if let beforeRowLeftView = beforeRowLeftView as? SearchValueView {
-      let verticalInterval = ProductPropertyViewHelper.buttonInterval(beforeRowLeftView.viewDisplayType)
-      addVerticalLayout(beforeRowLeftView, bottomView: view, contsant: verticalInterval)
+    } else if let previousRowLeftMostView = previousRowLeftMostView as? SearchValueView {
+      let verticalInterval = ProductPropertyViewHelper.buttonInterval(previousRowLeftMostView.viewDisplayType)
+      addVerticalLayout(previousRowLeftMostView, bottomView: view, contsant: verticalInterval)
     }
   }
   
@@ -83,11 +83,11 @@ extension ProductPropertyValuesView {
     }
   }
   
-  private func configureLeftLayout(view: UIView, index: Int, beforeView: UIView?) {
+  private func configureLeftLayout(view: UIView, index: Int, previousView: UIView?) {
     if index % kRowValueButtonCount == 0 {
       addLeadingLayout(view)
-    } else if let beforeView = beforeView {
-      addHorizontalLayout(beforeView, rightView: view, contsant: kViewHorizontalInterval)
+    } else if let previousView = previousView {
+      addHorizontalLayout(previousView, rightView: view, contsant: kViewHorizontalInterval)
     }
   }
 }

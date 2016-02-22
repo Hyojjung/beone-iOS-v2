@@ -44,7 +44,7 @@ class CartOrderableItemCell: OrderableItemCell {
 
   override func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
     var height = super.calculatedHeight(orderableItem, selectedOption: selectedOption)
-    let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
+    let availableDeliveryDatesString = orderableItem.availableTimeRangeList.availableDeliveryDatesString()
     if !availableDeliveryDatesString.isEmpty {
       let availableDeliveryDatesLabel = UILabel()
       availableDeliveryDatesLabel.font = UIFont.systemFontOfSize(13)
@@ -77,7 +77,7 @@ class CartOrderableItemCell: OrderableItemCell {
   }
   
   private func configureAvailableDeliveryDatesView(orderableItem: OrderableItem) {
-    let availableDeliveryDatesString = orderableItem.availableDeliveryDatesString()
+    let availableDeliveryDatesString = orderableItem.availableTimeRangeList.availableDeliveryDatesString()
     deliverableDateLabel?.text = availableDeliveryDatesString
     deliveryDatesKeyView?.configureAlpha(!availableDeliveryDatesString.isEmpty)
     deliveryDatesLabelBottomConstraint?.constant = availableDeliveryDatesString.isEmpty ? 0 : 7

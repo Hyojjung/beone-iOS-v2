@@ -135,7 +135,7 @@ class OrderCell: UITableViewCell {
   
   private func layoutPaymentsView(paymentInfos: [PaymentInfo], addintionalPaymentDelegate: AddintionalPaymentDelegate) {
     paymentsView.subviews.forEach { $0.removeFromSuperview() }
-    var beforeView: UIView? = nil
+    var previousView: UIView? = nil
     for (index, paymentInfo) in paymentInfos.enumerate() {
       if !paymentInfo.isMainPayment {
         let paymentInfoView = UIView.loadFromNibName("AdditionalPaymentView") as! AdditionalPaymentView
@@ -146,13 +146,13 @@ class OrderCell: UITableViewCell {
         paymentsView.addTrailingLayout(paymentInfoView)
         if index == 1 {
           paymentsView.addTopLayout(paymentInfoView)
-        } else if let beforeView = beforeView {
-          paymentsView.addVerticalLayout(beforeView, bottomView: paymentInfoView)
+        } else if let previousView = previousView {
+          paymentsView.addVerticalLayout(previousView, bottomView: paymentInfoView)
         }
         if index == paymentInfos.count - 1 {
           paymentsView.addBottomLayout(paymentInfoView)
         }
-        beforeView = paymentInfoView
+        previousView = paymentInfoView
       }
     }
   }

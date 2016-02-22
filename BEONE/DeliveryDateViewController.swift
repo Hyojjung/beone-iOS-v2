@@ -122,7 +122,6 @@ extension DeliveryDateViewController: CKCalendarDelegate {
     }
     return false
   }
-  
 }
 
 extension DeliveryDateViewController: TimeSelectViewDelegate {
