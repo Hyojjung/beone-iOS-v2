@@ -73,7 +73,7 @@ extension SearchResultViewController {
   
   @IBAction func showSearchModalButtonTapped() {
     if isQuickOrdering {
-      let searchViewController = viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier)
+      let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier)
       navigationController?.showViewController(searchViewController, sender: nil)
     } else {
       popView()

@@ -34,7 +34,7 @@ class MainTabViewController: UITabBarController {
   }
   
   func showUserViewController(storyboardName: String, viewIdentifier: String) {
-    let viewController = self.viewController(storyboardName, viewIdentifier: viewIdentifier)
+    let viewController = UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier)
     if !MyInfo.sharedMyInfo().isUser() {
       signingShowViewController = viewController
       showSigningView()

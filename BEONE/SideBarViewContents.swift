@@ -17,11 +17,12 @@ class SideBarViewContents: BaseModel {
     if let sideBarViewContents = data as? [String: AnyObject] {
       if let user = sideBarViewContents["user"] as? [String: AnyObject] {
         MyInfo.sharedMyInfo().assignObject(user)
+        anniversary = nil
         if let userAnniversaries = user["userAnniversaries"] as? [[String: AnyObject]] {
-          anniversary = Anniversary()
-          anniversary?.assignObject(userAnniversaries.first)
-        } else {
-          anniversary = nil
+          if !userAnniversaries.isEmpty {
+            anniversary = Anniversary()
+            anniversary?.assignObject(userAnniversaries.first)
+          }
         }
       }
       

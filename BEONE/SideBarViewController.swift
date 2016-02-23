@@ -50,6 +50,16 @@ class SideBarViewController: BaseTableViewController {
     }
   }
   
+  @IBAction func productButtonTapped(sender: UIButton) {
+    setUpScheme("home/product/\(sender.tag)")
+  }
+  
+  @IBAction func orderItemButtonTapped() {
+    if let orderId = sideBarViewContents.orderDeliveryItemSets.first?.order.id {
+      setUpScheme("more/orders/\(orderId)")
+    }
+  }
+  
   @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
     if let kakaoPlus = BEONEManager.globalViewContents.kakaoPlus {
       UIApplication.sharedApplication().openURL(kakaoPlus.url())
@@ -58,7 +68,7 @@ class SideBarViewController: BaseTableViewController {
   
   @IBAction func topCellButtonTapped() {
     if MyInfo.sharedMyInfo().isUser() {
-      
+      setUpScheme("more/profile")
     } else {
       showSigningView()
     }
@@ -79,6 +89,11 @@ class SideBarViewController: BaseTableViewController {
         self.tableView.reloadData()
       })
     })
+  }
+  
+  private func setUpScheme(scheme: String) {
+    revealViewController().revealToggleAnimated(true)
+    SchemeHelper.setUpScheme(scheme)
   }
 }
 
@@ -304,12 +319,16 @@ class SideBarProductCell: UITableViewCell {
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productActualPriceLabel: UILabel!
   @IBOutlet weak var productPriceLabel: UILabel!
+  @IBOutlet weak var productButton: UIButton!
   
   func configureCell(product: Product) {
     productImageView.setLazyLoaingImage(product.mainImageUrl)
     productNameLabel.text = product.title
     productActualPriceLabel.text = product.actualPrice.priceNotation(.English)
     productPriceLabel.attributedText = product.priceAttributedString()
+    if let productId = product.id {
+      productButton.tag = productId
+    }
   }
 }
 

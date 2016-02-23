@@ -42,13 +42,17 @@ class BaseViewController: UIViewController {
       showViewController(signingShowViewController, sender: nil)
       self.signingShowViewController = nil
     }
-    
     addObservers()
     setUpData()
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    showView()
+  }
+  
   func showUserViewController(storyboardName: String, viewIdentifier: String) {
-    let viewController = self.viewController(storyboardName, viewIdentifier: viewIdentifier)
+    let viewController = UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier)
     showUserViewController(viewController)
   }
   
@@ -63,7 +67,7 @@ class BaseViewController: UIViewController {
   
   func showOptionView(selectedProductId: Int?, selectedCartItem: CartItem? = nil,
     rightOrdering: Bool = false, isModifing: Bool = false) {
-      let optionViewController = viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
+      let optionViewController = UIViewController.viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
       if let optionViewController = optionViewController as? OptionViewController {
         optionViewController.product.id = selectedProductId
         optionViewController.isModifing = isModifing

@@ -10,6 +10,7 @@ let kOrderStoryboardName = "Order"
 let kSearchStoryboardName = "Search"
 let kMainStoryboardName = "Main"
 let kProfileStoryboardName = "Profile"
+let kOrderListStoryboardName = "OrderList"
 
 // MARK: - View Controller Identifiers
 
@@ -35,6 +36,7 @@ let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
 let kProductPropertyNameTypeValueViewNibName = "ProductPropertyNameTypeValueView"
 let kProductPropertyColorTypeValueViewNibName = "ProductPropertyColorTypeValueView"
 let kOrderResultLabelViewNibName = "OrderResultLabelView"
+let kOrdersViewNibName = "OrdersView"
 
 // MARK: - Cell Identifier
 
@@ -44,4 +46,7 @@ let kShopNameCellIdentifier = "shopNameCell"
 // MARK: - Segue Identifiers
 
 let kFromProductDetailToOptionSegueIdentifier = "From Product Detail To Option"
- 
+
+// MARK: - Scheme String
+
+let kSchemeBaseUrl = "cmbeone://beone.kr/"

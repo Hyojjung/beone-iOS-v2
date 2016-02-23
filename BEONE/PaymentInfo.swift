@@ -46,7 +46,6 @@ class PaymentInfo: BaseModel {
   }
   
   override func assignObject(data: AnyObject?) {
-    print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       id = paymentInfo[kObjectPropertyKeyId] as? Int
       
@@ -87,11 +86,6 @@ class PaymentInfo: BaseModel {
       if let paidAt = paymentInfo["paidAt"] as? String {
         self.paidAt = paidAt.date()
       }
-
-      
-      
-      
-
 
       if let status = paymentInfo["status"] as? String,
         paymentStatus = PaymentStatus(rawValue: status) {

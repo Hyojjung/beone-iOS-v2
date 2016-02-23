@@ -27,8 +27,8 @@ class OrdersViewController: BaseTableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
-    if let orderViewController = segue.destinationViewController as? OrderViewController, order = sender as? Order {
-      orderViewController.order = order
+    if let orderViewController = segue.destinationViewController as? OrderViewController, orderId = sender as? Int {
+      orderViewController.order.id = orderId
     }
   }
   
@@ -45,7 +45,7 @@ class OrdersViewController: BaseTableViewController {
   }
   
   @IBAction func showOrderDetailButtonTapped(sender: UIButton) {
-    performSegueWithIdentifier("From Order List To Order Detail", sender: orderList.list[sender.tag])
+    performSegueWithIdentifier("From Order List To Order Detail", sender: orderList.list[sender.tag].id)
   }
   
   @IBAction func orderActionButtonTapped(sender: UIButton) {
@@ -53,6 +53,13 @@ class OrdersViewController: BaseTableViewController {
       paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id {
       paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
     }
+  }
+}
+
+extension OrdersViewController: SchemeDelegate {
+  
+  func handleScheme(with id: Int) {
+    performSegueWithIdentifier("From Order List To Order Detail", sender: id)
   }
 }
 

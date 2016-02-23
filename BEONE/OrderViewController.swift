@@ -105,10 +105,10 @@ extension OrderViewController {
 extension OrderViewController {
   
   private func orderItem(indexPath: NSIndexPath) -> OrderableItem? {
-    let section = self.section(indexPath.section)
-    if section == .Image {
+    let sectionType = self.sectionType(indexPath.section)
+    if sectionType == .Image {
       return orderItemsWithImages[indexPath.row]
-    } else if section == .Shop {
+    } else if sectionType == .Shop {
       let orderItemSet = order.orderableItemSets[indexPath.section - OrderTableViewSection.Shop.rawValue]
       return orderItemSet.orderableItems[indexPath.row - 1]
     }
@@ -119,7 +119,7 @@ extension OrderViewController {
     return order.orderableItemSets[section - OrderTableViewSection.Shop.rawValue]
   }
   
-  private func section(section: Int) -> OrderTableViewSection {
+  private func sectionType(section: Int) -> OrderTableViewSection {
     if section >= OrderTableViewSection.Shop.rawValue &&
       section < order.orderableItemSets.count + OrderTableViewSection.Shop.rawValue {
         return .Shop
@@ -141,6 +141,7 @@ extension OrderViewController {
 }
 
 extension OrderViewController: UITableViewDataSource {
+  
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return order.orderableItemSets.count + OrderTableViewSection.Count.rawValue - 1
   }
@@ -168,18 +169,18 @@ extension OrderViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == OrderTableViewSection.ImageTitle.rawValue && orderItemsWithImages.count == 0 {
+    let sectionType = self.sectionType(section)
+    if sectionType == .ImageTitle && orderItemsWithImages.count == 0 {
       return 0
-    } else if section == OrderTableViewSection.Image.rawValue {
+    } else if sectionType == .Image {
       return orderItemsWithImages.count
-    } else if section == OrderTableViewSection.AccountInfo.rawValue {
+    } else if sectionType == .AccountInfo {
       return bankUnpaiedPaymentInfos.count
-    } else if section >= OrderTableViewSection.Shop.rawValue &&
-      section < order.orderableItemSets.count + OrderTableViewSection.Shop.rawValue {
+    } else if sectionType == .Shop {
         return orderItemSet(section).orderableItems.count + 2
-    } else if section == OrderTableViewSection.PaymentInfo.rawValue {
+    } else if sectionType == .PaymentInfo {
       return order.paymentInfoList.list.count
-    } else if section == OrderTableViewSection.Buttons.rawValue && returnableOrderItemSets.isEmpty {
+    } else if sectionType == .Buttons && returnableOrderItemSets.isEmpty {
       return 0
     }
     return 1
@@ -187,11 +188,10 @@ extension OrderViewController: UITableViewDataSource {
 }
 
 
-
 extension OrderViewController: DynamicHeightTableViewProtocol {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
-    let section = self.section(indexPath.section)
+    let section = self.sectionType(indexPath.section)
     if section == .Shop {
       if indexPath.row == 0 {
         return "shopNameCell"
@@ -206,8 +206,8 @@ extension OrderViewController: DynamicHeightTableViewProtocol {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    let section = self.section(indexPath.section)
-    switch (section) {
+    let sectionType = self.sectionType(indexPath.section)
+    switch (sectionType) {
     case .ImageTitle:
       return 43
     case .Image:

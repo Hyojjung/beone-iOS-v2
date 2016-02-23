@@ -108,7 +108,7 @@ extension UIViewController {
   }
   
   func showOrderView(orderingCartItemIds: [Int]) {
-    if let deliveryDateViewController = viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
+    if let deliveryDateViewController = UIViewController.viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
       deliveryDateViewController.order.cartItemIds = orderingCartItemIds
       navigationController?.showViewController(deliveryDateViewController, sender: nil)
     }
@@ -116,7 +116,7 @@ extension UIViewController {
   
   func showProductView(productId: Int?) {
     if let productDetailViewController =
-      viewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier) as? ProductDetailViewController,
+      UIViewController.viewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier) as? ProductDetailViewController,
     productId = productId {
       productDetailViewController.product.id = productId
         showViewController(productDetailViewController, sender: nil)
@@ -127,19 +127,19 @@ extension UIViewController {
 extension UIViewController {
   func presentViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
-      presentViewController(viewController(storyboardName, viewIdentifier: viewIdentifier),
+      presentViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier),
         animated: true, completion: nil)
     }
   }
 
-  func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
+  static func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
     let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
     return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
   }
   
   func showViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
-      navigationController?.showViewController(viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
+      navigationController?.showViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
     }
   }
 }
@@ -201,7 +201,7 @@ extension UIViewController {
   }
   
   func showBillKeysView(order: Order, paymentInfoId: Int) {
-    if let billKeysViewController = viewController("Order", viewIdentifier: "BillKeysView") as? BillKeysViewController {
+    if let billKeysViewController = UIViewController.viewController("Order", viewIdentifier: "BillKeysView") as? BillKeysViewController {
       billKeysViewController.order = order
       billKeysViewController.paymentInfoId = paymentInfoId
       navigationController?.showViewController(billKeysViewController, sender: nil)
@@ -225,7 +225,7 @@ extension UIViewController {
   }
   
   func showShopView(shopId: Int?) {
-    let shopViewController = viewController("Shop", viewIdentifier: "ShopView") as! ShopViewController
+    let shopViewController = UIViewController.viewController("Shop", viewIdentifier: "ShopView") as! ShopViewController
     shopViewController.shop.id = shopId
     showViewController(shopViewController, sender: nil)
   }

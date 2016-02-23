@@ -78,6 +78,10 @@ class ProductDetailViewController: BaseViewController {
     collectionView?.registerNib(UINib(nibName: kProductDetailHeaderCellNibName, bundle: nil),
       forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader,
       withReuseIdentifier: kProductDetailHeaderCellIdentifier)
+  }
+  
+  override func setUpData() {
+    super.setUpData()
     product.get({ () -> Void in
       self.setUpProductData()
     })
@@ -179,6 +183,14 @@ class ProductDetailViewController: BaseViewController {
     browser.displayArrowButton = true
     browser.displayCounterLabel = true
     presentViewController(browser, animated: true, completion: nil)
+  }
+}
+
+extension ProductDetailViewController: SchemeDelegate {
+  
+  func handleScheme(with id: Int) {
+    product.id = id
+    setUpData()
   }
 }
 

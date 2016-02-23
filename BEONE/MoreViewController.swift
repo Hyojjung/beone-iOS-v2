@@ -28,7 +28,7 @@ class MoreViewController: BaseViewController {
     showViewController("Setting", viewIdentifier: "SettingView")
   }
   @IBAction func showOrdersViewButtonTapped() {
-    showUserViewController("OrderList", viewIdentifier: "OrdersView")
+    showUserViewController(kOrderListStoryboardName, viewIdentifier: kOrdersViewNibName)
   }
 }
 
