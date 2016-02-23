@@ -21,7 +21,7 @@ class ReviewList: BaseListModel {
     return ["page": 1, "count": 1]
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     print(data)
   }
 }

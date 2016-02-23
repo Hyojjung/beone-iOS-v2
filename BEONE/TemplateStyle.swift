@@ -15,7 +15,7 @@ class TemplateStyle: BaseModel {
   
   // MARK: - Override Methods
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let style = data as? [String: AnyObject] {
       if let margin = style[kTemplateStylePropertyKeyMargin] as? String {
         self.margin = margin.edgeInsets()

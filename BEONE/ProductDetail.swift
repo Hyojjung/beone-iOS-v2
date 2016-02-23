@@ -15,7 +15,7 @@ class ProductDetail: BaseModel {
   var content: String?
   var detailType: ProductDetailType?
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
       content = data[kProductDetailPropertyKeyContent] as? String

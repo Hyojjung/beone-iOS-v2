@@ -6,13 +6,11 @@ class ProductOrderableInfo: BaseModel {
   var availableDates = [NSDate]()
   var deliveryType = DeliveryType()
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let productOrderableInfo = data as? [String: AnyObject] {
       id = productOrderableInfo[kObjectPropertyKeyId] as? Int
       price = productOrderableInfo["actualPrice"] as? Int
-      if let deliveryType = productOrderableInfo["deliveryType"] as? [String: AnyObject] {
-        self.deliveryType.assignObject(deliveryType)
-      }
+      deliveryType.assignObject(productOrderableInfo["deliveryType"])
       if let availableDates = productOrderableInfo["availableDates"] as? [String] {
         self.availableDates.removeAll()
         for availableDate in availableDates {

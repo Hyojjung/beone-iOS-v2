@@ -48,7 +48,7 @@ class OrderableItemSet: BaseModel {
   var isReturnable = false
   var isDone = true
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let orderableItemSet = data as? [String: AnyObject] {
       id = orderableItemSet[kObjectPropertyKeyId] as? Int
       title = orderableItemSet["title"] as? String
@@ -57,10 +57,7 @@ class OrderableItemSet: BaseModel {
         selectedTimeRange = AvailableTimeRange()
         selectedTimeRange?.assignObject(reservation)
       }
-      if let shop = orderableItemSet["shop"] {
-        self.shop.assignObject(shop)
-      }
-      
+      shop.assignObject(orderableItemSet["shop"])
       assignAvailableTimeRanges(orderableItemSet["availableTimeRanges"])
       assignStatus(orderableItemSet["status"])
       assignOrderItems(orderableItemSet)
@@ -73,20 +70,14 @@ class OrderableItemSet: BaseModel {
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {
           self.deliveryPrice = deliveryPrice
       }
-      if let location = orderableItemSet["location"] {
-        self.location.assignObject(location)
-      }
-      if let deliveryType = orderableItemSet["deliveryType"] {
-        self.deliveryType.assignObject(deliveryType)
-      }
+      location.assignObject(orderableItemSet["location"])
+      deliveryType.assignObject(orderableItemSet["deliveryType"])
       if let order = orderableItemSet["order"] {
         self.order.assignObject(order)
       } else {
         order.id = orderableItemSet["orderId"] as? Int
       }
-      if let orderDeliveryInfo = orderableItemSet["orderDeliveryInfo"] {
-        self.orderDeliveryInfo.assignObject(orderDeliveryInfo)
-      }
+      orderDeliveryInfo.assignObject(orderableItemSet["orderDeliveryInfo"])
     }
   }
   
@@ -137,7 +128,7 @@ extension OrderableItemSet {
   
   private func assignStatus(status: AnyObject?) {
     if let statusObject = status as? [String: AnyObject] {
-      statusName = statusObject["name"] as? String
+      statusName = statusObject[kObjectPropertyKeyName] as? String
       if let isCancellable = statusObject["isCancellable"] as? Bool {
         self.isCancellable = isCancellable
       }
@@ -168,15 +159,15 @@ extension OrderableItemSet {
       }
       // assign
       self.progresses.removeAll()
-      rangeProgresses(with: .Waiting)
-      rangeProgresses(with: .Progressing)
-      rangeProgresses(with: .Done)
+      rangeProgresses(with: .Waiting, progresses: progresses)
+      rangeProgresses(with: .Progressing, progresses: progresses)
+      rangeProgresses(with: .Done, progresses: progresses)
       // range
       organizeProgressesStatus()
     }
   }
   
-  private func rangeProgresses(with progressType: ProgressType) {
+  private func rangeProgresses(with progressType: ProgressType, progresses: [OrderItemSetProgress]) {
     for progress in progresses {
       if progress.progressType == progressType {
         self.progresses.append(progress)

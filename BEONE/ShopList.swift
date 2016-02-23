@@ -6,7 +6,7 @@ class ShopList: BaseListModel {
     return "shops"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     list.removeAll()
     if let shopList = data as? [[String: AnyObject]] {
       for shopObject in shopList {

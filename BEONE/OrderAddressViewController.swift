@@ -62,7 +62,9 @@ extension OrderAddressViewController {
   
   @IBAction func sameButtonTapped(sender: UIButton) {
     sender.selected = !sender.selected
-    setUpSenderAndReceiverView()
+    if sender.selected {
+      setUpSenderAndReceiverView()
+    }
   }
   
   @IBAction func segueToAddressViewButtonTapped() {
@@ -106,6 +108,8 @@ extension OrderAddressViewController {
     if addressList.list.count > 0 {
       address = addressList.list.first as! Address
     }
+    receiverNameTextField.text = address.receiverName
+    receiverPhoneTextField.text = address.receiverPhone
     setUpAddressView()
   }
   
@@ -127,9 +131,6 @@ extension OrderAddressViewController {
 extension OrderAddressViewController {
   
   func setUpAddressView() {
-    receiverNameTextField.text = address.receiverName
-    receiverPhoneTextField.text = address.receiverPhone
-    
     if let zonecode = address.zonecode {
       zonecodeLabel.text = zonecode
     } else if let zipcode1 = address.zipcode01, zipcode2 = address.zipcode02 {

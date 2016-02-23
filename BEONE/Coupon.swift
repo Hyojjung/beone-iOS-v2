@@ -9,7 +9,7 @@ class Coupon: BaseModel {
   var subTitle: String?
   var expiredAt: NSDate?
   var serialNumber: String?
-  var summary: String?
+  var desc: String?
   var dayLeft: String?
   var usable = false
   
@@ -27,13 +27,13 @@ class Coupon: BaseModel {
     return parameter
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject], prototype = data["prototype"] as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
       title = prototype["title"] as? String
       subTitle = prototype["subtitle"] as? String
       serialNumber = prototype[kCouponPropertyKeySerialNumber] as? String
-      summary = prototype["description"] as? String
+      desc = prototype[kObjectPropertyKeyDescription] as? String
       if let expiredAt = data["expiredAt"] as? String {
         self.expiredAt = expiredAt.date()
         dayLeft = dayLeftFromToday()
@@ -48,7 +48,8 @@ class Coupon: BaseModel {
         return NSLocalizedString("expired", comment: "day left desctiption")
       } else if !usable {
         return NSLocalizedString("used", comment: "day left desctiption")
-      } else if let dayPassed = date.dayPassed(from: expiredAt) {
+      } else {
+        let dayPassed = date.numberOfLeftDay(to: expiredAt)
         if dayPassed == 0 {
           return NSLocalizedString("expired today", comment: "day left desctiption")
         } else {

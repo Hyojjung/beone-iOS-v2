@@ -15,9 +15,7 @@ class BaseListModel: BaseModel {
         if let total = result["total"] as? Int {
           self.total = total
         }
-        if let data = result[kNetworkResponseKeyData] {
-          self.assignObject(data)
-        }
+        self.assignObject(result[kNetworkResponseKeyData])
       }
       getSuccess?()
       }, failure: nil)

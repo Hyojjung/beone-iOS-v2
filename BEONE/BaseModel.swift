@@ -2,6 +2,8 @@
 import UIKit
 
 let kObjectPropertyKeyId = "id"
+let kObjectPropertyKeyName = "name"
+let kObjectPropertyKeyDescription = "description"
 
 class BaseModel: NSObject {
   var id: Int?
@@ -10,9 +12,7 @@ class BaseModel: NSObject {
   
   func get(getSuccess: (() -> Void)? = nil) {
     NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
-      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] {
-        self.assignObject(data)
-      }
+      self.assignObject(result[kNetworkResponseKeyData])
       getSuccess?()
       }, failure: nil)
   }
@@ -35,7 +35,7 @@ class BaseModel: NSObject {
     return nil
   }
   
-  func assignObject(data: AnyObject) {
+  func assignObject(data: AnyObject?) {
     print(data)
   }
   

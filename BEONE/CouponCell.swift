@@ -14,7 +14,7 @@ class CouponCell: UITableViewCell {
     subTitleLabel.text = coupon.subTitle
     titleLabel.text = coupon.title
     serialNumberLabel.text = coupon.serialNumber
-    summaryLabel.text = coupon.summary
+    summaryLabel.text = coupon.desc
     usableDayLabel.text = coupon.dayLeft
     if let expiredAt = coupon.expiredAt {
       expiredDateLabel.text = "~ \(expiredAt.briefDateString())"
@@ -34,7 +34,7 @@ class CouponCell: UITableViewCell {
     
     let summaryLabel = UILabel()
     summaryLabel.font = UIFont.systemFontOfSize(12)
-    summaryLabel.text = coupon.summary
+    summaryLabel.text = coupon.desc
     summaryLabel.setWidth(ViewControllerHelper.screenWidth - 64)
     
     return CGFloat(140) + subTitleLabel.frame.height + titleLabel.frame.height + summaryLabel.frame.height

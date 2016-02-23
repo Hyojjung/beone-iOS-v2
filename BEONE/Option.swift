@@ -9,14 +9,14 @@ class Option: BaseModel {
   var isSoldOut = false
   var optionItems = [OptionItem]()
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let optionObject = data as? [String: AnyObject] {
       if let originalId = optionObject["originalId"] as? Int {
         id = originalId
       } else {
         id = optionObject[kObjectPropertyKeyId] as? Int
       }
-      name = optionObject["name"] as? String
+      name = optionObject[kObjectPropertyKeyName] as? String
       
       if let actualPrice = optionObject["actualPrice"] as? Int {
         price = actualPrice

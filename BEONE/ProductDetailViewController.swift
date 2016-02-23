@@ -160,7 +160,6 @@ class ProductDetailViewController: BaseViewController {
             
             KOAppCall.openKakaoTalkAppLink([label, image, button])
           }
-          // TODO: - kakao scheme 처리
       }
     }
   }

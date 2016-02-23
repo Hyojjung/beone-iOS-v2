@@ -154,7 +154,7 @@ extension AddingBillKeyViewController {
     }
     billKey.cardNumber = cardNumber
     let cardNameTextField = view.viewWithTag(kCardNameTextFieldTag) as! UITextField
-    billKey.name = cardNameTextField.text
+    billKey.desc = cardNameTextField.text
     if billKey.type == .Personal {
       let passwordTextField = view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
       billKey.password = passwordTextField.text

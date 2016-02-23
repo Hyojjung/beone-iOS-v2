@@ -3,7 +3,6 @@ import Foundation
 import CoreData
 
 let kMyInfoPropertyKeyEmail = "email"
-let kMyInfoPropertyKeyName = "name"
 let kMyInfoPropertyKeyPoint = "point"
 let kMyInfoPropertyKeyPhone = "phone"
 
@@ -33,18 +32,16 @@ class MyInfo: NSManagedObject {
   func get(getSuccess: (() -> Void)? = nil) {
     if let userId = userId {
       NetworkHelper.requestGet("users/\(userId)", parameter: nil, success: { (result) -> Void in
-        if let myInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-          self.assignObject(myInfo)
-          getSuccess?()
-        }
+        self.assignObject(result[kNetworkResponseKeyData])
+        getSuccess?()
         }, failure: nil)
     }
   }
   
-  func assignObject(data: AnyObject) {
+  func assignObject(data: AnyObject?) {
     if let myInfo = data as? [String: AnyObject] {
       self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
-      self.name = myInfo[kMyInfoPropertyKeyName] as? String
+      self.name = myInfo[kObjectPropertyKeyName] as? String
       self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
       self.point = myInfo[kMyInfoPropertyKeyPoint] as? NSNumber
       CoreDataHelper.sharedCoreDataHelper.saveContext()

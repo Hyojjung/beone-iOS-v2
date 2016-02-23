@@ -27,41 +27,39 @@ class Order: BaseModel {
     return "orders"
   }
   
-  override func assignObject(data: AnyObject) {
-    if let data = data as? [String: AnyObject] {
+  override func assignObject(data: AnyObject?) {
+    if let order = data as? [String: AnyObject] {
       if isDone {
-        address.assignObject(data)
-        deliveryMemo = data["deliveryMemo"] as? String
-        senderName = data["senderName"] as? String
-        senderPhone = data["senderPhone"] as? String
-        orderCode = data["orderCode"] as? String
-        if let isSecret = data["isSecret"] as? Bool {
+        address.assignObject(order)
+        deliveryMemo = order["deliveryMemo"] as? String
+        senderName = order["senderName"] as? String
+        senderPhone = order["senderPhone"] as? String
+        orderCode = order["orderCode"] as? String
+        if let isSecret = order["isSecret"] as? Bool {
           self.isSecret = isSecret
         }
       }
       
-      assignOrderableItemSets(data)
-      if let paymentInfos = data["paymentInfos"] {
-        paymentInfoList.assignObject(paymentInfos)
-      }
-      id = data[kObjectPropertyKeyId] as? Int
-      title = data["title"] as? String
-      if let usedPoint = data["usedPoint"] as? Int {
+      assignOrderableItemSets(order)
+      paymentInfoList.assignObject(order["paymentInfos"])
+      id = order[kObjectPropertyKeyId] as? Int
+      title = order["title"] as? String
+      if let usedPoint = order["usedPoint"] as? Int {
         self.usedPoint = usedPoint
       }
-      if let isCancellable = data["isCancellable"] as? Bool {
+      if let isCancellable = order["isCancellable"] as? Bool {
         self.isCancellable = isCancellable
       }
-      if let price = data["price"] as? Int {
+      if let price = order["price"] as? Int {
         self.price = price
       }
-      if let discountPrice = data["discountPrice"] as? Int {
+      if let discountPrice = order["discountPrice"] as? Int {
         self.discountPrice = discountPrice
       }
-      if let actualPrice = data["actualPrice"] as? Int {
+      if let actualPrice = order["actualPrice"] as? Int {
         self.actualPrice = actualPrice
       }
-      if let createdAt = data["createdAt"] as? String {
+      if let createdAt = order["createdAt"] as? String {
         self.createdAt = createdAt.date()
       }
     }
@@ -174,7 +172,6 @@ class Order: BaseModel {
         orderableItemSet.selectedTimeRange?.startDateTime?.serverDateString()
       orderDeliveryItemSet["reservationEndDateTime"] =
         orderableItemSet.selectedTimeRange?.endDateTime?.serverDateString()
-      print(orderDeliveryItemSet)
       orderDeliveryItemSets.append(orderDeliveryItemSet)
     }
     return orderDeliveryItemSets

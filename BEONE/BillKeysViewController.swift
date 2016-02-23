@@ -109,7 +109,7 @@ class BillKeyCell: UITableViewCell {
   func configureCell(billKey: BillKey, selectedBillKey: BillKey?, row: Int) {
     let imageName = billKey.type == .Personal ? "image_card_white" : "image_card_dark"
     billKeyImageView.image = UIImage(imageLiteral: imageName)
-    cardNameLabel.text = billKey.name
+    cardNameLabel.text = billKey.desc
     cardNumberLabel.text = billKey.cardNumber
     selectButton.selected = billKey.id == selectedBillKey?.id
     selectButton.tag = row

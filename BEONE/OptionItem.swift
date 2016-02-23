@@ -21,14 +21,14 @@ class OptionItem: BaseModel {
   var selects = [Select]()
   // for select type
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let optionItemObject = data as? [String: AnyObject] {
       if let originalId = optionItemObject["originalId"] as? Int {
         id = originalId
       } else {
         id = optionItemObject[kObjectPropertyKeyId] as? Int
       }
-      name = optionItemObject["name"] as? String
+      name = optionItemObject[kObjectPropertyKeyName] as? String
       if let typeString = optionItemObject["type"] as? String, type = OptionItemType(rawValue: typeString) {
         self.type = type
       }

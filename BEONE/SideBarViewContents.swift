@@ -6,34 +6,36 @@ class SideBarViewContents: BaseModel {
   var progressingOrderCount = 0
   var orderDeliveryItemSets = [OrderableItemSet]()
   var recentProducts = ProductList()
+  var anniversary: Anniversary?
   
   override func getUrl() -> String {
     return "app-view-data/sidebar"
   }
   
-  override func assignObject(data: AnyObject) {
-    print(data)
-    if let data = data as? [String: AnyObject] {
-      if let user = data["user"] as? [String: AnyObject] {
+  override func assignObject(data: AnyObject?) {
+    if let sideBarViewContents = data as? [String: AnyObject] {
+      if let user = sideBarViewContents["user"] as? [String: AnyObject] {
         MyInfo.sharedMyInfo().assignObject(user)
+        if let userAnniversaries = user["userAnniversaries"] as? [[String: AnyObject]] {
+          anniversary = Anniversary()
+          anniversary?.assignObject(userAnniversaries.first)
+        } else {
+          anniversary = nil
+        }
       }
       
-      if let progressingOrderCount = data["progressingOrderCount"] as? Int {
+      if let progressingOrderCount = sideBarViewContents["progressingOrderCount"] as? Int {
         self.progressingOrderCount = progressingOrderCount
       }
       
       orderDeliveryItemSets.removeAll()
-      if let orderDeliveryItemSet = data["latestOrderDeliveryItemSet"] as? [String: AnyObject] {
+      if let orderDeliveryItemSet = sideBarViewContents["latestOrderDeliveryItemSet"] as? [String: AnyObject] {
         let latestOrderDeliveryItemSet = OrderableItemSet()
         latestOrderDeliveryItemSet.assignObject(orderDeliveryItemSet)
         orderDeliveryItemSets.append(latestOrderDeliveryItemSet)
       }
       
-      if let recentProducts = data["recentProducts"] {
-        self.recentProducts.assignObject(recentProducts)
-      } else {
-        recentProducts.list.removeAll()
-      }
+      recentProducts.assignObject(sideBarViewContents["recentProducts"])
     }
   }
 }

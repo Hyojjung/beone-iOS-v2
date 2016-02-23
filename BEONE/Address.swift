@@ -45,7 +45,7 @@ class Address: BaseModel {
   var detailAddress: String?
   var addressType: AddressType?
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let address = data as? [String: AnyObject] {
       addressType = AddressType.addressType(with: address[kAddressPropertyKeyReceiverAddressType] as? String)
       zipcode01 = address[kAddressPropertyKeyZipCode1] as? String

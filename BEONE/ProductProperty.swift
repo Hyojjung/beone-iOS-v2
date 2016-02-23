@@ -12,13 +12,13 @@ class ProductProperty: BaseModel {
   var name: String?
   var displayType: ProductPropertyDisplayType?
   var values = [ProductPropertyValue]()
-  var subTitle: String?
+  var desc: String?
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
-      subTitle = data["description"] as? String
-      name = data["name"] as? String
+      desc = data[kObjectPropertyKeyDescription] as? String
+      name = data[kObjectPropertyKeyName] as? String
       if let displayType = data["displayType"] as? String {
         self.displayType = ProductPropertyDisplayType(rawValue: displayType)
       }
@@ -37,7 +37,7 @@ class ProductProperty: BaseModel {
   func productPropertyWithPartValues() -> ProductProperty {
     let productProperty = ProductProperty()
     productProperty.name = name
-    productProperty.subTitle = subTitle
+    productProperty.desc = desc
     productProperty.id = id
     for (index, productPropertyValue) in values.enumerate() {
       if index < kPartialValuesCount {

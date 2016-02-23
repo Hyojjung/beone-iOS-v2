@@ -50,7 +50,7 @@ class ProductList: BaseListModel {
     }
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     list.removeAll()
     if let productList = data as? [[String: AnyObject]] {
       for productObject in productList {
@@ -58,9 +58,6 @@ class ProductList: BaseListModel {
         product.assignObject(productObject)
         list.append(product)
       }
-    }
-    if let total = data["total"] as? Int{
-      self.total = total
     }
   }
 }

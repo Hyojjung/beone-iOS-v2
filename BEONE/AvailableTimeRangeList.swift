@@ -3,7 +3,7 @@ import UIKit
 
 class AvailableTimeRangeList: BaseListModel {
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let availableTimeRangesObject = data as? [[String: AnyObject]] {
       list.removeAll()
       for availableTimeRangeObject in availableTimeRangesObject {

@@ -17,7 +17,7 @@ class ProductSearchData: BaseModel {
     return "app-view-data/productSearch"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let appSettingObject = data as? [String: AnyObject] {
       if let priceRange = appSettingObject["priceRange"] as? [String: AnyObject] {
         if let maxPrice = priceRange["maxPrice"] as? Int {

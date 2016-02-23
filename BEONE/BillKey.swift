@@ -21,7 +21,7 @@ let encryptionKey = "lsx8tL9CzhlcgSrdq5n2RMetKbgzTIK8"
 
 class BillKey: BaseModel {
 
-  var name: String?
+  var desc: String?
   var cardNumber: String?
   var expiredMonth = 1
   var expiredYear = NSDate().year()
@@ -45,19 +45,19 @@ class BillKey: BaseModel {
     return "users/:userId/bill-key-infos"
   }
   
-  override func assignObject(data: AnyObject) {
-    if let data = data as? [String: AnyObject] {
-      id = data[kObjectPropertyKeyId] as? Int
-      cardNumber = data["cardNumber"] as? String
-      cardCompanyName = data["cardCompanyName"] as? String
-      if let cardType = data["cardType"] as? Int, billKeyType = BillKeyType(rawValue: cardType) {
+  override func assignObject(data: AnyObject?) {
+    if let billKey = data as? [String: AnyObject] {
+      id = billKey[kObjectPropertyKeyId] as? Int
+      cardNumber = billKey["cardNumber"] as? String
+      cardCompanyName = billKey["cardCompanyName"] as? String
+      if let cardType = billKey["cardType"] as? Int, billKeyType = BillKeyType(rawValue: cardType) {
         self.type = billKeyType
       }
-      if let name = data["description"] as? String {
-        self.name = name
-      } else if let createdAt = data["createdAt"] as? String,
+      if let desc = billKey[kObjectPropertyKeyDescription] as? String {
+        self.desc = desc
+      } else if let createdAt = billKey["createdAt"] as? String,
         createdAtString = createdAt.date()?.briefDateString() {
-          self.name = "\(createdAtString) 등록"
+          self.desc = "\(createdAtString) 등록"
       }
     }
   }
@@ -66,8 +66,8 @@ class BillKey: BaseModel {
     var parameter = [String: AnyObject]()
     parameter["cardNumber"] = encriptedString(cardNumber!)
     parameter["idNumber"] = encriptedString(idNumber!)
-    if let name = name {
-      parameter["description"] = encriptedString(name)
+    if let desc = desc {
+      parameter[kObjectPropertyKeyDescription] = encriptedString(desc)
     }
     if let password = password {
       parameter["cardPassword"] = encriptedString(password)

@@ -597,7 +597,7 @@
                                             <outlet property="pointLabel" destination="Fbk-Go-zWN" id="jh2-Hv-dUY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="130" id="8t1-vm-p4h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="anniversaryCell" rowHeight="130" id="8t1-vm-p4h" customClass="AnniveraryCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="545" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8t1-vm-p4h" id="wss-uh-6nE">
@@ -659,6 +659,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.92941176470588238" green="0.90588235294117647" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="nNe-XM-e6s" id="6jX-gi-9jv"/>
+                                            <outlet property="leftDayLabel" destination="y7J-UG-aR4" id="ghq-NZ-6Va"/>
+                                            <outlet property="nameLabel" destination="KJa-b1-xRd" id="k9S-3U-3ZJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progressingOrderCountCell" rowHeight="40" id="OWu-W3-nbY" customClass="CountCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="222" width="545" height="40"/>
@@ -707,6 +712,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="221"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListIvory" translatesAutoresizingMaskIntoConstraints="NO" id="p6l-e8-ErU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="545" height="168"/>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yv3-9r-Jbc">
                                                     <rect key="frame" x="0.0" y="168" width="545" height="53"/>
                                                     <subviews>
@@ -835,9 +843,6 @@
                                                     <color key="textColor" red="0.64705882349999999" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListIvory" translatesAutoresizingMaskIntoConstraints="NO" id="p6l-e8-ErU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="545" height="168"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eYm-Zn-w4Z" firstAttribute="leading" secondItem="8jW-Qy-dNK" secondAttribute="leading" constant="12" id="0OD-o5-13V"/>

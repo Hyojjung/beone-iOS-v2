@@ -16,7 +16,7 @@ class OrderList: BaseListModel {
     return parameter
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let orders = data as? [[String: AnyObject]] {
       list.removeAll()
       for orderObject in orders {

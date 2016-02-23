@@ -63,15 +63,11 @@ class Template: BaseModel {
     }
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let template = data as? [String: AnyObject] {
       id = template[kObjectPropertyKeyId] as? Int
-      if let style = template[kTemplatePropertyKeyStyle] as? [String: AnyObject] {
-        self.style.assignObject(style)
-      }
-      if let contentObject = template[kTemplatePropertyKeyContents] as? [String: AnyObject] {
-        content.assignObject(contentObject)
-      }
+      style.assignObject(template[kTemplatePropertyKeyStyle])
+      content.assignObject(template[kTemplatePropertyKeyContents])
     }
   }
 }

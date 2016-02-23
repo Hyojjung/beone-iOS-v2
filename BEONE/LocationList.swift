@@ -6,7 +6,7 @@ class LocationList: BaseListModel {
     return "locations"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let locationList = data as? [[String: AnyObject]] {
       list.removeAll()
       for locationObject in locationList {

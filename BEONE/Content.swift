@@ -59,7 +59,7 @@ class Content: BaseModel {
   
   // MARK: - Override Methods
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let contents = data as? [String: AnyObject] {
       // TODO: - Assign Model
       id = contents[kObjectPropertyKeyId] as? Int
@@ -95,9 +95,7 @@ class Content: BaseModel {
       if let alignment = contents[kContentsPropertyKeyAlignment] as? String {
         self.alignment = Alignment(rawValue: alignment)
       }
-      if let action = contents[kContentsPropertyKeyAction] {
-        self.action.assignObject(action)
-      }
+      self.action.assignObject(contents[kContentsPropertyKeyAction])
       
       if let padding = contents[kTemplateStylePropertyKeyPadding] as? String {
         self.padding = padding.edgeInsets()

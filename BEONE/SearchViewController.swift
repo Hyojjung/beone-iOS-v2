@@ -166,13 +166,13 @@ extension SearchViewController: UITableViewDataSource {
     if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
         cell.configureCell(tagList.name,
-          subTitle: tagList.subTitle,
+          subTitle: tagList.desc,
           searchValues: tagList.list,
           selectedSearchValueIds: selectedTagIds,
           delegate: self)
       } else if let productProperty = productProperty(indexPath) {
         cell.configureCell(productProperty.name,
-          subTitle: productProperty.subTitle,
+          subTitle: productProperty.desc,
           searchValues: productProperty.values,
           selectedSearchValueIds: selectedProductPropertyValueIds,
           delegate: self,
@@ -213,9 +213,9 @@ extension SearchViewController: DynamicHeightTableViewProtocol {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
-        return cell.calculatedHeight(tagList.list, subTitle: tagList.subTitle)
+        return cell.calculatedHeight(tagList.list, subTitle: tagList.desc)
       } else if let productProperty = productProperty(indexPath) {
-        return cell.calculatedHeight(productProperty.values, subTitle: productProperty.subTitle,
+        return cell.calculatedHeight(productProperty.values, subTitle: productProperty.desc,
           displayType: productProperty.displayType)
       }
     } else if cell is ProductsCountCell {

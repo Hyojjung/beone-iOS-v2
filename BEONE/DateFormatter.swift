@@ -1,15 +1,7 @@
 
 import UIKit
-//
-//enum DateComponentType: Int {
-//  case DateComponentTypeYear = 0
-//  case DateComponentTypeMonth
-//  case DateComponentTypeDay
-//  case DateComponentTypeHour
-//}
-//
+
 let kKoreanTimeZone = 9 * 60 * 60
-//let kHalfHour = 30.0
 let kNoonTime = 12
 
 extension String {
@@ -89,44 +81,38 @@ extension NSDate {
   }
   
   func orderItemSetProgressedAt() -> String? {
-    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      let dateComponents = calendar.components([.Day, .Hour, .Minute], fromDate: self, toDate: NSDate(), options: [])
-      if let dayPassed = self.dayPassed(from: NSDate()) {
-        if dayPassed == 0 {
-          if dateComponents.hour < 1 {
-            if dateComponents.minute < 1 {
-              return "방금 전"
-            }
-            return "\(dateComponents.minute)분 전"
-          } else {
-            return "\(dateComponents.hour)시간 전" // TODO: 분단위 표기?
-          }
-        } else if dayPassed == 1 {
-          return "하루 전"
-        } else if dayPassed == 2 {
-          return "이틀 전"
-        } else {
-          return "\(dayPassed)일 전"
+    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+    let dateComponents = calendar.components([.Day, .Hour, .Minute], fromDate: self, toDate: NSDate(), options: [])
+    let dayPassed = self.numberOfLeftDay(to: NSDate())
+    if dayPassed == 0 {
+      if dateComponents.hour < 1 {
+        if dateComponents.minute < 1 {
+          return "방금 전"
         }
+        return "\(dateComponents.minute)분 전"
+      } else {
+        return "\(dateComponents.hour)시간 전"
       }
+    } else if dayPassed == 1 {
+      return "어제"
+    } else if dayPassed == 2 {
+      return "이틀 전"
+    } else {
+      return "\(dayPassed)일 전"
     }
-    return nil
   }
   
-  func dayPassed(from date: NSDate) -> Int? {
-    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      let dateComponents = calendar.components([.Day, .Hour], fromDate: self, toDate: date, options: [])
-      let earlyDate = calendar.dateByAddingUnit([.Hour],
-        value: dateComponents.hour,
-        toDate: self,
-        options: [])
-      if earlyDate?.briefDateString() != self.briefDateString() {
-        return dateComponents.day + 1
-      } else {
-        return dateComponents.day
-      }
-    }
-    return nil
+  func numberOfLeftDay(to date: NSDate) -> Int {
+    let calendar = NSCalendar.currentCalendar()
+    calendar.timeZone = NSTimeZone(abbreviation: "JST")!
+    
+    var fromDate: NSDate?, toDate: NSDate?
+    
+    calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: self)
+    calendar.rangeOfUnit(.Day, startDate: &toDate, interval: nil, forDate: date)
+    
+    let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
+    return difference.day
   }
 }
 

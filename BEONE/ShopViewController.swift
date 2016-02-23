@@ -123,6 +123,6 @@ class ShopSummaryCell: UITableViewCell {
     profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
     profileImageView.makeCircleView()
     nameLabel.text = shop?.name
-    descriptionLabel.text = shop?.summary
+    descriptionLabel.text = shop?.desc
   }
 }

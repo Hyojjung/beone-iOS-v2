@@ -18,7 +18,7 @@ class ProductPropertyColorTypeValueView: SearchValueView {
       addHeightLayout(ProductPropertyViewHelper.buttonViewHeight(viewDisplayType))
       colorView.backgroundColor = searchValue.color
       nameLabel.text = searchValue.name
-      subTitleLabel.text = searchValue.subTitle
+      subTitleLabel.text = searchValue.desc
     }
   }
 }

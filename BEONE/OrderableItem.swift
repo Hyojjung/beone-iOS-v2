@@ -21,35 +21,28 @@ class OrderableItem: BaseModel {
   var productTitle: String?
   var shopName: String?
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let orderableItemset = data as? [String: AnyObject] {
       id = orderableItemset[kObjectPropertyKeyId] as? Int
-      if let availableTimeRangesObject = orderableItemset["availableTimeRanges"] {
-        availableTimeRangeList.assignObject(availableTimeRangesObject)
-      }
-      if let itemImageUrls = data["itemImageUrls"] as? [String] {
+      availableTimeRangeList.assignObject(orderableItemset["availableTimeRanges"])
+      if let itemImageUrls = orderableItemset["itemImageUrls"] as? [String] {
         self.itemImageUrls = itemImageUrls
       }
-      if let actualPrice = data["actualPrice"] as? Int {
+      if let actualPrice = orderableItemset["actualPrice"] as? Int {
         self.actualPrice = actualPrice
       }
-      if let quantity = data["quantity"] as? Int {
+      if let quantity = orderableItemset["quantity"] as? Int {
         self.quantity = quantity
       }
-      productPrice = data["productPrice"] as? Int
-      cartItemId = data["cartItemId"] as? Int
-      productImageUrl = data["productImageUrl"] as? String
-      productTitle = data["productTitle"] as? String
+      productPrice = orderableItemset["productPrice"] as? Int
+      cartItemId = orderableItemset["cartItemId"] as? Int
+      productImageUrl = orderableItemset["productImageUrl"] as? String
+      productTitle = orderableItemset["productTitle"] as? String
       
-      if let productObject = orderableItemset["product"] {
-        product.assignObject(productObject)
-      }
+      product.assignObject(orderableItemset["product"])
+      productOrderableInfo.assignObject(orderableItemset["productOrderableInfo"])
       
-      if let productOrderableInfoObject = orderableItemset["productOrderableInfo"] {
-        productOrderableInfo.assignObject(productOrderableInfoObject)
-      }
-      
-      if let selectedOptionObject = data["productOptionSets"] as? [[String: AnyObject]] {
+      if let selectedOptionObject = orderableItemset["productOptionSets"] as? [[String: AnyObject]] {
         selectedOption = ProductOptionSetList()
         selectedOption?.assignObject(selectedOptionObject)
       }

@@ -11,7 +11,7 @@ class OrderDeliveryInfo: BaseModel {
   var deliveryTrackingUrl: String?
   var traceDisplayType = TraceDisplayType.None
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject],
       orderDeliveryTraces = data["orderDeliveryTraces"] as? [[String: AnyObject]] {
         for orderDeliveryTrace in orderDeliveryTraces {

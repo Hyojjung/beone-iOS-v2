@@ -10,7 +10,7 @@ class BillKeyList: BaseListModel {
     return "bill-key-infos"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let billKeys = data as? [[String: AnyObject]] {
       list.removeAll()
       for billKeyObject in billKeys {

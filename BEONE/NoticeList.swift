@@ -6,7 +6,7 @@ class NoticeList: BaseListModel {
     return "notices"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let notices = data as? [[String: AnyObject]] {
       list.removeAll()
       for noticeObject in notices {

@@ -9,9 +9,8 @@ class AddressList: BaseListModel {
     return "users/delivery-destinations"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let addressList = data as? [[String: AnyObject]] {
-      print(addressList)
       list.removeAll()
       for addressObject in addressList {
         let address = Address()

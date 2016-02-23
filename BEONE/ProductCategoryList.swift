@@ -6,7 +6,7 @@ class ProductCategoryList: BaseListModel {
     return "product-categories"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [[String: AnyObject]] {
       list.removeAll()
       for categoryObject in data {

@@ -6,12 +6,14 @@ class DeliveryType: BaseModel {
   var isReservable = false
   var thumbnailImageUrl: String?
   
-  override func assignObject(data: AnyObject) {
-    thumbnailImageUrl = data["thumbnailImageUrl"] as? String
-    id = data[kObjectPropertyKeyId] as? Int
-    name = data["name"] as? String
-    if let isReservable = data["isReservable"] as? Bool {
-      self.isReservable = isReservable
+  override func assignObject(data: AnyObject?) {
+    if let deliveryType = data as? [String: AnyObject] {
+      thumbnailImageUrl = deliveryType["thumbnailImageUrl"] as? String
+      id = deliveryType[kObjectPropertyKeyId] as? Int
+      name = deliveryType[kObjectPropertyKeyName] as? String
+      if let isReservable = deliveryType["isReservable"] as? Bool {
+        self.isReservable = isReservable
+      }
     }
   }
 }

@@ -45,7 +45,7 @@ class PaymentInfo: BaseModel {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       id = paymentInfo[kObjectPropertyKeyId] as? Int
@@ -73,9 +73,7 @@ class PaymentInfo: BaseModel {
       title = paymentInfo["title"] as? String
       orderId = paymentInfo["orderId"] as? Int
 
-      if let paymentType = paymentInfo["paymentType"] as? [String: AnyObject] {
-        self.paymentType.assignObject(paymentType)
-      }
+      paymentType.assignObject(paymentInfo["paymentType"])
       vbankIssuerName = paymentInfo["vbankIssuerName"] as? String
       vbankIssuerBankName = paymentInfo["vbankIssuerBankName"] as? String
       vbankIssuerAccount = paymentInfo["vbankIssuerAccount"] as? String

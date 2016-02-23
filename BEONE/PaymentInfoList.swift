@@ -5,7 +5,7 @@ class PaymentInfoList: BaseListModel {
   
   var mainPaymentInfo: PaymentInfo?
 
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let paymentInfoObjects = data as? [[String: AnyObject]] {
       list.removeAll()
       for paymentInfoObject in paymentInfoObjects {

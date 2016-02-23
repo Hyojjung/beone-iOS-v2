@@ -18,7 +18,7 @@ class Inquiry: BaseModel {
   var userId: Int?
   var productId: Int?
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let inquiry = data as? [String: AnyObject] {
       id = inquiry[kObjectPropertyKeyId] as? Int
       userId = inquiry["userId"] as? Int

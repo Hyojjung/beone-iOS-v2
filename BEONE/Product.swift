@@ -62,7 +62,7 @@ class Product: BaseModel {
     return "products"
   }
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let product = data as? [String: AnyObject] {
       id = product[kObjectPropertyKeyId] as? Int
       mainImageUrl = product[kProductPropertyKeyMainImageUrl] as? String
@@ -100,12 +100,8 @@ class Product: BaseModel {
       }
       assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
       assignProductDetails(product[kProductPropertyKeyProductDetails])
-      if let shopObject = product[kProductPropertyKeyShop]{
-        shop.assignObject(shopObject)
-      }
-      if let productOptionSetObjects = product["productOptionSets"] as? [[String: AnyObject]] {
-        productOptionSets.assignObject(productOptionSetObjects)
-      }
+      shop.assignObject(product[kProductPropertyKeyShop])
+      productOptionSets.assignObject(product["productOptionSets"])
     }
   }
   

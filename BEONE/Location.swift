@@ -1,16 +1,17 @@
 
 import UIKit
 
-private let kLocationPropertyKeyName = "name"
 private let kLocationValidationPropertyKeyIsValid = "isValid"
 
 class Location: BaseModel {
   
   var name: String?
   
-  override func assignObject(data: AnyObject) {
-    id = data[kObjectPropertyKeyId] as? Int
-    name = data[kLocationPropertyKeyName] as? String
+  override func assignObject(data: AnyObject?) {
+    if let location = data as? [String: AnyObject] {
+      id = location[kObjectPropertyKeyId] as? Int
+      name = location[kObjectPropertyKeyName] as? String
+    }
   }
   
   func validate(jibunAddress: String?) {

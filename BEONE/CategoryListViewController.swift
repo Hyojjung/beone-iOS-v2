@@ -79,7 +79,7 @@ class CategoryCell: UITableViewCell {
   func configureCell(category: ProductCategory) {
     categoryButton.tag = category.id!
     nameLabel.text = category.name
-    summaryLabel.text = category.summary
+    summaryLabel.text = category.desc
     setLazyLoaingImage(firstProductImageView, productList: category.products, index: 0)
     setLazyLoaingImage(secondProductImageView, productList: category.products, index: 1)
     setLazyLoaingImage(thirdProductImageView, productList: category.products, index: 2)

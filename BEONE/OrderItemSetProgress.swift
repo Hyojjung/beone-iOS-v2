@@ -13,9 +13,9 @@ class OrderItemSetProgress: BaseModel {
   var progressedAt: String?
   var progressStatus = ProgressType.Waiting
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {
-      name = data["name"] as? String
+      name = data[kObjectPropertyKeyName] as? String
       if let progressTypeString = data["progressType"] as? String {
         self.progressType = ProgressType(rawValue: progressTypeString)
       }

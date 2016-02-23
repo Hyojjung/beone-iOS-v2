@@ -27,7 +27,7 @@ class ShopTemplateCell: TemplateCell {
     if let shop = shop {
       shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
       nameLabel.text = shop.name
-      descriptionLabel.text = shop.summary
+      descriptionLabel.text = shop.desc
       shopId = shop.id
     }
     // TODO: Product Count

@@ -32,7 +32,7 @@ class Action: BaseModel {
 
   // MARK: - BaseModel Methods
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     if let action = data as? [String: AnyObject] {
       if let type = action[kActionPropertyKeyType] as? String {
         self.type = ActionType(rawValue: type)

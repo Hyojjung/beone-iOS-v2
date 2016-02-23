@@ -6,10 +6,8 @@ class OrderHelper: NSObject {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/orderable",
         parameter: ["cartItemIds": order.cartItemIds], success: { (result) -> Void in
-          if let data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-            order.assignObject(data)
-            getSuccess()
-          }
+          order.assignObject(result[kNetworkResponseKeyData])
+          getSuccess()
         }, failure: nil)
     }
   }
@@ -75,11 +73,8 @@ class OrderHelper: NSObject {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/available-coupons",
         parameter: ["cartItemIds": cartItemIds],
         success: { (result) -> Void in
-          if let result = result as? [String: AnyObject],
-            data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
-            couponList.assignObject(data)
-              getSuccess()
-          }
+          couponList.assignObject(result[kNetworkResponseKeyData])
+          getSuccess()
         }, failure: nil)
     }
   }

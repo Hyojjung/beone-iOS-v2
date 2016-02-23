@@ -119,6 +119,6 @@ class ProductShopCell: ProductDetailCell {
     super.configureCell(product, indexPath: indexPath)
     shopImageView.setLazyLoaingImage(product.shop.backgroundImageUrl)
     shopNameLabel.text = product.shop.name
-    shopSummaryLabel.text = product.shop.summary
+    shopSummaryLabel.text = product.shop.desc
   }
 }

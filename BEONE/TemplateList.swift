@@ -4,7 +4,7 @@ import UIKit
 class TemplateList: BaseListModel {
   var filterdTemplates = [Template]()
   
-  override func assignObject(data: AnyObject) {
+  override func assignObject(data: AnyObject?) {
     list.removeAll()
     if let templateList = data as? [[String: AnyObject]] {
       for templateObject in templateList {

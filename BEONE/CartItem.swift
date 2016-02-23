@@ -9,22 +9,18 @@ class CartItem: BaseModel {
   var product = Product()
   var productOrderableInfo = ProductOrderableInfo()
   var selectedOption: ProductOptionSetList?
-
+  
   // MARK: - BaseModel Methods (Fetch)
   
-  override func assignObject(data: AnyObject) {
-    if let data = data as? [String: AnyObject] {
-      id = data[kObjectPropertyKeyId] as? Int
-      if let qauntity = data[kCartItemPropertyKeyQuantity] as? Int {
+  override func assignObject(data: AnyObject?) {
+    if let cartItem = data as? [String: AnyObject] {
+      id = cartItem[kObjectPropertyKeyId] as? Int
+      if let qauntity = cartItem[kCartItemPropertyKeyQuantity] as? Int {
         self.quantity = qauntity
       }
-      if let productObject = data[kCartItemPropertyKeyProduct] {
-        product.assignObject(productObject)
-      }
-      if let productOrderableInfoObject = data[kCartItemPropertyKeyProductOrderableInfo] {
-        productOrderableInfo.assignObject(productOrderableInfoObject)
-      }
-      if let selectedOptionObject = data["productOptionSets"] as? [[String: AnyObject]] {
+      product.assignObject(cartItem[kCartItemPropertyKeyProduct])
+      productOrderableInfo.assignObject(cartItem[kCartItemPropertyKeyProductOrderableInfo])
+      if let selectedOptionObject = cartItem["productOptionSets"] as? [[String: AnyObject]] {
         if !selectedOptionObject.isEmpty {
           selectedOption = ProductOptionSetList()
           selectedOption?.assignObject(selectedOptionObject)

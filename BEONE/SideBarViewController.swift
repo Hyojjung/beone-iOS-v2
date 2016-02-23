@@ -11,6 +11,7 @@ class SideBarViewController: BaseTableViewController {
     case Buttons
     case ProgressingOrderCount
     case LatestOrderDeliveryItemSet
+    case Anniversary
     case RecentProductsCount
     case RecentProduct
     case Count
@@ -21,6 +22,7 @@ class SideBarViewController: BaseTableViewController {
     "buttonsCell",
     "progressingOrderCountCell",
     "orderItemSetCell",
+    "anniversaryCell",
     "recentProductsCountCell",
     "recentProductCell"]
   
@@ -83,6 +85,8 @@ extension SideBarViewController: UITableViewDataSource {
       }
     } else if let cell = cell as? SideBarProductCell {
       cell.configureCell(sideBarViewContents.recentProducts.list[indexPath.row] as! Product)
+    } else if let cell = cell as? AnniveraryCell {
+      cell.organizeCell(sideBarViewContents.anniversary!)
     }
     return cell
   }
@@ -98,6 +102,8 @@ extension SideBarViewController: UITableViewDataSource {
         return 0
     } else if section == SideBarTableViewSection.RecentProduct.rawValue {
       return sideBarViewContents.recentProducts.list.count
+    } else if section == SideBarTableViewSection.Anniversary.rawValue && sideBarViewContents.anniversary == nil {
+      return 0
     }
     return 1
   }
@@ -118,6 +124,8 @@ extension SideBarViewController: DynamicHeightTableViewProtocol {
       return 221
     case .RecentProduct:
       return 84
+    case .Anniversary:
+      return 130
     default:
       return nil
     }
@@ -266,5 +274,18 @@ class SideBarProductCell: UITableViewCell {
     productNameLabel.text = product.title
     productActualPriceLabel.text = product.actualPrice.priceNotation(.English)
     productPriceLabel.attributedText = product.priceAttributedString()
+  }
+}
+
+class AnniveraryCell: UITableViewCell {
+  
+  @IBOutlet weak var leftDayLabel: UILabel!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var descriptionLabel: UILabel!
+
+  func organizeCell(anniversary: Anniversary) {
+    leftDayLabel.text = anniversary.leftDayString()
+    nameLabel.text = anniversary.name
+    descriptionLabel.text = anniversary.desc
   }
 }
