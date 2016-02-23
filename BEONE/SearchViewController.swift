@@ -39,6 +39,11 @@ class SearchViewController: BaseTableViewController {
   var minPrice = kDefaultMinPrice
   var maxPrice = kDefaultMaxPrice
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+  
   override func setUpData() {
     super.setUpData()
     productPropertyList.get { () -> Void in
@@ -57,7 +62,8 @@ class SearchViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
-    self.tableView.dynamicHeightDelgate = self
+    tableView.dynamicHeightDelgate = self
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
   
   func setUpProductList() {
@@ -142,6 +148,12 @@ extension SearchViewController {
         }
         self.tableView.reloadData()
     })
+  }
+}
+
+extension SearchViewController: SideBarPositionMoveDelegate {
+  func handlemovePosition() {
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }
 

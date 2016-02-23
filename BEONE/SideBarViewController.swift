@@ -1,6 +1,10 @@
 
 import UIKit
 
+protocol SideBarPositionMoveDelegate {
+  func handlemovePosition()
+}
+
 class SideBarViewController: BaseTableViewController {
   
   // MARK: - Constant
@@ -27,16 +31,28 @@ class SideBarViewController: BaseTableViewController {
     "recentProductCell"]
   
   var sideBarViewContents = SideBarViewContents()
+  lazy var sideBarGestureView: UIView = {
+    let sideBarGestureView = UIView()
+    sideBarGestureView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+    return sideBarGestureView
+  }()
   
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    revealViewController().delegate = self
   }
   
   override func setUpData() {
     super.setUpData()
     sideBarViewContents.get { () -> Void in
       self.tableView.reloadData()
+    }
+  }
+  
+  @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
+    if let kakaoPlus = BEONEManager.globalViewContents.kakaoPlus {
+      UIApplication.sharedApplication().openURL(kakaoPlus.url())
     }
   }
   
@@ -66,6 +82,24 @@ class SideBarViewController: BaseTableViewController {
   }
 }
 
+extension SideBarViewController: SWRevealViewControllerDelegate {
+  func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    if let navi = revealController.frontViewController as? UINavigationController,
+      topViewController = navi.topViewController as? UITabBarController,
+      selectedViewController = topViewController.selectedViewController {
+        if position == .Right {
+          sideBarGestureView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+          selectedViewController.view.addSubViewAndEdgeLayout(sideBarGestureView)
+        } else if position == .Left {
+          sideBarGestureView.removeFromSuperview()
+          if let selectedViewController = selectedViewController as? SideBarPositionMoveDelegate {
+            selectedViewController.handlemovePosition()
+          }
+        }
+    }
+  }
+}
+
 extension SideBarViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return SideBarTableViewSection.Count.rawValue
@@ -86,7 +120,9 @@ extension SideBarViewController: UITableViewDataSource {
     } else if let cell = cell as? SideBarProductCell {
       cell.configureCell(sideBarViewContents.recentProducts.list[indexPath.row] as! Product)
     } else if let cell = cell as? AnniveraryCell {
-      cell.organizeCell(sideBarViewContents.anniversary!)
+      cell.setUpCell(sideBarViewContents.anniversary!)
+    } else if let cell = cell as? ButtonsCell {
+      cell.setUpCell(sideBarViewContents)
     }
     return cell
   }
@@ -282,10 +318,19 @@ class AnniveraryCell: UITableViewCell {
   @IBOutlet weak var leftDayLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-
-  func organizeCell(anniversary: Anniversary) {
+  
+  func setUpCell(anniversary: Anniversary) {
     leftDayLabel.text = anniversary.leftDayString()
     nameLabel.text = anniversary.name
     descriptionLabel.text = anniversary.desc
+  }
+}
+
+class ButtonsCell: UITableViewCell {
+  
+  @IBOutlet weak var anniversariesCountLabel: UILabel!
+  
+  func setUpCell(sideBarViewContents: SideBarViewContents) {
+    anniversariesCountLabel.text = "\(sideBarViewContents.userAnniversariesCount)"
   }
 }

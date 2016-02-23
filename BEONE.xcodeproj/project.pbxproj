@@ -108,6 +108,7 @@
 		62F2F5251C70F2F800D96964 /* SpeedOrderNoProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F2F5241C70F2F800D96964 /* SpeedOrderNoProductView.xib */; };
 		62F2F5271C7BF0CA00D96964 /* Anniversary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2F5261C7BF0CA00D96964 /* Anniversary.swift */; };
 		62F2F52B1C7C04BC00D96964 /* Coupon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F2F52A1C7C04BC00D96964 /* Coupon.storyboard */; };
+		62F7EA3A1C7C31A100587C14 /* GlobalViewContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA391C7C31A100587C14 /* GlobalViewContents.swift */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
@@ -384,6 +385,7 @@
 		62F2F5241C70F2F800D96964 /* SpeedOrderNoProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedOrderNoProductView.xib; sourceTree = "<group>"; };
 		62F2F5261C7BF0CA00D96964 /* Anniversary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anniversary.swift; sourceTree = "<group>"; };
 		62F2F52A1C7C04BC00D96964 /* Coupon.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Coupon.storyboard; sourceTree = "<group>"; };
+		62F7EA391C7C31A100587C14 /* GlobalViewContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalViewContents.swift; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
@@ -679,6 +681,7 @@
 		62E5CF2F1BDDEB4C00A99F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62F7EA381C7C317200587C14 /* ViewContents */,
 				734241701BFC44ED00BE21F5 /* BEONEManager.swift */,
 				73239A7C1C4A9E6C001FBCBD /* Cart */,
 				7311234E1C4637E900ABD75B /* Search */,
@@ -694,7 +697,6 @@
 				62EFE9361BE07AA90035B2DE /* BaseModel.swift */,
 				73EA254A1BE5FA840085382A /* BaseListModel.swift */,
 				73445E751BF9AF7C008BE2AC /* Version.swift */,
-				6286FB601C560BA400845BE4 /* SideBarViewContents.swift */,
 				6286FB6E1C56468C00845BE4 /* Notice.swift */,
 				6286FB701C5646A300845BE4 /* NoticeList.swift */,
 				6286FB741C5679B400845BE4 /* Help.swift */,
@@ -905,6 +907,15 @@
 				62F2F5241C70F2F800D96964 /* SpeedOrderNoProductView.xib */,
 			);
 			name = SpeedOrder;
+			sourceTree = "<group>";
+		};
+		62F7EA381C7C317200587C14 /* ViewContents */ = {
+			isa = PBXGroup;
+			children = (
+				6286FB601C560BA400845BE4 /* SideBarViewContents.swift */,
+				62F7EA391C7C31A100587C14 /* GlobalViewContents.swift */,
+			);
+			name = ViewContents;
 			sourceTree = "<group>";
 		};
 		62FC6E951BDF43CB0071E1B1 /* Signing */ = {
@@ -1578,6 +1589,7 @@
 				73DF1D8D1C4361C700DB3550 /* ProductPropertyValue.swift in Sources */,
 				7309D74D1BFEF36700F9761A /* CartItem.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* LandingViewController.swift in Sources */,
+				62F7EA3A1C7C31A100587C14 /* GlobalViewContents.swift in Sources */,
 				73398B0D1C0DD16000F57D4A /* CartCells.swift in Sources */,
 				73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */,
 				6286FB651C56443F00845BE4 /* MoreViewController.swift in Sources */,

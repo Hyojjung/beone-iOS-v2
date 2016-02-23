@@ -20,12 +20,11 @@ class MainTabViewController: UITabBarController {
     BEONEManager.sharedLocationList.get { () -> Void in
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
+    BEONEManager.globalViewContents.get()
     
     if !MyInfo.sharedMyInfo().isUser() {
       signingShowViewController = nil
-      if isWaitingSigning {
-        popView()
-      } else {
+      if !isWaitingSigning {
         isWaitingSigning = true
       }
     } else if let signingShowViewController = signingShowViewController {

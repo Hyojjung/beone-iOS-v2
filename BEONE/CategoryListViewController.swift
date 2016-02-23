@@ -5,6 +5,11 @@ class CategoryListViewController: BaseTableViewController {
   
   var categoryList = ProductCategoryList()
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -21,6 +26,12 @@ class CategoryListViewController: BaseTableViewController {
     if let category = categoryList.model(sender.tag) as? ProductCategory {
       // TODO: Category List 로 가기
     }
+  }
+}
+
+extension CategoryListViewController: SideBarPositionMoveDelegate {
+  func handlemovePosition() {
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }
 

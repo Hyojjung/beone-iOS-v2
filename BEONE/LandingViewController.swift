@@ -7,18 +7,23 @@ class LandingViewController: BaseTableViewController {
   
   var templateList = TemplateList()
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+  
   // MARK: - BaseViewController
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
   
   override func setUpData() {
     super.setUpData()
     templateList.get { () -> Void in
       self.tableView.reloadData()
     }
-  }
-  
-  override func setUpView() {
-    super.setUpView()
-    tableView.dynamicHeightDelgate = self
   }
   
   override func addObservers() {
@@ -33,6 +38,12 @@ class LandingViewController: BaseTableViewController {
   
   @IBAction func showSpeedOrder() {
     showUserViewController("SpeedOrder", viewIdentifier: "SpeedOrderView")
+  }
+}
+
+extension LandingViewController: SideBarPositionMoveDelegate {
+  func handlemovePosition() {
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }
 

@@ -4,6 +4,7 @@ import UIKit
 class SideBarViewContents: BaseModel {
   
   var progressingOrderCount = 0
+  var userAnniversariesCount = 0
   var orderDeliveryItemSets = [OrderableItemSet]()
   var recentProducts = ProductList()
   var anniversary: Anniversary?
@@ -24,6 +25,9 @@ class SideBarViewContents: BaseModel {
         }
       }
       
+      if let userAnniversariesCount = sideBarViewContents["userAnniversariesCount"] as? Int {
+        self.userAnniversariesCount = userAnniversariesCount
+      }
       if let progressingOrderCount = sideBarViewContents["progressingOrderCount"] as? Int {
         self.progressingOrderCount = progressingOrderCount
       }

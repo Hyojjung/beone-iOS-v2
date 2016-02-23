@@ -12,6 +12,11 @@ class ShopsViewController: BaseTableViewController {
   
   private let shopList = ShopList()
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+  
   // MARK: - BaseViewController Methods
   
   override func setUpView() {
@@ -27,9 +32,13 @@ class ShopsViewController: BaseTableViewController {
   }
 }
 
-// MARK: - UITableViewDataSource
+extension ShopsViewController: SideBarPositionMoveDelegate {
+  func handlemovePosition() {
+    tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+}
 
-extension ShopsViewController {
+extension ShopsViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }

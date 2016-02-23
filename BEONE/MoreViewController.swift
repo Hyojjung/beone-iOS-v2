@@ -2,7 +2,12 @@
 import UIKit
 
 class MoreViewController: BaseViewController {
-
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+  }
+  
   @IBAction func showProfileViewButtonTapped() {
     showViewController(kProfileStoryboardName, viewIdentifier: kProfileViewViewIdentifier)
   }
@@ -24,5 +29,11 @@ class MoreViewController: BaseViewController {
   }
   @IBAction func showOrdersViewButtonTapped() {
     showUserViewController("OrderList", viewIdentifier: "OrdersView")
+  }
+}
+
+extension MoreViewController: SideBarPositionMoveDelegate {
+  func handlemovePosition() {
+    view.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }

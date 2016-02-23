@@ -10,18 +10,16 @@ let kAppPropertyKeyBOVersion = "version"
 
 class Version: BaseModel {
   var needUpdate = false
-  var version: String?
-  
-  override init() {
-    super.init()
-    if let infoDictionary = infoDictionary() {
-      version = infoDictionary[kCFBundleShortVersionString] as? String
+  var version: String? = {
+    if let infoDictionary = NSBundle.mainBundle().infoDictionary {
+      return infoDictionary[kCFBundleShortVersionString] as? String
     }
-  }
+    return nil
+  }()
   
   override func get(getSuccess: (() -> Void)? = nil) {
     let url: String
-    if let appID = infoDictionary()?[kBundleIdentifier] {
+    if let appID = NSBundle.mainBundle().infoDictionary?[kBundleIdentifier] {
       url = "http://itunes.apple.com/lookup?bundleId=\(appID)"
     } else {
       url = "noVersion"
@@ -48,8 +46,5 @@ class Version: BaseModel {
       }
       getSuccess?()
       }, failure: nil)
-  }
-  func infoDictionary() -> [String : AnyObject]? {
-    return NSBundle.mainBundle().infoDictionary
   }
 }

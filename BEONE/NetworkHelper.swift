@@ -195,7 +195,7 @@ class NetworkHelper: NSObject {
 // MARK: - CRUD Methods
 
 extension NetworkHelper {
-  static func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+  static func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
     #if DEBUG
       print("GET \(url)")
     #endif
