@@ -55,7 +55,7 @@ class BillKeysViewController: BaseTableViewController {
     if let paymentInfo = paymentInfo {
       paymentInfo.paymentType.id = PaymentTypeId.Card.rawValue
       paymentInfo.billKeyInfoId = self.selectedBillKey?.id
-      paymentInfo.post({ (result) -> Void in
+      paymentInfo.post({ (_) -> Void in
         self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
         }, postFailure: { (_) -> Void in
           self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])

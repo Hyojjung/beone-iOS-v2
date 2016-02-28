@@ -3271,7 +3271,7 @@ IAo
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="go1-Om-c1c">
-                                                    <rect key="frame" x="15" y="22" width="570" height="74"/>
+                                                    <rect key="frame" x="15" y="22" width="570" height="134"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="74" id="4cZ-6r-UeR"/>
@@ -3282,32 +3282,14 @@ IAo
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W4-8a-vtZ">
-                                                    <rect key="frame" x="0.0" y="118" width="600" height="60"/>
-                                                    <accessibility key="accessibilityConfiguration" label="orderButton"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="60" id="scb-fi-ZXF"/>
-                                                    </constraints>
-                                                    <state key="normal" title="주문하기" backgroundImage="btnRectPcolor">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted" title="주문하기" backgroundImage="btnRectPcolorPressed"/>
-                                                    <connections>
-                                                        <action selector="orderButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="iaP-cv-TUv"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.32156862745098036" green="0.32156862745098036" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="go1-Om-c1c" firstAttribute="top" secondItem="Oxi-5T-vI9" secondAttribute="top" constant="22" id="9oL-dg-gYR"/>
                                                 <constraint firstAttribute="bottom" secondItem="go1-Om-c1c" secondAttribute="bottom" constant="22" id="BIX-JQ-tg2"/>
                                                 <constraint firstAttribute="trailing" secondItem="go1-Om-c1c" secondAttribute="trailing" constant="15" id="UJp-Bb-nmg"/>
-                                                <constraint firstItem="2W4-8a-vtZ" firstAttribute="leading" secondItem="Oxi-5T-vI9" secondAttribute="leading" id="VXK-Ws-uyw"/>
                                                 <constraint firstItem="go1-Om-c1c" firstAttribute="leading" secondItem="Oxi-5T-vI9" secondAttribute="leading" constant="15" id="Vm2-a4-WBk"/>
-                                                <constraint firstAttribute="bottom" secondItem="2W4-8a-vtZ" secondAttribute="bottom" id="Yy8-F2-3JX"/>
-                                                <constraint firstAttribute="trailing" secondItem="2W4-8a-vtZ" secondAttribute="trailing" id="aaf-ud-Eed"/>
-                                                <constraint firstItem="2W4-8a-vtZ" firstAttribute="top" secondItem="go1-Om-c1c" secondAttribute="bottom" constant="22" id="kr5-Og-BvU"/>
+                                                <constraint firstAttribute="bottom" secondItem="go1-Om-c1c" secondAttribute="bottom" constant="22" id="b6Q-q8-WIK"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -3319,6 +3301,38 @@ IAo
                                         <connections>
                                             <outlet property="paymentTypeView" destination="go1-Om-c1c" id="qzr-3u-T5h"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonCell" rowHeight="60" id="xQS-Rx-Xjy">
+                                        <rect key="frame" x="0.0" y="847" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQS-Rx-Xjy" id="OET-if-h5Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKx-Se-10m">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                                    <accessibility key="accessibilityConfiguration" label="orderButton"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="60" id="9h5-wu-gWQ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="주문하기" backgroundImage="btnRectPcolor">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted" title="주문하기" backgroundImage="btnRectPcolorPressed"/>
+                                                    <connections>
+                                                        <action selector="orderButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="iGi-oo-hsL"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="eKx-Se-10m" secondAttribute="bottom" id="MiU-Lx-cTu"/>
+                                                <constraint firstAttribute="trailing" secondItem="eKx-Se-10m" secondAttribute="trailing" id="Wgm-Yy-5MF"/>
+                                                <constraint firstItem="eKx-Se-10m" firstAttribute="leading" secondItem="OET-if-h5Z" secondAttribute="leading" id="wbM-by-BHD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

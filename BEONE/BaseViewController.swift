@@ -71,6 +71,7 @@ class BaseViewController: UIViewController {
       if let optionViewController = optionViewController as? OptionViewController {
         optionViewController.product.id = selectedProductId
         optionViewController.isModifing = isModifing
+        optionViewController.isOrdering = rightOrdering
         if let selectedCartItem = selectedCartItem {
           optionViewController.cartItems.append(selectedCartItem)
         }

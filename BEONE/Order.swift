@@ -157,6 +157,7 @@ class Order: BaseModel {
     parameter["deliveryMemo"] = deliveryMemo
     parameter["cartItemIds"] = cartItemIds
     parameter["price"] = price
+    parameter["point"] = usedPoint
     parameter["discountPrice"] = discountPrice
     parameter["orderDeliveryItemSets"] = orderDeliveryItemSetParameter()
     return parameter

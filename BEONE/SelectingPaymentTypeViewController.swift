@@ -19,6 +19,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     case PriceTitle
     case Price
     case PaymentTypes
+    case Button
     case Count
   }
   
@@ -29,7 +30,8 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     "discountSection",
     "priceTitleCell",
     "priceCell",
-    "paymentTypeCell"]
+    "paymentTypeCell",
+    "buttonCell"]
   
   private let kDiscountWaySelections = ["선택안함", "포인트", "쿠폰"]
   
@@ -41,8 +43,6 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   var selectedPaymentTypeId: Int?
   var point = 0
   var selectedCoupont: Coupon?
-  var orderActualPrice: Int?
-  var orderDiscountPrice: Int?
   
   override func setUpView() {
     super.setUpView()
@@ -78,16 +78,35 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   }
   
   @IBAction func orderButtonTapped() {
-    if let paymentTypeId = selectedPaymentTypeId, paymentTypeList = paymentTypeList {
-      self.order.post({ (result) -> Void in
+    if order.price == order.discountPrice {
+      order.post({ (result) -> Void in
+        if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+          self.order.assignObject(data)
+          for paymentInfo in self.order.paymentInfoList.list as! [PaymentInfo] {
+            if paymentInfo.isMainPayment {
+              paymentInfo.paymentType.id = 1001
+              paymentInfo.post({ (_) -> Void in
+                self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
+                }, postFailure: { (_) -> Void in
+                  self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+              })
+            }
+          }
+        }
+        
+        }, postFailure: { (_) -> Void in
+          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+      })
+    } else if let paymentTypeId = selectedPaymentTypeId, paymentTypeList = paymentTypeList {
+      order.post({ (result) -> Void in
         if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
           self.order.assignObject(data)
           if paymentTypeId == PaymentTypeId.Card.rawValue {
             self.showBillKeysView(self.order, paymentInfoId: (self.order.paymentInfoList.mainPaymentInfo?.id)!)
           } else if let selectedPaymentType = paymentTypeList.model(paymentTypeId) as? PaymentType {
-              if selectedPaymentType.isWebViewTransaction {
-                self.showOrderWebView(self.order, paymentTypeId: selectedPaymentType.id!,
-                  paymentInfoId: self.order.paymentInfoList.mainPaymentInfo?.id)
+            if selectedPaymentType.isWebViewTransaction {
+              self.showOrderWebView(self.order, paymentTypeId: selectedPaymentType.id!,
+                paymentInfoId: self.order.paymentInfoList.mainPaymentInfo?.id)
             }
           }
         }
@@ -109,12 +128,10 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
         showAlertView(NSLocalizedString("use more 100 unit point", comment: "alert title"))
       } else if point > order.actualPrice {
         showAlertView(NSLocalizedString("use less than total price", comment: "alert title"))
+      } else if order.actualPrice - point < 1000 && order.actualPrice - point > 0 {
+        showAlertView("결제금액은 1000원 이상이어야 합니다.")
       } else {
-        OrderHelper.fetchCalculatedPrice(order.actualPrice, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
-          self.orderActualPrice = actualPrice
-          self.orderDiscountPrice = discountPrice
-          self.tableView.reloadData()
-        })
+        self.setUpPrices(self.point)
       }
     }
   }
@@ -133,8 +150,20 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       doneBlock: { (_, index, _) -> Void in
         if let discountWay = DiscountWay(rawValue: index) {
           self.discountWay = discountWay
-          self.tableView.reloadData()
+          if discountWay == .None {
+            self.setUpPrices()
+          } else if discountWay == .Point {
+            self.setUpPrices(self.point)
+          }
         }
+    })
+  }
+  
+  private func setUpPrices(point: Int = 0) {
+    OrderHelper.fetchCalculatedPrice(order.actualPrice, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
+      self.order.discountPrice = discountPrice
+      self.order.usedPoint = point
+      self.tableView.reloadData()
     })
   }
 }
@@ -162,6 +191,9 @@ extension SelectingPaymentTypeViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == SelectingPaymentTypeTableViewSection.OrderOrderableItem.rawValue {
       return order.cartItemIds.count
+    } else if section == SelectingPaymentTypeTableViewSection.PaymentTypes.rawValue &&
+      order.price == order.discountPrice {
+      return 0
     }
     return 1
   }
@@ -211,6 +243,8 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewProtocol {
       return 22
     } else if cell.reuseIdentifier == "priceCell" {
       return 231
+    } else if cell.reuseIdentifier == "buttonCell" {
+      return 60
     }
     return nil
   }
@@ -219,7 +253,7 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewProtocol {
     if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypeList?.list as? [PaymentType] {
       cell.configureCell(paymentTypes, selectedPaymentTypeId: selectedPaymentTypeId, delegate: self)
     } else if let cell = cell as? OrderPriceCell {
-      cell.configureCell(order, actualPrice: orderActualPrice, discountPrice: orderDiscountPrice, discountWay: discountWay)
+      cell.configureCell(order, discountWay: discountWay)
     } else if let cell = cell as? DiscountWayCell {
       cell.configureCell(kDiscountWaySelections[discountWay.rawValue])
     } else if let cell = cell as? PointCell {
@@ -252,7 +286,7 @@ class PaymentTypeCell: UITableViewCell {
   }
   
   func calculatedHeight(paymentTypes: [PaymentType]) -> CGFloat {
-    let height = 104 + paymentTypes.count * Int(kPaymentTypeButtonHeight) + (paymentTypes.count - 1) * Int(kPaymentTypeButtonInterval)
+    let height = 44 + paymentTypes.count * Int(kPaymentTypeButtonHeight) + (paymentTypes.count - 1) * Int(kPaymentTypeButtonInterval)
     return CGFloat(height)
   }
 }
@@ -265,28 +299,29 @@ class OrderPriceCell: UITableViewCell {
   @IBOutlet weak var usedCouponLabel: UILabel!
   @IBOutlet weak var totalPriceLabel: UILabel!
   
-  func configureCell(order: Order, actualPrice: Int?, discountPrice: Int?, discountWay: DiscountWay) {
+  func configureCell(order: Order, discountWay: DiscountWay) {
     
     var deliveryPrice = 0
     for orderableItemSet in order.orderableItemSets {
       deliveryPrice += orderableItemSet.deliveryPrice
     }
-    let productsPrice = order.actualPrice - deliveryPrice
+    var productsPrice = 0
+    for orderableItemSet in order.orderableItemSets {
+      for orderableItem in orderableItemSet.orderableItems {
+        productsPrice += orderableItem.product.actualPrice
+      }
+    }
     productsPriceLabel.text = productsPrice.priceNotation(.Korean)
     deliveryPriceLabel.text = deliveryPrice.priceNotation(.KoreanFreeNotation)
     
-    if let actualPrice = actualPrice {
-      totalPriceLabel.text = actualPrice.priceNotation(.Korean)
-    } else {
-      totalPriceLabel.text = order.actualPrice.priceNotation(.Korean)
-    }
+    totalPriceLabel.text = (order.price - order.discountPrice).priceNotation(.Korean)
     
     usedPointLabel.text = "0 원"
     usedCouponLabel.text = "0 원"
     if discountWay == .Point {
-      usedPointLabel.text = discountPrice?.priceNotation(.Korean)
+      usedPointLabel.text = order.discountPrice.priceNotation(.Korean)
     } else if discountWay == .Coupon {
-      usedCouponLabel.text = discountPrice?.priceNotation(.Korean)
+      usedCouponLabel.text = order.discountPrice.priceNotation(.Korean)
     }
   }
 }

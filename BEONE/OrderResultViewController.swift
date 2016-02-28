@@ -61,7 +61,11 @@ class OrderResultViewController: BaseViewController {
   }
   
   @IBAction func closeViewButtonTapped() {
-    navigationController?.popToRootViewControllerAnimated(false)
+    if status == .Success {
+      navigationController?.popToRootViewControllerAnimated(false)
+    } else {
+      popView()
+    }
   }
 }
 
