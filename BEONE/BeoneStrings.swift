@@ -10,7 +10,7 @@ let kOrderStoryboardName = "Order"
 let kSearchStoryboardName = "Search"
 let kMainStoryboardName = "Main"
 let kProfileStoryboardName = "Profile"
-let kOrderListStoryboardName = "OrderList"
+let kOrdersStoryboardName = "Orders"
 
 // MARK: - View Controller Identifiers
 

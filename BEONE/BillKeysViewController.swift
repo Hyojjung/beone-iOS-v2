@@ -87,7 +87,7 @@ extension BillKeysViewController: UITableViewDataSource {
   }
 }
 
-extension BillKeysViewController: DynamicHeightTableViewProtocol {
+extension BillKeysViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kBillKeyTableViewCellIdentifiers[indexPath.section]
   }

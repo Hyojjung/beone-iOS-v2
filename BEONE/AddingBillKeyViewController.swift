@@ -306,7 +306,7 @@ extension AddingBillKeyViewController: UITableViewDataSource {
   }
 }
 
-extension AddingBillKeyViewController: DynamicHeightTableViewProtocol {
+extension AddingBillKeyViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kBillKeyTableViewCellIdentifiers[indexPath.section]
   }

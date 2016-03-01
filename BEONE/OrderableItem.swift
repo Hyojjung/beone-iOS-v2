@@ -19,7 +19,9 @@ class OrderableItem: BaseModel {
   var productPrice: Int?
   var productImageUrl: String?
   var productTitle: String?
+  var productSubtitle: String?
   var shopName: String?
+  var orderStatus: String?
   
   override func assignObject(data: AnyObject?) {
     if let orderableItemset = data as? [String: AnyObject] {

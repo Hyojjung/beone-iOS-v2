@@ -1,7 +1,7 @@
 
 import UIKit
 
-class NoticeViewController: BaseTableViewController {
+class NoticesViewController: BaseTableViewController {
 
   var noticeList = NoticeList()
   
@@ -20,7 +20,7 @@ class NoticeViewController: BaseTableViewController {
 
 // MARK: - Actions
 
-extension NoticeViewController {
+extension NoticesViewController {
   
   @IBAction func showNoticeButtonTapped(sender: UIButton) {
     if let notice = noticeList.list[sender.tag] as? Notice, url = notice.targetUrl {
@@ -29,7 +29,7 @@ extension NoticeViewController {
   }
 }
 
-extension NoticeViewController: UITableViewDataSource {
+extension NoticesViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -47,7 +47,7 @@ extension NoticeViewController: UITableViewDataSource {
   }
 }
 
-extension NoticeViewController: DynamicHeightTableViewProtocol {
+extension NoticesViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "noticeCell"
   }
@@ -59,7 +59,7 @@ extension NoticeViewController: DynamicHeightTableViewProtocol {
     titleLabel.text = notice.title
     titleLabel.setWidth(ViewControllerHelper.screenWidth - 28)
     
-    return CGFloat(48) + titleLabel.frame.height
+    return CGFloat(80) + titleLabel.frame.height
   }
 }
 

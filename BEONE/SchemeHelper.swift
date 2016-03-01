@@ -29,15 +29,18 @@ enum SchemeIdentifier: String {
   case Profile = "profile"
   case Orders = "orders"
   case Product = "product"
+  case Cart = "cart"
   
-  func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String) {
+  func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool) {
     switch (self) {
     case .Profile:
-      return (kProfileStoryboardName, kProfileViewViewIdentifier)
+      return (kProfileStoryboardName, kProfileViewViewIdentifier, true)
     case .Orders:
-      return (kOrderListStoryboardName, kOrdersViewNibName)
+      return (kOrdersStoryboardName, kOrdersViewNibName, true)
     case .Product:
-      return (kProductDetailStoryboardName, kProductDetailViewIdentifier)
+      return (kProductDetailStoryboardName, kProductDetailViewIdentifier, false)
+    case .Cart:
+      return ("Cart", "CartView", true)
     }
   }
 }
@@ -58,10 +61,9 @@ class SchemeHelper {
   
   static func setUpScheme(scheme: String) {
     let navi = rootNavigationController()
-    navi?.dismissViewControllerAnimated(false, completion: { () -> Void in
-      navi?.popToRootViewControllerAnimated(false)
-    })
-    
+    navi?.dismissViewControllerAnimated(false, completion: nil)
+    navi?.popToRootViewControllerAnimated(false)
+
     var schemeString = scheme
     if scheme.hasPrefix(kSchemeBaseUrl) {
       schemeString = schemeString.stringByReplacingOccurrencesOfString(kSchemeBaseUrl, withString: "")
@@ -78,7 +80,9 @@ class SchemeHelper {
       mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
         schemeStrings?.removeAtIndex(0)
         if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
-          mainTabViewController.selectedViewController?.showView()
+          if let viewController = mainTabViewController.selectedViewController as? BaseViewController {
+            viewController.showView()
+          }
         } else {
           mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
         }
@@ -86,7 +90,7 @@ class SchemeHelper {
   }
 }
 
-extension UIViewController {
+extension BaseViewController {
   func showView() {
     if let schemeStrings = SchemeHelper.schemeStrings {
       if SchemeHelper.index < schemeStrings.count {
@@ -96,7 +100,11 @@ extension UIViewController {
           topViewController.handleScheme(with: id)
         } else if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
           let identifiers = schemeIdentifier.viewIdentifiers()
-          showViewController(identifiers.storyboardName, viewIdentifier: identifiers.viewIdentifier)
+          if identifiers.isForUser {
+            showUserViewController(identifiers.storyboardName, viewIdentifier: identifiers.viewIdentifier)
+          } else {
+            showViewController(identifiers.storyboardName, viewIdentifier: identifiers.viewIdentifier)
+          }
         }
       } else {
         SchemeHelper.schemeStrings = nil

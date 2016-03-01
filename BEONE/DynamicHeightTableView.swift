@@ -1,14 +1,14 @@
 
 import UIKit
 
-protocol DynamicHeightTableViewProtocol: NSObjectProtocol {  
+protocol DynamicHeightTableViewDelegate: NSObjectProtocol {  
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat?
   func cellIdentifier(indexPath: NSIndexPath) -> String
 }
 
 class DynamicHeightTableView: UITableView {
   
-  weak var dynamicHeightDelgate: DynamicHeightTableViewProtocol!
+  weak var dynamicHeightDelgate: DynamicHeightTableViewDelegate!
   
   // MARK: - UITableViewDynamicHeightHelper
   

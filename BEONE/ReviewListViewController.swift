@@ -24,7 +24,7 @@ extension ReviewListViewController: UITableViewDataSource {
   }
 }
 
-extension ReviewListViewController: DynamicHeightTableViewProtocol {
+extension ReviewListViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "reviewCell"
   }

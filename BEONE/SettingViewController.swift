@@ -137,9 +137,9 @@ extension SettingViewController {
   }
 }
 
-// MARK: - DynamicHeightTableViewProtocol
+// MARK: - DynamicHeightTableViewDelegate
 
-extension SettingViewController: DynamicHeightTableViewProtocol {
+extension SettingViewController: DynamicHeightTableViewDelegate {
  
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     return nil

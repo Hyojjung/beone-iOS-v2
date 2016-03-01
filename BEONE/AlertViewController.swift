@@ -52,9 +52,6 @@ extension AlertViewController {
 // MARK: - Actions
 
 extension AlertViewController {
-  @IBAction func backgroundViewTapped() {
-    dismissViewControllerAnimated(true, completion: nil)
-  }
   
   @IBAction func cancelButtonTapped() {
     dismissViewControllerAnimated(true) { () -> Void in

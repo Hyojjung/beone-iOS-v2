@@ -100,7 +100,7 @@ extension CouponsViewController: UITableViewDataSource {
   }
 }
 
-extension CouponsViewController: DynamicHeightTableViewProtocol {
+extension CouponsViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let section = CouponTableViewSection(rawValue: indexPath.section) {
       switch (section) {

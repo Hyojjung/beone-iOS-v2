@@ -138,6 +138,15 @@ extension OrderViewController {
   @IBAction func paymentButtonTapped(sender: UIButton) {
     showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: sender.tag)
   }
+  
+  @IBAction func deliveryTrackingInfoButtonTapped(sender: UIButton) {
+    for orderItemSet in order.orderableItemSets {
+      if orderItemSet.id == sender.tag {
+        showWebView(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, title: "배송조회")
+        break
+      }
+    }
+  }
 }
 
 extension OrderViewController: UITableViewDataSource {
@@ -152,8 +161,8 @@ extension OrderViewController: UITableViewDataSource {
       cell.configureCell(orderItem, receiverName: order.address.receiverName!)
     } else if let cell = cell as? OrderItemCell, orderItem = self.orderItem(indexPath) {
       cell.configureCell(orderItem)
-    } else if let cell = cell as? OrderItemSerInfoCell {
-      cell.configureCell(orderItemSet(indexPath.section), index: indexPath.row - 1)
+    } else if let cell = cell as? OrderItemSetInfoCell {
+      cell.configureCell(orderItemSet(indexPath.section))
     } else if let cell = cell as? OrdererInfoCell {
       cell.configureCell(order)
     } else if let cell = cell as? AddressInfoCell {
@@ -188,7 +197,7 @@ extension OrderViewController: UITableViewDataSource {
 }
 
 
-extension OrderViewController: DynamicHeightTableViewProtocol {
+extension OrderViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     let section = self.sectionType(indexPath.section)

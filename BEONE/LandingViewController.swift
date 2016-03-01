@@ -65,7 +65,7 @@ extension LandingViewController {
   }
 }
 
-extension LandingViewController: DynamicHeightTableViewProtocol {
+extension LandingViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if let cellIdentifier = templateList.filterdTemplates[indexPath.row].type?.cellIdentifier() {

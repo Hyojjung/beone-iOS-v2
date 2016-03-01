@@ -57,7 +57,7 @@ extension CategoryListViewController: UITableViewDataSource {
   }
 }
 
-extension CategoryListViewController: DynamicHeightTableViewProtocol {
+extension CategoryListViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section == 0 {
       return "imageCell"

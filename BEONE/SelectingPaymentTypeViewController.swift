@@ -76,7 +76,10 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
-  
+}
+
+extension SelectingPaymentTypeViewController {
+
   @IBAction func orderButtonTapped() {
     if order.price == order.discountPrice {
       order.post({ (result) -> Void in
@@ -205,7 +208,7 @@ extension SelectingPaymentTypeViewController: UITableViewDataSource {
   }
 }
 
-extension SelectingPaymentTypeViewController: DynamicHeightTableViewProtocol {
+extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     switch SelectingPaymentTypeTableViewSection(rawValue: indexPath.section)! {
     case .Discount:

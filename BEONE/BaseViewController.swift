@@ -35,6 +35,7 @@ class BaseViewController: UIViewController {
     
     if !MyInfo.sharedMyInfo().isUser() {
       signingShowViewController = nil
+      SchemeHelper.schemeStrings = nil
       if !isWaitingSigning {
         isWaitingSigning = true
       }
@@ -42,6 +43,7 @@ class BaseViewController: UIViewController {
       showViewController(signingShowViewController, sender: nil)
       self.signingShowViewController = nil
     }
+
     addObservers()
     setUpData()
   }

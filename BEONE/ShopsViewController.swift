@@ -57,7 +57,7 @@ extension ShopsViewController: UITableViewDataSource {
   }
 }
 
-extension ShopsViewController: DynamicHeightTableViewProtocol {
+extension ShopsViewController: DynamicHeightTableViewDelegate {
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     return nil

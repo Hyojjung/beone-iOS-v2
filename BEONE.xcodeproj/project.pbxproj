@@ -47,7 +47,7 @@
 		623AAD941C57CC180095731B /* BillKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD931C57CC180095731B /* BillKey.swift */; };
 		623AAD961C57D0CA0095731B /* BillKeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD951C57D0CA0095731B /* BillKeyList.swift */; };
 		623AAD981C57D1CF0095731B /* BillKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD971C57D1CF0095731B /* BillKeysViewController.swift */; };
-		623AAD9A1C5858850095731B /* OrderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 623AAD991C5858850095731B /* OrderList.storyboard */; };
+		623AAD9A1C5858850095731B /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 623AAD991C5858850095731B /* Orders.storyboard */; };
 		623AAD9C1C5858980095731B /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9B1C5858980095731B /* OrdersViewController.swift */; };
 		623AAD9E1C5858BB0095731B /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623AAD9D1C5858BB0095731B /* OrderList.swift */; };
 		623D498E1C6B318300400ED0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D498D1C6B318300400ED0 /* CalendarView.swift */; };
@@ -68,8 +68,6 @@
 		6286FB611C560BA400845BE4 /* SideBarViewContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB601C560BA400845BE4 /* SideBarViewContents.swift */; };
 		6286FB631C5643FD00845BE4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB621C5643FD00845BE4 /* Profile.storyboard */; };
 		6286FB651C56443F00845BE4 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB641C56443F00845BE4 /* MoreViewController.swift */; };
-		6286FB6A1C5645B500845BE4 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB671C5645B500845BE4 /* Help.storyboard */; };
-		6286FB6B1C5645B500845BE4 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB681C5645B500845BE4 /* Notice.storyboard */; };
 		6286FB6D1C56462F00845BE4 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB6C1C56462F00845BE4 /* NoticeViewController.swift */; };
 		6286FB6F1C56468C00845BE4 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB6E1C56468C00845BE4 /* Notice.swift */; };
 		6286FB711C5646A300845BE4 /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB701C5646A300845BE4 /* NoticeList.swift */; };
@@ -110,6 +108,9 @@
 		62F2F52B1C7C04BC00D96964 /* Coupon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F2F52A1C7C04BC00D96964 /* Coupon.storyboard */; };
 		62F7EA3A1C7C31A100587C14 /* GlobalViewContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA391C7C31A100587C14 /* GlobalViewContents.swift */; };
 		62F7EA3C1C7C4E0300587C14 /* SchemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA3B1C7C4E0300587C14 /* SchemeHelper.swift */; };
+		62F7EA3E1C8564D500587C14 /* ReviewableOrderItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */; };
+		62F7EA411C85B0F900587C14 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F7EA3F1C85B0F900587C14 /* Help.storyboard */; };
+		62F7EA421C85B0F900587C14 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F7EA401C85B0F900587C14 /* Notice.storyboard */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
@@ -320,7 +321,7 @@
 		623AAD931C57CC180095731B /* BillKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKey.swift; sourceTree = "<group>"; };
 		623AAD951C57D0CA0095731B /* BillKeyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKeyList.swift; sourceTree = "<group>"; };
 		623AAD971C57D1CF0095731B /* BillKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillKeysViewController.swift; sourceTree = "<group>"; };
-		623AAD991C5858850095731B /* OrderList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderList.storyboard; sourceTree = "<group>"; };
+		623AAD991C5858850095731B /* Orders.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
 		623AAD9B1C5858980095731B /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		623AAD9D1C5858BB0095731B /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
 		623D498D1C6B318300400ED0 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -341,8 +342,6 @@
 		6286FB601C560BA400845BE4 /* SideBarViewContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewContents.swift; sourceTree = "<group>"; };
 		6286FB621C5643FD00845BE4 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6286FB641C56443F00845BE4 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
-		6286FB671C5645B500845BE4 /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Help.storyboard; path = "../../beone-iOS/BEONE/Help.storyboard"; sourceTree = "<group>"; };
-		6286FB681C5645B500845BE4 /* Notice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Notice.storyboard; path = "../../beone-iOS/BEONE/Notice.storyboard"; sourceTree = "<group>"; };
 		6286FB6C1C56462F00845BE4 /* NoticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		6286FB6E1C56468C00845BE4 /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		6286FB701C5646A300845BE4 /* NoticeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
@@ -388,6 +387,9 @@
 		62F2F52A1C7C04BC00D96964 /* Coupon.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Coupon.storyboard; sourceTree = "<group>"; };
 		62F7EA391C7C31A100587C14 /* GlobalViewContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalViewContents.swift; sourceTree = "<group>"; };
 		62F7EA3B1C7C4E0300587C14 /* SchemeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeHelper.swift; sourceTree = "<group>"; };
+		62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewableOrderItemsViewController.swift; sourceTree = "<group>"; };
+		62F7EA3F1C85B0F900587C14 /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
+		62F7EA401C85B0F900587C14 /* Notice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
 				627E22191C6C623900FBB91D /* InquiryEditViewController.swift */,
 				627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */,
+				62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -796,9 +799,9 @@
 			isa = PBXGroup;
 			children = (
 				62F2F52A1C7C04BC00D96964 /* Coupon.storyboard */,
-				623AAD991C5858850095731B /* OrderList.storyboard */,
-				6286FB671C5645B500845BE4 /* Help.storyboard */,
-				6286FB681C5645B500845BE4 /* Notice.storyboard */,
+				62F7EA3F1C85B0F900587C14 /* Help.storyboard */,
+				62F7EA401C85B0F900587C14 /* Notice.storyboard */,
+				623AAD991C5858850095731B /* Orders.storyboard */,
 				73398AF81C08219000F57D4A /* Cart.storyboard */,
 				7388FA4B1C04655F0015C3DF /* ProductDetail.storyboard */,
 				734241721BFC4AB700BE21F5 /* Shop.storyboard */,
@@ -1339,6 +1342,7 @@
 				62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */,
 				622AE9721C61EB73009F1A50 /* OrderResultViewController.xib in Resources */,
 				625EDDB61C69EF730009377A /* OrderCouponsViewController.xib in Resources */,
+				62F7EA411C85B0F900587C14 /* Help.storyboard in Resources */,
 				736818F81C106433009E433B /* left_arrow.png in Resources */,
 				62F2F52B1C7C04BC00D96964 /* Coupon.storyboard in Resources */,
 				73DF1D751C400D3600DB3550 /* EtcResultView.xib in Resources */,
@@ -1350,8 +1354,6 @@
 				6207174A1BE221970014B9AC /* ImageTemplateCell.xib in Resources */,
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
 				620717511BE239AD0014B9AC /* TableTemplateCell.xib in Resources */,
-				6286FB6B1C5645B500845BE4 /* Notice.storyboard in Resources */,
-				6286FB6A1C5645B500845BE4 /* Help.storyboard in Resources */,
 				734241731BFC4AB700BE21F5 /* Shop.storyboard in Resources */,
 				73398AF21C06EE5600F57D4A /* MainTitleView.xib in Resources */,
 				73DF1D961C438CFA00DB3550 /* ProductPropertyColorTypeValueView.xib in Resources */,
@@ -1372,6 +1374,7 @@
 				73F629901BF1887B001EA72F /* ProductDetailHeaderCollectionViewCell.xib in Resources */,
 				627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */,
 				7388FA4C1C04655F0015C3DF /* ProductDetail.storyboard in Resources */,
+				62F7EA421C85B0F900587C14 /* Notice.storyboard in Resources */,
 				736818FB1C106433009E433B /* right_arrow@2x.png in Resources */,
 				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
 				620717831BE347E20014B9AC /* WebViewController.xib in Resources */,
@@ -1392,7 +1395,7 @@
 				73ED3BB81C4A25CC00D0B742 /* Search.storyboard in Resources */,
 				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,
 				6286FB8A1C579D7D00845BE4 /* Setting.storyboard in Resources */,
-				623AAD9A1C5858850095731B /* OrderList.storyboard in Resources */,
+				623AAD9A1C5858850095731B /* Orders.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,6 +1632,7 @@
 				73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */,
 				73445E861BFAFEAE008BE2AC /* ShopList.swift in Sources */,
 				62F2F51C1C6DA3CC00D96964 /* CategoryListViewController.swift in Sources */,
+				62F7EA3E1C8564D500587C14 /* ReviewableOrderItemsViewController.swift in Sources */,
 				622DE1151C5A58FF00F0C9DF /* AddingBillKeyViewController.swift in Sources */,
 				6286FB711C5646A300845BE4 /* NoticeList.swift in Sources */,
 				73F6298C1BF18789001EA72F /* ProductDetailViewController.swift in Sources */,

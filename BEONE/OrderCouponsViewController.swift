@@ -58,7 +58,7 @@ extension OrderCouponsViewController: UITableViewDataSource {
   }
 }
 
-extension OrderCouponsViewController: DynamicHeightTableViewProtocol {
+extension OrderCouponsViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let section = CouponTableViewSection(rawValue: indexPath.section) {
       switch (section) {

@@ -84,8 +84,17 @@ class OptionViewController: BaseTableViewController {
       }
       showOrderView(cartItemIds)
     } else {
-      popView()
-      // TODO: go to cart
+      let confirmAction = Action()
+      confirmAction.type = .Scheme
+      confirmAction.content = "home/cart"
+      
+      let cancelAction = Action()
+      cancelAction.type = .Method
+      cancelAction.content = "popView"
+      
+      showAlertView("장바구니에 담긴 상품을 확인하시겠습니까?",
+        hasCancel: true, confirmAction: confirmAction, cancelAction: cancelAction,
+        delegate: self)
     }
   }
 }
@@ -197,9 +206,9 @@ extension OptionViewController {
 }
 
 
-// MARK: - DynamicHeightTableViewProtocol
+// MARK: - DynamicHeightTableViewDelegate
 
-extension OptionViewController: DynamicHeightTableViewProtocol {
+extension OptionViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kOptionTableViewCellIdentifiers[indexPath.section]

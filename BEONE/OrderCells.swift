@@ -58,19 +58,20 @@ class OrderItemCell: UITableViewCell {
   @IBOutlet weak var productPriceLabel: UILabel!
   @IBOutlet weak var qauntityLabel: UILabel!
   @IBOutlet weak var optionLabel: UILabel!
-  @IBOutlet weak var messgeLabel: UILabel!
+  @IBOutlet weak var optionKeyLabel: UILabel!
   
   func configureCell(orderItem: OrderableItem) {
     productImageView.setLazyLoaingImage(orderItem.productImageUrl)
     productTitleLabel.text = orderItem.productTitle
     productPriceLabel.text = orderItem.productPrice?.priceNotation(.Korean)
     qauntityLabel.text = "\(orderItem.quantity)"
-    optionLabel.text = orderItem.selectedOption?.optionString()
-    // TODO: - option message
+    let optionString = orderItem.selectedOption?.optionString()
+    optionLabel.text = optionString
+    optionKeyLabel.configureAlpha(optionString != nil && !optionString!.isEmpty)
   }
 }
 
-class OrderItemSerInfoCell: UITableViewCell {
+class OrderItemSetInfoCell: UITableViewCell {
   
   @IBOutlet weak var deliveryStatusLabel: UILabel!
   @IBOutlet weak var deliveryInfoButton: UIButton!
@@ -81,17 +82,25 @@ class OrderItemSerInfoCell: UITableViewCell {
   @IBOutlet weak var orderDoneButton: UIButton!
   @IBOutlet weak var deliveryTrackingInfoTrailingLayoutConstraint: NSLayoutConstraint!
   
-  func configureCell(orderItemSet: OrderableItemSet, index: Int) {
+  func configureCell(orderItemSet: OrderableItemSet) {
     deliveryStatusLabel.text = orderItemSet.statusName
-    // TODO: - deliveryInfo
     deliveryPriceLabel.text = orderItemSet.deliveryPrice.priceNotation(.Korean)
     totalPriceLabel.text = orderItemSet.actualPrice.priceNotation(.Korean)
     
-    deliveryInfoButton.tag = index
-    deliveryTrackingButton.tag = index
-    orderDoneButton.tag = index
-    orderDoneButton.configureAlpha(orderItemSet.isCompletable)
+    deliveryInfoButton.setTitle(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, forState: .Normal)
+    deliveryInfoButton.setTitle(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, forState: .Highlighted)
+    
+    deliveryTrackingButton.configureAlpha(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl != nil)
+    
     deliveryTrackingInfoTrailingLayoutConstraint.constant = orderItemSet.isCompletable ? 102 : 14
+    
+    orderDoneButton.configureAlpha(orderItemSet.isCompletable)
+    
+    if let orderItemSetId = orderItemSet.id {
+      deliveryInfoButton.tag = orderItemSetId
+      deliveryTrackingButton.tag = orderItemSetId
+      orderDoneButton.tag = orderItemSetId
+    }
   }
 }
 

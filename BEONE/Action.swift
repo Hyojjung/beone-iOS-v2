@@ -62,7 +62,7 @@ extension Action {
         userInfo[kNotificationAlertKeyMessage] = content
         postNotification(kNotificationShowWebView, userInfo: userInfo)
       case .Scheme:
-        print("scheme")
+        SchemeHelper.setUpScheme(content)
       case .Alert:
         var userInfo = [String: AnyObject]()
         userInfo[kNotificationAlertKeyMessage] = content

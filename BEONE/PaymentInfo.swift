@@ -12,6 +12,7 @@ enum PaymentStatus: String {
 }
 
 class PaymentInfo: BaseModel {
+  
   var actualPrice = 0
   var currencyType = CurrencyType.KRW
   
@@ -23,29 +24,28 @@ class PaymentInfo: BaseModel {
   var title: String?
   var orderId: Int?
   var paymentType = PaymentType()
-
+  
   var vbankIssuerName: String?
   var vbankIssuerAccount: String?
   var vbankIssuerBankName: String?
   var vbankExpiredAt: NSDate?
-
+  
   var cardNumber: String?
   var cardName: String?
-
-  
   
   var paypalEmail: String?
+
   var paidAt: NSDate?
   var paymentStatus = PaymentStatus.Success
   
   var billKeyInfoId: Int?
-  var paypalPaymentId: Int?
   
   override func getUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)"
   }
   
   override func assignObject(data: AnyObject?) {
+    print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       id = paymentInfo[kObjectPropertyKeyId] as? Int
       
@@ -70,8 +70,9 @@ class PaymentInfo: BaseModel {
         self.isSuccess = isSuccess
       }
       title = paymentInfo["title"] as? String
+      paypalEmail = paymentInfo["payerEmail"] as? String
       orderId = paymentInfo["orderId"] as? Int
-
+      
       paymentType.assignObject(paymentInfo["paymentType"])
       vbankIssuerName = paymentInfo["vbankIssuerName"] as? String
       vbankIssuerBankName = paymentInfo["vbankIssuerBankName"] as? String
@@ -82,14 +83,14 @@ class PaymentInfo: BaseModel {
       
       cardNumber = paymentInfo["cardNumber"] as? String
       cardName = paymentInfo["cardName"] as? String
-
+      
       if let paidAt = paymentInfo["paidAt"] as? String {
         self.paidAt = paidAt.date()
       }
-
+      
       if let status = paymentInfo["status"] as? String,
         paymentStatus = PaymentStatus(rawValue: status) {
-        self.paymentStatus = paymentStatus
+          self.paymentStatus = paymentStatus
       }
       
     }
@@ -103,7 +104,10 @@ class PaymentInfo: BaseModel {
     var parameter = [String: AnyObject]()
     parameter["paymentTypeId"] = paymentType.id
     parameter["billKeyInfoId"] = billKeyInfoId
-    parameter["paypalPaymentId"] = paypalPaymentId
     return parameter
+  }
+  
+  override func putUrl() -> String {
+    return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)/transactions"
   }
 }

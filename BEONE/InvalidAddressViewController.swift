@@ -55,7 +55,7 @@ extension InvalidAddressViewController: UITableViewDataSource {
   }
 }
 
-extension InvalidAddressViewController: DynamicHeightTableViewProtocol {
+extension InvalidAddressViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section == 0 {
       return "alertCell"

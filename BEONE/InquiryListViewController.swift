@@ -65,7 +65,7 @@ extension InquiryListViewController: UITableViewDataSource {
   }
 }
 
-extension InquiryListViewController: DynamicHeightTableViewProtocol {
+extension InquiryListViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "myInquiryCell"
   }

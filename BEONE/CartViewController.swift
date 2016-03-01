@@ -196,7 +196,7 @@
   }
  }
  
- extension CartViewController: DynamicHeightTableViewProtocol {
+ extension CartViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if order.orderableItemSets.count == 0 {
       return "segueCell"

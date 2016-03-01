@@ -12,8 +12,8 @@ class MoreViewController: BaseViewController {
     showViewController(kProfileStoryboardName, viewIdentifier: kProfileViewViewIdentifier)
   }
   
-  @IBAction func showNoticeViewButtonTapped() {
-    showViewController("Notice", viewIdentifier: "NoticeView")
+  @IBAction func showNoticesViewButtonTapped() {
+    showViewController("Notice", viewIdentifier: "NoticesView")
   }
   
   @IBAction func showHelpViewButtonTapped() {
@@ -28,7 +28,7 @@ class MoreViewController: BaseViewController {
     showViewController("Setting", viewIdentifier: "SettingView")
   }
   @IBAction func showOrdersViewButtonTapped() {
-    showUserViewController(kOrderListStoryboardName, viewIdentifier: kOrdersViewNibName)
+    showUserViewController(kOrdersStoryboardName, viewIdentifier: kOrdersViewNibName)
   }
 }
 

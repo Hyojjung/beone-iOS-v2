@@ -86,7 +86,7 @@ extension SpeedOrderAddressViewController: UITableViewDataSource {
   }
 }
 
-extension SpeedOrderAddressViewController: DynamicHeightTableViewProtocol {
+extension SpeedOrderAddressViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kSpeedOrderAddressTableViewCellIdentifiers[indexPath.section]
   }

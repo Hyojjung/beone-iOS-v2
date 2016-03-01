@@ -7,7 +7,7 @@ class BaseTableViewController: BaseViewController, UITableViewDelegate {
   
   @IBOutlet weak var tableView: DynamicHeightTableView!
   
-  // MARK: - DynamicHeightTableViewProtocol
+  // MARK: - DynamicHeightTableViewDelegate
 
   func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     cell.selectionStyle = .None

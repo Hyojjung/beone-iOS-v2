@@ -116,7 +116,7 @@ extension SpeedOrderFilterViewController: UITableViewDataSource {
   }
 }
 
-extension SpeedOrderFilterViewController: DynamicHeightTableViewProtocol {
+extension SpeedOrderFilterViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kSpeedOrderFilterableViewCellIdentifiers[indexPath.section]
   }

@@ -120,7 +120,7 @@ extension SearchResultViewController: UITableViewDataSource {
   }
 }
 
-extension SearchResultViewController: DynamicHeightTableViewProtocol {
+extension SearchResultViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kSearchTableViewCellIdentifiers[indexPath.section]

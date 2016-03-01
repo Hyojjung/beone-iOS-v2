@@ -56,7 +56,7 @@ extension ProfileViewController {
   }
 }
 
-extension ProfileViewController: DynamicHeightTableViewProtocol {
+extension ProfileViewController: DynamicHeightTableViewDelegate {
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     return nil

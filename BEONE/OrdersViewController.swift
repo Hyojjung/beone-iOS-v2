@@ -23,8 +23,11 @@ class OrdersViewController: BaseTableViewController {
     "helpCell",
     "spaceCell"]
   
-  var orderList = OrderList()
+  // MARK: - Variable
   
+  let orderList = OrderList()
+  var paymentTypeList: PaymentTypeList?
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
     if let orderViewController = segue.destinationViewController as? OrderViewController, orderId = sender as? Int {
@@ -42,16 +45,26 @@ class OrdersViewController: BaseTableViewController {
     orderList.get { () -> Void in
       self.tableView.reloadData()
     }
+    OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
+      self.paymentTypeList = paymentTypeList
+    }
+  }
+}
+
+extension OrdersViewController {
+  
+  @IBAction func showReviewsViewButtonTapped() {
+    performSegueWithIdentifier("From Orders To Reviews", sender: nil)
   }
   
   @IBAction func showOrderDetailButtonTapped(sender: UIButton) {
-    performSegueWithIdentifier("From Order List To Order Detail", sender: orderList.list[sender.tag].id)
+    performSegueWithIdentifier("From Orders To Order Detail", sender: orderList.list[sender.tag].id)
   }
   
   @IBAction func orderActionButtonTapped(sender: UIButton) {
     if let order = orderList.list[sender.tag] as? Order, orderId = order.id,
       paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id {
-      paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
+        paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
     }
   }
 }
@@ -59,14 +72,32 @@ class OrdersViewController: BaseTableViewController {
 extension OrdersViewController: SchemeDelegate {
   
   func handleScheme(with id: Int) {
-    performSegueWithIdentifier("From Order List To Order Detail", sender: id)
+    performSegueWithIdentifier("From Orders To Order Detail", sender: id)
   }
 }
 
 extension OrdersViewController: AddintionalPaymentDelegate {
   
   func paymentButtonTapped(orderId: Int, paymentInfoId: Int) {
-    
+    if let order = orderList.model(orderId) as? Order {
+      if let paymentInfo = order.paymentInfoList.model(paymentInfoId) as? PaymentInfo {
+        if paymentInfo.isPayable {
+          showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
+        } else if paymentInfo.isCancellable {
+          if paymentInfo.isMainPayment {
+            order.put({ (_) -> Void in
+              self.orderList.get({ () -> Void in
+                self.tableView.reloadData()
+              })
+              })
+          } else {
+            paymentInfo.put({ (_) -> Void in
+              
+              })
+          }
+        }
+      }
+    }
   }
 }
 
@@ -92,7 +123,7 @@ extension OrdersViewController: UITableViewDataSource {
   }
 }
 
-extension OrdersViewController: DynamicHeightTableViewProtocol {
+extension OrdersViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kOrdersTableViewCellIdentifiers[indexPath.section]
@@ -137,6 +168,7 @@ class OrderCell: UITableViewCell {
       addintionalPaymentDelegate: addintionalPaymentDelegate)
     
     orderButton.tag = row
+    orderButton.configureAlpha(order.isCancellable || order.isPayable)
     orderDetailButton.tag = row
   }
   

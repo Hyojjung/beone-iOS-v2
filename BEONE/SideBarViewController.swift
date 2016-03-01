@@ -160,7 +160,7 @@ extension SideBarViewController: UITableViewDataSource {
   }
 }
 
-extension SideBarViewController: DynamicHeightTableViewProtocol {
+extension SideBarViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     switch (SideBarTableViewSection(rawValue: indexPath.section)!) {
     case .Top:

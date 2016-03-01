@@ -1514,7 +1514,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <state key="normal" backgroundImage="btnLinePcolor"/>
                                         <connections>
-                                            <action selector="showNoticeViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="I7l-oE-8nL"/>
+                                            <action selector="showNoticesViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="Rgq-ih-bNP"/>
                                         </connections>
                                     </button>
                                 </subviews>

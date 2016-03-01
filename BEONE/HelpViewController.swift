@@ -1,7 +1,7 @@
 
 import UIKit
 
-class HelpViewController: BaseTableViewController {
+class HelpsViewController: BaseTableViewController {
   
   var helpList = HelpList()
   
@@ -20,7 +20,7 @@ class HelpViewController: BaseTableViewController {
 
 // MARK: - Actions
 
-extension HelpViewController {
+extension HelpsViewController {
   
   @IBAction func showHelpButtonTapped(sender: UIButton) {
     if let help = helpList.list[sender.tag] as? Help, url = help.targetUrl {
@@ -29,7 +29,7 @@ extension HelpViewController {
   }
 }
 
-extension HelpViewController: UITableViewDataSource {
+extension HelpsViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -47,7 +47,7 @@ extension HelpViewController: UITableViewDataSource {
   }
 }
 
-extension HelpViewController: DynamicHeightTableViewProtocol {
+extension HelpsViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "helpCell"
   }

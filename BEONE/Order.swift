@@ -2,6 +2,7 @@
 import UIKit
 
 class Order: BaseModel {
+  
   var senderName: String?
   var senderPhone: String?
   var isSecret = false
@@ -19,6 +20,7 @@ class Order: BaseModel {
   var createdAt: NSDate?
   var usedPoint = 0
   var isCancellable = false
+  var isPayable = false
   
   override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
@@ -65,68 +67,6 @@ class Order: BaseModel {
     }
   }
   
-  func assignOrderableItemSets(data: AnyObject?) {
-    if let data = data as? [String: AnyObject] {
-      var orderItemSetObjects: [[String: AnyObject]]? = nil
-      if isDone {
-        orderItemSetObjects = data["orderDeliveryItemSets"] as? [[String: AnyObject]]
-      } else {
-        orderItemSetObjects = data["orderableItemSets"] as? [[String: AnyObject]]
-      }
-      if let orderItemSetObjects = orderItemSetObjects {
-        orderableItemSets.removeAll()
-        for orderItemSetObject in orderItemSetObjects {
-          let orderableItemset = OrderableItemSet()
-          orderableItemset.isDone = isDone
-          orderableItemset.assignObject(orderItemSetObject)
-          orderableItemSets.append(orderableItemset)
-          
-        }
-        orderableItemSets.sortInPlace{
-          if $0.deliveryType.id == $1.deliveryType.id {
-            return $0.shop.id > $1.shop.id
-          } else {
-            return $0.deliveryType.id > $1.deliveryType.id
-          }
-        }
-      }
-    }
-  }
-  
-  func deliveryDateString() -> String {
-    var deliveryDateString = String()
-    for (i, orderItemSet) in orderableItemSets.enumerate() {
-      for (index, orderItem) in orderItemSet.orderableItems.enumerate() {
-        deliveryDateString += orderItem.productTitle!
-        if index < orderItemSet.orderableItems.count - 1 {
-          deliveryDateString += ", "
-        } else {
-          deliveryDateString += " : "
-        }
-      }
-      if let selectedTimeRange = orderItemSet.selectedTimeRange {
-        deliveryDateString += selectedTimeRange.dateNotation()
-      } else {
-        deliveryDateString += "택배배송"
-      }
-      if i < orderableItemSets.count - 1 {
-        deliveryDateString += "\n"
-      }
-    }
-    return deliveryDateString
-  }
-  
-  func deliveryTypeCellHeight(index: Int) -> Bool {
-    if let deliveryTypeId = orderableItemSets[index].deliveryType.id {
-      for (idx, orderItemSet) in orderableItemSets.enumerate() where idx < index {
-        if orderItemSet.deliveryType.id == deliveryTypeId {
-          return false
-        }
-      }
-    }
-    return true
-  }
-  
   override func postUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders"
   }
@@ -163,6 +103,99 @@ class Order: BaseModel {
     return parameter
   }
   
+  override func putUrl() -> String {
+    return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(id!)/status"
+  }
+  
+  override func putParameter() -> AnyObject? {
+    return ["statusId": 202] // cancel status id : 202
+  }
+}
+
+// MARK: - Public Methods
+
+extension Order {
+  
+  func prices() -> (totalItemPrice: Int, totalDeliveryPrice: Int) {
+    var totalItemPrice = 0
+    var totalDeliveryPrice = 0
+    for orderableItemSet in orderableItemSets {
+      for orderableItem in orderableItemSet.orderableItems {
+        totalItemPrice += orderableItem.actualPrice
+      }
+      totalDeliveryPrice += orderableItemSet.deliveryPrice
+    }
+    return (totalItemPrice, totalDeliveryPrice)
+  }
+  
+  func deliveryDateString() -> String {
+    var deliveryDateString = String()
+    for (i, orderItemSet) in orderableItemSets.enumerate() {
+      for (index, orderItem) in orderItemSet.orderableItems.enumerate() {
+        deliveryDateString += orderItem.productTitle!
+        if index < orderItemSet.orderableItems.count - 1 {
+          deliveryDateString += ", "
+        } else {
+          deliveryDateString += " : "
+        }
+      }
+      if let selectedTimeRange = orderItemSet.selectedTimeRange {
+        deliveryDateString += selectedTimeRange.dateNotation()
+      } else {
+        deliveryDateString += "택배배송"
+      }
+      if i < orderableItemSets.count - 1 {
+        deliveryDateString += "\n"
+      }
+    }
+    return deliveryDateString
+  }
+  
+  func deliveryTypeCellHeight(index: Int) -> Bool {
+    if let deliveryTypeId = orderableItemSets[index].deliveryType.id {
+      for (idx, orderItemSet) in orderableItemSets.enumerate() where idx < index {
+        if orderItemSet.deliveryType.id == deliveryTypeId {
+          return false
+        }
+      }
+    }
+    return true
+  }
+  
+}
+
+// MARK: - Private Methods
+
+extension Order {
+  
+  private func assignOrderableItemSets(data: AnyObject?) {
+    if let data = data as? [String: AnyObject] {
+      var orderItemSetObjects: [[String: AnyObject]]? = nil
+      if isDone {
+        orderItemSetObjects = data["orderDeliveryItemSets"] as? [[String: AnyObject]]
+      } else {
+        orderItemSetObjects = data["orderableItemSets"] as? [[String: AnyObject]]
+      }
+      if let orderItemSetObjects = orderItemSetObjects {
+        orderableItemSets.removeAll()
+        for orderItemSetObject in orderItemSetObjects {
+          let orderableItemset = OrderableItemSet()
+          orderableItemset.isDone = isDone
+          orderableItemset.assignObject(orderItemSetObject)
+          orderableItemSets.append(orderableItemset)
+          
+        }
+        orderableItemSets.sortInPlace{
+          if $0.deliveryType.id == $1.deliveryType.id {
+            return $0.shop.id > $1.shop.id
+          } else {
+            return $0.deliveryType.id > $1.deliveryType.id
+          }
+        }
+      }
+    }
+  }
+  
   private func orderDeliveryItemSetParameter() -> [[String: AnyObject]] {
     var orderDeliveryItemSets = [[String: AnyObject]]()
     for orderableItemSet in orderableItemSets {
@@ -176,19 +209,5 @@ class Order: BaseModel {
       orderDeliveryItemSets.append(orderDeliveryItemSet)
     }
     return orderDeliveryItemSets
-  }
-}
-
-extension Order {
-  func prices() -> (totalItemPrice: Int, totalDeliveryPrice: Int) {
-    var totalItemPrice = 0
-    var totalDeliveryPrice = 0
-    for orderableItemSet in orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
-        totalItemPrice += orderableItem.actualPrice
-      }
-      totalDeliveryPrice += orderableItemSet.deliveryPrice
-    }
-    return (totalItemPrice, totalDeliveryPrice)
   }
 }

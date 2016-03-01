@@ -33,8 +33,8 @@ class OrderWebViewController: BaseViewController {
 extension OrderWebViewController: UIWebViewDelegate {
   func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
     let url = request.URL?.absoluteString
-    let urlProtocol = url?.componentsSeparatedByString("://").first
     print(url)
+    let urlProtocol = url?.componentsSeparatedByString("://").first
     if urlProtocol == "cmbeone" {
       if url == "cmbeone://payment.cancelled" {
         showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Canceled.rawValue])

@@ -153,7 +153,7 @@ extension DeliveryDateViewController: UITableViewDataSource {
   }
 }
 
-extension DeliveryDateViewController: DynamicHeightTableViewProtocol {
+extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section < order.orderableItemSets.count {
       let orderableItemSet = order.orderableItemSets[indexPath.section]

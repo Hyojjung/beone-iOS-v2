@@ -101,7 +101,7 @@
         </view>
         <tapGestureRecognizer id="cd7-Tr-Ugf">
             <connections>
-                <action selector="backgroundViewTapped" destination="-1" id="KBx-dg-PVh"/>
+                <action selector="cancelButtonTapped" destination="-1" id="oub-I4-ytc"/>
             </connections>
         </tapGestureRecognizer>
     </objects>
