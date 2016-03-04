@@ -137,6 +137,11 @@ extension UIViewController {
     return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
   }
   
+  func showViewController(schemeIdentifier: SchemeIdentifier) {
+    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
+    showViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+  }
+  
   func showViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
       navigationController?.showViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)

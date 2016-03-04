@@ -118,7 +118,7 @@
   
   func configureCartItemQuantity(cartItem: CartItem) {
     for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
+      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         if orderableItem.cartItemId == cartItem.id {
           orderableItem.quantity = cartItem.quantity
         }
@@ -184,7 +184,7 @@
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section < order.orderableItemSets.count {
       let orderableItemSets = order.orderableItemSets[section]
-      return orderableItemSets.orderableItems.count + kSectionCellCount
+      return orderableItemSets.orderableItemList.list.count + kSectionCellCount
     }
     return 1
   }
@@ -214,9 +214,10 @@
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? DeliveryTypeCell {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
-    } else if let cell = cell as? CartOrderableItemCell {
-      let orderableItem = order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount]
-      return cell.calculatedHeight(orderableItem, selectedOption: orderableItem.selectedOption)
+    } else if let cell = cell as? CartOrderableItemCell,
+      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+        let orderableItem = orderItems[indexPath.row - kSectionCellCount]
+        return cell.calculatedHeight(orderableItem, selectedOption: orderableItem.selectedOption)
     } else if cell is CartPriceCell {
       return 174
     }
@@ -229,8 +230,9 @@
         needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ShopNameCell {
       cell.configureCell(order.orderableItemSets[indexPath.section])
-    } else if let cell = cell as? CartOrderableItemCell {
-      let orderableItem = order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - kSectionCellCount]
+    } else if let cell = cell as? CartOrderableItemCell,
+      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+      let orderableItem = orderItems[indexPath.row - kSectionCellCount]
       cell.configureCell(orderableItem,
         selectedOption: orderableItem.selectedOption,
         selectedCartItemIds: selectedCartItemOrder.cartItemIds)

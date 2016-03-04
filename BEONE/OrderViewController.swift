@@ -82,7 +82,7 @@ extension OrderViewController {
   private func setUpOrderItemsWithImages() {
     orderItemsWithImages.removeAll()
     for orderableItemSet in order.orderableItemSets {
-      for orderItem in orderableItemSet.orderableItems {
+      for orderItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         if !orderItem.itemImageUrls.isEmpty {
           orderItemsWithImages.append(orderItem)
         }
@@ -110,7 +110,7 @@ extension OrderViewController {
       return orderItemsWithImages[indexPath.row]
     } else if sectionType == .Shop {
       let orderItemSet = order.orderableItemSets[indexPath.section - OrderTableViewSection.Shop.rawValue]
-      return orderItemSet.orderableItems[indexPath.row - 1]
+      return orderItemSet.orderableItemList.list[indexPath.row - 1] as? OrderableItem
     }
     return nil
   }
@@ -186,7 +186,7 @@ extension OrderViewController: UITableViewDataSource {
     } else if sectionType == .AccountInfo {
       return bankUnpaiedPaymentInfos.count
     } else if sectionType == .Shop {
-        return orderItemSet(section).orderableItems.count + 2
+      return orderItemSet(section).orderableItemList.list.count + 2
     } else if sectionType == .PaymentInfo {
       return order.paymentInfoList.list.count
     } else if sectionType == .Buttons && returnableOrderItemSets.isEmpty {
@@ -204,7 +204,7 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
     if section == .Shop {
       if indexPath.row == 0 {
         return "shopNameCell"
-      } else if indexPath.row == orderItemSet(indexPath.section).orderableItems.count + 1 {
+      } else if indexPath.row == orderItemSet(indexPath.section).orderableItemList.list.count + 1 {
         return "orderItemSetInfoCell"
       } else {
         return "orderItemCell"

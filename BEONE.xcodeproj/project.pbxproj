@@ -111,6 +111,7 @@
 		62F7EA3E1C8564D500587C14 /* ReviewableOrderItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */; };
 		62F7EA411C85B0F900587C14 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F7EA3F1C85B0F900587C14 /* Help.storyboard */; };
 		62F7EA421C85B0F900587C14 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F7EA401C85B0F900587C14 /* Notice.storyboard */; };
+		62F7EA441C88460B00587C14 /* OrderItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA431C88460B00587C14 /* OrderItemList.swift */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
@@ -390,6 +391,7 @@
 		62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewableOrderItemsViewController.swift; sourceTree = "<group>"; };
 		62F7EA3F1C85B0F900587C14 /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		62F7EA401C85B0F900587C14 /* Notice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
+		62F7EA431C88460B00587C14 /* OrderItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemList.swift; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 				7323FD231C3A0237008B99DF /* PaymentType.swift */,
 				622AE96F1C61D6BB009F1A50 /* PaymentInfoList.swift */,
 				622AE9771C646405009F1A50 /* OrderItemSetProgress.swift */,
+				62F7EA431C88460B00587C14 /* OrderItemList.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1555,6 +1558,7 @@
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
 				627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */,
+				62F7EA441C88460B00587C14 /* OrderItemList.swift in Sources */,
 				622DE1171C5B383200F0C9DF /* OrderCells.swift in Sources */,
 				73398AE11C05F14000F57D4A /* AddressList.swift in Sources */,
 				622AE9681C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift in Sources */,

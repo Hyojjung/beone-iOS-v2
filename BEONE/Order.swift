@@ -120,7 +120,7 @@ extension Order {
     var totalItemPrice = 0
     var totalDeliveryPrice = 0
     for orderableItemSet in orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
+      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         totalItemPrice += orderableItem.actualPrice
       }
       totalDeliveryPrice += orderableItemSet.deliveryPrice
@@ -131,9 +131,9 @@ extension Order {
   func deliveryDateString() -> String {
     var deliveryDateString = String()
     for (i, orderItemSet) in orderableItemSets.enumerate() {
-      for (index, orderItem) in orderItemSet.orderableItems.enumerate() {
+      for (index, orderItem) in (orderItemSet.orderableItemList.list as! [OrderableItem]).enumerate() {
         deliveryDateString += orderItem.productTitle!
-        if index < orderItemSet.orderableItems.count - 1 {
+        if index < orderItemSet.orderableItemList.list.count - 1 {
           deliveryDateString += ", "
         } else {
           deliveryDateString += " : "

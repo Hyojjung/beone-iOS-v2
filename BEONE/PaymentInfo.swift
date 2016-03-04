@@ -45,7 +45,6 @@ class PaymentInfo: BaseModel {
   }
   
   override func assignObject(data: AnyObject?) {
-    print(data)
     if let paymentInfo = data as? [String: AnyObject] {
       id = paymentInfo[kObjectPropertyKeyId] as? Int
       

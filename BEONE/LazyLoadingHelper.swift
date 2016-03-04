@@ -9,6 +9,7 @@ enum ImageType: Int {
 }
 
 class LazyLoadingImageView: UIImageView {
+  
   deinit {
     image = nil
     sd_cancelCurrentImageLoad()

@@ -26,6 +26,7 @@ class OrdersViewController: BaseTableViewController {
   // MARK: - Variable
   
   let orderList = OrderList()
+  let reviewableOrderItems = OrderItemList()
   var paymentTypeList: PaymentTypeList?
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -43,6 +44,9 @@ class OrdersViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     orderList.get { () -> Void in
+      self.tableView.reloadData()
+    }
+    reviewableOrderItems.get { () -> Void in
       self.tableView.reloadData()
     }
     OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
@@ -66,6 +70,10 @@ extension OrdersViewController {
       paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id {
         paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
     }
+  }
+  
+  @IBAction func showHelpsViewButtonTapped() {
+    showViewController(.Help)
   }
 }
 
@@ -111,6 +119,10 @@ extension OrdersViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? OrderCell, order = orderList.list[indexPath.row] as? Order {
       cell.configureCell(order, row: indexPath.row, addintionalPaymentDelegate: self)
+    } else if let cell = cell as? OrdersViewReviewTitleCell {
+      cell.setUpCell(reviewableOrderItems.list.count != 0)
+    } else if let cell = cell as? OrdersViewTopCell {
+      cell.setUpCell(orderList.total, reviewableOrderItemsCount: reviewableOrderItems.total)
     }
     return cell
   }
@@ -162,7 +174,7 @@ class OrderCell: UITableViewCell {
     orderCodeLabel.text = order.orderCode
     orderTitleLabel.text = order.title
     orderPriceLabel.text = order.actualPrice.priceNotation(.Korean)
-    let orderableItem = order.orderableItemSets.first?.orderableItems.first
+    let orderableItem = order.orderableItemSets.first?.orderableItemList.list.first as? OrderableItem
     orderImageView.setLazyLoaingImage(orderableItem?.productImageUrl)
     layoutPaymentsView(order.paymentInfoList.list as! [PaymentInfo],
       addintionalPaymentDelegate: addintionalPaymentDelegate)
@@ -194,5 +206,25 @@ class OrderCell: UITableViewCell {
         previousView = paymentInfoView
       }
     }
+  }
+}
+
+class OrdersViewReviewTitleCell: UITableViewCell {
+  
+  @IBOutlet weak var newReviewImageView: UIImageView!
+  
+  func setUpCell(hasNew: Bool) {
+    newReviewImageView.configureAlpha(hasNew)
+  }
+}
+
+class OrdersViewTopCell: UITableViewCell {
+  
+  @IBOutlet weak var totalOrdersCountLabel: UILabel!
+  @IBOutlet weak var reviewableOrderItemsCountLabel: UILabel!
+
+  func setUpCell(totalOrdersCount: Int, reviewableOrderItemsCount: Int) {
+    totalOrdersCountLabel.text = "\(totalOrdersCount)"
+    reviewableOrderItemsCountLabel.text = "\(reviewableOrderItemsCount)"
   }
 }

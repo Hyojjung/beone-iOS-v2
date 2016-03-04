@@ -89,7 +89,7 @@
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-Qh-3Xj" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-Qh-3Xj" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                     <rect key="frame" x="260" y="24" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Oog-9t-uKB"/>
@@ -142,9 +142,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" title="후기작성" backgroundImage="btnGoldStrokePressed"/>
-                                                    <connections>
-                                                        <action selector="makeReviewButtonTapped:" destination="nVO-mn-1O7" eventType="touchUpInside" id="5MA-cS-rCz"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -217,14 +214,13 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="noItemLabel" destination="0O1-GJ-Wy3" id="TaL-18-74K"/>
                         <outlet property="tableView" destination="08p-mR-THW" id="EJf-zS-e66"/>
                         <segue destination="k5N-JD-zP5" kind="show" identifier="From Review Order Item List To Review" id="rCD-IZ-hPL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2k-wi-H9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2301" y="2773"/>
+            <point key="canvasLocation" x="2303" y="2776"/>
         </scene>
         <!--주문/배송내역-->
         <scene sceneID="bsh-2g-mdV">
@@ -243,7 +239,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="topCell" rowHeight="130" id="Y97-JK-ym4" userLabel="headerListCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="topCell" rowHeight="130" id="Y97-JK-ym4" userLabel="headerListCell" customClass="OrdersViewTopCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y97-JK-ym4" id="Va5-LC-sjp">
@@ -302,7 +298,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="reviewListNumberButtonTapped" destination="qTj-AU-oVr" eventType="touchUpInside" id="FVJ-EE-bag"/>
+                                                        <action selector="showReviewsViewButtonTapped" destination="qTj-AU-oVr" eventType="touchUpInside" id="mGl-o3-sHP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -343,6 +339,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="reviewableOrderItemsCountLabel" destination="8LY-0y-zwe" id="rSB-3Y-ryX"/>
+                                            <outlet property="totalOrdersCountLabel" destination="ioh-Vu-H8p" id="1J9-k5-vFV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="200" id="YaV-Si-e9B" customClass="OrderCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="152" width="600" height="200"/>
@@ -520,7 +520,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="45" id="FUA-hv-S6T">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="45" id="FUA-hv-S6T" customClass="OrdersViewReviewTitleCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="398" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FUA-hv-S6T" id="7x0-0a-QBo">
@@ -576,6 +576,9 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="newReviewImageView" destination="8aM-wW-Zcl" id="l8k-gl-zSA"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="helpCell" rowHeight="45" id="DDD-JW-qpe">
                                         <rect key="frame" x="0.0" y="443" width="600" height="45"/>
@@ -599,15 +602,25 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_list_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Em3-Lz-E2j">
                                                     <rect key="frame" x="571" y="16" width="7" height="14"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-Y8-fHJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <connections>
+                                                        <action selector="showHelpsViewButtonTapped" destination="qTj-AU-oVr" eventType="touchUpInside" id="qnU-UO-slf"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="vL0-Y8-fHJ" firstAttribute="top" secondItem="LAX-Oz-Kf2" secondAttribute="top" id="5TH-wD-ZuW"/>
+                                                <constraint firstAttribute="trailing" secondItem="vL0-Y8-fHJ" secondAttribute="trailing" id="6V8-sX-xJu"/>
                                                 <constraint firstAttribute="centerY" secondItem="uNE-xd-oNB" secondAttribute="centerY" id="Amk-Ss-kii"/>
+                                                <constraint firstItem="vL0-Y8-fHJ" firstAttribute="leading" secondItem="LAX-Oz-Kf2" secondAttribute="leading" id="DCx-k4-m8P"/>
                                                 <constraint firstAttribute="bottom" secondItem="LQf-6o-VB9" secondAttribute="bottom" id="GK4-81-fen"/>
                                                 <constraint firstAttribute="centerX" secondItem="uNE-xd-oNB" secondAttribute="centerX" id="JS2-Bi-HSY"/>
                                                 <constraint firstAttribute="trailing" secondItem="LQf-6o-VB9" secondAttribute="trailing" constant="12" id="KI4-y2-zNv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Em3-Lz-E2j" secondAttribute="trailing" constant="22" id="fPW-9G-Xa9"/>
                                                 <constraint firstItem="LQf-6o-VB9" firstAttribute="leading" secondItem="LAX-Oz-Kf2" secondAttribute="leading" constant="12" id="gWc-EU-vA2"/>
+                                                <constraint firstAttribute="bottom" secondItem="vL0-Y8-fHJ" secondAttribute="bottom" id="hUT-rT-HEU"/>
                                                 <constraint firstAttribute="centerY" secondItem="Em3-Lz-E2j" secondAttribute="centerY" id="yWY-aw-gjY"/>
                                             </constraints>
                                         </tableViewCellContentView>

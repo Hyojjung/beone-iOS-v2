@@ -45,7 +45,7 @@ extension InvalidAddressViewController: UITableViewDataSource {
       return 1
     }
     let orderableItemSets = order.orderableItemSets[orderItemSetIndex(with: section)]
-    return orderableItemSets.orderableItems.count + kSectionCellCount
+    return orderableItemSets.orderableItemList.list.count + kSectionCellCount
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -73,7 +73,7 @@ extension InvalidAddressViewController: DynamicHeightTableViewDelegate {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(orderItemSetIndex(with: indexPath.section)))
     } else if let cell = cell as? OrderableItemCell {
       let orderableItemSet = order.orderableItemSets[orderItemSetIndex(with: indexPath.section)]
-      let orderableItem = orderableItemSet.orderableItems[indexPath.row - kSectionCellCount]
+      let orderableItem = orderableItemSet.orderableItemList.list[indexPath.row - kSectionCellCount] as! OrderableItem
       return cell.calculatedHeight(orderableItem, selectedOption: orderableItem.selectedOption)
     }
     return nil
@@ -87,7 +87,7 @@ extension InvalidAddressViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(order.orderableItemSets[orderItemSetIndex(with: indexPath.section)])
     } else if let cell = cell as? DeliveryOrderableItemCell, orderableCartItemIds = orderableCartItemIds {
       let orderableItemSet = order.orderableItemSets[orderItemSetIndex(with: indexPath.section)]
-      let orderableItem = orderableItemSet.orderableItems[indexPath.row - kSectionCellCount]
+      let orderableItem = orderableItemSet.orderableItemList.list[indexPath.row - kSectionCellCount] as! OrderableItem
       cell.configureCell(orderableItemSet, orderableItem: orderableItem, selectedOption: orderableItem.selectedOption, availableCartItemIds: orderableCartItemIds)
     }
   }

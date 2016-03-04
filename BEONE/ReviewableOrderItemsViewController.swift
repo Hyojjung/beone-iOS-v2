@@ -16,13 +16,25 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
   
   // MARK: - Variable
   
-  var orderItems = [OrderableItem]()
+  var orderItems = OrderItemList()
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
+  
+  override func setUpData() {
+    super.setUpData()
+    orderItems.get { () -> Void in
+      self.tableView.reloadData()
+    }
+  }
 }
 
 extension ReviewableOrderItemsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    if orderItems.isEmpty {
+    if orderItems.list.isEmpty {
       return 0
     }
     return 2
@@ -32,14 +44,14 @@ extension ReviewableOrderItemsViewController: UITableViewDataSource {
     if section == 0 {
       return 1
     } else {
-      return orderItems.count
+      return orderItems.list.count
     }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? ReviewableOrderItemCell {
-      cell.setUpCell(orderItems[indexPath.row])
+      cell.setUpCell(orderItems.list[indexPath.row] as! OrderableItem)
     }
     return cell
   }
@@ -57,7 +69,8 @@ extension ReviewableOrderItemsViewController: DynamicHeightTableViewDelegate {
       topLabel.font = UIFont.systemFontOfSize(13)
       topLabel.text = NSLocalizedString("reviews view top cell label", comment: "top cell label")
       topLabel.setWidth(ViewControllerHelper.screenWidth - 28)
-      return 79 + topLabel.frame.height
+      print(topLabel.frame.height)
+      return 80 + topLabel.frame.height
     } else if let cell = cell as? BaseTableViewCell {
       return cell.height
     }

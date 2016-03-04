@@ -141,7 +141,7 @@ extension DeliveryDateViewController: UITableViewDataSource {
     if section < order.orderableItemSets.count {
       let orderableItemSet = order.orderableItemSets[section]
       return orderableItemSet.deliveryType.isReservable ?
-        orderableItemSet.orderableItems.count + 4 : orderableItemSet.orderableItems.count + 3
+        orderableItemSet.orderableItemList.list.count + 4 : orderableItemSet.orderableItemList.list.count + 3
     }
     return 1
   }
@@ -161,9 +161,9 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
         return kDeliveryTypeCellIdentifier
       } else if indexPath.row == 1 {
         return kShopNameCellIdentifier
-      } else if indexPath.row == orderableItemSet.orderableItems.count + 2 {
+      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 2 {
         return orderableItemSet.deliveryType.isReservable ? "timeCell" : "parcelLabelCell"
-      } else if indexPath.row == orderableItemSet.orderableItems.count + 3 {
+      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 3 {
         return "alertCell"
       } else {
         return "orderOrderableItemCell"
@@ -196,8 +196,9 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
     if let cell = cell as? DeliveryTypeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
         needCell: order.deliveryTypeCellHeight(indexPath.section))
-    } else if let cell = cell as? OrderOrderableItemCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section].orderableItems[indexPath.row - 2])
+    } else if let cell = cell as? OrderOrderableItemCell,
+      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+      cell.configureCell(orderItems[indexPath.row - 2])
     } else if let cell = cell as? TimeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section,
         selectedDate: selectedDates[indexPath.section], selectedTimeRange: selectedTimeRanges[indexPath.section])

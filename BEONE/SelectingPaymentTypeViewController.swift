@@ -53,7 +53,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     super.setUpData()
     var pair = [Int: AvailableTimeRange]()
     for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
+      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         if let cartItemId = orderableItem.cartItemId {
           if order.cartItemIds.contains(cartItemId) {
             pair[cartItemId] = orderableItemSet.selectedTimeRange
@@ -63,7 +63,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     }
     OrderHelper.fetchOrderableInfo(order) { () -> Void in
       for orderableItemSet in self.order.orderableItemSets {
-        for orderableItem in orderableItemSet.orderableItems {
+        for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
           if let cartItemId = orderableItem.cartItemId {
             orderableItemSet.selectedTimeRange = pair[cartItemId]
           }
@@ -264,7 +264,7 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
     } else if let cell = cell as? OrderOrderableItemCell {
       let cartItemId = order.cartItemIds[indexPath.row]
       for orderableItemSet in order.orderableItemSets {
-        for orderableItem in orderableItemSet.orderableItems {
+        for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
           if orderableItem.cartItemId == cartItemId {
             cell.configureCell(orderableItem)
             break
@@ -310,7 +310,7 @@ class OrderPriceCell: UITableViewCell {
     }
     var productsPrice = 0
     for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItems {
+      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         productsPrice += orderableItem.product.actualPrice
       }
     }

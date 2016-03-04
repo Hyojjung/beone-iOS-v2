@@ -30,6 +30,8 @@ enum SchemeIdentifier: String {
   case Orders = "orders"
   case Product = "product"
   case Cart = "cart"
+  case Help = "help"
+  case Notice = "notice"
   
   func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool) {
     switch (self) {
@@ -41,6 +43,10 @@ enum SchemeIdentifier: String {
       return (kProductDetailStoryboardName, kProductDetailViewIdentifier, false)
     case .Cart:
       return ("Cart", "CartView", true)
+    case .Help:
+      return ("Help", "HelpView", false)
+    case .Notice:
+      return ("Notice", "NoticeView", false)
     }
   }
 }

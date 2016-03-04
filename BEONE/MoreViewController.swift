@@ -13,11 +13,11 @@ class MoreViewController: BaseViewController {
   }
   
   @IBAction func showNoticesViewButtonTapped() {
-    showViewController("Notice", viewIdentifier: "NoticesView")
+    showViewController(.Notice)
   }
   
   @IBAction func showHelpViewButtonTapped() {
-    showViewController("Help", viewIdentifier: "HelpView")
+    showViewController(.Help)
   }
   
   @IBAction func showCouponViewButtonTapped() {
@@ -33,6 +33,7 @@ class MoreViewController: BaseViewController {
 }
 
 extension MoreViewController: SideBarPositionMoveDelegate {
+  
   func handlemovePosition() {
     view.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
