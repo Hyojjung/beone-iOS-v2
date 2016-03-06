@@ -48,15 +48,14 @@ class MyInfo: NSManagedObject {
     }
   }
   
-  func logOut() {
-    accessToken = nil
-    refreshToken = nil
-    userId = nil
-    CoreDataHelper.sharedCoreDataHelper.saveContext()
+  func logOut(logoutSuccess: () -> Void) {
     SigningHelper.signInForNonUser { (result) -> Void in
-      self.postNotification(kNotificationLogOutSuccess)
+      self.accessToken = nil
+      self.refreshToken = nil
+      self.userId = nil
+      CoreDataHelper.sharedCoreDataHelper.saveContext()
+      logoutSuccess()
     }
-    // TODO: 실패하면 노답
   }
   
   func isUser() -> Bool {

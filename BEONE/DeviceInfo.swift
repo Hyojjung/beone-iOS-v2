@@ -18,11 +18,9 @@ class DeviceInfo: BaseModel {
     return url()
   }
   
-  override func getSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-        self.isReceivingPush = data[kDeviceInfoPropertyKeyIsReceivingPush]?.boolValue == true ? true : false
-      }
+  override func assignObject(data: AnyObject?) {
+    if let data = data as? [String: AnyObject] {
+      self.isReceivingPush = data[kDeviceInfoPropertyKeyIsReceivingPush]?.boolValue == true ? true : false
     }
   }
   

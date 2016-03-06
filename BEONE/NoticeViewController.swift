@@ -59,7 +59,7 @@ extension NoticesViewController: DynamicHeightTableViewDelegate {
     titleLabel.text = notice.title
     titleLabel.setWidth(ViewControllerHelper.screenWidth - 28)
     
-    return CGFloat(80) + titleLabel.frame.height
+    return CGFloat(70) + titleLabel.frame.height
   }
 }
 

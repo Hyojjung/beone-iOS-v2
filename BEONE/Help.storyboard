@@ -9,7 +9,7 @@
         <!--도움말-->
         <scene sceneID="jcW-tp-hbK">
             <objects>
-                <viewController storyboardIdentifier="HelpView" title="도움말" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jmp-qT-X4a" customClass="HelpsViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpsView" title="도움말" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jmp-qT-X4a" customClass="HelpsViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X1W-pC-Rvh"/>
                         <viewControllerLayoutGuide type="bottom" id="LcW-pG-eXW"/>

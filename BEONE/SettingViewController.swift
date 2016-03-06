@@ -57,7 +57,6 @@ class SettingViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    // TODO: - version
     version.get { () -> Void in
       self.tableView.reloadData()
     }
@@ -69,8 +68,6 @@ class SettingViewController: BaseTableViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
-      name: kNotificationLogOutSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
       name: kNotificationSigningSuccess, object: nil)
   }
 }
@@ -79,9 +76,55 @@ class SettingViewController: BaseTableViewController {
 
 extension SettingViewController {
   
+  @IBAction func myInfoButtonTapped() {
+    if MyInfo.sharedMyInfo().isUser() {
+      showViewController(.Profile)
+    } else {
+      showSigningView()
+    }
+  }
+  
   @IBAction func pushReceivingSwitchToggled() {
     deviceInfo.isReceivingPush = !deviceInfo.isReceivingPush
     deviceInfo.put()
+  }
+  
+  @IBAction func showNoticeViewButtonTapped() {
+    showViewController(.Notice)
+  }
+  
+  @IBAction func versionButtonTapped() {
+    if version.needUpdate {
+      UIApplication.sharedApplication().openURL(kAppDownloadUrl.url())
+    }
+  }
+  
+  @IBAction func inquiryButtonTapped() {
+    if let kakaoPlus = BEONEManager.globalViewContents.kakaoPlus {
+      UIApplication.sharedApplication().openURL(kakaoPlus.url())
+    }
+  }
+  
+  @IBAction func showRuleViewButtonTeppd() {
+    showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
+  }
+  
+  @IBAction func showPrivacyPolicyButtonTapped() {
+    showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
+  }
+  
+  @IBAction func logOutButtonTapped() {
+    let logOutAction = Action()
+    logOutAction.type = .Method
+    logOutAction.content = "logOut"
+    showAlertView(NSLocalizedString("sure log out", comment: "alert"), hasCancel: true,
+      confirmAction: logOutAction, cancelAction: nil, delegate: self)
+  }
+  
+  func logOut() {
+    MyInfo.sharedMyInfo().logOut { () -> Void in
+      self.tableView.reloadData()
+    }
   }
 }
 
@@ -104,45 +147,23 @@ extension SettingViewController {
   }
 }
 
-// MARK: - UITableViewDelegate
-
-extension SettingViewController {
-  
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    switch SettingTableViewSection(rawValue: indexPath.section)! {
-    case .LogOut:
-      logOut()
-    case .ServiceRule:
-      showWebView("\(kBaseApiUrl)\(kServicePolicyUrlString)", title: NSLocalizedString("service policy", comment: "title"))
-    case .PrivacyPolicy:
-      showWebView("\(kBaseApiUrl)\(kPrivacyPolicyUrlString)", title: NSLocalizedString("privacy policy", comment: "title"))
-    case .Profile:
-      showSigningView()
-    case .Inquiry:
-      print("inquiry")
-      //      [[UIApplication sharedApplication] openURL:[BOBEONEManager sharedInstance].sharedVersionInfo.kakaoInquiryUrl];
-    case .Version:
-      UIApplication.sharedApplication().openURL(kAppDownloadUrl.url())
-    default:
-      break
-    }
-  }
-  
-  private func logOut() {
-    let logOutAction = Action()
-    logOutAction.type = .Method
-    logOutAction.content = "logOut"
-    showAlertView(NSLocalizedString("sure log out", comment: "alert"), hasCancel: true,
-      confirmAction: logOutAction, cancelAction: nil, delegate: MyInfo.sharedMyInfo())
-  }
-}
-
 // MARK: - DynamicHeightTableViewDelegate
 
 extension SettingViewController: DynamicHeightTableViewDelegate {
- 
+  
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    return nil
+    switch SettingTableViewSection(rawValue: indexPath.section)! {
+    case .TopSpace, .MiddleSpace, .BottomSpace:
+      return 16
+    case .Profile, .Push, .Notice, .Version, .Inquiry, .ServiceRule, .PrivacyPolicy, .LogOut:
+      return 50
+    case .NotiTitle, .InfoTitle:
+      return 46
+    case .Logo:
+      return 98
+    default:
+      return nil
+    }
   }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
@@ -161,7 +182,7 @@ extension SettingViewController: DynamicHeightTableViewDelegate {
       break
     }
   }
-
+  
   private func configureProfileCell(cell: UITableViewCell) {
     let profileLabel = cell.viewWithTag(kProfileSectionProfileLabelTag) as? UILabel
     profileLabel?.text = MyInfo.sharedMyInfo().isUser() ?

@@ -26,6 +26,10 @@
                 </webView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-6L-A5g">
                     <rect key="frame" x="552" y="25" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Ihf-8t-XWJ"/>
+                        <constraint firstAttribute="height" constant="40" id="KO6-JZ-VBC"/>
+                    </constraints>
                     <state key="normal" image="btn_close"/>
                     <connections>
                         <action selector="closeButtonTapped" destination="-1" eventType="touchUpInside" id="t5h-lk-8Wh"/>

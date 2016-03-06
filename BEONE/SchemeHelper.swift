@@ -44,9 +44,9 @@ enum SchemeIdentifier: String {
     case .Cart:
       return ("Cart", "CartView", true)
     case .Help:
-      return ("Help", "HelpView", false)
+      return ("Help", "HelpsView", false)
     case .Notice:
-      return ("Notice", "NoticeView", false)
+      return ("Notice", "NoticesView", false)
     }
   }
 }

@@ -1,6 +1,5 @@
 
 let kNotificationSigningSuccess = "NotificationSigningSuccess"
-let kNotificationLogOutSuccess = "NotificationLogOutSuccess"
 let kNotificationSigningFailure = "NotificationSigningFailure"
 let kNotificationNeedSignUp = "NotificationNeedSignUp"
 let kNotificationFetchFacebookInfoSuccess = "NotificationFetchFacebookInfoSuccess"
