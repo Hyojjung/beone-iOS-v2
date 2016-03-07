@@ -29,6 +29,18 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let addingReviewViewController = segue.destinationViewController as? AddingReviewViewController,
+      orderItemId = sender as? Int,
+      orderItem = orderItems.model(orderItemId) as? OrderableItem {
+      addingReviewViewController.review.orderItem = orderItem
+    }
+  }
+  
+  @IBAction func addReviewButtonTapped(sender: UIButton) {
+    performSegueWithIdentifier("From Review Order Items To Review", sender: sender.tag)
+  }
 }
 
 extension ReviewableOrderItemsViewController: UITableViewDataSource {
@@ -69,7 +81,6 @@ extension ReviewableOrderItemsViewController: DynamicHeightTableViewDelegate {
       topLabel.font = UIFont.systemFontOfSize(13)
       topLabel.text = NSLocalizedString("reviews view top cell label", comment: "top cell label")
       topLabel.setWidth(ViewControllerHelper.screenWidth - 28)
-      print(topLabel.frame.height)
       return 80 + topLabel.frame.height
     } else if let cell = cell as? BaseTableViewCell {
       return cell.height
@@ -85,6 +96,7 @@ class ReviewableOrderItemCell: BaseTableViewCell {
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
+  @IBOutlet weak var addReviewButton: UIButton!
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -97,7 +109,11 @@ class ReviewableOrderItemCell: BaseTableViewCell {
     titleLabel.text = orderItem.productTitle
     subtitleLabel.text = orderItem.productSubtitle
     quantityLabel.text = "\(orderItem.quantity)"
-    statusLabel.text = orderItem.orderStatus
+    statusLabel.text = orderItem.orderDeliveryItemSet?.statusName
+    
+    if let orderItemId = orderItem.id {
+      addReviewButton.tag = orderItemId
+    }
   }
 }
 

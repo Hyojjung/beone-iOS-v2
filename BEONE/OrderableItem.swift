@@ -21,12 +21,16 @@ class OrderableItem: BaseModel {
   var productTitle: String?
   var productSubtitle: String?
   var shopName: String?
-  var orderStatus: String?
+  var orderDeliveryItemSet: OrderableItemSet?
   
   override func assignObject(data: AnyObject?) {
     if let orderableItemset = data as? [String: AnyObject] {
       id = orderableItemset[kObjectPropertyKeyId] as? Int
       availableTimeRangeList.assignObject(orderableItemset["availableTimeRanges"])
+      if let orderDeliveryItemSet = orderableItemset["orderDeliveryItemSet"] {
+        self.orderDeliveryItemSet = OrderableItemSet()
+        self.orderDeliveryItemSet?.assignObject(orderDeliveryItemSet)
+      }
       if let itemImageUrls = orderableItemset["itemImageUrls"] as? [String] {
         self.itemImageUrls = itemImageUrls
       }
@@ -40,6 +44,7 @@ class OrderableItem: BaseModel {
       cartItemId = orderableItemset["cartItemId"] as? Int
       productImageUrl = orderableItemset["productImageUrl"] as? String
       productTitle = orderableItemset["productTitle"] as? String
+      productSubtitle = orderableItemset["productSubtitle"] as? String
       
       product.assignObject(orderableItemset["product"])
       productOrderableInfo.assignObject(orderableItemset["productOrderableInfo"])

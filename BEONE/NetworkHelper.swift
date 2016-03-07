@@ -182,7 +182,8 @@ class NetworkHelper: NSObject {
         let operation = AFHTTPRequestOperation(request: request)
         operation.responseSerializer = AFJSONResponseSerializer()
         operation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-          self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
+          success?(result: responseObject)
+          subtractNetworkCount()
           }, failure: { (operation, error) -> Void in
             self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error, success: success, failure: failure)
         })
@@ -209,7 +210,7 @@ extension NetworkHelper {
     })
   }
   
-  static func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
+  static func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
     #if DEBUG
       print("POST \(url)")
     #endif
@@ -253,6 +254,7 @@ extension NetworkHelper {
 }
 
 extension NetworkHelper {
+  
   static var networkManager: AFHTTPRequestOperationManager {
     let networkManager = AFHTTPRequestOperationManager(baseURL: NSURL(string: kBaseApiUrl))
     networkManager.requestSerializer = AFJSONRequestSerializer()
