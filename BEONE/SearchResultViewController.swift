@@ -1,7 +1,7 @@
 
 import UIKit
 
-class SearchResultViewController: BaseTableViewController {
+class ProductsViewController: BaseTableViewController {
   
   // MARK: - Constant
   
@@ -25,6 +25,7 @@ class SearchResultViewController: BaseTableViewController {
     }
     return Location()
   }()
+  var forSearchResult = false
   var productList = ProductList()
   
   var selectedProductPropertyValueIds = [Int]()
@@ -59,7 +60,7 @@ class SearchResultViewController: BaseTableViewController {
 
 // MAKR: - Actions
 
-extension SearchResultViewController {
+extension ProductsViewController {
   
   @IBAction func selectLocationButtonTapped() {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
@@ -81,7 +82,7 @@ extension SearchResultViewController {
   }
 }
 
-extension SearchResultViewController: UITableViewDataSource {
+extension ProductsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? SearchCell {
@@ -104,6 +105,9 @@ extension SearchResultViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if section == SearchTableViewSection.Search.rawValue && !forSearchResult {
+      return 0
+    }
     return section == SearchTableViewSection.Product.rawValue ? (productList.list.count + 1) / kSimpleProductColumn : 1
   }
   
@@ -120,7 +124,7 @@ extension SearchResultViewController: UITableViewDataSource {
   }
 }
 
-extension SearchResultViewController: DynamicHeightTableViewDelegate {
+extension ProductsViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kSearchTableViewCellIdentifiers[indexPath.section]

@@ -113,7 +113,7 @@ extension SearchViewController {
   
   @IBAction func searchButtonTapped() {
     if let searchResultViewController =
-      UIViewController.viewController(kSearchStoryboardName, viewIdentifier: kSearchResultViewViewIdentifier) as? SearchResultViewController {
+      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewViewIdentifier) as? ProductsViewController {
         searchResultViewController.productList = productList
         searchResultViewController.selectedTagIds = selectedTagIds
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds

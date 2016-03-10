@@ -131,10 +131,15 @@ extension UIViewController {
         animated: true, completion: nil)
     }
   }
-
+  
   static func viewController(storyboardName: String, viewIdentifier: String) -> UIViewController {
     let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
     return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
+  }
+  
+  static func viewController(schemeIdentifier: SchemeIdentifier) -> UIViewController {
+    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
+    return viewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
   }
   
   func showViewController(schemeIdentifier: SchemeIdentifier) {

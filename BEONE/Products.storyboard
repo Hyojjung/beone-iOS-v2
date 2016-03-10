@@ -8,7 +8,7 @@
         <!--상품-->
         <scene sceneID="yrg-1O-BVq">
             <objects>
-                <viewController storyboardIdentifier="SearchResultView" title="상품" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aR5-Rt-8nE" customClass="SearchResultViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsView" title="상품" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aR5-Rt-8nE" customClass="ProductsViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m6B-Sh-82B"/>
                         <viewControllerLayoutGuide type="bottom" id="Hbs-yN-dBh"/>

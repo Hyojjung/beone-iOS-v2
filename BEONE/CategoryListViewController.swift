@@ -24,7 +24,11 @@ class CategoryListViewController: BaseTableViewController {
   
   @IBAction func categoryButtonTapped(sender: UIButton) {
     if let category = categoryList.model(sender.tag) as? ProductCategory {
-      // TODO: Category List 로 가기
+      if let categoryProductsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
+        categoryProductsViewController.productList.type = .Category
+        categoryProductsViewController.productList.productCategoryId = category.id
+        showViewController(categoryProductsViewController, sender: nil)
+      }
     }
   }
 }
