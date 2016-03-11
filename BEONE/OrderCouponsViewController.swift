@@ -29,6 +29,7 @@ class OrderCouponsViewController: BaseTableViewController {
     super.setUpData()
     if let order = order {
       OrderHelper.fetchAvailableCoupons(order.cartItemIds, couponList: couponList, getSuccess: { () -> Void in
+        print(self.couponList)
         self.tableView.reloadData()
       })
     }

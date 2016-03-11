@@ -47,6 +47,7 @@ class Product: BaseModel {
   var soldOut = false
   var summary: String?
   var reviewCount = 1
+  var reviews = [Review]()
   
   var productDetails = [ProductDetail]()
   var productOptionSets = ProductOptionSetList()
@@ -101,6 +102,13 @@ class Product: BaseModel {
       assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
       assignProductDetails(product[kProductPropertyKeyProductDetails])
       shop.assignObject(product[kProductPropertyKeyShop])
+      if let reviews = product["reviews"] as? [[String: AnyObject]] {
+        for reviewObject in reviews {
+          let review = Review()
+          review.assignObject(reviewObject)
+          self.reviews.append(review)
+        }
+      }
       productOptionSets.assignObject(product["productOptionSets"])
     }
   }

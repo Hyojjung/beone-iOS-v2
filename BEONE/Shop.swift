@@ -11,10 +11,10 @@ class Shop: BaseModel {
   var profileImageUrl: String?
   var desc: String?
   var productsCount = 0
+  var tags: [String]?
   
   override func assignObject(data: AnyObject?) {
     if let shop = data as? [String: AnyObject] {
-      print(data)
       id = shop[kObjectPropertyKeyId] as? Int
       backgroundImageUrl = shop[kShopPropertyKeyBackgroundImageUrl] as? String
       name = shop[kShopPropertyKeyName] as? String
@@ -22,6 +22,9 @@ class Shop: BaseModel {
       desc = shop[kObjectPropertyKeyDescription] as? String
       if let products = shop["products"] as? [[String: AnyObject]] {
         productsCount = products.count
+      }
+      if let tags = shop["tags"] as? [String] {
+        self.tags = tags
       }
     }
   }

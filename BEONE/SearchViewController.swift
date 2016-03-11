@@ -28,7 +28,12 @@ class SearchViewController: BaseTableViewController {
   
   var showingMore = false
 
-  var productList = ProductList()
+  var productList: ProductList = {
+    let productList = ProductList()
+    productList.noData = true
+    productList.isQuickOrder = true
+    return productList
+  }()
 
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
@@ -71,7 +76,6 @@ class SearchViewController: BaseTableViewController {
     productList.minPrice = minPrice * kPriceUnit
     productList.productPropertyValueIds = selectedProductPropertyValueIds
     productList.tagIds = selectedTagIds
-    productList.noData = true
     productList.get { () -> Void in
       self.tableView.reloadData()
     }

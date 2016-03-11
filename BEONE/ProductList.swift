@@ -21,6 +21,7 @@ class ProductList: BaseListModel {
     return BEONEManager.selectedLocation?.id
   }()
   var noData = false
+  var isQuickOrder = false
   
   override func getUrl() -> String {
     switch type {
