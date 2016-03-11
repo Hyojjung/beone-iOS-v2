@@ -39,12 +39,6 @@ class ShopViewController: BaseTableViewController {
     tableView.dynamicHeightDelgate = self
   }
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "segueToOpion:",
-      name: kNotificationSegueToOption, object: nil)
-  }
-  
   // MARK: - Observer Actions
   
   func segueToOpion(notification: NSNotification) {
@@ -57,6 +51,9 @@ class ShopViewController: BaseTableViewController {
 extension ShopViewController: DynamicHeightTableViewDelegate {
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    if let cell = cell as? ShopSummaryCell {
+      return cell.calculatedHeight(shop.desc)
+    }
     return nil
   }
   
@@ -100,6 +97,7 @@ extension ShopViewController {
   
   private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? ProductCoupleTemplateCell {
+      cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
       products.append(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
@@ -124,5 +122,13 @@ class ShopSummaryCell: UITableViewCell {
     profileImageView.makeCircleView()
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.desc
+  }
+  
+  func calculatedHeight(shopDescription: String?) -> CGFloat {
+    let descrtiptionLabel = UILabel()
+    descrtiptionLabel.font = UIFont.systemFontOfSize(14)
+    descrtiptionLabel.text = shopDescription
+    descrtiptionLabel.setWidth(ViewControllerHelper.screenWidth - 76)
+    return 355 + descrtiptionLabel.frame.height
   }
 }

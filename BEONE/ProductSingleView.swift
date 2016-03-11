@@ -4,11 +4,13 @@ import UIKit
 let kSimpleProductColumn = 2
  
 class ProductCoupleView: UIView {
+  
   @IBOutlet weak var imageView: LazyLoadingImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
+  var delegate: BaseViewController?
   var productId: Int?
   
   func configureView(product: Product?) {
@@ -23,8 +25,10 @@ class ProductCoupleView: UIView {
   }
   
   @IBAction func orderButtonTapped() {
-    if let productId = productId {
-      postNotification(kNotificationSegueToOption, userInfo: [kNotificationKeyProductId: productId])
-    }
+    delegate?.showOptionView(productId, rightOrdering: true)
+  }
+  
+  @IBAction func productButtonTapped() {
+    delegate?.showProductView(productId)
   }
 }

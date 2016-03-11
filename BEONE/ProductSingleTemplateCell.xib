@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2uB-kz-C90" id="61Z-YO-2yb">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="329"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="329.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-QO-Kcb">
@@ -62,31 +62,31 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="99"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgv-xO-vWA">
-                                                <rect key="frame" x="14" y="17" width="315" height="21"/>
+                                                <rect key="frame" x="14" y="17" width="315" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdJ-8i-t4d">
-                                                <rect key="frame" x="14" y="63" width="52" height="25"/>
+                                                <rect key="frame" x="14" y="62" width="51.5" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="1" green="0.63137254899999995" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3Y-N5-d0s">
-                                                <rect key="frame" x="72" y="63" width="52" height="26"/>
+                                                <rect key="frame" x="71.5" y="63" width="51.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMC-wV-piP">
-                                                <rect key="frame" x="14" y="41" width="315" height="15"/>
+                                                <rect key="frame" x="14" y="40.5" width="315" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-VU-Krp">
-                                                <rect key="frame" x="129" y="73" width="33" height="16"/>
+                                                <rect key="frame" x="128" y="72.5" width="33" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -113,17 +113,33 @@
                                             <constraint firstItem="jMC-wV-piP" firstAttribute="top" secondItem="Bgv-xO-vWA" secondAttribute="bottom" constant="3" id="kqK-f6-GIG"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-dv-714">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="297"/>
+                                        <connections>
+                                            <action selector="productButtonTapped" destination="2uB-kz-C90" eventType="touchUpInside" id="SQC-Gt-pfN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="cTg-dv-714" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="7dg-w6-DgA"/>
+                                    <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
+                                    <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
+                                    <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
+                                    <constraint firstItem="cTg-dv-714" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="fQG-Y2-8BU"/>
                                     <constraint firstAttribute="bottom" secondItem="yCd-sP-rVa" secondAttribute="bottom" id="qwX-Fk-7Cz"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="ACY-v3-5KD" secondAttribute="bottom" id="rJm-p8-PsV"/>
                                     <constraint firstAttribute="trailing" secondItem="yCd-sP-rVa" secondAttribute="trailing" id="sVC-4g-dUU"/>
                                     <constraint firstAttribute="trailing" secondItem="ACY-v3-5KD" secondAttribute="trailing" id="vEw-G1-2OB"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="xSQ-OS-OKT"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bQE-OR-ytP"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

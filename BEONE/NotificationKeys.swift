@@ -22,7 +22,6 @@ let kNotificationKeyView = "NotificationKeyView"
 let kNotificationShowAlert = "NotificationShowAlert"
 let kNotificationShowWebView = "NotificationShowWebView"
 let kNotificationOrder = "NotificationOrder"
-let kNotificationSegueToOption = "NotificationSegueToOption"
 let kNotificationKeyProductIds = "NotificationKeyProductIds"
 let kNotificationKeyProductId = "NotificationKeyProductId"
 

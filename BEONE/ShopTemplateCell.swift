@@ -29,8 +29,8 @@ class ShopTemplateCell: TemplateCell {
       nameLabel.text = shop.name
       descriptionLabel.text = shop.desc
       shopId = shop.id
+      productCountLabel.text = "\(shop.productsCount)개의 플라워 판매 중"
     }
-    // TODO: Product Count
   }
 }
 
