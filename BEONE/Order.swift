@@ -65,7 +65,6 @@ class Order: BaseModel {
       if let createdAt = order["createdAt"] as? String {
         self.createdAt = createdAt.date()
       }
-      print(order)
     }
   }
   

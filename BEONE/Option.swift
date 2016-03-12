@@ -74,6 +74,9 @@ class Option: BaseModel {
   func optionString() -> String {
     var optionString = String()
     optionString += "\(name!)"
+    if price > 0 {
+      optionString += " (+ \(price.priceNotation(.Korean)))"
+    }
     for optionItem in optionItems {
       optionString += " / \(optionItem.value!)"
     }

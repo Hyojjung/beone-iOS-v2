@@ -83,6 +83,8 @@ class OptionViewController: BaseTableViewController {
         cartItemIds.append(cartItem.id!)
       }
       showOrderView(cartItemIds)
+    } else if isModifing {
+      popView()
     } else {
       let confirmAction = Action()
       confirmAction.type = .Scheme

@@ -37,6 +37,7 @@
  // MARK: - Actions
  
  extension CartViewController {
+  
   @IBAction func selectAllButtonTapped(sender: UIButton) {
     sender.selected = !sender.selected
     if !sender.selected {
@@ -72,10 +73,18 @@
   }
   
   @IBAction func orderCartItemButtonTapped(sender: UIButton) {
-    showOrderView([sender.tag])
+    handleCartItem(sender.tag) { (_) -> Void in
+      self.showOrderView([sender.tag])
+    }
   }
   
-  @IBAction func orderSelectedCartItemButtonTapped(sender: AnyObject) {
+  @IBAction func orderSelectedCartItemButtonTapped() {
+    for cartItemId in selectedCartItemOrder.cartItemIds {
+      if cartItem(cartItemId).product.soldOut {
+        showAlertView(NSLocalizedString("sold out products", comment: "alert title"))
+        return
+      }
+    }
     showOrderView(selectedCartItemOrder.cartItemIds)
   }
   
@@ -84,8 +93,9 @@
   }
   
   @IBAction func optionButtonTapped(sender: AnyObject) {
-    let cartItem = self.cartItem(sender.tag)
-    showOptionView(cartItem.product.id, selectedCartItem: cartItem, isModifing: true)
+    handleCartItem(sender.tag) { (cartItem) -> Void in
+      self.showOptionView(cartItem.product.id, selectedCartItem: cartItem, isModifing: true)
+    }
   }
   
   @IBAction func segueButtonTapped() {
@@ -93,36 +103,39 @@
   }
   
   @IBAction func minusButtonTapped(sender: UIButton) {
-    let cartItem = self.cartItem(sender.tag)
-    if cartItem.quantity > 1 {
-      cartItem.quantity -= 1
-      cartItem.put({ (_) -> Void in
-        self.configureCartItemQuantity(cartItem)
-        self.tableView.reloadData()
-        }, putFailure: { (_) -> Void in
-          cartItem.quantity += 1
-      })
+    handleCartItem(sender.tag) { (cartItem) -> Void in
+      if cartItem.quantity > 1 {
+        cartItem.quantity -= 1
+        cartItem.put({ (_) -> Void in
+          OrderHelper.fetchOrderableInfo(self.order) {
+            self.setUpSelectedCartItemOrder()
+          }
+          }, putFailure: { (_) -> Void in
+            cartItem.quantity += 1
+        })
+      }
     }
   }
   
   @IBAction func addButtonTapped(sender: UIButton) {
-    let cartItem = self.cartItem(sender.tag)
-    cartItem.quantity += 1
-    cartItem.put({ (_) -> Void in
-      self.configureCartItemQuantity(cartItem)
-      self.tableView.reloadData()
-      }, putFailure: { (_) -> Void in
-        cartItem.quantity -= 1
-    })
+    handleCartItem(sender.tag) { (cartItem) -> Void in
+      cartItem.quantity += 1
+      cartItem.put({ (_) -> Void in
+        OrderHelper.fetchOrderableInfo(self.order) {
+          self.setUpSelectedCartItemOrder()
+        }
+        }, putFailure: { (_) -> Void in
+          cartItem.quantity -= 1
+      })
+    }
   }
   
-  func configureCartItemQuantity(cartItem: CartItem) {
-    for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
-        if orderableItem.cartItemId == cartItem.id {
-          orderableItem.quantity = cartItem.quantity
-        }
-      }
+  private func handleCartItem(cartItemId: Int, notSoldOutAction: (cartItem: CartItem) -> Void) {
+    let cartItem = self.cartItem(cartItemId)
+    if cartItem.product.soldOut {
+      showAlertView(NSLocalizedString("sold out product", comment: "alert title"))
+    } else {
+      notSoldOutAction(cartItem: cartItem)
     }
   }
   
@@ -144,10 +157,12 @@
  // MARK: - Observer Actions
  
  extension CartViewController {
+  
   func fetchOrderableInfo() {
     order.cartItemIds = CartItemManager.cartItemIds(cartItemList.list)
     selectedCartItemOrder.cartItemIds = CartItemManager.cartItemIds(cartItemList.list)
-    
+    tableView.bounces = cartItemList.list.count != 0
+
     if cartItemList.list.count > 0 {
       OrderHelper.fetchOrderableInfo(order) {
         self.selectedCartItemOrder.actualPrice = self.order.actualPrice
@@ -232,10 +247,10 @@
       cell.configureCell(order.orderableItemSets[indexPath.section])
     } else if let cell = cell as? CartOrderableItemCell,
       orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
-      let orderableItem = orderItems[indexPath.row - kSectionCellCount]
-      cell.configureCell(orderableItem,
-        selectedOption: orderableItem.selectedOption,
-        selectedCartItemIds: selectedCartItemOrder.cartItemIds)
+        let orderableItem = orderItems[indexPath.row - kSectionCellCount]
+        cell.configureCell(orderableItem,
+          selectedOption: orderableItem.selectedOption,
+          selectedCartItemIds: selectedCartItemOrder.cartItemIds)
     } else if let cell = cell as? CartPriceCell {
       cell.configureCell(selectedCartItemOrder)
     }

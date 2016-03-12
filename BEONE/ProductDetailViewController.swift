@@ -129,7 +129,11 @@ class ProductDetailViewController: BaseViewController {
   }
   
   func addCart(isOrdering: Bool) {
-    showOptionView(product.id, rightOrdering: isOrdering)
+    if !product.soldOut {
+      showOptionView(product.id, rightOrdering: isOrdering)
+    } else {
+      showAlertView(NSLocalizedString("sold out product", comment: "alert title"))
+    }
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {

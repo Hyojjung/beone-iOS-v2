@@ -183,7 +183,7 @@
                                                         <constraint firstAttribute="width" priority="999" constant="70" id="hZm-TI-5lb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" tag="109" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="fg_cart_soldout" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-LQ-RwN">
+                                                <imageView userInteractionEnabled="NO" tag="109" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_cart_soldout" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-LQ-RwN">
                                                     <rect key="frame" x="45" y="13" width="70" height="70"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmx-4U-B3M">
@@ -541,6 +541,7 @@
                                             <outlet property="quantityLabel" destination="f1n-z9-eo0" id="2jz-ii-1Ho"/>
                                             <outlet property="reselectButton" destination="yd6-tv-q5G" id="PtW-AU-q3Z"/>
                                             <outlet property="selectButton" destination="5Tf-Fh-48D" id="LkW-12-3ee"/>
+                                            <outlet property="soldOutImageView" destination="nF6-LQ-RwN" id="Bj1-l7-eOn"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="174" id="vd7-d7-3uc" customClass="CartPriceCell" customModule="BEONE" customModuleProvider="target">
@@ -784,7 +785,7 @@
                                         </state>
                                         <state key="highlighted" title="주문하기" backgroundImage="btn_submit_gold_pressed"/>
                                         <connections>
-                                            <action selector="orderSelectedCartItemButtonTapped:" destination="kfh-AH-HYI" eventType="touchUpInside" id="EHG-gy-VX7"/>
+                                            <action selector="orderSelectedCartItemButtonTapped" destination="kfh-AH-HYI" eventType="touchUpInside" id="jpb-fO-i8Q"/>
                                         </connections>
                                     </button>
                                 </subviews>

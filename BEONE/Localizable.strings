@@ -89,3 +89,5 @@
 "too many image" = "사진은 8개까지만 선택하실수 있습니다.";
 
 "select coupon" = "쿠폰을 선택하세요.";
+"sold out product" = "품절된 상품입니다.";
+"sold out products" = "품절된 상품이 포함되어 있습니다.";

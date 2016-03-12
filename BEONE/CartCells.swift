@@ -40,6 +40,7 @@ class CartOrderableItemCell: OrderableItemCell {
   @IBOutlet weak var addButton: UIButton!
   @IBOutlet weak var directOrderButton: UIButton!
   @IBOutlet weak var deliverableDateLabel: UILabel!
+  @IBOutlet weak var soldOutImageView: UIImageView!
   @IBOutlet weak var selectButton: UIButton!
 
   override func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
@@ -72,7 +73,7 @@ class CartOrderableItemCell: OrderableItemCell {
       configureButtonTag(cartItemId)
     }
     optionSoldOutView?.configureAlpha(orderableItem.product.soldOut)
-    
+    soldOutImageView.configureAlpha(orderableItem.product.soldOut)
     configureAvailableDeliveryDatesView(orderableItem)
   }
   

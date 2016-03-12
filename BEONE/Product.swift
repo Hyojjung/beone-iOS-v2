@@ -44,7 +44,7 @@ class Product: BaseModel {
   var shopId: Int?
   var significantlyUpdatedAt: NSDate?
   var size: String?
-  var soldOut = false
+  var soldOut = true
   var summary: String?
   var reviewCount = 1
   var reviews = [Review]()
