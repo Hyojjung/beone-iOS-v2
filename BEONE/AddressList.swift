@@ -15,7 +15,7 @@ class AddressList: BaseListModel {
       for addressObject in addressList {
         let address = Address()
         address.assignObject(addressObject)
-        list.append(address)
+        list.appendObject(address)
       }
     }
   }

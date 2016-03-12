@@ -18,7 +18,7 @@ class ProductOptionSet: BaseModel {
         for optionObject in optionObjects {
           let option = Option()
           option.assignObject(optionObject)
-          options.append(option)
+          options.appendObject(option)
         }
       }
     }
@@ -30,7 +30,7 @@ class ProductOptionSet: BaseModel {
     productOptionSet.name = name?.copy() as? String
     for option in options {
       let copiedOption = option.copy()
-      productOptionSet.options.append(copiedOption as! Option)
+      productOptionSet.options.appendObject(copiedOption as! Option)
     }
     return productOptionSet
   }
@@ -62,7 +62,7 @@ class ProductOptionSet: BaseModel {
     if options.count > 0 {
       var optionsServerFormat = [[String: AnyObject]]()
       for option in options {
-        optionsServerFormat.append(option.serverFormat())
+        optionsServerFormat.appendObject(option.serverFormat())
       }
       serverFormat["options"] = optionsServerFormat
     }

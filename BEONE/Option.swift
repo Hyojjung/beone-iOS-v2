@@ -33,7 +33,7 @@ class Option: BaseModel {
         for optionItemObject in optionObjects {
           let optionItem = OptionItem()
           optionItem.assignObject(optionItemObject)
-          optionItems.append(optionItem)
+          optionItems.appendObject(optionItem)
         }
       }
     }
@@ -48,7 +48,7 @@ class Option: BaseModel {
     option.name = name?.copy() as? String
     for optionItem in optionItems {
       let copiedOptionItem = optionItem.copy()
-      option.optionItems.append(copiedOptionItem as! OptionItem)
+      option.optionItems.appendObject(copiedOptionItem as! OptionItem)
     }
     return option
   }
@@ -90,7 +90,7 @@ class Option: BaseModel {
     if isSelected && optionItems.count > 0 {
       var optionItemsServerFormat = [[String: AnyObject]]()
       for optionItem in optionItems {
-        optionItemsServerFormat.append(optionItem.serverFormat())
+        optionItemsServerFormat.appendObject(optionItem.serverFormat())
       }
       serverFormat["optionItems"] = optionItemsServerFormat
     }

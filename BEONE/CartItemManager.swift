@@ -16,7 +16,7 @@ class CartItemManager: NSObject {
     var cartItemIds = [Int]()
     for cartItem in cartItems {
       if let cartItemId = cartItem.id {
-        cartItemIds.append(cartItemId)
+        cartItemIds.appendObject(cartItemId)
       }
     }
     return cartItemIds
@@ -26,7 +26,7 @@ class CartItemManager: NSObject {
     if MyInfo.sharedMyInfo().isUser() {
       var parameter = [[String: AnyObject]]()
       for cartItem in cartItems {
-        parameter.append(cartItem.parameter())
+        parameter.appendObject(cartItem.parameter())
       }
       
       NetworkHelper.requestPost("users/\((MyInfo.sharedMyInfo().userId)!)/cart-items",

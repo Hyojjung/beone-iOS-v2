@@ -11,7 +11,7 @@ class PaymentInfoList: BaseListModel {
       for paymentInfoObject in paymentInfoObjects {
         let paymentInfo = PaymentInfo()
         paymentInfo.assignObject(paymentInfoObject)
-        list.append(paymentInfo)
+        list.appendObject(paymentInfo)
         if paymentInfo.isMainPayment {
           mainPaymentInfo = paymentInfo
         }

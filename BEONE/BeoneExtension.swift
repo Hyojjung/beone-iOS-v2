@@ -1,5 +1,6 @@
 
 extension Array {
+  
   mutating func removeObject<U: Equatable>(object: U) {
     var index: Int?
     for (idx, objectToCompare) in enumerate() {
@@ -36,6 +37,12 @@ extension Array {
   
   func isInRange(index: Int) -> Bool {
     return index + 1 < count
+  }
+  
+  mutating func appendObject(element: Element?) {
+    if let element = element {
+      append(element)
+    }
   }
 }
 

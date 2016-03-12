@@ -19,7 +19,7 @@ class OrderHelper: NSObject {
         for paymentTypeObject in paymentTypeObjects {
           let paymentType = PaymentType()
           paymentType.assignObject(paymentTypeObject)
-          paymentTypeList.list.append(paymentType)
+          paymentTypeList.list.appendObject(paymentType)
         }
         getSuccess(paymentTypeList: paymentTypeList)
       }
@@ -40,7 +40,7 @@ class OrderHelper: NSObject {
               cartItems = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
                 for cartItem in cartItems {
                   if let cartItemId = cartItem[kObjectPropertyKeyId] as? Int {
-                    cartItemIds.append(cartItemId)
+                    cartItemIds.appendObject(cartItemId)
                   }
                 }
                 getSuccess(cartItemIds: cartItemIds)

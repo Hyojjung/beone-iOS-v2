@@ -168,7 +168,7 @@ extension SelectingPaymentTypeViewController {
   private func setUpPrices(point: Int? = nil, coupon: Coupon? = nil) {
     var couponIds = [Int]()
     if let couponId = coupon?.id {
-      couponIds.append(couponId)
+      couponIds.appendObject(couponId)
     }
     OrderHelper.fetchCalculatedPrice(order.actualPrice, couponIds: couponIds, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
       self.order.discountPrice = discountPrice

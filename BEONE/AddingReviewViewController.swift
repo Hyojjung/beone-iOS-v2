@@ -55,7 +55,7 @@ extension AddingReviewViewController {
       if reviewImages.count > 0 {
         ImageUploadHelper.uploadImages(reviewImages) {(imageUrls) -> Void in
           for imageUrl in imageUrls {
-            self.review.reviewImageUrls.append(imageUrl)
+            self.review.reviewImageUrls.appendObject(imageUrl)
           }
           self.postReview()
         }
@@ -124,7 +124,7 @@ extension AddingReviewViewController: QBImagePickerControllerDelegate {
                 if let result = result {
                   isNeededReloadTableView = true
                   // image height 저장?
-                  self.reviewImages.append(self.resizedImage(with: result))
+                  self.reviewImages.appendObject(self.resizedImage(with: result))
                   if imageCount == 0 {
                     if isInvalidSize {
                       self.showAlertView(NSLocalizedString("invalid images size", comment: "alert title"))
@@ -170,7 +170,7 @@ extension AddingReviewViewController: UIImagePickerControllerDelegate, UINavigat
   
   func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
     if image.size.height <= image.size.width * 10 && image.size.width <= image.size.height * 10 {
-      reviewImages.append(resizedImage(with: image))
+      reviewImages.appendObject(resizedImage(with: image))
       tableView.reloadData()
     } else {
       showAlertView(NSLocalizedString("invalid image size", comment: "alert title"))

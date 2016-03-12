@@ -28,7 +28,7 @@ class ProductProperty: BaseModel {
         for value in values {
           let productPropertyValue = ProductPropertyValue()
           productPropertyValue.assignObject(value)
-          self.values.append(productPropertyValue)
+          self.values.appendObject(productPropertyValue)
         }
       }
     }
@@ -41,7 +41,7 @@ class ProductProperty: BaseModel {
     productProperty.id = id
     for (index, productPropertyValue) in values.enumerate() {
       if index < kPartialValuesCount {
-        productProperty.values.append(productPropertyValue)
+        productProperty.values.appendObject(productPropertyValue)
       }
     }
     return productProperty
@@ -50,7 +50,7 @@ class ProductProperty: BaseModel {
   func valueTitles() -> [String] {
     var valueTitles = [String]()
     for value in values {
-      valueTitles.append(value.name!)
+      valueTitles.appendObject(value.name!)
     }
     return valueTitles
   }

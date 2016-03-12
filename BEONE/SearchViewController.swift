@@ -136,7 +136,7 @@ extension SearchViewController {
       if maxPrice == price {
         initialSelection = i
       }
-      rows.append("\(price)")
+      rows.appendObject("\(price)")
     }
     
     let actionSheetTitle = isMin ?
@@ -251,13 +251,13 @@ extension SearchViewController: SearchValueDelegate {
   func searchValueTapped(id: Int, isTag: Bool) {
     if isTag {
       if !selectedTagIds.contains(id) {
-        selectedTagIds.append(id)
+        selectedTagIds.appendObject(id)
       } else {
         selectedTagIds.removeObject(id)
       }
     } else {
       if !selectedProductPropertyValueIds.contains(id) {
-        selectedProductPropertyValueIds.append(id)
+        selectedProductPropertyValueIds.appendObject(id)
       } else {
         selectedProductPropertyValueIds.removeObject(id)
       }

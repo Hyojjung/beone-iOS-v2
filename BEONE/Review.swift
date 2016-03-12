@@ -31,7 +31,7 @@ class ImageUploadHelper {
     var contentTypes = [[String: String]]()
     for image in images {
       if let contentType = contentType(image) {
-        contentTypes.append(["contentType": contentType])
+        contentTypes.appendObject(["contentType": contentType])
       }
     }
     
@@ -45,7 +45,7 @@ class ImageUploadHelper {
             let imageUrlInfo = data[index]
             NetworkHelper.uploadData(imageUrlInfo["url"] as? String, contentType: self.contentType(image)!, parameters: UIImagePNGRepresentation(image)!, success: { (result) -> Void in
               imageCount -= 1
-              imageUrls.append(imageUrlInfo["key"] as! String)
+              imageUrls.appendObject(imageUrlInfo["key"] as! String)
               if imageCount == 0 {
                 uploadSuccess(imageUrls)
               }

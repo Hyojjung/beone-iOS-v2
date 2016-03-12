@@ -12,7 +12,7 @@ class ProductCategoryList: BaseListModel {
       for categoryObject in data {
         let productCategory = ProductCategory()
         productCategory.assignObject(categoryObject)
-        list.append(productCategory)
+        list.appendObject(productCategory)
       }
     }
   }

@@ -37,7 +37,7 @@ class SideBarViewContents: BaseModel {
       if let orderDeliveryItemSet = sideBarViewContents["latestOrderDeliveryItemSet"] as? [String: AnyObject] {
         let latestOrderDeliveryItemSet = OrderableItemSet()
         latestOrderDeliveryItemSet.assignObject(orderDeliveryItemSet)
-        orderDeliveryItemSets.append(latestOrderDeliveryItemSet)
+        orderDeliveryItemSets.appendObject(latestOrderDeliveryItemSet)
       }
       
       recentProducts.assignObject(sideBarViewContents["recentProducts"])

@@ -18,7 +18,7 @@ class InquiryList: BaseListModel {
       for inquiryObject in data {
         let inquiry = Inquiry()
         inquiry.assignObject(inquiryObject)
-        list.append(inquiry)
+        list.appendObject(inquiry)
       }
     }
   }

@@ -16,7 +16,7 @@ class CartItemList: BaseListModel {
       for cartItemObejct in cartItemList {
         let cartItem = CartItem()
         cartItem.assignObject(cartItemObejct)
-        list.append(cartItem)
+        list.appendObject(cartItem)
       }
     }
   }

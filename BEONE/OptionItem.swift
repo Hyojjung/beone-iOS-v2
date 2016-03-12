@@ -45,7 +45,7 @@ class OptionItem: BaseModel {
         for selectObject in selectObjects {
           let select = Select()
           select.assignObject(selectObject)
-          selects.append(select)
+          selects.appendObject(select)
           if select.name == value {
             selectedName = select.selectName()
           }
@@ -68,7 +68,7 @@ class OptionItem: BaseModel {
     
     for select in selects {
       let copiedSelect = select.copy()
-      optionItem.selects.append(copiedSelect as! Select)
+      optionItem.selects.appendObject(copiedSelect as! Select)
     }
     return optionItem
   }

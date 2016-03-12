@@ -26,7 +26,7 @@ class ProductPropertyValuesView: UIView {
           previousView: previousView)
         previousView = view
         
-        views.append(view)
+        views.appendObject(view)
       }
       configureSubViewsWidthLayout(views)
   }

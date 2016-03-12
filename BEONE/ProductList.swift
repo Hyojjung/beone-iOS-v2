@@ -63,7 +63,7 @@ class ProductList: BaseListModel {
       for productObject in productList {
         let product = Product()
         product.assignObject(productObject)
-        list.append(product)
+        list.appendObject(product)
       }
     }
   }

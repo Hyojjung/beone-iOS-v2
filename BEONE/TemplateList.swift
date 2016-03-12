@@ -11,7 +11,7 @@ class TemplateList: BaseListModel {
         if let type = templateObject[kTemplatePropertyKeyType] as? String, templateType = TemplateType(rawValue: type) {
           let template = Template(type: templateType)
           template.assignObject(templateObject)
-          list.append(template)
+          list.appendObject(template)
         }
       }
     }
@@ -25,21 +25,21 @@ class TemplateList: BaseListModel {
         for (index, product) in (template.content.models as! [Product]).enumerate() {
           if index % 2 == 0 {
             let newTmplate = Template(type: .ProductCouple)
-            newTmplate.content.models?.append(product)
+            newTmplate.content.models?.appendObject(product)
             if index < (template.content.models?.count)! - 1 {
-              newTmplate.content.models?.append(template.content.models![index + 1] as! Product)
+              newTmplate.content.models?.appendObject(template.content.models![index + 1] as! Product)
             }
-            filterdTemplates.append(newTmplate)
+            filterdTemplates.appendObject(newTmplate)
           }
         }
       } else if template.type == .ProductSingle {
         for product in template.content.models as! [Product] {
           let newTmplate = Template(type: .ProductSingle)
-          newTmplate.content.models?.append(product)
-          filterdTemplates.append(newTmplate)
+          newTmplate.content.models?.appendObject(product)
+          filterdTemplates.appendObject(newTmplate)
         }
       } else {
-        filterdTemplates.append(template)
+        filterdTemplates.appendObject(template)
       }
     }
   }

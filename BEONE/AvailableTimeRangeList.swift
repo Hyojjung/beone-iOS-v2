@@ -9,7 +9,7 @@ class AvailableTimeRangeList: BaseListModel {
       for availableTimeRangeObject in availableTimeRangesObject {
         let availableTimeRange = AvailableTimeRange()
         availableTimeRange.assignObject(availableTimeRangeObject)
-        list.append(availableTimeRange)
+        list.appendObject(availableTimeRange)
       }
     }
   }
@@ -19,7 +19,7 @@ class AvailableTimeRangeList: BaseListModel {
     for availableTimeRange in list as! [AvailableTimeRange] {
       if let (month, day) = availableTimeRange.startDateTime?.dateComponent() {
         if !deliveryDates.contains({ $0.month == month && $0.day == day }) {
-          deliveryDates.append((month, day))
+          deliveryDates.appendObject((month, day))
         }
       }
     }
@@ -32,7 +32,7 @@ class AvailableTimeRangeList: BaseListModel {
     for availableTimeRange in list as! [AvailableTimeRange] {
       if let (month, day) = availableTimeRange.startDateTime?.dateComponent() {
         if dateComponent.month == month && dateComponent.day == day {
-          availableTimeRanges.append(availableTimeRange)
+          availableTimeRanges.appendObject(availableTimeRange)
         }
       }
     }
@@ -46,7 +46,7 @@ class AvailableTimeRangeList: BaseListModel {
       if deliveryMonthes.contains(availableDeliveryDate.month) {
         deliveryDatesString += ", \(availableDeliveryDate.day)일"
       } else {
-        deliveryMonthes.append(availableDeliveryDate.month)
+        deliveryMonthes.appendObject(availableDeliveryDate.month)
         deliveryDatesString += "\(availableDeliveryDate.month)월 \(availableDeliveryDate.day)일"
       }
     }

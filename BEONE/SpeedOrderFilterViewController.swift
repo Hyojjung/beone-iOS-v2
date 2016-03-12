@@ -37,7 +37,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
       selectedUsageIndex = selectedUsageIndex, productProperty = productPropertyList.list.first as? ProductProperty {
         speedOrderResultsViewController.productList.productPropertyValueIds = [Int]()
         speedOrderResultsViewController.productList.address = address
-        speedOrderResultsViewController.productList.productPropertyValueIds!.append(productProperty.values[selectedUsageIndex].id!)
+        speedOrderResultsViewController.productList.productPropertyValueIds!.appendObject(productProperty.values[selectedUsageIndex].id)
     }
   }
   

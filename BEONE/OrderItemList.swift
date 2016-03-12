@@ -20,7 +20,7 @@ class OrderItemList: BaseListModel {
       for orderableItemObject in orderItemObjects {
         let orderableItem = OrderableItem()
         orderableItem.assignObject(orderableItemObject)
-        list.append(orderableItem)
+        list.appendObject(orderableItem)
       }
     }
   }

@@ -12,7 +12,7 @@ class HelpList: BaseListModel {
       for helpObject in helps {
         let help = Help()
         help.assignObject(helpObject)
-        list.append(help)
+        list.appendObject(help)
       }
     }
   }

@@ -35,7 +35,7 @@ class ProductSearchData: BaseModel {
         for reservationDateOptionObject in reservationDateOptionObjects {
           let reservationDateOption = ReservationDateOption()
           reservationDateOption.assignObject(reservationDateOptionObject)
-          reservationDateOptions.append(reservationDateOption)
+          reservationDateOptions.appendObject(reservationDateOption)
         }
       }
     }
@@ -45,7 +45,7 @@ class ProductSearchData: BaseModel {
     var reservationDateOptionsNames = [String]()
     for reservationDateOption in reservationDateOptions {
       if let name = reservationDateOption.name {
-        reservationDateOptionsNames.append(name)
+        reservationDateOptionsNames.appendObject(name)
       }
     }
     return reservationDateOptionsNames

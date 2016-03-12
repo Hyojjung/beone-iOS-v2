@@ -25,7 +25,7 @@ class CouponList: BaseListModel {
         let coupon = Coupon()
         coupon.usable = isUsableCouponList
         coupon.assignObject(couponObject)
-        list.append(coupon)
+        list.appendObject(coupon)
       }
     }
   }

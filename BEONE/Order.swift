@@ -186,7 +186,7 @@ extension Order {
           let orderableItemset = OrderableItemSet()
           orderableItemset.isDone = isDone
           orderableItemset.assignObject(orderItemSetObject)
-          orderableItemSets.append(orderableItemset)
+          orderableItemSets.appendObject(orderableItemset)
           
         }
         orderableItemSets.sortInPlace{
@@ -210,7 +210,7 @@ extension Order {
         orderableItemSet.selectedTimeRange?.startDateTime?.serverDateString()
       orderDeliveryItemSet["reservationEndDateTime"] =
         orderableItemSet.selectedTimeRange?.endDateTime?.serverDateString()
-      orderDeliveryItemSets.append(orderDeliveryItemSet)
+      orderDeliveryItemSets.appendObject(orderDeliveryItemSet)
     }
     return orderDeliveryItemSets
   }

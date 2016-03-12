@@ -19,7 +19,7 @@ class TagList: BaseListModel {
         for tagObject in tagObjects {
           let tag = Tag()
           tag.assignObject(tagObject)
-          list.append(tag)
+          list.appendObject(tag)
         }
       }
     }

@@ -40,7 +40,7 @@ class AddingBillKeyViewController: BaseTableViewController {
   lazy var yearArray: [String] = {
     var yearArray = [String]()
     for i in 0..<12 {
-      yearArray.append("\(NSDate().year() + i)년")
+      yearArray.appendObject("\(NSDate().year() + i)년")
     }
     return yearArray
   }()

@@ -12,7 +12,7 @@ class LocationList: BaseListModel {
       for locationObject in locationList {
         let location = Location()
         location.assignObject(locationObject)
-        list.append(location)
+        list.appendObject(location)
       }
       BEONEManager.selectedLocation = list.first as? Location
     }
@@ -22,7 +22,7 @@ class LocationList: BaseListModel {
     var names = [String]()
     for location in list as! [Location] {
       if let locationName = location.name {
-        names.append(locationName)
+        names.appendObject(locationName)
       }
     }
     return names

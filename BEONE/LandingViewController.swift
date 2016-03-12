@@ -37,7 +37,7 @@ class LandingViewController: BaseTableViewController {
   }
   
   @IBAction func showSpeedOrder() {
-    showUserViewController("SpeedOrder", viewIdentifier: "SpeedOrderView")
+    showViewController(.SpeedOrder)
   }
 }
 

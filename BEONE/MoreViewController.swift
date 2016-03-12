@@ -9,7 +9,7 @@ class MoreViewController: BaseViewController {
   }
   
   @IBAction func showProfileViewButtonTapped() {
-    showViewController(kProfileStoryboardName, viewIdentifier: kProfileViewViewIdentifier)
+    showViewController(.Profile)
   }
   
   @IBAction func showNoticesViewButtonTapped() {
@@ -21,14 +21,14 @@ class MoreViewController: BaseViewController {
   }
   
   @IBAction func showCouponViewButtonTapped() {
-    showUserViewController("Coupon", viewIdentifier: "CouponView")
+    showViewController(.Coupons)
   }
   
   @IBAction func showSettingViewButtonTapped() {
-    showViewController("Setting", viewIdentifier: "SettingView")
+    showViewController(.Setting)
   }
   @IBAction func showOrdersViewButtonTapped() {
-    showUserViewController(kOrdersStoryboardName, viewIdentifier: kOrdersViewNibName)
+    showViewController(.Orders)
   }
 }
 

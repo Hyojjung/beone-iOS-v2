@@ -116,9 +116,9 @@ extension ProductsViewController: UITableViewDataSource {
       cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
-      products.append(productList.list[indexPath.row * kSimpleProductColumn] as! Product)
+      products.appendObject(productList.list[indexPath.row * kSimpleProductColumn] as! Product)
       if productList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-        products.append(productList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
+        products.appendObject(productList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
       }
       cell.configureView(products)
     }
@@ -165,7 +165,7 @@ class SearchCell: UITableViewCell {
       var searchValueStrings = [String]()
       
       let priceString = "\(minPrice)~\(maxPrice)만원"
-      searchValueStrings.append(priceString)
+      searchValueStrings.appendObject(priceString)
       
       for productProperty in productProperties {
         var productPropertyString = String()
@@ -178,7 +178,7 @@ class SearchCell: UITableViewCell {
           }
         }
         if !productPropertyString.isEmpty {
-          searchValueStrings.append(productPropertyString)
+          searchValueStrings.appendObject(productPropertyString)
         }
       }
       
@@ -192,7 +192,7 @@ class SearchCell: UITableViewCell {
         }
       }
       if !tagString.isEmpty {
-        searchValueStrings.append(tagString)
+        searchValueStrings.appendObject(tagString)
       }
       return searchValueStrings
   }

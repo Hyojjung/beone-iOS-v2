@@ -25,7 +25,7 @@ class LazyLoadingImageView: UIImageView {
         self.setImageWithAnimation(image, cacheType: cacheType)
       } else {
         if imageType != .Original && !LazyLoadingHelper.originalImageUrls.contains(urlString) {
-          LazyLoadingHelper.originalImageUrls.append(urlString)
+          LazyLoadingHelper.originalImageUrls.appendObject(urlString)
           self.setLazyLoaingImage(urlString, imageType: .Original)
         }
       }

@@ -111,7 +111,7 @@ extension OrderableItemSet {
       for availableTimeRangeObject in availableTimeRangesObject {
         let availableTimeRange = AvailableTimeRange()
         availableTimeRange.assignObject(availableTimeRangeObject)
-        availableTimeRanges.append(availableTimeRange)
+        availableTimeRanges.appendObject(availableTimeRange)
       }
       availableTimeRanges.sortInPlace {
         return $0.startDateTime!.compare($1.startDateTime!) == .OrderedAscending
@@ -149,7 +149,7 @@ extension OrderableItemSet {
       for progressObject in progressObjects {
         let progress = OrderItemSetProgress()
         progress.assignObject(progressObject)
-        progresses.append(progress)
+        progresses.appendObject(progress)
       }
       // assign
       self.progresses.removeAll()
@@ -164,7 +164,7 @@ extension OrderableItemSet {
   private func rangeProgresses(with progressType: ProgressType, progresses: [OrderItemSetProgress]) {
     for progress in progresses {
       if progress.progressType == progressType {
-        self.progresses.append(progress)
+        self.progresses.appendObject(progress)
         break
       }
     }

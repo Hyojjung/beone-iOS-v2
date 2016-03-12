@@ -12,7 +12,7 @@ class ShopList: BaseListModel {
       for shopObject in shopList {
         let shop = Shop()
         shop.assignObject(shopObject)
-        list.append(shop)
+        list.appendObject(shop)
       }
     }
   }

@@ -53,7 +53,7 @@
     if !sender.selected {
       selectedCartItemOrder.cartItemIds.removeObject(sender.tag)
     } else {
-      selectedCartItemOrder.cartItemIds.append(sender.tag)
+      selectedCartItemOrder.cartItemIds.appendObject(sender.tag)
     }
     setUpSelectedCartItemOrder()
   }

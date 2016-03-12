@@ -106,7 +106,7 @@ class Product: BaseModel {
         for reviewObject in reviews {
           let review = Review()
           review.assignObject(reviewObject)
-          self.reviews.append(review)
+          self.reviews.appendObject(review)
         }
       }
       productOptionSets.assignObject(product["productOptionSets"])
@@ -119,7 +119,7 @@ class Product: BaseModel {
       for productOrderableInfoObject in productOrderableInfosObject {
         let productOrderableInfo = ProductOrderableInfo()
         productOrderableInfo.assignObject(productOrderableInfoObject)
-        productOrderableInfos.append(productOrderableInfo)
+        productOrderableInfos.appendObject(productOrderableInfo)
       }
     }
   }
@@ -130,7 +130,7 @@ class Product: BaseModel {
       for productDetailObject in productDetailsObject {
         let productDetail = ProductDetail()
         productDetail.assignObject(productDetailObject)
-        productDetails.append(productDetail)
+        productDetails.appendObject(productDetail)
       }
     }
   }
@@ -155,11 +155,11 @@ extension Product {
     var imageUrls = [String]()
     for productDetail in productDetails {
       if productDetail.detailType == .Image && productDetail.content != nil {
-        imageUrls.append(productDetail.content!)
+        imageUrls.appendObject(productDetail.content!)
       }
     }
     if imageUrls.isEmpty && mainImageUrl != nil {
-      imageUrls.append(mainImageUrl!)
+      imageUrls.appendObject(mainImageUrl!)
     }
     return imageUrls
   }

@@ -12,7 +12,7 @@ class NoticeList: BaseListModel {
       for noticeObject in notices {
         let notice = Notice()
         notice.assignObject(noticeObject)
-        list.append(notice)
+        list.appendObject(notice)
       }
     }
   }

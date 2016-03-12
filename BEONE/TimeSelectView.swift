@@ -99,7 +99,7 @@ extension TimeSelectView {
     lineView.backgroundColor = UIColor.whiteColor()
     lineView.alpha = 0.3
     lineView.addHeightLayout(1)
-    hourLines.append(lineView)
+    hourLines.appendObject(lineView)
     return lineView
   }
   

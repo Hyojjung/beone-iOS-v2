@@ -71,7 +71,7 @@ class OptionViewController: BaseTableViewController {
     deliveryTypeNames.removeAll()
     for productOrderableInfo in product.productOrderableInfos {
       if let name = productOrderableInfo.deliveryType.name {
-        deliveryTypeNames.append(name)
+        deliveryTypeNames.appendObject(name)
       }
     }
   }
@@ -80,7 +80,7 @@ class OptionViewController: BaseTableViewController {
     if isOrdering {
       var cartItemIds = [Int]()
       for cartItem in cartItems {
-        cartItemIds.append(cartItem.id!)
+        cartItemIds.appendObject(cartItem.id!)
       }
       showOrderView(cartItemIds)
     } else if isModifing {
@@ -176,7 +176,7 @@ extension OptionViewController {
       cartItem.product = product
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
       selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
-      cartItems.append(cartItem)
+      cartItems.appendObject(cartItem)
       tableView.reloadData()
     }
   }
@@ -250,7 +250,7 @@ extension OptionViewController: OptionDelegate {
     if isProductOptionSet {
       for (index, option) in selectedOption(optionId).options.enumerate() {
         if let name = option.optionName() {
-          optionValues.append(name)
+          optionValues.appendObject(name)
         }
         if option.isSelected {
           initialSelection = index
@@ -269,7 +269,7 @@ extension OptionViewController: OptionDelegate {
     } else {
       for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
         if let name = select.selectName() {
-          optionValues.append(name)
+          optionValues.appendObject(name)
         }
         if select.name == selectedOptionItem(optionId).name {
           initialSelection = index

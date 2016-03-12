@@ -111,7 +111,7 @@ class ProductDetailViewController: BaseViewController {
   func setUpProductData() {
     self.imageUrls.removeAll()
     for imageUrl in product.productDetailImageUrls() {
-      self.imageUrls.append(imageUrl.url())
+      self.imageUrls.appendObject(imageUrl.url())
     }
     collectionView.reloadData()
   }

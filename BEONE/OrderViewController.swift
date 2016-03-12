@@ -74,7 +74,7 @@ extension OrderViewController {
     returnableOrderItemSets.removeAll()
     for orderableItemSet in order.orderableItemSets {
       if orderableItemSet.isReturnable {
-        returnableOrderItemSets.append(orderableItemSet)
+        returnableOrderItemSets.appendObject(orderableItemSet)
       }
     }
   }
@@ -84,7 +84,7 @@ extension OrderViewController {
     for orderableItemSet in order.orderableItemSets {
       for orderItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
         if !orderItem.itemImageUrls.isEmpty {
-          orderItemsWithImages.append(orderItem)
+          orderItemsWithImages.appendObject(orderItem)
         }
       }
     }
@@ -94,7 +94,7 @@ extension OrderViewController {
     bankUnpaiedPaymentInfos.removeAll()
     for paymentInfo in order.paymentInfoList.list as! [PaymentInfo] {
       if paymentInfo.paidAt == nil && paymentInfo.paymentType.id == PaymentTypeId.VBank.rawValue {
-        bankUnpaiedPaymentInfos.append(paymentInfo)
+        bankUnpaiedPaymentInfos.appendObject(paymentInfo)
       }
     }
   }

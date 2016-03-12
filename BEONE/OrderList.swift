@@ -22,7 +22,7 @@ class OrderList: BaseListModel {
       for orderObject in orders {
         let order = Order()
         order.assignObject(orderObject)
-        list.append(order)
+        list.appendObject(order)
       }
     }
   }

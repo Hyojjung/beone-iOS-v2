@@ -107,14 +107,14 @@ class Content: BaseModel {
           for itemObject in itemsObject {
             let product = Product()
             product.assignObject(itemObject)
-            models?.append(product)
+            models?.appendObject(product)
           }
         } else {
           items.removeAll()
           for itemObject in itemsObject {
             let item = Content()
             item.assignObject(itemObject)
-            items.append(item)
+            items.appendObject(item)
           }
         }
       }

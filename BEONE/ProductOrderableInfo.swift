@@ -15,7 +15,7 @@ class ProductOrderableInfo: BaseModel {
         self.availableDates.removeAll()
         for availableDate in availableDates {
           if let day = availableDate.day() {
-            self.availableDates.append(day)
+            self.availableDates.appendObject(day)
           }
         }
       }
@@ -33,7 +33,7 @@ class ProductOrderableInfo: BaseModel {
           if index != 0 {
             availableDatesString += "일, "
           }
-          monthes.append(dateComponent.month)
+          monthes.appendObject(dateComponent.month)
           availableDatesString += "\(dateComponent.month)월 "
         } else {
           if index != 0 {

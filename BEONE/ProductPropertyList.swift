@@ -23,7 +23,7 @@ class ProductPropertyList: BaseListModel {
       for productPropertyObject in productPropertyObjects {
         let productProperty = ProductProperty()
         productProperty.assignObject(productPropertyObject)
-        list.append(productProperty)
+        list.appendObject(productProperty)
       }
     }
   }

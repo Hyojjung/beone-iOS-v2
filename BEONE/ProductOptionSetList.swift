@@ -8,7 +8,7 @@ class ProductOptionSetList: BaseListModel {
       for productOptionSetObject in productOptionSetList {
         let productOptionSet = ProductOptionSet()
         productOptionSet.assignObject(productOptionSetObject)
-        list.append(productOptionSet)
+        list.appendObject(productOptionSet)
       }
     }
   }
@@ -17,7 +17,7 @@ class ProductOptionSetList: BaseListModel {
     let productOptionSetList = ProductOptionSetList()
     for productOptionSet in list {
       let copiedProductOptionSet = productOptionSet.copy()
-      productOptionSetList.list.append(copiedProductOptionSet as! BaseModel)
+      productOptionSetList.list.appendObject(copiedProductOptionSet as! BaseModel)
     }
     return productOptionSetList
   }
@@ -45,7 +45,7 @@ class ProductOptionSetList: BaseListModel {
   func serverFormat() -> [[String: AnyObject]] {
     var serverFormat = [[String: AnyObject]]()
     for productOptionSet in list as! [ProductOptionSet] {
-      serverFormat.append(productOptionSet.serverFormat())
+      serverFormat.appendObject(productOptionSet.serverFormat())
     }
     return serverFormat
   }

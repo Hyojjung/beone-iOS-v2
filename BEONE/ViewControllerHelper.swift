@@ -31,7 +31,7 @@ class ViewControllerHelper: NSObject {
 extension UIView {
   static func loadFromNibName(nibName: String?, bundle : NSBundle? = nil) -> UIView? {
     if let nibName = nibName {
-      return UINib(nibName: nibName, bundle: bundle).instantiateWithOwner(nil, options: nil)[0] as? UIView
+      return UINib(nibName: nibName, bundle: bundle).instantiateWithOwner(nil, options: nil).first as? UIView
     }
     return nil
   }
@@ -141,17 +141,6 @@ extension UIViewController {
     let viewIdentifiers = schemeIdentifier.viewIdentifiers()
     return viewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
   }
-  
-  func showViewController(schemeIdentifier: SchemeIdentifier) {
-    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
-    showViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
-  }
-  
-  func showViewController(storyboardName: String?, viewIdentifier: String?) {
-    if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
-      navigationController?.showViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
-    }
-  }
 }
 
 extension UIFloatLabelTextField {
@@ -204,7 +193,7 @@ extension UIViewController {
               self.showOrderWebView(order, paymentTypeId: paymentType.id!, paymentInfoId: paymentInfoId)
             }
         }
-        actionSheetButtons.append(paymentTypeButton)
+        actionSheetButtons.appendObject(paymentTypeButton)
       }
       showActionSheet(actionSheetButtons)
     }
@@ -235,7 +224,7 @@ extension UIViewController {
   }
   
   func showShopView(shopId: Int?) {
-    let shopViewController = UIViewController.viewController("Shop", viewIdentifier: "ShopView") as! ShopViewController
+    let shopViewController = UIViewController.viewController(.Shop) as! ShopViewController
     shopViewController.shop.id = shopId
     showViewController(shopViewController, sender: nil)
   }

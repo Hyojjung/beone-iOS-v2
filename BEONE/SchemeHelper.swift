@@ -33,6 +33,11 @@ enum SchemeIdentifier: String {
   case Help = "help"
   case Notice = "notice"
   case Products = "products"
+  case Coupons = "coupons"
+  case SpeedOrder = "speedOrder"
+  case Setting = "setting"
+  case Option = "option"
+  case Shop = "shop"
   
   func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool) {
     switch (self) {
@@ -44,12 +49,22 @@ enum SchemeIdentifier: String {
       return (kProductDetailStoryboardName, kProductDetailViewIdentifier, false)
     case .Cart:
       return ("Cart", "CartView", true)
+    case .SpeedOrder:
+      return ("SpeedOrder", "SpeedOrderView", true)
+    case .Coupons:
+      return ("Coupon", "CouponsView", true)
     case .Help:
       return ("Help", "HelpsView", false)
     case .Notice:
       return ("Notice", "NoticesView", false)
+    case .Setting:
+      return ("Setting", "SettingView", false)
     case .Products:
       return (kProductsStoryboardName, kProductsViewViewIdentifier, false)
+    case .Shop:
+      return (kShopStoryboardName, kShopViewIdentifier, false)
+    case .Option:
+      return (kProductDetailStoryboardName, kProductOptionViewIdentifier, true)
     }
   }
 }
@@ -90,7 +105,7 @@ class SchemeHelper {
         schemeStrings?.removeAtIndex(0)
         if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
           if let viewController = mainTabViewController.selectedViewController as? BaseViewController {
-            viewController.showView()
+            viewController.handleScheme()
           }
         } else {
           mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
@@ -100,7 +115,7 @@ class SchemeHelper {
 }
 
 extension BaseViewController {
-  func showView() {
+  func handleScheme() {
     if let schemeStrings = SchemeHelper.schemeStrings {
       if SchemeHelper.index < schemeStrings.count {
         let schemeString = schemeStrings[SchemeHelper.index++]
@@ -108,12 +123,7 @@ extension BaseViewController {
           topViewController = SchemeHelper.rootNavigationController()?.topViewController as? SchemeDelegate {
           topViewController.handleScheme(with: id)
         } else if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
-          let identifiers = schemeIdentifier.viewIdentifiers()
-          if identifiers.isForUser {
-            showUserViewController(identifiers.storyboardName, viewIdentifier: identifiers.viewIdentifier)
-          } else {
-            showViewController(identifiers.storyboardName, viewIdentifier: identifiers.viewIdentifier)
-          }
+          showViewController(schemeIdentifier)
         }
       } else {
         SchemeHelper.schemeStrings = nil

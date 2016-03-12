@@ -26,68 +26,25 @@ class BaseViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    #if RELEASE
-      let tracker = GAI.sharedInstance().defaultTracker
-      tracker.set(kGAIScreenName, value: self.title)
-      
-      let builder = GAIDictionaryBuilder.createScreenView()
-      tracker.send(builder.build() as [NSObject : AnyObject])
-    #endif
-    
-    if !MyInfo.sharedMyInfo().isUser() {
-      signingShowViewController = nil
-      SchemeHelper.schemeStrings = nil
-      if !isWaitingSigning {
-        isWaitingSigning = true
-      }
-    } else if let signingShowViewController = signingShowViewController {
-      showViewController(signingShowViewController, sender: nil)
-      self.signingShowViewController = nil
-    }
-
+    checkNeedToShowUserViewController()
     addObservers()
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    showView()
+    handleScheme()
   }
-  
-  func showUserViewController(storyboardName: String, viewIdentifier: String) {
-    let viewController = UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier)
-    showUserViewController(viewController)
-  }
-  
-  func showUserViewController(viewController: UIViewController) {
-    if !MyInfo.sharedMyInfo().isUser() {
-      signingShowViewController = viewController
-      showSigningView()
-    } else {
-      showViewController(viewController, sender: nil)
-    }
-  }
-  
-  func showOptionView(selectedProductId: Int?, selectedCartItem: CartItem? = nil,
-    rightOrdering: Bool = false, isModifing: Bool = false) {
-      let optionViewController = UIViewController.viewController(kProductDetailStoryboardName, viewIdentifier: kProductOptionViewIdentifier)
-      if let optionViewController = optionViewController as? OptionViewController {
-        optionViewController.product.id = selectedProductId
-        optionViewController.isModifing = isModifing
-        optionViewController.isOrdering = rightOrdering
-        if let selectedCartItem = selectedCartItem {
-          optionViewController.cartItems.append(selectedCartItem)
-        }
-        showUserViewController(optionViewController)
-      }
-  }
-  
+
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
     removeObservers()
     loadingView.hide()
   }
-  
-  // MARK: - Private Methods
+}
+
+// MARK: - BaseViewController Methods
+
+extension BaseViewController {
   
   func setUpView() {
     view.backgroundColor = bgColor
@@ -120,7 +77,27 @@ class BaseViewController: UIViewController {
   func removeObservers() {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
-  
+}
+
+// MARK: - Private Methods
+
+extension BaseViewController {
+
+  private func checkNeedToShowUserViewController() {
+    if !MyInfo.sharedMyInfo().isUser() {
+      SchemeHelper.schemeStrings = nil
+      isWaitingSigning = true
+    } else if let signingShowViewController = signingShowViewController {
+      showViewController(signingShowViewController, sender: nil)
+    }
+    signingShowViewController = nil
+  }
+}
+
+// MARK: - BaseViewController Action Methods
+
+extension BaseViewController {
+
   func showAlert(notification: NSNotification) {
     if let userInfo = notification.userInfo as? [String: AnyObject] {
       showAlertView(userInfo[kNotificationAlertKeyMessage] as? String,
@@ -130,11 +107,14 @@ class BaseViewController: UIViewController {
         delegate: self)
     }
   }
-  
   func showWebView(notification: NSNotification) {
     if let userInfo = notification.userInfo as? [String: AnyObject] {
       showWebView(userInfo[kNotificationAlertKeyMessage] as? String, title: nil)
     }
+  }
+
+  func endEditing() {
+    view.endEditing(true)
   }
   
   func startIndicator() {
@@ -144,8 +124,45 @@ class BaseViewController: UIViewController {
   func stopIndicator() {
     loadingView.hide()
   }
+}
+
+extension BaseViewController {
   
-  func endEditing() {
-    view.endEditing(true)
+  func showViewController(schemeIdentifier: SchemeIdentifier) {
+    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
+    if viewIdentifiers.isForUser {
+      showUserViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+    } else {
+      showViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+    }
+  }
+  
+  private func showViewController(storyboardName: String, viewIdentifier: String) {
+    showViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier), sender: nil)
+  }
+  
+  private func showUserViewController(storyboardName: String, viewIdentifier: String) {
+    let viewController = UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier)
+    showUserViewController(viewController)
+  }
+  
+  private func showUserViewController(viewController: UIViewController) {
+    if !MyInfo.sharedMyInfo().isUser() {
+      signingShowViewController = viewController
+      showSigningView()
+    } else {
+      showViewController(viewController, sender: nil)
+    }
+  }
+  
+  func showOptionView(selectedProductId: Int?, selectedCartItem: CartItem? = nil,
+    rightOrdering: Bool = false, isModifing: Bool = false) {
+      if let optionViewController = UIViewController.viewController(.Option) as? OptionViewController {
+        optionViewController.product.id = selectedProductId
+        optionViewController.isModifing = isModifing
+        optionViewController.isOrdering = rightOrdering
+        optionViewController.cartItems.appendObject(selectedCartItem)
+        showUserViewController(optionViewController)
+      }
   }
 }

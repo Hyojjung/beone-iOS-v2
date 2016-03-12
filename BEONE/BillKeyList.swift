@@ -16,7 +16,7 @@ class BillKeyList: BaseListModel {
       for billKeyObject in billKeys {
         let billKey = BillKey()
         billKey.assignObject(billKeyObject)
-        list.append(billKey)
+        list.appendObject(billKey)
       }
     }
   }
