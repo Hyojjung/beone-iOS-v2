@@ -1,6 +1,10 @@
 
 import UIKit
 
+protocol CouponDelegate: NSObjectProtocol {
+  func selectCouponButtonTapped(coupon: Coupon)
+}
+
 class CouponCell: UITableViewCell {
   
   @IBOutlet weak var subTitleLabel: UILabel!
@@ -9,6 +13,8 @@ class CouponCell: UITableViewCell {
   @IBOutlet weak var usableDayLabel: UILabel!
   @IBOutlet weak var serialNumberLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
+  var coupon: Coupon?
+  var delegate: CouponDelegate?
   
   func configureCell(coupon: Coupon) {
     subTitleLabel.text = coupon.subTitle
@@ -19,6 +25,8 @@ class CouponCell: UITableViewCell {
     if let expiredAt = coupon.expiredAt {
       expiredDateLabel.text = "~ \(expiredAt.briefDateString())"
     }
+    
+    self.coupon = coupon
   }
   
   func calculatedHeight(coupon: Coupon) -> CGFloat {
@@ -38,5 +46,11 @@ class CouponCell: UITableViewCell {
     summaryLabel.setWidth(ViewControllerHelper.screenWidth - 64)
     
     return CGFloat(140) + subTitleLabel.frame.height + titleLabel.frame.height + summaryLabel.frame.height
+  }
+  
+  @IBAction func selectCouponButtonTapped() {
+    if let coupon = coupon {
+      delegate?.selectCouponButtonTapped(coupon)
+    }
   }
 }

@@ -9,8 +9,8 @@ class OrderWebViewController: BaseViewController {
   var paymentInfoId: Int?
   var order: Order?
 
-  override func setUpView() {
-    super.setUpView()
+  override func setUpData() {
+    super.setUpData()
     loadingView.show()
     AuthenticationHelper.refreshToken { (result) -> Void in
       self.configureWebView()

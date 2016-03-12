@@ -38,6 +38,14 @@ class OrderAddressViewController: BaseViewController {
   override func setUpView() {
     super.setUpView()
     
+    self.senderNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    self.senderPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    self.receiverNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    self.receiverPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+  }
+  
+  override func setUpData() {
+    super.setUpData()
     addressList.get { () -> Void in
       self.handleAddressList()
     }
@@ -45,11 +53,6 @@ class OrderAddressViewController: BaseViewController {
       self.senderNameTextField.text = MyInfo.sharedMyInfo().name
       self.senderPhoneTextField.text = MyInfo.sharedMyInfo().phone
     }
-    
-    self.senderNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.senderPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.receiverNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.receiverPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
   }
 }
 

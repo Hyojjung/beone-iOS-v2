@@ -21,6 +21,7 @@ class BaseViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpView()
+    setUpData()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -45,7 +46,6 @@ class BaseViewController: UIViewController {
     }
 
     addObservers()
-    setUpData()
   }
   
   override func viewDidAppear(animated: Bool) {

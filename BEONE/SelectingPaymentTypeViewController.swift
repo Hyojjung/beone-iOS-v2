@@ -41,8 +41,8 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   var order = Order()
   var paymentTypeList: PaymentTypeList?
   var selectedPaymentTypeId: Int?
+  var selectedCoupon: Coupon?
   var point = 0
-  var selectedCoupont: Coupon?
   
   override func setUpView() {
     super.setUpView()
@@ -134,7 +134,7 @@ extension SelectingPaymentTypeViewController {
       } else if order.actualPrice - point < 1000 && order.actualPrice - point > 0 {
         showAlertView("결제금액은 1000원 이상이어야 합니다.")
       } else {
-        self.setUpPrices(self.point)
+        self.setUpPrices(point)
       }
     }
   }
@@ -142,6 +142,7 @@ extension SelectingPaymentTypeViewController {
   @IBAction func showSelectingCouponViewButtonTapped() {
     let orderCouponsViewController = OrderCouponsViewController()
     orderCouponsViewController.order = order
+    orderCouponsViewController.delegate = self
     showViewController(orderCouponsViewController, sender: nil)
   }
   
@@ -157,17 +158,31 @@ extension SelectingPaymentTypeViewController {
             self.setUpPrices()
           } else if discountWay == .Point {
             self.setUpPrices(self.point)
+          } else if discountWay == .Coupon {
+            self.setUpPrices(coupon: self.selectedCoupon)
           }
         }
     })
   }
   
-  private func setUpPrices(point: Int = 0) {
-    OrderHelper.fetchCalculatedPrice(order.actualPrice, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
+  private func setUpPrices(point: Int? = nil, coupon: Coupon? = nil) {
+    var couponIds = [Int]()
+    if let couponId = coupon?.id {
+      couponIds.append(couponId)
+    }
+    OrderHelper.fetchCalculatedPrice(order.actualPrice, couponIds: couponIds, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
       self.order.discountPrice = discountPrice
       self.order.usedPoint = point
+      self.order.usedCoupon = coupon
       self.tableView.reloadData()
     })
+  }
+}
+
+extension SelectingPaymentTypeViewController: CouponDelegate {
+  func selectCouponButtonTapped(coupon: Coupon) {
+    selectedCoupon = coupon
+    setUpPrices(coupon: coupon)
   }
 }
 
@@ -271,6 +286,8 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
           }
         }
       }
+    } else if let cell = cell as? CouponDiscountCell {
+      cell.setUpCell(selectedCoupon)
     }
   }
 }
@@ -311,14 +328,14 @@ class OrderPriceCell: UITableViewCell {
     var productsPrice = 0
     for orderableItemSet in order.orderableItemSets {
       for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
-        productsPrice += orderableItem.product.actualPrice
+        productsPrice += orderableItem.actualPrice
       }
     }
     productsPriceLabel.text = productsPrice.priceNotation(.Korean)
     deliveryPriceLabel.text = deliveryPrice.priceNotation(.KoreanFreeNotation)
     
     totalPriceLabel.text = (order.price - order.discountPrice).priceNotation(.Korean)
-    
+    print(order.price - order.discountPrice)
     usedPointLabel.text = "0 원"
     usedCouponLabel.text = "0 원"
     if discountWay == .Point {
@@ -349,6 +366,19 @@ class PointCell: UITableViewCell {
       myPointLabel.text = point + " point"
     } else {
       myPointLabel.text = "0 point"
+    }
+  }
+}
+
+class CouponDiscountCell: UITableViewCell {
+  
+  @IBOutlet weak var couponTitleLabel: UILabel!
+  
+  func setUpCell(coupon: Coupon?) {
+    if let couponTitle = coupon?.title {
+      couponTitleLabel.text = couponTitle
+    } else {
+      couponTitleLabel.text = NSLocalizedString("select coupon", comment: "label text")
     }
   }
 }

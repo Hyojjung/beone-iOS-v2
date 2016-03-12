@@ -33,12 +33,16 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    tableView.dynamicHeightDelgate = self
+  }
+  
+  override func setUpData() {
+    super.setUpData()
     addressList.get { () -> Void in
       if !self.addressList.list.isEmpty {
         self.selectedIndex = 0
       }
     }
-    tableView.dynamicHeightDelgate = self
   }
   
   @IBAction func selectIndexButtonTapped(sender: UIButton) {

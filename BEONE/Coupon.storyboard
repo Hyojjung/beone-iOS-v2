@@ -393,7 +393,7 @@
         <!--쿠폰등록-->
         <scene sceneID="1DI-Wa-xww">
             <objects>
-                <viewController storyboardIdentifier="newCouponView" title="쿠폰등록" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UFi-eG-QCx" customClass="BOCouponAddingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newCouponView" title="쿠폰등록" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UFi-eG-QCx" customClass="AddingCouponViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w61-7d-QSW"/>
                         <viewControllerLayoutGuide type="bottom" id="z0j-6F-Iv0"/>
@@ -448,7 +448,7 @@
                                         </state>
                                         <state key="highlighted" title="등록" backgroundImage="btn_submit_gold_pressed"/>
                                         <connections>
-                                            <action selector="postCoupon" destination="UFi-eG-QCx" eventType="touchUpInside" id="tc8-V5-hAL"/>
+                                            <action selector="postCouponButtonTapped" destination="UFi-eG-QCx" eventType="touchUpInside" id="oQm-kb-nLt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -476,7 +476,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="couponNumberTextField" destination="fCa-4O-PUQ" id="gVg-j9-wdU"/>
+                        <outlet property="couponNumberTextField" destination="fCa-4O-PUQ" id="XXG-dT-eBI"/>
+                        <outlet property="couponTextFieldBackgroundImageView" destination="fG7-6U-3v0" id="ap7-vy-EpS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qw8-pR-ysx" userLabel="First Responder" sceneMemberID="firstResponder"/>

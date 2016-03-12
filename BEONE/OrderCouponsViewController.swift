@@ -19,7 +19,8 @@ class OrderCouponsViewController: BaseTableViewController {
   
   var couponList = CouponList()
   var order: Order?
-  
+  var delegate: CouponDelegate?
+
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -29,10 +30,16 @@ class OrderCouponsViewController: BaseTableViewController {
     super.setUpData()
     if let order = order {
       OrderHelper.fetchAvailableCoupons(order.cartItemIds, couponList: couponList, getSuccess: { () -> Void in
-        print(self.couponList)
         self.tableView.reloadData()
       })
     }
+  }
+}
+
+extension OrderCouponsViewController: CouponDelegate {
+  func selectCouponButtonTapped(coupon: Coupon) {
+    delegate?.selectCouponButtonTapped(coupon)
+    popView()
   }
 }
 
@@ -45,6 +52,7 @@ extension OrderCouponsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? CouponCell, coupon = couponList.list[indexPath.row] as? Coupon {
       cell.configureCell(coupon)
+      cell.delegate = self
     }
     return cell
   }
@@ -76,8 +84,6 @@ extension OrderCouponsViewController: DynamicHeightTableViewDelegate {
     }
     return nil
   }
-  
-  
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kCouponTableViewCellIdentifiers[indexPath.section]

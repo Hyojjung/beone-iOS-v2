@@ -18,7 +18,8 @@ class Order: BaseModel {
   var title: String?
   var orderCode: String?
   var createdAt: NSDate?
-  var usedPoint = 0
+  var usedPoint: Int? = nil
+  var usedCoupon: Coupon?
   var isCancellable = false
   var isPayable = false
   
@@ -64,6 +65,7 @@ class Order: BaseModel {
       if let createdAt = order["createdAt"] as? String {
         self.createdAt = createdAt.date()
       }
+      print(order)
     }
   }
   
@@ -99,6 +101,9 @@ class Order: BaseModel {
     parameter["price"] = price
     parameter["point"] = usedPoint
     parameter["discountPrice"] = discountPrice
+    if let usedCouponId = usedCoupon?.id {
+      parameter["couponIds"] = [usedCouponId]
+    }
     parameter["orderDeliveryItemSets"] = orderDeliveryItemSetParameter()
     return parameter
   }
