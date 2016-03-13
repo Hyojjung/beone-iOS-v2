@@ -29,6 +29,10 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     return productPropertyList
   }()
   
+  deinit {
+    BEONEManager.selectedAddress = nil
+  }
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: segue)
     if let speedOrderAddressViewController = segue.destinationViewController as? SpeedOrderAddressViewController {
@@ -85,6 +89,7 @@ extension SpeedOrderFilterViewController: AddressDelegate {
   
   func handleAddress(address: Address) {
     self.address = address
+    BEONEManager.selectedAddress = address
     tableView.reloadData()
   }
 }

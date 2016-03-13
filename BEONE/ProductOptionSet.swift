@@ -30,7 +30,7 @@ class ProductOptionSet: BaseModel {
     productOptionSet.name = name?.copy() as? String
     for option in options {
       let copiedOption = option.copy()
-      productOptionSet.options.appendObject(copiedOption as! Option)
+      productOptionSet.options.appendObject(copiedOption as? Option)
     }
     return productOptionSet
   }

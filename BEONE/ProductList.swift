@@ -53,6 +53,7 @@ class ProductList: BaseListModel {
       parameter["noData"] = noData
       parameter["address"] = address?.addressString()
       parameter["addressType"] = address?.addressType?.rawValue
+      print(parameter)
       return parameter
     }
   }

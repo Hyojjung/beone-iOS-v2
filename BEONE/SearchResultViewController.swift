@@ -116,9 +116,9 @@ extension ProductsViewController: UITableViewDataSource {
       cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
-      products.appendObject(productList.list[indexPath.row * kSimpleProductColumn] as! Product)
+      products.appendObject(productList.list[indexPath.row * kSimpleProductColumn] as? Product)
       if productList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-        products.appendObject(productList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
+        products.appendObject(productList.list[indexPath.row * kSimpleProductColumn + 1] as? Product)
       }
       cell.configureView(products)
     }

@@ -476,7 +476,7 @@
                                 <rect key="frame" x="497" y="648" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
-                                    <action selector="showSpeedOrder" destination="9pv-A4-QxB" eventType="touchUpInside" id="wsb-y8-waS"/>
+                                    <action selector="showSpeedOrder" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pay-Kh-4Xa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1282,7 +1282,7 @@
                                 <rect key="frame" x="497" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
-                                    <action selector="showSpeedOrder" destination="9pv-A4-QxB" eventType="touchUpInside" id="ZgH-ph-EeP"/>
+                                    <action selector="showSpeedOrder" destination="fZQ-LG-5eG" eventType="touchUpInside" id="94U-T2-59U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2167,7 +2167,7 @@
                                 <rect key="frame" x="497" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
-                                    <action selector="showSpeedOrder" destination="9pv-A4-QxB" eventType="touchUpInside" id="rtH-eh-ZUL"/>
+                                    <action selector="showSpeedOrder" destination="QoW-kr-PiG" eventType="touchUpInside" id="rbD-WP-Rp2"/>
                                 </connections>
                             </button>
                         </subviews>

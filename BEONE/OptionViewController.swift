@@ -34,7 +34,15 @@ class OptionViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     product.get({ () -> Void in
-      self.setUpProductData()
+      if self.product.soldOut {
+        let confirmAction = Action()
+        confirmAction.type = .Method
+        confirmAction.content = "popView"
+        
+        self.showAlertView(NSLocalizedString("sold out product", comment: "alert title"), confirmAction: confirmAction, delegate: self)
+      } else {
+        self.setUpProductData()
+      }
     })
   }
   
@@ -104,6 +112,7 @@ class OptionViewController: BaseTableViewController {
 // MARK: - Actions
 
 extension OptionViewController {
+  
   @IBAction func sendCart() {
     if let productOrderableInfo = selectedProductOrderableInfo {
       if cartItems.count > 0 {

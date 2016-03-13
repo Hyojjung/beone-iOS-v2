@@ -86,6 +86,10 @@ class SearchViewController: BaseTableViewController {
 
 extension SearchViewController {
   
+  @IBAction func showSpeedOrder() {
+    showViewController(.SpeedOrder)
+  }
+  
   @IBAction func moreButtonTapped() {
     showingMore = true
     tableView.reloadData()

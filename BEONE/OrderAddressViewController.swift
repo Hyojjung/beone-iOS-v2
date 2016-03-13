@@ -46,8 +46,12 @@ class OrderAddressViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    addressList.get { () -> Void in
-      self.handleAddressList()
+    if let selectedAddress = BEONEManager.selectedAddress {
+      handleAddress(selectedAddress)
+    } else {
+      addressList.get { () -> Void in
+        self.handleAddressList()
+      }
     }
     MyInfo.sharedMyInfo().get { () -> Void in
       self.senderNameTextField.text = MyInfo.sharedMyInfo().name
@@ -64,8 +68,12 @@ extension OrderAddressViewController {
   }
   
   @IBAction func sameButtonTapped(sender: UIButton) {
-    sender.selected = !sender.selected
-    if sender.selected {
+    setUpSameButtonSelected(!sender.selected)
+  }
+  
+  private func setUpSameButtonSelected(selected: Bool) {
+    sameButton.selected = selected
+    if selected {
       setUpSenderAndReceiverView()
     }
   }
@@ -183,7 +191,7 @@ extension OrderAddressViewController {
     if sameButton.selected && (textField == senderNameTextField || textField == senderPhoneTextField) {
       setUpSenderAndReceiverView()
     } else if sameButton.selected && textField == receiverNameTextField || textField == receiverPhoneTextField {
-      sameButtonTapped(sameButton)
+      setUpSameButtonSelected(false)
     }
   }
   

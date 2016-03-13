@@ -68,7 +68,7 @@ class OptionItem: BaseModel {
     
     for select in selects {
       let copiedSelect = select.copy()
-      optionItem.selects.appendObject(copiedSelect as! Select)
+      optionItem.selects.appendObject(copiedSelect as? Select)
     }
     return optionItem
   }

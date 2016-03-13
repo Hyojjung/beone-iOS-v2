@@ -54,12 +54,19 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   }
   
   @IBAction func selectAddressButtonTapped() {
+    endEditing()
     if let address = address, _ = address.detailAddress {
       addressDelegate?.handleAddress(address)
       popView()
     } else {
       showAlertView("주소를 입력해주세요.")
     }
+  }
+}
+
+extension SpeedOrderAddressViewController: UITextFieldDelegate {
+  func textFieldDidEndEditing(textField: UITextField) {
+    address?.detailAddress = textField.text
   }
 }
 

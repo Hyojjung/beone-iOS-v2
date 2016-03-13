@@ -392,6 +392,9 @@
                                                             <exclude reference="dUh-bV-umF"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="1KN-ux-hd3" id="hSf-6C-dgG"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="상세주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xs-Mk-EHm">
                                                     <rect key="frame" x="10" y="181" width="52" height="18"/>
@@ -598,6 +601,9 @@
                                 <state key="normal" title="모든 제품 보기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showAllProductsViewButtonTapped" destination="Eie-xy-Rf5" eventType="touchUpInside" id="Afd-QM-Aie"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0개의 유용한 후기가 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWO-3C-rle">
                                 <rect key="frame" x="212" y="535" width="177" height="18"/>

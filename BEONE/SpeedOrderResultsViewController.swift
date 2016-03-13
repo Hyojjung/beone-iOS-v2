@@ -57,8 +57,32 @@ class SpeedOrderResultsViewController: BaseViewController {
   }
 }
 
-extension SpeedOrderResultsViewController: UIScrollViewDelegate {
+extension SpeedOrderResultsViewController {
+  @IBAction func showAllProductsViewButtonTapped() {
+    if let productsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
+      productsViewController.productList = productList
+      productsViewController.productList.isQuickOrder = false
+      productsViewController.forSearchResult = true
+      
+      if let productPropertyValueIds = productList.productPropertyValueIds {
+        productsViewController.selectedProductPropertyValueIds = productPropertyValueIds
+      }
+      if let tagIds = productList.tagIds {
+        productsViewController.selectedTagIds = tagIds
+      }
+      if let minPrice = productList.minPrice {
+        productsViewController.minPrice = minPrice
+      }
+      if let maxPrice = productList.maxPrice {
+        productsViewController.maxPrice = maxPrice
+      }
+      showViewController(productsViewController, sender: nil)
+    }
+  }
+}
 
+extension SpeedOrderResultsViewController: UIScrollViewDelegate {
+  
   func scrollViewDidScroll(scrollView: UIScrollView) {
     let previousPage = productsScrollViewPageControl.currentPage
     productsScrollViewPageControl.currentPage = Int(scrollView.contentOffset.x / ViewControllerHelper.screenWidth)

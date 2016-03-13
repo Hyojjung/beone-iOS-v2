@@ -61,13 +61,7 @@ extension UIViewController {
     presentViewController(actionSheet, animated: true, completion: nil)
   }
   
-  func showAlertView(message: String?) {
-    if let message = message {
-      showAlertView(message, hasCancel: false, confirmAction: nil, cancelAction: nil, delegate: nil)
-    }
-  }
-  
-  func showAlertView(message: String?, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?, delegate: AnyObject?) {
+  func showAlertView(message: String?, hasCancel: Bool? = false, confirmAction: Action? = nil, cancelAction: Action? = nil, delegate: AnyObject? = nil) {
     if let message = message {
       let alertViewController =
       AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction, actionDelegate: delegate)

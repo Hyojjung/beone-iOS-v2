@@ -17,7 +17,7 @@ class ProductOptionSetList: BaseListModel {
     let productOptionSetList = ProductOptionSetList()
     for productOptionSet in list {
       let copiedProductOptionSet = productOptionSet.copy()
-      productOptionSetList.list.appendObject(copiedProductOptionSet as! BaseModel)
+      productOptionSetList.list.appendObject(copiedProductOptionSet as? BaseModel)
     }
     return productOptionSetList
   }

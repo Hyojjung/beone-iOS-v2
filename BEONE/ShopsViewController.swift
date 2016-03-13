@@ -30,6 +30,10 @@ class ShopsViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+  
+  @IBAction func showSpeedOrder() {
+    showViewController(.SpeedOrder)
+  }
 }
 
 extension ShopsViewController: SideBarPositionMoveDelegate {

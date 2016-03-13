@@ -22,6 +22,10 @@ class CategoryListViewController: BaseTableViewController {
     }
   }
   
+  @IBAction func showSpeedOrder() {
+    showViewController(.SpeedOrder)
+  }
+  
   @IBAction func categoryButtonTapped(sender: UIButton) {
     if let category = categoryList.model(sender.tag) as? ProductCategory {
       if let categoryProductsViewController = UIViewController.viewController(.Products) as? ProductsViewController {

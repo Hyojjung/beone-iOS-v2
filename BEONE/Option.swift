@@ -48,7 +48,7 @@ class Option: BaseModel {
     option.name = name?.copy() as? String
     for optionItem in optionItems {
       let copiedOptionItem = optionItem.copy()
-      option.optionItems.appendObject(copiedOptionItem as! OptionItem)
+      option.optionItems.appendObject(copiedOptionItem as? OptionItem)
     }
     return option
   }

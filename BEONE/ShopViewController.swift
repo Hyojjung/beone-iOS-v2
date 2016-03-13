@@ -100,9 +100,9 @@ extension ShopViewController {
       cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
-      products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn] as! Product)
+      products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn] as? Product)
       if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-        products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as! Product)
+        products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as? Product)
       }
       cell.configureView(products)
     }
