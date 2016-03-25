@@ -18,7 +18,7 @@ class SignUpViewController: BaseViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "closeViewController",
+      selector: #selector(SignUpViewController.closeViewController),
       name: kNotificationSigningSuccess,
       object: nil)
   }
@@ -30,9 +30,9 @@ class SignUpViewController: BaseViewController {
     passwordTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
     passwordVerifyingTextField.setUpFloatingLabel(NSLocalizedString("password form", comment: "placeholder"))
     
-    emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    passwordTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    passwordVerifyingTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+    passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+    passwordVerifyingTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
   }
 }
 

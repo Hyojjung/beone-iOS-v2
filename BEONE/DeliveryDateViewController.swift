@@ -36,7 +36,13 @@ class DeliveryDateViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    OrderHelper.fetchOrderableInfo(order) { self.tableView.reloadData() }
+    OrderHelper.fetchOrderableInfo(order) {
+      if let selectedDate = BEONEManager.selectedDate {
+        self.selectedDates[self.selectedOrderableItemSetIndex] =
+          DateFormatterHelper.koreanCalendar.dateFromComponents(selectedDate)
+      }
+      self.tableView.reloadData()
+    }
   }
   
   override func setUpView() {
@@ -106,6 +112,7 @@ extension DeliveryDateViewController: CKCalendarDelegate {
   
   func calendar(calendar: CKCalendarView!, didSelectDate date: NSDate!) {
     if date != nil && selectedDates[selectedOrderableItemSetIndex] != date {
+      print(date)
       selectedDates[selectedOrderableItemSetIndex] = date
       selectedTimeRanges[selectedOrderableItemSetIndex] = nil
       tableView.reloadData()

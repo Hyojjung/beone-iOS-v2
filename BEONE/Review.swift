@@ -4,6 +4,7 @@ import UIKit
 class Review: BaseModel {
 
   var orderItem: OrderableItem?
+  var userName: String?
   var content: String?
   var rate = 5
   var reviewImageUrls = [String]()
@@ -22,6 +23,20 @@ class Review: BaseModel {
     parameter["reviewImageUrls"] = reviewImageUrls
     parameter["orderItemId"] = orderItem?.id
     return parameter
+  }
+  
+  override func assignObject(data: AnyObject?) {
+    if let data = data as? [String: AnyObject] {
+      id = data[kObjectPropertyKeyId] as? Int
+      content = data["content"] as? String
+      userName = data["userName"] as? String
+      if let rate = data["rate"] as? Int {
+        self.rate = rate
+      }
+      if let reviewImageUrls = data["reviewImageUrls"] as? [String] {
+        self.reviewImageUrls = reviewImageUrls
+      }
+    }
   }
 }
 

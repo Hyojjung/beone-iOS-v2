@@ -89,7 +89,8 @@ class ProductDetailViewController: BaseViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleShowImageNotification:",
+    NSNotificationCenter.defaultCenter().addObserver(self,
+                                                     selector: #selector(ProductDetailViewController.handleShowImageNotification(_:)),
       name: kNotificationProductDetailImageTapped, object: nil)
   }
   

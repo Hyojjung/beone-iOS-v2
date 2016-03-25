@@ -49,7 +49,7 @@ class DynamicHeightTableView: UITableView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    tapRecognizer.addTarget(self, action: "handleScrollViewTapped")
+    tapRecognizer.addTarget(self, action: #selector(DynamicHeightTableView.handleScrollViewTapped))
     addGestureRecognizer(tapRecognizer)
     addKeyboardObservers()
   }
@@ -63,11 +63,11 @@ class DynamicHeightTableView: UITableView {
   
   private func addKeyboardObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleKeyboardWillShow:",
+      selector: #selector(DynamicHeightTableView.handleKeyboardWillShow(_:)),
       name: UIKeyboardWillShowNotification,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleKeyboardWillHide:",
+      selector: #selector(DynamicHeightTableView.handleKeyboardWillHide(_:)),
       name: UIKeyboardWillHideNotification,
       object: nil)
   }

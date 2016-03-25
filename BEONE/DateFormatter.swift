@@ -2,6 +2,7 @@
 import UIKit
 
 let kKoreanTimeZone = 9 * 60 * 60
+let kSecondToDay: Double = 60 * 60 * 24
 let kNoonTime = 12
 
 extension String {
@@ -48,30 +49,21 @@ extension NSDate {
   }
   
   func dateComponent() -> (month: Int, day: Int) {
-    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
-      let components = calendar.components([.Month, .Day], fromDate: self)
-      return (components.month, components.day)
-    }
-    fatalError("no date component")
+    let calendar = DateFormatterHelper.koreanCalendar
+    let components = calendar.components([.Month, .Day], fromDate: self)
+    return (components.month, components.day)
   }
   
   func hour() -> Int {
-    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
-      let components = calendar.components([.Hour], fromDate: self)
-      return components.hour
-    }
-    fatalError("no date component")
+    let calendar = DateFormatterHelper.koreanCalendar
+    let components = calendar.components([.Hour], fromDate: self)
+    return components.hour
   }
   
   func year() -> Int {
-    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
-      let components = calendar.components([.Year], fromDate: self)
-      return components.year
-    }
-    fatalError("no date component")
+    let calendar = DateFormatterHelper.koreanCalendar
+    let components = calendar.components([.Year], fromDate: self)
+    return components.year
   }
   
   func hourIntervalFromDate(date: NSDate) -> Int {
@@ -103,8 +95,7 @@ extension NSDate {
   }
   
   func numberOfLeftDay(to date: NSDate) -> Int {
-    let calendar = NSCalendar.currentCalendar()
-    calendar.timeZone = NSTimeZone(abbreviation: "JST")!
+    let calendar = DateFormatterHelper.koreanCalendar
     
     var fromDate: NSDate?, toDate: NSDate?
     
@@ -117,9 +108,18 @@ extension NSDate {
 }
 
 class DateFormatterHelper: NSObject {
+  
   static func serverDateFormatter() -> NSDateFormatter {
     let serverDateFormatter = NSDateFormatter()
     serverDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     return serverDateFormatter
   }
+  
+  static var koreanCalendar: NSCalendar = {
+    if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
+      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
+      return calendar
+    }
+    fatalError("must return calendar")
+  }()
 }

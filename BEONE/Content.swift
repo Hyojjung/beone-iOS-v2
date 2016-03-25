@@ -109,6 +109,13 @@ class Content: BaseModel {
             product.assignObject(itemObject)
             models?.appendObject(product)
           }
+        } else if models is [Review] {
+          models?.removeAll()
+          for itemObject in itemsObject {
+            let review = Review()
+            review.assignObject(itemObject)
+            models?.appendObject(review)
+          }
         } else {
           items.removeAll()
           for itemObject in itemsObject {

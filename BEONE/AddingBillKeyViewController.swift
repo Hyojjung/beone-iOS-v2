@@ -59,7 +59,7 @@ extension AddingBillKeyViewController {
   func addToolbar(textField: UITextField) {
     let previousButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 105)!,
       target: self,
-      action: "previousButtonTapped")
+      action: #selector(AddingBillKeyViewController.previousButtonTapped))
     previousButton.tintColor = gold
     
     let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
@@ -67,14 +67,14 @@ extension AddingBillKeyViewController {
     
     let nextButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 106)!,
       target: self,
-      action: "nextButtonTapped")
+      action: #selector(AddingBillKeyViewController.nextButtonTapped))
     nextButton.tintColor = gold
     
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
     
     let doneButton = UIBarButtonItem(barButtonSystemItem: .Done,
       target: self,
-      action: "endEditing")
+      action: #selector(NSMutableAttributedString.endEditing))
     doneButton.tintColor = gold
     
     let toolBar = UIToolbar()

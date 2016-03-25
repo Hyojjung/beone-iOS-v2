@@ -19,15 +19,15 @@ class SnsSignUpViewController: BaseViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "setUpTextField:",
+      selector: #selector(SnsSignUpViewController.setUpTextField(_:)),
       name: kNotificationFetchFacebookInfoSuccess,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "setUpTextField:",
+      selector: #selector(SnsSignUpViewController.setUpTextField(_:)),
       name: kNotificationFetchKakaoInfoSuccess,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "closeViewController",
+      selector: #selector(SnsSignUpViewController.closeViewController),
       name: kNotificationSigningSuccess,
       object: nil)
   }
@@ -36,7 +36,7 @@ class SnsSignUpViewController: BaseViewController {
     super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
     nameTextField.setUpFloatingLabel(NSLocalizedString("name form", comment: "placeholder"))
-    emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    emailTextField.addTarget(self, action: #selector(SnsSignUpViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
   }
   
   override func setUpData() {

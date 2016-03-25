@@ -12,6 +12,8 @@ class TemplateList: BaseListModel {
           let template = Template(type: templateType)
           template.assignObject(templateObject)
           list.appendObject(template)
+        } else {
+          print(templateObject)
         }
       }
     }

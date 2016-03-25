@@ -47,7 +47,7 @@ class PaymentTypesView: UIView {
     paymentTypeView.isSelected = isSelected
     paymentTypeView.paymentTypeButton.tag = paymentType.id!
     paymentTypeView.paymentTypeButton.setTitle(paymentType.name, forState: .Normal)
-    paymentTypeView.paymentTypeButton.addTarget(self, action: "selectPaymentTypeViewTapped:",
+    paymentTypeView.paymentTypeButton.addTarget(self, action: #selector(PaymentTypesView.selectPaymentTypeViewTapped(_:)),
       forControlEvents: .TouchUpInside)
     return paymentTypeView
   }

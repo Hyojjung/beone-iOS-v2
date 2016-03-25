@@ -57,19 +57,19 @@ extension BaseViewController {
   
   func addObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "startIndicator",
+      selector: #selector(BaseViewController.startIndicator),
       name: kNotificationNetworkStart,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "stopIndicator",
+      selector: #selector(BaseViewController.stopIndicator),
       name: kNotificationNetworkEnd,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "showAlert:",
+      selector: #selector(BaseViewController.showAlert(_:)),
       name: kNotificationShowAlert,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "showWebView:",
+      selector: #selector(BaseViewController.showWebView(_:)),
       name: kNotificationShowWebView,
       object: nil)
   }

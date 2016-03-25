@@ -51,7 +51,7 @@ extension String {
     var bigCamelCaseString = String()
     if characters.count > 0 {
       bigCamelCaseString += String(characters.first! as Character).uppercaseString
-      bigCamelCaseString += substringWithRange(Range<String.Index>(start: startIndex.advancedBy(1), end: endIndex))
+      bigCamelCaseString += substringWithRange(Range(startIndex.advancedBy(1)..<endIndex))
     }
     return bigCamelCaseString
   }

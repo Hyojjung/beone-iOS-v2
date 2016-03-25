@@ -38,10 +38,10 @@ class OrderAddressViewController: BaseViewController {
   override func setUpView() {
     super.setUpView()
     
-    self.senderNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.senderPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.receiverNameTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
-    self.receiverPhoneTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    self.senderNameTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+    self.senderPhoneTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+    self.receiverNameTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+    self.receiverPhoneTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
   }
   
   override func setUpData() {

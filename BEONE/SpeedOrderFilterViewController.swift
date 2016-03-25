@@ -31,6 +31,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   deinit {
     BEONEManager.selectedAddress = nil
+    BEONEManager.selectedDate = nil
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -41,6 +42,10 @@ class SpeedOrderFilterViewController: BaseTableViewController {
       selectedUsageIndex = selectedUsageIndex, productProperty = productPropertyList.list.first as? ProductProperty {
         speedOrderResultsViewController.productList.productPropertyValueIds = [Int]()
         speedOrderResultsViewController.productList.address = address
+        if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
+          speedOrderResultsViewController.productList.availableDates =
+            [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
+        }
         speedOrderResultsViewController.productList.productPropertyValueIds!.appendObject(productProperty.values[selectedUsageIndex].id)
     }
   }
@@ -76,6 +81,16 @@ class SpeedOrderFilterViewController: BaseTableViewController {
       sender: nil,
       doneBlock: { (_, index, _) -> Void in
         self.selectedDeliveryDateIndex = index
+        
+        let dayInterval = self.productSearchData.reservationDateOptions[index]
+        BEONEManager.selectedDate = nil
+        if let day = Double(dayInterval.value!) {
+          let calendar = DateFormatterHelper.koreanCalendar
+          let selectedDate = calendar.components([.Month, .Day],
+            fromDate: NSDate().dateByAddingTimeInterval(day * kSecondToDay))
+          BEONEManager.selectedDate = selectedDate
+        }
+        
         self.tableView.reloadData()
     })
   }

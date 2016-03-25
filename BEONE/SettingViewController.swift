@@ -67,7 +67,7 @@ class SettingViewController: BaseTableViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
+    NSNotificationCenter.defaultCenter().addObserver(tableView, selector: #selector(UITableView.reloadData),
       name: kNotificationSigningSuccess, object: nil)
   }
 }

@@ -21,7 +21,7 @@ enum TemplateType: String {
   case Shop = "shop"
   case ProductCouple = "productCouple"
   case ProductSingle = "productSingle"
-  case Review
+  case Review = "review"
   case Banner
   case Table = "table"
   
@@ -60,6 +60,8 @@ class Template: BaseModel {
     self.type = type
     if type == .ProductCouple || type == .ProductSingle {
       content.models = [Product]()
+    } else if type == .Review {
+      content.models = [Review]()
     }
   }
   
