@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--공지사항-->
@@ -32,12 +32,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-ad-0gK">
-                                                    <rect key="frame" x="14" y="24" width="31" height="15"/>
+                                                    <rect key="frame" x="14" y="24" width="580" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.68627450980392157" green="0.59607843137254901" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAj-Pw-ttK">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAj-Pw-ttK">
                                                     <rect key="frame" x="14" y="47" width="572" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="Rb4-fJ-6DX"/>
@@ -72,6 +72,7 @@
                                                 <constraint firstItem="LWf-ad-0gK" firstAttribute="top" secondItem="lnJ-L9-JQT" secondAttribute="top" constant="34" id="eIT-JI-5hi"/>
                                                 <constraint firstItem="LWf-ad-0gK" firstAttribute="top" secondItem="pAj-Pw-ttK" secondAttribute="bottom" constant="-15.5" id="f4f-75-nE4"/>
                                                 <constraint firstAttribute="bottom" secondItem="eQl-ih-IVX" secondAttribute="bottom" id="htm-jI-hY6"/>
+                                                <constraint firstAttribute="trailing" secondItem="LWf-ad-0gK" secondAttribute="trailing" constant="6" id="nd2-h1-quQ"/>
                                                 <constraint firstItem="zAq-0m-Jhz" firstAttribute="top" secondItem="lnJ-L9-JQT" secondAttribute="top" id="qkC-tK-Nzd"/>
                                                 <constraint firstAttribute="trailing" secondItem="eQl-ih-IVX" secondAttribute="trailing" id="uSN-ez-gxR"/>
                                                 <constraint firstItem="eQl-ih-IVX" firstAttribute="top" secondItem="lnJ-L9-JQT" secondAttribute="top" id="zeL-O9-EJd"/>

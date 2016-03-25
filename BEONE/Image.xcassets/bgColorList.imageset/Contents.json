@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "fgMainSelectColorChecked.png"
+      "filename" : "bgColorList.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "fgMainSelectColorChecked@2x.png"
+      "filename" : "bgColorList@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "fgMainSelectColorChecked@3x.png"
+      "filename" : "bgColorList@3x.png"
     }
   ],
   "info" : {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="577" height="384"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="73Z-dS-tcv" id="EE9-h4-49n">
-                <rect key="frame" x="0.0" y="0.0" width="577" height="384"/>
+                <rect key="frame" x="0.0" y="0.0" width="577" height="383.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-E9-zow">
@@ -35,14 +35,30 @@
                                                     <constraint firstAttribute="height" constant="170" id="ZLd-bn-6fm"/>
                                                 </constraints>
                                             </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_gradiant_topbanner" translatesAutoresizingMaskIntoConstraints="NO" id="Qpv-c2-4OW">
+                                                <rect key="frame" x="0.0" y="0.0" width="541" height="170"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-lo-0GZ" userLabel="shop_logo">
+                                                <rect key="frame" x="12" y="105" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="DGz-uc-GPc"/>
+                                                    <constraint firstAttribute="height" constant="50" id="e7M-mg-DsY"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="SEC-n6-DMq" secondAttribute="bottom" id="2rg-4N-K5o"/>
+                                            <constraint firstAttribute="bottom" secondItem="ctb-lo-0GZ" secondAttribute="bottom" constant="15" id="4e1-gL-Yz4"/>
                                             <constraint firstAttribute="trailing" secondItem="SEC-n6-DMq" secondAttribute="trailing" id="8i5-30-5Rc"/>
                                             <constraint firstItem="SEC-n6-DMq" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" id="IBQ-07-JYV"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qpv-c2-4OW" secondAttribute="trailing" id="P3Z-1X-NUt"/>
+                                            <constraint firstItem="Qpv-c2-4OW" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" id="QIF-ZS-3Y8"/>
                                             <constraint firstItem="SEC-n6-DMq" firstAttribute="width" secondItem="gLF-jt-H4w" secondAttribute="height" multiplier="360:170" id="cOW-pO-CPG"/>
+                                            <constraint firstAttribute="bottom" secondItem="Qpv-c2-4OW" secondAttribute="bottom" id="dOl-Yg-Hrw"/>
+                                            <constraint firstItem="Qpv-c2-4OW" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="top" id="diW-JD-v5r"/>
                                             <constraint firstItem="SEC-n6-DMq" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="top" id="lMb-k3-UVq"/>
+                                            <constraint firstItem="ctb-lo-0GZ" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" constant="12" id="sNx-I9-xEJ"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -56,19 +72,19 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListWhiteShadow" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-Cd-tvk">
                                                 <rect key="frame" x="0.0" y="0.0" width="545" height="181"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-Wu-xIG">
-                                                <rect key="frame" x="12" y="38" width="31" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워 판매 중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-Wu-xIG">
+                                                <rect key="frame" x="12" y="38" width="533" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-Tx-zar">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="플라워 샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-Tx-zar">
                                                 <rect key="frame" x="12" y="58" width="521" height="111"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awD-TX-CjT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awD-TX-CjT">
                                                 <rect key="frame" x="12" y="15" width="521" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,6 +107,7 @@
                                             <constraint firstAttribute="bottom" secondItem="4xO-Cd-tvk" secondAttribute="bottom" id="Zps-H9-BVA"/>
                                             <constraint firstAttribute="trailing" secondItem="ry0-Tx-zar" secondAttribute="trailing" constant="12" id="adO-0C-7S3"/>
                                             <constraint firstItem="4xO-Cd-tvk" firstAttribute="leading" secondItem="iGG-qx-tlY" secondAttribute="leading" id="lh0-YW-qBA"/>
+                                            <constraint firstAttribute="trailing" secondItem="oY4-Wu-xIG" secondAttribute="trailing" id="rNG-a8-8lw"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -179,5 +196,7 @@
     <resources>
         <image name="bgListWhiteShadow" width="11" height="10"/>
         <image name="bg_cart_infomation" width="4" height="4"/>
+        <image name="fg_gradiant_topbanner" width="320" height="205"/>
+        <image name="image_post_thumbnail" width="320" height="179"/>
     </resources>
 </document>
