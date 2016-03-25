@@ -3,9 +3,14 @@ import UIKit
 
 class ReviewListViewController: BaseTableViewController {
 
+  lazy var reviewList: ReviewList = {
+    let reviewList = ReviewList()
+    return reviewList
+  }()
+  
   override func setUpView() {
     super.setUpView()
-//    tableView.dynamicHeightDelgate = self
+    tableView.dynamicHeightDelgate = self
   }
 }
 

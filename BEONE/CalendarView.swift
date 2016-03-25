@@ -29,7 +29,7 @@ class CalendarViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    tapGestureRecognizer.addTarget(self, action: "dissmissView")
+    tapGestureRecognizer.addTarget(self, action: #selector(CalendarViewController.dissmissView))
     
     self.calendar = CKCalendarView(viewWidth: ViewControllerHelper.screenWidth - 20)
     calendar?.setMonthButtonColor(lightGold)

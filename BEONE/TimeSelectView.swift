@@ -130,7 +130,7 @@ extension TimeSelectView {
     let selectButton = UIButton()
     selectButton.tag = index
     selectView.addSubViewAndEdgeLayout(selectButton)
-    selectButton.addTarget(self, action: "timeSelectButtonTapped:", forControlEvents: .TouchUpInside)
+    selectButton.addTarget(self, action: #selector(TimeSelectView.timeSelectButtonTapped(_:)), forControlEvents: .TouchUpInside)
     selectButton.setBackgroundImage(UIImage(named: "btnTimeSelectAreaActive"), forState: .Normal)
     selectButton.setBackgroundImage(UIImage(named: "btnTimeSelectArea"), forState: .Selected)
     selectButton.selected = isSelected

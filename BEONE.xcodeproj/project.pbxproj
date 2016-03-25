@@ -125,11 +125,6 @@
 		62FC6EA11BDF5E200071E1B1 /* SnsSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */; };
 		62FC6EA31BDF69370071E1B1 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC6EA21BDF69370071E1B1 /* StringValidator.swift */; };
 		62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA41BDF72F60071E1B1 /* Images.xcassets */; };
-		62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */; };
-		62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */; };
-		62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */; };
-		62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */; };
-		62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */; };
 		62FDC3821BDFB8380072BBCE /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */; };
 		62FDC3841BDFC0770072BBCE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */; };
 		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; };
@@ -202,10 +197,6 @@
 		734D282E1C3E32A7007BDDE9 /* TextTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734D282D1C3E32A7007BDDE9 /* TextTemplateCell.xib */; };
 		734D28301C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D282F1C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift */; };
 		736818F31C10640A009E433B /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 736818F21C10640A009E433B /* CKCalendarView.m */; };
-		736818F81C106433009E433B /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 736818F41C106433009E433B /* left_arrow.png */; };
-		736818F91C106433009E433B /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 736818F51C106433009E433B /* left_arrow@2x.png */; };
-		736818FA1C106433009E433B /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 736818F61C106433009E433B /* right_arrow.png */; };
-		736818FB1C106433009E433B /* right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 736818F71C106433009E433B /* right_arrow@2x.png */; };
 		736818FD1C107369009E433B /* AvailableTimeRangeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736818FC1C107369009E433B /* AvailableTimeRangeList.swift */; };
 		7388FA381C0341140015C3DF /* ProductDetailCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7388FA371C0341140015C3DF /* ProductDetailCells.swift */; };
 		7388FA3A1C0341820015C3DF /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7388FA391C0341820015C3DF /* Review.swift */; };
@@ -406,11 +397,6 @@
 		62FC6EA01BDF5E200071E1B1 /* SnsSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnsSignUpViewController.swift; sourceTree = "<group>"; };
 		62FC6EA21BDF69370071E1B1 /* StringValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		62FC6EA41BDF72F60071E1B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_1.jpg; sourceTree = "<group>"; };
-		62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_2.jpg; sourceTree = "<group>"; };
-		62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_3.jpg; sourceTree = "<group>"; };
-		62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join_detail.jpg; sourceTree = "<group>"; };
-		62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_join.jpg; sourceTree = "<group>"; };
 		62FDC37B1BDFAB820072BBCE /* BEONE-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEONE-Bridging-Header.h"; sourceTree = "<group>"; };
 		62FDC3811BDFB8380072BBCE /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		62FDC3831BDFC0770072BBCE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -486,10 +472,6 @@
 		734D282F1C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductCoupleTemplateCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		736818F11C10640A009E433B /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
 		736818F21C10640A009E433B /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
-		736818F41C106433009E433B /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
-		736818F51C106433009E433B /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
-		736818F61C106433009E433B /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
-		736818F71C106433009E433B /* right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow@2x.png"; sourceTree = "<group>"; };
 		736818FC1C107369009E433B /* AvailableTimeRangeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTimeRangeList.swift; sourceTree = "<group>"; };
 		7388FA371C0341140015C3DF /* ProductDetailCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailCells.swift; sourceTree = "<group>"; };
 		7388FA391C0341820015C3DF /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -945,11 +927,6 @@
 			children = (
 				733D77FD1BE9E611003FFBF7 /* NotificationKeys.swift */,
 				73445E771BFAC3F2008BE2AC /* BeoneStrings.swift */,
-				62FC6EA71BDF73260071E1B1 /* welcome_1.jpg */,
-				62FC6EA81BDF73260071E1B1 /* welcome_2.jpg */,
-				62FC6EA91BDF73260071E1B1 /* welcome_3.jpg */,
-				62FC6EAC1BDF73260071E1B1 /* bg_join_detail.jpg */,
-				62FC6EAD1BDF73260071E1B1 /* bg_join.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -967,10 +944,6 @@
 				6286FB851C57569F00845BE4 /* SWRevealViewController.m */,
 				736818F11C10640A009E433B /* CKCalendarView.h */,
 				736818F21C10640A009E433B /* CKCalendarView.m */,
-				736818F41C106433009E433B /* left_arrow.png */,
-				736818F51C106433009E433B /* left_arrow@2x.png */,
-				736818F61C106433009E433B /* right_arrow.png */,
-				736818F71C106433009E433B /* right_arrow@2x.png */,
 				73F6299C1BF1E755001EA72F /* XLCCycleScrollView */,
 				73F629951BF19CD4001EA72F /* UIFloatLabelTextField */,
 				62EFE9411BE093FB0035B2DE /* UIColorExtension.swift */,
@@ -1344,19 +1317,15 @@
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
 				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
-				62FC6EB01BDF73260071E1B1 /* welcome_3.jpg in Resources */,
-				62FC6EAE1BDF73260071E1B1 /* welcome_1.jpg in Resources */,
 				622AE9721C61EB73009F1A50 /* OrderResultViewController.xib in Resources */,
 				625EDDB61C69EF730009377A /* OrderCouponsViewController.xib in Resources */,
 				62F7EA411C85B0F900587C14 /* Help.storyboard in Resources */,
-				736818F81C106433009E433B /* left_arrow.png in Resources */,
 				62F2F52B1C7C04BC00D96964 /* Coupon.storyboard in Resources */,
 				73DF1D751C400D3600DB3550 /* EtcResultView.xib in Resources */,
 				625EDDAE1C69D5340009377A /* NoUsableCouponCell.xib in Resources */,
 				73DF1D771C400D4400DB3550 /* PaypalResultView.xib in Resources */,
 				625EDDB21C69D5700009377A /* CouponCell.xib in Resources */,
 				62122D731C5EFE5900B9850E /* SpeedOrderProductView.xib in Resources */,
-				62FC6EB31BDF73260071E1B1 /* bg_join_detail.jpg in Resources */,
 				6207174A1BE221970014B9AC /* ImageTemplateCell.xib in Resources */,
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
 				620717511BE239AD0014B9AC /* TableTemplateCell.xib in Resources */,
@@ -1365,7 +1334,6 @@
 				73DF1D961C438CFA00DB3550 /* ProductPropertyColorTypeValueView.xib in Resources */,
 				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
 				62F2F5251C70F2F800D96964 /* SpeedOrderNoProductView.xib in Resources */,
-				62FC6EB41BDF73260071E1B1 /* bg_join.jpg in Resources */,
 				7309D73E1BFC980900F9761A /* ProductCoupleTemplateCell.xib in Resources */,
 				73DF1D871C42245B00DB3550 /* ProductSingleTemplateCell.xib in Resources */,
 				622AE96E1C604A00009F1A50 /* AdditionalPaymentView.xib in Resources */,
@@ -1381,22 +1349,18 @@
 				627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */,
 				7388FA4C1C04655F0015C3DF /* ProductDetail.storyboard in Resources */,
 				62F7EA421C85B0F900587C14 /* Notice.storyboard in Resources */,
-				736818FB1C106433009E433B /* right_arrow@2x.png in Resources */,
 				62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */,
 				620717831BE347E20014B9AC /* WebViewController.xib in Resources */,
-				736818F91C106433009E433B /* left_arrow@2x.png in Resources */,
 				73445E701BF9608F008BE2AC /* Image.xcassets in Resources */,
 				62E5CF1A1BDDE19100A99F4C /* LaunchScreen.storyboard in Resources */,
 				623D49921C6B40CE00400ED0 /* DeliveryTimeSelectViewController.xib in Resources */,
 				625EDDB81C69EFDB0009377A /* DeleteCouponButtonCell.xib in Resources */,
 				62E5CF151BDDE19100A99F4C /* Main.storyboard in Resources */,
 				734C99151C0EEB1800F888EA /* ShopNameCell.xib in Resources */,
-				62FC6EAF1BDF73260071E1B1 /* welcome_2.jpg in Resources */,
 				6286FB631C5643FD00845BE4 /* Profile.storyboard in Resources */,
 				73398AF91C08219000F57D4A /* Cart.storyboard in Resources */,
 				622AE9741C631BFA009F1A50 /* OrderWebViewController.xib in Resources */,
 				62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */,
-				736818FA1C106433009E433B /* right_arrow.png in Resources */,
 				73BE225B1C30E087003FA11C /* OptionTextView.xib in Resources */,
 				73ED3BB81C4A25CC00D0B742 /* Products.storyboard in Resources */,
 				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,

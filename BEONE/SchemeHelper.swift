@@ -118,7 +118,8 @@ extension BaseViewController {
   func handleScheme() {
     if let schemeStrings = SchemeHelper.schemeStrings {
       if SchemeHelper.index < schemeStrings.count {
-        let schemeString = schemeStrings[SchemeHelper.index++]
+        let schemeString = schemeStrings[SchemeHelper.index]
+        SchemeHelper.index += 1
         if let id = Int(schemeString),
           topViewController = SchemeHelper.rootNavigationController()?.topViewController as? SchemeDelegate {
           topViewController.handleScheme(with: id)

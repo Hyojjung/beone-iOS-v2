@@ -13,13 +13,13 @@ class PasswordFindingViewController: BaseViewController {
   override func setUpView() {
     super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "email form"))
-    emailTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+    emailTextField.addTarget(self, action: #selector(PasswordFindingViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
   }
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSuccess", name: kNotificationRequestFindingPasswordSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleFailure:", name: kNotificationRequestFindingPasswordFailure, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PasswordFindingViewController.handleSuccess), name: kNotificationRequestFindingPasswordSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PasswordFindingViewController.handleFailure(_:)), name: kNotificationRequestFindingPasswordFailure, object: nil)
   }
 }
 

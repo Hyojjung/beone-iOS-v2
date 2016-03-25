@@ -28,11 +28,11 @@ class LandingViewController: BaseTableViewController {
   
   override func addObservers() {
     super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "setUpData",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.setUpData),
       name: kNotificationGuestAuthenticationSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLayoutChange",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LandingViewController.handleLayoutChange),
       name: kNotificationContentsViewLayouted, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAction:",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LandingViewController.handleAction(_:)),
       name: kNotificationDoAction, object: nil)
   }
   

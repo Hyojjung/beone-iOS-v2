@@ -12,6 +12,7 @@ class ProductList: BaseListModel {
   var type = Type.None
   var productPropertyValueIds: [Int]?
   var tagIds: [Int]?
+  var availableDates: [String]?
   var minPrice: Int?
   var maxPrice: Int?
   var shopId: Int?
@@ -51,9 +52,9 @@ class ProductList: BaseListModel {
       parameter["minPrice"] = minPrice
       parameter["maxPrice"] = maxPrice
       parameter["noData"] = noData
+      parameter["availableDates"] = availableDates
       parameter["address"] = address?.addressString()
       parameter["addressType"] = address?.addressType?.rawValue
-      print(parameter)
       return parameter
     }
   }

@@ -20,11 +20,11 @@ class SigningViewController: BaseViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "closeButtonTapped",
+      selector: #selector(SigningViewController.closeButtonTapped),
       name: kNotificationSigningSuccess,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleSnsSignInFailure",
+      selector: #selector(SigningViewController.handleSnsSignInFailure),
       name: kNotificationNeedSignUp,
       object: nil)
   }

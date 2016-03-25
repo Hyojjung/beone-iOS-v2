@@ -17,6 +17,7 @@ class SpeedOrderResultsViewController: BaseViewController {
     productList.get { () -> Void in
       self.productsScrollViewPageControl.numberOfPages = self.productList.list.count + 1
       self.setUpContentViews()
+      self.configureReviewLabels()
     }
   }
   

@@ -10,7 +10,7 @@ class KeyboardScrollView: UIScrollView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    tapRecognizer.addTarget(self, action: "handleScrollViewTapped")
+    tapRecognizer.addTarget(self, action: #selector(KeyboardScrollView.handleScrollViewTapped))
     addGestureRecognizer(tapRecognizer)
     addKeyboardObservers()
   }
@@ -24,11 +24,11 @@ class KeyboardScrollView: UIScrollView {
   
   private func addKeyboardObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleKeyboardWillShow:",
+      selector: #selector(KeyboardScrollView.handleKeyboardWillShow(_:)),
       name: UIKeyboardWillShowNotification,
       object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "handleKeyboardWillHide:",
+      selector: #selector(KeyboardScrollView.handleKeyboardWillHide(_:)),
       name: UIKeyboardWillHideNotification,
       object: nil)
   }
