@@ -103,7 +103,6 @@ class Product: BaseModel {
       assignProductDetails(product[kProductPropertyKeyProductDetails])
       shop.assignObject(product[kProductPropertyKeyShop])
       if let reviews = product["reviews"] as? [[String: AnyObject]] {
-        print(reviews)
         for reviewObject in reviews {
           let review = Review()
           review.assignObject(reviewObject)

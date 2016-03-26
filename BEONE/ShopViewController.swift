@@ -19,6 +19,7 @@ class ShopViewController: BaseTableViewController {
   lazy var shopProductList: ProductList = {
     let productList = ProductList()
     productList.type = .Shop
+    productList.shopId = self.shop.id
     return productList
   }()
   
@@ -52,7 +53,7 @@ extension ShopViewController: DynamicHeightTableViewDelegate {
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? ShopSummaryCell {
-      return cell.calculatedHeight(shop.desc)
+      return cell.calculatedHeight(shop)
     }
     return nil
   }
@@ -110,6 +111,7 @@ extension ShopViewController {
 }
 
 class ShopSummaryCell: UITableViewCell {
+  
   @IBOutlet weak var backgroundImageView: LazyLoadingImageView!
   @IBOutlet weak var profileImageView: LazyLoadingImageView!
   @IBOutlet weak var nameLabel: UILabel!
@@ -122,13 +124,19 @@ class ShopSummaryCell: UITableViewCell {
     profileImageView.makeCircleView()
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.desc
+    tagLabel.text = shop?.tagString()
   }
   
-  func calculatedHeight(shopDescription: String?) -> CGFloat {
+  func calculatedHeight(shop: Shop) -> CGFloat {
     let descrtiptionLabel = UILabel()
     descrtiptionLabel.font = UIFont.systemFontOfSize(14)
-    descrtiptionLabel.text = shopDescription
+    descrtiptionLabel.text = shop.desc
     descrtiptionLabel.setWidth(ViewControllerHelper.screenWidth - 76)
-    return 355 + descrtiptionLabel.frame.height
+    
+    let tagLabel = UILabel()
+    tagLabel.font = UIFont.systemFontOfSize(13)
+    tagLabel.text = shop.tagString()
+    tagLabel.setWidth(ViewControllerHelper.screenWidth - 76)
+    return 339 + descrtiptionLabel.frame.height + tagLabel.frame.height
   }
 }

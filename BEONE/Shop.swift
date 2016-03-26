@@ -32,4 +32,15 @@ class Shop: BaseModel {
   override func getUrl() -> String {
     return "shops/\(id!)"
   }
+  
+  func tagString() -> String? {
+    if let tags = tags {
+      var tagString = String()
+      for tag in tags {
+        tagString += "#\(tag) "
+      }
+      return tagString
+    }
+    return nil
+  }
 }
