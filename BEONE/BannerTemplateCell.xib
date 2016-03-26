@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bannerTemplateCell" id="wtI-0Y-hgs" customClass="BannerTemplateCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wtI-0Y-hgs" id="Qf4-84-PJR">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-HZ-3tt">
+                        <rect key="frame" x="8" y="8" width="304" height="27"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0n-LE-YGn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="27"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-Ga-Znr" customClass="XLCCycleScrollView">
+                                <rect key="frame" x="8" y="8" width="288" height="11"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Oap-Ga-Znr" secondAttribute="bottom" id="1Po-Uw-MwP"/>
+                            <constraint firstItem="Oap-Ga-Znr" firstAttribute="leading" secondItem="nc6-HZ-3tt" secondAttribute="leadingMargin" id="Bjf-K6-dtv"/>
+                            <constraint firstAttribute="bottom" secondItem="F0n-LE-YGn" secondAttribute="bottom" id="Ddp-UV-dpH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oap-Ga-Znr" secondAttribute="trailing" id="REU-5L-sG7"/>
+                            <constraint firstAttribute="trailing" secondItem="F0n-LE-YGn" secondAttribute="trailing" id="Wfy-ms-YC3"/>
+                            <constraint firstItem="Oap-Ga-Znr" firstAttribute="top" secondItem="nc6-HZ-3tt" secondAttribute="topMargin" id="edd-u8-ix8"/>
+                            <constraint firstItem="F0n-LE-YGn" firstAttribute="leading" secondItem="nc6-HZ-3tt" secondAttribute="leading" id="lUr-pO-ZX3"/>
+                            <constraint firstItem="F0n-LE-YGn" firstAttribute="top" secondItem="nc6-HZ-3tt" secondAttribute="top" id="uG9-uB-3Fv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <gestureRecognizers/>
+                <constraints>
+                    <constraint firstItem="nc6-HZ-3tt" firstAttribute="top" secondItem="Qf4-84-PJR" secondAttribute="topMargin" id="1eW-Xl-eIH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="nc6-HZ-3tt" secondAttribute="bottom" priority="999" id="Wze-TM-Jkz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nc6-HZ-3tt" secondAttribute="trailing" id="ivS-se-2v8"/>
+                    <constraint firstItem="nc6-HZ-3tt" firstAttribute="leading" secondItem="Qf4-84-PJR" secondAttribute="leadingMargin" id="xNR-7C-JpT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="F0n-LE-YGn" id="IL8-rI-ajB"/>
+                <outlet property="bannerView" destination="Oap-Ga-Znr" id="F3E-Zq-Vpb"/>
+                <outlet property="templateContentsView" destination="nc6-HZ-3tt" id="eES-dQ-75g"/>
+            </connections>
+            <point key="canvasLocation" x="-54" y="271"/>
+        </tableViewCell>
+    </objects>
+</document>

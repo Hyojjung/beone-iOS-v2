@@ -5,9 +5,7 @@ class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var imageScrollView: XLCCycleScrollView!
   @IBOutlet weak var productNameLabel: UILabel!
   var imageUrls: [String]?
-  
-  // TODO: - labels?
-  
+    
   override func awakeFromNib() {
     super.awakeFromNib()
     imageScrollView.datasource = self

@@ -14,6 +14,8 @@ let kTableTemplateCellIdentifier = "tableTemplateCell"
 let kProductCoupleTemplateCellIdentifier = "productCoupleTemplateCell"
 let kProductSingleTemplateCellIdentifier = "productSingleTemplateCell"
 let kReviewsTemplateCellIdentifier = "reviewsTemplateCell"
+let kBannerTemplateCellIdentifier = "bannerTemplateCell"
+let kShopTemplateCellIdentifier = "shopTemplateCell"
 
 enum TemplateType: String {
   case Text = "text"
@@ -23,7 +25,7 @@ enum TemplateType: String {
   case ProductCouple = "productCouple"
   case ProductSingle = "productSingle"
   case Review = "review"
-  case Banner
+  case Banner = "banner"
   case Table = "table"
   
   func cellIdentifier() -> String {
@@ -42,8 +44,10 @@ enum TemplateType: String {
       return kProductSingleTemplateCellIdentifier
     case .Review:
       return kReviewsTemplateCellIdentifier
-    default:
-      fatalError("no cell identifier with template type")
+    case .Banner:
+        return kBannerTemplateCellIdentifier
+    case .Shop:
+      return kShopTemplateCellIdentifier
     }
   }
 }

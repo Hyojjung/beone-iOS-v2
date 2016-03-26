@@ -66,6 +66,8 @@
 		627A81EE1CA5375F00BCE2DE /* ReviewsTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */; };
 		627A81F11CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */; };
 		627A81F21CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */; };
+		627A81F41CA67E6C00BCE2DE /* BannerTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A81F31CA67E6C00BCE2DE /* BannerTemplateCell.swift */; };
+		627A81F61CA67E8000BCE2DE /* BannerTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627A81F51CA67E8000BCE2DE /* BannerTemplateCell.xib */; };
 		627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E22191C6C623900FBB91D /* InquiryEditViewController.swift */; };
 		627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */; };
 		627E221E1C6C8D0900FBB91D /* OrderDeliveryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E221D1C6C8D0900FBB91D /* OrderDeliveryInfo.swift */; };
@@ -337,6 +339,8 @@
 		627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsTemplateCell.xib; sourceTree = "<group>"; };
 		627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewContentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewContentsCollectionViewCell.xib; sourceTree = "<group>"; };
+		627A81F31CA67E6C00BCE2DE /* BannerTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTemplateCell.swift; sourceTree = "<group>"; };
+		627A81F51CA67E8000BCE2DE /* BannerTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerTemplateCell.xib; sourceTree = "<group>"; };
 		627E22191C6C623900FBB91D /* InquiryEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InquiryEditViewController.swift; sourceTree = "<group>"; };
 		627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InquiryEditViewController.xib; sourceTree = "<group>"; };
 		627E221D1C6C8D0900FBB91D /* OrderDeliveryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDeliveryInfo.swift; sourceTree = "<group>"; };
@@ -873,6 +877,8 @@
 				627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */,
 				627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */,
 				627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */,
+				627A81F31CA67E6C00BCE2DE /* BannerTemplateCell.swift */,
+				627A81F51CA67E8000BCE2DE /* BannerTemplateCell.xib */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -1330,6 +1336,7 @@
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
 				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
 				622AE9721C61EB73009F1A50 /* OrderResultViewController.xib in Resources */,
+				627A81F61CA67E8000BCE2DE /* BannerTemplateCell.xib in Resources */,
 				625EDDB61C69EF730009377A /* OrderCouponsViewController.xib in Resources */,
 				62F7EA411C85B0F900587C14 /* Help.storyboard in Resources */,
 				62F2F52B1C7C04BC00D96964 /* Coupon.storyboard in Resources */,
@@ -1509,6 +1516,7 @@
 				62EFE9451BE098B50035B2DE /* Content.swift in Sources */,
 				73398B011C083FBB00F57D4A /* OrderableItemSet.swift in Sources */,
 				73398AEA1C068EF800F57D4A /* LocationList.swift in Sources */,
+				627A81F41CA67E6C00BCE2DE /* BannerTemplateCell.swift in Sources */,
 				623AAD941C57CC180095731B /* BillKey.swift in Sources */,
 				734D28301C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift in Sources */,
 				73DF1D811C4014A300DB3550 /* EtcResultView.swift in Sources */,
