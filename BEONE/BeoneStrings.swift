@@ -46,6 +46,7 @@ let kShopNameCellIdentifier = "shopNameCell"
 // MARK: - Segue Identifiers
 
 let kFromProductDetailToOptionSegueIdentifier = "From Product Detail To Option"
+let kFromProductDetailToReviewSegueIdentifier = "From Product Detail To Review"
 
 // MARK: - Scheme String
 

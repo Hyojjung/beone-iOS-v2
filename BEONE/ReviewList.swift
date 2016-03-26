@@ -16,12 +16,19 @@ class ReviewList: BaseListModel {
     }
     return "reviews"
   }
-  
-  override func getParameter() -> AnyObject? {
-    return ["page": 1, "count": 1]
-  }
-  
+//  
+//  override func getParameter() -> AnyObject? {
+//    return ["page": 1, "count": 1]
+//  }
+//  
   override func assignObject(data: AnyObject?) {
-    print(data)
+    list.removeAll()
+    if let reviewList = data as? [[String: AnyObject]] {
+      for reviewObject in reviewList {
+        let review = Review()
+        review.assignObject(reviewObject)
+        list.appendObject(review)
+      }
+    }
   }
 }

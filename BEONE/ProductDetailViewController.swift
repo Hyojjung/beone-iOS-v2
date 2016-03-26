@@ -50,7 +50,11 @@ class ProductDetailViewController: BaseViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   let product = Product()
-  let reviewList = ReviewList()
+  lazy var reviewList: ReviewList = {
+    let reviewList = ReviewList()
+    reviewList.productId = self.product.id
+    return reviewList
+  }()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
   
@@ -68,8 +72,13 @@ class ProductDetailViewController: BaseViewController {
     super.prepareForSegue(segue, sender: sender)
     if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
       inquiryListViewController.product = product
+    } else if let reviewsViewController = segue.destinationViewController as? ReviewListViewController {
+      reviewsViewController.reviewList = reviewList
+      if let sender = sender as? [Int] {
+        reviewsViewController.showingReviewId = sender.first
+        reviewsViewController.showingImageIndex = sender.last
+      }
     }
-    removeObservers()
   }
   
   override func setUpView() {
@@ -85,6 +94,10 @@ class ProductDetailViewController: BaseViewController {
     product.get({ () -> Void in
       self.setUpProductData()
     })
+    reviewList.get {
+      self.product.reviews = self.reviewList.list as! [Review]
+      self.collectionView.reloadData()
+    }
   }
   
   override func addObservers() {
@@ -127,6 +140,12 @@ class ProductDetailViewController: BaseViewController {
   
   @IBAction func addCartButtonTapped() {
     addCart(false)
+  }
+  
+  @IBAction func reviewImageButtonTapped(sender: UIButton) {
+    if let superview = sender.superview {
+      performSegueWithIdentifier(kFromProductDetailToReviewSegueIdentifier, sender: [superview.tag, sender.tag])
+    }
   }
   
   func addCart(isOrdering: Bool) {
@@ -208,7 +227,7 @@ extension ProductDetailViewController {
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if ProductDetailTableViewSection(rawValue: section) == .Review {
-      return reviewList.list.count == 0 ? 1 : reviewList.list.count
+      return product.reviews.count == 0 ? 1 : product.reviews.count
     } else if ProductDetailTableViewSection(rawValue: section) == .Description {
       return product.productDetails.count
     } else {
@@ -237,10 +256,15 @@ extension ProductDetailViewController {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if ProductDetailTableViewSection(rawValue: indexPath.section) == .Review {
-      if reviewList.list.count == 0 {
+      if product.reviews.count == 0 {
         return "noReviewCell"
+      } else {
+        if product.reviews[indexPath.row].reviewImageUrls.count > 0 {
+          return "imageReviewCell"
+        } else {
+          return "reviewCell"
+        }
       }
-      return "reviewCell"
     } else {
       return kProductDetailTableViewCellIdentifiers[indexPath.section]
     }
@@ -255,7 +279,7 @@ extension ProductDetailViewController: UICollectionViewDelegate {
     case .Inquiry:
       performSegueWithIdentifier("From Product Detail To Inquiry", sender: nil)
     case .Review:
-      performSegueWithIdentifier("From Product Detail To Review", sender: nil)
+      performSegueWithIdentifier(kFromProductDetailToReviewSegueIdentifier, sender: nil)
     case .Shop:
       showShopView(product.shop.id)
     default:

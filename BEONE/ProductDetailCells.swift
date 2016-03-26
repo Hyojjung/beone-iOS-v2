@@ -112,13 +112,64 @@ class PrecautionCell: ProductDetailCell {
 }
 
 class ProductShopCell: ProductDetailCell {
+  
   @IBOutlet weak var shopImageView: LazyLoadingImageView!
   @IBOutlet weak var shopNameLabel: UILabel!
   @IBOutlet weak var shopSummaryLabel: UILabel!
+  
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
     shopImageView.setLazyLoaingImage(product.shop.backgroundImageUrl)
     shopNameLabel.text = product.shop.name
     shopSummaryLabel.text = product.shop.desc
+  }
+}
+
+class ReviewSummaryCell: ProductDetailCell {
+  
+  @IBOutlet weak var userNameLabel: UILabel!
+  @IBOutlet weak var createdAtLabel: UILabel!
+  @IBOutlet weak var contentLabel: UILabel!
+  
+  @IBOutlet var rateImageViews: [UIImageView]!
+  @IBOutlet var imageViews: [LazyLoadingImageView]?
+  @IBOutlet var imageButtons: [UIButton]?
+  @IBOutlet weak var moreImageView: LazyLoadingImageView?
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    if let imageViews = imageViews {
+      for imageView in imageViews {
+        imageView.makeCircleView()
+      }
+    }
+  }
+  
+  override func configureCell(product: Product, indexPath: NSIndexPath) {
+    super.configureCell(product, indexPath: indexPath)
+    let review = product.reviews[indexPath.row]
+    
+    userNameLabel.text = review.userName
+    createdAtLabel.text = review.createdAt?.briefDateString()
+    createdAtLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 32
+    contentLabel.text = review.content
+    
+    if let imageButtons = imageButtons {
+      for imageButton in imageButtons {
+        imageButton.configureAlpha(review.reviewImageUrls.isInRange(imageButton.tag))
+        imageButton.superview?.tag = review.id!
+      }
+    }
+    if let imageViews = imageViews {
+      for imageView in imageViews {
+        imageView.image = nil
+        imageView.setLazyLoaingImage(review.reviewImageUrls.objectAtIndex(imageView.tag))
+      }
+    }
+    for imageView in rateImageViews {
+      imageView.highlighted = review.rate >= imageView.tag
+    }
+    
+    moreImageView?.highlighted = review.reviewImageUrls.count > 3
   }
 }
