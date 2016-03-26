@@ -26,6 +26,14 @@ class ViewControllerHelper: NSObject {
     }
     return nil
   }
+  
+  static func topViewController() -> UIViewController? {
+    if let revealViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
+    navigationViewController = revealViewController.frontViewController as? UINavigationController {
+     return navigationViewController.topViewController
+    }
+    return nil
+  }
 }
 
 extension UIView {

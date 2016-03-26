@@ -7,6 +7,7 @@ let kTableContentsCollectionViewCellNibName = "TableContentsCollectionViewCell"
 let kTableContentsCellIdentifier = "tableContentsCell"
 
 class TableTemplateCell: TemplateCell {
+  
   @IBOutlet weak var collectionView: UICollectionView!
   private var content: Content?
   private var column: Int?

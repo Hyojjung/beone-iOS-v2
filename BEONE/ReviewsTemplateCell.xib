@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reviewsTemplateCell" id="X85-me-IyP" customClass="ReviewsTemplateCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="577" height="384"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X85-me-IyP" id="Cmn-bo-KrJ">
+                <rect key="frame" x="0.0" y="0.0" width="577" height="383.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTl-dx-uqL">
+                        <rect key="frame" x="8" y="8" width="561" height="367"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x0m-7v-or7" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="561" height="367"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-RH-j0M">
+                                <rect key="frame" x="8" y="16" width="545" height="335"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dIp-nr-GjY">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="X85-me-IyP" id="iSJ-28-mVj"/>
+                                    <outlet property="delegate" destination="X85-me-IyP" id="0Nh-2m-0Gf"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="top" id="IZN-UZ-juc"/>
+                            <constraint firstAttribute="bottom" secondItem="x0m-7v-or7" secondAttribute="bottom" id="MSW-HZ-eZK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x0m-7v-or7" secondAttribute="trailing" id="PzW-al-LNc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="x0m-7v-or7" secondAttribute="bottom" id="Qp3-mY-Dhi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SdN-RH-j0M" secondAttribute="trailing" id="e5k-br-tbS"/>
+                            <constraint firstAttribute="trailing" secondItem="x0m-7v-or7" secondAttribute="trailing" id="hBG-FC-YMt"/>
+                            <constraint firstAttribute="bottom" secondItem="x0m-7v-or7" secondAttribute="bottom" id="hhi-jI-R9q"/>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leading" id="htz-or-UFJ"/>
+                            <constraint firstItem="SdN-RH-j0M" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="topMargin" constant="8" id="idS-4p-i3b"/>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leading" id="jeU-WE-4vZ"/>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="topMargin" id="n1E-yM-9rn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SdN-RH-j0M" secondAttribute="bottom" constant="8" id="nRC-Kz-J9z"/>
+                            <constraint firstAttribute="trailing" secondItem="x0m-7v-or7" secondAttribute="trailing" id="rQH-tG-5Mq"/>
+                            <constraint firstItem="SdN-RH-j0M" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leadingMargin" id="rwc-nk-pSI"/>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="top" id="sYN-Kg-VNa"/>
+                            <constraint firstItem="x0m-7v-or7" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leadingMargin" id="t62-NR-2KU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PzW-al-LNc"/>
+                                <exclude reference="Qp3-mY-Dhi"/>
+                                <exclude reference="hBG-FC-YMt"/>
+                                <exclude reference="hhi-jI-R9q"/>
+                                <exclude reference="jeU-WE-4vZ"/>
+                                <exclude reference="n1E-yM-9rn"/>
+                                <exclude reference="sYN-Kg-VNa"/>
+                                <exclude reference="t62-NR-2KU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <gestureRecognizers/>
+                <constraints>
+                    <constraint firstItem="UTl-dx-uqL" firstAttribute="top" secondItem="Cmn-bo-KrJ" secondAttribute="topMargin" id="DYf-g0-4gR"/>
+                    <constraint firstItem="UTl-dx-uqL" firstAttribute="leading" secondItem="Cmn-bo-KrJ" secondAttribute="leadingMargin" id="O9b-f0-UNX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UTl-dx-uqL" secondAttribute="bottom" priority="999" id="hLk-uH-4uI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="UTl-dx-uqL" secondAttribute="trailing" id="xl4-eC-pgl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="x0m-7v-or7" id="nIb-tS-UYe"/>
+                <outlet property="reviewsCollectionView" destination="SdN-RH-j0M" id="poe-YO-Ew3"/>
+                <outlet property="templateContentsView" destination="UTl-dx-uqL" id="C9q-Bn-wYq"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="329"/>
+        </tableViewCell>
+    </objects>
+</document>

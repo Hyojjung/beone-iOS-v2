@@ -10,7 +10,7 @@ class ProductCoupleView: UIView {
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
-  var delegate: BaseViewController?
+  weak var delegate: BaseViewController?
   var productId: Int?
   
   func configureView(product: Product?) {

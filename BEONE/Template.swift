@@ -13,6 +13,7 @@ let kButtonTemplateCellIdentifier = "buttonTemplateCell"
 let kTableTemplateCellIdentifier = "tableTemplateCell"
 let kProductCoupleTemplateCellIdentifier = "productCoupleTemplateCell"
 let kProductSingleTemplateCellIdentifier = "productSingleTemplateCell"
+let kReviewsTemplateCellIdentifier = "reviewsTemplateCell"
 
 enum TemplateType: String {
   case Text = "text"
@@ -39,6 +40,8 @@ enum TemplateType: String {
       return kProductCoupleTemplateCellIdentifier
     case .ProductSingle:
       return kProductSingleTemplateCellIdentifier
+    case .Review:
+      return kReviewsTemplateCellIdentifier
     default:
       fatalError("no cell identifier with template type")
     }
@@ -58,11 +61,7 @@ class Template: BaseModel {
   init(type: TemplateType) {
     super.init()
     self.type = type
-    if type == .ProductCouple || type == .ProductSingle {
-      content.models = [Product]()
-    } else if type == .Review {
-      content.models = [Review]()
-    }
+    content.type = type
   }
   
   override func assignObject(data: AnyObject?) {

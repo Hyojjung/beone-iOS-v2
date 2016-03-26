@@ -143,33 +143,13 @@
                         <constraints>
                             <constraint firstItem="RJy-mU-COf" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="top" id="7tS-vp-mg1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iN0-l3-epB" secondAttribute="trailing" id="O1d-JC-VWk"/>
-                            <constraint firstItem="RJy-mU-COf" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="top" id="UiW-ys-N7Q"/>
                             <constraint firstAttribute="trailing" secondItem="RJy-mU-COf" secondAttribute="trailing" id="WWK-YE-Fch"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RJy-mU-COf" secondAttribute="trailing" id="XhL-a5-sfb"/>
-                            <constraint firstAttribute="bottom" secondItem="RJy-mU-COf" secondAttribute="bottom" id="YF5-bU-B9v"/>
-                            <constraint firstItem="RJy-mU-COf" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="topMargin" id="bKY-Yv-Pfw"/>
                             <constraint firstItem="RJy-mU-COf" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leading" id="dgL-IO-Gl0"/>
                             <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leadingMargin" id="eCR-Xc-h5S"/>
                             <constraint firstAttribute="bottomMargin" secondItem="iN0-l3-epB" secondAttribute="bottom" id="eKP-pZ-lII"/>
-                            <constraint firstAttribute="trailing" secondItem="RJy-mU-COf" secondAttribute="trailing" id="ef8-rG-2VM"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="RJy-mU-COf" secondAttribute="bottom" id="hIg-wV-ZLJ"/>
-                            <constraint firstItem="RJy-mU-COf" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leading" id="qWR-s2-MyN"/>
                             <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="topMargin" id="s3w-RB-4Ga"/>
-                            <constraint firstItem="RJy-mU-COf" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leadingMargin" id="y0x-cf-pvn"/>
                             <constraint firstAttribute="bottom" secondItem="RJy-mU-COf" secondAttribute="bottom" id="zoR-Vt-dU9"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="UiW-ys-N7Q"/>
-                                <exclude reference="XhL-a5-sfb"/>
-                                <exclude reference="YF5-bU-B9v"/>
-                                <exclude reference="bKY-Yv-Pfw"/>
-                                <exclude reference="ef8-rG-2VM"/>
-                                <exclude reference="hIg-wV-ZLJ"/>
-                                <exclude reference="qWR-s2-MyN"/>
-                                <exclude reference="y0x-cf-pvn"/>
-                            </mask>
-                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -14,7 +14,7 @@ class CouponCell: UITableViewCell {
   @IBOutlet weak var serialNumberLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
   var coupon: Coupon?
-  var delegate: CouponDelegate?
+  weak var delegate: CouponDelegate?
   
   func configureCell(coupon: Coupon) {
     subTitleLabel.text = coupon.subTitle

@@ -30,7 +30,8 @@ enum Alignment: String {
 
 class Content: BaseModel {
   var action = Action()
-  
+  var type: TemplateType?
+
   lazy var items: [Content] = {
     return [Content]()
   }()
@@ -102,15 +103,15 @@ class Content: BaseModel {
       }
       
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {
-        if models is [Product] {
-          models?.removeAll()
+        if type == .ProductCouple || type == .ProductSingle {
+          models = [Product]()
           for itemObject in itemsObject {
             let product = Product()
             product.assignObject(itemObject)
             models?.appendObject(product)
           }
-        } else if models is [Review] {
-          models?.removeAll()
+        } else if type == .Review {
+          models = [Review]()
           for itemObject in itemsObject {
             let review = Review()
             review.assignObject(itemObject)

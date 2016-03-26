@@ -19,7 +19,7 @@ class OrderCouponsViewController: BaseTableViewController {
   
   var couponList = CouponList()
   var order: Order?
-  var delegate: CouponDelegate?
+  weak var delegate: CouponDelegate?
 
   override func setUpView() {
     super.setUpView()

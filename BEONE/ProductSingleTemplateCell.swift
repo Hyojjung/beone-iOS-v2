@@ -13,7 +13,7 @@ class ProductSingleTemplateCell: TemplateCell {
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var priceLabelLeadingLayoutConstraint: NSLayoutConstraint!
   var productId: Int?
-  var delegate: BaseViewController?
+  weak var delegate: BaseViewController?
 
   override func configureCell(template: Template) {
     super.configureCell(template)

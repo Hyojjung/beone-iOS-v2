@@ -21,6 +21,7 @@ let kInputImageName = "input"
 let kImagePaymentCancelImageName = "image_payment_cancel"
 let kImagePaymentFailImageName = "image_payment_fail"
 let kImagePaymentSuccessImageName = "image_payment_success"
+let kimagePostThumbnail = "image_post_thumbnail"
 
 extension UILabel {
   func setWidth(width: CGFloat) {

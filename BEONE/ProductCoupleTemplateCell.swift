@@ -5,7 +5,7 @@ class ProductCoupleTemplateCell: TemplateCell {
   
   @IBOutlet weak var firstProductView: ProductCoupleView!
   @IBOutlet weak var secondProductView: ProductCoupleView!
-  var delegate: BaseViewController? {
+  weak var delegate: BaseViewController? {
     didSet {
       firstProductView.delegate = delegate
       secondProductView.delegate = delegate

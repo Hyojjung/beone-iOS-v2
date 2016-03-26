@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewCell" id="gTV-IL-0wX" customClass="ReviewContentsCollectionViewCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="251" height="361"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="251" height="361"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-Zn-lQH">
+                        <rect key="frame" x="8" y="16" width="37.5" height="110"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV7-2D-kTv">
+                        <rect key="frame" x="212" y="64" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MY-CL-t8S">
+                        <rect key="frame" x="8" y="150" width="235" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BZC-nL-O4G" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="208" width="251" height="153"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="153" id="3Tj-aJ-W1y"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbW-fR-tVf">
+                        <rect key="frame" x="0.0" y="0.0" width="251" height="361"/>
+                        <connections>
+                            <action selector="reviewButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="cO5-zO-kXg"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QbW-fR-tVf" secondAttribute="trailing" id="4KW-O4-rjg"/>
+                <constraint firstAttribute="trailing" secondItem="eV7-2D-kTv" secondAttribute="trailing" constant="8" id="Cr1-Ii-qg5"/>
+                <constraint firstItem="QbW-fR-tVf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="D7d-og-ee1"/>
+                <constraint firstItem="eV7-2D-kTv" firstAttribute="centerY" secondItem="WDV-Zn-lQH" secondAttribute="centerY" id="H2h-l6-jOT"/>
+                <constraint firstAttribute="bottom" secondItem="QbW-fR-tVf" secondAttribute="bottom" id="HLv-rr-0Ar"/>
+                <constraint firstItem="BZC-nL-O4G" firstAttribute="top" secondItem="WDV-Zn-lQH" secondAttribute="bottom" constant="82" id="HV5-db-kkq"/>
+                <constraint firstItem="8MY-CL-t8S" firstAttribute="top" secondItem="WDV-Zn-lQH" secondAttribute="bottom" constant="24" id="Hhc-YQ-7YV"/>
+                <constraint firstAttribute="trailing" secondItem="BZC-nL-O4G" secondAttribute="trailing" id="IET-Jq-7uN"/>
+                <constraint firstItem="BZC-nL-O4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MGR-G9-yy9"/>
+                <constraint firstItem="QbW-fR-tVf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Tu8-kT-GzF"/>
+                <constraint firstItem="8MY-CL-t8S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="nFI-3o-u1N"/>
+                <constraint firstItem="WDV-Zn-lQH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="oED-0S-Vei"/>
+                <constraint firstItem="WDV-Zn-lQH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="olb-SX-c44"/>
+                <constraint firstAttribute="trailing" secondItem="8MY-CL-t8S" secondAttribute="trailing" constant="8" id="s83-h0-Rg6"/>
+                <constraint firstAttribute="bottom" secondItem="BZC-nL-O4G" secondAttribute="bottom" id="w68-U5-G67"/>
+            </constraints>
+            <size key="customSize" width="251" height="361"/>
+            <connections>
+                <outlet property="contentLabel" destination="8MY-CL-t8S" id="mDi-hY-8Am"/>
+                <outlet property="createdAtLabel" destination="eV7-2D-kTv" id="eco-MU-UcF"/>
+                <outlet property="reviewButton" destination="QbW-fR-tVf" id="Sqs-0P-12E"/>
+                <outlet property="reviewImageView" destination="BZC-nL-O4G" id="AFn-s6-sIj"/>
+                <outlet property="userNameLabel" destination="WDV-Zn-lQH" id="izr-vI-WUk"/>
+            </connections>
+            <point key="canvasLocation" x="260.5" y="422.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -62,6 +62,10 @@
 		625EDDB81C69EFDB0009377A /* DeleteCouponButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625EDDB71C69EFDB0009377A /* DeleteCouponButtonCell.xib */; };
 		626B6EF21C4F41C800F29FD5 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */; };
 		626BBDF11C8BFD680066F89B /* AddingReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626BBDF01C8BFD680066F89B /* AddingReviewViewController.swift */; };
+		627A81EC1CA5374D00BCE2DE /* ReviewsTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A81EB1CA5374D00BCE2DE /* ReviewsTemplateCell.swift */; };
+		627A81EE1CA5375F00BCE2DE /* ReviewsTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */; };
+		627A81F11CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */; };
+		627A81F21CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */; };
 		627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E22191C6C623900FBB91D /* InquiryEditViewController.swift */; };
 		627E221C1C6C623900FBB91D /* InquiryEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */; };
 		627E221E1C6C8D0900FBB91D /* OrderDeliveryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E221D1C6C8D0900FBB91D /* OrderDeliveryInfo.swift */; };
@@ -329,6 +333,10 @@
 		625EDDB71C69EFDB0009377A /* DeleteCouponButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteCouponButtonCell.xib; sourceTree = "<group>"; };
 		626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		626BBDF01C8BFD680066F89B /* AddingReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingReviewViewController.swift; sourceTree = "<group>"; };
+		627A81EB1CA5374D00BCE2DE /* ReviewsTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTemplateCell.swift; sourceTree = "<group>"; };
+		627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsTemplateCell.xib; sourceTree = "<group>"; };
+		627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewContentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		627E22191C6C623900FBB91D /* InquiryEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InquiryEditViewController.swift; sourceTree = "<group>"; };
 		627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InquiryEditViewController.xib; sourceTree = "<group>"; };
 		627E221D1C6C8D0900FBB91D /* OrderDeliveryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDeliveryInfo.swift; sourceTree = "<group>"; };
@@ -861,6 +869,10 @@
 				73F629A51BF43AE2001EA72F /* ButtonTemplateCell.xib */,
 				73445E7B1BFAEEF9008BE2AC /* ShopTemplateCell.swift */,
 				73445E7D1BFAEF05008BE2AC /* ShopTemplateCell.xib */,
+				627A81EB1CA5374D00BCE2DE /* ReviewsTemplateCell.swift */,
+				627A81ED1CA5375F00BCE2DE /* ReviewsTemplateCell.xib */,
+				627A81EF1CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift */,
+				627A81F01CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -1332,6 +1344,8 @@
 				734241731BFC4AB700BE21F5 /* Shop.storyboard in Resources */,
 				73398AF21C06EE5600F57D4A /* MainTitleView.xib in Resources */,
 				73DF1D961C438CFA00DB3550 /* ProductPropertyColorTypeValueView.xib in Resources */,
+				627A81EE1CA5375F00BCE2DE /* ReviewsTemplateCell.xib in Resources */,
+				627A81F21CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib in Resources */,
 				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
 				62F2F5251C70F2F800D96964 /* SpeedOrderNoProductView.xib in Resources */,
 				7309D73E1BFC980900F9761A /* ProductCoupleTemplateCell.xib in Resources */,
@@ -1530,6 +1544,7 @@
 				622DE1171C5B383200F0C9DF /* OrderCells.swift in Sources */,
 				73398AE11C05F14000F57D4A /* AddressList.swift in Sources */,
 				622AE9681C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift in Sources */,
+				627A81F11CA5392900BCE2DE /* ReviewContentsCollectionViewCell.swift in Sources */,
 				62E5CF3F1BDDFF3F00A99F4C /* Model.xcdatamodeld in Sources */,
 				620717441BE205840014B9AC /* NetworkStringFormatter.swift in Sources */,
 				73398B031C08431400F57D4A /* AvailableTimeRange.swift in Sources */,
@@ -1581,6 +1596,7 @@
 				73BE22611C3104F8003FA11C /* OptionView.swift in Sources */,
 				622DE1211C5E61CF00F0C9DF /* NSData+Base64.m in Sources */,
 				73445E7C1BFAEEF9008BE2AC /* ShopTemplateCell.swift in Sources */,
+				627A81EC1CA5374D00BCE2DE /* ReviewsTemplateCell.swift in Sources */,
 				62122D751C5F0A8100B9850E /* StatusHistory.swift in Sources */,
 				7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */,
 				73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */,

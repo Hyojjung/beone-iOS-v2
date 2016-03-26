@@ -8,6 +8,8 @@ class Review: BaseModel {
   var content: String?
   var rate = 5
   var reviewImageUrls = [String]()
+  var productId: Int?
+  var createdAt: NSDate?
   
   override func postUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {
@@ -28,6 +30,7 @@ class Review: BaseModel {
   override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {
       id = data[kObjectPropertyKeyId] as? Int
+      productId = data["productId"] as? Int
       content = data["content"] as? String
       userName = data["userName"] as? String
       if let rate = data["rate"] as? Int {
@@ -35,6 +38,9 @@ class Review: BaseModel {
       }
       if let reviewImageUrls = data["reviewImageUrls"] as? [String] {
         self.reviewImageUrls = reviewImageUrls
+      }
+      if let createdAt = data["createdAt"] as? String {
+        self.createdAt = createdAt.date()
       }
     }
   }
