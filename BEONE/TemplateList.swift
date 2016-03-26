@@ -9,11 +9,10 @@ class TemplateList: BaseListModel {
     if let templateList = data as? [[String: AnyObject]] {
       for templateObject in templateList {
         if let type = templateObject[kTemplatePropertyKeyType] as? String, templateType = TemplateType(rawValue: type) {
+          print(type)
           let template = Template(type: templateType)
           template.assignObject(templateObject)
           list.appendObject(template)
-        } else {
-          print(templateObject)
         }
       }
     }
