@@ -78,9 +78,7 @@ extension TableTemplateCell {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kTableContentsCellIdentifier,
       forIndexPath: indexPath) as! TableContentsCollectionViewCell
-    if content != nil && content?.items.count > indexPath.row {
-      cell.configure(content!.items[indexPath.row])
-    }
+    cell.configure(content?.items.objectAtIndex(indexPath.row))
     return cell
   }
 }

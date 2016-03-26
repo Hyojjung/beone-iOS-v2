@@ -101,10 +101,9 @@ extension ShopViewController {
       cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
-      products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn] as? Product)
-      if shopProductList.list.count > indexPath.row * kSimpleProductColumn + 1 {
-        products.appendObject(shopProductList.list[indexPath.row * kSimpleProductColumn + 1] as? Product)
-      }
+      let index = indexPath.row * kSimpleProductColumn
+      products.appendObject(shopProductList.list.objectAtIndex(index) as? Product)
+      products.appendObject(shopProductList.list.objectAtIndex(index + 1) as? Product)
       cell.configureView(products)
     }
   }
@@ -118,10 +117,14 @@ class ShopSummaryCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var tagLabel: UILabel!
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    profileImageView.makeCircleView()
+  }
+  
   func configureCell(shop: Shop?) {
     backgroundImageView.setLazyLoaingImage(shop?.backgroundImageUrl)
     profileImageView.setLazyLoaingImage(shop?.profileImageUrl)
-    profileImageView.makeCircleView()
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.desc
     tagLabel.text = shop?.tagString()

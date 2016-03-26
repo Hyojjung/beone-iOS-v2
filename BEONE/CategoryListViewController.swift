@@ -18,7 +18,7 @@ class CategoryListViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     categoryList.get { () -> Void in
-     self.tableView.reloadData()
+      self.tableView.reloadData()
     }
   }
   
@@ -106,9 +106,7 @@ class CategoryCell: UITableViewCell {
   }
   
   private func setLazyLoaingImage(imageView: LazyLoadingImageView, productList: ProductList, index: Int) {
-    if productList.list.count > index {
-      let product = productList.list[index] as! Product
-      imageView.setLazyLoaingImage(product.mainImageUrl)
-    }
+    let product = productList.list.objectAtIndex(index) as? Product
+    imageView.setLazyLoaingImage(product?.mainImageUrl)
   }
 }

@@ -11,9 +11,15 @@ class ShopTemplateCell: TemplateCell {
   var shopId: Int?
   
   @IBOutlet weak var shopImageView: LazyLoadingImageView!
+  @IBOutlet weak var shopProfileImageView: LazyLoadingImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var productCountLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    shopProfileImageView.makeCircleView()
+  }
   
   override func configureCell(template: Template) {
     super.configureCell(template)
@@ -26,6 +32,7 @@ class ShopTemplateCell: TemplateCell {
     configureDefaulStyle()
     if let shop = shop {
       shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
+      shopProfileImageView.setLazyLoaingImage(shop.profileImageUrl)
       nameLabel.text = shop.name
       descriptionLabel.text = shop.desc
       shopId = shop.id

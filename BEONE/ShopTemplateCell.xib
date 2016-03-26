@@ -38,13 +38,19 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_gradiant_topbanner" translatesAutoresizingMaskIntoConstraints="NO" id="Qpv-c2-4OW">
                                                 <rect key="frame" x="0.0" y="0.0" width="541" height="170"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-lo-0GZ" userLabel="shop_logo">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-lo-0GZ" userLabel="shop_logo" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="105" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="DGz-uc-GPc"/>
                                                     <constraint firstAttribute="height" constant="50" id="e7M-mg-DsY"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-DG-ygg">
+                                                <rect key="frame" x="-2" y="0.0" width="545" height="351"/>
+                                                <connections>
+                                                    <action selector="shopButtonTapped" destination="73Z-dS-tcv" eventType="touchUpInside" id="zrU-Qe-8ZO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -115,26 +121,16 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-DG-ygg">
-                                        <rect key="frame" x="0.0" y="0.0" width="545" height="351"/>
-                                        <connections>
-                                            <action selector="shopButtonTapped" destination="73Z-dS-tcv" eventType="touchUpInside" id="zrU-Qe-8ZO"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="YcI-DG-ygg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2Jj-GD-5xP"/>
                                     <constraint firstItem="gLF-jt-H4w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="61H-Wz-IRb"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="83D-yg-aDT"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HIl-H5-ucS"/>
-                                    <constraint firstAttribute="bottom" secondItem="YcI-DG-ygg" secondAttribute="bottom" id="KLe-0l-wP5"/>
                                     <constraint firstAttribute="trailing" secondItem="iGG-qx-tlY" secondAttribute="trailing" id="Uhd-0Z-KKH"/>
                                     <constraint firstAttribute="bottom" secondItem="iGG-qx-tlY" secondAttribute="bottom" id="bfq-Dk-0fi"/>
                                     <constraint firstItem="iGG-qx-tlY" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="bottom" id="dJA-ZB-oU1"/>
                                     <constraint firstItem="gLF-jt-H4w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="efW-4z-o5L"/>
-                                    <constraint firstItem="YcI-DG-ygg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="k4t-rE-i44"/>
-                                    <constraint firstAttribute="trailing" secondItem="YcI-DG-ygg" secondAttribute="trailing" id="wkC-Qw-NGK"/>
                                     <constraint firstAttribute="trailing" secondItem="gLF-jt-H4w" secondAttribute="trailing" constant="2" id="y4d-sg-z7X"/>
                                 </constraints>
                             </view>
@@ -168,6 +164,7 @@
                 <outlet property="nameLabel" destination="awD-TX-CjT" id="Izf-p8-nXq"/>
                 <outlet property="productCountLabel" destination="oY4-Wu-xIG" id="u6k-t6-Yys"/>
                 <outlet property="shopImageView" destination="SEC-n6-DMq" id="4CI-5f-O3O"/>
+                <outlet property="shopProfileImageView" destination="ctb-lo-0GZ" id="GUs-BF-byy"/>
                 <outlet property="templateContentsView" destination="k6f-E9-zow" id="CRt-tx-ybf"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="329"/>

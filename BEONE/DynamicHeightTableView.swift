@@ -1,9 +1,10 @@
 
 import UIKit
 
-protocol DynamicHeightTableViewDelegate: NSObjectProtocol {  
+protocol DynamicHeightTableViewDelegate: NSObjectProtocol {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat?
   func cellIdentifier(indexPath: NSIndexPath) -> String
+  func configure(cell: UITableViewCell, indexPath: NSIndexPath)
 }
 
 class DynamicHeightTableView: UITableView {
@@ -15,10 +16,10 @@ class DynamicHeightTableView: UITableView {
   func heightForBasicCell(indexPath: NSIndexPath) -> CGFloat {
     let cellIdentifier = dynamicHeightDelgate.cellIdentifier(indexPath)
     var cell = dequeueReusableCellWithIdentifier(cellIdentifier)
-      if cell == nil {
-        registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-      }
+    if cell == nil {
+      registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
+      cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    }
     if let cell = cell {
       if cell is ShopTemplateCell {
         return 258
@@ -34,6 +35,7 @@ class DynamicHeightTableView: UITableView {
     if let height = dynamicHeightDelgate.calculatedHeight(cell, indexPath: indexPath) {
       return height
     }
+    dynamicHeightDelgate.configure(cell, indexPath: indexPath)
     cell.setNeedsDisplay()
     cell.layoutIfNeeded()
     let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -63,13 +65,13 @@ class DynamicHeightTableView: UITableView {
   
   private func addKeyboardObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(DynamicHeightTableView.handleKeyboardWillShow(_:)),
-      name: UIKeyboardWillShowNotification,
-      object: nil)
+                                                     selector: #selector(DynamicHeightTableView.handleKeyboardWillShow(_:)),
+                                                     name: UIKeyboardWillShowNotification,
+                                                     object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(DynamicHeightTableView.handleKeyboardWillHide(_:)),
-      name: UIKeyboardWillHideNotification,
-      object: nil)
+                                                     selector: #selector(DynamicHeightTableView.handleKeyboardWillHide(_:)),
+                                                     name: UIKeyboardWillHideNotification,
+                                                     object: nil)
   }
   
   private func removeKeyboardObservers() {

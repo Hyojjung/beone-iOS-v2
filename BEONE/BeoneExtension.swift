@@ -35,6 +35,13 @@ extension Array {
     return false
   }
   
+  func objectAtIndex(index: Int) -> Element? {
+    if index < count {
+      return self[index]
+    }
+    return nil
+  }
+  
   func isInRange(index: Int) -> Bool {
     return index + 1 < count
   }
