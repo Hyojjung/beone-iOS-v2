@@ -94,14 +94,12 @@ extension OrdersViewController: AddintionalPaymentDelegate {
         } else if paymentInfo.isCancellable {
           if paymentInfo.isMainPayment {
             order.put({ (_) -> Void in
-              self.orderList.get({ () -> Void in
-                self.tableView.reloadData()
-              })
+              self.setUpData()
               })
           } else {
             paymentInfo.put({ (_) -> Void in
-              
-              })
+              self.setUpData()
+            })
           }
         }
       }

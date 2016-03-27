@@ -107,6 +107,15 @@ class PaymentInfo: BaseModel {
   }
   
   override func putUrl() -> String {
-    return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)/transactions"
+    return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)/status"
+  }
+  
+  func actionButtonString() -> String? {
+    if isPayable {
+      return NSLocalizedString("pay", comment: "button title")
+    } else if isCancellable {
+      return NSLocalizedString("pay cancel", comment: "button title")
+    }
+    return nil
   }
 }

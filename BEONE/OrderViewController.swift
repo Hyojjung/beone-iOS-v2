@@ -136,7 +136,21 @@ extension OrderViewController {
 extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
-    showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: sender.tag)
+    if let paymentInfo = order.paymentInfoList.model(sender.tag) as? PaymentInfo {
+      if paymentInfo.isPayable {
+        showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
+      } else if paymentInfo.isCancellable {
+        if paymentInfo.isMainPayment {
+          order.put({ (_) -> Void in
+            self.setUpData()
+          })
+        } else {
+          paymentInfo.put({ (_) -> Void in
+            self.setUpData()
+          })
+        }
+      }
+    }
   }
   
   @IBAction func deliveryTrackingInfoButtonTapped(sender: UIButton) {

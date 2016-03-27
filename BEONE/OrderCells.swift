@@ -165,7 +165,11 @@ class PaymentInfoCell: UITableViewCell {
       paidAtLabel.text = "미결제"
     }
     totalPriceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
-    payButton.configureAlpha(paymentInfo.paymentStatus == .Waiting)
+    
+    let buttonString = paymentInfo.actionButtonString()
+    payButton.setTitle(buttonString, forState: .Normal)
+    payButton.setTitle(buttonString, forState: .Highlighted)
+    payButton.configureAlpha(buttonString != nil)
     payButton.tag = paymentInfo.id!
   }
 }

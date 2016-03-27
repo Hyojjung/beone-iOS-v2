@@ -30,12 +30,7 @@ class AdditionalPaymentView: UIView {
     paymentNameLabel.text = paymentInfo.title
     priceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
     
-    var buttonString: String? = nil
-    if paymentInfo.isPayable {
-      buttonString = NSLocalizedString("pay", comment: "button title")
-    } else if paymentInfo.isCancellable {
-      buttonString = NSLocalizedString("pay cancel", comment: "button title")
-    }
+    let buttonString = paymentInfo.actionButtonString()
     paymentButton.setTitle(buttonString, forState: .Normal)
     paymentButton.setTitle(buttonString, forState: .Highlighted)
     paymentButton.configureAlpha(buttonString != nil)
