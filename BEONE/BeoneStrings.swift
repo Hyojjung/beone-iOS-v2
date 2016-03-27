@@ -51,3 +51,4 @@ let kFromProductDetailToReviewSegueIdentifier = "From Product Detail To Review"
 // MARK: - Scheme String
 
 let kSchemeBaseUrl = "cmbeone://beone.kr/"
+let kPaymentScheme = "cmbeone://payment"
