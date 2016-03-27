@@ -22,13 +22,13 @@ class SideBarViewController: BaseTableViewController {
   }
   
   private let kSearchTableViewCellIdentifiers = ["topCell",
-    "userInfoCell",
-    "buttonsCell",
-    "progressingOrderCountCell",
-    "orderItemSetCell",
-    "anniversaryCell",
-    "recentProductsCountCell",
-    "recentProductCell"]
+                                                 "userInfoCell",
+                                                 "buttonsCell",
+                                                 "progressingOrderCountCell",
+                                                 "orderItemSetCell",
+                                                 "anniversaryCell",
+                                                 "recentProductsCountCell",
+                                                 "recentProductCell"]
   
   var sideBarViewContents = SideBarViewContents()
   lazy var sideBarGestureView: UIView = {
@@ -49,6 +49,12 @@ class SideBarViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+}
+
+extension SideBarViewController {
+  @IBAction func recommendProductButtonTapped() {
+    setUpScheme("home/speed-order")
+  }
   
   @IBAction func productButtonTapped(sender: UIButton) {
     setUpScheme("home/product/\(sender.tag)")
@@ -58,6 +64,10 @@ class SideBarViewController: BaseTableViewController {
     if let orderId = sideBarViewContents.orderDeliveryItemSets.first?.order.id {
       setUpScheme("more/orders/\(orderId)")
     }
+  }
+  
+  @IBAction func showRecentProductsViewButtonTapped() {
+    setUpScheme("home/recent-products") 
   }
   
   @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
@@ -102,15 +112,15 @@ extension SideBarViewController: SWRevealViewControllerDelegate {
     if let navi = revealController.frontViewController as? UINavigationController,
       topViewController = navi.topViewController as? UITabBarController,
       selectedViewController = topViewController.selectedViewController {
-        if position == .Right {
-          sideBarGestureView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-          selectedViewController.view.addSubViewAndEdgeLayout(sideBarGestureView)
-        } else if position == .Left {
-          sideBarGestureView.removeFromSuperview()
-          if let selectedViewController = selectedViewController as? SideBarPositionMoveDelegate {
-            selectedViewController.handlemovePosition()
-          }
+      if position == .Right {
+        sideBarGestureView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        selectedViewController.view.addSubViewAndEdgeLayout(sideBarGestureView)
+      } else if position == .Left {
+        sideBarGestureView.removeFromSuperview()
+        if let selectedViewController = selectedViewController as? SideBarPositionMoveDelegate {
+          selectedViewController.handlemovePosition()
         }
+      }
     }
   }
 }
@@ -147,10 +157,10 @@ extension SideBarViewController: UITableViewDataSource {
       return sideBarViewContents.orderDeliveryItemSets.count
     } else if section == SideBarTableViewSection.ProgressingOrderCount.rawValue &&
       sideBarViewContents.progressingOrderCount == 0 {
-        return 0
+      return 0
     } else if section == SideBarTableViewSection.RecentProductsCount.rawValue &&
       sideBarViewContents.recentProducts.list.count == 0 {
-        return 0
+      return 0
     } else if section == SideBarTableViewSection.RecentProduct.rawValue {
       return sideBarViewContents.recentProducts.list.count
     } else if section == SideBarTableViewSection.Anniversary.rawValue && sideBarViewContents.anniversary == nil {
@@ -237,24 +247,24 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
     
     if let firstProgress = orderItemSet.progresses.first {
       configureViews(firstProgress,
-        statusImageView: itemPreparingStatusImageView,
-        lineImageView: nil,
-        statusNameLabel: itemPreparingLabel,
-        statusTimeLabel: itemPreparingTimeLabel)
+                     statusImageView: itemPreparingStatusImageView,
+                     lineImageView: nil,
+                     statusNameLabel: itemPreparingLabel,
+                     statusTimeLabel: itemPreparingTimeLabel)
     }
     if orderItemSet.progresses.count > 2 {
       configureViews(orderItemSet.progresses[1],
-        statusImageView: deliveringStatusImageView,
-        lineImageView: firstLineImageView,
-        statusNameLabel: deliveringLabel,
-        statusTimeLabel: deliveringTimeLabel)
+                     statusImageView: deliveringStatusImageView,
+                     lineImageView: firstLineImageView,
+                     statusNameLabel: deliveringLabel,
+                     statusTimeLabel: deliveringTimeLabel)
     }
     if let lastProgress = orderItemSet.progresses.last {
       configureViews(lastProgress,
-        statusImageView: deliveryDoneStatusImageView,
-        lineImageView: secondLineImageView,
-        statusNameLabel: deliveryDoneLabel,
-        statusTimeLabel: deliveryDoneTimeLabel)
+                     statusImageView: deliveryDoneStatusImageView,
+                     lineImageView: secondLineImageView,
+                     statusNameLabel: deliveryDoneLabel,
+                     statusTimeLabel: deliveryDoneTimeLabel)
     }
     
     if orderItemSet.orderDeliveryInfo.traceDisplayType == .WebView {
@@ -265,11 +275,11 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   }
   
   private func configureViews(progress: OrderItemSetProgress,
-    statusImageView: UIImageView, lineImageView: UIImageView?, statusNameLabel: UILabel, statusTimeLabel: UILabel) {
-      configureLineImageView(lineImageView, progressStatus: progress.progressStatus)
-      configureStatusImageView(statusImageView, progressStatus: progress.progressStatus)
-      configureStatusNameLabel(statusNameLabel, progress: progress)
-      configureStatusTimeLabel(statusTimeLabel, progress: progress)
+                              statusImageView: UIImageView, lineImageView: UIImageView?, statusNameLabel: UILabel, statusTimeLabel: UILabel) {
+    configureLineImageView(lineImageView, progressStatus: progress.progressStatus)
+    configureStatusImageView(statusImageView, progressStatus: progress.progressStatus)
+    configureStatusNameLabel(statusNameLabel, progress: progress)
+    configureStatusTimeLabel(statusTimeLabel, progress: progress)
   }
   
   private func configureStatusTimeLabel(statusTimeLabel: UILabel, progress: OrderItemSetProgress) {

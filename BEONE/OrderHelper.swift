@@ -6,7 +6,6 @@ class OrderHelper: NSObject {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/orderable",
         parameter: ["cartItemIds": order.cartItemIds], success: { (result) -> Void in
-          print(result);
           order.assignObject(result[kNetworkResponseKeyData])
           getSuccess()
         }, failure: nil)

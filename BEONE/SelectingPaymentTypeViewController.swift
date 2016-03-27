@@ -335,7 +335,6 @@ class OrderPriceCell: UITableViewCell {
     deliveryPriceLabel.text = deliveryPrice.priceNotation(.KoreanFreeNotation)
     
     totalPriceLabel.text = (order.price - order.discountPrice).priceNotation(.Korean)
-    print(order.price - order.discountPrice)
     usedPointLabel.text = "0 원"
     usedCouponLabel.text = "0 원"
     if discountWay == .Point {

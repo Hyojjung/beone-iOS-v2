@@ -25,7 +25,7 @@
 		62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */; };
 		62122D731C5EFE5900B9850E /* SpeedOrderProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62122D721C5EFE5900B9850E /* SpeedOrderProductView.xib */; };
 		62122D751C5F0A8100B9850E /* StatusHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62122D741C5F0A8100B9850E /* StatusHistory.swift */; };
-		621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */; };
+		621A71151C4DF7D5004AF8E7 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A71141C4DF7D5004AF8E7 /* ProductsViewController.swift */; };
 		622AE9611C5F2308009F1A50 /* SpeedOrderProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AE9601C5F2308009F1A50 /* SpeedOrderProductView.swift */; };
 		622AE9651C5F26D6009F1A50 /* SpeedOrderResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AE9641C5F26D6009F1A50 /* SpeedOrderResultsViewController.swift */; };
 		622AE9681C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AE9671C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift */; };
@@ -295,7 +295,7 @@
 		62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpeedOrder.storyboard; sourceTree = "<group>"; };
 		62122D721C5EFE5900B9850E /* SpeedOrderProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedOrderProductView.xib; sourceTree = "<group>"; };
 		62122D741C5F0A8100B9850E /* StatusHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusHistory.swift; sourceTree = "<group>"; };
-		621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SearchResultViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		621A71141C4DF7D5004AF8E7 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		622AE9601C5F2308009F1A50 /* SpeedOrderProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SpeedOrderProductView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		622AE9641C5F26D6009F1A50 /* SpeedOrderResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedOrderResultsViewController.swift; sourceTree = "<group>"; };
 		622AE9671C5F45BE009F1A50 /* SpeedOrderFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedOrderFilterViewController.swift; sourceTree = "<group>"; };
@@ -747,7 +747,7 @@
 				7388FA421C0458880015C3DF /* InquiryListViewController.swift */,
 				7388FA4D1C049CA40015C3DF /* ReviewListViewController.swift */,
 				73BE226A1C328B9F003FA11C /* CartViewController.swift */,
-				621A71141C4DF7D5004AF8E7 /* SearchResultViewController.swift */,
+				621A71141C4DF7D5004AF8E7 /* ProductsViewController.swift */,
 				6286FB871C57589300845BE4 /* AddingCouponViewController.swift */,
 				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
 				627E22191C6C623900FBB91D /* InquiryEditViewController.swift */,
@@ -1524,7 +1524,7 @@
 				62EFE94F1BE0C5830035B2DE /* TextTemplateCell.swift in Sources */,
 				73445E7A1BFAD843008BE2AC /* ProfileViewController.swift in Sources */,
 				6286FB7B1C573C0C00845BE4 /* Coupon.swift in Sources */,
-				621A71151C4DF7D5004AF8E7 /* SearchResultViewController.swift in Sources */,
+				621A71151C4DF7D5004AF8E7 /* ProductsViewController.swift in Sources */,
 				6286FB6F1C56468C00845BE4 /* Notice.swift in Sources */,
 				620717411BE2020A0014B9AC /* LazyLoadingHelper.swift in Sources */,
 				73DF1D941C438CEC00DB3550 /* ProductPropertyColorTypeValueView.swift in Sources */,

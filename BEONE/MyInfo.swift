@@ -50,7 +50,6 @@ class MyInfo: NSManagedObject {
   
   func logOut(logoutSuccess: () -> Void) {
     SigningHelper.signInForNonUser { (result) -> Void in
-      self.accessToken = nil
       self.refreshToken = nil
       self.userId = nil
       CoreDataHelper.sharedCoreDataHelper.saveContext()

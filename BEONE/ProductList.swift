@@ -7,6 +7,7 @@ class ProductList: BaseListModel {
     case None
     case Shop
     case Category
+    case Recent
   }
   
   var type = Type.None
@@ -36,13 +37,17 @@ class ProductList: BaseListModel {
       }
     case .None:
       return "products"
+    case .Recent:
+      if MyInfo.sharedMyInfo().isUser() {
+        return "users/\(MyInfo.sharedMyInfo().userId!)/recent-products"
+      }
     }
     return "products"
   }
   
   override func getParameter() -> AnyObject? {
     switch type {
-    case .Shop, .Category:
+    case .Shop, .Category, .Recent:
       return nil
     case .None:
       var parameter = [String: AnyObject]()

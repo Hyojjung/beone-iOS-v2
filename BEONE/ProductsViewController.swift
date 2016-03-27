@@ -47,13 +47,15 @@ class ProductsViewController: BaseTableViewController {
     productList.get { () -> Void in
       self.tableView.reloadData()
     }
-    productPropertyList.get { () -> Void in
-      self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
-        withRowAnimation: .Automatic)
-    }
-    tagList.get { () -> Void in
-      self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
-        withRowAnimation: .Automatic)
+    if forSearchResult {
+      productPropertyList.get { () -> Void in
+        self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
+          withRowAnimation: .Automatic)
+      }
+      tagList.get { () -> Void in
+        self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
+          withRowAnimation: .Automatic)
+      }
     }
   }
 }

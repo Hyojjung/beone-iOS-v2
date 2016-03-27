@@ -1,6 +1,8 @@
 
 import UIKit
 
+let kRecentProductsSchemeString = "recent-products"
+
 enum SchemeTabViewIdentifier: String {
   case Home = "home"
   case Search = "search"
@@ -24,7 +26,6 @@ enum SchemeTabViewIdentifier: String {
   }
 }
 
-
 enum SchemeIdentifier: String {
   case Profile = "profile"
   case Orders = "orders"
@@ -34,7 +35,7 @@ enum SchemeIdentifier: String {
   case Notice = "notice"
   case Products = "products"
   case Coupons = "coupons"
-  case SpeedOrder = "speedOrder"
+  case SpeedOrder = "speed-order"
   case Setting = "setting"
   case Option = "option"
   case Shop = "shop"
@@ -87,7 +88,7 @@ class SchemeHelper {
     let navi = rootNavigationController()
     navi?.dismissViewControllerAnimated(false, completion: nil)
     navi?.popToRootViewControllerAnimated(false)
-
+    
     var schemeString = scheme
     if scheme.hasPrefix(kSchemeBaseUrl) {
       schemeString = schemeString.stringByReplacingOccurrencesOfString(kSchemeBaseUrl, withString: "")
@@ -102,29 +103,35 @@ class SchemeHelper {
     if let mainTabViewController = navi?.topViewController as? MainTabViewController,
       mainTabViewIdentifier = schemeStrings?.first,
       mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
-        schemeStrings?.removeAtIndex(0)
-        if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
-          if let viewController = mainTabViewController.selectedViewController as? BaseViewController {
-            viewController.handleScheme()
-          }
-        } else {
-          mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
+      schemeStrings?.removeAtIndex(0)
+      if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
+        if let viewController = mainTabViewController.selectedViewController as? BaseViewController {
+          viewController.handleScheme()
         }
+      } else {
+        mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
+      }
     }
   }
 }
 
 extension BaseViewController {
+  
   func handleScheme() {
     if let schemeStrings = SchemeHelper.schemeStrings {
       if SchemeHelper.index < schemeStrings.count {
         let schemeString = schemeStrings[SchemeHelper.index]
         SchemeHelper.index += 1
-        if let id = Int(schemeString),
-          topViewController = SchemeHelper.rootNavigationController()?.topViewController as? SchemeDelegate {
-          topViewController.handleScheme(with: id)
-        } else if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
+        if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
           showViewController(schemeIdentifier)
+        } else if let topViewController = SchemeHelper.rootNavigationController()?.topViewController {
+          if let id = Int(schemeString), topViewController = topViewController as? SchemeDelegate {
+            topViewController.handleScheme(with: id)
+          } else if schemeString == kRecentProductsSchemeString {
+            let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
+            productsViewController.productList.type = .Recent
+            showViewController(productsViewController, sender: nil)
+          }
         }
       } else {
         SchemeHelper.schemeStrings = nil
