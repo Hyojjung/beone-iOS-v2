@@ -18,31 +18,34 @@ class OrderWebViewController: BaseViewController {
   }
   
   func configureWebView() {
-    if let order = self.order, paymentTypeId = self.paymentTypeId, paymentInfoId = self.paymentInfoId {
+    if let order = order, paymentTypeId = paymentTypeId, paymentInfoId = paymentInfoId {
       var url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)"
       url += "/orders/\(order.id!)/payment-infos/\(paymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
       
       let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())
       orderWebViewUrlRequest.setValue(MyInfo.sharedMyInfo().accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
       orderWebViewUrlRequest.setValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
-      self.orderWebView.loadRequest(orderWebViewUrlRequest)
+      orderWebView.loadRequest(orderWebViewUrlRequest)
     }
   }
 }
 
 extension OrderWebViewController: UIWebViewDelegate {
   func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-    let url = request.URL?.absoluteString
-    print(url)
-    let urlProtocol = url?.componentsSeparatedByString("://").first
-    if urlProtocol == "cmbeone" {
-      if url == "cmbeone://payment.cancelled" {
-        showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Canceled.rawValue])
-      } else if let order = order, paymentInfoId = paymentInfoId {
-        showOrderResultView(order, paymentInfoId: paymentInfoId, orderResult: url?.jsonObject())
+    if let url = request.URL?.absoluteString {
+      if url.hasPrefix(kPaymentScheme) {
+        handleUrl(url)
       }
     }
     return true
+  }
+  
+  func handleUrl(url: String) {
+    if url.hasPrefix("cmbeone://payment.cancelled") {
+      showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Canceled.rawValue])
+    } else if let order = order, paymentInfoId = paymentInfoId {
+      showOrderResultView(order, paymentInfoId: paymentInfoId, orderResult: url.jsonObject())
+    }
   }
   
   func webViewDidFinishLoad(webView: UIWebView) {

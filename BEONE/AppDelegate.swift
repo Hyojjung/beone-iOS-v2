@@ -17,29 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     Fabric.with([Crashlytics.self])
     
-#if RELEASE
-    // Configure tracker from GoogleService-Info.plist.
-    var configureError:NSError?
-    GGLContext.sharedInstance().configureWithError(&configureError)
-    assert(configureError == nil, "Error configuring Google services: \(configureError)")
+    #if RELEASE
+      // Configure tracker from GoogleService-Info.plist.
+      var configureError:NSError?
+      GGLContext.sharedInstance().configureWithError(&configureError)
+      assert(configureError == nil, "Error configuring Google services: \(configureError)")
+      
+      // Optional: configure GAI options.
+      let gai = GAI.sharedInstance()
+      gai.trackUncaughtExceptions = true  // report uncaught exceptions
+      gai.logger.logLevel = GAILogLevel.None  // remove before app releaseAppDelegate.swift
+    #endif
     
-    // Optional: configure GAI options.
-    let gai = GAI.sharedInstance()
-    gai.trackUncaughtExceptions = true  // report uncaught exceptions
-    gai.logger.logLevel = GAILogLevel.None  // remove before app releaseAppDelegate.swift
-#endif
-  
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
   }
   
   func application(application: UIApplication, openURL url: NSURL,
-    sourceApplication: String?, annotation: AnyObject) -> Bool {
-      if KOSession.isKakaoAccountLoginCallback(url) {
-        return KOSession.handleOpenURL(url)
+                   sourceApplication: String?, annotation: AnyObject) -> Bool {
+    if url.absoluteString.hasPrefix(kPaymentScheme) {
+      if let orderWebViewController = SchemeHelper.rootNavigationController()?.topViewController as? OrderWebViewController {
+        orderWebViewController.handleUrl(url.absoluteString)
       }
-      return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
-        sourceApplication: sourceApplication, annotation: annotation)
+    }
+    if KOSession.isKakaoAccountLoginCallback(url) {
+      return KOSession.handleOpenURL(url)
+    }
+    return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
+                                                                 sourceApplication: sourceApplication, annotation: annotation)
   }
   
   func applicationDidBecomeActive(application: UIApplication) {

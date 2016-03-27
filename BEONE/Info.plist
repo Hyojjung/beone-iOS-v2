@@ -25,6 +25,12 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>cmbeone</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>fb1414064805578739</string>
 			</array>
 		</dict>

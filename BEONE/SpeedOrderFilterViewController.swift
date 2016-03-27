@@ -38,15 +38,16 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     super.prepareForSegue(segue, sender: segue)
     if let speedOrderAddressViewController = segue.destinationViewController as? SpeedOrderAddressViewController {
       speedOrderAddressViewController.addressDelegate = self
-    } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController,
-      selectedUsageIndex = selectedUsageIndex, productProperty = productPropertyList.list.first as? ProductProperty {
-        speedOrderResultsViewController.productList.productPropertyValueIds = [Int]()
-        speedOrderResultsViewController.productList.address = address
-        if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
-          speedOrderResultsViewController.productList.availableDates =
-            [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
-        }
-        speedOrderResultsViewController.productList.productPropertyValueIds!.appendObject(productProperty.values[selectedUsageIndex].id)
+    } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController {
+      if let productProperty = productPropertyList.list.first as? ProductProperty,
+        selectedUsageIndex = selectedUsageIndex {
+        speedOrderResultsViewController.productList.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
+      }
+      speedOrderResultsViewController.productList.address = address
+      if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
+        speedOrderResultsViewController.productList.availableDates =
+          [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
+      }
     }
   }
   
@@ -64,34 +65,34 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   @IBAction func selectUsageButtonTapped() {
     if let productProperty = productPropertyList.list.first as? ProductProperty {
       showActionSheet("용도를 선택해 주세요",
-        rows: productProperty.valueTitles(),
-        initialSelection: selectedUsageIndex,
-        sender: nil,
-        doneBlock: { (_, index, _) -> Void in
-          self.selectedUsageIndex = index
-          self.tableView.reloadData()
+                      rows: productProperty.valueTitles(),
+                      initialSelection: selectedUsageIndex,
+                      sender: nil,
+                      doneBlock: { (_, index, _) -> Void in
+                        self.selectedUsageIndex = index
+                        self.tableView.reloadData()
       })
     }
   }
   
   @IBAction func selectDeliveryDateButtonTapped() {
     showActionSheet("배송 받으실 날짜를 선택해 주세요",
-      rows: productSearchData.reservationDateOptionsNames(),
-      initialSelection: selectedDeliveryDateIndex,
-      sender: nil,
-      doneBlock: { (_, index, _) -> Void in
-        self.selectedDeliveryDateIndex = index
-        
-        let dayInterval = self.productSearchData.reservationDateOptions[index]
-        BEONEManager.selectedDate = nil
-        if let day = Double(dayInterval.value!) {
-          let calendar = DateFormatterHelper.koreanCalendar
-          let selectedDate = calendar.components([.Month, .Day],
-            fromDate: NSDate().dateByAddingTimeInterval(day * kSecondToDay))
-          BEONEManager.selectedDate = selectedDate
-        }
-        
-        self.tableView.reloadData()
+                    rows: productSearchData.reservationDateOptionsNames(),
+                    initialSelection: selectedDeliveryDateIndex,
+                    sender: nil,
+                    doneBlock: { (_, index, _) -> Void in
+                      self.selectedDeliveryDateIndex = index
+                      
+                      let dayInterval = self.productSearchData.reservationDateOptions[index]
+                      BEONEManager.selectedDate = nil
+                      if let day = Double(dayInterval.value!) {
+                        let calendar = DateFormatterHelper.koreanCalendar
+                        let selectedDate = calendar.components([.Year, .Month, .Day],
+                          fromDate: NSDate().dateByAddingTimeInterval(day * kSecondToDay))
+                        BEONEManager.selectedDate = selectedDate
+                      }
+                      
+                      self.tableView.reloadData()
     })
   }
   
@@ -122,7 +123,7 @@ extension SpeedOrderFilterViewController: UITableViewDataSource {
       var usageValue: ProductPropertyValue? = nil
       if let selectedUsageIndex = selectedUsageIndex,
         productProperty = productPropertyList.list.first as? ProductProperty {
-          usageValue = productProperty.values[selectedUsageIndex]
+        usageValue = productProperty.values[selectedUsageIndex]
       }
       cell.configureCell(usageValue)
     } else if let cell = cell as? DeliveryDateCell, selectedDeliveryDateIndex = selectedDeliveryDateIndex {
