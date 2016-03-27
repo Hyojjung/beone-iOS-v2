@@ -572,6 +572,31 @@
                                     <outlet property="delegate" destination="Eie-xy-Rf5" id="EXb-EB-FbL"/>
                                 </connections>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-99-xVT">
+                                <rect key="frame" x="215" y="456" width="170" height="47"/>
+                                <color key="backgroundColor" red="0.32156862745098042" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Ksh-5P-4uL"/>
+                                    <constraint firstAttribute="height" constant="47" id="sjj-1v-uSO"/>
+                                </constraints>
+                                <state key="normal" title="바로구매" backgroundImage="btnRectDarkgray">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.16" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TnE-gn-04i">
                                 <rect key="frame" x="281" y="491" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -623,15 +648,19 @@
                             <constraint firstAttribute="trailing" secondItem="npS-Fm-tBz" secondAttribute="trailing" id="P4M-VU-zTE"/>
                             <constraint firstItem="QGA-av-gUI" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="XQB-7R-Nod"/>
                             <constraint firstItem="gUP-2Q-QSu" firstAttribute="top" secondItem="RzA-hO-9nD" secondAttribute="bottom" constant="24" id="aPn-NQ-X0k"/>
+                            <constraint firstItem="6BT-99-xVT" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="c2B-1X-xcM"/>
                             <constraint firstItem="TnE-gn-04i" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="ccX-oj-sSz"/>
                             <constraint firstItem="cWO-3C-rle" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="e5w-y3-qRy"/>
                             <constraint firstItem="npS-Fm-tBz" firstAttribute="top" secondItem="BRe-H6-tIT" secondAttribute="bottom" id="gCU-6d-4Jm"/>
                             <constraint firstItem="E4I-Ea-rf0" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="jdr-gI-ik4"/>
+                            <constraint firstItem="6BT-99-xVT" firstAttribute="top" secondItem="npS-Fm-tBz" secondAttribute="bottom" constant="-31" id="ldh-5P-xEW"/>
                             <constraint firstItem="RzA-hO-9nD" firstAttribute="centerX" secondItem="Nx6-av-Nkl" secondAttribute="centerX" id="nra-Y5-xfT"/>
+                            <constraint firstItem="6BT-99-xVT" firstAttribute="top" secondItem="TnE-gn-04i" secondAttribute="bottom" id="qlM-sv-0w8"/>
                             <constraint firstItem="gUP-2Q-QSu" firstAttribute="top" secondItem="npS-Fm-tBz" secondAttribute="bottom" constant="113" id="rZf-PC-Yov"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="qlM-sv-0w8"/>
                                 <exclude reference="Ccr-zp-9pg"/>
                             </mask>
                         </variation>
@@ -647,7 +676,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uu6-6g-Jm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815" y="696"/>
+            <point key="canvasLocation" x="791" y="615"/>
         </scene>
     </scenes>
     <resources>
