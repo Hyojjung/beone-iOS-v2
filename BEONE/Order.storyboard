@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryDateTypeCell" rowHeight="60" id="WTe-gT-F3f">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryDateTypeCell" rowHeight="60" id="WTe-gT-F3f" customClass="DeliveryDateTypeCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WTe-gT-F3f" id="kdt-yr-jG4">
@@ -48,7 +48,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="expressButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="ixi-6W-K1l"/>
+                                                        <action selector="selectExpressButtonTapped:" destination="1rw-Bd-JIM" eventType="touchUpInside" id="sLI-pK-g6U"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-hn-d2z">
@@ -73,7 +73,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="preferredDateDeliveryButtonTapped" destination="hFb-vV-qJU" eventType="touchUpInside" id="EHe-Hq-r1b"/>
+                                                        <action selector="selectDeliveryTimeButtonTapped:" destination="1rw-Bd-JIM" eventType="touchUpInside" id="mKU-3d-gkp"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconButtonChecked" translatesAutoresizingMaskIntoConstraints="NO" id="frn-5n-4Z3">
@@ -96,6 +96,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="expressButton" destination="1C3-Or-dOY" id="Bmp-pl-kEk"/>
+                                            <outlet property="expressCheckImageView" destination="G2e-hn-d2z" id="6ew-eG-xhR"/>
+                                            <outlet property="timeButton" destination="yso-C8-5uA" id="piT-Vo-Wlc"/>
+                                            <outlet property="timeCheckImageView" destination="frn-5n-4Z3" id="4uo-sd-g7O"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" rowHeight="157" id="HK1-ov-pRW" customClass="TimeCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="600" height="157"/>
@@ -371,6 +377,16 @@
                                                     <exclude reference="jLe-EL-dfz"/>
                                                 </mask>
                                             </variation>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="emptyCell" rowHeight="1" id="k0l-T8-fUl">
+                                        <rect key="frame" x="0.0" y="452" width="600" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k0l-T8-fUl" id="ZuU-xB-q4D">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -3189,29 +3205,29 @@ IAo
                                                     <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YG-l4-9Jr">
-                                                    <rect key="frame" x="550" y="28" width="36" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YG-l4-9Jr">
+                                                    <rect key="frame" x="549" y="28" width="36" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="totalProductPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.68627450980392157" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYR-Jl-oef">
-                                                    <rect key="frame" x="550" y="60" width="36" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYR-Jl-oef">
+                                                    <rect key="frame" x="549" y="60" width="36" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="totalDeliveryPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sg-5l-Bwp">
-                                                    <rect key="frame" x="550" y="92" width="36" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sg-5l-Bwp">
+                                                    <rect key="frame" x="549" y="92" width="36" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="pointToUseLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZx-14-wEx">
-                                                    <rect key="frame" x="550" y="124" width="36" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZx-14-wEx">
+                                                    <rect key="frame" x="549" y="124" width="36" height="17"/>
                                                     <accessibility key="accessibilityConfiguration" label="couponDiscountedPriceLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>

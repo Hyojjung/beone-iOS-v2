@@ -55,6 +55,16 @@ class DeliveryDateViewController: BaseTableViewController {
 
 extension DeliveryDateViewController {
   
+  @IBAction func selectExpressButtonTapped(sender: UIButton) {
+    order.orderableItemSets[sender.tag].isExpressReservation = true
+    tableView.reloadData()
+  }
+  
+  @IBAction func selectDeliveryTimeButtonTapped(sender: UIButton) {
+    order.orderableItemSets[sender.tag].isExpressReservation = false
+    tableView.reloadData()
+  }
+  
   @IBAction func showCalenderButtonTapped(sender: UIButton) {
     selectedOrderableItemSetIndex = sender.tag
     calendarViewController.selectedDate = selectedDates[selectedOrderableItemSetIndex]
@@ -74,11 +84,14 @@ extension DeliveryDateViewController {
   
   @IBAction func orderButtonTapped() {
     for (index, orderableItemSet) in order.orderableItemSets.enumerate() {
-      if orderableItemSet.deliveryType.isReservable &&
-        (selectedDates[index] == nil || selectedTimeRanges[index] == nil) {
+      if orderableItemSet.deliveryType.isReservable {
+        if (!orderableItemSet.isExpressAvailable || !orderableItemSet.isExpressReservation)
+          && (selectedDates[index] == nil || selectedTimeRanges[index] == nil) {
           showAlertView(NSLocalizedString("select delivery date", comment: "alert title"))
           return
-      } else if orderableItemSet.deliveryType.isReservable {
+        }
+      }
+      if orderableItemSet.deliveryType.isReservable && !orderableItemSet.isExpressReservation {
         orderableItemSet.selectedTimeRange = selectedTimeRanges[index]
       }
     }
@@ -147,8 +160,11 @@ extension DeliveryDateViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section < order.orderableItemSets.count {
       let orderableItemSet = order.orderableItemSets[section]
-      return orderableItemSet.deliveryType.isReservable ?
-        orderableItemSet.orderableItemList.list.count + 4 : orderableItemSet.orderableItemList.list.count + 3
+      if orderableItemSet.deliveryType.isReservable {
+        return orderableItemSet.orderableItemList.list.count + 5
+      } else {
+        return orderableItemSet.orderableItemList.list.count + 3
+      }
     }
     return 1
   }
@@ -169,8 +185,22 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
       } else if indexPath.row == 1 {
         return kShopNameCellIdentifier
       } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 2 {
-        return orderableItemSet.deliveryType.isReservable ? "timeCell" : "parcelLabelCell"
+        if orderableItemSet.deliveryType.isReservable {
+          if orderableItemSet.isExpressAvailable {
+            return "deliveryDateTypeCell"
+          } else {
+            return "emptyCell"
+          }
+        } else {
+          return "parcelLabelCell"
+        }
       } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 3 {
+        if !orderableItemSet.isExpressReservation {
+          return "timeCell"
+        } else {
+          return "emptyCell"
+        }
+      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 4 {
         return "alertCell"
       } else {
         return "orderOrderableItemCell"
@@ -191,6 +221,8 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
       return 50
     } else if cell.reuseIdentifier == "buttonCell" {
       return 97
+    } else if cell.reuseIdentifier == "deliveryDateTypeCell" {
+      return 60
     } else if let cell = cell as? DeliveryTypeCell {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ParcelLabelCell {
@@ -202,16 +234,35 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? DeliveryTypeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section],
-        needCell: order.deliveryTypeCellHeight(indexPath.section))
+                         needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? OrderOrderableItemCell,
       orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
       cell.configureCell(orderItems[indexPath.row - 2])
     } else if let cell = cell as? TimeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section,
-        selectedDate: selectedDates[indexPath.section], selectedTimeRange: selectedTimeRanges[indexPath.section])
+                         selectedDate: selectedDates[indexPath.section], selectedTimeRange: selectedTimeRanges[indexPath.section])
     } else if let cell = cell as? ShopNameCell {
       cell.configureCell(order.orderableItemSets[indexPath.section])
+    } else if let cell = cell as? DeliveryDateTypeCell {
+      cell.setUpCell(order.orderableItemSets[indexPath.section].isExpressReservation, index: indexPath.section)
     }
+  }
+}
+
+class DeliveryDateTypeCell: UITableViewCell {
+  
+  @IBOutlet weak var expressButton: UIButton!
+  @IBOutlet weak var expressCheckImageView: UIImageView!
+  @IBOutlet weak var timeButton: UIButton!
+  @IBOutlet weak var timeCheckImageView: UIImageView!
+  
+  func setUpCell(isExpress: Bool, index: Int) {
+    expressButton.selected = isExpress
+    timeButton.selected = !isExpress
+    expressCheckImageView.configureAlpha(isExpress)
+    timeCheckImageView.configureAlpha(!isExpress)
+    expressButton.tag = index
+    timeButton.tag = index
   }
 }
 
@@ -238,15 +289,15 @@ class TimeCell: UITableViewCell {
   @IBOutlet weak var timeButton: UIButton!
   
   func configureCell(orderableItemSet: OrderableItemSet, index: Int,
-    selectedDate: NSDate?, selectedTimeRange: AvailableTimeRange?) {
-      dateButton.tag = index
-      timeButton.tag = index
-      dateLabel.text = selectedDate != nil ?
-        selectedDate!.rangeReservationDateString() :
-        NSLocalizedString("select delivery date", comment: "button title")
-      timeLabel.text = selectedTimeRange != nil ?
-        selectedTimeRange!.timeRangeNotation() :
-        NSLocalizedString("select time range", comment: "button title")
+                     selectedDate: NSDate?, selectedTimeRange: AvailableTimeRange?) {
+    dateButton.tag = index
+    timeButton.tag = index
+    dateLabel.text = selectedDate != nil ?
+      selectedDate!.rangeReservationDateString() :
+      NSLocalizedString("select delivery date", comment: "button title")
+    timeLabel.text = selectedTimeRange != nil ?
+      selectedTimeRange!.timeRangeNotation() :
+      NSLocalizedString("select time range", comment: "button title")
   }
 }
 

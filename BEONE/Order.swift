@@ -145,6 +145,8 @@ extension Order {
       }
       if let selectedTimeRange = orderItemSet.selectedTimeRange {
         deliveryDateString += selectedTimeRange.dateNotation()
+      } else if orderItemSet.isExpressReservation {
+        deliveryDateString += "즉시배송"
       } else {
         deliveryDateString += "택배배송"
       }
@@ -205,11 +207,13 @@ extension Order {
     for orderableItemSet in orderableItemSets {
       var orderDeliveryItemSet = [String: AnyObject]()
       orderDeliveryItemSet["shopId"] = orderableItemSet.shop.id
+      orderDeliveryItemSet["isExpressReservation"] = orderableItemSet.isExpressReservation
       orderDeliveryItemSet["deliveryTypeId"] = orderableItemSet.deliveryType.id
       orderDeliveryItemSet["reservationStartDateTime"] =
         orderableItemSet.selectedTimeRange?.startDateTime?.serverDateString()
       orderDeliveryItemSet["reservationEndDateTime"] =
         orderableItemSet.selectedTimeRange?.endDateTime?.serverDateString()
+      
       orderDeliveryItemSets.appendObject(orderDeliveryItemSet)
     }
     return orderDeliveryItemSets

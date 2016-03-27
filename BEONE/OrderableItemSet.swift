@@ -44,6 +44,7 @@ class OrderableItemSet: BaseModel {
   var isRefundable = false
   var isReturnable = false
   var isExpressAvailable = false
+  var isExpressReservation = false
   
   var isDone = true
   
@@ -67,6 +68,9 @@ class OrderableItemSet: BaseModel {
       }
       if let isExpressAvailable = orderableItemSet["isExpressAvailable"] as? Bool {
         self.isExpressAvailable = isExpressAvailable
+      }
+      if let isExpressReservation = orderableItemSet["isExpressReservation"] as? Bool {
+        self.isExpressReservation = isExpressReservation
       }
       if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {

@@ -65,7 +65,11 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       for orderableItemSet in self.order.orderableItemSets {
         for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
           if let cartItemId = orderableItem.cartItemId {
-            orderableItemSet.selectedTimeRange = pair[cartItemId]
+            if let timeRange = pair[cartItemId] {
+              orderableItemSet.selectedTimeRange = timeRange
+            } else if orderableItemSet.deliveryType.isReservable && orderableItemSet.isExpressAvailable {
+              orderableItemSet.isExpressReservation = true
+            }
           }
         }
       }
