@@ -51,6 +51,11 @@ class SideBarViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    setUpData()
+  }
 }
 
 extension SideBarViewController {

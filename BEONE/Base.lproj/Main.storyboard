@@ -451,9 +451,6 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" title="찾아보기" backgroundImage="btnRectPcolor90"/>
-                                                    <connections>
-                                                        <action selector="searchButtonTapped" destination="8rJ-Kc-sve" eventType="touchUpInside" id="7OO-27-sBE"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -472,15 +469,15 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="NQU-oM-Vme"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-8V-MeR">
-                                <rect key="frame" x="0.0" y="677" width="600" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-8V-MeR">
+                                <rect key="frame" x="20" y="675" width="560" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="g4B-Yb-ejn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="찾아보기" backgroundImage="btnRectPcolor90"/>
                                 <connections>
-                                    <action selector="showSpeedOrder" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pay-Kh-4Xa"/>
+                                    <action selector="searchButtonTapped" destination="8rJ-Kc-sve" eventType="touchUpInside" id="fva-UO-eiI"/>
                                 </connections>
                             </button>
                         </subviews>

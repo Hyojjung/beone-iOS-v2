@@ -7,8 +7,6 @@ class ProfileViewController: BaseTableViewController {
   
   private enum ProfileTableViewSection: Int {
     case TopImage
-    case Anniversary
-    case AnniversaryAddButton
     case AccountTitle
     case Account
     case ProfileTitle
@@ -22,8 +20,6 @@ class ProfileViewController: BaseTableViewController {
   private let kAnniversarySectionNameLabelTag = 101
   
   private let kProfileTableViewCellIdentifiers = ["topImageCell",
-    "annivesaryCell",
-    "anniveraryAddButtoncell",
     "accountTitleCell",
     "accountCell",
     "profileTitleCell",
