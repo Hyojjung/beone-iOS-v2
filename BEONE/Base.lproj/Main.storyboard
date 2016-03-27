@@ -472,9 +472,13 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="NQU-oM-Vme"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-8V-MeR">
-                                <rect key="frame" x="497" y="648" width="83" height="83"/>
-                                <state key="normal" image="btnSpeedorder"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-8V-MeR">
+                                <rect key="frame" x="0.0" y="677" width="600" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="g4B-Yb-ejn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="찾아보기" backgroundImage="btnRectPcolor90"/>
                                 <connections>
                                     <action selector="showSpeedOrder" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pay-Kh-4Xa"/>
                                 </connections>
@@ -483,6 +487,7 @@
                         <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Vnk-B8-hlW" secondAttribute="bottom" id="5CD-FF-IyV"/>
+                            <constraint firstItem="rh3-8V-MeR" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="A8y-YV-9Lr"/>
                             <constraint firstItem="Vnk-B8-hlW" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="eeQ-kM-jZg"/>
                             <constraint firstAttribute="trailing" secondItem="Vnk-B8-hlW" secondAttribute="trailing" id="gIR-9h-Xl6"/>
                             <constraint firstItem="Vnk-B8-hlW" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="oTV-zQ-smP"/>
@@ -522,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwr-mx-Jir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1286" y="-1713"/>
+            <point key="canvasLocation" x="-1462" y="-1777"/>
         </scene>
         <!--Side Bar View Controller-->
         <scene sceneID="wf0-qH-pGC">
@@ -1262,7 +1267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1X-X5-TRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-795" y="-1092"/>
+            <point key="canvasLocation" x="-871" y="-944"/>
         </scene>
         <!--화원-->
         <scene sceneID="E8X-eR-iZi">
@@ -1318,13 +1323,14 @@
         <scene sceneID="3nv-Dl-cEI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vTi-Dg-l6d" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="do9-VK-hsT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -1342,17 +1348,20 @@
                     <navigationItem key="navigationItem" id="VgY-ux-wsp">
                         <barButtonItem key="leftBarButtonItem" image="icon_nav_sidebar" id="br2-YL-Qej">
                             <inset key="imageInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="toggleRevealViewPositionButtonTapped:" destination="49e-Tb-3d3" id="DRQ-hx-g6y"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="iconNavCart" id="Y77-FT-kcE">
+                                <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="cart:" destination="49e-Tb-3d3" id="Flm-S3-Hbo"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="XsD-2q-4UZ">
+                                <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="product:" destination="49e-Tb-3d3" id="r9S-Wc-phu"/>
                                 </connections>
