@@ -2,7 +2,6 @@
 import UIKit
 
 protocol ProductDelegate: NSObjectProtocol {
-  func productOrderButtonTapped(productId: Int)
   func productButtonTapped(productId: Int)
 }
 
@@ -19,7 +18,6 @@ class SpeedOrderProductView: UIView {
   @IBOutlet weak var productOriginalPriceLabel: UILabel!
   @IBOutlet weak var priceHorizontalIntervalLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var productButton: UIButton!
-  @IBOutlet weak var productOrderButton: UIButton!
 
   func layoutView(product: Product) {
     productImageView.setLazyLoaingImage(product.mainImageUrl)
@@ -35,14 +33,9 @@ class SpeedOrderProductView: UIView {
     
     if let productId = product.id {
       productButton.tag = productId
-      productOrderButton.tag = productId
     }
   }
-  
-  @IBAction func productOrderButtonTapped(sender: UIButton) {
-    delegate?.productOrderButtonTapped(sender.tag)
-  }
-  
+
   @IBAction func productButtonTapped(sender: UIButton) {
     delegate?.productButtonTapped(sender.tag)
   }

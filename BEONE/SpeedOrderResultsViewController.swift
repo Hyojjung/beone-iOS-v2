@@ -9,6 +9,7 @@ class SpeedOrderResultsViewController: BaseViewController {
   @IBOutlet weak var reviewCountLabel: UILabel!
   @IBOutlet weak var reviewButton: UIButton!
   @IBOutlet weak var allShowButton: UIButton!
+  @IBOutlet weak var orderButton: UIButton!
   
   var contentViews = [UIView]()
   var productList = ProductList()
@@ -54,7 +55,7 @@ class SpeedOrderResultsViewController: BaseViewController {
     speedOrderProductsScrollView.addBottomLayout(speedOrderProductsScrollViewSubview)
     speedOrderProductsScrollView.addWidthLayout(view: speedOrderProductsScrollViewSubview)
     speedOrderProductsScrollView.addEqualHeightLayout(speedOrderProductsScrollView,
-      view2: speedOrderProductsScrollViewSubview)
+                                                      view2: speedOrderProductsScrollViewSubview)
   }
 }
 
@@ -64,6 +65,7 @@ extension SpeedOrderResultsViewController {
       productsViewController.productList = productList
       productsViewController.productList.isQuickOrder = false
       productsViewController.forSearchResult = true
+      productsViewController.isSpeedOrder = true
       
       if let productPropertyValueIds = productList.productPropertyValueIds {
         productsViewController.selectedProductPropertyValueIds = productPropertyValueIds
@@ -93,15 +95,15 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
   }
   
   private func configureReviewLabels() {
-    if productList.list.count > productsScrollViewPageControl.currentPage {
-      if let currentProduct = productList.list[productsScrollViewPageControl.currentPage] as? Product {
-        reviewShowLabel.configureAlpha(currentProduct.reviewCount != 0)
-        reviewCountLabel.configureAlpha(currentProduct.reviewCount != 0)
-        reviewButton.configureAlpha(currentProduct.reviewCount != 0)
-        reviewCountLabel.text = "\(currentProduct.reviewCount)개의 유용한 후기가 있습니다"
-        allShowButton.configureAlpha(false)
-      }
+    if let currentProduct = productList.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
+      reviewShowLabel.configureAlpha(currentProduct.reviewCount != 0)
+      reviewCountLabel.configureAlpha(currentProduct.reviewCount != 0)
+      reviewButton.configureAlpha(currentProduct.reviewCount != 0)
+      reviewCountLabel.text = "\(currentProduct.reviewCount)개의 유용한 후기가 있습니다"
+      allShowButton.configureAlpha(false)
+      orderButton.alpha = 1
     } else {
+      orderButton.alpha = 0
       reviewShowLabel.alpha = 0
       reviewCountLabel.alpha = 0
       reviewButton.configureAlpha(false)
@@ -111,8 +113,9 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
 }
 
 extension SpeedOrderResultsViewController: ProductDelegate {
-  func productOrderButtonTapped(productId: Int) {
-    showOptionView(productId, rightOrdering: true)
+  @IBAction func productOrderButtonTapped() {
+    showOptionView(productList.list.objectAtIndex(productsScrollViewPageControl.currentPage)?.id,
+                   rightOrdering: true)
   }
   
   func productButtonTapped(productId: Int) {

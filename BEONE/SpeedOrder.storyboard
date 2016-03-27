@@ -596,6 +596,9 @@
                                         <real key="value" value="0.16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="productOrderButtonTapped" destination="Eie-xy-Rf5" eventType="touchUpInside" id="03O-4g-xfh"/>
+                                </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TnE-gn-04i">
                                 <rect key="frame" x="281" y="491" width="39" height="37"/>
@@ -667,6 +670,7 @@
                     </view>
                     <connections>
                         <outlet property="allShowButton" destination="E4I-Ea-rf0" id="IZW-ub-uX9"/>
+                        <outlet property="orderButton" destination="6BT-99-xVT" id="nh7-BX-s8G"/>
                         <outlet property="productsScrollViewPageControl" destination="TnE-gn-04i" id="wbN-hg-qiY"/>
                         <outlet property="reviewButton" destination="QGA-av-gUI" id="HxO-lL-V2k"/>
                         <outlet property="reviewCountLabel" destination="cWO-3C-rle" id="kQV-Tl-szD"/>

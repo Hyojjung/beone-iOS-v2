@@ -38,7 +38,8 @@ class SearchViewController: BaseTableViewController {
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
   var productSearchData = ProductSearchData()
-  
+  var isSpeedOrder = false
+
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
   var minPrice = kDefaultMinPrice
@@ -51,6 +52,20 @@ class SearchViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    
+    if let productPropertyValueIds = productList.productPropertyValueIds {
+      selectedProductPropertyValueIds = productPropertyValueIds
+    }
+    if let tagIds = productList.tagIds {
+      selectedTagIds = tagIds
+    }
+    if let minPrice = productList.minPrice {
+      self.minPrice = minPrice
+    }
+    if let maxPrice = productList.maxPrice {
+      self.maxPrice = maxPrice
+    }
+    
     productPropertyList.get { () -> Void in
       self.tableView.reloadData()
     }
@@ -120,14 +135,18 @@ extension SearchViewController {
   }
   
   @IBAction func searchButtonTapped() {
-    if let searchResultViewController =
-      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewViewIdentifier) as? ProductsViewController {
+    if isSpeedOrder {
+      popView()
+    } else {
+      if let searchResultViewController =
+        UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewViewIdentifier) as? ProductsViewController {
         searchResultViewController.productList = productList
         searchResultViewController.selectedTagIds = selectedTagIds
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
         searchResultViewController.minPrice = minPrice
         searchResultViewController.maxPrice = maxPrice
         navigationController?.showViewController(searchResultViewController, sender: nil)
+      }
     }
   }
   

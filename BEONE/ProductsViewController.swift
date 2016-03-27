@@ -17,7 +17,7 @@ class ProductsViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  var isQuickOrdering = false
+  var isSpeedOrder = false
   
   var selectedLocation: Location = {
     if let location = BEONEManager.selectedLocation {
@@ -44,10 +44,24 @@ class ProductsViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     productList.noData = false
+    productList.isQuickOrder = false
     productList.get { () -> Void in
       self.tableView.reloadData()
     }
     if forSearchResult {
+      if let productPropertyValueIds = productList.productPropertyValueIds {
+        selectedProductPropertyValueIds = productPropertyValueIds
+      }
+      if let tagIds = productList.tagIds {
+        selectedTagIds = tagIds
+      }
+      if let minPrice = productList.minPrice {
+        self.minPrice = minPrice / kPriceUnit
+      }
+      if let maxPrice = productList.maxPrice {
+        self.maxPrice = maxPrice / kPriceUnit
+      }
+      
       productPropertyList.get { () -> Void in
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
@@ -55,8 +69,13 @@ class ProductsViewController: BaseTableViewController {
       tagList.get { () -> Void in
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
-      }
+      } 
     }
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    setUpData()
   }
 }
 
@@ -75,8 +94,10 @@ extension ProductsViewController {
   }
   
   @IBAction func showSearchModalButtonTapped() {
-    if isQuickOrdering {
-      let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier)
+    if isSpeedOrder {
+      let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier) as! SearchViewController
+      searchViewController.isSpeedOrder = true
+      searchViewController.productList = productList
       navigationController?.showViewController(searchViewController, sender: nil)
     } else {
       popView()
@@ -95,7 +116,7 @@ extension ProductsViewController: UITableViewDataSource {
         tags: tagList.list as! [Tag],
         minPrice: minPrice,
         maxPrice: maxPrice,
-        isQuickOrdering: isQuickOrdering)
+        isSpeedOrder: isSpeedOrder)
     } else if let cell = cell as? ProductCoupleTemplateCell {
       configureProductCell(cell, indexPath: indexPath)
     }
@@ -147,7 +168,7 @@ class SearchCell: UITableViewCell {
   @IBOutlet weak var searchButton: UIButton!
   
   func configureCell(location: Location, selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
-    productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int, isQuickOrdering: Bool) {
+    productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int, isSpeedOrder: Bool) {
       locationLabel.text = location.name
       
       let searchValueStrings = self.searchValueStrings(selectedProductPropertyValueIds,
@@ -158,7 +179,7 @@ class SearchCell: UITableViewCell {
         maxPrice: maxPrice)
       searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
       
-      searchButton.configureAlpha(isQuickOrdering)
+      searchButton.configureAlpha(isSpeedOrder)
   }
   
   private func searchValueStrings(selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
