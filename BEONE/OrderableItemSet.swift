@@ -43,6 +43,8 @@ class OrderableItemSet: BaseModel {
   var isCompletable = false
   var isRefundable = false
   var isReturnable = false
+  var isExpressAvailable = false
+  
   var isDone = true
   
   override func assignObject(data: AnyObject?) {
@@ -62,6 +64,9 @@ class OrderableItemSet: BaseModel {
       
       if let actualPrice = orderableItemSet["actualPrice"] as? Int {
         self.actualPrice = actualPrice
+      }
+      if let isExpressAvailable = orderableItemSet["isExpressAvailable"] as? Bool {
+        self.isExpressAvailable = isExpressAvailable
       }
       if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {

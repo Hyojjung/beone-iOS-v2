@@ -958,16 +958,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yv3-9r-Jbc">
                                                     <rect key="frame" x="0.0" y="168" width="545" height="53"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An0-mD-4qh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="273" height="53"/>
-                                                            <state key="normal" title="배송조회" backgroundImage="btnRectDarkgray">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <state key="highlighted" title="배송조회" backgroundImage="btnRectDarkgrayPressed"/>
-                                                            <connections>
-                                                                <action selector="deliveryTrackingButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="8tA-iO-sy4"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTp-LT-ek8">
                                                             <rect key="frame" x="273" y="0.0" width="272" height="53"/>
                                                             <state key="normal" title="수취확인" backgroundImage="btnRectPcolor">
@@ -976,6 +966,16 @@
                                                             <state key="highlighted" title="수취확인" backgroundImage="btnRectPcolorPressed"/>
                                                             <connections>
                                                                 <action selector="orderDoneButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="0P5-p0-yY2"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An0-mD-4qh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="273" height="53"/>
+                                                            <state key="normal" title="배송조회" backgroundImage="btnRectDarkgray">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="highlighted" title="배송조회" backgroundImage="btnRectDarkgrayPressed"/>
+                                                            <connections>
+                                                                <action selector="deliveryTrackingButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="8tA-iO-sy4"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1069,6 +1069,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonViewHeightLayoutConstraint" destination="FUg-j1-h15" id="OKH-iq-MtP"/>
                                             <outlet property="deliveringLabel" destination="dKv-jW-ggp" id="RrF-Cd-CyF"/>
                                             <outlet property="deliveringStatusImageView" destination="oDW-eb-lLg" id="nCE-Z1-PYY"/>
                                             <outlet property="deliveringTimeLabel" destination="b3E-v6-RCI" id="NpU-yH-RgW"/>
@@ -1157,6 +1158,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="countLabel" destination="yMT-HJ-2Yw" id="23l-iB-csc"/>
+                                            <outlet property="moreButton" destination="d9l-ef-Bo4" id="h4U-Gh-NKV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentProductCell" rowHeight="84" id="Y6x-G0-dLe" customClass="SideBarProductCell" customModule="BEONE" customModuleProvider="target">
@@ -1245,6 +1247,27 @@
                                             <outlet property="productNameLabel" destination="6tf-vt-Yq6" id="Q89-HZ-KWB"/>
                                             <outlet property="productPriceLabel" destination="taF-4E-Yaw" id="VPP-dC-S5N"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noRecentProductCell" rowHeight="84" id="LUv-yg-STu">
+                                        <rect key="frame" x="0.0" y="809" width="545" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LUv-yg-STu" id="0Yu-Sb-pHY">
+                                            <rect key="frame" x="0.0" y="0.0" width="545" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_cart_empty" translatesAutoresizingMaskIntoConstraints="NO" id="TYM-Nz-XG5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="545" height="84"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="TYM-Nz-XG5" firstAttribute="top" secondItem="0Yu-Sb-pHY" secondAttribute="top" id="C2u-gw-jq5"/>
+                                                <constraint firstAttribute="trailing" secondItem="TYM-Nz-XG5" secondAttribute="trailing" id="rCV-5w-jCJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="TYM-Nz-XG5" secondAttribute="bottom" id="vfO-q1-ayE"/>
+                                                <constraint firstItem="TYM-Nz-XG5" firstAttribute="leading" secondItem="0Yu-Sb-pHY" secondAttribute="leading" id="ygT-AW-ciU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2254,6 +2277,7 @@
         <image name="imageSidebarStateDone" width="21" height="21"/>
         <image name="imageSidebarStateIng" width="21" height="21"/>
         <image name="imageSidebarStateUndo" width="21" height="21"/>
+        <image name="image_cart_empty" width="200" height="245"/>
         <image name="image_category_list_deco" width="40" height="40"/>
         <image name="image_category_top" width="320" height="130"/>
         <image name="image_post_thumbnail" width="320" height="179"/>

@@ -44,7 +44,7 @@ class MainTabViewController: UITabBarController {
   }
   
   @IBAction func product(sender: AnyObject) {
-    showProductView(6)
+    showProductView(2)
   }
   
   @IBAction func cart(sender: AnyObject) {

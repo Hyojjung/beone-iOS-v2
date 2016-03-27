@@ -18,6 +18,7 @@ class SideBarViewController: BaseTableViewController {
     case Anniversary
     case RecentProductsCount
     case RecentProduct
+    case NoRecentProduct
     case Count
   }
   
@@ -28,7 +29,8 @@ class SideBarViewController: BaseTableViewController {
                                                  "orderItemSetCell",
                                                  "anniversaryCell",
                                                  "recentProductsCountCell",
-                                                 "recentProductCell"]
+                                                 "recentProductCell",
+                                                 "noRecentProductCell"]
   
   var sideBarViewContents = SideBarViewContents()
   lazy var sideBarGestureView: UIView = {
@@ -67,7 +69,7 @@ extension SideBarViewController {
   }
   
   @IBAction func showRecentProductsViewButtonTapped() {
-    setUpScheme("home/recent-products") 
+    setUpScheme("home/recent-products")
   }
   
   @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
@@ -159,11 +161,14 @@ extension SideBarViewController: UITableViewDataSource {
       sideBarViewContents.progressingOrderCount == 0 {
       return 0
     } else if section == SideBarTableViewSection.RecentProductsCount.rawValue &&
-      sideBarViewContents.recentProducts.list.count == 0 {
+      sideBarViewContents.progressingOrderCount != 0 {
       return 0
     } else if section == SideBarTableViewSection.RecentProduct.rawValue {
       return sideBarViewContents.recentProducts.list.count
     } else if section == SideBarTableViewSection.Anniversary.rawValue && sideBarViewContents.anniversary == nil {
+      return 0
+    } else if section == SideBarTableViewSection.NoRecentProduct.rawValue &&
+      (sideBarViewContents.progressingOrderCount != 0 || sideBarViewContents.recentProducts.list.count != 0) {
       return 0
     }
     return 1
@@ -182,11 +187,21 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
     case .ProgressingOrderCount, .RecentProductsCount:
       return 40
     case .LatestOrderDeliveryItemSet:
-      return 221
+      if sideBarViewContents.orderDeliveryItemSets.first?.isCompletable == true {
+        return 221
+      } else {
+        return 168
+      }
     case .RecentProduct:
       return 84
     case .Anniversary:
       return 130
+    case .NoRecentProduct:
+      if sideBarViewContents.anniversary == nil {
+        return ViewControllerHelper.screenHeight - 64 - 64 - 158 - 40
+      } else {
+        return ViewControllerHelper.screenHeight - 64 - 64 - 158 - 40 - 130
+      }
     default:
       return nil
     }
@@ -234,6 +249,7 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   @IBOutlet weak var deliveringTimeLabel: UILabel!
   @IBOutlet weak var deliveryDoneLabel: UILabel!
   @IBOutlet weak var deliveryDoneTimeLabel: UILabel!
+  @IBOutlet weak var buttonViewHeightLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var orderDoneButtonLeadingLayoutConstraint: NSLayoutConstraint!
   
   func configureCell(orderItemSet: OrderableItemSet) {
@@ -271,6 +287,11 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
       orderDoneButtonLeadingLayoutConstraint.constant = (ViewControllerHelper.screenWidth - 55) / 2 + 2
     } else {
       orderDoneButtonLeadingLayoutConstraint.constant = 0
+    }
+    if orderItemSet.isCompletable {
+      buttonViewHeightLayoutConstraint.constant = 53
+    } else {
+      buttonViewHeightLayoutConstraint.constant = 0
     }
   }
   
@@ -316,10 +337,13 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
 }
 
 class CountCell: UITableViewCell {
+  
   @IBOutlet weak var countLabel: UILabel!
+  @IBOutlet weak var moreButton: UIButton?
   
   func configureCell(count: Int) {
     countLabel.text = "\(count)"
+    moreButton?.configureAlpha(count != 0)
   }
 }
 

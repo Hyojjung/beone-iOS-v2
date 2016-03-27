@@ -35,12 +35,10 @@ class ProductList: BaseListModel {
       if let productCategoryId = productCategoryId {
         return "product-categories/\(productCategoryId)/products"
       }
+    case .Recent:
+      return "recent-products"
     case .None:
       return "products"
-    case .Recent:
-      if MyInfo.sharedMyInfo().isUser() {
-        return "users/\(MyInfo.sharedMyInfo().userId!)/recent-products"
-      }
     }
     return "products"
   }
