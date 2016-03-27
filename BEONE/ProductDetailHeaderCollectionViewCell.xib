@@ -15,7 +15,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u55-bY-uKg" customClass="XLCCycleScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="461" height="230"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
                         <rect key="frame" x="50" y="248" width="361" height="25"/>
