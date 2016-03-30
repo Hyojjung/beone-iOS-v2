@@ -7,7 +7,7 @@ extension String {
   }
   
   func trimedString() -> String {
-    return stringByReplacingOccurrencesOfString(" ", withString: "")
+    return stringByReplacingOccurrencesOfString(" ", withString: kEmptyString)
   }
   
   func urlForm() -> String {

@@ -343,7 +343,7 @@ extension OptionViewController: UITextViewDelegate {
     if let textView = textView as? BeoneTextView, optionId = textView.optionId {
       let optionItem = selectedOptionItem(optionId)
       optionItem.value = textView.text
-      textView.isModiFying = !(textView.text == "" || textView.text == nil)
+      textView.isModiFying = !(textView.text == kEmptyString || textView.text == nil)
     }
   }
 }

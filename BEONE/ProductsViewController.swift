@@ -95,7 +95,7 @@ extension ProductsViewController {
   
   @IBAction func showSearchModalButtonTapped() {
     if isSpeedOrder {
-      let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewViewIdentifier) as! SearchViewController
+      let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewIdentifier) as! SearchViewController
       searchViewController.isSpeedOrder = true
       searchViewController.productList = productList
       navigationController?.showViewController(searchViewController, sender: nil)

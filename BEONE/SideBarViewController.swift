@@ -60,21 +60,21 @@ class SideBarViewController: BaseTableViewController {
 
 extension SideBarViewController {
   @IBAction func recommendProductButtonTapped() {
-    setUpScheme("home/speed-order")
+    setUpScheme("/speed-order")
   }
   
   @IBAction func productButtonTapped(sender: UIButton) {
-    setUpScheme("home/product/\(sender.tag)")
+    setUpScheme("/product/\(sender.tag)")
   }
   
   @IBAction func orderItemButtonTapped() {
     if let orderId = sideBarViewContents.orderDeliveryItemSets.first?.order.id {
-      setUpScheme("more/orders/\(orderId)")
+      setUpScheme("/order/\(orderId)")
     }
   }
   
   @IBAction func showRecentProductsViewButtonTapped() {
-    setUpScheme("home/recent-products")
+    setUpScheme("/recent-products")
   }
   
   @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
@@ -85,7 +85,7 @@ extension SideBarViewController {
   
   @IBAction func topCellButtonTapped() {
     if MyInfo.sharedMyInfo().isUser() {
-      setUpScheme("more/profile")
+      setUpScheme("/profile")
     } else {
       showSigningView()
     }

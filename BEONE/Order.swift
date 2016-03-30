@@ -24,10 +24,10 @@ class Order: BaseModel {
   var isPayable = false
   
   override func getUrl() -> String {
-    if MyInfo.sharedMyInfo().isUser() {
+    if MyInfo.sharedMyInfo().isUser() && id != nil {
       return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(id!)"
     }
-    return "orders"
+    return kEmptyString
   }
   
   override func assignObject(data: AnyObject?) {

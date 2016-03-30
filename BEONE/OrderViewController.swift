@@ -210,6 +210,13 @@ extension OrderViewController: UITableViewDataSource {
   }
 }
 
+extension OrderViewController: SchemeDelegate {
+  
+  func handleScheme(with id: Int) {
+    order.id = id
+    setUpData()
+  }
+}
 
 extension OrderViewController: DynamicHeightTableViewDelegate {
   
