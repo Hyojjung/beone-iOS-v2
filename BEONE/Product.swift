@@ -81,6 +81,9 @@ class Product: BaseModel {
         let price = CGFloat(self.price)
         let actualPrice = CGFloat(self.actualPrice)
         discountPercent = Int((price - actualPrice) / price * 100)
+        if discountPercent == 0 {
+          onSale = false
+        }
       }
       if let quantity = product[kProductPropertyKeyQuantity] as? Int {
         self.quantity = quantity

@@ -254,6 +254,7 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
 
 extension OptionViewController: OptionDelegate {
   func optionSelectButtonTapped(optionId: Int, isProductOptionSet: Bool, sender: UIButton) {
+    endEditing()
     var optionValues = [String]()
     var initialSelection = 0
     if isProductOptionSet {
