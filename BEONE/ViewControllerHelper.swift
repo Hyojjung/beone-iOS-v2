@@ -110,7 +110,7 @@ extension UIViewController {
   }
   
   func showOrderView(orderingCartItemIds: [Int]) {
-    if let deliveryDateViewController = UIViewController.viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewViewIdentifier) as? DeliveryDateViewController {
+    if let deliveryDateViewController = UIViewController.viewController(kOrderStoryboardName, viewIdentifier: kDeliveryDateViewIdentifier) as? DeliveryDateViewController {
       deliveryDateViewController.order.cartItemIds = orderingCartItemIds
       navigationController?.showViewController(deliveryDateViewController, sender: nil)
     }

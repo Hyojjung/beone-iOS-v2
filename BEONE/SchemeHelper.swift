@@ -29,6 +29,7 @@ enum SchemeTabViewIdentifier: String {
 enum SchemeIdentifier: String {
   case Profile = "profile"
   case Orders = "orders"
+  case Order = "order"
   case Product = "product"
   case Cart = "cart"
   case Help = "help"
@@ -43,9 +44,11 @@ enum SchemeIdentifier: String {
   func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool) {
     switch (self) {
     case .Profile:
-      return (kProfileStoryboardName, kProfileViewViewIdentifier, true)
+      return (kProfileStoryboardName, kProfileViewIdentifier, true)
     case .Orders:
-      return (kOrdersStoryboardName, kOrdersViewNibName, true)
+      return (kOrdersStoryboardName, kOrdersViewIdentifier, true)
+    case .Order:
+      return (kOrdersStoryboardName, kOrderDetailViewIdentifier, true)
     case .Product:
       return (kProductDetailStoryboardName, kProductDetailViewIdentifier, false)
     case .Cart:
@@ -61,7 +64,7 @@ enum SchemeIdentifier: String {
     case .Setting:
       return ("Setting", "SettingView", false)
     case .Products:
-      return (kProductsStoryboardName, kProductsViewViewIdentifier, false)
+      return (kProductsStoryboardName, kProductsViewIdentifier, false)
     case .Shop:
       return (kShopStoryboardName, kShopViewIdentifier, false)
     case .Option:
@@ -91,26 +94,36 @@ class SchemeHelper {
     
     var schemeString = scheme
     if scheme.hasPrefix(kSchemeBaseUrl) {
-      schemeString = schemeString.stringByReplacingOccurrencesOfString(kSchemeBaseUrl, withString: "")
+      schemeString = schemeString.stringByReplacingOccurrencesOfString(kSchemeBaseUrl, withString: kEmptyString)
     }
-    
     schemeStrings = schemeString.componentsSeparatedByString("/")
-    setUpTabController()
+    
+    if scheme.hasPrefix("/") {
+      schemeStrings?.removeAtIndex(0)
+      handleScheme()
+    } else {
+      setUpTabController()
+    }
   }
   
   static func setUpTabController() {
-    let navi = rootNavigationController()
-    if let mainTabViewController = navi?.topViewController as? MainTabViewController,
+    if let navi = rootNavigationController(),
+      mainTabViewController = navi.topViewController as? MainTabViewController,
       mainTabViewIdentifier = schemeStrings?.first,
       mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
       schemeStrings?.removeAtIndex(0)
       if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
-        if let viewController = mainTabViewController.selectedViewController as? BaseViewController {
-          viewController.handleScheme()
-        }
+        handleScheme()
       } else {
         mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
       }
+    }
+  }
+  
+  static func handleScheme() {
+    if let navi = rootNavigationController(), mainTabViewController = navi.topViewController as? MainTabViewController,
+      viewController = mainTabViewController.selectedViewController as? BaseViewController {
+      viewController.handleScheme()
     }
   }
 }

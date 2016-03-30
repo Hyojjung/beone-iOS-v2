@@ -139,7 +139,7 @@ extension SearchViewController {
       popView()
     } else {
       if let searchResultViewController =
-        UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewViewIdentifier) as? ProductsViewController {
+        UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
         searchResultViewController.productList = productList
         searchResultViewController.selectedTagIds = selectedTagIds
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds

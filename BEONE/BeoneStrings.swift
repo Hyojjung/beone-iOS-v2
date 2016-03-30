@@ -1,5 +1,6 @@
 
 let kAppDownloadUrl = "itms://itunes.apple.com/us/app/apple-store/id991700520"
+let kEmptyString = ""
 
 // MARK: - Storyboard Names
 
@@ -18,10 +19,12 @@ let kSigningNavigationViewIdentifier = "SigningNavigationView"
 let kShopViewIdentifier = "ShopView"
 let kProductOptionViewIdentifier = "ProductOptionView"
 let kProductDetailViewIdentifier = "ProductDetailView"
-let kDeliveryDateViewViewIdentifier = "DeliveryDateView"
-let kProductsViewViewIdentifier = "ProductsView"
-let kSearchViewViewIdentifier = "SearchView"
-let kProfileViewViewIdentifier = "ProfileView"
+let kDeliveryDateViewIdentifier = "DeliveryDateView"
+let kProductsViewIdentifier = "ProductsView"
+let kSearchViewIdentifier = "SearchView"
+let kProfileViewIdentifier = "ProfileView"
+let kOrdersViewIdentifier = "OrdersView"
+let kOrderDetailViewIdentifier = "OrderDetailView"
 
 // MARK: - View Nib Names
 
@@ -36,7 +39,6 @@ let kSimpleProductsContentsViewNibName = "SimpleProductsContentsView"
 let kProductPropertyNameTypeValueViewNibName = "ProductPropertyNameTypeValueView"
 let kProductPropertyColorTypeValueViewNibName = "ProductPropertyColorTypeValueView"
 let kOrderResultLabelViewNibName = "OrderResultLabelView"
-let kOrdersViewNibName = "OrdersView"
 
 // MARK: - Cell Identifier
 
