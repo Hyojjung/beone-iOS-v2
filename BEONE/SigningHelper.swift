@@ -192,11 +192,9 @@ class SigningHelper: NSObject {
     }
   }
   
-  static func requestKakaoSignIn() {
+  static func requestKakaoSignIn(success: (uid: String, snsToken: String) -> Void) {
     kakaoSessionMeTask() { (user) -> Void in
-      SigningHelper.signIn(SnsType.Kakao,
-        userId: user.ID.description,
-        token: KOSession.sharedSession().accessToken)
+      success(uid: user.ID.description, snsToken: KOSession.sharedSession().accessToken)
     }
   }
   

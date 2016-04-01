@@ -5,6 +5,7 @@ import CoreData
 let kMyInfoPropertyKeyEmail = "email"
 let kMyInfoPropertyKeyPoint = "point"
 let kMyInfoPropertyKeyPhone = "phone"
+let kMyInfoPropertyKeyAccount = "account"
 
 class MyInfo: NSManagedObject {
   
@@ -40,6 +41,7 @@ class MyInfo: NSManagedObject {
   
   func assignObject(data: AnyObject?) {
     if let myInfo = data as? [String: AnyObject] {
+      self.account = myInfo[kMyInfoPropertyKeyAccount] as? String
       self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
       self.name = myInfo[kObjectPropertyKeyName] as? String
       self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String

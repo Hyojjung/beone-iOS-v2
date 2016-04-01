@@ -41,9 +41,9 @@ class BaseModel: NSObject {
   
   // MARK: - Post Methods
   
-  func post(postSuccess: (AnyObject?) -> Void, postFailure: ((NetworkError) -> Void)? = nil) {
+  func post(postSuccess: ((AnyObject?) -> Void)? = nil, postFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
-      postSuccess(result)
+      postSuccess?(result)
       }, failure: {(error) -> Void in
         postFailure?(error)
     })
@@ -98,10 +98,12 @@ class BaseModel: NSObject {
     NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: deleteSuccess(), failure: deleteFailure())
   }
   
-  func remove(deleteSuccess: () -> Void) {
+  func remove(deleteSuccess: (() -> Void)? = nil, deleteFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: { (result) -> Void in
-      deleteSuccess()
-      }, failure: nil)
+      deleteSuccess?()
+      }, failure: { (error) in
+      deleteFailure?(error)
+    })
   }
   
   func deleteUrl() -> String {

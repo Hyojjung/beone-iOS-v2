@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="MyInfo" representedClassName=".MyInfo" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authenticationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,6 +14,6 @@
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MyInfo" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="MyInfo" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

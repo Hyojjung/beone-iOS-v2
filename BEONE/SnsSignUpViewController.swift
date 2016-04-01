@@ -66,11 +66,21 @@ extension SnsSignUpViewController {
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage)
     } else if let snsType = snsType {
-      SigningHelper.signUp(snsType,
-        userId: FBSDKAccessToken.currentAccessToken().userID,
-        token: FBSDKAccessToken.currentAccessToken().tokenString,
-        email: emailTextField.text!,
-        name: nameTextField.text!)
+      if snsType == .Facebook {
+        SigningHelper.signUp(snsType,
+                             userId: FBSDKAccessToken.currentAccessToken().userID,
+                             token: FBSDKAccessToken.currentAccessToken().tokenString,
+                             email: emailTextField.text!,
+                             name: nameTextField.text!)
+      } else {
+        SigningHelper.kakaoSessionMeTask() { (user) -> Void in
+          SigningHelper.signUp(snsType,
+            userId: user.ID.description,
+            token: KOSession.sharedSession().accessToken,
+            email: self.emailTextField.text!,
+            name: self.nameTextField.text!)
+        }
+      }
     }
   }
   

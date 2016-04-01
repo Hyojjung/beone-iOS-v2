@@ -39,11 +39,11 @@ class BillKeysViewController: BaseTableViewController {
   }
   
   @IBAction func deleteCardButtonTapped(sender: UIButton) {
-    billKeyList.list[sender.tag].remove { () -> Void in
+    billKeyList.list[sender.tag].remove({() -> Void in
       self.billKeyList.get { () -> Void in
         self.tableView.reloadData()
       }
-    }
+    })
   }
   
   @IBAction func selectCardButtonTapped(sender: UIButton) {

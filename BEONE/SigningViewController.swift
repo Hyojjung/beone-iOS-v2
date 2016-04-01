@@ -64,7 +64,9 @@ extension SigningViewController {
       if KOSession.sharedSession().isOpen() {
         self.loadingView.show()
         FBSDKLoginManager().logOut()
-        SigningHelper.requestKakaoSignIn()
+        SigningHelper.requestKakaoSignIn() {(uid, snsToken) in
+          SigningHelper.signIn(.Kakao, userId: uid, token: snsToken)
+        }
       }
     }
   }

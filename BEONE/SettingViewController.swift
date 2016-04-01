@@ -118,7 +118,7 @@ extension SettingViewController {
     logOutAction.type = .Method
     logOutAction.content = "logOut"
     showAlertView(NSLocalizedString("sure log out", comment: "alert"), hasCancel: true,
-      confirmAction: logOutAction, cancelAction: nil, delegate: self)
+      confirmAction: logOutAction, delegate: self)
   }
   
   func logOut() {
