@@ -7,7 +7,7 @@ let kCartItemPropertyKeyQuantity = "quantity"
 let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
 
 class CartItemList: BaseListModel {
-    
+  
   // MARK: - BaseModel Methods (Get)
   
   override func assignObject(data: AnyObject?) {
@@ -26,24 +26,46 @@ class CartItemList: BaseListModel {
   }
   
   // MARK: - BaseModel Methods (Post)
-
-  override func postSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
-        for (index, cartItem) in self.list.enumerate() {
-          cartItem.id = data[index][kObjectPropertyKeyId] as? Int
+  
+  override func postSuccess(result: AnyObject?) {
+    if let result = result as? [String: AnyObject],
+      data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+      for cartItem in list as! [CartItem] {
+        for cartItemObject in data {
+          if cartItemObject["productId"] as? Int == cartItem.product.id &&
+            cartItemObject["productOrderableInfoId"] as? Int == cartItem.productOrderableInfo.id &&
+            cartItemObject["quantity"] as? Int == cartItem.quantity {
+            cartItem.id = cartItemObject[kObjectPropertyKeyId] as? Int
+            break
+          }
         }
       }
     }
   }
-//  
-//  // MARK: - BaseModel Methods (Delete)
-//
-//  override func deleteParameter() -> AnyObject? {
-//    var parameter
-//  }
   
-  // MARK: - Private Methods
+  override func postUrl() -> String {
+    return cartItemUrl()
+  }
+  
+  override func postParameter() -> AnyObject? {
+    var parameter = [[String: AnyObject]]()
+    for cartItem in list as! [CartItem] {
+      parameter.appendObject(cartItem.parameter())
+    }
+    return parameter
+  }
+}
+
+
+// MARK: - Public Methods
+
+extension CartItemList {
+
+}
+
+// MARK: - Private Methods
+
+extension CartItemList {
   
   private func cartItemUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {

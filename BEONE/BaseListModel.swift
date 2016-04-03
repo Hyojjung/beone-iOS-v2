@@ -38,4 +38,14 @@ class BaseListModel: BaseModel {
     }
     return nil
   }
+  
+  func ids() -> [Int] {
+    var ids = [Int]()
+    for model in list {
+      if let id = model.id {
+        ids.append(id)
+      }
+    }
+    return ids
+  }
 }
