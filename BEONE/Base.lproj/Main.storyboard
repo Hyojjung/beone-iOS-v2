@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vnk-B8-hlW" customClass="DynamicHeightTableView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="137" width="600" height="614"/>
+                                <rect key="frame" x="0.0" y="104" width="600" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="priceCell" rowHeight="180" id="GXL-f0-P19" customClass="SearchPriceCell" customModule="BEONE" customModuleProvider="target">
@@ -359,13 +359,13 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYo-L7-0Rq">
-                                <rect key="frame" x="0.0" y="64" width="600" height="73"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderlineWhite" translatesAutoresizingMaskIntoConstraints="NO" id="gNK-nn-Lqv">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울지역 0개의 상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mE-RU-Ve0">
-                                        <rect key="frame" x="236" y="27" width="129" height="20"/>
+                                        <rect key="frame" x="236" y="10.5" width="129" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -373,7 +373,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="73" id="Ewc-bz-Alr"/>
+                                    <constraint firstAttribute="height" priority="999" constant="40" id="Ewc-bz-Alr"/>
                                     <constraint firstAttribute="trailing" secondItem="gNK-nn-Lqv" secondAttribute="trailing" id="O7m-np-qcU"/>
                                     <constraint firstItem="gNK-nn-Lqv" firstAttribute="leading" secondItem="gYo-L7-0Rq" secondAttribute="leading" id="Qkr-Pd-aWL"/>
                                     <constraint firstAttribute="bottom" secondItem="gNK-nn-Lqv" secondAttribute="bottom" id="rSB-lD-0dZ"/>
