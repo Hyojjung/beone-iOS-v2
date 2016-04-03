@@ -29,7 +29,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLF-jt-H4w">
                                         <rect key="frame" x="2" y="0.0" width="541" height="170"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="bg_cart_infomation" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-n6-DMq" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="bg_cart_infomation" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-n6-DMq" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="541" height="170"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="170" id="ZLd-bn-6fm"/>
