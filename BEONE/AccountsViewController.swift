@@ -44,6 +44,10 @@ class AccountsViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+  
+  func reloadData() {
+    tableView.reloadData()
+  }
 }
 
 extension AccountsViewController {
@@ -55,32 +59,29 @@ extension AccountsViewController {
     
     let cancelAction = Action()
     cancelAction.type = .Method
-    cancelAction.content = "setUpData"
+    cancelAction.content = "reloadData"
     
     showAlertView(NSLocalizedString("sure log out", comment: "alert"),
                   hasCancel: true, confirmAction: confirmAction, cancelAction: cancelAction, delegate: self)
   }
   
   @IBAction func facebookSwitchToggled(sender: UISwitch) {
-    if sender.on {
-      let logInManager = FBSDKLoginManager()
-      logInManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self)
+    snsInfoButtonTapped(sender.on, snsType: .Facebook) {
+      FBSDKLoginManager().logInWithReadPermissions(["public_profile", "email"], fromViewController: self)
       { (result, error) -> Void in
         if !result.isCancelled {
           self.loadingView.show()
           self.addSnsInfo(.Facebook, uid: FBSDKAccessToken.currentAccessToken().userID,
                           snsToken: FBSDKAccessToken.currentAccessToken().tokenString)
+        } else {
+          self.tableView.reloadData()
         }
       }
-    } else if snsInfos.list.count == 1 {
-      logOutButtonTapped()
-    } else {
-      deleteSnsInfo(.Facebook)
     }
   }
   
   @IBAction func kakaoSwitchToggled(sender: UISwitch) {
-    if sender.on {
+    snsInfoButtonTapped(sender.on, snsType: .Kakao) { 
       KOSession.sharedSession().openWithCompletionHandler() { (error) -> Void in
         if KOSession.sharedSession().isOpen() {
           self.loadingView.show()
@@ -88,12 +89,20 @@ extension AccountsViewController {
             self.addSnsInfo(.Kakao, uid: uid,
               snsToken: snsToken)
           }
+        } else {
+          self.tableView.reloadData()
         }
       }
-    } else if snsInfos.list.count == 1 {
+    }
+  }
+  
+  func snsInfoButtonTapped(switchOn: Bool, snsType: SnsType, onFunction: () -> Void) {
+    if switchOn {
+      onFunction()
+    } else if snsInfos.list.count == 1 && MyInfo.sharedMyInfo().account == nil {
       logOutButtonTapped()
     } else {
-      deleteSnsInfo(.Kakao)
+      deleteSnsInfo(snsType)
     }
   }
   
@@ -109,16 +118,26 @@ extension AccountsViewController {
     snsInfo.uid = uid
     snsInfo.snsToken = snsToken
     snsInfo.post({ (_) in
-      self.tableView.reloadData()
-      }, postFailure: { (_) in
+      self.setUpData()
+      }, postFailure: { (error) in
+        if let statusCode = error.statusCode {
+          if statusCode == NetworkResponseCode.Duplicated.rawValue {
+            self.showAlertView(NSLocalizedString("linked sns info", comment: "alert title"))
+          }
+        }
         self.tableView.reloadData()
     })
   }
   
   func deleteSnsInfo(snsType: SnsType) {
-    if let snsInfo = snsInfos.snsInfo(.Facebook) {
+    if let snsInfo = snsInfos.snsInfo(snsType) {
       snsInfo.remove({ (_) in
-        self.tableView.reloadData()
+        self.setUpData()
+        if snsType == .Kakao {
+          KOSession.sharedSession().close()
+        } else {
+          FBSDKLoginManager().logOut()
+        }
         }, deleteFailure: { (_) in
           self.tableView.reloadData()
       })

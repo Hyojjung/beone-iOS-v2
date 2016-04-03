@@ -25,6 +25,7 @@
 		6211B3131CAE5AB500B5939B /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211B3121CAE5AB500B5939B /* AccountsViewController.swift */; };
 		6211B3151CAE605A00B5939B /* SnsInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211B3141CAE605A00B5939B /* SnsInfos.swift */; };
 		6211B3171CAE606C00B5939B /* SnsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211B3161CAE606C00B5939B /* SnsInfo.swift */; };
+		6211B3191CB0EEFA00B5939B /* PasswordChangingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */; };
 		62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */; };
 		62122D731C5EFE5900B9850E /* SpeedOrderProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62122D721C5EFE5900B9850E /* SpeedOrderProductView.xib */; };
 		62122D751C5F0A8100B9850E /* StatusHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62122D741C5F0A8100B9850E /* StatusHistory.swift */; };
@@ -298,6 +299,7 @@
 		6211B3121CAE5AB500B5939B /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		6211B3141CAE605A00B5939B /* SnsInfos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnsInfos.swift; sourceTree = "<group>"; };
 		6211B3161CAE606C00B5939B /* SnsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnsInfo.swift; sourceTree = "<group>"; };
+		6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChangingViewController.swift; sourceTree = "<group>"; };
 		62122D701C5EF3DE00B9850E /* SpeedOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpeedOrder.storyboard; sourceTree = "<group>"; };
 		62122D721C5EFE5900B9850E /* SpeedOrderProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedOrderProductView.xib; sourceTree = "<group>"; };
 		62122D741C5F0A8100B9850E /* StatusHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusHistory.swift; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 				627E22191C6C623900FBB91D /* InquiryEditViewController.swift */,
 				627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */,
 				62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */,
+				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1574,6 +1577,7 @@
 				620717461BE21FCD0014B9AC /* TemplateCell.swift in Sources */,
 				6286FB731C56780100845BE4 /* HelpViewController.swift in Sources */,
 				6211B3151CAE605A00B5939B /* SnsInfos.swift in Sources */,
+				6211B3191CB0EEFA00B5939B /* PasswordChangingViewController.swift in Sources */,
 				73DF1D7B1C400DF200DB3550 /* VBankResultView.swift in Sources */,
 				623AAD961C57D0CA0095731B /* BillKeyList.swift in Sources */,
 				7388FA461C045A630015C3DF /* Inquiry.swift in Sources */,

@@ -6,10 +6,14 @@
 "check email form" = "이메일 형식을 확인해주세요.";
 "enter name" = "이름을 입력해주세요.";
 "need agreement all rule" = "약관에 동의해주세요.";
-"password length is invalid" = "영문, 숫자, 특수문자 중 2가지 이상의 조합으로 구성된 8~20자의 비밀번호를 입력해주세요.";
+"check password form" = "영문, 숫자, 특수문자 중 2가지 이상의 조합으로 구성된 8~20자의 비밀번호를 입력해주세요.";
 "check each password" = "비밀번호를 확인해주세요.";
+"check established password" = "기존 비밀번호를 확인해주세요.";
 
 "email form" = "이메일";
+"established password form" = "기존 비밀번호 (영문, 숫자, 특수문자 8~20자)";
+"new password form" = "새로운 비밀번호 (영문, 숫자, 특수문자 8~20자)";
+"verify password form" = "비밀번호 확인 (영문, 숫자, 특수문자 8~20자)";
 "password form" = "비밀번호 (영문, 숫자, 특수문자 8~20자)";
 "name form" = "이름 (1~20자)";
 
@@ -24,6 +28,7 @@
 "latest version" = "최신버전 입니다.";
 
 "sure log out" = "정말 로그아웃 하시겠습니까?";
+"linked sns info" = "이미 연동된 계정입니다.";
 
 "select delivery type" = "배송수단을 선택해주세요.";
 "select quantity" = "수량을 선택해주세요.";

@@ -105,7 +105,7 @@ extension SignUpViewController {
     } else if nameTextField.text == nil || nameTextField.text!.isEmpty {
       return NSLocalizedString("enter name", comment: "alert")
     } else if passwordTextField.text == nil || !passwordTextField.text!.isValidPassword() {
-      return NSLocalizedString("password length is invalid", comment: "alert")
+      return NSLocalizedString("check password form", comment: "alert")
     } else if passwordTextField.text != passwordVerifyingTextField.text {
       return NSLocalizedString("check each password", comment: "alert")
     }

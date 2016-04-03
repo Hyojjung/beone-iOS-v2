@@ -70,7 +70,7 @@ extension SignInViewController {
     if emailTextField.text == nil || !emailTextField.text!.isValidEmail() {
       return NSLocalizedString("check email form", comment: "alert")
     } else if passwordTextField.text == nil || !passwordTextField.text!.isValidPassword() {
-      return NSLocalizedString("password length is invalid", comment: "alert")
+      return NSLocalizedString("check password form", comment: "alert")
     }
     return nil
   }

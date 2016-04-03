@@ -24,7 +24,7 @@ class MyInfo: NSManagedObject {
       return myInfo as! MyInfo
     } else {
       let myInfo = NSEntityDescription.insertNewObjectForEntityForName(entityName,
-        inManagedObjectContext: CoreDataHelper.sharedCoreDataHelper.backgroundContext) as! MyInfo
+                                                                       inManagedObjectContext: CoreDataHelper.sharedCoreDataHelper.backgroundContext) as! MyInfo
       CoreDataHelper.sharedCoreDataHelper.saveContext()
       return myInfo
     }
@@ -61,5 +61,18 @@ class MyInfo: NSManagedObject {
   
   func isUser() -> Bool {
     return refreshToken != nil
+  }
+}
+
+extension MyInfo {
+  func changePassword(password: String, newPassword: String, success: () -> Void, failure: (NetworkError) -> Void) {
+    let parameter = ["password": password, "newPassword": newPassword]
+    NetworkHelper.requestPut("users/\(MyInfo.sharedMyInfo().userId!)/password",
+                              parameter: parameter,
+                              success: { (result) in
+                                success()
+    }) { (error) in
+      failure(error)
+    }
   }
 }
