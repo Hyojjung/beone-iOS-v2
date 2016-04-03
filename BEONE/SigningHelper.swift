@@ -149,14 +149,13 @@ class SigningHelper: NSObject {
       failure: nil)
   }
   
-  static func requestFindingPassword(email: String) {
+  static func requestFindingPassword(email: String, success:() -> Void, failure: (Int) -> Void) {
     NetworkHelper.requestPost("users/password-reset", parameter: [kSigningParameterKeyEmail: email], success: { (result) -> Void in
-      postNotification(kNotificationRequestFindingPasswordSuccess)
+      success()
       },
       failure: { (error) -> Void in
         if let statusCode = error.statusCode {
-          let userInfo = [kNotificationKeyErrorStatusCode: statusCode]
-          postNotification(kNotificationRequestFindingPasswordFailure, userInfo: userInfo)
+          failure(statusCode)
         }
     })
   }

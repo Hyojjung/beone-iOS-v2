@@ -14,7 +14,13 @@ class LocationList: BaseListModel {
         location.assignObject(locationObject)
         list.appendObject(location)
       }
-      BEONEManager.selectedLocation = list.first as? Location
+      if let favoredLocationId = MyInfo.sharedMyInfo().locationId,
+        location = model(Int(favoredLocationId)) as? Location {
+        BEONEManager.selectedLocation = location
+      } else {
+        BEONEManager.selectedLocation = list.first as? Location
+        
+      }
     }
   }
   

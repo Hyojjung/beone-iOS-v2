@@ -1,13 +1,13 @@
 
 import UIKit
 
-enum ReviewListType {
+enum ReviewsType {
   case Default
   case Simple
 }
 
-class ReviewList: BaseListModel {
-  var type = ReviewListType.Default
+class Reviews: BaseListModel {
+  var type = ReviewsType.Default
   var productId: Int?
   
   override func getUrl() -> String {
@@ -23,8 +23,8 @@ class ReviewList: BaseListModel {
 //  
   override func assignObject(data: AnyObject?) {
     list.removeAll()
-    if let reviewList = data as? [[String: AnyObject]] {
-      for reviewObject in reviewList {
+    if let reviews = data as? [[String: AnyObject]] {
+      for reviewObject in reviews {
         let review = Review()
         review.assignObject(reviewObject)
         list.appendObject(review)

@@ -81,7 +81,7 @@ extension UIViewController {
   
   func showWebView(urlString: String?, title: String?, addressDelegate: AddressDelegate? = nil) {
     if let urlString = urlString {
-      let webViewController = WebViewController()
+      let webViewController = WebViewController(nibName: "WebViewController", bundle: nil)
       webViewController.url = urlString
       webViewController.title = title
       webViewController.addressDelegate = addressDelegate
@@ -210,7 +210,7 @@ extension UIViewController {
   }
   
   func showOrderResultView(order: Order? = nil, paymentInfoId: Int? = nil, orderResult: [String: AnyObject]? = nil) {
-    let orderResultViewController = OrderResultViewController()
+    let orderResultViewController = OrderResultViewController(nibName: "OrderResultViewController", bundle: nil)
     orderResultViewController.order = order
     orderResultViewController.paymentInfoId = paymentInfoId
     orderResultViewController.orderResult = orderResult
@@ -218,7 +218,7 @@ extension UIViewController {
   }
   
   func showOrderWebView(order: Order, paymentTypeId: Int, paymentInfoId: Int? = nil) {
-    let orderWebViewController = OrderWebViewController()
+    let orderWebViewController = OrderWebViewController(nibName: "OrderWebViewController", bundle: nil)
     orderWebViewController.order = order
     orderWebViewController.paymentInfoId = paymentInfoId
     orderWebViewController.paymentTypeId = paymentTypeId

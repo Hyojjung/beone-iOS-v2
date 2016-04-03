@@ -6,7 +6,7 @@ class SideBarViewContents: BaseModel {
   var progressingOrderCount = 0
   var userAnniversariesCount = 0
   var orderDeliveryItemSets = [OrderableItemSet]()
-  var recentProducts = ProductList()
+  var recentProducts = Products()
   var anniversary: Anniversary?
   
   override func getUrl() -> String {

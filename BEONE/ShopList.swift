@@ -2,8 +2,19 @@
 import UIKit
 
 class ShopList: BaseListModel {
+  
+  lazy var locationId: Int? = {
+    return BEONEManager.selectedLocation?.id
+  }()
+  
   override func getUrl() -> String {
     return "shops"
+  }
+  
+  override func getParameter() -> AnyObject? {
+    var parameter = [String: AnyObject]()
+    parameter["locationId"] = locationId
+    return parameter
   }
   
   override func assignObject(data: AnyObject?) {

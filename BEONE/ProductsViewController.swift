@@ -26,7 +26,7 @@ class ProductsViewController: BaseTableViewController {
     return Location()
   }()
   var forSearchResult = false
-  var productList = ProductList()
+  var products = Products()
   
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
@@ -36,6 +36,11 @@ class ProductsViewController: BaseTableViewController {
   var productPropertyList = ProductPropertyList()
   var tagList = TagList()
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = true
+  }
+  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -43,22 +48,22 @@ class ProductsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    productList.noData = false
-    productList.isQuickOrder = false
-    productList.get { () -> Void in
+    products.noData = false
+    products.isQuickOrder = false
+    products.get { () -> Void in
       self.tableView.reloadData()
     }
     if forSearchResult {
-      if let productPropertyValueIds = productList.productPropertyValueIds {
+      if let productPropertyValueIds = products.productPropertyValueIds {
         selectedProductPropertyValueIds = productPropertyValueIds
       }
-      if let tagIds = productList.tagIds {
+      if let tagIds = products.tagIds {
         selectedTagIds = tagIds
       }
-      if let minPrice = productList.minPrice {
+      if let minPrice = products.minPrice {
         self.minPrice = minPrice / kPriceUnit
       }
-      if let maxPrice = productList.maxPrice {
+      if let maxPrice = products.maxPrice {
         self.maxPrice = maxPrice / kPriceUnit
       }
       
@@ -72,11 +77,6 @@ class ProductsViewController: BaseTableViewController {
       } 
     }
   }
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    setUpData()
-  }
 }
 
 // MAKR: - Actions
@@ -86,8 +86,8 @@ extension ProductsViewController {
   @IBAction func selectLocationButtonTapped() {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
       self.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as! Location
-      self.productList.locationId = self.selectedLocation.id
-      self.productList.get({ () -> Void in
+      self.products.locationId = self.selectedLocation.id
+      self.products.get({ () -> Void in
         self.tableView.reloadData()
       })
     }
@@ -97,7 +97,7 @@ extension ProductsViewController {
     if isSpeedOrder {
       let searchViewController = UIViewController.viewController(kMainStoryboardName, viewIdentifier: kSearchViewIdentifier) as! SearchViewController
       searchViewController.isSpeedOrder = true
-      searchViewController.productList = productList
+      searchViewController.products = products
       navigationController?.showViewController(searchViewController, sender: nil)
     } else {
       popView()
@@ -131,7 +131,7 @@ extension ProductsViewController: UITableViewDataSource {
     if section == SearchTableViewSection.Search.rawValue && !forSearchResult {
       return 0
     }
-    return section == SearchTableViewSection.Product.rawValue ? (productList.list.count + 1) / kSimpleProductColumn : 1
+    return section == SearchTableViewSection.Product.rawValue ? (products.list.count + 1) / kSimpleProductColumn : 1
   }
   
   private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
@@ -140,8 +140,8 @@ extension ProductsViewController: UITableViewDataSource {
       cell.configureDefaulStyle()
       var products = [Product]()
       let index = indexPath.row * kSimpleProductColumn
-      products.appendObject(productList.list.objectAtIndex(index) as? Product)
-      products.appendObject(productList.list.objectAtIndex(index + 1) as? Product)
+      products.appendObject(self.products.list.objectAtIndex(index) as? Product)
+      products.appendObject(self.products.list.objectAtIndex(index + 1) as? Product)
       cell.configureView(products)
     }
   }

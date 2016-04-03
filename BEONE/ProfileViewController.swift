@@ -16,9 +16,6 @@ class ProfileViewController: BaseTableViewController {
     case Count
   }
   
-  private let kAnniversarySectionDateLabelTag = 100
-  private let kAnniversarySectionNameLabelTag = 101
-  
   private let kProfileTableViewCellIdentifiers = ["topImageCell",
     "accountTitleCell",
     "accountCell",

@@ -6,49 +6,38 @@ class MainTabViewController: UITabBarController {
   let locationList = LocationList()
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
-
+  
   private var mainTitleView = UIView.loadFromNibName(kMainTitleViewNibName) as! MainTitleView
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                        name: kNotificationGuestAuthenticationSuccess,
+                                                        object: nil)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    NSNotificationCenter.defaultCenter().addObserver(self,
+                                                     selector: #selector(setUpData),
+                                                     name: kNotificationGuestAuthenticationSuccess, object: nil)
     mainTitleView.delegate = self
     navigationItem.titleView = mainTitleView
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    setUpData()
+  }
+  
+  func setUpData() {
     BEONEManager.sharedLocationList.get { () -> Void in
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
     BEONEManager.globalViewContents.get()
-    
-    if !MyInfo.sharedMyInfo().isUser() {
-      signingShowViewController = nil
-      if !isWaitingSigning {
-        isWaitingSigning = true
-      }
-    } else if let signingShowViewController = signingShowViewController {
-      showViewController(signingShowViewController, sender: nil)
-      self.signingShowViewController = nil
-    }
-  }
-  
-  func showUserViewController(storyboardName: String, viewIdentifier: String) {
-    let viewController = UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier)
-    if !MyInfo.sharedMyInfo().isUser() {
-      signingShowViewController = viewController
-      showSigningView()
-    } else {
-      showViewController(viewController, sender: nil)
-    }
-  }
-  
-  @IBAction func product(sender: AnyObject) {
-    showProductView(2)
   }
   
   @IBAction func cart(sender: AnyObject) {
-    showUserViewController("Cart", viewIdentifier: "CartView")
+    SchemeHelper.setUpScheme("/cart")
   }
   
   @IBAction func toggleRevealViewPositionButtonTapped(sender: UIBarButtonItem) {

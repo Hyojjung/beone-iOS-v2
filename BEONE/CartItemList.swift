@@ -8,7 +8,7 @@ let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
 
 class CartItemList: BaseListModel {
     
-  // MARK: - BaseModel Methods (Fetch)
+  // MARK: - BaseModel Methods (Get)
   
   override func assignObject(data: AnyObject?) {
     if let cartItemList = data as? [[String: AnyObject]] {
@@ -36,6 +36,12 @@ class CartItemList: BaseListModel {
       }
     }
   }
+//  
+//  // MARK: - BaseModel Methods (Delete)
+//
+//  override func deleteParameter() -> AnyObject? {
+//    var parameter
+//  }
   
   // MARK: - Private Methods
   

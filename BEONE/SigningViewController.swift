@@ -28,6 +28,12 @@ class SigningViewController: BaseViewController {
       name: kNotificationNeedSignUp,
       object: nil)
   }
+  
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSigningSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationNeedSignUp, object: nil)
+  }
 }
 
 // MARK: - View Cycles

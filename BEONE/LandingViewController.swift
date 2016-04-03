@@ -36,6 +36,13 @@ class LandingViewController: BaseTableViewController {
       name: kNotificationDoAction, object: nil)
   }
   
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationGuestAuthenticationSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationContentsViewLayouted, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationDoAction, object: nil)
+  }
+  
   @IBAction func showSpeedOrder() {
     showViewController(.SpeedOrder)
   }

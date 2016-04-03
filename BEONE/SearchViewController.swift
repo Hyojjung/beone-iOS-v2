@@ -26,11 +26,11 @@ class SearchViewController: BaseTableViewController {
   
   var showingMore = false
   
-  var productList: ProductList = {
-    let productList = ProductList()
-    productList.noData = true
-    productList.isQuickOrder = true
-    return productList
+  var products: Products = {
+    let products = Products()
+    products.noData = true
+    products.isQuickOrder = true
+    return products
   }()
   
   var productPropertyList = ProductPropertyList()
@@ -53,16 +53,16 @@ class SearchViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     
-    if let productPropertyValueIds = productList.productPropertyValueIds {
+    if let productPropertyValueIds = products.productPropertyValueIds {
       selectedProductPropertyValueIds = productPropertyValueIds
     }
-    if let tagIds = productList.tagIds {
+    if let tagIds = products.tagIds {
       selectedTagIds = tagIds
     }
-    if let minPrice = productList.minPrice {
+    if let minPrice = products.minPrice {
       self.minPrice = minPrice
     }
-    if let maxPrice = productList.maxPrice {
+    if let maxPrice = products.maxPrice {
       self.maxPrice = maxPrice
     }
     
@@ -77,7 +77,7 @@ class SearchViewController: BaseTableViewController {
       self.maxPrice = self.productSearchData.maxPrice
       self.tableView.reloadData()
     }
-    setUpProductList()
+    setUpProducts()
   }
   
   override func setUpView() {
@@ -87,14 +87,14 @@ class SearchViewController: BaseTableViewController {
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
   
-  func setUpProductList() {
-    productList.maxPrice = maxPrice * kPriceUnit
-    productList.minPrice = minPrice * kPriceUnit
-    productList.productPropertyValueIds = selectedProductPropertyValueIds
-    productList.tagIds = selectedTagIds
-    productList.get { () -> Void in
+  func setUpProducts() {
+    products.maxPrice = maxPrice * kPriceUnit
+    products.minPrice = minPrice * kPriceUnit
+    products.productPropertyValueIds = selectedProductPropertyValueIds
+    products.tagIds = selectedTagIds
+    products.get { () -> Void in
       if let locationName = BEONEManager.selectedLocation?.name {
-        self.productCountLabel.text = "\(locationName)지역 \(self.productList.total)개의 상품"
+        self.productCountLabel.text = "\(locationName)지역 \(self.products.total)개의 상품"
       }
     }
   }
@@ -116,7 +116,7 @@ extension SearchViewController {
         if self.minPrice >= self.maxPrice {
           self.maxPrice = self.minPrice + self.productSearchData.priceUnit
         }
-        self.setUpProductList()
+        self.setUpProducts()
       }
     }
   }
@@ -128,7 +128,7 @@ extension SearchViewController {
         if self.minPrice >= self.maxPrice {
           self.minPrice = self.maxPrice - self.productSearchData.priceUnit
         }
-        self.setUpProductList()
+        self.setUpProducts()
       }
     }
   }
@@ -139,7 +139,7 @@ extension SearchViewController {
     } else {
       if let searchResultViewController =
         UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
-        searchResultViewController.productList = productList
+        searchResultViewController.products = products
         searchResultViewController.selectedTagIds = selectedTagIds
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
         searchResultViewController.minPrice = minPrice
@@ -278,7 +278,7 @@ extension SearchViewController: SearchValueDelegate {
         selectedProductPropertyValueIds.removeObject(id)
       }
     }
-    self.setUpProductList()
+    self.setUpProducts()
   }
 }
 

@@ -6,7 +6,7 @@ class ProductCategory: BaseModel {
   var name: String?
   var desc: String?
   var mainImageUrl: String?
-  var products = ProductList()
+  var products = Products()
   
   override func assignObject(data: AnyObject?) {
     if let data = data as? [String: AnyObject] {

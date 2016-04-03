@@ -12,11 +12,11 @@ class SpeedOrderResultsViewController: BaseViewController {
   @IBOutlet weak var orderButton: UIButton!
   
   var contentViews = [UIView]()
-  var productList = ProductList()
+  var products = Products()
   
   override func setUpData() {
-    productList.get { () -> Void in
-      self.productsScrollViewPageControl.numberOfPages = self.productList.list.count + 1
+    products.get { () -> Void in
+      self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1
       self.setUpContentViews()
       self.configureReviewLabels()
     }
@@ -24,7 +24,7 @@ class SpeedOrderResultsViewController: BaseViewController {
   
   private func setUpContentViews() {
     var previousView: UIView?
-    for (index, product) in (productList.list as! [Product]).enumerate() {
+    for (index, product) in (products.list as! [Product]).enumerate() {
       let productView = UIView.loadFromNibName("SpeedOrderProductView") as! SpeedOrderProductView
       productView.delegate = self
       productView.layoutView(product)
@@ -41,7 +41,7 @@ class SpeedOrderResultsViewController: BaseViewController {
     if let speedOrderNoProductView = UIView.loadFromNibName("SpeedOrderNoProductView") {
       addCommonLayout(to: speedOrderNoProductView)
       speedOrderProductsScrollView.addTrailingLayout(speedOrderNoProductView)
-      if productList.list.count == 0 {
+      if products.list.count == 0 {
         speedOrderProductsScrollView.addLeadingLayout(speedOrderNoProductView)
       } else {
         speedOrderProductsScrollView.addHorizontalLayout(previousView!, rightView: speedOrderNoProductView)
@@ -62,21 +62,21 @@ class SpeedOrderResultsViewController: BaseViewController {
 extension SpeedOrderResultsViewController {
   @IBAction func showAllProductsViewButtonTapped() {
     if let productsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
-      productsViewController.productList = productList
-      productsViewController.productList.isQuickOrder = false
+      productsViewController.products = products
+      productsViewController.products.isQuickOrder = false
       productsViewController.forSearchResult = true
       productsViewController.isSpeedOrder = true
       
-      if let productPropertyValueIds = productList.productPropertyValueIds {
+      if let productPropertyValueIds = products.productPropertyValueIds {
         productsViewController.selectedProductPropertyValueIds = productPropertyValueIds
       }
-      if let tagIds = productList.tagIds {
+      if let tagIds = products.tagIds {
         productsViewController.selectedTagIds = tagIds
       }
-      if let minPrice = productList.minPrice {
+      if let minPrice = products.minPrice {
         productsViewController.minPrice = minPrice
       }
-      if let maxPrice = productList.maxPrice {
+      if let maxPrice = products.maxPrice {
         productsViewController.maxPrice = maxPrice
       }
       showViewController(productsViewController, sender: nil)
@@ -95,7 +95,7 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
   }
   
   private func configureReviewLabels() {
-    if let currentProduct = productList.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
+    if let currentProduct = products.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
       reviewShowLabel.configureAlpha(currentProduct.reviewCount != 0)
       reviewCountLabel.configureAlpha(currentProduct.reviewCount != 0)
       reviewButton.configureAlpha(currentProduct.reviewCount != 0)
@@ -114,7 +114,7 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
 
 extension SpeedOrderResultsViewController: ProductDelegate {
   @IBAction func productOrderButtonTapped() {
-    showOptionView(productList.list.objectAtIndex(productsScrollViewPageControl.currentPage)?.id,
+    showOptionView(products.list.objectAtIndex(productsScrollViewPageControl.currentPage)?.id,
                    rightOrdering: true)
   }
   

@@ -73,8 +73,8 @@ static NSString *kBOImageSliderDotInactive = @"image_slider_dot_inactive";
   return _pageControl;
 }
 
-- (void)setNeedsLayout {
-  [super setNeedsLayout];
+- (void)layoutSubviews {
+  [super layoutSubviews];
   [self _updatePageControl];
   [self reloadData];
 }

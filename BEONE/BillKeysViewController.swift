@@ -25,6 +25,11 @@ class BillKeysViewController: BaseTableViewController {
   private var paymentInfo: PaymentInfo?
   var paymentInfoId: Int?
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = true
+  }
+  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self

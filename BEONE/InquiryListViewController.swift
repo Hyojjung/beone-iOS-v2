@@ -24,7 +24,7 @@ class InquiryListViewController: BaseTableViewController {
   
   @IBAction func editInquiryButtonTapped(sender: UIButton) {
     if let inquiry = inquiryList.model(sender.tag) as? Inquiry {
-      let inquiryEditViewController = InquiryEditViewController()
+      let inquiryEditViewController = InquiryEditViewController(nibName: "InquiryEditViewController", bundle: nil)
       inquiryEditViewController.inquiry = inquiry
       showViewController(inquiryEditViewController, sender: nil)
     }
@@ -41,7 +41,7 @@ class InquiryListViewController: BaseTableViewController {
   }
   
   @IBAction func addInquiryButtonTapped() {
-    let inquiryEditViewController = InquiryEditViewController()
+    let inquiryEditViewController = InquiryEditViewController(nibName: "InquiryEditViewController", bundle: nil)
     inquiryEditViewController.productId = product?.id
     showViewController(inquiryEditViewController, sender: nil)
   }

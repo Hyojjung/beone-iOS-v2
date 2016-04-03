@@ -41,11 +41,11 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController {
       if let productProperty = productPropertyList.list.first as? ProductProperty,
         selectedUsageIndex = selectedUsageIndex {
-        speedOrderResultsViewController.productList.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
+        speedOrderResultsViewController.products.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
       }
-      speedOrderResultsViewController.productList.address = address
+      speedOrderResultsViewController.products.address = address
       if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
-        speedOrderResultsViewController.productList.availableDates =
+        speedOrderResultsViewController.products.availableDates =
           [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
       }
     }

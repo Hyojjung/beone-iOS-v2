@@ -21,7 +21,7 @@ class AlertViewController: UIViewController {
 
 extension AlertViewController {
   convenience init(message: String, hasCancel: Bool?, confirmAction: Action?, cancelAction: Action?, actionDelegate: AnyObject?) {
-    self.init()
+    self.init(nibName: "AlertViewController", bundle: nil)
     self.message = message
     self.confirmAction = confirmAction
     self.confirmAction?.actionDelegate = actionDelegate

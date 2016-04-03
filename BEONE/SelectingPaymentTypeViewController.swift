@@ -144,7 +144,7 @@ extension SelectingPaymentTypeViewController {
   }
   
   @IBAction func showSelectingCouponViewButtonTapped() {
-    let orderCouponsViewController = OrderCouponsViewController()
+    let orderCouponsViewController = OrderCouponsViewController(nibName: "OrderCouponsViewController", bundle: nil)
     orderCouponsViewController.order = order
     orderCouponsViewController.delegate = self
     showViewController(orderCouponsViewController, sender: nil)

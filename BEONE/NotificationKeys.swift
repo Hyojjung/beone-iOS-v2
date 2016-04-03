@@ -7,8 +7,6 @@ let kNotificationFetchKakaoInfoSuccess = "NotificationFetchKakaoInfoSuccess"
 let kNotificationNetworkStart = "NotificationNetworkStart"
 let kNotificationNetworkEnd = "NotificationNetworkEnd"
 let kNotificationGuestAuthenticationSuccess = "NotificationGuestAuthenticationSuccess"
-let kNotificationRequestFindingPasswordSuccess = "NotificationRequestFindingPasswordSuccess"
-let kNotificationRequestFindingPasswordFailure = "NotificationRequestFindingPasswordFailure"
 let kNotificationValidateAddressSuccess = "NotificationValidateAddressSuccess"
 let kNotificationPostOrderSuccess = "NotificationPostOrderSuccess"
 

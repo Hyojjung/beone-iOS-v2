@@ -29,6 +29,12 @@ class OptionViewController: BaseTableViewController {
   private var selectedProductOrderableInfo: ProductOrderableInfo?
   private var deliveryTypeNames = [String]()
   
+  deinit {
+    if isOrdering {
+      
+    }
+  }
+  
   // MARK: - BaseViewController Methods
   
   override func setUpData() {

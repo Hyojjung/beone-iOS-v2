@@ -29,8 +29,9 @@ class CategoryListViewController: BaseTableViewController {
   @IBAction func categoryButtonTapped(sender: UIButton) {
     if let category = categoryList.model(sender.tag) as? ProductCategory {
       if let categoryProductsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
-        categoryProductsViewController.productList.type = .Category
-        categoryProductsViewController.productList.productCategoryId = category.id
+        categoryProductsViewController.title = category.name
+        categoryProductsViewController.products.type = .Category
+        categoryProductsViewController.products.productCategoryId = category.id
         showViewController(categoryProductsViewController, sender: nil)
       }
     }
@@ -99,14 +100,14 @@ class CategoryCell: UITableViewCell {
     categoryButton.tag = category.id!
     nameLabel.text = category.name
     summaryLabel.text = category.desc
-    setLazyLoaingImage(firstProductImageView, productList: category.products, index: 0)
-    setLazyLoaingImage(secondProductImageView, productList: category.products, index: 1)
-    setLazyLoaingImage(thirdProductImageView, productList: category.products, index: 2)
-    setLazyLoaingImage(forthProductImageView, productList: category.products, index: 3)
+    setLazyLoaingImage(firstProductImageView, products: category.products, index: 0)
+    setLazyLoaingImage(secondProductImageView, products: category.products, index: 1)
+    setLazyLoaingImage(thirdProductImageView, products: category.products, index: 2)
+    setLazyLoaingImage(forthProductImageView, products: category.products, index: 3)
   }
   
-  private func setLazyLoaingImage(imageView: LazyLoadingImageView, productList: ProductList, index: Int) {
-    let product = productList.list.objectAtIndex(index) as? Product
+  private func setLazyLoaingImage(imageView: LazyLoadingImageView, products: Products, index: Int) {
+    let product = products.list.objectAtIndex(index) as? Product
     imageView.setLazyLoaingImage(product?.mainImageUrl)
   }
 }

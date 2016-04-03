@@ -11,6 +11,8 @@ extension MyInfo {
   @NSManaged var name: String?
   @NSManaged var account: String?
   @NSManaged var phone: String?
+  @NSManaged var locationName: String?
+  @NSManaged var locationId: NSNumber?
   @NSManaged var point: NSNumber?
   @NSManaged var userDeviceInfoId: NSNumber?
   @NSManaged var userId: NSNumber?

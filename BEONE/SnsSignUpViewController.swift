@@ -32,6 +32,13 @@ class SnsSignUpViewController: BaseViewController {
       object: nil)
   }
   
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationFetchFacebookInfoSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationFetchKakaoInfoSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSigningSuccess, object: nil)
+  }
+  
   override func setUpView() {
     super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))

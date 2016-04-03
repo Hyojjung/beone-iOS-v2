@@ -13,7 +13,8 @@ class DeliveryDateViewController: BaseTableViewController {
   var selectedTimeRanges = [Int: AvailableTimeRange]()
   
   lazy var deliveryTimeSelectViewController: DeliveryTimeSelectViewController = {
-    let deliveryTimeSelectViewController = DeliveryTimeSelectViewController()
+    let deliveryTimeSelectViewController = DeliveryTimeSelectViewController(nibName: "DeliveryTimeSelectViewController",
+                                                                            bundle: nil)
     deliveryTimeSelectViewController.delegate = self
     deliveryTimeSelectViewController.modalPresentationStyle = .OverCurrentContext
     deliveryTimeSelectViewController.modalTransitionStyle = .CrossDissolve
