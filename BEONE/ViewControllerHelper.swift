@@ -166,7 +166,7 @@ extension UIViewController {
                        sender: UIButton? = nil,
                        doneBlock: ActionStringDoneBlock? = nil,
                        cancelBlock: ActionStringCancelBlock? = nil) {
-    endEditing()
+    view.endEditing(true)
     sender?.selected = true
     let selectedIndex = initialSelection == nil ? 0 : initialSelection
     let actionSheet =
