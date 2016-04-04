@@ -24,8 +24,4 @@ class DeliveryTimeSelectViewController: UIViewController {
     super.viewWillAppear(animated)
     timeSelectView.layoutView(availableTimeRanges!, selectedTimeRange: selectedTimeRange)
   }
-  
-  @IBAction func backgrouncViewTapped() {
-    presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-  }
 }

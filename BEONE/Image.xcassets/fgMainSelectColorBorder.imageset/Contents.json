@@ -39,6 +39,20 @@
       "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 54,
+          "top" : 53,
+          "right" : 54,
+          "left" : 53
+        }
+      },
       "idiom" : "universal",
       "filename" : "fgMainSelectColorBorder@3x.png",
       "scale" : "3x"

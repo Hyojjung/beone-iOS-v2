@@ -92,9 +92,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <blurEffect style="light"/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="szd-1X-Swp" appends="YES" id="J17-fW-SAe"/>
-                    </connections>
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -105,11 +102,7 @@
                 <constraint firstAttribute="trailing" secondItem="awY-Re-8Cy" secondAttribute="trailing" id="ooa-H1-y09"/>
             </constraints>
         </view>
-        <tapGestureRecognizer id="szd-1X-Swp">
-            <connections>
-                <action selector="backgrouncViewTapped" destination="-1" id="7Au-M6-9BX"/>
-            </connections>
-        </tapGestureRecognizer>
+        <tapGestureRecognizer id="szd-1X-Swp"/>
     </objects>
     <resources>
         <image name="iconClock" width="16" height="16"/>

@@ -28,6 +28,11 @@ class OrdersViewController: BaseTableViewController {
   let orders = Orders()
   let reviewableOrderItems = OrderItems()
   var paymentTypes: PaymentTypes?
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = true
+  }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)

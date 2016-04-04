@@ -29,8 +29,8 @@ class ViewControllerHelper: NSObject {
   
   static func topViewController() -> UIViewController? {
     if let revealViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
-    navigationViewController = revealViewController.frontViewController as? UINavigationController {
-     return navigationViewController.topViewController
+      navigationViewController = revealViewController.frontViewController as? UINavigationController {
+      return navigationViewController.topViewController
     }
     return nil
   }
@@ -72,7 +72,7 @@ extension UIViewController {
   func showAlertView(message: String?, hasCancel: Bool? = false, confirmAction: Action? = nil, cancelAction: Action? = nil, delegate: AnyObject? = nil) {
     if let message = message {
       let alertViewController =
-      AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction, actionDelegate: delegate)
+        AlertViewController(message: message, hasCancel: hasCancel, confirmAction: confirmAction, cancelAction: cancelAction, actionDelegate: delegate)
       alertViewController.modalPresentationStyle = .OverCurrentContext
       alertViewController.modalTransitionStyle = .CrossDissolve
       presentViewController(alertViewController, animated: true, completion: nil)
@@ -98,10 +98,10 @@ extension UIViewController {
       }
     }
     showActionSheet(NSLocalizedString("select location", comment: "picker title"),
-      rows: BEONEManager.sharedLocations.locationNames(),
-      initialSelection: initialSelection,
-      doneBlock: { (_, selectedIndex, _) -> Void in
-        doneBlock(selectedIndex)
+                    rows: BEONEManager.sharedLocations.locationNames(),
+                    initialSelection: initialSelection,
+                    doneBlock: { (_, selectedIndex, _) -> Void in
+                      doneBlock(selectedIndex)
     })
   }
   
@@ -119,9 +119,9 @@ extension UIViewController {
   func showProductView(productId: Int?) {
     if let productDetailViewController =
       UIViewController.viewController(kProductDetailStoryboardName, viewIdentifier: kProductDetailViewIdentifier) as? ProductDetailViewController,
-    productId = productId {
+      productId = productId {
       productDetailViewController.product.id = productId
-        showViewController(productDetailViewController, sender: nil)
+      showViewController(productDetailViewController, sender: nil)
     }
   }
 }
@@ -130,7 +130,7 @@ extension UIViewController {
   func presentViewController(storyboardName: String?, viewIdentifier: String?) {
     if let storyboardName = storyboardName, viewIdentifier = viewIdentifier {
       presentViewController(UIViewController.viewController(storyboardName, viewIdentifier: viewIdentifier),
-        animated: true, completion: nil)
+                            animated: true, completion: nil)
     }
   }
   
@@ -161,26 +161,27 @@ extension UIViewController {
 
 extension UIViewController {
   func showActionSheet(title: String,
-    rows: [String],
-    initialSelection: Int?,
-    sender: UIButton? = nil,
-    doneBlock: ActionStringDoneBlock? = nil,
-    cancelBlock: ActionStringCancelBlock? = nil) {
-      sender?.selected = true
-      let selectedIndex = initialSelection == nil ? 0 : initialSelection
-      let actionSheet =
+                       rows: [String],
+                       initialSelection: Int?,
+                       sender: UIButton? = nil,
+                       doneBlock: ActionStringDoneBlock? = nil,
+                       cancelBlock: ActionStringCancelBlock? = nil) {
+    endEditing()
+    sender?.selected = true
+    let selectedIndex = initialSelection == nil ? 0 : initialSelection
+    let actionSheet =
       ActionSheetStringPicker(title: title,
-        rows: rows,
-        initialSelection: selectedIndex!,
-        doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
-          doneBlock?(actionSheet, selectedIndex, selectedString)
-          sender?.selected = false
+                              rows: rows,
+                              initialSelection: selectedIndex!,
+                              doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
+                                doneBlock?(actionSheet, selectedIndex, selectedString)
+                                sender?.selected = false
         }, cancelBlock: {(actionSheet) -> Void in
           cancelBlock?(actionSheet)
           sender?.selected = false
         }, origin: view)
-      
-      actionSheet.showActionSheetPicker()
+    
+    actionSheet.showActionSheetPicker()
   }
   
   func showPayment(paymentTypes: [PaymentType]?, order: Order, paymentInfoId: Int) {
@@ -188,12 +189,12 @@ extension UIViewController {
       var actionSheetButtons = [ActionSheetButton]()
       for paymentType in paymentTypes {
         let paymentTypeButton = ActionSheetButton(title: paymentType.name!)
-          {(_) -> Void in
-            if paymentType.id == PaymentTypeId.Card.rawValue {
-              self.showBillKeysView(order, paymentInfoId: paymentInfoId)
-            } else {
-              self.showOrderWebView(order, paymentTypeId: paymentType.id!, paymentInfoId: paymentInfoId)
-            }
+        {(_) -> Void in
+          if paymentType.id == PaymentTypeId.Card.rawValue {
+            self.showBillKeysView(order, paymentInfoId: paymentInfoId)
+          } else {
+            self.showOrderWebView(order, paymentTypeId: paymentType.id!, paymentInfoId: paymentInfoId)
+          }
         }
         actionSheetButtons.appendObject(paymentTypeButton)
       }

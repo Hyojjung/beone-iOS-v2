@@ -142,7 +142,7 @@ extension OrderViewController {
       } else if paymentInfo.isCancellable {
         if paymentInfo.isMainPayment {
           order.put({ (_) -> Void in
-            self.setUpData()
+            self.popView()
           })
         } else {
           paymentInfo.put({ (_) -> Void in
