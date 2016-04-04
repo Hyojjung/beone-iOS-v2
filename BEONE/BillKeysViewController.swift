@@ -32,6 +32,7 @@ class BillKeysViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "카드선택"
     tableView.dynamicHeightDelgate = self
   }
   

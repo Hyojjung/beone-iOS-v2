@@ -46,6 +46,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "결제수단선택"
     tableView.dynamicHeightDelgate = self
   }
   
@@ -162,6 +163,11 @@ extension SelectingPaymentTypeViewController {
             self.setUpPrices()
           } else if discountWay == .Point {
             self.setUpPrices(self.point)
+            MyInfo.sharedMyInfo().get({ 
+              self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0,
+                inSection: SelectingPaymentTypeTableViewSection.Discount.rawValue)],
+                withRowAnimation: .Automatic)
+            })
           } else if discountWay == .Coupon {
             self.setUpPrices(coupon: self.selectedCoupon)
           }

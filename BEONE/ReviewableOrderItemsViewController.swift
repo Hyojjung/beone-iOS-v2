@@ -2,7 +2,7 @@
 import UIKit
 
 class ReviewableOrderItemsViewController: BaseTableViewController {
-
+  
   // MARK: - Constant
   
   private enum ReviewableOrderItemsTableViewSection: Int {
@@ -64,6 +64,13 @@ extension ReviewableOrderItemsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? ReviewableOrderItemCell {
       cell.setUpCell(orderItems.list[indexPath.row] as! OrderableItem)
+    } else if let cell = cell as? ReviewableImageTitleCell {
+      if let orderItem = orderItems.list[indexPath.row] as? OrderableItem,
+        shopName = orderItem.shopName,
+        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
+        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
+        cell.setUpCell(reviewInfo)
+      }
     }
     return cell
   }
@@ -82,6 +89,13 @@ extension ReviewableOrderItemsViewController: DynamicHeightTableViewDelegate {
       topLabel.text = NSLocalizedString("reviews view top cell label", comment: "top cell label")
       topLabel.setWidth(ViewControllerHelper.screenWidth - 28)
       return 80 + topLabel.frame.height
+    } else if let cell = cell as? ReviewableImageTitleCell {
+      if let orderItem = orderItems.list[indexPath.row] as? OrderableItem,
+        shopName = orderItem.shopName,
+        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
+        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
+        return cell.calculatedHeight(reviewInfo)
+      }
     } else if let cell = cell as? BaseTableViewCell {
       return cell.height
     }
@@ -105,7 +119,7 @@ class ReviewableOrderItemCell: BaseTableViewCell {
   
   func setUpCell(orderItem: OrderableItem) {
     orderItemImageView.setLazyLoaingImage(orderItem
-    .productImageUrl)
+      .productImageUrl)
     titleLabel.text = orderItem.productTitle
     subtitleLabel.text = orderItem.productSubtitle
     quantityLabel.text = "\(orderItem.quantity)"
@@ -114,6 +128,23 @@ class ReviewableOrderItemCell: BaseTableViewCell {
     if let orderItemId = orderItem.id {
       addReviewButton.tag = orderItemId
     }
+  }
+}
+
+class ReviewableImageTitleCell: UITableViewCell {
+  
+  @IBOutlet weak var imageInfoLabel: UILabel!
+  
+  func setUpCell(reviewInfo: String?) {
+    imageInfoLabel.text = reviewInfo
+  }
+  
+  func calculatedHeight(reviewInfo: String?) -> CGFloat {
+    let imageInfoLabel = UILabel()
+    imageInfoLabel.font = UIFont.systemFontOfSize(14)
+    imageInfoLabel.text = reviewInfo
+    imageInfoLabel.setWidth(ViewControllerHelper.screenWidth - 24)
+    return 51 + imageInfoLabel.frame.height
   }
 }
 

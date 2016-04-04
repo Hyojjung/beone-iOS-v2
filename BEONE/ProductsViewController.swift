@@ -44,6 +44,9 @@ class ProductsViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    if !forSearchResult {
+      tableView.contentInset = UIEdgeInsetsMake(6, 0, 0, 0)
+    }
   }
   
   override func setUpData() {

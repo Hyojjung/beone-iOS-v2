@@ -22,6 +22,7 @@ class ShopsViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    tableView.contentInset = UIEdgeInsetsMake(2, 0, 0, 0)
   }
   
   override func setUpData() {

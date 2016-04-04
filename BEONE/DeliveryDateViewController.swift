@@ -42,6 +42,18 @@ class DeliveryDateViewController: BaseTableViewController {
         self.selectedDates[self.selectedOrderableItemSetIndex] =
           DateFormatterHelper.koreanCalendar.dateFromComponents(selectedDate)
       }
+      
+      var needReservation = false
+      
+      for orderableItemSet in self.order.orderableItemSets {
+        if orderableItemSet.deliveryType.isReservable {
+          needReservation = true
+        }
+      }
+      
+      if !needReservation {
+        self.orderButtonTapped()
+      }
       self.tableView.reloadData()
     }
   }

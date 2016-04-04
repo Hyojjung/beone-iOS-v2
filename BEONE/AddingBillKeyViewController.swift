@@ -51,6 +51,7 @@ class AddingBillKeyViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "카드등록"
     tableView.dynamicHeightDelgate = self
   }
 }
