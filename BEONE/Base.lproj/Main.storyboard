@@ -580,15 +580,15 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="iconSidebarKakao" translatesAutoresizingMaskIntoConstraints="NO" id="m8v-Ir-TqD">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="30" y="31" width="44" height="44"/>
-                                                            </variation>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오톡 문의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234-fU-euW">
                                                             <rect key="frame" x="9" y="103" width="76" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058820000003" green="0.65490196079999996" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="15" y="110" width="76" height="17"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -648,7 +648,7 @@
                                                                     <color key="textColor" red="0.13725490200000001" green="0.1764705882" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <color key="highlightedColor" red="0.13725490196078433" green="0.1764705882352941" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarDday" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-3H-KHg">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarRecent" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-3H-KHg">
                                                                     <rect key="frame" x="25" y="22" width="44" height="44"/>
                                                                 </imageView>
                                                             </subviews>
@@ -679,8 +679,7 @@
                                                                     <exclude reference="wwB-VY-nzY"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="31" y="22" width="44" height="61"/>
+                                                            <variation key="widthClass=compact">
                                                                 <mask key="subviews">
                                                                     <include reference="ZGa-WD-n8A"/>
                                                                     <include reference="Q6X-3H-KHg"/>
@@ -695,11 +694,14 @@
                                                                 </mask>
                                                             </variation>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기념일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근본상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
                                                             <rect key="frame" x="29" y="103" width="36" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058823529413" green="0.65490196078431373" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="35" y="110" width="36" height="17"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -813,6 +815,9 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058820000003" green="0.65490196079999996" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="27" y="110" width="52" height="17"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1158,7 +1163,9 @@
                                                 <constraint firstItem="4jR-Di-lUW" firstAttribute="top" secondItem="goR-qB-e11" secondAttribute="bottom" constant="2" id="HsC-rD-uvo"/>
                                                 <constraint firstItem="McI-gB-crM" firstAttribute="centerY" secondItem="8jW-Qy-dNK" secondAttribute="centerY" id="J4n-UR-vKh"/>
                                                 <constraint firstItem="oDW-eb-lLg" firstAttribute="centerX" secondItem="8jW-Qy-dNK" secondAttribute="centerX" id="J6Y-dq-iEv"/>
-                                                <constraint firstItem="xwH-Wu-dCZ" firstAttribute="leading" secondItem="eYm-Zn-w4Z" secondAttribute="trailing" constant="12" id="KnU-BB-Rtp"/>
+                                                <constraint firstItem="xwH-Wu-dCZ" firstAttribute="leading" secondItem="eYm-Zn-w4Z" secondAttribute="trailing" constant="12" id="KnU-BB-Rtp">
+                                                    <variation key="widthClass=compact" constant="6"/>
+                                                </constraint>
                                                 <constraint firstItem="yv3-9r-Jbc" firstAttribute="top" secondItem="p6l-e8-ErU" secondAttribute="bottom" id="Lcb-oC-KJb"/>
                                                 <constraint firstItem="eYm-Zn-w4Z" firstAttribute="top" secondItem="8jW-Qy-dNK" secondAttribute="top" constant="15" id="LsV-6Z-Cr5"/>
                                                 <constraint firstItem="UED-jb-tbt" firstAttribute="centerY" secondItem="lbJ-eU-oYJ" secondAttribute="centerY" id="Nqx-Bi-Oic"/>
@@ -1556,18 +1563,12 @@
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sidebar_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-b3-Xh1">
                                         <rect key="frame" x="89" y="89" width="22" height="22"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="55" y="55" width="22" height="22"/>
-                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-0y-fgI">
                                         <rect key="frame" x="81" y="115" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="49" y="81" width="37" height="17"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1658,15 +1659,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="48" y="92" width="37" height="17"/>
-                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarDday" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
                                         <rect key="frame" x="78" y="78" width="44" height="44"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="45" y="44" width="44" height="44"/>
-                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2456,6 +2451,7 @@
         <image name="iconSidebarDday" width="44" height="44"/>
         <image name="iconSidebarFavorite" width="44" height="44"/>
         <image name="iconSidebarKakao" width="44" height="44"/>
+        <image name="iconSidebarRecent" width="44" height="44"/>
         <image name="icon_nav_sidebar" width="40" height="40"/>
         <image name="icon_sidebar_coupon" width="22" height="22"/>
         <image name="icon_sidebar_help" width="22" height="22"/>
