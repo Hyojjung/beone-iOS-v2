@@ -575,7 +575,9 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="m8v-Ir-TqD" firstAttribute="centerY" secondItem="vkE-2Z-NO9" secondAttribute="centerY" id="Tly-ZO-Daf"/>
-                                                        <constraint firstItem="234-fU-euW" firstAttribute="top" secondItem="vkE-2Z-NO9" secondAttribute="bottom" constant="10" id="TuS-vV-tFt"/>
+                                                        <constraint firstItem="234-fU-euW" firstAttribute="top" secondItem="vkE-2Z-NO9" secondAttribute="bottom" constant="10" id="TuS-vV-tFt">
+                                                            <variation key="widthClass=compact" constant="6"/>
+                                                        </constraint>
                                                         <constraint firstItem="vkE-2Z-NO9" firstAttribute="leading" secondItem="tUD-Qc-JMu" secondAttribute="leading" id="ZgP-uG-lIm"/>
                                                         <constraint firstItem="m8v-Ir-TqD" firstAttribute="centerX" secondItem="tUD-Qc-JMu" secondAttribute="centerX" id="aq0-fr-5sQ"/>
                                                         <constraint firstItem="234-fU-euW" firstAttribute="centerX" secondItem="tUD-Qc-JMu" secondAttribute="centerX" id="eBI-Wp-xwd"/>
@@ -683,7 +685,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="fNN-FK-eP8" firstAttribute="top" secondItem="y2C-81-2nH" secondAttribute="bottom" constant="10" id="46i-rt-eC5"/>
+                                                        <constraint firstItem="fNN-FK-eP8" firstAttribute="top" secondItem="y2C-81-2nH" secondAttribute="bottom" constant="10" id="46i-rt-eC5">
+                                                            <variation key="widthClass=compact" constant="6"/>
+                                                        </constraint>
                                                         <constraint firstItem="PaG-U7-XHR" firstAttribute="centerY" secondItem="y2C-81-2nH" secondAttribute="centerY" id="BKf-Pa-iwX"/>
                                                         <constraint firstAttribute="bottom" secondItem="fNN-FK-eP8" secondAttribute="bottom" id="UaS-Vy-5QE"/>
                                                         <constraint firstItem="fNN-FK-eP8" firstAttribute="centerX" secondItem="P80-vP-DNQ" secondAttribute="centerX" id="Yr6-7o-sSk"/>
@@ -801,7 +805,9 @@
                                                         <constraint firstItem="X0A-j9-b4Z" firstAttribute="centerX" secondItem="700-k2-dVS" secondAttribute="centerX" id="bqR-s2-t0P"/>
                                                         <constraint firstItem="700-k2-dVS" firstAttribute="top" secondItem="p7h-g6-vtQ" secondAttribute="top" id="lgx-7K-y2V"/>
                                                         <constraint firstItem="X0A-j9-b4Z" firstAttribute="centerY" secondItem="700-k2-dVS" secondAttribute="centerY" id="sHm-M4-GY6"/>
-                                                        <constraint firstItem="50T-ER-nW4" firstAttribute="top" secondItem="700-k2-dVS" secondAttribute="bottom" constant="10" id="v9v-0e-ORg"/>
+                                                        <constraint firstItem="50T-ER-nW4" firstAttribute="top" secondItem="700-k2-dVS" secondAttribute="bottom" constant="10" id="v9v-0e-ORg">
+                                                            <variation key="widthClass=compact" constant="6"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="subviews">
