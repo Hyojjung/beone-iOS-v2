@@ -12,10 +12,10 @@ class OrderableItemSet: BaseModel {
     var progresses = [OrderItemSetProgress]()
     return progresses
   }()
-  let orderableItemList = OrderItemList()
-  lazy var availableTimeRangeList: AvailableTimeRangeList = {
-    let availableTimeRangeList = AvailableTimeRangeList()
-    return availableTimeRangeList
+  let orderableItems = OrderItems()
+  lazy var availableTimeRanges: AvailableTimeRanges = {
+    let availableTimeRanges = AvailableTimeRanges()
+    return availableTimeRanges
   }()
   lazy var location: Location = {
     let location = Location()
@@ -108,8 +108,8 @@ extension OrderableItemSet {
     } else {
       orderItemObjects = data["orderableItems"] as! [[String: AnyObject]]
     }
-    orderableItemList.assignObject(orderItemObjects)
-    for orderItem in orderableItemList.list as! [OrderableItem] {
+    orderableItems.assignObject(orderItemObjects)
+    for orderItem in orderableItems.list as! [OrderableItem] {
       orderItem.shopName = shop.name
     }
   }
@@ -125,7 +125,7 @@ extension OrderableItemSet {
       availableTimeRanges.sortInPlace {
         return $0.startDateTime!.compare($1.startDateTime!) == .OrderedAscending
       }
-      availableTimeRangeList.list = availableTimeRanges
+      self.availableTimeRanges.list = availableTimeRanges
     }
   }
   

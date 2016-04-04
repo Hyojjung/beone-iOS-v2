@@ -8,7 +8,8 @@ class BaseViewController: UIViewController {
   private let backButtonOffset = UIOffsetMake(0, -60)
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
-  
+  var needOftenUpdate = false
+
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
     loadingView.layout()
@@ -20,13 +21,31 @@ class BaseViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    NSNotificationCenter.defaultCenter().addObserver(self,
+                                                     selector: #selector(BaseViewController.startIndicator),
+                                                     name: kNotificationNetworkStart,
+                                                     object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+                                                     selector: #selector(BaseViewController.stopIndicator),
+                                                     name: kNotificationNetworkEnd,
+                                                     object: nil)
     setUpView()
-    setUpData()
+    if !needOftenUpdate {
+      setUpData()
+    }
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationNetworkStart, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationNetworkEnd, object: nil)
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     checkNeedToShowUserViewController()
+    if needOftenUpdate {
+      setUpData()
+    }
     addObservers()
   }
   
@@ -57,14 +76,6 @@ extension BaseViewController {
   
   func addObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(BaseViewController.startIndicator),
-      name: kNotificationNetworkStart,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(BaseViewController.stopIndicator),
-      name: kNotificationNetworkEnd,
-      object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self,
       selector: #selector(BaseViewController.showAlert(_:)),
       name: kNotificationShowAlert,
       object: nil)
@@ -75,7 +86,8 @@ extension BaseViewController {
   }
   
   func removeObservers() {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationShowAlert, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationShowWebView, object: nil)
   }
 }
 
@@ -161,7 +173,7 @@ extension BaseViewController {
         optionViewController.product.id = selectedProductId
         optionViewController.isModifing = isModifing
         optionViewController.isOrdering = rightOrdering
-        optionViewController.cartItems.appendObject(selectedCartItem)
+        optionViewController.cartItems.list.appendObject(selectedCartItem)
         showUserViewController(optionViewController)
       }
   }

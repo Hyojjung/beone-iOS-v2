@@ -9,18 +9,18 @@ class ProductPropertyValuesView: UIView {
   
   var views = [SearchValueView]()
   
-  func layoutView(productPropertyValueList: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
+  func layoutView(productPropertyValues: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
     displayType: ProductPropertyDisplayType? = nil) {
       var previousView: UIView?
       var previousRowLeftMostView: UIView?
       
-      for (index, productPropertyValue) in productPropertyValueList.enumerate() {
+      for (index, productPropertyValue) in productPropertyValues.enumerate() {
         let view = searchValueView(productPropertyValue, displayType: displayType)
         view.needBackgoundColor = displayType != .Color
         view.delegate = delegate as? SearchValueDelegate
         view.configureView(productPropertyValue, isSelected: selectedSearchValueIds.contains(productPropertyValue.id!))
         previousRowLeftMostView = self.previousRowLeftMostView(view,
-          count: productPropertyValueList.count,
+          count: productPropertyValues.count,
           index: index,
           previousRowLeftMostView: previousRowLeftMostView,
           previousView: previousView)

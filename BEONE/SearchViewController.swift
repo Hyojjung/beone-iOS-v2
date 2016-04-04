@@ -26,15 +26,15 @@ class SearchViewController: BaseTableViewController {
   
   var showingMore = false
   
-  var productList: ProductList = {
-    let productList = ProductList()
-    productList.noData = true
-    productList.isQuickOrder = true
-    return productList
+  var products: Products = {
+    let products = Products()
+    products.noData = true
+    products.isQuickOrder = true
+    return products
   }()
   
-  var productPropertyList = ProductPropertyList()
-  var tagList = TagList()
+  var productProperties = ProductProperties()
+  var tags = Tags()
   var productSearchData = ProductSearchData()
   var isSpeedOrder = false
   
@@ -53,23 +53,23 @@ class SearchViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     
-    if let productPropertyValueIds = productList.productPropertyValueIds {
+    if let productPropertyValueIds = products.productPropertyValueIds {
       selectedProductPropertyValueIds = productPropertyValueIds
     }
-    if let tagIds = productList.tagIds {
+    if let tagIds = products.tagIds {
       selectedTagIds = tagIds
     }
-    if let minPrice = productList.minPrice {
+    if let minPrice = products.minPrice {
       self.minPrice = minPrice
     }
-    if let maxPrice = productList.maxPrice {
+    if let maxPrice = products.maxPrice {
       self.maxPrice = maxPrice
     }
     
-    productPropertyList.get { () -> Void in
+    productProperties.get { () -> Void in
       self.tableView.reloadData()
     }
-    tagList.get { () -> Void in
+    tags.get { () -> Void in
       self.tableView.reloadData()
     }
     productSearchData.get { () -> Void in
@@ -77,7 +77,7 @@ class SearchViewController: BaseTableViewController {
       self.maxPrice = self.productSearchData.maxPrice
       self.tableView.reloadData()
     }
-    setUpProductList()
+    setUpProducts()
   }
   
   override func setUpView() {
@@ -87,14 +87,14 @@ class SearchViewController: BaseTableViewController {
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
   
-  func setUpProductList() {
-    productList.maxPrice = maxPrice * kPriceUnit
-    productList.minPrice = minPrice * kPriceUnit
-    productList.productPropertyValueIds = selectedProductPropertyValueIds
-    productList.tagIds = selectedTagIds
-    productList.get { () -> Void in
+  func setUpProducts() {
+    products.maxPrice = maxPrice * kPriceUnit
+    products.minPrice = minPrice * kPriceUnit
+    products.productPropertyValueIds = selectedProductPropertyValueIds
+    products.tagIds = selectedTagIds
+    products.get { () -> Void in
       if let locationName = BEONEManager.selectedLocation?.name {
-        self.productCountLabel.text = "\(locationName)지역 \(self.productList.total)개의 상품"
+        self.productCountLabel.text = "\(locationName)지역 \(self.products.total)개의 상품"
       }
     }
   }
@@ -116,7 +116,7 @@ extension SearchViewController {
         if self.minPrice >= self.maxPrice {
           self.maxPrice = self.minPrice + self.productSearchData.priceUnit
         }
-        self.setUpProductList()
+        self.setUpProducts()
       }
     }
   }
@@ -128,7 +128,7 @@ extension SearchViewController {
         if self.minPrice >= self.maxPrice {
           self.minPrice = self.maxPrice - self.productSearchData.priceUnit
         }
-        self.setUpProductList()
+        self.setUpProducts()
       }
     }
   }
@@ -139,7 +139,7 @@ extension SearchViewController {
     } else {
       if let searchResultViewController =
         UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
-        searchResultViewController.productList = productList
+        searchResultViewController.products = products
         searchResultViewController.selectedTagIds = selectedTagIds
         searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
         searchResultViewController.minPrice = minPrice
@@ -190,7 +190,7 @@ extension SearchViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == SearchTableViewSection.MoreUsageButton.rawValue {
-      if let productProperty = productPropertyList.list.first as? ProductProperty {
+      if let productProperty = productProperties.list.first as? ProductProperty {
         if productProperty.values.count < kPartialValuesCount || showingMore {
           return 0
         }
@@ -203,9 +203,9 @@ extension SearchViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
-        cell.configureCell(tagList.name,
-                           subTitle: tagList.desc,
-                           searchValues: tagList.list,
+        cell.configureCell(tags.name,
+                           subTitle: tags.desc,
+                           searchValues: tags.list,
                            selectedSearchValueIds: selectedTagIds,
                            delegate: self)
       } else if let productProperty = productProperty(indexPath) {
@@ -225,7 +225,7 @@ extension SearchViewController: UITableViewDataSource {
   
   private func productProperty(indexPath: NSIndexPath) -> ProductProperty? {
     if indexPath.section == SearchTableViewSection.Usage.rawValue {
-      if let productProperty = productPropertyList.list.first as? ProductProperty {
+      if let productProperty = productProperties.list.first as? ProductProperty {
         if !showingMore && productProperty.values.count > kPartialValuesCount {
           return productProperty.productPropertyWithPartValues()
         } else {
@@ -233,7 +233,7 @@ extension SearchViewController: UITableViewDataSource {
         }
       }
     } else if indexPath.section == SearchTableViewSection.Color.rawValue {
-      if let productProperty = productPropertyList.list.last as? ProductProperty {
+      if let productProperty = productProperties.list.last as? ProductProperty {
         return productProperty
       }
     }
@@ -249,7 +249,7 @@ extension SearchViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? SearchPropertyCell {
       if indexPath.section == SearchTableViewSection.Tag.rawValue {
-        return cell.calculatedHeight(tagList.list, subTitle: tagList.desc)
+        return cell.calculatedHeight(tags.list, subTitle: tags.desc)
       } else if let productProperty = productProperty(indexPath) {
         return cell.calculatedHeight(productProperty.values, subTitle: productProperty.desc,
                                      displayType: productProperty.displayType)
@@ -278,7 +278,7 @@ extension SearchViewController: SearchValueDelegate {
         selectedProductPropertyValueIds.removeObject(id)
       }
     }
-    self.setUpProductList()
+    self.setUpProducts()
   }
 }
 

@@ -19,7 +19,7 @@ class OrderAddressViewController: BaseViewController {
   
   var order = Order()
   var address = Address()
-  var addressList = AddressList()
+  var addresses = Addresses()
   
   // MARK: - Init & Deinit
   
@@ -49,8 +49,8 @@ class OrderAddressViewController: BaseViewController {
     if let selectedAddress = BEONEManager.selectedAddress {
       handleAddress(selectedAddress)
     } else {
-      addressList.get { () -> Void in
-        self.handleAddressList()
+      addresses.get { () -> Void in
+        self.handleAddresses()
       }
     }
     MyInfo.sharedMyInfo().get { () -> Void in
@@ -115,9 +115,9 @@ extension OrderAddressViewController: AddressDelegate {
 
 extension OrderAddressViewController {
   
-  func handleAddressList() {
-    if addressList.list.count > 0 {
-      address = addressList.list.first as! Address
+  func handleAddresses() {
+    if addresses.list.count > 0 {
+      address = addresses.list.first as! Address
     }
     receiverNameTextField.text = address.receiverName
     receiverPhoneTextField.text = address.receiverPhone

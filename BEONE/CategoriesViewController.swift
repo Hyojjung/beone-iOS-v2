@@ -1,9 +1,9 @@
 
 import UIKit
 
-class CategoryListViewController: BaseTableViewController {
+class CategoriesViewController: BaseTableViewController {
   
-  var categoryList = ProductCategoryList()
+  var categories = ProductCategories()
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -17,7 +17,7 @@ class CategoryListViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    categoryList.get { () -> Void in
+    categories.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -27,23 +27,24 @@ class CategoryListViewController: BaseTableViewController {
   }
   
   @IBAction func categoryButtonTapped(sender: UIButton) {
-    if let category = categoryList.model(sender.tag) as? ProductCategory {
+    if let category = categories.model(sender.tag) as? ProductCategory {
       if let categoryProductsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
-        categoryProductsViewController.productList.type = .Category
-        categoryProductsViewController.productList.productCategoryId = category.id
+        categoryProductsViewController.title = category.name
+        categoryProductsViewController.products.type = .Category
+        categoryProductsViewController.products.productCategoryId = category.id
         showViewController(categoryProductsViewController, sender: nil)
       }
     }
   }
 }
 
-extension CategoryListViewController: SideBarPositionMoveDelegate {
+extension CategoriesViewController: SideBarPositionMoveDelegate {
   func handlemovePosition() {
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }
 
-extension CategoryListViewController: UITableViewDataSource {
+extension CategoriesViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 2
   }
@@ -52,20 +53,20 @@ extension CategoryListViewController: UITableViewDataSource {
     if section == 0 {
       return 1
     } else {
-      return categoryList.list.count
+      return categories.list.count
     }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? CategoryCell {
-      cell.configureCell(categoryList.list[indexPath.row] as! ProductCategory)
+      cell.configureCell(categories.list[indexPath.row] as! ProductCategory)
     }
     return cell
   }
 }
 
-extension CategoryListViewController: DynamicHeightTableViewDelegate {
+extension CategoriesViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section == 0 {
       return "imageCell"
@@ -99,14 +100,14 @@ class CategoryCell: UITableViewCell {
     categoryButton.tag = category.id!
     nameLabel.text = category.name
     summaryLabel.text = category.desc
-    setLazyLoaingImage(firstProductImageView, productList: category.products, index: 0)
-    setLazyLoaingImage(secondProductImageView, productList: category.products, index: 1)
-    setLazyLoaingImage(thirdProductImageView, productList: category.products, index: 2)
-    setLazyLoaingImage(forthProductImageView, productList: category.products, index: 3)
+    setLazyLoaingImage(firstProductImageView, products: category.products, index: 0)
+    setLazyLoaingImage(secondProductImageView, products: category.products, index: 1)
+    setLazyLoaingImage(thirdProductImageView, products: category.products, index: 2)
+    setLazyLoaingImage(forthProductImageView, products: category.products, index: 3)
   }
   
-  private func setLazyLoaingImage(imageView: LazyLoadingImageView, productList: ProductList, index: Int) {
-    let product = productList.list.objectAtIndex(index) as? Product
+  private func setLazyLoaingImage(imageView: LazyLoadingImageView, products: Products, index: Int) {
+    let product = products.list.objectAtIndex(index) as? Product
     imageView.setLazyLoaingImage(product?.mainImageUrl)
   }
 }

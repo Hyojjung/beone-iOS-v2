@@ -2,11 +2,11 @@
 import UIKit
 import IDMPhotoBrowser
 
-class ReviewListViewController: BaseTableViewController {
+class ReviewsViewController: BaseTableViewController {
   
-  lazy var reviewList: ReviewList = {
-    let reviewList = ReviewList()
-    return reviewList
+  lazy var reviews: Reviews = {
+    let reviews = Reviews()
+    return reviews
   }()
   
   var showingReviewId: Int?
@@ -14,12 +14,13 @@ class ReviewListViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "상품후기"
     tableView.dynamicHeightDelgate = self
   }
   
   override func setUpData() {
     super.setUpData()
-    reviewList.get {
+    reviews.get {
       self.tableView.reloadData()
     }
     if let showingReviewId = showingReviewId, showingImageIndex = showingImageIndex {
@@ -36,7 +37,7 @@ class ReviewListViewController: BaseTableViewController {
   }
   
   func showReviewImage(reviewId: Int, showingImageIndex: Int) {
-    if let reivew = reviewList.model(reviewId) as? Review {
+    if let reivew = reviews.model(reviewId) as? Review {
       var imageUrls = [NSURL]()
       for imageUrl in reivew.reviewImageUrls {
         imageUrls.append(imageUrl.url())
@@ -51,13 +52,13 @@ class ReviewListViewController: BaseTableViewController {
   }
 }
 
-extension ReviewListViewController: UITableViewDataSource {
+extension ReviewsViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return reviewList.list.count
+    return reviews.list.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,7 +68,7 @@ extension ReviewListViewController: UITableViewDataSource {
   }
 }
 
-extension ReviewListViewController: DynamicHeightTableViewDelegate {
+extension ReviewsViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "reviewCell"
   }
@@ -79,7 +80,7 @@ extension ReviewListViewController: DynamicHeightTableViewDelegate {
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     super.configure(cell, indexPath: indexPath)
     if let cell = cell as? ReviewCell {
-      cell.setUpCell(reviewList.list[indexPath.row] as! Review)
+      cell.setUpCell(reviews.list[indexPath.row] as! Review)
     }
   }
 }

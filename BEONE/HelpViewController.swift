@@ -3,7 +3,7 @@ import UIKit
 
 class HelpsViewController: BaseTableViewController {
   
-  var helpList = HelpList()
+  var helps = Helps()
   
   override func setUpView() {
     super.setUpView()
@@ -12,7 +12,7 @@ class HelpsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    helpList.get { () -> Void in
+    helps.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -23,7 +23,7 @@ class HelpsViewController: BaseTableViewController {
 extension HelpsViewController {
   
   @IBAction func showHelpButtonTapped(sender: UIButton) {
-    if let help = helpList.list[sender.tag] as? Help, url = help.targetUrl {
+    if let help = helps.list[sender.tag] as? Help, url = help.targetUrl {
       showWebView(url, title: help.title)
     }
   }
@@ -35,13 +35,13 @@ extension HelpsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return helpList.list.count
+    return helps.list.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier((indexPath)), forIndexPath: indexPath)
     if let cell = cell as? HelpCell {
-      cell.configureCell(helpList.list[indexPath.row] as! Help, row: indexPath.row)
+      cell.configureCell(helps.list[indexPath.row] as! Help, row: indexPath.row)
     }
     return cell
   }
@@ -55,7 +55,7 @@ extension HelpsViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     let titleLabel = UILabel()
     titleLabel.font = UIFont.systemFontOfSize(15)
-    let help = helpList.list[indexPath.row] as! Help
+    let help = helps.list[indexPath.row] as! Help
     titleLabel.text = help.title
     titleLabel.setWidth(ViewControllerHelper.screenWidth - 80)
     

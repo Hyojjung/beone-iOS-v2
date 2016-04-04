@@ -81,7 +81,7 @@ extension UIViewController {
   
   func showWebView(urlString: String?, title: String?, addressDelegate: AddressDelegate? = nil) {
     if let urlString = urlString {
-      let webViewController = WebViewController()
+      let webViewController = WebViewController(nibName: "WebViewController", bundle: nil)
       webViewController.url = urlString
       webViewController.title = title
       webViewController.addressDelegate = addressDelegate
@@ -92,13 +92,13 @@ extension UIViewController {
   
   func showLocationPicker(selectedLocation: Location? = BEONEManager.selectedLocation, doneBlock: (Int) -> Void) {
     var initialSelection = 0
-    for (index, location) in (BEONEManager.sharedLocationList.list as! [Location]).enumerate() {
+    for (index, location) in (BEONEManager.sharedLocations.list as! [Location]).enumerate() {
       if location == selectedLocation {
         initialSelection = index
       }
     }
     showActionSheet(NSLocalizedString("select location", comment: "picker title"),
-      rows: BEONEManager.sharedLocationList.locationNames(),
+      rows: BEONEManager.sharedLocations.locationNames(),
       initialSelection: initialSelection,
       doneBlock: { (_, selectedIndex, _) -> Void in
         doneBlock(selectedIndex)
@@ -210,7 +210,7 @@ extension UIViewController {
   }
   
   func showOrderResultView(order: Order? = nil, paymentInfoId: Int? = nil, orderResult: [String: AnyObject]? = nil) {
-    let orderResultViewController = OrderResultViewController()
+    let orderResultViewController = OrderResultViewController(nibName: "OrderResultViewController", bundle: nil)
     orderResultViewController.order = order
     orderResultViewController.paymentInfoId = paymentInfoId
     orderResultViewController.orderResult = orderResult
@@ -218,7 +218,7 @@ extension UIViewController {
   }
   
   func showOrderWebView(order: Order, paymentTypeId: Int, paymentInfoId: Int? = nil) {
-    let orderWebViewController = OrderWebViewController()
+    let orderWebViewController = OrderWebViewController(nibName: "OrderWebViewController", bundle: nil)
     orderWebViewController.order = order
     orderWebViewController.paymentInfoId = paymentInfoId
     orderWebViewController.paymentTypeId = paymentTypeId

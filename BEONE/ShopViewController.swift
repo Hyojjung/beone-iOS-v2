@@ -16,11 +16,11 @@ class ShopViewController: BaseTableViewController {
   // MARK: - Property
   
   var shop = Shop()
-  lazy var shopProductList: ProductList = {
-    let productList = ProductList()
-    productList.type = .Shop
-    productList.shopId = self.shop.id
-    return productList
+  lazy var shopProducts: Products = {
+    let products = Products()
+    products.type = .Shop
+    products.shopId = self.shop.id
+    return products
   }()
   
   // MARK: - BaseViewController Methods
@@ -30,7 +30,7 @@ class ShopViewController: BaseTableViewController {
     shop.get({ () -> Void in
       self.tableView.reloadData()
     })
-    shopProductList.get { () -> Void in
+    shopProducts.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -81,7 +81,7 @@ extension ShopViewController {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return section == ShopTableViewSection.Summary.rawValue ?
-      1 : (shopProductList.list.count + 1) / kSimpleProductColumn
+      1 : (shopProducts.list.count + 1) / kSimpleProductColumn
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -102,8 +102,8 @@ extension ShopViewController {
       cell.configureDefaulStyle()
       var products = [Product]()
       let index = indexPath.row * kSimpleProductColumn
-      products.appendObject(shopProductList.list.objectAtIndex(index) as? Product)
-      products.appendObject(shopProductList.list.objectAtIndex(index + 1) as? Product)
+      products.appendObject(shopProducts.list.objectAtIndex(index) as? Product)
+      products.appendObject(shopProducts.list.objectAtIndex(index + 1) as? Product)
       cell.configureView(products)
     }
   }

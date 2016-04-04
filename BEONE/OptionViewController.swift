@@ -21,13 +21,19 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Property
   
   var product = Product()
-  var cartItems = [CartItem]()
-  var selectedOption: ProductOptionSetList?
+  var cartItems = CartItems()
+  var selectedOption: ProductOptionSets?
   var isModifing = false
   var isOrdering = false
   
   private var selectedProductOrderableInfo: ProductOrderableInfo?
   private var deliveryTypeNames = [String]()
+  
+  deinit {
+    if isOrdering {
+      cartItems.delete()
+    }
+  }
   
   // MARK: - BaseViewController Methods
   
@@ -57,9 +63,11 @@ class OptionViewController: BaseTableViewController {
     setUpProductDeliveryTypeNames()
     
     if isModifing && cartItems.count == 1 {
-      selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
-      if let selectedOption = cartItems.first?.selectedOption {
-        self.selectedOption = selectedOption.copy() as? ProductOptionSetList
+      if let cartItem = cartItems.list.first as? CartItem {
+        selectedProductOrderableInfo = cartItem.productOrderableInfo
+        if let selectedOption = cartItem.selectedOption {
+          self.selectedOption = selectedOption.copy() as? ProductOptionSets
+        }
       }
     } else if !isModifing {
       if product.productOrderableInfos.count == 1 {
@@ -69,7 +77,7 @@ class OptionViewController: BaseTableViewController {
         addCartItemButtonTapped()
         return
       }
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
     }
     
     tableView.reloadData()
@@ -86,11 +94,7 @@ class OptionViewController: BaseTableViewController {
   
   func handlePostCartItemSuccess() {
     if isOrdering {
-      var cartItemIds = [Int]()
-      for cartItem in cartItems {
-        cartItemIds.appendObject(cartItem.id!)
-      }
-      showOrderView(cartItemIds)
+      showOrderView(cartItems.ids())
     } else if isModifing {
       popView()
     } else {
@@ -116,18 +120,20 @@ extension OptionViewController {
   @IBAction func sendCart() {
     if let productOrderableInfo = selectedProductOrderableInfo {
       if cartItems.count > 0 {
-        for cartItem in cartItems {
+        for cartItem in cartItems.list as! [CartItem] {
           cartItem.productOrderableInfo = productOrderableInfo
         }
         if !isModifing {
-          CartItemManager.postCartItems(cartItems, postSuccess: { () -> Void in
+          cartItems.post({ (_) in
             self.handlePostCartItemSuccess()
           })
         } else if cartItems.count == 1 {
-          cartItems.first?.selectedOption = selectedOption
-          cartItems.first!.put({ (result) -> Void in
-            self.handlePostCartItemSuccess()
-          })
+          if let cartItem = cartItems.list.first as? CartItem {
+            cartItem.selectedOption = selectedOption
+            cartItem.put({ (result) -> Void in
+              self.handlePostCartItemSuccess()
+            })
+          }
         }
       } else {
         showAlertView(NSLocalizedString("select option", comment: "alert title"))
@@ -158,7 +164,7 @@ extension OptionViewController {
   
   @IBAction func selectQuantityButtonTapped(sender: UIButton) {
     if cartItems.count > sender.tag {
-      let cartItem = cartItems[sender.tag]
+      let cartItem = cartItems.list[sender.tag] as! CartItem
       showActionSheet(NSLocalizedString("select quantity", comment: "picker title"),
         rows: kQuantityStrings,
         initialSelection: cartItem.quantity - 1,
@@ -172,7 +178,7 @@ extension OptionViewController {
   
   @IBAction func deleteCartItemButtonTapped(sender: UIButton) {
     if cartItems.count > sender.tag {
-      cartItems.removeAtIndex(sender.tag)
+      cartItems.list.removeAtIndex(sender.tag)
       tableView.reloadData()
     }
   }
@@ -183,9 +189,9 @@ extension OptionViewController {
     } else {
       let cartItem = CartItem()
       cartItem.product = product
-      cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
-      cartItems.appendObject(cartItem)
+      cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSets
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
+      cartItems.list.appendObject(cartItem)
       tableView.reloadData()
     }
   }
@@ -203,7 +209,7 @@ extension OptionViewController {
     case .Option:
       return product.productOptionSets.list.count == 0 ? 0 : 1
     case .CartItemCount:
-      return isModifing ? 0 : cartItems.count
+      return isModifing ? 0 : cartItems.list.count
     default:
       return 1
     }
@@ -229,7 +235,7 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
     if let cell = cell as? DeliveryInfoCell {
       return cell.calculatedHeight(selectedProductOrderableInfo)
     } else if let cell = cell as? CartItemCountCell {
-      return cell.calculatedHeight(cartItems[indexPath.row])
+      return cell.calculatedHeight(cartItems.list[indexPath.row] as! CartItem)
     } else if let cell = cell as? OptionCell {
       return cell.calculatedHeight(selectedOption, needButton: !isModifing)
     }
@@ -244,7 +250,7 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
     } else if let cell = cell as? ButtonCell {
       cell.configureCell(isOrdering)
     } else if let cell = cell as? CartItemCountCell {
-      cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
+      cell.configureCell(cartItems.list[indexPath.row] as! CartItem, indexPath: indexPath)
     } else if let cell = cell as? OptionCell {
       cell.delegate = self
       cell.configureCell(selectedOption, needButton: !isModifing)

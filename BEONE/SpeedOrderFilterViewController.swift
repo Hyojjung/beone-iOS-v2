@@ -23,10 +23,10 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   var selectedUsageIndex: Int?
   var selectedDeliveryDateIndex: Int?
   var productSearchData = ProductSearchData()
-  var productPropertyList: ProductPropertyList = {
-    let productPropertyList = ProductPropertyList()
-    productPropertyList.forQuickSearch = true
-    return productPropertyList
+  var productProperties: ProductProperties = {
+    let productProperties = ProductProperties()
+    productProperties.forQuickSearch = true
+    return productProperties
   }()
   
   deinit {
@@ -39,13 +39,13 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     if let speedOrderAddressViewController = segue.destinationViewController as? SpeedOrderAddressViewController {
       speedOrderAddressViewController.addressDelegate = self
     } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController {
-      if let productProperty = productPropertyList.list.first as? ProductProperty,
+      if let productProperty = productProperties.list.first as? ProductProperty,
         selectedUsageIndex = selectedUsageIndex {
-        speedOrderResultsViewController.productList.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
+        speedOrderResultsViewController.products.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
       }
-      speedOrderResultsViewController.productList.address = address
+      speedOrderResultsViewController.products.address = address
       if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
-        speedOrderResultsViewController.productList.availableDates =
+        speedOrderResultsViewController.products.availableDates =
           [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
       }
     }
@@ -58,12 +58,12 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    productPropertyList.get()
+    productProperties.get()
     productSearchData.get()
   }
   
   @IBAction func selectUsageButtonTapped() {
-    if let productProperty = productPropertyList.list.first as? ProductProperty {
+    if let productProperty = productProperties.list.first as? ProductProperty {
       showActionSheet("용도를 선택해 주세요",
                       rows: productProperty.valueTitles(),
                       initialSelection: selectedUsageIndex,
@@ -122,7 +122,7 @@ extension SpeedOrderFilterViewController: UITableViewDataSource {
     } else if let cell = cell as? UsageCell {
       var usageValue: ProductPropertyValue? = nil
       if let selectedUsageIndex = selectedUsageIndex,
-        productProperty = productPropertyList.list.first as? ProductProperty {
+        productProperty = productProperties.list.first as? ProductProperty {
         usageValue = productProperty.values[selectedUsageIndex]
       }
       cell.configureCell(usageValue)

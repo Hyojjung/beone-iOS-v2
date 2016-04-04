@@ -70,6 +70,11 @@ class SettingViewController: BaseTableViewController {
     NSNotificationCenter.defaultCenter().addObserver(tableView, selector: #selector(UITableView.reloadData),
       name: kNotificationSigningSuccess, object: nil)
   }
+  
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSigningSuccess, object: nil)
+  }
 }
 
 // MARK: - Actions

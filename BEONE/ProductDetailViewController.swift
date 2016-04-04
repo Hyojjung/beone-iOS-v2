@@ -50,10 +50,10 @@ class ProductDetailViewController: BaseViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   let product = Product()
-  lazy var reviewList: ReviewList = {
-    let reviewList = ReviewList()
-    reviewList.productId = self.product.id
-    return reviewList
+  lazy var reviews: Reviews = {
+    let reviews = Reviews()
+    reviews.productId = self.product.id
+    return reviews
   }()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
@@ -70,10 +70,10 @@ class ProductDetailViewController: BaseViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
-    if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
-      inquiryListViewController.product = product
-    } else if let reviewsViewController = segue.destinationViewController as? ReviewListViewController {
-      reviewsViewController.reviewList = reviewList
+    if let inquiriesViewController = segue.destinationViewController as? InquiriesViewController {
+      inquiriesViewController.product = product
+    } else if let reviewsViewController = segue.destinationViewController as? ReviewsViewController {
+      reviewsViewController.reviews = reviews
       if let sender = sender as? [Int] {
         reviewsViewController.showingReviewId = sender.first
         reviewsViewController.showingImageIndex = sender.last
@@ -94,8 +94,8 @@ class ProductDetailViewController: BaseViewController {
     product.get({ () -> Void in
       self.setUpProductData()
     })
-    reviewList.get {
-      self.product.reviews = self.reviewList.list as! [Review]
+    reviews.get {
+      self.product.reviews = self.reviews.list as! [Review]
       self.collectionView.reloadData()
     }
   }
@@ -105,6 +105,11 @@ class ProductDetailViewController: BaseViewController {
     NSNotificationCenter.defaultCenter().addObserver(self,
                                                      selector: #selector(ProductDetailViewController.handleShowImageNotification(_:)),
       name: kNotificationProductDetailImageTapped, object: nil)
+  }
+  
+  override func removeObservers() {
+    super.removeObservers()
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationProductDetailImageTapped, object: nil)
   }
   
   func reloadLayout() {

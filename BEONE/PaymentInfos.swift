@@ -1,7 +1,7 @@
 
 import UIKit
 
-class PaymentInfoList: BaseListModel {
+class PaymentInfos: BaseListModel {
   
   var mainPaymentInfo: PaymentInfo?
 

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class AvailableTimeRangeList: BaseListModel {
+class AvailableTimeRanges: BaseListModel {
   
   override func assignObject(data: AnyObject?) {
     if let availableTimeRangesObject = data as? [[String: AnyObject]] {

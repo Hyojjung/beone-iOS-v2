@@ -1,7 +1,7 @@
 
 import UIKit
 
-class HelpList: BaseListModel {
+class Helps: BaseListModel {
   override func getUrl() -> String {
     return "helps"
   }

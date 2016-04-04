@@ -10,7 +10,6 @@ class SideBarViewController: BaseTableViewController {
   // MARK: - Constant
   
   private enum SideBarTableViewSection: Int {
-    case Top
     case UserInfo
     case Buttons
     case ProgressingOrderCount
@@ -22,8 +21,7 @@ class SideBarViewController: BaseTableViewController {
     case Count
   }
   
-  private let kSearchTableViewCellIdentifiers = ["topCell",
-                                                 "userInfoCell",
+  private let kSearchTableViewCellIdentifiers = ["userInfoCell",
                                                  "buttonsCell",
                                                  "progressingOrderCountCell",
                                                  "orderItemSetCell",
@@ -39,6 +37,11 @@ class SideBarViewController: BaseTableViewController {
     return sideBarGestureView
   }()
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = true
+  }
+  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -50,11 +53,6 @@ class SideBarViewController: BaseTableViewController {
     sideBarViewContents.get { () -> Void in
       self.tableView.reloadData()
     }
-  }
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    setUpData()
   }
 }
 
@@ -93,7 +91,7 @@ extension SideBarViewController {
   
   @IBAction func deliveryTrackingButtonTapped() {
     if let url = sideBarViewContents.orderDeliveryItemSets.first?.orderDeliveryInfo.deliveryTrackingUrl {
-      let webViewController = WebViewController()
+      let webViewController = WebViewController(nibName: "WebViewController", bundle: nil)
       webViewController.url = url
       webViewController.isModal = true
       presentViewController(webViewController, animated: true, completion: nil)
@@ -183,8 +181,6 @@ extension SideBarViewController: UITableViewDataSource {
 extension SideBarViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     switch (SideBarTableViewSection(rawValue: indexPath.section)!) {
-    case .Top:
-      return 64
     case .UserInfo:
       return 64
     case .Buttons:

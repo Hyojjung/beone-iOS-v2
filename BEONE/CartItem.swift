@@ -8,7 +8,7 @@ class CartItem: BaseModel {
   var quantity = 1
   var product = Product()
   var productOrderableInfo = ProductOrderableInfo()
-  var selectedOption: ProductOptionSetList?
+  var selectedOption: ProductOptionSets?
   
   // MARK: - BaseModel Methods (Fetch)
   
@@ -22,7 +22,7 @@ class CartItem: BaseModel {
       productOrderableInfo.assignObject(cartItem[kCartItemPropertyKeyProductOrderableInfo])
       if let selectedOptionObject = cartItem["productOptionSets"] as? [[String: AnyObject]] {
         if !selectedOptionObject.isEmpty {
-          selectedOption = ProductOptionSetList()
+          selectedOption = ProductOptionSets()
           selectedOption?.assignObject(selectedOptionObject)
         }
       }

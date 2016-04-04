@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProductList: BaseListModel {
+class Products: BaseListModel {
   
   enum Type {
     case None
@@ -44,12 +44,12 @@ class ProductList: BaseListModel {
   }
   
   override func getParameter() -> AnyObject? {
+    var parameter = [String: AnyObject]()
+    parameter["locationId"] = locationId
     switch type {
     case .Shop, .Category, .Recent:
       return nil
     case .None:
-      var parameter = [String: AnyObject]()
-      parameter["locationId"] = locationId
       parameter["productPropertyValueIds"] = productPropertyValueIds
       parameter["tagIds"] = tagIds
       parameter["minPrice"] = minPrice
@@ -58,14 +58,14 @@ class ProductList: BaseListModel {
       parameter["availableDates"] = availableDates
       parameter["address"] = address?.addressString()
       parameter["addressType"] = address?.addressType?.rawValue
-      return parameter
     }
+    return parameter
   }
   
   override func assignObject(data: AnyObject?) {
     list.removeAll()
-    if let productList = data as? [[String: AnyObject]] {
-      for productObject in productList {
+    if let products = data as? [[String: AnyObject]] {
+      for productObject in products {
         let product = Product()
         product.assignObject(productObject)
         list.appendObject(product)

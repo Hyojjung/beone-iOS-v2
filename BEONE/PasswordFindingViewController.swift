@@ -4,22 +4,16 @@ import UIKit
 class PasswordFindingViewController: BaseViewController {
   
   // MARK: - Property
-
+  
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
-
+  
   // MARK: - BaseViewController Methods
-
+  
   override func setUpView() {
     super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "email form"))
     emailTextField.addTarget(self, action: #selector(PasswordFindingViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
-  }
-  
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PasswordFindingViewController.handleSuccess), name: kNotificationRequestFindingPasswordSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PasswordFindingViewController.handleFailure(_:)), name: kNotificationRequestFindingPasswordFailure, object: nil)
   }
 }
 
@@ -31,7 +25,11 @@ extension PasswordFindingViewController {
     if let errorMessage = errorMessage() {
       showAlertView(errorMessage)
     } else if let email = emailTextField.text {
-      SigningHelper.requestFindingPassword(email)
+      SigningHelper.requestFindingPassword(email, success: {
+        self.handleSuccess()
+        }, failure: { (statusCode) in
+          self.handleFailure(statusCode)
+      })
     }
   }
   
@@ -50,14 +48,12 @@ extension PasswordFindingViewController {
     showAlertView(NSLocalizedString("email sended", comment: "email sended"), hasCancel: false, confirmAction: popAction, cancelAction: nil, delegate: self)
   }
   
-  func handleFailure(notification: NSNotification) {
-    if let userInfo = notification.userInfo, statusCode = userInfo[kNotificationKeyErrorStatusCode] as? Int {
-      switch statusCode {
-      case NetworkResponseCode.NotFound.rawValue:
-        showAlertView(NSLocalizedString("email not found", comment: "alert"))
-      default:
-        break
-      }
+  func handleFailure(statusCode: Int) {
+    switch statusCode {
+    case NetworkResponseCode.NotFound.rawValue:
+      showAlertView(NSLocalizedString("email not found", comment: "alert"))
+    default:
+      break
     }
   }
 }

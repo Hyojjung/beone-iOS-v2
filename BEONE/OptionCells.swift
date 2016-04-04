@@ -91,19 +91,19 @@ class OptionCell: UITableViewCell {
   @IBOutlet weak var addCarItemButton: UIButton!
   @IBOutlet weak var optionViewBottomMarginLayoutConstraint: NSLayoutConstraint!
   
-  func configureCell(productOptionSetList: ProductOptionSetList?, needButton: Bool) {
-    if let productOptionSetList = productOptionSetList {
+  func configureCell(productOptionSets: ProductOptionSets?, needButton: Bool) {
+    if let productOptionSets = productOptionSets {
       optionView.delegate = delegate
-      optionView.layoutView(productOptionSetList)
+      optionView.layoutView(productOptionSets)
     }
     addCarItemButton.configureAlpha(needButton)
     optionViewBottomMarginLayoutConstraint.constant = needButton ? 89 : 20
   }
   
-  func calculatedHeight(productOptionSetList: ProductOptionSetList?, needButton: Bool) -> CGFloat {
+  func calculatedHeight(productOptionSets: ProductOptionSets?, needButton: Bool) -> CGFloat {
     var height = needButton ? CGFloat(115) : CGFloat(46)
-    if let productOptionSetList = productOptionSetList {
-      for (index, productOptionSet) in productOptionSetList.list.enumerate() {
+    if let productOptionSets = productOptionSets {
+      for (index, productOptionSet) in productOptionSets.list.enumerate() {
         if let productOptionSet = productOptionSet as? ProductOptionSet {
           height += 40
           if index != 0 {
@@ -125,7 +125,7 @@ class OptionCell: UITableViewCell {
             }
           }
         }
-        if index != productOptionSetList.list.count - 1 {
+        if index != productOptionSets.list.count - 1 {
           height += 11
         }
       }

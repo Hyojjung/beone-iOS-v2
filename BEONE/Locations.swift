@@ -1,20 +1,26 @@
 
 import UIKit
 
-class LocationList: BaseListModel {
+class Locations: BaseListModel {
   override func getUrl() -> String {
     return "locations"
   }
   
   override func assignObject(data: AnyObject?) {
-    if let locationList = data as? [[String: AnyObject]] {
+    if let locations = data as? [[String: AnyObject]] {
       list.removeAll()
-      for locationObject in locationList {
+      for locationObject in locations {
         let location = Location()
         location.assignObject(locationObject)
         list.appendObject(location)
       }
-      BEONEManager.selectedLocation = list.first as? Location
+      if let favoredLocationId = MyInfo.sharedMyInfo().locationId,
+        location = model(Int(favoredLocationId)) as? Location {
+        BEONEManager.selectedLocation = location
+      } else {
+        BEONEManager.selectedLocation = list.first as? Location
+        
+      }
     }
   }
   

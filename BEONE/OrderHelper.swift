@@ -12,16 +12,16 @@ class OrderHelper: NSObject {
     }
   }
   
-  static func fetchPaymentTypeList(getSuccess: (paymentTypeList: PaymentTypeList) -> Void) {
+  static func fetchPaymentTypes(getSuccess: (paymentTypes: PaymentTypes) -> Void) {
     NetworkHelper.requestGet("payment-types", parameter: ["isVisible": true], success: { (result) -> Void in
-      let paymentTypeList = PaymentTypeList()
+      let paymentTypes = PaymentTypes()
       if let paymentTypeObjects = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
         for paymentTypeObject in paymentTypeObjects {
           let paymentType = PaymentType()
           paymentType.assignObject(paymentTypeObject)
-          paymentTypeList.list.appendObject(paymentType)
+          paymentTypes.list.appendObject(paymentType)
         }
-        getSuccess(paymentTypeList: paymentTypeList)
+        getSuccess(paymentTypes: paymentTypes)
       }
       }, failure: nil)
   }
@@ -68,12 +68,12 @@ class OrderHelper: NSObject {
     }
   }
   
-  static func fetchAvailableCoupons(cartItemIds: [Int], couponList: CouponList, getSuccess: () -> Void) {
+  static func fetchAvailableCoupons(cartItemIds: [Int], coupons: Coupons, getSuccess: () -> Void) {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/available-coupons",
         parameter: ["cartItemIds": cartItemIds],
         success: { (result) -> Void in
-          couponList.assignObject(result[kNetworkResponseKeyData])
+          coupons.assignObject(result[kNetworkResponseKeyData])
           getSuccess()
         }, failure: nil)
     }

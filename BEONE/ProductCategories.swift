@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProductCategoryList: BaseListModel {
+class ProductCategories: BaseListModel {
   override func getUrl() -> String {
     return "product-categories"
   }

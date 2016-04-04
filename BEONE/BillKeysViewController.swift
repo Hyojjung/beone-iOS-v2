@@ -20,10 +20,15 @@ class BillKeysViewController: BaseTableViewController {
   // MARK: - Variable
   
   var order = Order()
-  private var billKeyList = BillKeyList()
+  private var billKeys = BillKeys()
   private var selectedBillKey: BillKey?
   private var paymentInfo: PaymentInfo?
   var paymentInfoId: Int?
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = true
+  }
   
   override func setUpView() {
     super.setUpView()
@@ -32,22 +37,22 @@ class BillKeysViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    paymentInfo = order.paymentInfoList.model(paymentInfoId) as? PaymentInfo
-    billKeyList.get { () -> Void in
+    paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo
+    billKeys.get { () -> Void in
       self.tableView.reloadData()
     }
   }
   
   @IBAction func deleteCardButtonTapped(sender: UIButton) {
-    billKeyList.list[sender.tag].remove({() -> Void in
-      self.billKeyList.get { () -> Void in
+    billKeys.list[sender.tag].remove({() -> Void in
+      self.billKeys.get { () -> Void in
         self.tableView.reloadData()
       }
     })
   }
   
   @IBAction func selectCardButtonTapped(sender: UIButton) {
-    selectedBillKey = billKeyList.list[sender.tag] as? BillKey
+    selectedBillKey = billKeys.list[sender.tag] as? BillKey
     tableView.reloadData()
   }
   
@@ -71,8 +76,8 @@ extension BillKeysViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == BillKeyTableViewSection.Card.rawValue {
-      return billKeyList.list.count
-    } else if section == BillKeyTableViewSection.AddCardButton.rawValue && billKeyList.list.count >= 3 {
+      return billKeys.list.count
+    } else if section == BillKeyTableViewSection.AddCardButton.rawValue && billKeys.list.count >= 3 {
       return 0
     }
     return 1
@@ -81,7 +86,7 @@ extension BillKeysViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? BillKeyCell {
-      cell.configureCell(billKeyList.list[indexPath.row] as! BillKey, selectedBillKey: selectedBillKey, row: indexPath.row)
+      cell.configureCell(billKeys.list[indexPath.row] as! BillKey, selectedBillKey: selectedBillKey, row: indexPath.row)
     }
     return cell
   }

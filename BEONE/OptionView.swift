@@ -5,10 +5,10 @@ class OptionView: UIView {
   
   weak var delegate: AnyObject?
   
-  func layoutView(productOptionSetList: ProductOptionSetList) {
+  func layoutView(productOptionSets: ProductOptionSets) {
     subviews.forEach { $0.removeFromSuperview() }
     var previousView: UIView?
-    for (index, productOptionSet) in productOptionSetList.list.enumerate() {
+    for (index, productOptionSet) in productOptionSets.list.enumerate() {
       if let productOptionSet = productOptionSet as? ProductOptionSet {
         previousView = addProductOptionSetSelectView(productOptionSet, previousView: previousView)
         
@@ -20,7 +20,7 @@ class OptionView: UIView {
           }
         }
       }
-      if index != productOptionSetList.list.count - 1 {
+      if index != productOptionSets.list.count - 1 {
         let lineView = UIView()
         lineView.backgroundColor = lightGold
         lineView.addHeightLayout(1)

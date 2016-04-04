@@ -41,12 +41,12 @@ class BaseModel: NSObject {
   
   // MARK: - Post Methods
   
-  func post(postSuccess: ((AnyObject?) -> Void)? = nil, postFailure: ((NetworkError) -> Void)? = nil) {
-    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
+  func post(postSuccess: ((AnyObject?) -> Void)? = nil, postFailure: ((NetworkError) -> Void)? = nil) {    NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) in
+      self.postSuccess(result)
       postSuccess?(result)
-      }, failure: {(error) -> Void in
+      }) { (error) in
         postFailure?(error)
-    })
+    }
   }
   
   func postUrl() -> String {
@@ -57,8 +57,7 @@ class BaseModel: NSObject {
     return nil
   }
   
-  func postSuccess() -> NetworkSuccess? {
-    return nil
+  func postSuccess(result: AnyObject?) {
   }
   
   func postFailure() -> NetworkFailure? {

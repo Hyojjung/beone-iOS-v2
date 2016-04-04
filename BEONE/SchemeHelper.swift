@@ -54,7 +54,7 @@ enum SchemeIdentifier: String {
     case .Cart:
       return ("Cart", "CartView", true)
     case .SpeedOrder:
-      return ("SpeedOrder", "SpeedOrderView", true)
+      return ("SpeedOrder", "SpeedOrderView", false)
     case .Coupons:
       return ("Coupon", "CouponsView", true)
     case .Help:
@@ -142,7 +142,8 @@ extension BaseViewController {
             topViewController.handleScheme(with: id)
           } else if schemeString == kRecentProductsSchemeString {
             let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
-            productsViewController.productList.type = .Recent
+            productsViewController.title = "최근 본 상품"
+            productsViewController.products.type = .Recent
             showViewController(productsViewController, sender: nil)
           }
         }

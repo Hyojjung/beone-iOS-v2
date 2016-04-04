@@ -43,9 +43,9 @@ class CartOrderableItemCell: OrderableItemCell {
   @IBOutlet weak var soldOutImageView: UIImageView!
   @IBOutlet weak var selectButton: UIButton!
 
-  override func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
+  override func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSets?) -> CGFloat {
     var height = super.calculatedHeight(orderableItem, selectedOption: selectedOption)
-    let availableDeliveryDatesString = orderableItem.availableTimeRangeList.availableDeliveryDatesString()
+    let availableDeliveryDatesString = orderableItem.availableTimeRanges.availableDeliveryDatesString()
     if !availableDeliveryDatesString.isEmpty {
       let availableDeliveryDatesLabel = UILabel()
       availableDeliveryDatesLabel.font = UIFont.systemFontOfSize(13)
@@ -57,7 +57,7 @@ class CartOrderableItemCell: OrderableItemCell {
     return height
   }
   
-  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?, selectedCartItemIds: [Int]?) {
+  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSets?, selectedCartItemIds: [Int]?) {
     super.configureCell(orderableItem, selectedOption: selectedOption)
     
     selectButton?.selected = false
@@ -78,7 +78,7 @@ class CartOrderableItemCell: OrderableItemCell {
   }
   
   private func configureAvailableDeliveryDatesView(orderableItem: OrderableItem) {
-    let availableDeliveryDatesString = orderableItem.availableTimeRangeList.availableDeliveryDatesString()
+    let availableDeliveryDatesString = orderableItem.availableTimeRanges.availableDeliveryDatesString()
     deliverableDateLabel?.text = availableDeliveryDatesString
     deliveryDatesKeyView?.configureAlpha(!availableDeliveryDatesString.isEmpty)
     deliveryDatesLabelBottomConstraint?.constant = availableDeliveryDatesString.isEmpty ? 0 : 7
@@ -110,7 +110,7 @@ class CartOrderableItemCell: OrderableItemCell {
   @IBOutlet weak var optionLabel: UILabel!
   @IBOutlet weak var optionKeyView: UIView!
 
-  func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) -> CGFloat {
+  func calculatedHeight(orderableItem: OrderableItem, selectedOption: ProductOptionSets?) -> CGFloat {
     var height = CGFloat(208)
     if let option = selectedOption {
       let optionLabel = UILabel()
@@ -129,7 +129,7 @@ class CartOrderableItemCell: OrderableItemCell {
     return height
   }
   
-  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSetList?) {
+  func configureCell(orderableItem: OrderableItem, selectedOption: ProductOptionSets?) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
     productNameLabel.text = orderableItem.product.title
     productPriceLabel.attributedText = orderableItem.product.priceAttributedString()

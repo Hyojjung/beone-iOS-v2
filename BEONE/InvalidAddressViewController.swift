@@ -45,7 +45,7 @@ extension InvalidAddressViewController: UITableViewDataSource {
       return 1
     }
     let orderableItemSets = order.orderableItemSets[orderItemSetIndex(with: section)]
-    return orderableItemSets.orderableItemList.list.count + kSectionCellCount
+    return orderableItemSets.orderableItems.list.count + kSectionCellCount
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -73,7 +73,7 @@ extension InvalidAddressViewController: DynamicHeightTableViewDelegate {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(orderItemSetIndex(with: indexPath.section)))
     } else if let cell = cell as? OrderableItemCell {
       let orderableItemSet = order.orderableItemSets[orderItemSetIndex(with: indexPath.section)]
-      let orderableItem = orderableItemSet.orderableItemList.list[indexPath.row - kSectionCellCount] as! OrderableItem
+      let orderableItem = orderableItemSet.orderableItems.list[indexPath.row - kSectionCellCount] as! OrderableItem
       return cell.calculatedHeight(orderableItem, selectedOption: orderableItem.selectedOption)
     }
     return nil
@@ -87,7 +87,7 @@ extension InvalidAddressViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(order.orderableItemSets[orderItemSetIndex(with: indexPath.section)])
     } else if let cell = cell as? DeliveryOrderableItemCell, orderableCartItemIds = orderableCartItemIds {
       let orderableItemSet = order.orderableItemSets[orderItemSetIndex(with: indexPath.section)]
-      let orderableItem = orderableItemSet.orderableItemList.list[indexPath.row - kSectionCellCount] as! OrderableItem
+      let orderableItem = orderableItemSet.orderableItems.list[indexPath.row - kSectionCellCount] as! OrderableItem
       cell.configureCell(orderableItemSet, orderableItem: orderableItem, selectedOption: orderableItem.selectedOption, availableCartItemIds: orderableCartItemIds)
     }
   }
@@ -103,7 +103,7 @@ class DeliveryOrderableItemCell: OrderableItemCell {
   @IBOutlet weak var invalidOrderItemImageView: UIImageView!
   @IBOutlet weak var invalidOrderItemLabel: UILabel!
   
-  func configureCell(orderableItemSet: OrderableItemSet, orderableItem: OrderableItem, selectedOption: ProductOptionSetList?, availableCartItemIds: [Int]) {
+  func configureCell(orderableItemSet: OrderableItemSet, orderableItem: OrderableItem, selectedOption: ProductOptionSets?, availableCartItemIds: [Int]) {
     super.configureCell(orderableItem, selectedOption: selectedOption)
     coverView.alpha = availableCartItemIds.contains(orderableItem.cartItemId!) ? 0 : 0.5
     invalidOrderItemImageView.configureAlpha(!availableCartItemIds.contains(orderableItem.cartItemId!))

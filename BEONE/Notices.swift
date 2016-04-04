@@ -1,7 +1,7 @@
 
 import UIKit
 
-class NoticeList: BaseListModel {
+class Notices: BaseListModel {
   override func getUrl() -> String {
     return "notices"
   }
