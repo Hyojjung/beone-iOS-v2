@@ -1,7 +1,7 @@
 
 import UIKit
 
-class InquiryList: BaseListModel {
+class Inquiries: BaseListModel {
   
   var productId: Int?
   

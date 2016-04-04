@@ -4,9 +4,9 @@ import UIKit
 class OrderableItem: BaseModel {
   var actualPrice = 0
   var quantity = 1
-  lazy var availableTimeRangeList: AvailableTimeRangeList = {
-    var availableTimeRangeList = AvailableTimeRangeList()
-    return availableTimeRangeList
+  lazy var availableTimeRanges: AvailableTimeRanges = {
+    var availableTimeRanges = AvailableTimeRanges()
+    return availableTimeRanges
   }()
   lazy var product: Product = {
     var product = Product()
@@ -14,7 +14,7 @@ class OrderableItem: BaseModel {
   }()
   var productOrderableInfo = ProductOrderableInfo()
   var itemImageUrls = [String]()
-  var selectedOption: ProductOptionSetList?
+  var selectedOption: ProductOptionSets?
   var cartItemId: Int?
   var productPrice: Int?
   var productImageUrl: String?
@@ -26,7 +26,7 @@ class OrderableItem: BaseModel {
   override func assignObject(data: AnyObject?) {
     if let orderableItemset = data as? [String: AnyObject] {
       id = orderableItemset[kObjectPropertyKeyId] as? Int
-      availableTimeRangeList.assignObject(orderableItemset["availableTimeRanges"])
+      availableTimeRanges.assignObject(orderableItemset["availableTimeRanges"])
       if let orderDeliveryItemSet = orderableItemset["orderDeliveryItemSet"] {
         self.orderDeliveryItemSet = OrderableItemSet()
         self.orderDeliveryItemSet?.assignObject(orderDeliveryItemSet)
@@ -50,7 +50,7 @@ class OrderableItem: BaseModel {
       productOrderableInfo.assignObject(orderableItemset["productOrderableInfo"])
       
       if let selectedOptionObject = orderableItemset["productOptionSets"] as? [[String: AnyObject]] {
-        selectedOption = ProductOptionSetList()
+        selectedOption = ProductOptionSets()
         selectedOption?.assignObject(selectedOptionObject)
       }
     }

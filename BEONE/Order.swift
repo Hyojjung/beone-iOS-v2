@@ -13,7 +13,7 @@ class Order: BaseModel {
   var discountPrice = 0
   var actualPrice = 0
   var orderableItemSets = [OrderableItemSet]()
-  var paymentInfoList = PaymentInfoList()
+  var paymentInfos = PaymentInfos()
   var cartItemIds = [Int]()
   var title: String?
   var orderCode: String?
@@ -44,7 +44,7 @@ class Order: BaseModel {
       }
       
       assignOrderableItemSets(order)
-      paymentInfoList.assignObject(order["paymentInfos"])
+      paymentInfos.assignObject(order["paymentInfos"])
       id = order[kObjectPropertyKeyId] as? Int
       title = order["title"] as? String
       if let usedPoint = order["usedPoint"] as? Int {
@@ -122,7 +122,7 @@ extension Order {
     var totalItemPrice = 0
     var totalDeliveryPrice = 0
     for orderableItemSet in orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+      for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
         totalItemPrice += orderableItem.actualPrice
       }
       totalDeliveryPrice += orderableItemSet.deliveryPrice
@@ -133,9 +133,9 @@ extension Order {
   func deliveryDateString() -> String {
     var deliveryDateString = String()
     for (i, orderItemSet) in orderableItemSets.enumerate() {
-      for (index, orderItem) in (orderItemSet.orderableItemList.list as! [OrderableItem]).enumerate() {
+      for (index, orderItem) in (orderItemSet.orderableItems.list as! [OrderableItem]).enumerate() {
         deliveryDateString += orderItem.productTitle!
-        if index < orderItemSet.orderableItemList.list.count - 1 {
+        if index < orderItemSet.orderableItems.list.count - 1 {
           deliveryDateString += ", "
         } else {
           deliveryDateString += " : "

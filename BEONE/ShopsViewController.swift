@@ -10,7 +10,7 @@ class ShopsViewController: BaseTableViewController {
   
   // MARK: - Property
   
-  private let shopList = ShopList()
+  private let shops = Shops()
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -26,7 +26,7 @@ class ShopsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shopList.get { () -> Void in
+    shops.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -48,12 +48,12 @@ extension ShopsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return shopList.list.count
+    return shops.list.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
-    if let cell = cell as? ShopTemplateCell, shop = shopList.list[indexPath.row] as? Shop {
+    if let cell = cell as? ShopTemplateCell, shop = shops.list[indexPath.row] as? Shop {
       cell.delegate = self
       cell.configureView(shop)
     }
@@ -75,7 +75,7 @@ extension ShopsViewController: DynamicHeightTableViewDelegate {
 extension ShopsViewController: ShopTemplateCellDelegate {
   
   func shopButtonTapped(shopId: Int) {
-    for shop in shopList.list as! [Shop] {
+    for shop in shops.list as! [Shop] {
       if shopId == shop.id {
         showShopView(shop.id)
         break

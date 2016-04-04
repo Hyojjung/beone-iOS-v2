@@ -16,7 +16,7 @@ class MainTitleView: UIView {
   }
 
   @IBAction func locationButtonTapped(sender: AnyObject) {
-    if BEONEManager.sharedLocationList.list.count != 0 {
+    if BEONEManager.sharedLocations.list.count != 0 {
       delegate?.locationButtonTapped()
     }
   }

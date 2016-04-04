@@ -1,18 +1,18 @@
 
 import UIKit
 
-class InquiryListViewController: BaseTableViewController {
+class InquiriesViewController: BaseTableViewController {
   
-  let inquiryList: InquiryList = {
-    let inquiryList = InquiryList()
-    return inquiryList
+  let inquiries: Inquiries = {
+    let inquiries = Inquiries()
+    return inquiries
   }()
   var product: Product?
   
   override func setUpData() {
     super.setUpData()
-    inquiryList.productId = product?.id
-    inquiryList.get { () -> Void in
+    inquiries.productId = product?.id
+    inquiries.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -23,7 +23,7 @@ class InquiryListViewController: BaseTableViewController {
   }
   
   @IBAction func editInquiryButtonTapped(sender: UIButton) {
-    if let inquiry = inquiryList.model(sender.tag) as? Inquiry {
+    if let inquiry = inquiries.model(sender.tag) as? Inquiry {
       let inquiryEditViewController = InquiryEditViewController(nibName: "InquiryEditViewController", bundle: nil)
       inquiryEditViewController.inquiry = inquiry
       showViewController(inquiryEditViewController, sender: nil)
@@ -31,9 +31,9 @@ class InquiryListViewController: BaseTableViewController {
   }
   
   @IBAction func deleteInquiryButtonTapped(sender: UIButton) {
-    if let inquiry = inquiryList.model(sender.tag) as? Inquiry {
+    if let inquiry = inquiries.model(sender.tag) as? Inquiry {
       inquiry.remove({ () -> Void in
-        self.inquiryList.get({ () -> Void in
+        self.inquiries.get({ () -> Void in
           self.tableView.reloadData()
         })
       })
@@ -47,32 +47,32 @@ class InquiryListViewController: BaseTableViewController {
   }
 }
 
-extension InquiryListViewController: UITableViewDataSource {
+extension InquiriesViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return inquiryList.list.count
+    return inquiries.list.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
     if let cell = cell as? InquiryCell {
-      cell.configureCell(inquiryList.list[indexPath.row] as! Inquiry, shop: product?.shop)
+      cell.configureCell(inquiries.list[indexPath.row] as! Inquiry, shop: product?.shop)
     }
     return cell
   }
 }
 
-extension InquiryListViewController: DynamicHeightTableViewDelegate {
+extension InquiriesViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return "myInquiryCell"
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? InquiryCell {
-      return cell.calculatedHeight(inquiryList.list[indexPath.row] as! Inquiry)
+      return cell.calculatedHeight(inquiries.list[indexPath.row] as! Inquiry)
     }
     return nil
   }

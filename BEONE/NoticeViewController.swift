@@ -3,7 +3,7 @@ import UIKit
 
 class NoticesViewController: BaseTableViewController {
 
-  var noticeList = NoticeList()
+  var notices = Notices()
   
   override func setUpView() {
     super.setUpView()
@@ -12,7 +12,7 @@ class NoticesViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    noticeList.get { () -> Void in
+    notices.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -23,7 +23,7 @@ class NoticesViewController: BaseTableViewController {
 extension NoticesViewController {
   
   @IBAction func showNoticeButtonTapped(sender: UIButton) {
-    if let notice = noticeList.list[sender.tag] as? Notice, url = notice.targetUrl {
+    if let notice = notices.list[sender.tag] as? Notice, url = notice.targetUrl {
       showWebView(url, title: notice.title)
     }
   }
@@ -35,13 +35,13 @@ extension NoticesViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return noticeList.list.count
+    return notices.list.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier((indexPath)), forIndexPath: indexPath)
     if let cell = cell as? NoticeCell {
-      cell.configureCell(noticeList.list[indexPath.row] as! Notice, row: indexPath.row)
+      cell.configureCell(notices.list[indexPath.row] as! Notice, row: indexPath.row)
     }
     return cell
   }
@@ -55,7 +55,7 @@ extension NoticesViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     let titleLabel = UILabel()
     titleLabel.font = UIFont.systemFontOfSize(15)
-    let notice = noticeList.list[indexPath.row] as! Notice
+    let notice = notices.list[indexPath.row] as! Notice
     titleLabel.text = notice.title
     titleLabel.setWidth(ViewControllerHelper.screenWidth - 28)
     

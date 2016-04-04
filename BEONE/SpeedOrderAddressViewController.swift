@@ -17,12 +17,12 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   
   weak var addressDelegate: AddressDelegate?
   var address: Address?
-  var addressList = AddressList()
+  var addresses = Addresses()
   
   var selectedIndex: Int? {
     didSet {
-      if selectedIndex != nil && selectedIndex < addressList.list.count {
-        address = addressList.list[selectedIndex!] as? Address
+      if selectedIndex != nil && selectedIndex < addresses.list.count {
+        address = addresses.list[selectedIndex!] as? Address
       } else {
         selectedIndex = nil
         address = nil
@@ -38,8 +38,8 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    addressList.get { () -> Void in
-      if !self.addressList.list.isEmpty {
+    addresses.get { () -> Void in
+      if !self.addresses.list.isEmpty {
         self.selectedIndex = 0
       }
     }

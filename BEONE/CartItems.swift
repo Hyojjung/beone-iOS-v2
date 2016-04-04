@@ -6,14 +6,14 @@ let kCartItemPropertyKeyProductOrderableInfoId = "productOrderableInfoId"
 let kCartItemPropertyKeyQuantity = "quantity"
 let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
 
-class CartItemList: BaseListModel {
+class CartItems: BaseListModel {
   
   // MARK: - BaseModel Methods (Get)
   
   override func assignObject(data: AnyObject?) {
-    if let cartItemList = data as? [[String: AnyObject]] {
+    if let cartItems = data as? [[String: AnyObject]] {
       list.removeAll()
-      for cartItemObejct in cartItemList {
+      for cartItemObejct in cartItems {
         let cartItem = CartItem()
         cartItem.assignObject(cartItemObejct)
         list.appendObject(cartItem)
@@ -59,13 +59,13 @@ class CartItemList: BaseListModel {
 
 // MARK: - Public Methods
 
-extension CartItemList {
+extension CartItems {
 
 }
 
 // MARK: - Private Methods
 
-extension CartItemList {
+extension CartItems {
   
   private func cartItemUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {

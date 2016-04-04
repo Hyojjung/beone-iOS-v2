@@ -16,7 +16,7 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
   
   // MARK: - Variable
   
-  var orderItems = OrderItemList()
+  var orderItems = OrderItems()
   
   override func setUpView() {
     super.setUpView()

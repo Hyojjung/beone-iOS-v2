@@ -1,11 +1,11 @@
 
 import UIKit
 
-class ProductOptionSetList: BaseListModel {
+class ProductOptionSets: BaseListModel {
   override func assignObject(data: AnyObject?) {
-    if let productOptionSetList = data as? [[String: AnyObject]] {
+    if let productOptionSets = data as? [[String: AnyObject]] {
       list.removeAll()
-      for productOptionSetObject in productOptionSetList {
+      for productOptionSetObject in productOptionSets {
         let productOptionSet = ProductOptionSet()
         productOptionSet.assignObject(productOptionSetObject)
         list.appendObject(productOptionSet)
@@ -14,12 +14,12 @@ class ProductOptionSetList: BaseListModel {
   }
   
   override func copy() -> AnyObject {
-    let productOptionSetList = ProductOptionSetList()
+    let productOptionSets = ProductOptionSets()
     for productOptionSet in list {
       let copiedProductOptionSet = productOptionSet.copy()
-      productOptionSetList.list.appendObject(copiedProductOptionSet as? BaseModel)
+      productOptionSets.list.appendObject(copiedProductOptionSet as? BaseModel)
     }
-    return productOptionSetList
+    return productOptionSets
   }
   
   func validationMessage() -> String? {

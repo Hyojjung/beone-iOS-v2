@@ -9,7 +9,7 @@ class BEONEManager: NSObject {
       CoreDataHelper.sharedCoreDataHelper.saveContext()
     }
   }
-  static var sharedLocationList = LocationList()
+  static var sharedLocations = Locations()
   static var globalViewContents = GlobalViewContents()
   static var selectedAddress: Address?
   static var selectedDate: NSDateComponents?

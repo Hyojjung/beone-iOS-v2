@@ -102,7 +102,7 @@ extension DeliveryDateViewController {
   func availableTimeRanges() -> [AvailableTimeRange] {
     if let selectedDate = selectedDates[selectedOrderableItemSetIndex] {
       let selectedOrderableItemSet = order.orderableItemSets[selectedOrderableItemSetIndex]
-      return selectedOrderableItemSet.availableTimeRangeList.availableDeliveryRanges(selectedDate)
+      return selectedOrderableItemSet.availableTimeRanges.availableDeliveryRanges(selectedDate)
     }
     fatalError("no time ranges at selected index")
   }
@@ -135,7 +135,7 @@ extension DeliveryDateViewController: CKCalendarDelegate {
   }
   
   func dateIsAble(date: NSDate) -> Bool {
-    for ableDate in order.orderableItemSets[selectedOrderableItemSetIndex].availableTimeRangeList.availableDeliveryDates() {
+    for ableDate in order.orderableItemSets[selectedOrderableItemSetIndex].availableTimeRanges.availableDeliveryDates() {
       let dateComponent = date.dateComponent()
       if dateComponent.month == ableDate.month && dateComponent.day == ableDate.day {
         return true
@@ -162,9 +162,9 @@ extension DeliveryDateViewController: UITableViewDataSource {
     if section < order.orderableItemSets.count {
       let orderableItemSet = order.orderableItemSets[section]
       if orderableItemSet.deliveryType.isReservable {
-        return orderableItemSet.orderableItemList.list.count + 5
+        return orderableItemSet.orderableItems.list.count + 5
       } else {
-        return orderableItemSet.orderableItemList.list.count + 3
+        return orderableItemSet.orderableItems.list.count + 3
       }
     }
     return 1
@@ -185,7 +185,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
         return kDeliveryTypeCellIdentifier
       } else if indexPath.row == 1 {
         return kShopNameCellIdentifier
-      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 2 {
+      } else if indexPath.row == orderableItemSet.orderableItems.list.count + 2 {
         if orderableItemSet.deliveryType.isReservable {
           if orderableItemSet.isExpressAvailable {
             return "deliveryDateTypeCell"
@@ -195,13 +195,13 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
         } else {
           return "parcelLabelCell"
         }
-      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 3 {
+      } else if indexPath.row == orderableItemSet.orderableItems.list.count + 3 {
         if !orderableItemSet.isExpressReservation {
           return "timeCell"
         } else {
           return "emptyCell"
         }
-      } else if indexPath.row == orderableItemSet.orderableItemList.list.count + 4 {
+      } else if indexPath.row == orderableItemSet.orderableItems.list.count + 4 {
         return "alertCell"
       } else {
         return "orderOrderableItemCell"
@@ -237,7 +237,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(order.orderableItemSets[indexPath.section],
                          needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? OrderOrderableItemCell,
-      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+      orderItems = order.orderableItemSets[indexPath.section].orderableItems.list as? [OrderableItem] {
       cell.configureCell(orderItems[indexPath.row - 2])
     } else if let cell = cell as? TimeCell {
       cell.configureCell(order.orderableItemSets[indexPath.section], index: indexPath.section,

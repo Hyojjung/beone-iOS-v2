@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ShopList: BaseListModel {
+class Shops: BaseListModel {
   
   lazy var locationId: Int? = {
     return BEONEManager.selectedLocation?.id
@@ -19,8 +19,8 @@ class ShopList: BaseListModel {
   
   override func assignObject(data: AnyObject?) {
     list.removeAll()
-    if let shopList = data as? [[String: AnyObject]] {
-      for shopObject in shopList {
+    if let shops = data as? [[String: AnyObject]] {
+      for shopObject in shops {
         let shop = Shop()
         shop.assignObject(shopObject)
         list.appendObject(shop)

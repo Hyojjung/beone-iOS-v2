@@ -1,7 +1,7 @@
 
 import UIKit
 
-class BillKeyList: BaseListModel {
+class BillKeys: BaseListModel {
 
   override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {

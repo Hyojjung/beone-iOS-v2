@@ -70,8 +70,8 @@ class ProductDetailViewController: BaseViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
-    if let inquiryListViewController = segue.destinationViewController as? InquiryListViewController {
-      inquiryListViewController.product = product
+    if let inquiriesViewController = segue.destinationViewController as? InquiriesViewController {
+      inquiriesViewController.product = product
     } else if let reviewsViewController = segue.destinationViewController as? ReviewsViewController {
       reviewsViewController.reviews = reviews
       if let sender = sender as? [Int] {

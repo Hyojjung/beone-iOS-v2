@@ -1,7 +1,7 @@
 
 import UIKit
 
-class OrderList: BaseListModel {
+class Orders: BaseListModel {
 
   override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() {

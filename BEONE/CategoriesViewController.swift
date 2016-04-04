@@ -1,9 +1,9 @@
 
 import UIKit
 
-class CategoryListViewController: BaseTableViewController {
+class CategoriesViewController: BaseTableViewController {
   
-  var categoryList = ProductCategoryList()
+  var categories = ProductCategories()
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -17,7 +17,7 @@ class CategoryListViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    categoryList.get { () -> Void in
+    categories.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -27,7 +27,7 @@ class CategoryListViewController: BaseTableViewController {
   }
   
   @IBAction func categoryButtonTapped(sender: UIButton) {
-    if let category = categoryList.model(sender.tag) as? ProductCategory {
+    if let category = categories.model(sender.tag) as? ProductCategory {
       if let categoryProductsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
         categoryProductsViewController.title = category.name
         categoryProductsViewController.products.type = .Category
@@ -38,13 +38,13 @@ class CategoryListViewController: BaseTableViewController {
   }
 }
 
-extension CategoryListViewController: SideBarPositionMoveDelegate {
+extension CategoriesViewController: SideBarPositionMoveDelegate {
   func handlemovePosition() {
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
 }
 
-extension CategoryListViewController: UITableViewDataSource {
+extension CategoriesViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 2
   }
@@ -53,20 +53,20 @@ extension CategoryListViewController: UITableViewDataSource {
     if section == 0 {
       return 1
     } else {
-      return categoryList.list.count
+      return categories.list.count
     }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? CategoryCell {
-      cell.configureCell(categoryList.list[indexPath.row] as! ProductCategory)
+      cell.configureCell(categories.list[indexPath.row] as! ProductCategory)
     }
     return cell
   }
 }
 
-extension CategoryListViewController: DynamicHeightTableViewDelegate {
+extension CategoriesViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section == 0 {
       return "imageCell"

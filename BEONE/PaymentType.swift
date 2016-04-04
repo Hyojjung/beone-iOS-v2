@@ -29,6 +29,6 @@ class PaymentType: BaseModel {
   }
 }
 
-class PaymentTypeList: BaseListModel {
+class PaymentTypes: BaseListModel {
   
 }

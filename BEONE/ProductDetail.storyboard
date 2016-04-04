@@ -9,7 +9,7 @@
         <!--상품문의-->
         <scene sceneID="fZg-YZ-exX">
             <objects>
-                <viewController storyboardIdentifier="inquiriesView" title="상품문의" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Csn-Bo-N69" customClass="InquiryListViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inquiriesView" title="상품문의" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Csn-Bo-N69" customClass="InquiriesViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QR6-hB-Yqu"/>
                         <viewControllerLayoutGuide type="bottom" id="dcm-jW-OFI"/>

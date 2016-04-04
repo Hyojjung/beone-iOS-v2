@@ -17,7 +17,7 @@ class OrderCouponsViewController: BaseTableViewController {
     "couponCell",
     "deleteCouponButtonCell"]
   
-  var couponList = CouponList()
+  var coupons = Coupons()
   var order: Order?
   weak var delegate: CouponDelegate?
 
@@ -29,7 +29,7 @@ class OrderCouponsViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     if let order = order {
-      OrderHelper.fetchAvailableCoupons(order.cartItemIds, couponList: couponList, getSuccess: { () -> Void in
+      OrderHelper.fetchAvailableCoupons(order.cartItemIds, coupons: coupons, getSuccess: { () -> Void in
         self.tableView.reloadData()
       })
     }
@@ -50,7 +50,7 @@ extension OrderCouponsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? CouponCell, coupon = couponList.list[indexPath.row] as? Coupon {
+    if let cell = cell as? CouponCell, coupon = coupons.list[indexPath.row] as? Coupon {
       cell.configureCell(coupon)
       cell.delegate = self
     }
@@ -58,10 +58,10 @@ extension OrderCouponsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if couponList.list.count != 0 && section == CouponTableViewSection.NoCoupon.rawValue {
+    if coupons.list.count != 0 && section == CouponTableViewSection.NoCoupon.rawValue {
       return 0
     } else if section == CouponTableViewSection.Coupon.rawValue {
-      return couponList.list.count
+      return coupons.list.count
     }
     return 1
   }
@@ -72,7 +72,7 @@ extension OrderCouponsViewController: DynamicHeightTableViewDelegate {
     if let section = CouponTableViewSection(rawValue: indexPath.section) {
       switch (section) {
       case .Coupon:
-        if let cell = cell as? CouponCell, coupon = couponList.list[indexPath.row] as? Coupon {
+        if let cell = cell as? CouponCell, coupon = coupons.list[indexPath.row] as? Coupon {
           return cell.calculatedHeight(coupon)
         }
       case .NoCoupon:

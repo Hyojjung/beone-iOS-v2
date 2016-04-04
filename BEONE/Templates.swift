@@ -1,13 +1,13 @@
 
 import UIKit
 
-class TemplateList: BaseListModel {
+class Templates: BaseListModel {
   var filterdTemplates = [Template]()
   
   override func assignObject(data: AnyObject?) {
     list.removeAll()
-    if let templateList = data as? [[String: AnyObject]] {
-      for templateObject in templateList {
+    if let templates = data as? [[String: AnyObject]] {
+      for templateObject in templates {
         if let type = templateObject[kTemplatePropertyKeyType] as? String, templateType = TemplateType(rawValue: type) {
           let template = Template(type: templateType)
           template.assignObject(templateObject)

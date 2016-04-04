@@ -50,7 +50,7 @@ class Product: BaseModel {
   var reviews = [Review]()
   
   var productDetails = [ProductDetail]()
-  var productOptionSets = ProductOptionSetList()
+  var productOptionSets = ProductOptionSets()
   var productOrderableInfos = [ProductOrderableInfo]()
   var shop = Shop()
   

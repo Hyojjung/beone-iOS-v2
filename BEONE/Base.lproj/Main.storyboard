@@ -1676,7 +1676,7 @@
         <!--카테고리-->
         <scene sceneID="nJh-Kw-ZeM">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="QoW-kr-PiG" customClass="CategoryListViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="QoW-kr-PiG" customClass="CategoriesViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9z0-74-dzE"/>
                         <viewControllerLayoutGuide type="bottom" id="IAp-G9-mPL"/>

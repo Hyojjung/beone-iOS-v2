@@ -39,7 +39,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   
   var discountWay = DiscountWay.None
   var order = Order()
-  var paymentTypeList: PaymentTypeList?
+  var paymentTypes: PaymentTypes?
   var selectedPaymentTypeId: Int?
   var selectedCoupon: Coupon?
   var point = 0
@@ -53,7 +53,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     super.setUpData()
     var pair = [Int: AvailableTimeRange]()
     for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+      for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
         if let cartItemId = orderableItem.cartItemId {
           if order.cartItemIds.contains(cartItemId) {
             pair[cartItemId] = orderableItemSet.selectedTimeRange
@@ -63,7 +63,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
     }
     OrderHelper.fetchOrderableInfo(order) { () -> Void in
       for orderableItemSet in self.order.orderableItemSets {
-        for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+        for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
           if let cartItemId = orderableItem.cartItemId {
             if let timeRange = pair[cartItemId] {
               orderableItemSet.selectedTimeRange = timeRange
@@ -75,8 +75,8 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       }
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
-      self.paymentTypeList = paymentTypeList
+    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
+      self.paymentTypes = paymentTypes
       self.tableView.reloadData()
     }
   }
@@ -89,7 +89,7 @@ extension SelectingPaymentTypeViewController {
       order.post({ (result) -> Void in
         if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
           self.order.assignObject(data)
-          for paymentInfo in self.order.paymentInfoList.list as! [PaymentInfo] {
+          for paymentInfo in self.order.paymentInfos.list as! [PaymentInfo] {
             if paymentInfo.isMainPayment {
               paymentInfo.paymentType.id = 1001
               paymentInfo.post({ (_) -> Void in
@@ -104,16 +104,16 @@ extension SelectingPaymentTypeViewController {
         }, postFailure: { (_) -> Void in
           self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
       })
-    } else if let paymentTypeId = selectedPaymentTypeId, paymentTypeList = paymentTypeList {
+    } else if let paymentTypeId = selectedPaymentTypeId, paymentTypes = paymentTypes {
       order.post({ (result) -> Void in
         if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
           self.order.assignObject(data)
           if paymentTypeId == PaymentTypeId.Card.rawValue {
-            self.showBillKeysView(self.order, paymentInfoId: (self.order.paymentInfoList.mainPaymentInfo?.id)!)
-          } else if let selectedPaymentType = paymentTypeList.model(paymentTypeId) as? PaymentType {
+            self.showBillKeysView(self.order, paymentInfoId: (self.order.paymentInfos.mainPaymentInfo?.id)!)
+          } else if let selectedPaymentType = paymentTypes.model(paymentTypeId) as? PaymentType {
             if selectedPaymentType.isWebViewTransaction {
               self.showOrderWebView(self.order, paymentTypeId: selectedPaymentType.id!,
-                paymentInfoId: self.order.paymentInfoList.mainPaymentInfo?.id)
+                paymentInfoId: self.order.paymentInfos.mainPaymentInfo?.id)
             }
           }
         }
@@ -251,7 +251,7 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if cell is OrderOrderableItemCell {
       return 97
-    } else if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypeList?.list as? [PaymentType] {
+    } else if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes?.list as? [PaymentType] {
       return cell.calculatedHeight(paymentTypes)
     } else if cell.reuseIdentifier == "discountInfoTitleCell" || cell.reuseIdentifier == "priceTitleCell" {
       return 60
@@ -272,7 +272,7 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
   }
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypeList?.list as? [PaymentType] {
+    if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes?.list as? [PaymentType] {
       cell.configureCell(paymentTypes, selectedPaymentTypeId: selectedPaymentTypeId, delegate: self)
     } else if let cell = cell as? OrderPriceCell {
       cell.configureCell(order, discountWay: discountWay)
@@ -283,7 +283,7 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
     } else if let cell = cell as? OrderOrderableItemCell {
       let cartItemId = order.cartItemIds[indexPath.row]
       for orderableItemSet in order.orderableItemSets {
-        for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+        for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
           if orderableItem.cartItemId == cartItemId {
             cell.configureCell(orderableItem)
             break
@@ -331,7 +331,7 @@ class OrderPriceCell: UITableViewCell {
     }
     var productsPrice = 0
     for orderableItemSet in order.orderableItemSets {
-      for orderableItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+      for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
         productsPrice += orderableItem.actualPrice
       }
     }

@@ -7,7 +7,7 @@
   @IBOutlet weak var allSelectButtonViewTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var allSelectButton: UIButton!
   
-  let cartItemList = CartItemList()
+  let cartItems = CartItems()
   let order: Order = {
     let order = Order()
     order.isDone = false
@@ -21,7 +21,7 @@
   
   override func setUpData() {
     if MyInfo.sharedMyInfo().isUser(){
-      cartItemList.get({ () -> Void in
+      cartItems.get({ () -> Void in
         self.fetchOrderableInfo()
       })
     }
@@ -43,7 +43,7 @@
     if !sender.selected {
       selectedCartItemOrder.cartItemIds.removeAll()
     } else {
-      selectedCartItemOrder.cartItemIds = CartItemManager.cartItemIds(cartItemList.list)
+      selectedCartItemOrder.cartItemIds = CartItemManager.cartItemIds(cartItems.list)
     }
     setUpSelectedCartItemOrder()
   }
@@ -150,7 +150,7 @@
   }
   
   func cartItem(cartItemId: Int) -> CartItem {
-    return cartItemList.model(cartItemId) as! CartItem
+    return cartItems.model(cartItemId) as! CartItem
   }
  }
  
@@ -159,11 +159,11 @@
  extension CartViewController {
   
   func fetchOrderableInfo() {
-    order.cartItemIds = CartItemManager.cartItemIds(cartItemList.list)
-    selectedCartItemOrder.cartItemIds = CartItemManager.cartItemIds(cartItemList.list)
-    tableView.bounces = cartItemList.list.count != 0
+    order.cartItemIds = CartItemManager.cartItemIds(cartItems.list)
+    selectedCartItemOrder.cartItemIds = CartItemManager.cartItemIds(cartItems.list)
+    tableView.bounces = cartItems.list.count != 0
 
-    if cartItemList.list.count > 0 {
+    if cartItems.list.count > 0 {
       OrderHelper.fetchOrderableInfo(order) {
         self.selectedCartItemOrder.actualPrice = self.order.actualPrice
         self.selectedCartItemOrder.orderableItemSets = self.order.orderableItemSets
@@ -178,7 +178,7 @@
   func setUpTableView() {
     setUpButtonView()
     allSelectButton.selected =
-      selectedCartItemOrder.cartItemIds.hasEqualObjects(CartItemManager.cartItemIds(cartItemList.list))
+      selectedCartItemOrder.cartItemIds.hasEqualObjects(CartItemManager.cartItemIds(cartItems.list))
     tableView.reloadData()
   }
   
@@ -199,7 +199,7 @@
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section < order.orderableItemSets.count {
       let orderableItemSets = order.orderableItemSets[section]
-      return orderableItemSets.orderableItemList.list.count + kSectionCellCount
+      return orderableItemSets.orderableItems.list.count + kSectionCellCount
     }
     return 1
   }
@@ -230,7 +230,7 @@
     if let cell = cell as? DeliveryTypeCell {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? CartOrderableItemCell,
-      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+      orderItems = order.orderableItemSets[indexPath.section].orderableItems.list as? [OrderableItem] {
         let orderableItem = orderItems[indexPath.row - kSectionCellCount]
         return cell.calculatedHeight(orderableItem, selectedOption: orderableItem.selectedOption)
     } else if cell is CartPriceCell {
@@ -246,7 +246,7 @@
     } else if let cell = cell as? ShopNameCell {
       cell.configureCell(order.orderableItemSets[indexPath.section])
     } else if let cell = cell as? CartOrderableItemCell,
-      orderItems = order.orderableItemSets[indexPath.section].orderableItemList.list as? [OrderableItem] {
+      orderItems = order.orderableItemSets[indexPath.section].orderableItems.list as? [OrderableItem] {
         let orderableItem = orderItems[indexPath.row - kSectionCellCount]
         cell.configureCell(orderableItem,
           selectedOption: orderableItem.selectedOption,

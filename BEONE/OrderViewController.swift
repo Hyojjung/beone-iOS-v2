@@ -39,7 +39,7 @@ class OrderViewController: BaseTableViewController {
   var orderItemsWithImages = [OrderableItem]()
   var bankUnpaiedPaymentInfos = [PaymentInfo]()
   var returnableOrderItemSets = [OrderableItemSet]()
-  var paymentTypeList: PaymentTypeList?
+  var paymentTypes: PaymentTypes?
   
   // MARK: - BaseViewController Methods
   
@@ -54,8 +54,8 @@ class OrderViewController: BaseTableViewController {
       self.setUpOrder()
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
-      self.paymentTypeList = paymentTypeList
+    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
+      self.paymentTypes = paymentTypes
     }
   }
 }
@@ -82,7 +82,7 @@ extension OrderViewController {
   private func setUpOrderItemsWithImages() {
     orderItemsWithImages.removeAll()
     for orderableItemSet in order.orderableItemSets {
-      for orderItem in orderableItemSet.orderableItemList.list as! [OrderableItem] {
+      for orderItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
         if !orderItem.itemImageUrls.isEmpty {
           orderItemsWithImages.appendObject(orderItem)
         }
@@ -92,7 +92,7 @@ extension OrderViewController {
   
   private func setUpBankUnpaiedPaymentInfos() {
     bankUnpaiedPaymentInfos.removeAll()
-    for paymentInfo in order.paymentInfoList.list as! [PaymentInfo] {
+    for paymentInfo in order.paymentInfos.list as! [PaymentInfo] {
       if paymentInfo.paidAt == nil && paymentInfo.paymentType.id == PaymentTypeId.VBank.rawValue {
         bankUnpaiedPaymentInfos.appendObject(paymentInfo)
       }
@@ -110,7 +110,7 @@ extension OrderViewController {
       return orderItemsWithImages[indexPath.row]
     } else if sectionType == .Shop {
       let orderItemSet = order.orderableItemSets[indexPath.section - OrderTableViewSection.Shop.rawValue]
-      return orderItemSet.orderableItemList.list[indexPath.row - 1] as? OrderableItem
+      return orderItemSet.orderableItems.list[indexPath.row - 1] as? OrderableItem
     }
     return nil
   }
@@ -136,9 +136,9 @@ extension OrderViewController {
 extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
-    if let paymentInfo = order.paymentInfoList.model(sender.tag) as? PaymentInfo {
+    if let paymentInfo = order.paymentInfos.model(sender.tag) as? PaymentInfo {
       if paymentInfo.isPayable {
-        showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
+        showPayment(paymentTypes?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
       } else if paymentInfo.isCancellable {
         if paymentInfo.isMainPayment {
           order.put({ (_) -> Void in
@@ -182,7 +182,7 @@ extension OrderViewController: UITableViewDataSource {
     } else if let cell = cell as? AddressInfoCell {
       cell.configureCell(order)
     } else if let cell = cell as? PaymentInfoCell {
-      cell.configureCell(order.paymentInfoList.list[indexPath.row] as! PaymentInfo)
+      cell.configureCell(order.paymentInfos.list[indexPath.row] as! PaymentInfo)
     } else if let cell = cell as? OrderItemSetShopNameCell {
       cell.configureCell(orderItemSet(indexPath.section))
     } else if let cell = cell as? AccountInfoCell {
@@ -200,9 +200,9 @@ extension OrderViewController: UITableViewDataSource {
     } else if sectionType == .AccountInfo {
       return bankUnpaiedPaymentInfos.count
     } else if sectionType == .Shop {
-      return orderItemSet(section).orderableItemList.list.count + 2
+      return orderItemSet(section).orderableItems.list.count + 2
     } else if sectionType == .PaymentInfo {
-      return order.paymentInfoList.list.count
+      return order.paymentInfos.list.count
     } else if sectionType == .Buttons && returnableOrderItemSets.isEmpty {
       return 0
     }
@@ -225,7 +225,7 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
     if section == .Shop {
       if indexPath.row == 0 {
         return "shopNameCell"
-      } else if indexPath.row == orderItemSet(indexPath.section).orderableItemList.list.count + 1 {
+      } else if indexPath.row == orderItemSet(indexPath.section).orderableItems.list.count + 1 {
         return "orderItemSetInfoCell"
       } else {
         return "orderItemCell"

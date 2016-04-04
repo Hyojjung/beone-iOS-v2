@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProductPropertyList: BaseListModel {
+class ProductProperties: BaseListModel {
   
   var forQuickSearch: Bool?
   var forSearch: Bool?

@@ -3,7 +3,7 @@ import UIKit
 
 class MainTabViewController: UITabBarController {
   
-  let locationList = LocationList()
+  let locations = Locations()
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
   
@@ -30,7 +30,7 @@ class MainTabViewController: UITabBarController {
   }
   
   func setUpData() {
-    BEONEManager.sharedLocationList.get { () -> Void in
+    BEONEManager.sharedLocations.get { () -> Void in
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
     BEONEManager.globalViewContents.get()
@@ -48,7 +48,7 @@ class MainTabViewController: UITabBarController {
 extension MainTabViewController: MainTitleViewDelegate {
   func locationButtonTapped() {
     showLocationPicker { (selectedIndex) -> Void in
-      BEONEManager.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as? Location
+      BEONEManager.selectedLocation = BEONEManager.sharedLocations.list[selectedIndex] as? Location
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
   }

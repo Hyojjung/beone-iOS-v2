@@ -29,12 +29,12 @@ class CouponsViewController: BaseTableViewController {
   
   var isMoreShow = false
   
-  lazy var usableCouponList: CouponList = {
-    let couponList = CouponList()
-    couponList.isUsableCouponList = true
-    return couponList
+  lazy var usableCoupons: Coupons = {
+    let coupons = Coupons()
+    coupons.isUsableCoupons = true
+    return coupons
   }()
-  var unusableCouponList = CouponList()
+  var unusableCoupons = Coupons()
   
   override func setUpView() {
     super.setUpView()
@@ -43,14 +43,14 @@ class CouponsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    usableCouponList.get { () -> Void in
+    usableCoupons.get { () -> Void in
       self.tableView.reloadData()
     }
   }
   
   @IBAction func moreShowButtonTapped() {
     isMoreShow = true
-    unusableCouponList.get { () -> Void in
+    unusableCoupons.get { () -> Void in
       self.tableView.reloadData()
     }
   }
@@ -79,22 +79,22 @@ extension CouponsViewController: UITableViewDataSource {
     } else if section == CouponTableViewSection.More.rawValue {
       return 0
     }
-    if (usableCouponList.list.count != 0 && section == CouponTableViewSection.NoUsableCoupon.rawValue) ||
-      (unusableCouponList.list.count != 0 && section == CouponTableViewSection.NoUnusableCoupon.rawValue) {
+    if (usableCoupons.list.count != 0 && section == CouponTableViewSection.NoUsableCoupon.rawValue) ||
+      (unusableCoupons.list.count != 0 && section == CouponTableViewSection.NoUnusableCoupon.rawValue) {
         return 0
     } else if section == CouponTableViewSection.UsableCoupon.rawValue {
-      return usableCouponList.list.count
+      return usableCoupons.list.count
     } else if section == CouponTableViewSection.UnusableCoupon.rawValue {
-      return unusableCouponList.list.count
+      return unusableCoupons.list.count
     }
     return 1
   }
   
   func coupon(indexPath: NSIndexPath) -> Coupon? {
     if indexPath.section == CouponTableViewSection.UsableCoupon.rawValue {
-      return usableCouponList.list[indexPath.row] as? Coupon
+      return usableCoupons.list[indexPath.row] as? Coupon
     } else if indexPath.section == CouponTableViewSection.UnusableCoupon.rawValue {
-      return unusableCouponList.list[indexPath.row] as? Coupon
+      return unusableCoupons.list[indexPath.row] as? Coupon
     }
     return nil
   }

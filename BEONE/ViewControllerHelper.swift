@@ -92,13 +92,13 @@ extension UIViewController {
   
   func showLocationPicker(selectedLocation: Location? = BEONEManager.selectedLocation, doneBlock: (Int) -> Void) {
     var initialSelection = 0
-    for (index, location) in (BEONEManager.sharedLocationList.list as! [Location]).enumerate() {
+    for (index, location) in (BEONEManager.sharedLocations.list as! [Location]).enumerate() {
       if location == selectedLocation {
         initialSelection = index
       }
     }
     showActionSheet(NSLocalizedString("select location", comment: "picker title"),
-      rows: BEONEManager.sharedLocationList.locationNames(),
+      rows: BEONEManager.sharedLocations.locationNames(),
       initialSelection: initialSelection,
       doneBlock: { (_, selectedIndex, _) -> Void in
         doneBlock(selectedIndex)

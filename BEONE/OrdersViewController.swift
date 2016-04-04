@@ -25,9 +25,9 @@ class OrdersViewController: BaseTableViewController {
   
   // MARK: - Variable
   
-  let orderList = OrderList()
-  let reviewableOrderItems = OrderItemList()
-  var paymentTypeList: PaymentTypeList?
+  let orders = Orders()
+  let reviewableOrderItems = OrderItems()
+  var paymentTypes: PaymentTypes?
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
@@ -43,14 +43,14 @@ class OrdersViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    orderList.get { () -> Void in
+    orders.get { () -> Void in
       self.tableView.reloadData()
     }
     reviewableOrderItems.get { () -> Void in
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypeList() {(paymentTypeList) -> Void in
-      self.paymentTypeList = paymentTypeList
+    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
+      self.paymentTypes = paymentTypes
     }
   }
 }
@@ -62,12 +62,12 @@ extension OrdersViewController {
   }
   
   @IBAction func showOrderDetailButtonTapped(sender: UIButton) {
-    performSegueWithIdentifier("From Orders To Order Detail", sender: orderList.list[sender.tag].id)
+    performSegueWithIdentifier("From Orders To Order Detail", sender: orders.list[sender.tag].id)
   }
   
   @IBAction func orderActionButtonTapped(sender: UIButton) {
-    if let order = orderList.list[sender.tag] as? Order, orderId = order.id,
-      paymentInfoId = order.paymentInfoList.mainPaymentInfo?.id {
+    if let order = orders.list[sender.tag] as? Order, orderId = order.id,
+      paymentInfoId = order.paymentInfos.mainPaymentInfo?.id {
         paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
     }
   }
@@ -87,10 +87,10 @@ extension OrdersViewController: SchemeDelegate {
 extension OrdersViewController: AddintionalPaymentDelegate {
   
   func paymentButtonTapped(orderId: Int, paymentInfoId: Int) {
-    if let order = orderList.model(orderId) as? Order {
-      if let paymentInfo = order.paymentInfoList.model(paymentInfoId) as? PaymentInfo {
+    if let order = orders.model(orderId) as? Order {
+      if let paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo {
         if paymentInfo.isPayable {
-          showPayment(paymentTypeList?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
+          showPayment(paymentTypes?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
         } else if paymentInfo.isCancellable {
           if paymentInfo.isMainPayment {
             order.put({ (_) -> Void in
@@ -115,19 +115,19 @@ extension OrdersViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? OrderCell, order = orderList.list[indexPath.row] as? Order {
+    if let cell = cell as? OrderCell, order = orders.list[indexPath.row] as? Order {
       cell.configureCell(order, row: indexPath.row, addintionalPaymentDelegate: self)
     } else if let cell = cell as? OrdersViewReviewTitleCell {
       cell.setUpCell(reviewableOrderItems.list.count != 0)
     } else if let cell = cell as? OrdersViewTopCell {
-      cell.setUpCell(orderList.total, reviewableOrderItemsCount: reviewableOrderItems.total)
+      cell.setUpCell(orders.total, reviewableOrderItemsCount: reviewableOrderItems.total)
     }
     return cell
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == OrdersTableViewSection.Order.rawValue {
-      return orderList.list.count
+      return orders.list.count
     }
     return 1
   }
@@ -145,8 +145,8 @@ extension OrdersViewController: DynamicHeightTableViewDelegate {
       case .Top:
         return 130
       case .Order:
-        if let order = orderList.list[indexPath.row] as? Order {
-          return 180 + CGFloat(order.paymentInfoList.list.count - 1) * 100
+        if let order = orders.list[indexPath.row] as? Order {
+          return 180 + CGFloat(order.paymentInfos.list.count - 1) * 100
         }
       default:
         return 46
@@ -172,9 +172,9 @@ class OrderCell: UITableViewCell {
     orderCodeLabel.text = order.orderCode
     orderTitleLabel.text = order.title
     orderPriceLabel.text = order.actualPrice.priceNotation(.Korean)
-    let orderableItem = order.orderableItemSets.first?.orderableItemList.list.first as? OrderableItem
+    let orderableItem = order.orderableItemSets.first?.orderableItems.list.first as? OrderableItem
     orderImageView.setLazyLoaingImage(orderableItem?.productImageUrl)
-    layoutPaymentsView(order.paymentInfoList.list as! [PaymentInfo],
+    layoutPaymentsView(order.paymentInfos.list as! [PaymentInfo],
       addintionalPaymentDelegate: addintionalPaymentDelegate)
     
     orderButton.tag = row

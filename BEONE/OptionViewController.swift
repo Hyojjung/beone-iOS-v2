@@ -21,8 +21,8 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Property
   
   var product = Product()
-  var cartItems = CartItemList()
-  var selectedOption: ProductOptionSetList?
+  var cartItems = CartItems()
+  var selectedOption: ProductOptionSets?
   var isModifing = false
   var isOrdering = false
   
@@ -66,7 +66,7 @@ class OptionViewController: BaseTableViewController {
       if let cartItem = cartItems.list.first as? CartItem {
         selectedProductOrderableInfo = cartItem.productOrderableInfo
         if let selectedOption = cartItem.selectedOption {
-          self.selectedOption = selectedOption.copy() as? ProductOptionSetList
+          self.selectedOption = selectedOption.copy() as? ProductOptionSets
         }
       }
     } else if !isModifing {
@@ -77,7 +77,7 @@ class OptionViewController: BaseTableViewController {
         addCartItemButtonTapped()
         return
       }
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
     }
     
     tableView.reloadData()
@@ -189,8 +189,8 @@ extension OptionViewController {
     } else {
       let cartItem = CartItem()
       cartItem.product = product
-      cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSetList
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSetList
+      cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSets
+      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
       cartItems.list.appendObject(cartItem)
       tableView.reloadData()
     }

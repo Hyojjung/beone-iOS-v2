@@ -33,8 +33,8 @@ class ProductsViewController: BaseTableViewController {
   var minPrice = kDefaultMinPrice
   var maxPrice = kDefaultMaxPrice
   
-  var productPropertyList = ProductPropertyList()
-  var tagList = TagList()
+  var productProperties = ProductProperties()
+  var tags = Tags()
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -67,11 +67,11 @@ class ProductsViewController: BaseTableViewController {
         self.maxPrice = maxPrice / kPriceUnit
       }
       
-      productPropertyList.get { () -> Void in
+      productProperties.get { () -> Void in
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
       }
-      tagList.get { () -> Void in
+      tags.get { () -> Void in
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
       } 
@@ -85,7 +85,7 @@ extension ProductsViewController {
   
   @IBAction func selectLocationButtonTapped() {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
-      self.selectedLocation = BEONEManager.sharedLocationList.list[selectedIndex] as! Location
+      self.selectedLocation = BEONEManager.sharedLocations.list[selectedIndex] as! Location
       self.products.locationId = self.selectedLocation.id
       self.products.get({ () -> Void in
         self.tableView.reloadData()
@@ -112,8 +112,8 @@ extension ProductsViewController: UITableViewDataSource {
       cell.configureCell(selectedLocation,
         selectedProductPropertyValueIds: selectedProductPropertyValueIds,
         selectedTagIds: selectedTagIds,
-        productProperties: productPropertyList.list as! [ProductProperty],
-        tags: tagList.list as! [Tag],
+        productProperties: productProperties.list as! [ProductProperty],
+        tags: tags.list as! [Tag],
         minPrice: minPrice,
         maxPrice: maxPrice,
         isSpeedOrder: isSpeedOrder)

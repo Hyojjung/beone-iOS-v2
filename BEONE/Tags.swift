@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TagList: BaseListModel {
+class Tags: BaseListModel {
   
   var name: String?
   var desc: String?
