@@ -41,7 +41,7 @@
                         <constraints>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="43d-VB-8Up" secondAttribute="bottom" id="ESP-4o-RSW"/>
                             <constraint firstAttribute="trailing" secondItem="43d-VB-8Up" secondAttribute="trailing" id="MwT-4a-W8b"/>
-                            <constraint firstAttribute="trailing" secondItem="Nxn-bk-sQG" secondAttribute="trailing" constant="20" id="Qma-c9-QK0"/>
+                            <constraint firstAttribute="trailing" secondItem="Nxn-bk-sQG" secondAttribute="trailing" constant="10" id="Qma-c9-QK0"/>
                             <constraint firstItem="43d-VB-8Up" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Yft-bV-8ZH"/>
                             <constraint firstItem="43d-VB-8Up" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="fBP-FA-pQ4"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Nxn-bk-sQG" secondAttribute="bottom" constant="20" id="rDH-U9-N9E"/>
@@ -1460,7 +1460,7 @@
                             <constraint firstItem="4WB-JS-vN1" firstAttribute="top" secondItem="nUX-Ex-q2b" secondAttribute="bottom" id="aNV-2X-On3"/>
                             <constraint firstItem="nUX-Ex-q2b" firstAttribute="top" secondItem="hw1-rP-vil" secondAttribute="bottom" id="ccZ-Wg-ap7"/>
                             <constraint firstAttribute="trailing" secondItem="nUX-Ex-q2b" secondAttribute="trailing" id="pRn-1a-p1i"/>
-                            <constraint firstAttribute="trailing" secondItem="VK0-nm-TU0" secondAttribute="trailing" constant="20" id="xtX-lG-Tkv"/>
+                            <constraint firstAttribute="trailing" secondItem="VK0-nm-TU0" secondAttribute="trailing" constant="10" id="xtX-lG-Tkv"/>
                             <constraint firstItem="nUX-Ex-q2b" firstAttribute="leading" secondItem="yPP-2V-XVL" secondAttribute="leading" id="z7Y-cL-yc0"/>
                         </constraints>
                     </view>
@@ -2408,7 +2408,7 @@
                             <constraint firstAttribute="trailing" secondItem="cEb-Va-Hb6" secondAttribute="trailing" id="80S-Tb-lZK"/>
                             <constraint firstItem="IAp-G9-mPL" firstAttribute="top" secondItem="cEb-Va-Hb6" secondAttribute="bottom" id="EPr-EO-23p"/>
                             <constraint firstItem="cEb-Va-Hb6" firstAttribute="top" secondItem="H86-Zb-MbS" secondAttribute="top" id="emh-Hb-qD6"/>
-                            <constraint firstAttribute="trailing" secondItem="Gsn-Uk-6il" secondAttribute="trailing" constant="20" id="fUz-bL-vMw"/>
+                            <constraint firstAttribute="trailing" secondItem="Gsn-Uk-6il" secondAttribute="trailing" constant="10" id="fUz-bL-vMw"/>
                             <constraint firstAttribute="bottom" secondItem="cEb-Va-Hb6" secondAttribute="bottom" id="gkK-5J-ciL"/>
                             <constraint firstItem="IAp-G9-mPL" firstAttribute="top" secondItem="Gsn-Uk-6il" secondAttribute="bottom" constant="20" id="let-EL-r05"/>
                         </constraints>
