@@ -72,10 +72,12 @@ class Order: BaseModel {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders"
   }
   
-  override func postSuccess(result: AnyObject?) {
-    if let result = result, data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
-      self.assignObject(data)
-      self.postNotification(kNotificationPostOrderSuccess)
+  override func postSuccess() -> NetworkSuccess? {
+    return {(result: AnyObject) -> Void in
+      if let data = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+        self.assignObject(data)
+        self.postNotification(kNotificationPostOrderSuccess)
+      }
     }
   }
   

@@ -173,7 +173,7 @@ extension BaseViewController {
         optionViewController.product.id = selectedProductId
         optionViewController.isModifing = isModifing
         optionViewController.isOrdering = rightOrdering
-        optionViewController.cartItems.list.appendObject(selectedCartItem)
+        optionViewController.cartItems.appendObject(selectedCartItem)
         showUserViewController(optionViewController)
       }
   }

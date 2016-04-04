@@ -7,7 +7,7 @@ let kCartItemPropertyKeyQuantity = "quantity"
 let kCartItemPropertyKeyProductOptionSets = "productOptionSets"
 
 class CartItems: BaseListModel {
-  
+
   // MARK: - BaseModel Methods (Get)
   
   override func assignObject(data: AnyObject?) {
@@ -26,18 +26,12 @@ class CartItems: BaseListModel {
   }
   
   // MARK: - BaseModel Methods (Post)
-  
-  override func postSuccess(result: AnyObject?) {
-    if let result = result as? [String: AnyObject],
-      data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
-      for cartItem in list as! [CartItem] {
-        for cartItemObject in data {
-          if cartItemObject["productId"] as? Int == cartItem.product.id &&
-            cartItemObject["productOrderableInfoId"] as? Int == cartItem.productOrderableInfo.id &&
-            cartItemObject["quantity"] as? Int == cartItem.quantity {
-            cartItem.id = cartItemObject[kObjectPropertyKeyId] as? Int
-            break
-          }
+
+  override func postSuccess() -> NetworkSuccess? {
+    return {(result) -> Void in
+      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+        for (index, cartItem) in self.list.enumerate() {
+          cartItem.id = data[index][kObjectPropertyKeyId] as? Int
         }
       }
     }
@@ -54,13 +48,6 @@ class CartItems: BaseListModel {
     }
     return parameter
   }
-}
-
-
-// MARK: - Public Methods
-
-extension CartItems {
-
 }
 
 // MARK: - Private Methods
