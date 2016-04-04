@@ -30,6 +30,21 @@ class PersonalInfoViewController: BaseTableViewController {
       self.tableView.reloadData()
     }
   }
+  
+  @IBAction func saveButtonTapped() {
+    if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+      inSection: PersonalInfoTableViewSection.Name.rawValue)) as? InfoTextFieldCell {
+      MyInfo.sharedMyInfo().name = cell.textField.text
+    }
+    if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+      inSection: PersonalInfoTableViewSection.Phone.rawValue)) as? InfoTextFieldCell {
+      MyInfo.sharedMyInfo().phone = cell.textField.text
+    }
+    if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+      inSection: PersonalInfoTableViewSection.Email.rawValue)) as? InfoTextFieldCell {
+      MyInfo.sharedMyInfo().email = cell.textField.text
+    }
+  }
 }
 
 extension PersonalInfoViewController: DynamicHeightTableViewDelegate {
@@ -54,7 +69,31 @@ extension PersonalInfoViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath),
                                                            forIndexPath: indexPath)
+    switch PersonalInfoTableViewSection(rawValue: indexPath.section)! {
+    case .Name:
+      if let cell = cell as? InfoTextFieldCell {
+        cell.setUpCell(MyInfo.sharedMyInfo().name)
+      }
+    case .Phone:
+      if let cell = cell as? InfoTextFieldCell {
+        cell.setUpCell(MyInfo.sharedMyInfo().phone)
+      }
+    case .Email:
+      if let cell = cell as? InfoTextFieldCell {
+        cell.setUpCell(MyInfo.sharedMyInfo().email)
+      }
+    default:
+      break
+    }
     return cell
   }
 }
 
+class InfoTextFieldCell: UITableViewCell {
+  
+  @IBOutlet weak var textField: UITextField!
+  
+  func setUpCell(info: String?) {
+    textField.text = info
+  }
+}

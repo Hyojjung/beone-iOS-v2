@@ -10,7 +10,6 @@ class SideBarViewController: BaseTableViewController {
   // MARK: - Constant
   
   private enum SideBarTableViewSection: Int {
-    case Top
     case UserInfo
     case Buttons
     case ProgressingOrderCount
@@ -22,8 +21,7 @@ class SideBarViewController: BaseTableViewController {
     case Count
   }
   
-  private let kSearchTableViewCellIdentifiers = ["topCell",
-                                                 "userInfoCell",
+  private let kSearchTableViewCellIdentifiers = ["userInfoCell",
                                                  "buttonsCell",
                                                  "progressingOrderCountCell",
                                                  "orderItemSetCell",
@@ -183,8 +181,6 @@ extension SideBarViewController: UITableViewDataSource {
 extension SideBarViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     switch (SideBarTableViewSection(rawValue: indexPath.section)!) {
-    case .Top:
-      return 64
     case .UserInfo:
       return 64
     case .Buttons:

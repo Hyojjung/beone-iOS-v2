@@ -879,7 +879,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="63" id="fq0-13-Rjg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="63" id="fq0-13-Rjg" customClass="InfoTextFieldCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fq0-13-Rjg" id="mQU-HE-D3z">
@@ -888,6 +888,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="20X-V4-0Lx">
                                                     <rect key="frame" x="0.0" y="19" width="600" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="44" id="lRV-gs-cHD"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRD-kM-6Xf">
                                                     <rect key="frame" x="14" y="33" width="80" height="16"/>
@@ -903,9 +906,6 @@
                                                     <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="sam-zf-Fcw" id="JEC-02-Xka"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -922,8 +922,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="textField" destination="SB9-EU-leU" id="fVu-Ji-l0l"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" rowHeight="45" id="gLR-qF-4zR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" rowHeight="45" id="gLR-qF-4zR" customClass="InfoTextFieldCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="85" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gLR-qF-4zR" id="SBo-pA-fSm">
@@ -932,6 +935,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-6B-6oB">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="eC3-TI-Wd3"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="핸드폰번호" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-6Y-lT3">
                                                     <rect key="frame" x="14" y="15" width="80" height="16"/>
@@ -966,8 +972,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="textField" destination="oMj-qD-Ej7" id="jRU-hM-26O"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailCell" rowHeight="45" id="96v-7x-1DC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailCell" rowHeight="45" id="96v-7x-1DC" customClass="InfoTextFieldCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="130" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="96v-7x-1DC" id="ce9-OR-dHp">
@@ -976,6 +985,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="KOX-ZJ-AC0">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="j9b-dm-a7i"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmg-Tz-tq0">
                                                     <rect key="frame" x="14" y="15" width="80" height="16"/>
@@ -1010,6 +1022,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="textField" destination="Vuh-c0-avY" id="KbZ-Qp-p2D"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="birthdayCell" rowHeight="45" id="5Ac-LI-bTp">
                                         <rect key="frame" x="0.0" y="175" width="600" height="45"/>
@@ -1020,6 +1035,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="U46-r1-gkD">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="ozO-Ri-dn8"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM2-Pr-2B2">
                                                     <rect key="frame" x="14" y="15" width="80" height="16"/>
@@ -1072,6 +1090,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="EXW-hV-qWP">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="ZD9-WN-S18"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-3o-EBm">
                                                     <rect key="frame" x="14" y="15" width="80" height="16"/>
@@ -1152,12 +1173,18 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-NK-BBL">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="45" id="A2J-4f-7rE"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="저장" backgroundImage="btn_submit_gold">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" title="저장" backgroundImage="btn_submit_gold_pressed"/>
+                                                    <connections>
+                                                        <action selector="saveButtonTapped" destination="sam-zf-Fcw" eventType="touchUpInside" id="P8v-A0-bZg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
