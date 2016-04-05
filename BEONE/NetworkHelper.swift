@@ -201,7 +201,18 @@ extension NetworkHelper {
       print("GET \(url)")
     #endif
     addNetworkCount()
-    networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+    
+    var param: [String: AnyObject]
+    if parameter == nil {
+      param = [String: AnyObject]()
+    } else {
+      param = parameter as! [String: AnyObject]
+    }
+    if param["locationId"] == nil {
+      param["locationId"] = BEONEManager.selectedLocation?.id
+    }
+    
+    networkManager.GET(url, parameters: param, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
       failure: { (operation, error) -> Void in

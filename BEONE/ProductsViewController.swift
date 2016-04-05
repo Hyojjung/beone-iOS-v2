@@ -36,11 +36,6 @@ class ProductsViewController: BaseTableViewController {
   var productProperties = ProductProperties()
   var tags = Tags()
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    needOftenUpdate = true
-  }
-  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self

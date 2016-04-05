@@ -20,6 +20,11 @@ class PersonalInfoViewController: BaseTableViewController {
                                                        "genderCell",
                                                        "saveButtonCell"]
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self

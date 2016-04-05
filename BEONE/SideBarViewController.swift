@@ -36,12 +36,7 @@ class SideBarViewController: BaseTableViewController {
     sideBarGestureView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     return sideBarGestureView
   }()
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    needOftenUpdate = true
-  }
-  
+
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self

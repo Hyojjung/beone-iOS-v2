@@ -36,11 +36,6 @@ class OptionViewController: BaseTableViewController {
     }
   }
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    needOftenUpdate = true
-  }
-  
   // MARK: - BaseViewController Methods
   
   override func setUpData() {
