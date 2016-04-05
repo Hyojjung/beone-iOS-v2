@@ -122,6 +122,8 @@ extension SelectingPaymentTypeViewController {
         }, postFailure: { (_) -> Void in
           self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
       })
+    } else {
+      showAlertView("결제 수단을 선택해주세요.")
     }
   }
   
