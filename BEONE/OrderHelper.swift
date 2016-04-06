@@ -73,6 +73,7 @@ class OrderHelper: NSObject {
       NetworkHelper.requestGet("users/\(MyInfo.sharedMyInfo().userId!)/helpers/order/available-coupons",
         parameter: ["cartItemIds": cartItemIds],
         success: { (result) -> Void in
+          coupons.isUsableCoupons = true
           coupons.assignObject(result[kNetworkResponseKeyData])
           getSuccess()
         }, failure: nil)

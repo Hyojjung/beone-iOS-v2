@@ -36,12 +36,7 @@ class SideBarViewController: BaseTableViewController {
     sideBarGestureView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     return sideBarGestureView
   }()
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    needOftenUpdate = true
-  }
-  
+
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -99,11 +94,28 @@ extension SideBarViewController {
   }
   
   @IBAction func orderDoneButtonTapped() {
+    let action = Action()
+    action.type = .Method
+    action.content = "orderDone"
+    
+    let alertTitle: String
+    
+    if let name = MyInfo.sharedMyInfo().name {
+      alertTitle = "\(name)님 정말 상품을 받으셨나요?"
+    } else {
+      alertTitle = "정말 상품을 받으셨나요?"
+    }
+    
+    showAlertView(alertTitle, hasCancel: true, confirmAction: action, delegate: self)
+  }
+  
+  func orderDone() {
     sideBarViewContents.orderDeliveryItemSets.first?.put({ (_) -> Void in
       self.sideBarViewContents.get({ () -> Void in
         self.tableView.reloadData()
       })
     })
+
   }
   
   private func setUpScheme(scheme: String) {

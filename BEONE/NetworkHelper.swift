@@ -81,7 +81,7 @@ class NetworkHelper: NSObject {
         }
         let myInfo = MyInfo.sharedMyInfo()
         if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
-          // TODO: show alert view with "서버 점검 중"
+          ViewControllerHelper.topViewController()?.showAlertView("서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.")
         } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
           // TODO: show alert view with "something wrong in server"
         } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
@@ -201,7 +201,18 @@ extension NetworkHelper {
       print("GET \(url)")
     #endif
     addNetworkCount()
-    networkManager.GET(url, parameters: parameter, success: { (operation, responseObject) -> Void in
+    
+    var param: [String: AnyObject]
+    if parameter == nil {
+      param = [String: AnyObject]()
+    } else {
+      param = parameter as! [String: AnyObject]
+    }
+    if param["locationId"] == nil {
+      param["locationId"] = BEONEManager.selectedLocation?.id
+    }
+    
+    networkManager.GET(url, parameters: param, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
       failure: { (operation, error) -> Void in

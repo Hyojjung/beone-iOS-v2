@@ -50,6 +50,10 @@ extension MainTabViewController: MainTitleViewDelegate {
     showLocationPicker { (selectedIndex) -> Void in
       BEONEManager.selectedLocation = BEONEManager.sharedLocations.list[selectedIndex] as? Location
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
+      
+      if let selectedViewController = self.selectedViewController as? BaseViewController {
+        selectedViewController.setUpData()
+      }
     }
   }
 }

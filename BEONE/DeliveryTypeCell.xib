@@ -14,11 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6kv-95-bTM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6kv-95-bTM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pat_cart_delivery" translatesAutoresizingMaskIntoConstraints="NO" id="kQS-Ue-Ymn">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kwU-Mu-jRd"/>
                                 </constraints>
@@ -28,8 +28,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-Db-nZY" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="10" y="0.0" width="590" height="45"/>
+                            <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-Db-nZY" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="10" y="0.0" width="590" height="49.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="295" id="I87-Zb-Amx"/>
                                     <constraint firstAttribute="height" constant="50" id="Vlq-Cx-aPH"/>
@@ -77,8 +77,8 @@
             <connections>
                 <outlet property="backgroundImageView" destination="kQS-Ue-Ymn" id="gjr-gM-sIO"/>
                 <outlet property="deliveryTypeImageView" destination="8N9-Db-nZY" id="OEB-Ee-wm4"/>
-                <outlet property="heightConstraintView" destination="6kv-95-bTM" id="9Gq-wO-2OT"/>
             </connections>
+            <point key="canvasLocation" x="272" y="224"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -4,7 +4,7 @@ import UIKit
 let kPriceUnit = 10000
 let kDefaultPriceUnit = 1
 let kDefaultMinPrice = 0
-let kDefaultMaxPrice = 100
+let kDefaultMaxPrice = 1000000
 
 class ProductSearchData: BaseModel {
   
@@ -21,13 +21,13 @@ class ProductSearchData: BaseModel {
     if let appSettingObject = data as? [String: AnyObject] {
       if let priceRange = appSettingObject["priceRange"] as? [String: AnyObject] {
         if let maxPrice = priceRange["maxPrice"] as? Int {
-          self.maxPrice = maxPrice / kPriceUnit
+          self.maxPrice = maxPrice
         }
         if let minPrice = priceRange["minPrice"] as? Int {
-          self.minPrice = minPrice / kPriceUnit
+          self.minPrice = minPrice
         }
         if let priceUnit = priceRange["priceUnit"] as? Int {
-          self.priceUnit = priceUnit / kPriceUnit
+          self.priceUnit = priceUnit
         }
       }
       if let reservationDateOptionObjects = appSettingObject["reservationDateOptions"] as? [[String: AnyObject]] {

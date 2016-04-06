@@ -134,10 +134,10 @@ extension OrderResultViewController {
         case .PayPal:
           return kPaypalResultViewNibName
         case .KakaoPay:
-          return kEtcResultViewNibName
+          return kOrderResultViewNibName
         }
       } else {
-        return kEtcResultViewNibName
+        return kOrderResultViewNibName
       }
     }
     return nil

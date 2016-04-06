@@ -4,7 +4,7 @@ import UIKit
 class CategoriesViewController: BaseTableViewController {
   
   var categories = ProductCategories()
-  
+
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())

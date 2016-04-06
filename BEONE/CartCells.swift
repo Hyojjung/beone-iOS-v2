@@ -2,7 +2,6 @@
 let kSectionCellCount = 2 // delivery type cell + shop cell count
  
  class DeliveryTypeCell: UITableViewCell {
-  @IBOutlet weak var heightConstraintView: UIView!
   @IBOutlet weak var backgroundImageView: UIImageView!
   @IBOutlet weak var deliveryTypeImageView: LazyLoadingImageView!
   

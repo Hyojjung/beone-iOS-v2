@@ -8,6 +8,7 @@ class InvalidAddressViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "배송상품확인"
     tableView.dynamicHeightDelgate = self
   }
   

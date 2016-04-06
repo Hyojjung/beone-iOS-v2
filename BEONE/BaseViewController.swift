@@ -8,7 +8,7 @@ class BaseViewController: UIViewController {
   private let backButtonOffset = UIOffsetMake(0, -60)
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
-  var needOftenUpdate = false
+  var needOftenUpdate = true
 
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()

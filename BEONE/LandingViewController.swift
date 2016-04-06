@@ -6,7 +6,7 @@ class LandingViewController: BaseTableViewController {
   // MARK: - Property
   
   var templates = Templates()
-  
+
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())

@@ -44,8 +44,14 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   var selectedCoupon: Coupon?
   var point = 0
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   override func setUpView() {
     super.setUpView()
+    title = "결제수단선택"
     tableView.dynamicHeightDelgate = self
   }
   
@@ -83,7 +89,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
 }
 
 extension SelectingPaymentTypeViewController {
-
+  
   @IBAction func orderButtonTapped() {
     if order.price == order.discountPrice {
       order.post({ (result) -> Void in
@@ -112,7 +118,9 @@ extension SelectingPaymentTypeViewController {
             self.showBillKeysView(self.order, paymentInfoId: (self.order.paymentInfos.mainPaymentInfo?.id)!)
           } else if let selectedPaymentType = paymentTypes.model(paymentTypeId) as? PaymentType {
             if selectedPaymentType.isWebViewTransaction {
-              self.showOrderWebView(self.order, paymentTypeId: selectedPaymentType.id!,
+              self.showOrderWebView(self.order,
+                paymentTypeId: selectedPaymentType.id!,
+                paymentTypeName: selectedPaymentType.name,
                 paymentInfoId: self.order.paymentInfos.mainPaymentInfo?.id)
             }
           }
@@ -121,6 +129,8 @@ extension SelectingPaymentTypeViewController {
         }, postFailure: { (_) -> Void in
           self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
       })
+    } else {
+      showAlertView("결제 수단을 선택해주세요.")
     }
   }
   
@@ -152,20 +162,25 @@ extension SelectingPaymentTypeViewController {
   
   @IBAction func selectDiscountWayButtonTapped(sender: UIButton) {
     showActionSheet(NSLocalizedString("select discount way", comment: "action sheet title"),
-      rows: kDiscountWaySelections,
-      initialSelection: discountWay.rawValue,
-      sender: sender,
-      doneBlock: { (_, index, _) -> Void in
-        if let discountWay = DiscountWay(rawValue: index) {
-          self.discountWay = discountWay
-          if discountWay == .None {
-            self.setUpPrices()
-          } else if discountWay == .Point {
-            self.setUpPrices(self.point)
-          } else if discountWay == .Coupon {
-            self.setUpPrices(coupon: self.selectedCoupon)
-          }
-        }
+                    rows: kDiscountWaySelections,
+                    initialSelection: discountWay.rawValue,
+                    sender: sender,
+                    doneBlock: { (_, index, _) -> Void in
+                      if let discountWay = DiscountWay(rawValue: index) {
+                        self.discountWay = discountWay
+                        if discountWay == .None {
+                          self.setUpPrices()
+                        } else if discountWay == .Point {
+                          self.setUpPrices(self.point)
+                          MyInfo.sharedMyInfo().get({
+                            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0,
+                              inSection: SelectingPaymentTypeTableViewSection.Discount.rawValue)],
+                              withRowAnimation: .Automatic)
+                          })
+                        } else if discountWay == .Coupon {
+                          self.setUpPrices(coupon: self.selectedCoupon)
+                        }
+                      }
     })
   }
   

@@ -11,6 +11,7 @@ class DeliveryDateViewController: BaseTableViewController {
   var selectedOrderableItemSetIndex = 0
   var selectedDates = [Int: NSDate]()
   var selectedTimeRanges = [Int: AvailableTimeRange]()
+  var isLoaded = false
   
   lazy var deliveryTimeSelectViewController: DeliveryTimeSelectViewController = {
     let deliveryTimeSelectViewController = DeliveryTimeSelectViewController(nibName: "DeliveryTimeSelectViewController",
@@ -41,6 +42,21 @@ class DeliveryDateViewController: BaseTableViewController {
       if let selectedDate = BEONEManager.selectedDate {
         self.selectedDates[self.selectedOrderableItemSetIndex] =
           DateFormatterHelper.koreanCalendar.dateFromComponents(selectedDate)
+      }
+      
+      if !self.isLoaded {
+        self.isLoaded = true
+        var needReservation = false
+        
+        for orderableItemSet in self.order.orderableItemSets {
+          if orderableItemSet.deliveryType.isReservable {
+            needReservation = true
+          }
+        }
+        
+        if !needReservation {
+          self.orderButtonTapped()
+        }
       }
       self.tableView.reloadData()
     }
@@ -182,7 +198,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
     if indexPath.section < order.orderableItemSets.count {
       let orderableItemSet = order.orderableItemSets[indexPath.section]
       if indexPath.row == 0 {
-        return kDeliveryTypeCellIdentifier
+        return "orderItemSetDeliveryTypeCell"
       } else if indexPath.row == 1 {
         return kShopNameCellIdentifier
       } else if indexPath.row == orderableItemSet.orderableItems.list.count + 2 {
@@ -214,28 +230,25 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if cell is OrderOrderableItemCell {
       return 97
-    } else if cell.reuseIdentifier == kDeliveryTypeCellIdentifier {
-      return 60
     } else if cell.reuseIdentifier == "timeCell" {
       return 157
     } else if cell.reuseIdentifier == "alertCell" {
       return 50
     } else if cell.reuseIdentifier == "buttonCell" {
       return 97
-    } else if cell.reuseIdentifier == "deliveryDateTypeCell" {
-      return 60
-    } else if let cell = cell as? DeliveryTypeCell {
+    } else if let cell = cell as? OrderItemSetDeliveryTypeCell {
       return cell.calculatedHeight(order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? ParcelLabelCell {
       return cell.calculatedHeight()
+    } else if cell is DeliveryDateTypeCell {
+      return 60
     }
     return nil
   }
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-    if let cell = cell as? DeliveryTypeCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section],
-                         needCell: order.deliveryTypeCellHeight(indexPath.section))
+    if let cell = cell as? OrderItemSetDeliveryTypeCell {
+      cell.configureCell(order.orderableItemSets[indexPath.section])
     } else if let cell = cell as? OrderOrderableItemCell,
       orderItems = order.orderableItemSets[indexPath.section].orderableItems.list as? [OrderableItem] {
       cell.configureCell(orderItems[indexPath.row - 2])
@@ -276,6 +289,7 @@ class OrderOrderableItemCell: UITableViewCell {
   
   func configureCell(orderableItem: OrderableItem) {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
+    productImageView.makeCircleView()
     productNameLabel.text = orderableItem.product.title
     productCountLabel.text = "\(orderableItem.quantity) 개"
     productOptionLabel.text = orderableItem.selectedOption?.optionString()

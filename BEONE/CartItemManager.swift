@@ -5,9 +5,9 @@ class CartItemManager: NSObject {
   static func removeCartItem(ids: [Int], removeSuccess: (() -> Void)? = nil) {
     if MyInfo.sharedMyInfo().isUser() {
       NetworkHelper.requestDelete("users/\((MyInfo.sharedMyInfo().userId)!)/cart-items",
-        parameter: ["ids": ids],
-        success: {(result) -> Void in
-          removeSuccess?()
+                                  parameter: ["ids": ids],
+                                  success: {(result) -> Void in
+                                    removeSuccess?()
       })
     }
   }
@@ -22,7 +22,7 @@ class CartItemManager: NSObject {
     return cartItemIds
   }
   
-  static func postCartItems(cartItems: [CartItem], postSuccess: () -> Void) {
+  static func postCartItems(cartItems: [CartItem], postSuccess: ([CartItem]) -> Void) {
     if MyInfo.sharedMyInfo().isUser() {
       var parameter = [[String: AnyObject]]()
       for cartItem in cartItems {
@@ -30,22 +30,18 @@ class CartItemManager: NSObject {
       }
       
       NetworkHelper.requestPost("users/\((MyInfo.sharedMyInfo().userId)!)/cart-items",
-        parameter: parameter,
-        success: {(result) -> Void in
-          if let result = result as? [String: AnyObject],
-            data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
-              for cartItem in cartItems {
-                for cartItemObject in data {
-                  if cartItemObject["productId"] as? Int == cartItem.product.id &&
-                    cartItemObject["productOrderableInfoId"] as? Int == cartItem.productOrderableInfo.id &&
-                    cartItemObject["quantity"] as? Int == cartItem.quantity {
-                      cartItem.id = cartItemObject[kObjectPropertyKeyId] as? Int
-                      break
-                  }
-                }
-              }
-              postSuccess()
-          }
+                                parameter: parameter,
+                                success: {(result) -> Void in
+                                  if let result = result as? [String: AnyObject],
+                                    data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+                                    var postedCartItems = [CartItem]()
+                                    for cartItemObject in data {
+                                      let cartItem = CartItem()
+                                      cartItem.assignObject(cartItemObject)
+                                      postedCartItems.append(cartItem)
+                                    }
+                                    postSuccess(postedCartItems)
+                                  }
         }, failure: nil)
     }
   }

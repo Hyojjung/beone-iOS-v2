@@ -15,7 +15,7 @@ class OptionViewController: BaseTableViewController {
   }
   
   private let kOptionTableViewCellIdentifiers =
-  ["productCell", "deliveryInfoCell", "optionCell", "cartItemCountCell", "buttonCell"]
+    ["productCell", "deliveryInfoCell", "optionCell", "cartItemCountCell", "buttonCell"]
   private let kQuantityStrings = ["1", "2", "3", "4", "5"]
   
   // MARK: - Property
@@ -23,6 +23,7 @@ class OptionViewController: BaseTableViewController {
   var product = Product()
   var cartItems = [CartItem]()
   var selectedOption: ProductOptionSets?
+  var orderingCartItemIds = [Int]()
   var isModifing = false
   var isOrdering = false
   
@@ -31,7 +32,7 @@ class OptionViewController: BaseTableViewController {
   
   deinit {
     if isOrdering {
-      
+      CartItemManager.removeCartItem(orderingCartItemIds)
     }
   }
   
@@ -68,6 +69,7 @@ class OptionViewController: BaseTableViewController {
         self.selectedOption = selectedOption.copy() as? ProductOptionSets
       }
     } else if !isModifing {
+      
       if product.productOrderableInfos.count == 1 {
         selectedProductOrderableInfo = product.productOrderableInfos.first
       }
@@ -94,7 +96,8 @@ class OptionViewController: BaseTableViewController {
     if isOrdering {
       var cartItemIds = [Int]()
       for cartItem in cartItems {
-        cartItemIds.appendObject(cartItem.id!)
+        orderingCartItemIds.appendObject(cartItem.id)
+        cartItemIds.appendObject(cartItem.id)
       }
       showOrderView(cartItemIds)
     } else if isModifing {
@@ -109,8 +112,8 @@ class OptionViewController: BaseTableViewController {
       cancelAction.content = "popView"
       
       showAlertView("장바구니에 담긴 상품을 확인하시겠습니까?",
-        hasCancel: true, confirmAction: confirmAction, cancelAction: cancelAction,
-        delegate: self)
+                    hasCancel: true, confirmAction: confirmAction, cancelAction: cancelAction,
+                    delegate: self)
     }
   }
 }
@@ -121,22 +124,22 @@ extension OptionViewController {
   
   @IBAction func sendCart() {
     if let productOrderableInfo = selectedProductOrderableInfo {
-      if cartItems.count > 0 {
-        for cartItem in cartItems {
-          cartItem.productOrderableInfo = productOrderableInfo
-        }
-        if !isModifing {
-          CartItemManager.postCartItems(cartItems, postSuccess: { () -> Void in
-            self.handlePostCartItemSuccess()
-          })
-        } else if cartItems.count == 1 {
-          cartItems.first?.selectedOption = selectedOption
-          cartItems.first!.put({ (result) -> Void in
-            self.handlePostCartItemSuccess()
-          })
-        }
-      } else {
-        showAlertView(NSLocalizedString("select option", comment: "alert title"))
+      if cartItems.count == 0 {
+        addCartItemButtonTapped()
+      }
+      for cartItem in cartItems {
+        cartItem.productOrderableInfo = productOrderableInfo
+      }
+      if !isModifing {
+        CartItemManager.postCartItems(cartItems, postSuccess: { (cartItems) in
+          self.cartItems = cartItems
+          self.handlePostCartItemSuccess()
+        })
+      } else if cartItems.count == 1 {
+        cartItems.first?.selectedOption = selectedOption
+        cartItems.first!.put({ (result) -> Void in
+          self.handlePostCartItemSuccess()
+        })
       }
     } else {
       showAlertView(NSLocalizedString("select delivery type", comment: "alert title"))
@@ -152,12 +155,12 @@ extension OptionViewController {
     }
     if deliveryTypeNames.count > 0 {
       showActionSheet(NSLocalizedString("select delivery type", comment: "picker title"),
-        rows: deliveryTypeNames,
-        initialSelection: initialSelection,
-        sender: sender,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          self.selectedProductOrderableInfo = self.product.productOrderableInfos[selectedIndex]
-          self.tableView.reloadData()
+                      rows: deliveryTypeNames,
+                      initialSelection: initialSelection,
+                      sender: sender,
+                      doneBlock: { (_, selectedIndex, _) -> Void in
+                        self.selectedProductOrderableInfo = self.product.productOrderableInfos[selectedIndex]
+                        self.tableView.reloadData()
       })
     }
   }
@@ -166,12 +169,12 @@ extension OptionViewController {
     if cartItems.count > sender.tag {
       let cartItem = cartItems[sender.tag]
       showActionSheet(NSLocalizedString("select quantity", comment: "picker title"),
-        rows: kQuantityStrings,
-        initialSelection: cartItem.quantity - 1,
-        sender: sender,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          cartItem.quantity = selectedIndex + 1
-          self.tableView.reloadData()
+                      rows: kQuantityStrings,
+                      initialSelection: cartItem.quantity - 1,
+                      sender: sender,
+                      doneBlock: { (_, selectedIndex, _) -> Void in
+                        cartItem.quantity = selectedIndex + 1
+                        self.tableView.reloadData()
       })
     }
   }
@@ -273,14 +276,14 @@ extension OptionViewController: OptionDelegate {
         }
       }
       showActionSheet( NSLocalizedString("select option", comment: "picker title"),
-        rows: optionValues,
-        initialSelection: initialSelection,
-        sender: sender,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          for (index, option) in self.selectedOption(optionId).options.enumerate() {
-            option.isSelected = index == selectedIndex
-          }
-          self.tableView.reloadData()
+                       rows: optionValues,
+                       initialSelection: initialSelection,
+                       sender: sender,
+                       doneBlock: { (_, selectedIndex, _) -> Void in
+                        for (index, option) in self.selectedOption(optionId).options.enumerate() {
+                          option.isSelected = index == selectedIndex
+                        }
+                        self.tableView.reloadData()
       })
     } else {
       for (index, select) in selectedOptionItem(optionId).selects.enumerate() {
@@ -292,17 +295,17 @@ extension OptionViewController: OptionDelegate {
         }
       }
       showActionSheet( NSLocalizedString("select option", comment: "picker title"),
-        rows: optionValues,
-        initialSelection: initialSelection,
-        sender: sender,
-        doneBlock: { (_, selectedIndex, _) -> Void in
-          for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
-            if index == selectedIndex {
-              self.selectedOptionItem(optionId).value = select.name
-              self.selectedOptionItem(optionId).selectedName = select.selectName()
-            }
-          }
-          self.tableView.reloadData()
+                       rows: optionValues,
+                       initialSelection: initialSelection,
+                       sender: sender,
+                       doneBlock: { (_, selectedIndex, _) -> Void in
+                        for (index, select) in self.selectedOptionItem(optionId).selects.enumerate() {
+                          if index == selectedIndex {
+                            self.selectedOptionItem(optionId).value = select.name
+                            self.selectedOptionItem(optionId).selectedName = select.selectName()
+                          }
+                        }
+                        self.tableView.reloadData()
       })
     }
     

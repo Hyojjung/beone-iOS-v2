@@ -63,6 +63,18 @@
   }
   
   @IBAction func removeSelectedCartItemsButtonTapped() {
+    if selectedCartItemOrder.cartItemIds == CartItemManager.cartItemIds(cartItems.list) {
+      let action = Action()
+      action.type = .Method
+      action.content = "deleteCartItems"
+      
+      showAlertView("정말 삭제하시겠습니까?", hasCancel: true, confirmAction: action, delegate: self)
+    } else {
+      deleteCartItems()
+    }
+  }
+  
+  func deleteCartItems() {
     deleteCartItem(selectedCartItemOrder.cartItemIds)
   }
   
