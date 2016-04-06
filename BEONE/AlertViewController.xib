@@ -33,7 +33,7 @@
                     </connections>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFp-Mz-Yef">
-                    <rect key="frame" x="24" y="236.5" width="552" height="127"/>
+                    <rect key="frame" x="24" y="237" width="552" height="127"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIs-XT-aBM">
                             <rect key="frame" x="12" y="52" width="528" height="17"/>
@@ -46,12 +46,16 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-0q-Nav">
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
-                                    <state key="normal" title="취소" backgroundImage="btn_submit_goldlight">
-                                        <color key="titleColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="취소" backgroundImage="btnRectDarkgray">
+                                        <color key="titleColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="btnRectDarkgrayPressed">
+                                        <color key="titleColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="highlighted" backgroundImage="btn_submit_goldlight_pressed">
                                         <color key="titleColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <state key="focused" backgroundImage="btnRectDarkgrayPressed"/>
                                     <connections>
                                         <action selector="cancelButtonTapped" destination="-1" eventType="touchUpInside" id="bWR-zu-dmj"/>
                                     </connections>
@@ -97,7 +101,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.96470588235294119" green="0.93725490196078431" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="EgM-Q3-jBb" firstAttribute="top" secondItem="hmT-US-Veu" secondAttribute="bottom" constant="8" id="1ds-bz-5HQ"/>
                         <constraint firstAttribute="trailing" secondItem="FIs-XT-aBM" secondAttribute="trailing" constant="12" id="6p8-f7-COL"/>
@@ -142,9 +146,10 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="btnRectDarkgray" width="3" height="3"/>
+        <image name="btnRectDarkgrayPressed" width="3" height="3"/>
         <image name="btn_submit_gold" width="2" height="2"/>
         <image name="btn_submit_gold_pressed" width="2" height="2"/>
-        <image name="btn_submit_goldlight" width="2" height="2"/>
         <image name="btn_submit_goldlight_pressed" width="2" height="2"/>
     </resources>
 </document>

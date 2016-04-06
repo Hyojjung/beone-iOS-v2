@@ -616,7 +616,8 @@
                                                             <exclude reference="xZ0-lc-QWk"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="12" width="104" height="135"/>
                                                         <mask key="constraints">
                                                             <include reference="Tly-ZO-Daf"/>
                                                             <include reference="xZ0-lc-QWk"/>
@@ -769,9 +770,6 @@
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="lFS-UF-4P1">
                                                                     <rect key="frame" x="25" y="22" width="44" height="44"/>
-                                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="1" y="0.0" width="44" height="44"/>
-                                                                    </variation>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmL-wH-tsB">
                                                                     <rect key="frame" x="42" y="68" width="9" height="17"/>
@@ -1576,7 +1574,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sidebar_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-b3-Xh1">
                                         <rect key="frame" x="89" y="89" width="22" height="22"/>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="55" y="55" width="22" height="22"/>
+                                            <rect key="frame" x="54" y="54" width="22" height="22"/>
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-0y-fgI">
@@ -1585,7 +1583,7 @@
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="49" y="81" width="37" height="17"/>
+                                            <rect key="frame" x="48" y="80" width="37" height="17"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -1633,6 +1631,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="43" y="82" width="49" height="17"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1830,6 +1831,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="53" y="81" width="25" height="17"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2427,7 +2431,7 @@
                                     <outlet property="delegate" destination="QoW-kr-PiG" id="ajb-Io-LfE"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
                                 <rect key="frame" x="497" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -2474,7 +2478,7 @@
         <image name="btnRectDarkgray" width="3" height="3"/>
         <image name="btnRectDarkgrayPressed" width="3" height="3"/>
         <image name="btnRectPcolor" width="3" height="3"/>
-        <image name="btnRectPcolor90" width="12" height="12"/>
+        <image name="btnRectPcolor90" width="14" height="14"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btnSelectOff" width="36" height="40"/>
         <image name="btnSelectOn" width="36" height="40"/>

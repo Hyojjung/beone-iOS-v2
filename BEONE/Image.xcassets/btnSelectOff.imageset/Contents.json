@@ -1,6 +1,8 @@
 {
   "images" : [
     {
+      "idiom" : "universal",
+      "filename" : "btnSelectOff.pdf",
       "resizing" : {
         "mode" : "3-part-horizontal",
         "center" : {
@@ -11,42 +13,7 @@
           "right" : 31,
           "left" : 4
         }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOff.png",
-      "scale" : "1x"
-    },
-    {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1
-        },
-        "cap-insets" : {
-          "right" : 64,
-          "left" : 7
-        }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOff@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1
-        },
-        "cap-insets" : {
-          "right" : 96,
-          "left" : 11
-        }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOff@3x.png",
-      "scale" : "3x"
+      }
     }
   ],
   "info" : {
