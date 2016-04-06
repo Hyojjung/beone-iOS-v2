@@ -64,13 +64,6 @@ extension ReviewableOrderItemsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? ReviewableOrderItemCell {
       cell.setUpCell(orderItems.list[indexPath.row] as! OrderableItem)
-    } else if let cell = cell as? ReviewableImageTitleCell {
-      if let orderItem = orderItems.list[indexPath.row] as? OrderableItem,
-        shopName = orderItem.shopName,
-        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
-        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
-        cell.setUpCell(reviewInfo)
-      }
     }
     return cell
   }
@@ -89,13 +82,6 @@ extension ReviewableOrderItemsViewController: DynamicHeightTableViewDelegate {
       topLabel.text = NSLocalizedString("reviews view top cell label", comment: "top cell label")
       topLabel.setWidth(ViewControllerHelper.screenWidth - 28)
       return 80 + topLabel.frame.height
-    } else if let cell = cell as? ReviewableImageTitleCell {
-      if let orderItem = orderItems.list[indexPath.row] as? OrderableItem,
-        shopName = orderItem.shopName,
-        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
-        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
-        return cell.calculatedHeight(reviewInfo)
-      }
     } else if let cell = cell as? BaseTableViewCell {
       return cell.height
     }

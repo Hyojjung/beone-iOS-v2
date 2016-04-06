@@ -196,6 +196,13 @@ extension AddingReviewViewController: DynamicHeightTableViewDelegate {
     if indexPath.section == AddingReviewTableViewSection.Image.rawValue {
       let imageSize = reviewImages[indexPath.row].size
       return imageSize.height * (ViewControllerHelper.screenWidth - 16) / imageSize.width + 12
+    } else if let cell = cell as? ReviewableImageTitleCell {
+      if let orderItem = review.orderItem,
+        shopName = orderItem.orderDeliveryItemSet?.shop.name,
+        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
+        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
+        return cell.calculatedHeight(reviewInfo)
+      }
     }
     return kAddingReviewTableViewCellHeights[indexPath.section]
   }
@@ -224,6 +231,13 @@ extension AddingReviewViewController: UITableViewDataSource {
       cell.setUpCell(review)
     } else if let cell = cell as? ReviewImageCell {
       cell.setUpCell(reviewImages[indexPath.row], index: indexPath.row)
+    } else if let cell = cell as? ReviewableImageTitleCell {
+      if let orderItem = review.orderItem,
+        shopName = orderItem.orderDeliveryItemSet?.shop.name,
+        senderName = orderItem.orderDeliveryItemSet?.order.senderName {
+        let reviewInfo = "\(shopName)\(NSLocalizedString("took picture", comment: "review info"))\(senderName)\(NSLocalizedString("real product", comment: "review info"))"
+        cell.setUpCell(reviewInfo)
+      }
     }
     return cell
   }
