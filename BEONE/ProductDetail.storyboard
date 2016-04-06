@@ -2292,7 +2292,7 @@
                                             <outlet property="titleLabel" destination="mMr-9t-m8w" id="8bv-1X-FQg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryInfoCell" rowHeight="113" id="Odf-e7-xgo" customClass="DeliveryInfoCell" customModule="BEONE" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="deliveryInfoCell" rowHeight="110" id="Odf-e7-xgo" customClass="DeliveryInfoCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="212" width="600" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odf-e7-xgo" id="Yma-88-zlt">
@@ -2487,7 +2487,7 @@
                                             <outlet property="optionViewBottomMarginLayoutConstraint" destination="crr-4I-kCA" id="0p1-0C-yAW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartItemCountCell" rowHeight="167" id="qY8-cf-gIT" customClass="CartItemCountCell" customModule="BEONE" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cartItemCountCell" rowHeight="145" id="qY8-cf-gIT" customClass="CartItemCountCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="440" width="600" height="167"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qY8-cf-gIT" id="RCy-EG-Sql">
@@ -2500,6 +2500,24 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderlineWhite" translatesAutoresizingMaskIntoConstraints="NO" id="RiX-Aq-XuJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="157"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송타입명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34y-su-izv">
+                                                            <rect key="frame" x="15" y="30" width="39" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="15" y="15" width="65" height="22"/>
+                                                            </variation>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="옵션" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxE-s9-NCe">
+                                                            <rect key="frame" x="15" y="53" width="513" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.72941176470588232" green="0.62745098039215685" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="15" y="42" width="26" height="18"/>
+                                                            </variation>
+                                                        </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBe-55-Peu">
                                                             <rect key="frame" x="15" y="86" width="570" height="40"/>
                                                             <subviews>
@@ -2585,24 +2603,12 @@
                                                                 </mask>
                                                             </variation>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송타입명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34y-su-izv">
-                                                            <rect key="frame" x="15" y="30" width="39" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="옵션" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxE-s9-NCe">
-                                                            <rect key="frame" x="15" y="53" width="513" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.72941176470588232" green="0.62745098039215685" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="oxE-s9-NCe" firstAttribute="top" secondItem="34y-su-izv" secondAttribute="bottom" constant="5" id="4Mu-td-orG"/>
-                                                        <constraint firstAttribute="bottom" secondItem="FBe-55-Peu" secondAttribute="bottom" constant="31" id="9U0-vY-1r4"/>
-                                                        <constraint firstItem="34y-su-izv" firstAttribute="top" secondItem="c3m-I2-d8f" secondAttribute="top" constant="30" id="CT7-DA-yl1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="FBe-55-Peu" secondAttribute="bottom" constant="15" id="9U0-vY-1r4"/>
+                                                        <constraint firstItem="34y-su-izv" firstAttribute="top" secondItem="c3m-I2-d8f" secondAttribute="top" constant="15" id="CT7-DA-yl1"/>
                                                         <constraint firstAttribute="height" constant="135" id="CYV-bL-Ra1"/>
                                                         <constraint firstItem="34y-su-izv" firstAttribute="leading" secondItem="c3m-I2-d8f" secondAttribute="leading" constant="15" id="DEm-NT-sfn"/>
                                                         <constraint firstItem="RiX-Aq-XuJ" firstAttribute="top" secondItem="c3m-I2-d8f" secondAttribute="top" id="DQS-A4-SGi"/>
@@ -2612,6 +2618,7 @@
                                                         <constraint firstAttribute="height" constant="135" id="XdD-1C-1yT"/>
                                                         <constraint firstAttribute="trailing" secondItem="RiX-Aq-XuJ" secondAttribute="trailing" id="Xpd-CT-cmz"/>
                                                         <constraint firstAttribute="trailing" secondItem="FBe-55-Peu" secondAttribute="trailing" constant="15" id="fVY-lg-631"/>
+                                                        <constraint firstItem="FBe-55-Peu" firstAttribute="top" secondItem="oxE-s9-NCe" secondAttribute="bottom" constant="15" id="lb2-fv-UUR"/>
                                                         <constraint firstItem="FBe-55-Peu" firstAttribute="leading" secondItem="c3m-I2-d8f" secondAttribute="leading" constant="15" id="vDu-nH-cLP"/>
                                                         <constraint firstItem="RiX-Aq-XuJ" firstAttribute="leading" secondItem="c3m-I2-d8f" secondAttribute="leading" id="zLi-bZ-LJZ"/>
                                                     </constraints>
@@ -2620,6 +2627,12 @@
                                                             <exclude reference="CYV-bL-Ra1"/>
                                                             <exclude reference="XdD-1C-1yT"/>
                                                             <exclude reference="FP4-Dm-B4P"/>
+                                                            <exclude reference="lb2-fv-UUR"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="lb2-fv-UUR"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
