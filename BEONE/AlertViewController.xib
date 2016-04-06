@@ -33,16 +33,16 @@
                     </connections>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFp-Mz-Yef">
-                    <rect key="frame" x="24" y="237" width="552" height="127"/>
+                    <rect key="frame" x="24" y="231" width="552" height="139"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIs-XT-aBM">
-                            <rect key="frame" x="12" y="52" width="528" height="17"/>
+                            <rect key="frame" x="12" y="58" width="528" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43g-oL-4yA">
-                            <rect key="frame" x="0.0" y="83" width="552" height="44"/>
+                            <rect key="frame" x="0.0" y="95" width="552" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-0q-Nav">
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
@@ -105,8 +105,8 @@
                     <constraints>
                         <constraint firstItem="EgM-Q3-jBb" firstAttribute="top" secondItem="hmT-US-Veu" secondAttribute="bottom" constant="8" id="1ds-bz-5HQ"/>
                         <constraint firstAttribute="trailing" secondItem="FIs-XT-aBM" secondAttribute="trailing" constant="12" id="6p8-f7-COL"/>
-                        <constraint firstItem="FIs-XT-aBM" firstAttribute="top" secondItem="EgM-Q3-jBb" secondAttribute="bottom" constant="14" id="8Lg-4m-ugS"/>
-                        <constraint firstItem="43g-oL-4yA" firstAttribute="top" secondItem="FIs-XT-aBM" secondAttribute="bottom" constant="14" id="AbN-26-Hd9"/>
+                        <constraint firstItem="FIs-XT-aBM" firstAttribute="top" secondItem="EgM-Q3-jBb" secondAttribute="bottom" constant="20" id="8Lg-4m-ugS"/>
+                        <constraint firstItem="43g-oL-4yA" firstAttribute="top" secondItem="FIs-XT-aBM" secondAttribute="bottom" constant="20" id="AbN-26-Hd9"/>
                         <constraint firstAttribute="trailing" secondItem="EgM-Q3-jBb" secondAttribute="trailing" constant="14" id="ELs-Qm-2Ir"/>
                         <constraint firstItem="EgM-Q3-jBb" firstAttribute="leading" secondItem="lFp-Mz-Yef" secondAttribute="leading" constant="14" id="F51-df-VU0"/>
                         <constraint firstItem="43g-oL-4yA" firstAttribute="leading" secondItem="lFp-Mz-Yef" secondAttribute="leading" id="GRD-ii-iz1"/>
