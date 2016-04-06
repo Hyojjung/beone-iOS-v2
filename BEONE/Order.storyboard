@@ -35,11 +35,11 @@
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="ZE7-jb-csV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal" title="즉시" backgroundImage="btnGoldStroke">
+                                                    <state key="normal" title="즉시" backgroundImage="btnLinePcolor">
                                                         <color key="titleColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="즉시" backgroundImage="btnGoldStrokePressed">
+                                                    <state key="selected" title="즉시" backgroundImage="btnLinePcolorPressed">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <variation key="default">
@@ -60,11 +60,11 @@
                                                         <constraint firstAttribute="height" priority="999" constant="40" id="N75-kn-l5g"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal" title="시간지정" backgroundImage="btnGoldStroke">
+                                                    <state key="normal" title="시간지정" backgroundImage="btnLinePcolor">
                                                         <color key="titleColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" title="시간지정" backgroundImage="btnGoldStrokePressed">
+                                                    <state key="selected" title="시간지정" backgroundImage="btnLinePcolorPressed">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <variation key="default">
@@ -218,7 +218,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 교통상황에 따라 달라질 수 있으나, 지정하신 시간 전후 30분 내외로 받아보실 수 있습니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-9c-Oca">
                                                     <rect key="frame" x="15" y="123" width="570" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="1" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.90588235289999997" green="0.43529411759999997" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -277,9 +277,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 우천시 배송이 지연될 수 있습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4G-6o-GQt">
-                                                    <rect key="frame" x="15" y="8" width="186" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="1" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="15" y="8" width="200" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.90588235294117647" green="0.43529411764705883" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -351,7 +351,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="60" id="sRn-4e-cc2"/>
                                                     </constraints>
-                                                    <state key="normal" title="주문하기" backgroundImage="btnRectPcolor">
+                                                    <state key="normal" title="주문하기" backgroundImage="btnRectDarkgray">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -3395,6 +3395,9 @@ IAo
         <image name="bg_list" width="3" height="3"/>
         <image name="btnGoldStroke" width="12" height="12"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
+        <image name="btnLinePcolor" width="6" height="6"/>
+        <image name="btnLinePcolorPressed" width="6" height="6"/>
+        <image name="btnRectDarkgray" width="3" height="3"/>
         <image name="btnRectPcolor" width="3" height="3"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btnSelectOff" width="36" height="40"/>

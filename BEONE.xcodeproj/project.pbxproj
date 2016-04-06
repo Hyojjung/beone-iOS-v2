@@ -125,6 +125,8 @@
 		62F7EA421C85B0F900587C14 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F7EA401C85B0F900587C14 /* Notice.storyboard */; };
 		62F7EA441C88460B00587C14 /* OrderItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7EA431C88460B00587C14 /* OrderItems.swift */; };
 		62FA562D1CB4A9AE00613801 /* DeleteCouponButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA562C1CB4A9AE00613801 /* DeleteCouponButtonCell.swift */; };
+		62FA562F1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA562E1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift */; };
+		62FA56311CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62FA56301CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
@@ -409,6 +411,8 @@
 		62F7EA401C85B0F900587C14 /* Notice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		62F7EA431C88460B00587C14 /* OrderItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItems.swift; sourceTree = "<group>"; };
 		62FA562C1CB4A9AE00613801 /* DeleteCouponButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCouponButtonCell.swift; sourceTree = "<group>"; };
+		62FA562E1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemSetDeliveryTypeCell.swift; sourceTree = "<group>"; };
+		62FA56301CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderItemSetDeliveryTypeCell.xib; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
@@ -1089,6 +1093,8 @@
 				623D498F1C6B40C300400ED0 /* DeliveryTimeSelectViewController.swift */,
 				623D49911C6B40CE00400ED0 /* DeliveryTimeSelectViewController.xib */,
 				623D49931C6B8C0A00400ED0 /* OrderOrderableItemCell.xib */,
+				62FA562E1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift */,
+				62FA56301CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1372,6 +1378,7 @@
 				627A81EE1CA5375F00BCE2DE /* ReviewsTemplateCell.xib in Resources */,
 				627A81F21CA5392900BCE2DE /* ReviewContentsCollectionViewCell.xib in Resources */,
 				620717531BE309890014B9AC /* TableContentsCollectionViewCell.xib in Resources */,
+				62FA56311CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib in Resources */,
 				62F2F5251C70F2F800D96964 /* SpeedOrderNoProductView.xib in Resources */,
 				7309D73E1BFC980900F9761A /* ProductCoupleTemplateCell.xib in Resources */,
 				73DF1D871C42245B00DB3550 /* ProductSingleTemplateCell.xib in Resources */,
@@ -1631,6 +1638,7 @@
 				7342416E1BFC285400BE21F5 /* BaseTableViewController.swift in Sources */,
 				73398AF01C06EE3C00F57D4A /* MainTitleView.swift in Sources */,
 				734241711BFC44ED00BE21F5 /* BEONEManager.swift in Sources */,
+				62FA562F1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift in Sources */,
 				6211B31B1CB16DF400B5939B /* PersonalInfoViewController.swift in Sources */,
 				73F629A21BF1EB39001EA72F /* XLCCycleScrollView.m in Sources */,
 				73398AF51C07443800F57D4A /* SelectingPaymentTypeViewController.swift in Sources */,

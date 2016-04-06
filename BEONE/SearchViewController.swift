@@ -47,6 +47,7 @@ class SearchViewController: BaseTableViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, kButtonAreaHeight, 0)
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
   
@@ -83,7 +84,6 @@ class SearchViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
-    tableView.contentInset = UIEdgeInsetsMake(0, 0, kButtonAreaHeight, 0)
   }
   
   func setUpProducts() {
