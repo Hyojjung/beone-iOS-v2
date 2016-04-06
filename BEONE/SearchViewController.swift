@@ -75,9 +75,9 @@ class SearchViewController: BaseTableViewController {
     productSearchData.get { () -> Void in
       self.minPrice = self.productSearchData.minPrice
       self.maxPrice = self.productSearchData.maxPrice
+      self.setUpProducts()
       self.tableView.reloadData()
     }
-    setUpProducts()
   }
   
   override func setUpView() {
@@ -87,8 +87,8 @@ class SearchViewController: BaseTableViewController {
   }
   
   func setUpProducts() {
-    products.maxPrice = maxPrice * kPriceUnit
-    products.minPrice = minPrice * kPriceUnit
+    products.maxPrice = maxPrice
+    products.minPrice = minPrice
     products.productPropertyValueIds = selectedProductPropertyValueIds
     products.tagIds = selectedTagIds
     products.get { () -> Void in
@@ -135,16 +135,27 @@ extension SearchViewController {
   @IBAction func searchButtonTapped() {
     if isSpeedOrder {
       popView()
+    } else if products.total == 0 {
+      let action = Action()
+      action.type = .Method
+      action.content = "showSearhResultView"
+      
+      showAlertView("검색된 제품의 개수가 너무 적습니다 검색 하시겠습니까?", hasCancel: true, confirmAction: action, delegate: self)
     } else {
-      if let searchResultViewController =
-        UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
-        searchResultViewController.products = products
-        searchResultViewController.selectedTagIds = selectedTagIds
-        searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
-        searchResultViewController.minPrice = minPrice
-        searchResultViewController.maxPrice = maxPrice
-        navigationController?.showViewController(searchResultViewController, sender: nil)
-      }
+      showSearhResultView()
+    }
+  }
+  
+  func showSearhResultView() {
+    if let searchResultViewController =
+      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
+      searchResultViewController.forSearchResult = true
+      searchResultViewController.products = products
+      searchResultViewController.selectedTagIds = selectedTagIds
+      searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
+      searchResultViewController.minPrice = minPrice
+      searchResultViewController.maxPrice = maxPrice
+      navigationController?.showViewController(searchResultViewController, sender: nil)
     }
   }
   
@@ -153,7 +164,7 @@ extension SearchViewController {
     var initialSelection = 0
     for i in 0..<((productSearchData.maxPrice - productSearchData.minPrice) / productSearchData.priceUnit) {
       let index = isMin ? i : i + 1
-      let price = productSearchData.minPrice + index * productSearchData.priceUnit
+      let price = (productSearchData.minPrice + index * productSearchData.priceUnit) / kPriceUnit
       if maxPrice == price {
         initialSelection = i
       }
@@ -169,7 +180,7 @@ extension SearchViewController {
                     sender: sender,
                     doneBlock: { (_, _, selectedValue) -> Void in
                       if let selectedValue = selectedValue as? String {
-                        donBlock(Int(selectedValue)!)
+                        donBlock(Int(selectedValue)! * kPriceUnit)
                       }
                       self.tableView.reloadData()
     })
@@ -288,13 +299,13 @@ class SearchPriceCell: SearchFilterCell {
   
   func configureCell(delegate: AnyObject,
                      minPrice: Int?, maxPrice: Int?, minBoundPrice: Int, maxBoundPrice: Int) {
-    let minPriceValue = minPrice == nil ? minBoundPrice : minPrice
-    let maxPriceValue = maxPrice == nil ? maxBoundPrice : maxPrice
+    let minPriceValue = (minPrice == nil ? minBoundPrice : minPrice)! / kPriceUnit
+    let maxPriceValue = (maxPrice == nil ? maxBoundPrice : maxPrice)! / kPriceUnit
     
-    minPriceSelectButton.setTitle("\(minPriceValue!)", forState: .Normal)
-    minPriceSelectButton.setTitle("\(minPriceValue!)", forState: .Selected)
-    maxPriceSelectButton.setTitle("\(maxPriceValue!)", forState: .Normal)
-    maxPriceSelectButton.setTitle("\(maxPriceValue!)", forState: .Selected)
+    minPriceSelectButton.setTitle("\(minPriceValue)", forState: .Normal)
+    minPriceSelectButton.setTitle("\(minPriceValue)", forState: .Selected)
+    maxPriceSelectButton.setTitle("\(maxPriceValue)", forState: .Normal)
+    maxPriceSelectButton.setTitle("\(maxPriceValue)", forState: .Selected)
   }
 }
 

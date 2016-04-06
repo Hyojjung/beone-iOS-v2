@@ -78,7 +78,7 @@ extension OrderCouponsViewController: DynamicHeightTableViewDelegate {
       case .NoCoupon:
         return 59
       case .DeleteCouponButton:
-        return 45
+        return 80
       default: break
       }
     }

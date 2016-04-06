@@ -8,11 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="EuM-kC-cp3" customClass="VBankResultView" customModule="BEONE" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="182"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="236"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gold_line" translatesAutoresizingMaskIntoConstraints="NO" id="16G-1X-z0a">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="182"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="236"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ok-a9-sg4">
                     <rect key="frame" x="84" y="150" width="36" height="17"/>
@@ -105,8 +105,14 @@
                     <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰 할인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5W-sC-tNp">
+                    <rect key="frame" x="11" y="177" width="53" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="희망배송일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-sE-tFj">
-                    <rect key="frame" x="11" y="150" width="61" height="17"/>
+                    <rect key="frame" x="11" y="204" width="61" height="17"/>
                     <accessibility key="accessibilityConfiguration" label="preferredDeliveryDateKeyLabel"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="yiZ-Mq-Usx"/>
@@ -121,8 +127,28 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yka-36-kLT">
-                    <rect key="frame" x="84" y="150" width="504" height="17"/>
+                    <rect key="frame" x="84" y="204" width="504" height="17"/>
                     <accessibility key="accessibilityConfiguration" label="preferredDeliveryDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MU-ot-Ton">
+                    <rect key="frame" x="84" y="150" width="36" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="dueDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용 포인트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t4-Ag-FSm">
+                    <rect key="frame" x="11" y="150" width="65" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwP-lO-FcH">
+                    <rect key="frame" x="84" y="177" width="504" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="dueDateLabel"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -133,18 +159,27 @@
                 <constraint firstItem="bQB-sE-tFj" firstAttribute="top" secondItem="HO1-es-rfz" secondAttribute="bottom" constant="10" id="0B2-sn-o8Y"/>
                 <constraint firstItem="fb4-pN-JGH" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="0G6-yR-3Zm"/>
                 <constraint firstItem="PIU-6D-exD" firstAttribute="leading" secondItem="1ok-a9-sg4" secondAttribute="leading" id="0j5-2Q-zUM"/>
+                <constraint firstItem="6t4-Ag-FSm" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="16P-t8-9N3"/>
                 <constraint firstItem="Qpq-iu-Z2T" firstAttribute="leading" secondItem="I1W-se-Wia" secondAttribute="leading" id="2K9-3l-n2d"/>
                 <constraint firstItem="yka-36-kLT" firstAttribute="top" secondItem="bQB-sE-tFj" secondAttribute="top" id="2RO-B5-hXV"/>
                 <constraint firstAttribute="bottom" secondItem="16G-1X-z0a" secondAttribute="bottom" id="3LM-fF-rkr"/>
+                <constraint firstItem="5MU-ot-Ton" firstAttribute="leading" secondItem="kwP-lO-FcH" secondAttribute="leading" id="3Ql-U5-uni"/>
                 <constraint firstItem="bQB-sE-tFj" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="3hG-xL-WTd"/>
+                <constraint firstItem="kwP-lO-FcH" firstAttribute="top" secondItem="f5W-sC-tNp" secondAttribute="top" id="5Ab-2b-Efu"/>
                 <constraint firstItem="44F-FX-9WZ" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="927-2r-XwJ"/>
                 <constraint firstItem="b3N-cW-1Zh" firstAttribute="top" secondItem="EuM-kC-cp3" secondAttribute="top" constant="15" id="98n-s3-a2V"/>
                 <constraint firstItem="Qpq-iu-Z2T" firstAttribute="leading" secondItem="jE9-4G-kxM" secondAttribute="leading" id="9Pt-3u-aWm"/>
                 <constraint firstItem="bQB-sE-tFj" firstAttribute="top" secondItem="8CG-0E-Ut7" secondAttribute="bottom" constant="10" id="Chy-Uc-5lS"/>
                 <constraint firstItem="1ok-a9-sg4" firstAttribute="leading" secondItem="7CF-xt-zwh" secondAttribute="leading" id="CkN-4y-qaN"/>
+                <constraint firstItem="bQB-sE-tFj" firstAttribute="top" secondItem="f5W-sC-tNp" secondAttribute="bottom" constant="10" id="DEp-KQ-be2"/>
+                <constraint firstAttribute="trailing" secondItem="kwP-lO-FcH" secondAttribute="trailing" constant="12" id="DEz-P1-9LO"/>
                 <constraint firstItem="bQB-sE-tFj" firstAttribute="top" secondItem="8CG-0E-Ut7" secondAttribute="bottom" constant="10" id="ENU-tg-iKv"/>
+                <constraint firstItem="6t4-Ag-FSm" firstAttribute="top" secondItem="8CG-0E-Ut7" secondAttribute="bottom" constant="10" id="GLo-lH-ESB"/>
                 <constraint firstAttribute="trailing" secondItem="yka-36-kLT" secondAttribute="trailing" constant="12" id="HE5-OP-g7a"/>
+                <constraint firstItem="yka-36-kLT" firstAttribute="top" secondItem="kwP-lO-FcH" secondAttribute="bottom" constant="10" id="IFU-hg-eho"/>
                 <constraint firstItem="bQB-sE-tFj" firstAttribute="centerY" secondItem="yka-36-kLT" secondAttribute="centerY" id="Ij5-Ez-V5v"/>
+                <constraint firstItem="f5W-sC-tNp" firstAttribute="top" secondItem="6t4-Ag-FSm" secondAttribute="bottom" constant="10" id="J5y-Bd-BBO"/>
+                <constraint firstItem="PIU-6D-exD" firstAttribute="leading" secondItem="5MU-ot-Ton" secondAttribute="leading" id="JBt-QT-p8N"/>
                 <constraint firstItem="uRl-9w-Y3B" firstAttribute="leading" secondItem="jE9-4G-kxM" secondAttribute="leading" id="KQm-BU-USF"/>
                 <constraint firstItem="uRl-9w-Y3B" firstAttribute="centerY" secondItem="44F-FX-9WZ" secondAttribute="centerY" id="N7z-Bo-WYj"/>
                 <constraint firstItem="I1W-se-Wia" firstAttribute="top" secondItem="b3N-cW-1Zh" secondAttribute="top" id="OPm-QF-SO0"/>
@@ -154,6 +189,7 @@
                 <constraint firstItem="HO1-es-rfz" firstAttribute="centerY" secondItem="7CF-xt-zwh" secondAttribute="centerY" id="TIK-lq-Yfz"/>
                 <constraint firstItem="8CG-0E-Ut7" firstAttribute="top" secondItem="44F-FX-9WZ" secondAttribute="bottom" constant="10" id="TMi-tp-whC"/>
                 <constraint firstItem="HO1-es-rfz" firstAttribute="top" secondItem="wOW-fc-4z2" secondAttribute="bottom" constant="10" id="VAp-cw-nKt"/>
+                <constraint firstItem="6t4-Ag-FSm" firstAttribute="centerY" secondItem="5MU-ot-Ton" secondAttribute="centerY" id="VSl-X7-3fB"/>
                 <constraint firstAttribute="bottom" secondItem="bQB-sE-tFj" secondAttribute="bottom" constant="10" id="Xzf-hI-hNf"/>
                 <constraint firstItem="HO1-es-rfz" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="blh-cm-3cU"/>
                 <constraint firstItem="wOW-fc-4z2" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="byq-T9-W5Z"/>
@@ -164,9 +200,11 @@
                 <constraint firstItem="b3N-cW-1Zh" firstAttribute="top" secondItem="EuM-kC-cp3" secondAttribute="top" constant="10" id="eon-Gu-Bz4"/>
                 <constraint firstItem="fb4-pN-JGH" firstAttribute="top" secondItem="b3N-cW-1Zh" secondAttribute="bottom" constant="10" id="fU1-Ym-pd5"/>
                 <constraint firstAttribute="bottom" secondItem="bQB-sE-tFj" secondAttribute="bottom" constant="15" id="gvU-un-gIp"/>
+                <constraint firstItem="f5W-sC-tNp" firstAttribute="centerY" secondItem="kwP-lO-FcH" secondAttribute="centerY" id="iv2-0x-ELV"/>
                 <constraint firstAttribute="bottom" secondItem="bQB-sE-tFj" secondAttribute="bottom" constant="10" id="jZ3-Iv-0GP"/>
                 <constraint firstItem="1ok-a9-sg4" firstAttribute="centerY" secondItem="wOW-fc-4z2" secondAttribute="centerY" id="jgh-p3-OqW"/>
                 <constraint firstItem="wOW-fc-4z2" firstAttribute="top" secondItem="8CG-0E-Ut7" secondAttribute="bottom" constant="10" id="kXB-X5-9TW"/>
+                <constraint firstItem="f5W-sC-tNp" firstAttribute="leading" secondItem="EuM-kC-cp3" secondAttribute="leading" constant="11" id="lIx-Du-WNK"/>
                 <constraint firstItem="44F-FX-9WZ" firstAttribute="top" secondItem="c2f-bP-99h" secondAttribute="bottom" constant="10" id="lmJ-ao-swj"/>
                 <constraint firstItem="c2f-bP-99h" firstAttribute="centerY" secondItem="jE9-4G-kxM" secondAttribute="centerY" id="nkx-5t-gOn"/>
                 <constraint firstItem="uRl-9w-Y3B" firstAttribute="leading" secondItem="PIU-6D-exD" secondAttribute="leading" id="nnk-EI-mvc"/>
@@ -192,7 +230,9 @@
                     <exclude reference="OPm-QF-SO0"/>
                     <exclude reference="2K9-3l-n2d"/>
                     <exclude reference="sMV-bV-gqK"/>
+                    <exclude reference="iv2-0x-ELV"/>
                     <exclude reference="Chy-Uc-5lS"/>
+                    <exclude reference="ENU-tg-iKv"/>
                     <exclude reference="Ij5-Ez-V5v"/>
                     <exclude reference="Xzf-hI-hNf"/>
                     <exclude reference="gvU-un-gIp"/>
@@ -206,6 +246,8 @@
                 <outlet property="expiredAtLabel" destination="PIU-6D-exD" id="cgV-Oi-Ikd"/>
                 <outlet property="issureNameLabel" destination="jE9-4G-kxM" id="FwR-mV-Mg2"/>
                 <outlet property="priceLabel" destination="I1W-se-Wia" id="4s8-Fo-xE1"/>
+                <outlet property="usedCouponLabel" destination="kwP-lO-FcH" id="iEm-qH-oKf"/>
+                <outlet property="usedPointLabel" destination="5MU-ot-Ton" id="Wdo-gn-bDA"/>
             </connections>
             <point key="canvasLocation" x="480" y="350"/>
         </view>

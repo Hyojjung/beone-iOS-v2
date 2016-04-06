@@ -8,12 +8,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nkI-D0-QKy" customClass="CardResultView" customModule="BEONE" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gold_line" translatesAutoresizingMaskIntoConstraints="NO" id="7v9-Sm-7q8">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용 포인트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huq-ij-ELZ">
+                    <rect key="frame" x="11" y="123" width="65" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0I-s9-ELx">
+                    <rect key="frame" x="84" y="123" width="36" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="dueDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnC-c7-n43">
+                    <rect key="frame" x="84" y="150" width="504" height="17"/>
+                    <accessibility key="accessibilityConfiguration" label="dueDateLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOm-kd-IDh">
                     <rect key="frame" x="11" y="15" width="25" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,15 +83,21 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="희망배송일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbP-x3-eVt">
-                    <rect key="frame" x="11" y="123" width="61" height="17"/>
+                    <rect key="frame" x="11" y="177" width="61" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovn-3D-LLj">
-                    <rect key="frame" x="84" y="123" width="504" height="17"/>
+                    <rect key="frame" x="84" y="177" width="504" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰 할인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7E-nE-LGk">
+                    <rect key="frame" x="11" y="150" width="53" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -80,21 +106,28 @@
                 <constraint firstItem="Pwq-QC-l5C" firstAttribute="leading" secondItem="Dcb-rJ-Kp1" secondAttribute="leading" id="29j-Mp-nb5"/>
                 <constraint firstItem="TbP-x3-eVt" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="334-dy-KGs"/>
                 <constraint firstItem="5Od-tO-nlY" firstAttribute="centerY" secondItem="Dcb-rJ-Kp1" secondAttribute="centerY" id="3i7-7g-09t"/>
+                <constraint firstItem="TbP-x3-eVt" firstAttribute="top" secondItem="G7E-nE-LGk" secondAttribute="bottom" constant="10" id="63D-03-6up"/>
+                <constraint firstItem="huq-ij-ELZ" firstAttribute="top" secondItem="NeX-KU-RjK" secondAttribute="bottom" constant="10" id="6gE-aw-aHI"/>
                 <constraint firstAttribute="bottom" secondItem="TbP-x3-eVt" secondAttribute="bottom" constant="12" id="AsO-EA-HY4"/>
                 <constraint firstItem="KFt-VR-QUM" firstAttribute="leading" secondItem="Dcb-rJ-Kp1" secondAttribute="leading" id="BdU-4L-mok"/>
                 <constraint firstItem="yNa-om-rTI" firstAttribute="centerY" secondItem="HOm-kd-IDh" secondAttribute="centerY" id="DgK-Kg-Dqg"/>
+                <constraint firstItem="G7E-nE-LGk" firstAttribute="top" secondItem="huq-ij-ELZ" secondAttribute="bottom" constant="10" id="HvV-41-kMy"/>
                 <constraint firstItem="TbP-x3-eVt" firstAttribute="top" secondItem="NeX-KU-RjK" secondAttribute="bottom" constant="10" id="IC7-kP-AHH"/>
+                <constraint firstItem="G7E-nE-LGk" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="KAe-t8-Xyr"/>
                 <constraint firstItem="KFt-VR-QUM" firstAttribute="leading" secondItem="yNa-om-rTI" secondAttribute="leading" id="Kjx-5V-2uv"/>
                 <constraint firstAttribute="bottom" secondItem="TbP-x3-eVt" secondAttribute="bottom" constant="15" id="Mrf-cp-Ud9"/>
+                <constraint firstAttribute="trailing" secondItem="wnC-c7-n43" secondAttribute="trailing" constant="12" id="N64-iG-Es6"/>
                 <constraint firstItem="NeX-KU-RjK" firstAttribute="top" secondItem="5Od-tO-nlY" secondAttribute="bottom" constant="10" id="NEW-sm-P1Q"/>
                 <constraint firstItem="yNa-om-rTI" firstAttribute="leading" secondItem="HOm-kd-IDh" secondAttribute="trailing" constant="48" id="NcF-k2-Ny1"/>
                 <constraint firstItem="NeX-KU-RjK" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="Ngd-J5-HdG"/>
                 <constraint firstItem="Pwq-QC-l5C" firstAttribute="centerY" secondItem="NeX-KU-RjK" secondAttribute="centerY" id="OKp-Oj-uTe"/>
                 <constraint firstItem="5Od-tO-nlY" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="OLz-ov-9s0"/>
                 <constraint firstItem="5Od-tO-nlY" firstAttribute="top" secondItem="Q8a-I2-DgA" secondAttribute="bottom" constant="10" id="SZm-ag-c9T"/>
+                <constraint firstItem="s0I-s9-ELx" firstAttribute="leading" secondItem="wnC-c7-n43" secondAttribute="leading" id="T7O-CX-OwH"/>
                 <constraint firstAttribute="bottom" secondItem="TbP-x3-eVt" secondAttribute="bottom" constant="15" id="Te0-kV-xTI"/>
                 <constraint firstItem="ovn-3D-LLj" firstAttribute="top" secondItem="TbP-x3-eVt" secondAttribute="top" id="X4c-cj-Sg0"/>
                 <constraint firstItem="7v9-Sm-7q8" firstAttribute="top" secondItem="nkI-D0-QKy" secondAttribute="top" id="Yoa-pM-k1A"/>
+                <constraint firstItem="wnC-c7-n43" firstAttribute="top" secondItem="G7E-nE-LGk" secondAttribute="top" id="ZZ6-36-unL"/>
                 <constraint firstAttribute="trailing" secondItem="7v9-Sm-7q8" secondAttribute="trailing" id="ZeK-ZX-yEV"/>
                 <constraint firstItem="HOm-kd-IDh" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="cKO-fO-z4D"/>
                 <constraint firstItem="Pwq-QC-l5C" firstAttribute="leading" secondItem="ovn-3D-LLj" secondAttribute="leading" id="d7s-oi-dmh"/>
@@ -106,7 +139,10 @@
                 <constraint firstItem="KFt-VR-QUM" firstAttribute="centerY" secondItem="Q8a-I2-DgA" secondAttribute="centerY" id="hOg-je-708"/>
                 <constraint firstItem="NeX-KU-RjK" firstAttribute="top" secondItem="5Od-tO-nlY" secondAttribute="bottom" constant="10" id="idp-LO-pOk"/>
                 <constraint firstItem="HOm-kd-IDh" firstAttribute="top" secondItem="nkI-D0-QKy" secondAttribute="top" constant="15" id="mKD-02-G3p"/>
+                <constraint firstItem="huq-ij-ELZ" firstAttribute="centerY" secondItem="s0I-s9-ELx" secondAttribute="centerY" id="mXZ-rY-rPD"/>
                 <constraint firstItem="7v9-Sm-7q8" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" id="nY1-Af-CbT"/>
+                <constraint firstItem="huq-ij-ELZ" firstAttribute="leading" secondItem="nkI-D0-QKy" secondAttribute="leading" constant="11" id="uhl-c5-KVA"/>
+                <constraint firstItem="s0I-s9-ELx" firstAttribute="leading" secondItem="Pwq-QC-l5C" secondAttribute="leading" id="uw2-mi-CED"/>
                 <constraint firstAttribute="trailing" secondItem="ovn-3D-LLj" secondAttribute="trailing" constant="12" id="vrf-46-lHp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -114,6 +150,7 @@
                 <mask key="constraints">
                     <exclude reference="NEW-sm-P1Q"/>
                     <exclude reference="AsO-EA-HY4"/>
+                    <exclude reference="IC7-kP-AHH"/>
                     <exclude reference="Mrf-cp-Ud9"/>
                     <exclude reference="Te0-kV-xTI"/>
                     <exclude reference="gqz-kI-Thz"/>
@@ -125,6 +162,8 @@
                 <outlet property="deliveryDateLabel" destination="ovn-3D-LLj" id="kDJ-TK-gPV"/>
                 <outlet property="paidAtLabel" destination="Pwq-QC-l5C" id="7uX-AN-ASL"/>
                 <outlet property="priceLabel" destination="yNa-om-rTI" id="RvM-Yb-nWX"/>
+                <outlet property="usedCouponLabel" destination="wnC-c7-n43" id="Onk-Bv-Ts2"/>
+                <outlet property="usedPointLabel" destination="s0I-s9-ELx" id="jT9-oH-IAt"/>
             </connections>
             <point key="canvasLocation" x="362" y="730.5"/>
         </view>

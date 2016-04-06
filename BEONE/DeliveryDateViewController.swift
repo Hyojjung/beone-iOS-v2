@@ -11,6 +11,7 @@ class DeliveryDateViewController: BaseTableViewController {
   var selectedOrderableItemSetIndex = 0
   var selectedDates = [Int: NSDate]()
   var selectedTimeRanges = [Int: AvailableTimeRange]()
+  var isLoaded = false
   
   lazy var deliveryTimeSelectViewController: DeliveryTimeSelectViewController = {
     let deliveryTimeSelectViewController = DeliveryTimeSelectViewController(nibName: "DeliveryTimeSelectViewController",
@@ -43,16 +44,19 @@ class DeliveryDateViewController: BaseTableViewController {
           DateFormatterHelper.koreanCalendar.dateFromComponents(selectedDate)
       }
       
-      var needReservation = false
-      
-      for orderableItemSet in self.order.orderableItemSets {
-        if orderableItemSet.deliveryType.isReservable {
-          needReservation = true
+      if !self.isLoaded {
+        self.isLoaded = true
+        var needReservation = false
+        
+        for orderableItemSet in self.order.orderableItemSets {
+          if orderableItemSet.deliveryType.isReservable {
+            needReservation = true
+          }
         }
-      }
-      
-      if !needReservation {
-        self.orderButtonTapped()
+        
+        if !needReservation {
+          self.orderButtonTapped()
+        }
       }
       self.tableView.reloadData()
     }

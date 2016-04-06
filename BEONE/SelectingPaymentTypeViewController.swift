@@ -44,6 +44,11 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   var selectedCoupon: Coupon?
   var point = 0
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   override func setUpView() {
     super.setUpView()
     title = "결제수단선택"

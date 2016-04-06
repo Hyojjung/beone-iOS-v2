@@ -8,12 +8,14 @@ class ProductsViewController: BaseTableViewController {
   private enum SearchTableViewSection: Int {
     case Search
     case Product
+    case NoProducts
     case Count
   }
   
   private let kSearchTableViewCellIdentifiers = [
     "searchCell",
-    "productCoupleTemplateCell"]
+    "productCoupleTemplateCell",
+    "noProductsCell"]
   
   // MARK: - Property
   
@@ -59,10 +61,10 @@ class ProductsViewController: BaseTableViewController {
         selectedTagIds = tagIds
       }
       if let minPrice = products.minPrice {
-        self.minPrice = minPrice / kPriceUnit
+        self.minPrice = minPrice
       }
       if let maxPrice = products.maxPrice {
-        self.maxPrice = maxPrice / kPriceUnit
+        self.maxPrice = maxPrice
       }
       
       productProperties.get { () -> Void in
@@ -128,6 +130,8 @@ extension ProductsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == SearchTableViewSection.Search.rawValue && !forSearchResult {
       return 0
+    } else if section == SearchTableViewSection.NoProducts.rawValue && products.list.count > 0 {
+      return 0
     }
     return section == SearchTableViewSection.Product.rawValue ? (products.list.count + 1) / kSimpleProductColumn : 1
   }
@@ -154,6 +158,12 @@ extension ProductsViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if indexPath.section == SearchTableViewSection.Product.rawValue {
       return 330
+    } else if indexPath.section == SearchTableViewSection.NoProducts.rawValue {
+      var cellHeight = ViewControllerHelper.screenHeight - 64
+      if forSearchResult {
+        cellHeight -= 89
+      }
+      return cellHeight
     }
     return 89
   }
@@ -184,7 +194,7 @@ class SearchCell: UITableViewCell {
     productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int) -> [String] {
       var searchValueStrings = [String]()
       
-      let priceString = "\(minPrice)~\(maxPrice)만원"
+      let priceString = "\(minPrice / kPriceUnit)~\(maxPrice / kPriceUnit)만원"
       searchValueStrings.appendObject(priceString)
       
       for productProperty in productProperties {

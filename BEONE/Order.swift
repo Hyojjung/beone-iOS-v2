@@ -50,7 +50,7 @@ class Order: BaseModel {
       if let usedPoint = order["usedPoint"] as? Int {
         self.usedPoint = usedPoint
       }
-      if let isCancellable = order["isCancellable"] as? Bool {
+       if let isCancellable = order["isCancellable"] as? Bool {
         self.isCancellable = isCancellable
       }
       if let price = order["price"] as? Int {
@@ -135,14 +135,12 @@ extension Order {
   func deliveryDateString() -> String {
     var deliveryDateString = String()
     for (i, orderItemSet) in orderableItemSets.enumerate() {
-      for (index, orderItem) in (orderItemSet.orderableItems.list as! [OrderableItem]).enumerate() {
-        deliveryDateString += orderItem.productTitle!
-        if index < orderItemSet.orderableItems.list.count - 1 {
-          deliveryDateString += ", "
-        } else {
-          deliveryDateString += " : "
-        }
+      let orderItem = orderItemSet.orderableItems.list.first as! OrderableItem
+      deliveryDateString += orderItem.productTitle!
+      if orderItemSet.orderableItems.list.count > 1 {
+        deliveryDateString += " 외 \(orderItemSet.orderableItems.list.count - 1)개"
       }
+      deliveryDateString += " : "
       if let selectedTimeRange = orderItemSet.selectedTimeRange {
         deliveryDateString += selectedTimeRange.dateNotation()
       } else if orderItemSet.isExpressReservation {
