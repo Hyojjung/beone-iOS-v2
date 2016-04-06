@@ -15,16 +15,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NME-oE-mYH">
-                        <rect key="frame" x="14" y="11" width="33" height="15"/>
+                        <rect key="frame" x="14" y="11" width="33" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgShopTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ubT-wa-MoJ">
+                        <rect key="frame" x="0.0" y="9" width="87" height="27"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="NME-oE-mYH" secondAttribute="bottom" priority="999" constant="9" id="HXh-JE-1Sd"/>
+                    <constraint firstAttribute="bottom" secondItem="NME-oE-mYH" secondAttribute="bottom" priority="999" constant="2" id="HXh-JE-1Sd"/>
+                    <constraint firstItem="ubT-wa-MoJ" firstAttribute="trailing" secondItem="NME-oE-mYH" secondAttribute="trailing" constant="40" id="Heo-OM-d4w"/>
                     <constraint firstItem="NME-oE-mYH" firstAttribute="top" secondItem="rxN-dz-gXZ" secondAttribute="top" constant="11" id="LpK-Aq-utN"/>
+                    <constraint firstAttribute="bottom" secondItem="ubT-wa-MoJ" secondAttribute="bottom" id="ZQG-iE-8W6"/>
+                    <constraint firstAttribute="leading" secondItem="ubT-wa-MoJ" secondAttribute="leading" id="n3G-sb-PGq"/>
                     <constraint firstItem="NME-oE-mYH" firstAttribute="leading" secondItem="rxN-dz-gXZ" secondAttribute="leading" constant="14" id="x0K-Do-4s6"/>
                 </constraints>
             </tableViewCellContentView>
@@ -35,4 +41,7 @@
             <point key="canvasLocation" x="270" y="369"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bgShopTitle" width="36" height="27"/>
+    </resources>
 </document>

@@ -24,6 +24,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kxf-bF-cTp" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="12" y="13" width="70" height="70"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="DPZ-BI-15E"/>
                                     <constraint firstAttribute="width" secondItem="Kxf-bF-cTp" secondAttribute="height" multiplier="1:1" id="TvU-UK-kA9"/>
                                     <constraint firstAttribute="width" constant="50" id="VgJ-FW-e0g"/>
                                     <constraint firstAttribute="height" id="qaF-c5-8ht"/>
