@@ -4,6 +4,9 @@ import ActionSheetPicker_3_0
 
 class PersonalInfoViewController: BaseTableViewController {
   
+  private let kMaxEmailLength = 50
+  private let kMaxPhoneLength = 20
+  
   private enum PersonalInfoTableViewSection: Int {
     case Name
     case Phone
@@ -46,10 +49,18 @@ class PersonalInfoViewController: BaseTableViewController {
       MyInfo.sharedMyInfo().email = cell.textField.text
     }
   }
+}
+
+extension PersonalInfoViewController {
   
   @IBAction func saveButtonTapped() {
-    MyInfo.sharedMyInfo().put {
-      self.popView()
+    syncMyInfoWithView()
+    if MyInfo.sharedMyInfo().email?.isValidEmail() == false {
+      showAlertView(NSLocalizedString("check email form", comment: "alert title"))
+    } else {
+      MyInfo.sharedMyInfo().put {
+        self.popView()
+      }
     }
   }
   
@@ -96,6 +107,40 @@ class PersonalInfoViewController: BaseTableViewController {
     MyInfo.sharedMyInfo().gender = sender.selected ? Gender.Female.rawValue : Gender.Male.rawValue
     syncMyInfoWithView()
     tableView.reloadData()
+  }
+}
+
+extension PersonalInfoViewController: UITextFieldDelegate {
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    if range.length == 0 {
+      if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+        inSection: PersonalInfoTableViewSection.Name.rawValue)) as? InfoTextFieldCell {
+        if cell.textField == textField {
+          if textField.text != nil && (textField.text?.characters.count)! + string.characters.count > kMaxPhoneLength {
+            return false
+          }
+        }
+      }
+      if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+        inSection: PersonalInfoTableViewSection.Phone.rawValue)) as? InfoTextFieldCell {
+        if cell.textField == textField {
+          if textField.text != nil && (textField.text?.characters.count)! + string.characters.count > kMaxPhoneLength {
+            return false
+          }
+          return string.isEmpty || Int(string) != nil
+        }
+      }
+      if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+        inSection: PersonalInfoTableViewSection.Email.rawValue)) as? InfoTextFieldCell {
+        if cell.textField == textField {
+          if textField.text != nil && (textField.text?.characters.count)! + string.characters.count > kMaxEmailLength {
+            return false
+          }
+          return string.isNonKorean()
+        }
+      }
+    }
+    return true
   }
 }
 

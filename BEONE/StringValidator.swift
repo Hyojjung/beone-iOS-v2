@@ -39,4 +39,11 @@ extension String {
       return String()
     }
   }
+  
+  func isNonKorean() -> Bool {
+    if let cString = cStringUsingEncoding(NSUTF8StringEncoding) {
+      return characters.count == Int(strlen(cString))
+    }
+    return false
+  }
 }

@@ -46,6 +46,7 @@ class MyInfo: NSManagedObject {
   
   func assignObject(data: AnyObject?) {
     if let myInfo = data as? [String: AnyObject] {
+      print(data)
       self.account = myInfo[kMyInfoPropertyKeyAccount] as? String
       self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
       self.name = myInfo[kObjectPropertyKeyName] as? String
@@ -82,7 +83,7 @@ class MyInfo: NSManagedObject {
         parameter["birthday"] = self.birthday?.serverDateString()
       }
 
-      
+      print(parameter)
       NetworkHelper.requestPut("users/\(userId)", parameter: parameter, success: { (result) -> Void in
         putSuccess()
         }, failure: nil)
