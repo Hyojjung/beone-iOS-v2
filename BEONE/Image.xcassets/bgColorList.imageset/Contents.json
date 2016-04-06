@@ -1,23 +1,65 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 2,
+          "top" : 1,
+          "right" : 3,
+          "left" : 2
+        }
+      },
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "bgColorList.png"
+      "filename" : "bgColorList.png",
+      "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 4,
+          "top" : 3,
+          "right" : 6,
+          "left" : 5
+        }
+      },
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "bgColorList@2x.png"
+      "filename" : "bgColorList@2x.png",
+      "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 6,
+          "top" : 5,
+          "right" : 9,
+          "left" : 8
+        }
+      },
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "bgColorList@3x.png"
+      "filename" : "bgColorList@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "zeplin",
-    "version" : "1"
+    "version" : 1,
+    "author" : "xcode"
   }
 }

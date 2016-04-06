@@ -1,6 +1,8 @@
 {
   "images" : [
     {
+      "idiom" : "universal",
+      "filename" : "btnSelectOn.pdf",
       "resizing" : {
         "mode" : "3-part-horizontal",
         "center" : {
@@ -8,45 +10,10 @@
           "width" : 1
         },
         "cap-insets" : {
-          "right" : 31,
-          "left" : 4
+          "right" : 30,
+          "left" : 5
         }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOn.png",
-      "scale" : "1x"
-    },
-    {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1
-        },
-        "cap-insets" : {
-          "right" : 62,
-          "left" : 9
-        }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOn@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1
-        },
-        "cap-insets" : {
-          "right" : 93,
-          "left" : 14
-        }
-      },
-      "idiom" : "universal",
-      "filename" : "btnSelectOn@3x.png",
-      "scale" : "3x"
+      }
     }
   ],
   "info" : {

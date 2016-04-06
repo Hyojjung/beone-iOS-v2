@@ -278,10 +278,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderlineWhite" translatesAutoresizingMaskIntoConstraints="NO" id="HZ2-nq-q34">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 우천시 배송이 지연될 수 있습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4G-6o-GQt">
                                                     <rect key="frame" x="15" y="8" width="200" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -292,13 +288,9 @@
                                             <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="M4G-6o-GQt" firstAttribute="top" secondItem="NtO-Ry-Uvq" secondAttribute="top" constant="8" id="3JQ-he-feC"/>
-                                                <constraint firstAttribute="bottom" secondItem="HZ2-nq-q34" secondAttribute="bottom" id="IwG-Br-ryM"/>
                                                 <constraint firstItem="M4G-6o-GQt" firstAttribute="leading" secondItem="NtO-Ry-Uvq" secondAttribute="leading" constant="15" id="MRA-ro-lkQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="M4G-6o-GQt" secondAttribute="bottom" constant="26" id="OZ0-rD-ael"/>
                                                 <constraint firstItem="M4G-6o-GQt" firstAttribute="centerX" secondItem="NtO-Ry-Uvq" secondAttribute="centerX" id="P4v-4A-bJM"/>
-                                                <constraint firstItem="HZ2-nq-q34" firstAttribute="leading" secondItem="NtO-Ry-Uvq" secondAttribute="leading" id="lr1-H0-qgP"/>
-                                                <constraint firstAttribute="trailing" secondItem="HZ2-nq-q34" secondAttribute="trailing" id="rRB-K7-Nuu"/>
-                                                <constraint firstItem="HZ2-nq-q34" firstAttribute="top" secondItem="NtO-Ry-Uvq" secondAttribute="top" id="ubj-57-Fad"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -356,14 +348,15 @@
                                                     <rect key="frame" x="15" y="15" width="570" height="60"/>
                                                     <accessibility key="accessibilityConfiguration" label="addCartButton"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="60" id="sRn-4e-cc2"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="50" id="sRn-4e-cc2"/>
                                                     </constraints>
-                                                    <state key="normal" title="주문하기" backgroundImage="btnRectDarkgray">
+                                                    <state key="normal" title="주문하기" backgroundImage="btnRectDarkgreyShadow">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" backgroundImage="btn_submit_gold_pressed"/>
-                                                    <state key="highlighted" title="주문하기" backgroundImage="btnRectPcolorPressed"/>
+                                                    <state key="selected" backgroundImage="btnRectDarkgreyShadowPressed"/>
+                                                    <state key="highlighted" title="주문하기" backgroundImage="btnRectDarkgreyShadowPressed"/>
+                                                    <state key="focused" backgroundImage="btnRectDarkgreyShadowPressed"/>
                                                     <connections>
                                                         <action selector="orderButtonTapped" destination="1rw-Bd-JIM" eventType="touchUpInside" id="jWO-MX-wzY"/>
                                                     </connections>
@@ -404,7 +397,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KKP-Yh-GhY" secondAttribute="trailing" id="85c-FO-n8A"/>
                             <constraint firstItem="Bfc-TB-dgi" firstAttribute="top" secondItem="KKP-Yh-GhY" secondAttribute="bottom" id="Gmt-g4-ecd"/>
@@ -438,7 +431,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WA0-WI-LfF">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="810"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="821"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fps-TL-NgU" userLabel="주문헤더">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
@@ -814,17 +807,19 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fln-ff-boY">
-                                                <rect key="frame" x="14" y="736" width="572" height="49"/>
+                                                <rect key="frame" x="14" y="736" width="572" height="60"/>
                                                 <accessibility key="accessibilityConfiguration" label="submitAddressButton"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="49" id="7rf-Wv-YH6"/>
+                                                    <constraint firstAttribute="height" constant="60" id="7rf-Wv-YH6"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="확인" backgroundImage="btn_submit_gold">
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="확인" backgroundImage="btnRectDarkgreyShadow">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <state key="highlighted" backgroundImage="btn_submit_gold_pressed"/>
+                                                <state key="selected" backgroundImage="btnRectDarkgreyShadowPressed"/>
+                                                <state key="highlighted" backgroundImage="btnRectDarkgreyShadowPressed"/>
+                                                <state key="focused" backgroundImage="btnRectDarkgrayPressed"/>
                                                 <connections>
                                                     <action selector="sendAddressButtonTapped" destination="tel-f9-qfU" eventType="touchUpInside" id="j4F-Nw-eje"/>
                                                 </connections>
@@ -2802,7 +2797,7 @@ IAo
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" label="billKeyAddingView">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
@@ -3444,7 +3439,9 @@ IAo
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btnLinePcolor" width="6" height="6"/>
         <image name="btnLinePcolorPressed" width="6" height="6"/>
-        <image name="btnRectDarkgray" width="3" height="3"/>
+        <image name="btnRectDarkgrayPressed" width="3" height="3"/>
+        <image name="btnRectDarkgreyShadow" width="14" height="14"/>
+        <image name="btnRectDarkgreyShadowPressed" width="14" height="14"/>
         <image name="btnRectPcolor" width="3" height="3"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btnSelectOff" width="36" height="40"/>

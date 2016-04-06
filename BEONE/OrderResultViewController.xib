@@ -23,10 +23,10 @@
                         <constraint firstAttribute="height" constant="64" id="bmG-9i-LCu"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="barTintColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textShadowColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     </textAttributes>
                     <items>
                         <navigationItem title="결제완료" id="qhJ-tU-Oit">
@@ -38,8 +38,8 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwI-Ia-OAM">
-                    <rect key="frame" x="14" y="541" width="572" height="45"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwI-Ia-OAM">
+                    <rect key="frame" x="14" y="541" width="572" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="XFQ-CA-Kbc"/>
                     </constraints>
@@ -61,7 +61,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6x-lq-4ee">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderlineIvory" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-D4-hUl">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_payment" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-D4-hUl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_payment_success" translatesAutoresizingMaskIntoConstraints="NO" id="hDB-Gq-wNw">
@@ -156,7 +156,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bgCellUnderlineIvory" width="4" height="4"/>
+        <image name="bg_payment" width="320" height="150"/>
         <image name="btn_submit_darkgrey" width="3" height="3"/>
         <image name="btn_submit_darkgrey_pressed" width="3" height="3"/>
         <image name="image_payment_success" width="186" height="32"/>
