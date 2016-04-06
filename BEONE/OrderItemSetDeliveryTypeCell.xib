@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tableViewCell="Wol-E6-XDp" id="zZy-bu-zqR">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rp-3n-2Kd">
-                        <rect key="frame" x="17" y="16" width="35.5" height="17"/>
+                        <rect key="frame" x="17" y="16" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
