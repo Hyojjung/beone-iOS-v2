@@ -2,7 +2,7 @@
 import UIKit
 
 let kPaymentTypeButtonHeight = CGFloat(50)
-let kPaymentTypeButtonInterval = CGFloat(11)
+let kPaymentTypeButtonInterval = CGFloat(7)
 
 protocol PaymentTypesViewDelegate: NSObjectProtocol {
   func selectPaymentTypeButtonTapped(paymentTypeId: Int)

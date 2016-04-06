@@ -15,7 +15,6 @@ class BannerTemplateCell: TemplateCell {
   
   override func calculatedHeight(template: Template) -> CGFloat? {
     return 300
-    // TODO : height 받기
   }
   
   override func configureCell(template: Template) {

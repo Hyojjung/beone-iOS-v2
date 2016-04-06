@@ -142,7 +142,6 @@ extension DeliveryDateViewController: CKCalendarDelegate {
   
   func calendar(calendar: CKCalendarView!, didSelectDate date: NSDate!) {
     if date != nil && selectedDates[selectedOrderableItemSetIndex] != date {
-      print(date)
       selectedDates[selectedOrderableItemSetIndex] = date
       selectedTimeRanges[selectedOrderableItemSetIndex] = nil
       tableView.reloadData()
