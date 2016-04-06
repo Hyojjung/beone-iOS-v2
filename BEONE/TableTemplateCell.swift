@@ -27,40 +27,49 @@ class TableTemplateCell: TemplateCell {
     hasSpace = template.content.hasSpace
     row = template.content.row
     column = template.content.column
-    setUpCollectionViewFlowLayout()
+    setUpCollectionViewFlowLayout(template)
     collectionView.reloadData()
   }
   
-  private func setUpCollectionViewFlowLayout() {
+  private func setUpCollectionViewFlowLayout(template: Template) {
     if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
       let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
       collectionViewLayout.minimumInteritemSpacing = space
       collectionViewLayout.minimumLineSpacing = space
       
       if let column = self.column{
-        let itemWidth = (frame.width - space * CGFloat(column - 1)) / CGFloat(column)
+        let viewWidth = self.viewWidth(template)
+        let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
         collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
       }
     }
   }
   
   override func calculatedHeight(template: Template) -> CGFloat {
-    var height: CGFloat = 0
-    height += template.style.margin.top + template.style.margin.bottom
-    height += template.style.padding.top + template.style.padding.bottom
-    
-    let space = template.content.hasSpace != nil && template.content.hasSpace! ?
-      kSpaceWidthCell : kNoSpaceWidthCell
-    if let column = template.content.column, row = template.content.row {
-      let viewWidth = ViewControllerHelper.screenWidth -
-        (template.style.margin.left + template.style.margin.right +
-          template.style.padding.left + template.style.padding.right)
+    if let height = template.height {
+      return height
+    } else {
+      var height: CGFloat = 0
+      height += template.style.margin.top + template.style.margin.bottom
+      height += template.style.padding.top + template.style.padding.bottom
       
-      let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
-      
-      height += itemWidth * CGFloat(row) + space * CGFloat(row - 1)
+      let space = template.content.hasSpace != nil && template.content.hasSpace! ?
+        kSpaceWidthCell : kNoSpaceWidthCell
+      if let column = template.content.column, row = template.content.row {
+        let viewWidth = self.viewWidth(template)
+        let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
+        
+        height += itemWidth * CGFloat(row) + space * CGFloat(row - 1)
+      }
+      template.height = height
+      return height
     }
-    return height
+  }
+  
+  func viewWidth(template: Template) -> CGFloat {
+    return ViewControllerHelper.screenWidth -
+      (template.style.margin.left + template.style.margin.right +
+        template.style.padding.left + template.style.padding.right)
   }
 }
 

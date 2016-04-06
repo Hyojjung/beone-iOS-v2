@@ -13,8 +13,8 @@ class TextTemplateCell: TemplateCell {
     super.configureCell(template)
     if let text = template.content.text {
       let attributedString = NSMutableAttributedString(string: text)
-        configureBackgroundColor(attributedString, textContent: template.content)
-        configureTextColor(attributedString, textContent: template.content)
+      configureBackgroundColor(attributedString, textContent: template.content)
+      configureTextColor(attributedString, textContent: template.content)
       configureLabelAlignment(template.content)
       configureUnderlined(attributedString, textContent: template.content)
       configureCancelLined(attributedString, textContent: template.content)
@@ -25,23 +25,28 @@ class TextTemplateCell: TemplateCell {
   }
   
   override func calculatedHeight(template: Template) -> CGFloat {
-    var height: CGFloat = 0
-    height += template.style.margin.top + template.style.margin.bottom
-    height += template.style.padding.top + template.style.padding.bottom
-    
-    let label = UILabel()
-    if let size = template.content.size {
-      label.font = UIFont.systemFontOfSize(size)
+    if let height = template.height {
+      return height
+    } else {
+      var height: CGFloat = 0
+      height += template.style.margin.top + template.style.margin.bottom
+      height += template.style.padding.top + template.style.padding.bottom
+      
+      let label = UILabel()
+      if let size = template.content.size {
+        label.font = UIFont.systemFontOfSize(size)
+      }
+      label.text = template.content.text
+      
+      let width = ViewControllerHelper.screenWidth -
+        (template.style.margin.left + template.style.margin.right +
+          template.style.padding.left + template.style.padding.right)
+      label.setWidth(width)
+      
+      height += label.frame.height
+      template.height = height
+      return height
     }
-    label.text = template.content.text
-    
-    let width = ViewControllerHelper.screenWidth -
-      (template.style.margin.left + template.style.margin.right +
-        template.style.padding.left + template.style.padding.right)
-    label.setWidth(width)
-
-    height += label.frame.height
-    return height
   }
   
   // MARK: - Actions
@@ -87,8 +92,8 @@ class TextTemplateCell: TemplateCell {
       }
       
       attributedString.addAttribute(NSFontAttributeName,
-        value: UIFont(name: fontName, size: size!)!,
-        range: NSMakeRange(0, text.characters.count))
+                                    value: UIFont(name: fontName, size: size!)!,
+                                    range: NSMakeRange(0, text.characters.count))
     }
   }
   
@@ -96,8 +101,8 @@ class TextTemplateCell: TemplateCell {
     checkTextContents(textContent) { (textContents, text) -> Void in
       if textContents.isUnderlined != nil && textContents.isUnderlined! {
         attributedString.addAttribute(NSUnderlineStyleAttributeName,
-          value: NSUnderlineStyle.StyleSingle.rawValue,
-          range: NSMakeRange(0, text.characters.count))
+                                      value: NSUnderlineStyle.StyleSingle.rawValue,
+                                      range: NSMakeRange(0, text.characters.count))
       }
     }
   }
@@ -106,8 +111,8 @@ class TextTemplateCell: TemplateCell {
     checkTextContents(textContent) { (textContents, text) -> Void in
       if textContents.isCancelLined != nil && textContents.isCancelLined! {
         attributedString.addAttribute(NSStrikethroughStyleAttributeName,
-          value: NSUnderlineStyle.StyleSingle.rawValue,
-          range: NSMakeRange(0, text.characters.count))
+                                      value: NSUnderlineStyle.StyleSingle.rawValue,
+                                      range: NSMakeRange(0, text.characters.count))
       }
     }
   }
@@ -116,8 +121,8 @@ class TextTemplateCell: TemplateCell {
     checkTextContents(textContent) { (textContents, text) -> Void in
       if let backgroundColor = textContents.backgroundColor {
         attributedString.addAttribute(NSBackgroundColorAttributeName,
-          value: backgroundColor,
-          range: NSMakeRange(0, text.characters.count))
+                                      value: backgroundColor,
+                                      range: NSMakeRange(0, text.characters.count))
       }
     }
   }
@@ -126,8 +131,8 @@ class TextTemplateCell: TemplateCell {
     checkTextContents(textContent) { (textContents, text) -> Void in
       if let textColor = textContents.textColor {
         attributedString.addAttribute(NSForegroundColorAttributeName,
-          value: textColor,
-          range: NSMakeRange(0, text.characters.count))
+                                      value: textColor,
+                                      range: NSMakeRange(0, text.characters.count))
       }
     }
   }

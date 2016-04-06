@@ -32,22 +32,27 @@ class ButtonTemplateCell: TemplateCell {
   }
   
   override func calculatedHeight(template: Template) -> CGFloat? {
-    var height: CGFloat = 0
-    height += template.style.margin.top + template.style.margin.bottom
-    height += template.style.padding.top + template.style.padding.bottom
-    
-    let button = UIButton()
-    if let textSize = template.content.textSize {
-      button.titleLabel?.font = UIFont.systemFontOfSize(textSize)
+    if let height = template.height {
+      return height
+    } else {
+      var height: CGFloat = 0
+      height += template.style.margin.top + template.style.margin.bottom
+      height += template.style.padding.top + template.style.padding.bottom
+      
+      let button = UIButton()
+      if let textSize = template.content.textSize {
+        button.titleLabel?.font = UIFont.systemFontOfSize(textSize)
+      }
+      button.layoutMargins = template.content.padding
+      if template.content.borderColor != nil{
+        button.layer.borderWidth = 1
+      }
+      button.sizeToFit()
+      
+      height += button.frame.height
+      template.height = height
+      return height
     }
-    button.layoutMargins = template.content.padding
-    if template.content.borderColor != nil{
-      button.layer.borderWidth = 1
-    }
-    button.sizeToFit()
-    
-    height += button.frame.height
-    return height
   }
   
   @IBAction func buttonClicked(sender: AnyObject) { //Touch Up Inside action

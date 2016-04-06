@@ -43,6 +43,7 @@ static NSString *kBOImageSliderDotInactive = @"image_slider_dot_inactive";
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentOffset = CGPointMake(scrollViewSize.width, 0);
     _scrollView.pagingEnabled = YES;
+    _scrollView.bounces = NO;
   }
   return _scrollView;
 }
@@ -256,7 +257,12 @@ static NSString *kBOImageSliderDotInactive = @"image_slider_dot_inactive";
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
   int x = aScrollView.contentOffset.x;
+  CGFloat y = aScrollView.contentOffset.y;
   
+  if (y != 0) {
+    [aScrollView setContentOffset:CGPointMake(x, 0)];
+  }
+    
   if(x >= (2*[[UIScreen mainScreen] bounds].size.width)) {
     self.currentPage = [self validPageValue:self.currentPage + 1];
     [self loadDatawithNeededAdjustContentOffset:YES];
