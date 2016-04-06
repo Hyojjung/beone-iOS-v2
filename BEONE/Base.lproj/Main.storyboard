@@ -569,7 +569,8 @@
                                                                     <exclude reference="qpg-rj-ZjQ"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact">
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="1" width="104" height="103"/>
                                                                 <mask key="constraints">
                                                                     <include reference="qpg-rj-ZjQ"/>
                                                                 </mask>
@@ -580,6 +581,9 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="iconSidebarKakao" translatesAutoresizingMaskIntoConstraints="NO" id="m8v-Ir-TqD">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오톡 문의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234-fU-euW">
                                                             <rect key="frame" x="9" y="103" width="76" height="17"/>
@@ -633,7 +637,8 @@
                                                                     <exclude reference="a7R-EV-lmI"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact">
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="1" y="1" width="103" height="103"/>
                                                                 <mask key="constraints">
                                                                     <include reference="a7R-EV-lmI"/>
                                                                 </mask>
@@ -751,7 +756,8 @@
                                                                     <exclude reference="z4c-Sg-dYT"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="widthClass=compact">
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="1" width="104" height="103"/>
                                                                 <mask key="constraints">
                                                                     <include reference="z4c-Sg-dYT"/>
                                                                 </mask>
@@ -762,6 +768,9 @@
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="lFS-UF-4P1">
                                                                     <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="1" y="0.0" width="44" height="44"/>
+                                                                    </variation>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmL-wH-tsB">
                                                                     <rect key="frame" x="42" y="68" width="9" height="17"/>
@@ -842,7 +851,8 @@
                                                             <exclude reference="sHm-M4-GY6"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="234" y="16" width="103" height="127"/>
                                                         <mask key="subviews">
                                                             <include reference="X0A-j9-b4Z"/>
                                                         </mask>
@@ -1564,12 +1574,18 @@
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sidebar_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-b3-Xh1">
                                         <rect key="frame" x="89" y="89" width="22" height="22"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="55" y="55" width="22" height="22"/>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쿠폰함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiQ-0y-fgI">
                                         <rect key="frame" x="81" y="115" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="49" y="81" width="37" height="17"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1660,9 +1676,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="48" y="92" width="37" height="17"/>
+                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarDday" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
                                         <rect key="frame" x="78" y="78" width="44" height="44"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="45" y="44" width="44" height="44"/>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
