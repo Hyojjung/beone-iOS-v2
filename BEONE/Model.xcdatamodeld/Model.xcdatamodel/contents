@@ -4,8 +4,10 @@
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authenticationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,6 +18,6 @@
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MyInfo" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="MyInfo" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>

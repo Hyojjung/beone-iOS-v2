@@ -193,7 +193,10 @@ extension UIViewController {
           if paymentType.id == PaymentTypeId.Card.rawValue {
             self.showBillKeysView(order, paymentInfoId: paymentInfoId)
           } else {
-            self.showOrderWebView(order, paymentTypeId: paymentType.id!, paymentInfoId: paymentInfoId)
+            self.showOrderWebView(order,
+                                  paymentTypeId: paymentType.id!,
+                                  paymentTypeName: paymentType.name,
+                                  paymentInfoId: paymentInfoId)
           }
         }
         actionSheetButtons.appendObject(paymentTypeButton)
@@ -218,8 +221,9 @@ extension UIViewController {
     navigationController?.showViewController(orderResultViewController, sender: nil)
   }
   
-  func showOrderWebView(order: Order, paymentTypeId: Int, paymentInfoId: Int? = nil) {
+  func showOrderWebView(order: Order, paymentTypeId: Int, paymentTypeName: String?, paymentInfoId: Int? = nil) {
     let orderWebViewController = OrderWebViewController(nibName: "OrderWebViewController", bundle: nil)
+    orderWebViewController.title = paymentTypeName
     orderWebViewController.order = order
     orderWebViewController.paymentInfoId = paymentInfoId
     orderWebViewController.paymentTypeId = paymentTypeId

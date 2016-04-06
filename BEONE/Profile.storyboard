@@ -1026,7 +1026,7 @@
                                             <outlet property="textField" destination="Vuh-c0-avY" id="KbZ-Qp-p2D"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="birthdayCell" rowHeight="45" id="5Ac-LI-bTp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="birthdayCell" rowHeight="45" id="5Ac-LI-bTp" customClass="BirthdayCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="175" width="600" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ac-LI-bTp" id="Aa4-Lf-bsz">
@@ -1049,7 +1049,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06i-pe-Vwi">
-                                                    <rect key="frame" x="97" y="0.0" width="100" height="45"/>
+                                                    <rect key="frame" x="97" y="0.0" width="503" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="VKD-iv-Q0k"/>
                                                     </constraints>
@@ -1058,6 +1058,14 @@
                                                         <color key="titleColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="VKD-iv-Q0k"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="birthdayButtonTapped" destination="sam-zf-Fcw" eventType="touchUpInside" id="eWD-sK-6PQ"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1080,8 +1088,14 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="06i-pe-Vwi" secondAttribute="trailing" id="1Pj-3e-9QC"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="birthdayButton" destination="06i-pe-Vwi" id="o7u-hS-vPK"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genderCell" rowHeight="63" id="2mv-vD-TsF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genderCell" rowHeight="63" id="2mv-vD-TsF" customClass="GenderCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="220" width="600" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2mv-vD-TsF" id="SLo-Te-aOo">
@@ -1109,6 +1123,9 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
+                                                    <connections>
+                                                        <action selector="maleButtonTapped:" destination="sam-zf-Fcw" eventType="touchUpInside" id="beG-8V-cYw"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남자" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-xR-aJY">
                                                     <rect key="frame" x="132" y="13" width="28" height="20"/>
@@ -1122,6 +1139,9 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="radio_on"/>
+                                                    <connections>
+                                                        <action selector="femaleButtonTapped:" destination="sam-zf-Fcw" eventType="touchUpInside" id="RrL-cR-eFh"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여자" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-z7-vum">
                                                     <rect key="frame" x="214" y="13" width="28" height="20"/>
@@ -1163,6 +1183,10 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="femaleButton" destination="4Yy-JD-3Ou" id="4Yj-1d-qhH"/>
+                                            <outlet property="maleButton" destination="q9d-nT-f9K" id="QZm-Aw-eY1"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saveButtonCell" rowHeight="45" id="Vmv-XK-etz">
                                         <rect key="frame" x="0.0" y="283" width="600" height="45"/>

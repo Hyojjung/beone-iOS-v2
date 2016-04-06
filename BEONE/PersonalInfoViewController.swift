@@ -1,5 +1,6 @@
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class PersonalInfoViewController: BaseTableViewController {
   
@@ -20,11 +21,6 @@ class PersonalInfoViewController: BaseTableViewController {
                                                        "genderCell",
                                                        "saveButtonCell"]
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    needOftenUpdate = false
-  }
-  
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
@@ -36,7 +32,7 @@ class PersonalInfoViewController: BaseTableViewController {
     }
   }
   
-  @IBAction func saveButtonTapped() {
+  func syncMyInfoWithView() {
     if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
       inSection: PersonalInfoTableViewSection.Name.rawValue)) as? InfoTextFieldCell {
       MyInfo.sharedMyInfo().name = cell.textField.text
@@ -49,6 +45,57 @@ class PersonalInfoViewController: BaseTableViewController {
       inSection: PersonalInfoTableViewSection.Email.rawValue)) as? InfoTextFieldCell {
       MyInfo.sharedMyInfo().email = cell.textField.text
     }
+  }
+  
+  @IBAction func saveButtonTapped() {
+    MyInfo.sharedMyInfo().put {
+      self.popView()
+    }
+  }
+  
+  @IBAction func birthdayButtonTapped() {
+    endEditing()
+    
+    let selectedDate: NSDate
+    if let birthday = MyInfo.sharedMyInfo().birthday {
+      selectedDate = birthday
+    } else {
+      selectedDate = NSDate()
+    }
+    
+    let datePicker = ActionSheetDatePicker(title: "생일을 선택해주세요",
+                                           datePickerMode: .Date,
+                                           selectedDate: selectedDate,
+                                           doneBlock: { (_, selectedDate, _) in
+                                            if selectedDate.compare(NSDate()) != .OrderedDescending {
+                                              MyInfo.sharedMyInfo().birthday = selectedDate as? NSDate
+                                              self.syncMyInfoWithView()
+                                              self.tableView.reloadData()
+                                            } else {
+                                              let action = Action()
+                                              action.type = .Method
+                                              action.content = "birthdayButtonTapped"
+                                              
+                                              self.showAlertView("오늘 이후는 선택하실 수 없습니다.",
+                                                confirmAction: action,
+                                                delegate: self)
+                                            }
+      }, cancelBlock: nil, origin: view)
+    datePicker.showActionSheetPicker()
+  }
+  
+  @IBAction func maleButtonTapped(sender: UIButton) {
+    sender.selected = !sender.selected
+    MyInfo.sharedMyInfo().gender = sender.selected ? Gender.Male.rawValue : Gender.Female.rawValue
+    syncMyInfoWithView()
+    tableView.reloadData()
+  }
+  
+  @IBAction func femaleButtonTapped(sender: UIButton) {
+    sender.selected = !sender.selected
+    MyInfo.sharedMyInfo().gender = sender.selected ? Gender.Female.rawValue : Gender.Male.rawValue
+    syncMyInfoWithView()
+    tableView.reloadData()
   }
 }
 
@@ -87,6 +134,16 @@ extension PersonalInfoViewController: UITableViewDataSource {
       if let cell = cell as? InfoTextFieldCell {
         cell.setUpCell(MyInfo.sharedMyInfo().email)
       }
+    case .Birthday:
+      if let cell = cell as? BirthdayCell {
+        cell.setUpCell(MyInfo.sharedMyInfo().birthday)
+      }
+    case .Gender:
+      if let cell = cell as? GenderCell {
+        if let gender = MyInfo.sharedMyInfo().gender {
+          cell.setUpCell(Gender(rawValue: gender))
+        }
+      }
     default:
       break
     }
@@ -100,5 +157,26 @@ class InfoTextFieldCell: UITableViewCell {
   
   func setUpCell(info: String?) {
     textField.text = info
+  }
+}
+
+class BirthdayCell: UITableViewCell {
+  
+  @IBOutlet weak var birthdayButton: UIButton!
+  
+  func setUpCell(birthday: NSDate?) {
+    birthdayButton.setTitle(birthday?.briefDateString(), forState: .Normal)
+    birthdayButton.setTitle(birthday?.briefDateString(), forState: .Highlighted)
+  }
+}
+
+class GenderCell: UITableViewCell {
+  
+  @IBOutlet weak var maleButton: UIButton!
+  @IBOutlet weak var femaleButton: UIButton!
+  
+  func setUpCell(gender: Gender?) {
+    maleButton.selected = gender == .Male
+    femaleButton.selected = gender == .Female
   }
 }

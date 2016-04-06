@@ -7,6 +7,11 @@ let kMyInfoPropertyKeyPoint = "point"
 let kMyInfoPropertyKeyPhone = "phone"
 let kMyInfoPropertyKeyAccount = "account"
 
+enum Gender: String {
+  case Male = "male"
+  case Female = "female"
+}
+
 class MyInfo: NSManagedObject {
   
   private static let entityName = "MyInfo"
@@ -45,8 +50,42 @@ class MyInfo: NSManagedObject {
       self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
       self.name = myInfo[kObjectPropertyKeyName] as? String
       self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
+      self.gender = myInfo["gender"] as? String
       self.point = myInfo[kMyInfoPropertyKeyPoint] as? NSNumber
+      if let birthday = myInfo["birthday"] as? String {
+        self.birthday = birthday.date()
+      } else {
+        self.birthday = nil
+      }
       CoreDataHelper.sharedCoreDataHelper.saveContext()
+    }
+  }
+  
+  func put(putSuccess: () -> Void) {
+    if let userId = userId {
+      var parameter = [String: AnyObject]()
+      parameter[kMyInfoPropertyKeyEmail] = email
+      parameter[kObjectPropertyKeyName] = name
+      parameter[kMyInfoPropertyKeyPhone] = phone
+      parameter["gender"] = gender
+      
+      if let birthday = birthday {
+        
+        let calendar = DateFormatterHelper.koreanCalendar
+        let components = calendar.components([.Year, .Month, .Day], fromDate: birthday)
+        let day = "\(components.year)-\(components.month)-\(components.day)"
+        let serverDayFormatter = NSDateFormatter()
+        serverDayFormatter.dateFormat = "yyyy-M-dd"
+        self.birthday = serverDayFormatter.dateFromString(day)
+        self.birthday = self.birthday?.dateByAddingTimeInterval(NSTimeInterval(NSTimeZone.localTimeZone().secondsFromGMT))
+        
+        parameter["birthday"] = self.birthday?.serverDateString()
+      }
+
+      
+      NetworkHelper.requestPut("users/\(userId)", parameter: parameter, success: { (result) -> Void in
+        putSuccess()
+        }, failure: nil)
     }
   }
   
