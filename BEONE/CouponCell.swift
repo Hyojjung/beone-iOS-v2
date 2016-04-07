@@ -1,10 +1,6 @@
 
 import UIKit
 
-protocol CouponDelegate: NSObjectProtocol {
-  func selectCouponButtonTapped(coupon: Coupon)
-}
-
 class CouponCell: UITableViewCell {
   
   @IBOutlet weak var subTitleLabel: UILabel!

@@ -2,6 +2,7 @@
 import UIKit
 
 class ProductDetailCell: UICollectionViewCell {
+  
   @IBOutlet weak var containerView: UIView!
   
   func configureCell(product: Product, indexPath: NSIndexPath) {
@@ -10,11 +11,15 @@ class ProductDetailCell: UICollectionViewCell {
 }
 
 class RateCell: ProductDetailCell {
+  
   @IBOutlet weak var summaryLabel: UILabel!
+  @IBOutlet var rateImageViews: [UIImageView]!
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
-    // TODO: - Rate
+    for imageView in rateImageViews {
+      imageView.highlighted = product.rate >= imageView.tag
+    }
     summaryLabel.text = product.summary
   }
 }
@@ -39,7 +44,7 @@ class InfoCell: ProductDetailCell {
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
     productCodeLabel.text = product.productCode
-    // TODO: - delivery info
+    deliveryLabel.text = product.deliveryInfo
     sellerLabel.text = product.shop.name
     countryLabel.text = product.countryInfo
   }

@@ -38,8 +38,9 @@ class Product: BaseModel {
   var quantity = 1
   var discountPercent: Int?
   var productCode: String?
-  var rate = 0.0
+  var rate = 0
   var relatedLawInfo: String?
+  var deliveryInfo: String?
   var shelfLife: String?
   var shopId: Int?
   var significantlyUpdatedAt: NSDate?
@@ -88,6 +89,9 @@ class Product: BaseModel {
       if let quantity = product[kProductPropertyKeyQuantity] as? Int {
         self.quantity = quantity
       }
+      if let rate = product["rate"] as? Int {
+        self.rate = rate
+      }
       subtitle = product[kProductPropertyKeySubtitle] as? String
       summary = product[kProductPropertyKeySummary] as? String
       productCode = product[kProductPropertyKeyProductCode] as? String
@@ -99,6 +103,7 @@ class Product: BaseModel {
       keepingMethod = product[kProductPropertyKeyKeepingMethod] as? String
       precaution = product[kProductPropertyKeyPrecaution] as? String
       contact = product[kProductPropertyKeyContact] as? String
+      deliveryInfo = product["deliveryInfo"] as? String
       if let soldOut = product[kProductPropertyKeyIsSoldOut] as? Bool {
         self.soldOut = soldOut
       }

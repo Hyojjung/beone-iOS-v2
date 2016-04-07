@@ -12,6 +12,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   // MARK: - Constant
   
   private enum SelectingPaymentTypeTableViewSection: Int {
+    case OrderTitle
     case OrderOrderableItem
     case DiscountInfoTitle
     case DiscountWay
@@ -24,6 +25,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   }
   
   private let kSelectingPaymentTypeTableViewCellIdentifiers = [
+    "orderTitleCell",
     "orderOrderableItemCell",
     "discountInfoTitleCell",
     "discountWayCell",
@@ -39,6 +41,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
   
   var discountWay = DiscountWay.None
   var order = Order()
+  var orderPrice = 0
   var paymentTypes: PaymentTypes?
   var selectedPaymentTypeId: Int?
   var selectedCoupon: Coupon?
@@ -79,6 +82,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
           }
         }
       }
+      self.orderPrice = self.order.actualPrice
       self.tableView.reloadData()
     }
     OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
@@ -143,9 +147,9 @@ extension SelectingPaymentTypeViewController {
         showAlertView(NSLocalizedString("use more than 1000 point", comment: "alert title"))
       } else if point % 100 > 1 {
         showAlertView(NSLocalizedString("use more 100 unit point", comment: "alert title"))
-      } else if point > order.actualPrice {
+      } else if point > orderPrice {
         showAlertView(NSLocalizedString("use less than total price", comment: "alert title"))
-      } else if order.actualPrice - point < 1000 && order.actualPrice - point > 0 {
+      } else if orderPrice - point < 1000 && orderPrice - point > 0 {
         showAlertView("결제금액은 1000원 이상이어야 합니다.")
       } else {
         self.setUpPrices(point)
@@ -189,6 +193,7 @@ extension SelectingPaymentTypeViewController {
     if let couponId = coupon?.id {
       couponIds.appendObject(couponId)
     }
+    
     OrderHelper.fetchCalculatedPrice(order.actualPrice, couponIds: couponIds, point: point, getSuccess: { (actualPrice, discountPrice) -> Void in
       self.order.discountPrice = discountPrice
       self.order.usedPoint = point
@@ -202,6 +207,11 @@ extension SelectingPaymentTypeViewController: CouponDelegate {
   func selectCouponButtonTapped(coupon: Coupon) {
     selectedCoupon = coupon
     setUpPrices(coupon: coupon)
+  }
+  
+  func deleteCouponButtonTapped() {
+    selectedCoupon = nil
+    setUpPrices()
   }
 }
 
@@ -264,24 +274,8 @@ extension SelectingPaymentTypeViewController: DynamicHeightTableViewDelegate {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    if cell is OrderOrderableItemCell {
-      return 97
-    } else if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes?.list as? [PaymentType] {
+    if let cell = cell as? PaymentTypeCell, paymentTypes = paymentTypes?.list as? [PaymentType] {
       return cell.calculatedHeight(paymentTypes)
-    } else if cell.reuseIdentifier == "discountInfoTitleCell" || cell.reuseIdentifier == "priceTitleCell" {
-      return 60
-    } else if cell.reuseIdentifier == "discountWayCell" {
-      return 58
-    } else if cell.reuseIdentifier == "pointCell" {
-      return 133
-    } else if cell.reuseIdentifier == "couponCell" {
-      return 83
-    } else if cell.reuseIdentifier == "nothingCell" {
-      return 22
-    } else if cell.reuseIdentifier == "priceCell" {
-      return 231
-    } else if cell.reuseIdentifier == "buttonCell" {
-      return 60
     }
     return nil
   }

@@ -83,8 +83,8 @@
                                                     <color key="textColor" red="0.56862745098039214" green="0.55294117647058827" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eh-fi-a0c">
-                                                    <rect key="frame" x="93" y="208" width="31" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eh-fi-a0c">
+                                                    <rect key="frame" x="93" y="207" width="31" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1323,31 +1323,31 @@
                                             <outlet property="priceLabel" destination="p5t-Tx-yZR" id="vib-Oa-YNg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressInfoCell" rowHeight="173" id="8Ah-TH-IAO" customClass="AddressInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="411" width="600" height="173"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressInfoCell" rowHeight="175" id="8Ah-TH-IAO" customClass="AddressInfoCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="411" width="600" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ah-TH-IAO" id="YbS-UR-FJD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="173"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cart_item" translatesAutoresizingMaskIntoConstraints="NO" id="Pxy-eM-zyO">
-                                                    <rect key="frame" x="0.0" y="43" width="600" height="130"/>
+                                                    <rect key="frame" x="0.0" y="43" width="600" height="132"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="받으시는 분" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX1-dh-3M2">
-                                                    <rect key="frame" x="14" y="68" width="56" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="받으시는 분" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX1-dh-3M2">
+                                                    <rect key="frame" x="14" y="68" width="55.5" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="휴대전화" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtC-fY-7Gu">
-                                                    <rect key="frame" x="14" y="90" width="42" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="휴대전화" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtC-fY-7Gu">
+                                                    <rect key="frame" x="14" y="91" width="42" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" ambiguous="YES" misplaced="YES" text="홍길동" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="Na9-a8-D1b">
-                                                    <rect key="frame" x="99" y="68" width="32" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" text="홍길동" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="Na9-a8-D1b">
+                                                    <rect key="frame" x="98.5" y="68" width="32" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1358,32 +1358,32 @@
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요청사항" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ili-EM-BNs">
-                                                    <rect key="frame" x="14" y="135" width="42" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="요청사항" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ili-EM-BNs">
+                                                    <rect key="frame" x="14" y="137" width="42" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="주소" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="209" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-TZ-Mfn">
-                                                    <rect key="frame" x="99" y="113" width="487" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="249" text="주소" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-TZ-Mfn">
+                                                    <rect key="frame" x="98.5" y="114" width="487.5" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="주소" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2g-KX-P6w">
-                                                    <rect key="frame" x="14" y="113" width="21" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="주소" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2g-KX-P6w">
+                                                    <rect key="frame" x="14" y="114" width="21" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="요청사항" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-bi-FtX">
-                                                    <rect key="frame" x="99" y="135" width="487" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" text="010-0000-0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-B4-oeS">
+                                                    <rect key="frame" x="98.5" y="91" width="93" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" ambiguous="YES" misplaced="YES" text="010-0000-0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-B4-oeS">
-                                                    <rect key="frame" x="99" y="90" width="93" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="요청사항" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-bi-FtX">
+                                                    <rect key="frame" x="98.5" y="137" width="487.5" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1396,7 +1396,7 @@
                                                 <constraint firstItem="Pxy-eM-zyO" firstAttribute="top" secondItem="YbS-UR-FJD" secondAttribute="top" constant="43" id="BGr-cC-Qdu"/>
                                                 <constraint firstItem="Pxy-eM-zyO" firstAttribute="leading" secondItem="YbS-UR-FJD" secondAttribute="leading" id="CZr-dE-QxU"/>
                                                 <constraint firstItem="Pxy-eM-zyO" firstAttribute="top" secondItem="wX1-dh-3M2" secondAttribute="top" constant="-25" id="FXg-Y4-ApJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="Zyi-bi-FtX" secondAttribute="bottom" constant="23" id="FyT-hv-m2S"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zyi-bi-FtX" secondAttribute="bottom" priority="999" constant="23" id="FyT-hv-m2S"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zyi-bi-FtX" secondAttribute="trailing" constant="14" id="GvL-zT-wPx"/>
                                                 <constraint firstItem="Pxy-eM-zyO" firstAttribute="top" secondItem="acH-in-I9H" secondAttribute="bottom" constant="8" id="KJZ-ah-UAV"/>
                                                 <constraint firstItem="cmn-TZ-Mfn" firstAttribute="top" secondItem="N8a-B4-oeS" secondAttribute="bottom" constant="8" id="PQ4-qK-YCJ"/>
@@ -1406,6 +1406,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="N8a-B4-oeS" secondAttribute="trailing" constant="14" id="TTU-ls-j1J"/>
                                                 <constraint firstItem="acH-in-I9H" firstAttribute="leading" secondItem="YbS-UR-FJD" secondAttribute="leading" constant="14" id="WqU-yo-6n5"/>
                                                 <constraint firstItem="cmn-TZ-Mfn" firstAttribute="top" secondItem="I2g-KX-P6w" secondAttribute="top" id="YJF-pV-kTx"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zyi-bi-FtX" secondAttribute="bottom" constant="23" id="ZQa-jt-7vg"/>
                                                 <constraint firstItem="Zyi-bi-FtX" firstAttribute="top" secondItem="cmn-TZ-Mfn" secondAttribute="bottom" priority="999" constant="8" id="bvm-a2-Jxt"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pxy-eM-zyO" secondAttribute="trailing" id="bw4-oX-FqJ"/>
                                                 <constraint firstItem="Zyi-bi-FtX" firstAttribute="top" secondItem="ili-EM-BNs" secondAttribute="top" id="chU-F0-i3L"/>
@@ -1425,6 +1426,7 @@
                                                 <mask key="constraints">
                                                     <exclude reference="yya-6g-fzh"/>
                                                     <exclude reference="TTU-ls-j1J"/>
+                                                    <exclude reference="FyT-hv-m2S"/>
                                                     <exclude reference="bvm-a2-Jxt"/>
                                                 </mask>
                                             </variation>
@@ -1432,15 +1434,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="cmn-TZ-Mfn" id="UIl-sU-M9O"/>
-                                            <outlet property="deliveryMemoKeyLabel" destination="ili-EM-BNs" id="Ucm-kR-Rug"/>
-                                            <outlet property="deliveryMemoKeyLabelBottomLayoutConstraint" destination="FyT-hv-m2S" id="TDl-s9-EZN"/>
                                             <outlet property="deliveryMemoLabel" destination="Zyi-bi-FtX" id="LQX-ei-V20"/>
                                             <outlet property="receiverNameLabel" destination="Na9-a8-D1b" id="ni2-of-9yc"/>
                                             <outlet property="receiverPhoneLabel" destination="N8a-B4-oeS" id="MCE-Y1-e4t"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentInfoCell" rowHeight="148" id="Jel-IT-DKG" customClass="PaymentInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="584" width="600" height="148"/>
+                                        <rect key="frame" x="0.0" y="586" width="600" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jel-IT-DKG" id="OfN-Ae-TXo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="148"/>
@@ -1466,12 +1466,6 @@
                                                     <rect key="frame" x="14" y="19" width="49" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="010-0000-0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpc-Sb-Thr">
-                                                    <rect key="frame" x="99" y="90" width="93" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="결제금액" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGv-jT-lo2">
@@ -1513,6 +1507,12 @@
                                                         <action selector="paymentButtonTapped:" destination="yzw-iZ-O00" eventType="touchUpInside" id="1my-Wx-cGz"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="010-0000-0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpc-Sb-Thr">
+                                                    <rect key="frame" x="99" y="90" width="93" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1555,7 +1555,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ordererInfoCell" rowHeight="130" id="ruY-1q-1Vk" customClass="OrdererInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="732" width="600" height="130"/>
+                                        <rect key="frame" x="0.0" y="734" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ruY-1q-1Vk" id="V9B-kc-Jlw">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
@@ -1571,8 +1571,8 @@
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" misplaced="YES" text="홍길동" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-6N-g95">
-                                                    <rect key="frame" x="99" y="68" width="487" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" text="홍길동" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="207" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-6N-g95">
+                                                    <rect key="frame" x="99" y="68" width="487" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745098039214" green="0.55294117647058827" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1625,7 +1625,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderItemSetInfoCell" rowHeight="132" id="2dN-6d-bXE" customClass="OrderItemSetInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="862" width="600" height="132"/>
+                                        <rect key="frame" x="0.0" y="864" width="600" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2dN-6d-bXE" id="GON-Dr-Gbe">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
@@ -1785,7 +1785,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCell" rowHeight="65" id="1uN-Vu-Bax">
-                                        <rect key="frame" x="0.0" y="994" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="996" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1uN-Vu-Bax" id="CXp-V6-Mpq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
@@ -1836,7 +1836,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shopNameCell" rowHeight="44" id="f7X-sM-kio" customClass="OrderItemSetShopNameCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1059" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="1061" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f7X-sM-kio" id="ERm-5A-kM0">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1862,7 +1862,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageTitleCell" rowHeight="43" id="Ep7-9Q-fo4">
-                                        <rect key="frame" x="0.0" y="1103" width="600" height="43"/>
+                                        <rect key="frame" x="0.0" y="1105" width="600" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ep7-9Q-fo4" id="Pm1-Et-13S">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1885,7 +1885,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="400" id="lP2-XN-Xrx" customClass="ImageCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1146" width="600" height="400"/>
+                                        <rect key="frame" x="0.0" y="1148" width="600" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lP2-XN-Xrx" id="GcC-eN-3nR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
@@ -2305,7 +2305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68Y-lL-EfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2751" y="3457"/>
+            <point key="canvasLocation" x="2906" y="3359"/>
         </scene>
         <!--Return View Controller-->
         <scene sceneID="Agz-i0-4bE">
@@ -2565,7 +2565,7 @@
         <image name="bg_rebone" width="138" height="28"/>
         <image name="bg_review" width="2" height="3"/>
         <image name="bg_review_section" width="7" height="7"/>
-        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStroke" width="11" height="11"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btn_add_picture" width="67" height="67"/>
         <image name="btn_add_product_picture" width="297" height="57"/>

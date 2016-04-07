@@ -1,6 +1,11 @@
 
 import UIKit
 
+protocol CouponDelegate: NSObjectProtocol {
+  func selectCouponButtonTapped(coupon: Coupon)
+  func deleteCouponButtonTapped()
+}
+
 class OrderCouponsViewController: BaseTableViewController {
   
   // MARK: - Constant
@@ -41,6 +46,11 @@ extension OrderCouponsViewController: CouponDelegate {
     delegate?.selectCouponButtonTapped(coupon)
     popView()
   }
+  
+  func deleteCouponButtonTapped() {
+    delegate?.deleteCouponButtonTapped()
+    popView()
+  }
 }
 
 extension OrderCouponsViewController: UITableViewDataSource {
@@ -52,6 +62,8 @@ extension OrderCouponsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? CouponCell, coupon = coupons.list[indexPath.row] as? Coupon {
       cell.configureCell(coupon)
+      cell.delegate = self
+    } else if let cell = cell as? DeleteCouponButtonCell {
       cell.delegate = self
     }
     return cell

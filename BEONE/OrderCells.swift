@@ -120,20 +120,24 @@ class AddressInfoCell: UITableViewCell {
   @IBOutlet weak var receiverNameLabel: UILabel!
   @IBOutlet weak var receiverPhoneLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
-  @IBOutlet weak var deliveryMemoKeyLabel: UILabel!
   @IBOutlet weak var deliveryMemoLabel: UILabel!
-  @IBOutlet weak var deliveryMemoKeyLabelBottomLayoutConstraint: NSLayoutConstraint!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    addressLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 113
+    deliveryMemoLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 113
+  }
   
   func configureCell(order: Order) {
     receiverNameLabel.text = order.address.receiverName
     receiverPhoneLabel.text = order.address.receiverPhone
     addressLabel.text = order.address.fullAddressString()
-    deliveryMemoLabel.text = order.deliveryMemo
-    
-    if order.deliveryMemo == nil  {
-      deliveryMemoKeyLabel.text = nil
+
+    if order.deliveryMemo != nil {
+      deliveryMemoLabel.text = order.deliveryMemo
+    } else {
+      deliveryMemoLabel.text = "없음"
     }
-    deliveryMemoKeyLabelBottomLayoutConstraint.constant = order.deliveryMemo == nil ? 9 : 23
   }
 }
 

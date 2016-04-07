@@ -171,23 +171,7 @@ extension OrderViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? ImageCell, orderItem = self.orderItem(indexPath) {
-      cell.configureCell(orderItem, receiverName: order.address.receiverName!)
-    } else if let cell = cell as? OrderItemCell, orderItem = self.orderItem(indexPath) {
-      cell.configureCell(orderItem)
-    } else if let cell = cell as? OrderItemSetInfoCell {
-      cell.configureCell(orderItemSet(indexPath.section))
-    } else if let cell = cell as? OrdererInfoCell {
-      cell.configureCell(order)
-    } else if let cell = cell as? AddressInfoCell {
-      cell.configureCell(order)
-    } else if let cell = cell as? PaymentInfoCell {
-      cell.configureCell(order.paymentInfos.list[indexPath.row] as! PaymentInfo)
-    } else if let cell = cell as? OrderItemSetShopNameCell {
-      cell.configureCell(orderItemSet(indexPath.section))
-    } else if let cell = cell as? AccountInfoCell {
-      cell.configureCell(bankUnpaiedPaymentInfos[indexPath.row])
-    }
+    configure(cell, indexPath: indexPath)
     return cell
   }
   
@@ -219,6 +203,26 @@ extension OrderViewController: SchemeDelegate {
 }
 
 extension OrderViewController: DynamicHeightTableViewDelegate {
+  
+  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
+    if let cell = cell as? ImageCell, orderItem = self.orderItem(indexPath) {
+      cell.configureCell(orderItem, receiverName: order.address.receiverName!)
+    } else if let cell = cell as? OrderItemCell, orderItem = self.orderItem(indexPath) {
+      cell.configureCell(orderItem)
+    } else if let cell = cell as? OrderItemSetInfoCell {
+      cell.configureCell(orderItemSet(indexPath.section))
+    } else if let cell = cell as? OrdererInfoCell {
+      cell.configureCell(order)
+    } else if let cell = cell as? AddressInfoCell {
+      cell.configureCell(order)
+    } else if let cell = cell as? PaymentInfoCell {
+      cell.configureCell(order.paymentInfos.list[indexPath.row] as! PaymentInfo)
+    } else if let cell = cell as? OrderItemSetShopNameCell {
+      cell.configureCell(orderItemSet(indexPath.section))
+    } else if let cell = cell as? AccountInfoCell {
+      cell.configureCell(bankUnpaiedPaymentInfos[indexPath.row])
+    }
+  }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     let section = self.sectionType(indexPath.section)
@@ -256,13 +260,11 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
       }
     case .OrdererInfo:
       return 130
-    case .AddressInfo:
-      return calculatedAddressInfoCellHeight()
     case .PaymentInfo:
       return 148
     case .Buttons:
       return 65
-    case .Count: break
+    case .Count, .AddressInfo: break
     }
     return nil
   }
@@ -284,28 +286,5 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
     optionLabel.text = orderItem.selectedOption?.optionString()
     optionLabel.setWidth(ViewControllerHelper.screenWidth - 113)
     return 152 + optionLabel.frame.height
-  }
-  
-  func calculatedAddressInfoCellHeight() -> CGFloat {
-    var height = CGFloat(136)
-    
-    let addressLabel = UILabel()
-    addressLabel.font = UIFont.systemFontOfSize(12)
-    addressLabel.text = order.address.fullAddressString()
-    addressLabel.setWidth(ViewControllerHelper.screenWidth - 113)
-    
-    height += addressLabel.frame.height
-    
-    if let deliveryMemo = order.deliveryMemo {
-      height += 8
-      
-      let deliveryMemoLabel = UILabel()
-      deliveryMemoLabel.font = UIFont.systemFontOfSize(12)
-      deliveryMemoLabel.text = deliveryMemo
-      deliveryMemoLabel.setWidth(ViewControllerHelper.screenWidth - 113)
-      height += deliveryMemoLabel.frame.height
-    }
-    
-    return height
   }
 }

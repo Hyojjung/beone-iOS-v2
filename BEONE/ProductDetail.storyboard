@@ -622,21 +622,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqN-OV-nqv">
                                                     <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" translatesAutoresizingMaskIntoConstraints="NO" id="jJC-pC-zOc">
-                                                            <rect key="frame" x="173" y="19" width="19" height="19"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-hL-sFa">
-                                                            <rect key="frame" x="197" y="19" width="19" height="19"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" translatesAutoresizingMaskIntoConstraints="NO" id="Qdf-Md-2ZU">
-                                                            <rect key="frame" x="221" y="19" width="19" height="19"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" translatesAutoresizingMaskIntoConstraints="NO" id="tXw-KO-1lK">
-                                                            <rect key="frame" x="245" y="19" width="19" height="19"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-Q1-k3n">
-                                                            <rect key="frame" x="269" y="19" width="19" height="19"/>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="105" contentMode="left" text="Product" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="kEG-y4-TpF">
                                                             <rect key="frame" x="12" y="50" width="436" height="45"/>
                                                             <accessibility key="accessibilityConfiguration" label=""/>
@@ -657,6 +642,21 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="fU5-oi-ebi"/>
                                                             </constraints>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="jJC-pC-zOc">
+                                                            <rect key="frame" x="173" y="19" width="19" height="19"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-hL-sFa">
+                                                            <rect key="frame" x="197" y="19" width="19" height="19"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="Qdf-Md-2ZU">
+                                                            <rect key="frame" x="221" y="19" width="19" height="19"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="tXw-KO-1lK">
+                                                            <rect key="frame" x="245" y="19" width="19" height="19"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-Q1-k3n">
+                                                            <rect key="frame" x="269" y="19" width="19" height="19"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -711,6 +711,11 @@
                                         <connections>
                                             <outlet property="containerView" destination="MqN-OV-nqv" id="Xb7-cR-8Zu"/>
                                             <outlet property="summaryLabel" destination="kEG-y4-TpF" id="hGm-ai-jFW"/>
+                                            <outletCollection property="rateImageViews" destination="jJC-pC-zOc" collectionClass="NSMutableArray" id="Ryc-dI-RbY"/>
+                                            <outletCollection property="rateImageViews" destination="Mxy-hL-sFa" collectionClass="NSMutableArray" id="QTQ-DU-xDz"/>
+                                            <outletCollection property="rateImageViews" destination="Qdf-Md-2ZU" collectionClass="NSMutableArray" id="yX8-Ti-HMB"/>
+                                            <outletCollection property="rateImageViews" destination="tXw-KO-1lK" collectionClass="NSMutableArray" id="ViI-6i-Q03"/>
+                                            <outletCollection property="rateImageViews" destination="i8y-Q1-k3n" collectionClass="NSMutableArray" id="Kfs-fY-RJU"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="priceCell" id="vSQ-dJ-df6" customClass="PriceCell" customModule="BEONE" customModuleProvider="target">
