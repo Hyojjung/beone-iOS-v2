@@ -43,6 +43,7 @@ class DeliveryInfoCell: UITableViewCell {
 }
 
 class CartItemCountCell: UITableViewCell {
+  
   @IBOutlet weak var selectedQuantityLabel: UILabel!
   @IBOutlet weak var quantitySelectButton: UIButton!
   @IBOutlet weak var productNameLabel: UILabel!
@@ -53,24 +54,14 @@ class CartItemCountCell: UITableViewCell {
     selectedQuantityLabel.text = "\(cartItem.quantity)개"
     productNameLabel.text = cartItem.selectedOption != nil ? cartItem.product.title : nil
     optionLabel.text = cartItem.selectedOption?.optionString()
+    optionLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
     quantitySelectButton.tag = indexPath.row
     deleteButton.tag = indexPath.row
-    deleteButton.configureAlpha(cartItem.selectedOption != nil)
-  }
-  
-  func calculatedHeight(cartItem: CartItem) -> CGFloat {
-    var height = cartItem.selectedOption != nil ? CGFloat(149) : CGFloat(100)
-    let label = UILabel()
-    label.font = UIFont.systemFontOfSize(15)
-    label.text = cartItem.selectedOption?.optionString()
-    label.setWidth(ViewControllerHelper.screenWidth - 30)
-    
-    height += label.frame.height
-    return height
   }
 }
 
 class ButtonCell: UITableViewCell {
+  
   @IBOutlet weak var addCartItemButton: UIButton!
   
   func configureCell(isOrdering: Bool) {
@@ -98,38 +89,5 @@ class OptionCell: UITableViewCell {
     }
     addCarItemButton.configureAlpha(needButton)
     optionViewBottomMarginLayoutConstraint.constant = needButton ? 89 : 20
-  }
-  
-  func calculatedHeight(productOptionSets: ProductOptionSets?, needButton: Bool) -> CGFloat {
-    var height = needButton ? CGFloat(115) : CGFloat(46)
-    if let productOptionSets = productOptionSets {
-      for (index, productOptionSet) in productOptionSets.list.enumerate() {
-        if let productOptionSet = productOptionSet as? ProductOptionSet {
-          height += 40
-          if index != 0 {
-            height += 10
-          }
-          for option in productOptionSet.options {
-            if option.isSelected {
-              for optionItem in option.optionItems {
-                switch optionItem.type {
-                case .Text:
-                  height += 108
-                case .String:
-                  height += 59
-                case .Select:
-                  height += 40
-                }
-                height += 10
-              }
-            }
-          }
-        }
-        if index != productOptionSets.list.count - 1 {
-          height += 11
-        }
-      }
-    }
-    return height
   }
 }

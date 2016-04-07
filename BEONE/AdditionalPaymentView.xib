@@ -91,7 +91,7 @@
         </view>
     </objects>
     <resources>
-        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStroke" width="11" height="11"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="stroke_1" width="2" height="1"/>
     </resources>

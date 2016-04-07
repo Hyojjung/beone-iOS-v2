@@ -237,10 +237,6 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if let cell = cell as? DeliveryInfoCell {
       return cell.calculatedHeight(selectedProductOrderableInfo)
-    } else if let cell = cell as? CartItemCountCell {
-      return cell.calculatedHeight(cartItems[indexPath.row])
-    } else if let cell = cell as? OptionCell {
-      return cell.calculatedHeight(selectedOption, needButton: !isModifing)
     }
     return nil
   }
