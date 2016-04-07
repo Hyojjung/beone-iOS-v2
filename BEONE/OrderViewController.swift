@@ -137,9 +137,11 @@ extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
     if let paymentInfo = order.paymentInfos.model(sender.tag) as? PaymentInfo {
-      if paymentInfo.isPayable {
-        showPayment(paymentTypes?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
-      } else if paymentInfo.isCancellable {
+      if paymentInfo.transactionButtonType == .Payment {
+        showPayment(paymentTypes?.list as? [PaymentType],
+                    order: order,
+                    paymentInfoId: paymentInfo.id!)
+      } else if paymentInfo.transactionButtonType == .Cancel{
         if paymentInfo.isMainPayment {
           order.put({ (_) -> Void in
             self.popView()
@@ -216,7 +218,7 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
     } else if let cell = cell as? AddressInfoCell {
       cell.configureCell(order)
     } else if let cell = cell as? PaymentInfoCell {
-      cell.configureCell(order.paymentInfos.list[indexPath.row] as! PaymentInfo)
+      cell.configureCell(order.paymentInfos.list[indexPath.row] as! PaymentInfo, order: order)
     } else if let cell = cell as? OrderItemSetShopNameCell {
       cell.configureCell(orderItemSet(indexPath.section))
     } else if let cell = cell as? AccountInfoCell {

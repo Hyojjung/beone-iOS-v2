@@ -155,9 +155,9 @@ class PaymentInfoCell: UITableViewCell {
   @IBOutlet weak var typeNameLabel: UILabel!
   @IBOutlet weak var paidAtLabel: UILabel!
   @IBOutlet weak var totalPriceLabel: UILabel!
-  @IBOutlet weak var payButton: UIButton!
+  @IBOutlet weak var payButton: PaymentButton!
   
-  func configureCell(paymentInfo: PaymentInfo) {
+  func configureCell(paymentInfo: PaymentInfo, order: Order) {
     if let paymentName = paymentInfo.paymentType.name {
       typeNameLabel.text = paymentName
     } else {
@@ -170,10 +170,11 @@ class PaymentInfoCell: UITableViewCell {
     }
     totalPriceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
     
-    let buttonString = paymentInfo.actionButtonString()
-    payButton.setTitle(buttonString, forState: .Normal)
-    payButton.setTitle(buttonString, forState: .Highlighted)
-    payButton.configureAlpha(buttonString != nil)
+    if paymentInfo.isMainPayment {
+      payButton.setUp(order.transactionButtonType, isOrder: true)
+    } else {
+      payButton.setUp(paymentInfo.transactionButtonType, isOrder: false)
+    }
     payButton.tag = paymentInfo.id!
   }
 }

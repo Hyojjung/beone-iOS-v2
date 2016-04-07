@@ -68,7 +68,7 @@ extension OrdersViewController {
   @IBAction func orderActionButtonTapped(sender: UIButton) {
     if let order = orders.list[sender.tag] as? Order, orderId = order.id,
       paymentInfoId = order.paymentInfos.mainPaymentInfo?.id {
-        paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
+      paymentButtonTapped(orderId, paymentInfoId: paymentInfoId)
     }
   }
   
@@ -89,13 +89,15 @@ extension OrdersViewController: AddintionalPaymentDelegate {
   func paymentButtonTapped(orderId: Int, paymentInfoId: Int) {
     if let order = orders.model(orderId) as? Order {
       if let paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo {
-        if paymentInfo.isPayable {
-          showPayment(paymentTypes?.list as? [PaymentType], order: order, paymentInfoId: paymentInfo.id!)
-        } else if paymentInfo.isCancellable {
+        if paymentInfo.transactionButtonType == .Payment {
+          showPayment(paymentTypes?.list as? [PaymentType],
+                      order: order,
+                      paymentInfoId: paymentInfo.id!)
+        } else if paymentInfo.transactionButtonType == .Cancel{
           if paymentInfo.isMainPayment {
             order.put({ (_) -> Void in
               self.setUpData()
-              })
+            })
           } else {
             paymentInfo.put({ (_) -> Void in
               self.setUpData()
@@ -163,7 +165,7 @@ class OrderCell: UITableViewCell {
   @IBOutlet weak var orderTitleLabel: UILabel!
   @IBOutlet weak var orderImageView: LazyLoadingImageView!
   @IBOutlet weak var orderPriceLabel: UILabel!
-  @IBOutlet weak var orderButton: UIButton!
+  @IBOutlet weak var orderButton: PaymentButton!
   @IBOutlet weak var orderDetailButton: UIButton!
   @IBOutlet weak var paymentsView: UIView!
   
@@ -175,10 +177,10 @@ class OrderCell: UITableViewCell {
     let orderableItem = order.orderableItemSets.first?.orderableItems.list.first as? OrderableItem
     orderImageView.setLazyLoaingImage(orderableItem?.productImageUrl)
     layoutPaymentsView(order.paymentInfos.list as! [PaymentInfo],
-      addintionalPaymentDelegate: addintionalPaymentDelegate)
+                       addintionalPaymentDelegate: addintionalPaymentDelegate)
     
+    orderButton.setUp(order.transactionButtonType, isOrder: true)
     orderButton.tag = row
-    orderButton.configureAlpha(order.isCancellable || order.isPayable)
     orderDetailButton.tag = row
   }
   
@@ -220,7 +222,7 @@ class OrdersViewTopCell: UITableViewCell {
   
   @IBOutlet weak var totalOrdersCountLabel: UILabel!
   @IBOutlet weak var reviewableOrderItemsCountLabel: UILabel!
-
+  
   func setUpCell(totalOrdersCount: Int, reviewableOrderItemsCount: Int) {
     totalOrdersCountLabel.text = "\(totalOrdersCount)"
     reviewableOrderItemsCountLabel.text = "\(reviewableOrderItemsCount)"

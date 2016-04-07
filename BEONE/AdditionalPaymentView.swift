@@ -9,7 +9,7 @@ class AdditionalPaymentView: UIView {
   
   @IBOutlet weak var paymentNameLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
-  @IBOutlet weak var paymentButton: UIButton!
+  @IBOutlet weak var paymentButton: PaymentButton!
   
   weak var addintionalPaymentDelegate: AddintionalPaymentDelegate?
 
@@ -29,11 +29,7 @@ class AdditionalPaymentView: UIView {
   private func layoutView(paymentInfo: PaymentInfo) {
     paymentNameLabel.text = paymentInfo.title
     priceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
-    
-    let buttonString = paymentInfo.actionButtonString()
-    paymentButton.setTitle(buttonString, forState: .Normal)
-    paymentButton.setTitle(buttonString, forState: .Highlighted)
-    paymentButton.configureAlpha(buttonString != nil)
+    paymentButton.setUp(paymentInfo.transactionButtonType, isOrder: false)
   }
   
   // MARK: - Public Methods
@@ -43,5 +39,14 @@ class AdditionalPaymentView: UIView {
     
     orderId = paymentInfo.orderId
     paymentInfoId = paymentInfo.id
+  }
+}
+
+class PaymentButton: UIButton {
+  func setUp(transactionButtonType: TransactionButtonType, isOrder: Bool) {
+    let buttonString = transactionButtonType.actionButtonString(isOrder)
+    setTitle(buttonString, forState: .Normal)
+    setTitle(buttonString, forState: .Highlighted)
+    configureAlpha(transactionButtonType != .None)
   }
 }

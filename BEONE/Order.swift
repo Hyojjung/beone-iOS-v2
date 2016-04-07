@@ -22,7 +22,8 @@ class Order: BaseModel {
   var usedCoupon: Coupon?
   var isCancellable = false
   var isPayable = false
-  
+  var transactionButtonType = TransactionButtonType.None
+
   override func getUrl() -> String {
     if MyInfo.sharedMyInfo().isUser() && id != nil {
       return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(id!)"
@@ -64,6 +65,10 @@ class Order: BaseModel {
       }
       if let createdAt = order["createdAt"] as? String {
         self.createdAt = createdAt.date()
+      }
+      if let transactionButtonTypeString = order["transactionButtonType"] as? String,
+        transactionButtonType = TransactionButtonType(rawValue: transactionButtonTypeString) {
+        self.transactionButtonType = transactionButtonType
       }
     }
   }

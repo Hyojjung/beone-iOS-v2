@@ -11,10 +11,32 @@ enum PaymentStatus: String {
   case Success = "success"
 }
 
+enum TransactionButtonType: String {
+  case None = "none"
+  case Payment = "payment"
+  case Cancel = "cancel"
+  
+  func actionButtonString(isOrder: Bool) -> String? {
+    switch self {
+    case .None:
+      return nil
+    case .Cancel:
+      if isOrder {
+        return "주문취소"
+      } else {
+        return "결제취소"
+      }
+    case .Payment:
+      return "결제하기"
+    }
+  }
+}
+
 class PaymentInfo: BaseModel {
   
   var actualPrice = 0
   var currencyType = CurrencyType.KRW
+  var transactionButtonType = TransactionButtonType.None
   
   var isCancellable = false
   var isPayable = false
@@ -53,7 +75,11 @@ class PaymentInfo: BaseModel {
       }
       if let currencyTypeString = paymentInfo["currencyType"] as? String,
         currencyType = CurrencyType(rawValue: currencyTypeString) {
-          self.currencyType = currencyType
+        self.currencyType = currencyType
+      }
+      if let transactionButtonTypeString = paymentInfo["transactionButtonType"] as? String,
+        transactionButtonType = TransactionButtonType(rawValue: transactionButtonTypeString) {
+        self.transactionButtonType = transactionButtonType
       }
       
       if let isMainPayment = paymentInfo["isMainPayment"] as? Bool {
@@ -108,14 +134,5 @@ class PaymentInfo: BaseModel {
   
   override func putUrl() -> String {
     return "users/\(MyInfo.sharedMyInfo().userId!)/orders/\(orderId!)/payment-infos/\(id!)/status"
-  }
-  
-  func actionButtonString() -> String? {
-    if isPayable {
-      return NSLocalizedString("pay", comment: "button title")
-    } else if isCancellable {
-      return NSLocalizedString("pay cancel", comment: "button title")
-    }
-    return nil
   }
 }
