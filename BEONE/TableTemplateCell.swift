@@ -96,9 +96,6 @@ extension TableTemplateCell {
 
 extension TableTemplateCell: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    if let templateId = templateId, content = content, contentsId = content.id {
-      postNotification(kNotificationDoAction,
-        userInfo: [kNotificationKeyTemplateId: templateId, kNotificationKeyContentsId: contentsId])
-    }
+
   }
 }

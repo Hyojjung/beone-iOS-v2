@@ -56,6 +56,7 @@ class Template: BaseModel {
   var type: TemplateType?
   
   var style = TemplateStyle()
+  var action = Action()
   var content = Content()
   
   var height: CGFloat?
@@ -71,6 +72,7 @@ class Template: BaseModel {
   override func assignObject(data: AnyObject?) {
     if let template = data as? [String: AnyObject] {
       id = template[kObjectPropertyKeyId] as? Int
+      action.assignObject(template["action"])
       style.assignObject(template[kTemplatePropertyKeyStyle])
       content.assignObject(template[kTemplatePropertyKeyContents])
     }

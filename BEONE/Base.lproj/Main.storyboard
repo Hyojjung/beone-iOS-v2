@@ -627,6 +627,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P80-vP-DNQ">
                                                     <rect key="frame" x="226" y="19" width="93" height="120"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근본상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
+                                                            <rect key="frame" x="16.5" y="103" width="61" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.77647058823529413" green="0.65490196078431373" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="35" y="110" width="36" height="17"/>
+                                                            </variation>
+                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2C-81-2nH">
                                                             <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
                                                             <constraints>
@@ -645,103 +654,22 @@
                                                                     <include reference="a7R-EV-lmI"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <action selector="showRecentProductsViewButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="EJT-TJ-Gbw"/>
+                                                            </connections>
                                                         </button>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaG-U7-XHR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-WD-n8A">
-                                                                    <rect key="frame" x="42" y="68" width="9" height="17"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <color key="textColor" red="0.13725490200000001" green="0.1764705882" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <color key="highlightedColor" red="0.13725490196078433" green="0.1764705882352941" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarRecent" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-3H-KHg">
-                                                                    <rect key="frame" x="25" y="22" width="44" height="44"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstItem="Q6X-3H-KHg" firstAttribute="leading" secondItem="PaG-U7-XHR" secondAttribute="leading" id="1Ds-dH-yuL"/>
-                                                                <constraint firstItem="Q6X-3H-KHg" firstAttribute="bottom" secondItem="ZGa-WD-n8A" secondAttribute="top" constant="2" id="D5b-cy-WKG">
-                                                                    <variation key="widthClass=compact" constant="2"/>
-                                                                </constraint>
-                                                                <constraint firstAttribute="trailing" secondItem="Q6X-3H-KHg" secondAttribute="trailing" constant="-3" id="NiL-du-05h">
-                                                                    <variation key="widthClass=compact" constant="0.0"/>
-                                                                </constraint>
-                                                                <constraint firstItem="Q6X-3H-KHg" firstAttribute="top" secondItem="PaG-U7-XHR" secondAttribute="top" id="e16-Ud-0dc"/>
-                                                                <constraint firstAttribute="bottom" secondItem="ZGa-WD-n8A" secondAttribute="bottom" id="e3a-XX-UtZ"/>
-                                                                <constraint firstItem="ZGa-WD-n8A" firstAttribute="centerX" secondItem="PaG-U7-XHR" secondAttribute="centerX" id="wwB-VY-nzY"/>
-                                                            </constraints>
-                                                            <variation key="default">
-                                                                <mask key="subviews">
-                                                                    <exclude reference="ZGa-WD-n8A"/>
-                                                                    <exclude reference="Q6X-3H-KHg"/>
-                                                                </mask>
-                                                                <mask key="constraints">
-                                                                    <exclude reference="1Ds-dH-yuL"/>
-                                                                    <exclude reference="D5b-cy-WKG"/>
-                                                                    <exclude reference="NiL-du-05h"/>
-                                                                    <exclude reference="e16-Ud-0dc"/>
-                                                                    <exclude reference="e3a-XX-UtZ"/>
-                                                                    <exclude reference="wwB-VY-nzY"/>
-                                                                </mask>
-                                                            </variation>
-                                                            <variation key="widthClass=compact">
-                                                                <mask key="subviews">
-                                                                    <include reference="ZGa-WD-n8A"/>
-                                                                    <include reference="Q6X-3H-KHg"/>
-                                                                </mask>
-                                                                <mask key="constraints">
-                                                                    <include reference="1Ds-dH-yuL"/>
-                                                                    <include reference="D5b-cy-WKG"/>
-                                                                    <include reference="NiL-du-05h"/>
-                                                                    <include reference="e16-Ud-0dc"/>
-                                                                    <include reference="e3a-XX-UtZ"/>
-                                                                    <include reference="wwB-VY-nzY"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근본상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
-                                                            <rect key="frame" x="16.5" y="103" width="61" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="0.77647058823529413" green="0.65490196078431373" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="35" y="110" width="36" height="17"/>
-                                                            </variation>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="fNN-FK-eP8" firstAttribute="top" secondItem="y2C-81-2nH" secondAttribute="bottom" constant="10" id="46i-rt-eC5">
                                                             <variation key="widthClass=compact" constant="6"/>
                                                         </constraint>
-                                                        <constraint firstItem="PaG-U7-XHR" firstAttribute="centerY" secondItem="y2C-81-2nH" secondAttribute="centerY" id="BKf-Pa-iwX"/>
                                                         <constraint firstAttribute="bottom" secondItem="fNN-FK-eP8" secondAttribute="bottom" id="UaS-Vy-5QE"/>
                                                         <constraint firstItem="fNN-FK-eP8" firstAttribute="centerX" secondItem="P80-vP-DNQ" secondAttribute="centerX" id="Yr6-7o-sSk"/>
-                                                        <constraint firstItem="PaG-U7-XHR" firstAttribute="centerX" secondItem="y2C-81-2nH" secondAttribute="centerX" id="hf9-HE-glb"/>
                                                         <constraint firstItem="y2C-81-2nH" firstAttribute="leading" secondItem="P80-vP-DNQ" secondAttribute="leading" id="iPN-dT-HPo"/>
                                                         <constraint firstAttribute="trailing" secondItem="y2C-81-2nH" secondAttribute="trailing" id="o9o-XD-fdc"/>
                                                         <constraint firstItem="y2C-81-2nH" firstAttribute="top" secondItem="P80-vP-DNQ" secondAttribute="top" id="p0I-yC-B5T"/>
                                                     </constraints>
-                                                    <variation key="default">
-                                                        <mask key="subviews">
-                                                            <exclude reference="PaG-U7-XHR"/>
-                                                        </mask>
-                                                        <mask key="constraints">
-                                                            <exclude reference="BKf-Pa-iwX"/>
-                                                            <exclude reference="hf9-HE-glb"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="subviews">
-                                                            <include reference="PaG-U7-XHR"/>
-                                                        </mask>
-                                                        <mask key="constraints">
-                                                            <include reference="BKf-Pa-iwX"/>
-                                                            <include reference="hf9-HE-glb"/>
-                                                        </mask>
-                                                    </variation>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7h-g6-vtQ">
                                                     <rect key="frame" x="444" y="19" width="93" height="120"/>
@@ -889,9 +817,6 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.21176470588235294" green="0.23921568627450979" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="anniversariesCountLabel" destination="ZGa-WD-n8A" id="qGm-3y-a71"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="anniversaryCell" rowHeight="130" id="8t1-vm-p4h" customClass="AnniveraryCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="250" width="545" height="130"/>
@@ -1658,13 +1583,13 @@
                                             <action selector="showProfileViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="bii-YI-YcD"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT9-WO-9aN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="내정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT9-WO-9aN">
                                         <rect key="frame" x="81" y="126" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMoreUser" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconMoreUser" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
                                         <rect key="frame" x="78" y="78" width="44" height="44"/>
                                     </imageView>
                                 </subviews>
@@ -2453,7 +2378,6 @@
         <image name="iconNavCart" width="26" height="26"/>
         <image name="iconSidebarFavorite" width="44" height="44"/>
         <image name="iconSidebarKakao" width="44" height="44"/>
-        <image name="iconSidebarRecent" width="44" height="44"/>
         <image name="icon_nav_sidebar" width="40" height="40"/>
         <image name="imageBeone" width="71" height="23"/>
         <image name="imageSidebarLineOff" width="4" height="1"/>

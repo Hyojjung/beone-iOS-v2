@@ -4,7 +4,7 @@ import UIKit
 let kActionPropertyKeyType = "type"
 let kActionPropertyKeyContent = "content"
 let kActionPropertyKeyHasCancel = "hasCancel"
-let kActionPropertyKeyConfirmationAction = "confirmationAction"
+let kActionPropertyKeyConfirmationAction = "confirmAction"
 let kActionPropertyKeyCancelAction = "cancelAction"
 
 enum ActionType: String {

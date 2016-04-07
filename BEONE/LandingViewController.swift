@@ -32,15 +32,12 @@ class LandingViewController: BaseTableViewController {
       name: kNotificationGuestAuthenticationSuccess, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LandingViewController.handleLayoutChange),
       name: kNotificationContentsViewLayouted, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LandingViewController.handleAction(_:)),
-      name: kNotificationDoAction, object: nil)
   }
   
   override func removeObservers() {
     super.removeObservers()
     NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationGuestAuthenticationSuccess, object: nil)
     NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationContentsViewLayouted, object: nil)
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationDoAction, object: nil)
   }
   
   @IBAction func showSpeedOrder() {

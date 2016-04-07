@@ -25,8 +25,6 @@ class ImageTemplateCell: TemplateCell {
   // MARK: - Actions
   
   @IBAction func viewTapped() {
-    if let templateId = templateId {
-      postNotification(kNotificationDoAction, userInfo: [kNotificationKeyTemplateId: templateId])
-    }
+    
   }
 }

@@ -137,7 +137,6 @@ class NetworkHelper: NSObject {
     if let url = operation.request.URL?.absoluteString.stringByReplacingOccurrencesOfString(kBaseApiUrl, withString:kEmptyString),
       httpMethodString = operation.request.HTTPMethod,
       method = NetworkMethod(rawValue: httpMethodString) {
-      print(parameter)
       request(method, url: url, parameter: parameter, success: success, failure: failure)
     }
   }
@@ -147,6 +146,13 @@ class NetworkHelper: NSObject {
       print("\(operation.response?.statusCode) \(operation.request.URL)")
     #endif
     if let success = success, responseObject = responseObject {
+      
+      if let responseObject = responseObject as? [String: AnyObject],
+      actionObject = responseObject["action"] as? [String: AnyObject] {
+        let action = Action()
+        action.assignObject(actionObject)
+        action.action()
+      }
       success(result: responseObject)
     }
     subtractNetworkCount()

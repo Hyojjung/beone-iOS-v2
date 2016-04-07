@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0TE-OU-rmg" id="Orv-Gc-nNO">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-pG-Xx7">
@@ -33,6 +33,9 @@
                                         <exclude reference="CV5-2R-IMl"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="0TE-OU-rmg" eventType="touchUpInside" id="4vf-dd-tUH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

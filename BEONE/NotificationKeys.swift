@@ -11,7 +11,6 @@ let kNotificationValidateAddressSuccess = "NotificationValidateAddressSuccess"
 let kNotificationPostOrderSuccess = "NotificationPostOrderSuccess"
 
 let kNotificationProductDetailImageTapped = "NotificationProductDetailImageTapped"
-let kNotificationDoAction = "NotificationDoAction"
 let kNotificationContentsViewLayouted = "NotificationContentsViewLayouted"
 let kNotificationKeyIndex = "NotificationKeyIndex"
 let kNotificationKeyIsValid = "NotificationKeyIsValid"
