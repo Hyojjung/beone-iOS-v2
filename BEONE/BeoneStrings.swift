@@ -54,3 +54,7 @@ let kFromProductDetailToReviewSegueIdentifier = "From Product Detail To Review"
 
 let kSchemeBaseUrl = "cmbeone://beone.kr/"
 let kPaymentScheme = "cmbeone://payment"
+
+// MARK: - User Defaults Keys
+
+let kVisited = "visited"

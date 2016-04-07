@@ -20,6 +20,9 @@ class MainTabViewController: UITabBarController {
     NSNotificationCenter.defaultCenter().addObserver(self,
                                                      selector: #selector(setUpData),
                                                      name: kNotificationGuestAuthenticationSuccess, object: nil)
+    if NSUserDefaults.standardUserDefaults().objectForKey(kVisited)?.boolValue != true {
+      presentViewController(WelcomeViewController(), animated: true, completion: nil)
+    }
     mainTitleView.delegate = self
     navigationItem.titleView = mainTitleView
   }

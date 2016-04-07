@@ -137,6 +137,7 @@ class NetworkHelper: NSObject {
     if let url = operation.request.URL?.absoluteString.stringByReplacingOccurrencesOfString(kBaseApiUrl, withString:kEmptyString),
       httpMethodString = operation.request.HTTPMethod,
       method = NetworkMethod(rawValue: httpMethodString) {
+      print(parameter)
       request(method, url: url, parameter: parameter, success: success, failure: failure)
     }
   }

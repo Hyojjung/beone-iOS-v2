@@ -35,13 +35,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, openURL url: NSURL,
                    sourceApplication: String?, annotation: AnyObject) -> Bool {
+    
     if url.absoluteString.hasPrefix(kPaymentScheme) {
       if let orderWebViewController = SchemeHelper.rootNavigationController()?.topViewController as? OrderWebViewController {
         orderWebViewController.handleUrl(url.absoluteString)
       }
-    }
-    if KOSession.isKakaoAccountLoginCallback(url) {
+      return true
+    } else if url.absoluteString.containsString("productId") {
+      let urlComponents = url.absoluteString.componentsSeparatedByString("productId=")
+      if let productIdString = urlComponents.last, productId = Int(productIdString) {
+        SchemeHelper.setUpScheme("home/product/\(productId)")
+      }
+      return true
+    } else if KOSession.isKakaoAccountLoginCallback(url) {
       return KOSession.handleOpenURL(url)
+    } else if url.absoluteString.hasPrefix(kSchemeBaseUrl) {
+      SchemeHelper.setUpScheme(url.absoluteString)
+      return true
     }
     return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
                                                                  sourceApplication: sourceApplication, annotation: annotation)

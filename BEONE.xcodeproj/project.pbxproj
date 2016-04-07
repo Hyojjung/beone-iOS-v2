@@ -127,6 +127,8 @@
 		62FA562D1CB4A9AE00613801 /* DeleteCouponButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA562C1CB4A9AE00613801 /* DeleteCouponButtonCell.swift */; };
 		62FA562F1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA562E1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift */; };
 		62FA56311CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62FA56301CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib */; };
+		62FA56331CB5EF0E00613801 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */; };
+		62FA56351CB5EFB400613801 /* RMParallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA56341CB5EFB400613801 /* RMParallax.swift */; };
 		62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */; };
 		62FA80511BDFE3CA00C016C3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80501BDFE3CA00C016C3 /* LoadingView.swift */; };
 		62FC6E8E1BDF3FD70071E1B1 /* Signing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */; };
@@ -413,6 +415,8 @@
 		62FA562C1CB4A9AE00613801 /* DeleteCouponButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCouponButtonCell.swift; sourceTree = "<group>"; };
 		62FA562E1CB4ED0B00613801 /* OrderItemSetDeliveryTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemSetDeliveryTypeCell.swift; sourceTree = "<group>"; };
 		62FA56301CB4ED1D00613801 /* OrderItemSetDeliveryTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderItemSetDeliveryTypeCell.xib; sourceTree = "<group>"; };
+		62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		62FA56341CB5EFB400613801 /* RMParallax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMParallax.swift; path = ../../../RMParallax.swift; sourceTree = "<group>"; };
 		62FA804E1BDFE0C000C016C3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		62FA80501BDFE3CA00C016C3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FC6E8D1BDF3FD70071E1B1 /* Signing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signing.storyboard; sourceTree = "<group>"; };
@@ -771,6 +775,7 @@
 				62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */,
 				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
 				6211B31A1CB16DF400B5939B /* PersonalInfoViewController.swift */,
+				62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -974,6 +979,7 @@
 		62FDC3851BDFC0E40072BBCE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				62FA56341CB5EFB400613801 /* RMParallax.swift */,
 				622DE11A1C5E61CF00F0C9DF /* NSData+AES.h */,
 				622DE11B1C5E61CF00F0C9DF /* NSData+AES.m */,
 				622DE11C1C5E61CF00F0C9DF /* NSData+Base64.h */,
@@ -1496,6 +1502,7 @@
 				73EA25431BE4D5FF0085382A /* AlertViewController.swift in Sources */,
 				73BE22651C3116BD003FA11C /* OptionTypeView.swift in Sources */,
 				62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */,
+				62FA56331CB5EF0E00613801 /* WelcomeViewController.swift in Sources */,
 				625EDDB11C69D5700009377A /* CouponCell.swift in Sources */,
 				73DF1D7D1C4011BF00DB3550 /* MobileResultView.swift in Sources */,
 				73DF1D7F1C40131400DB3550 /* CardResultView.swift in Sources */,
@@ -1620,6 +1627,7 @@
 				73DF1D8D1C4361C700DB3550 /* ProductPropertyValue.swift in Sources */,
 				7309D74D1BFEF36700F9761A /* CartItem.swift in Sources */,
 				62E5CF101BDDE19100A99F4C /* LandingViewController.swift in Sources */,
+				62FA56351CB5EFB400613801 /* RMParallax.swift in Sources */,
 				62F7EA3A1C7C31A100587C14 /* GlobalViewContents.swift in Sources */,
 				73398B0D1C0DD16000F57D4A /* CartCells.swift in Sources */,
 				73445E841BFAFE8F008BE2AC /* Shop.swift in Sources */,
