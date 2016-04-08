@@ -5,6 +5,8 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   
   // MARK: - Constant
   
+  private let kInvalidAddressIndex = 4
+  
   private enum SpeedOrderAddressTableViewSection: Int {
     case Top
     case Address
@@ -16,18 +18,21 @@ class SpeedOrderAddressViewController: BaseTableViewController {
     "addressCell"]
   
   weak var addressDelegate: AddressDelegate?
+  var tempAddress: Address?
   var address: Address?
   var addresses = Addresses()
   
   var selectedIndex: Int? {
     didSet {
-      if selectedIndex != nil && selectedIndex < addresses.list.count {
-        address = addresses.list[selectedIndex!] as? Address
+      if selectedIndex == nil {
+        address = tempAddress
       } else {
-        selectedIndex = nil
-        address = nil
+        address = addresses.list.objectAtIndex(selectedIndex) as? Address
       }
-      self.tableView.reloadData()
+    
+      self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0,
+        inSection: SpeedOrderAddressTableViewSection.Address.rawValue)],
+                                            withRowAnimation: .Automatic)
     }
   }
   
@@ -39,14 +44,19 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     addresses.get { () -> Void in
-      if !self.addresses.list.isEmpty {
-        self.selectedIndex = 0
-      }
+      self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0,
+        inSection: SpeedOrderAddressTableViewSection.Address.rawValue)],
+        withRowAnimation: .Automatic)
     }
   }
   
   @IBAction func selectIndexButtonTapped(sender: UIButton) {
-    selectedIndex = !sender.selected ? sender.tag : nil
+    if sender.tag == kInvalidAddressIndex {
+      selectedIndex = nil
+    } else {
+      endEditing()
+      selectedIndex = !sender.selected ? sender.tag : nil
+    }
   }
   
   @IBAction func segueToAddressViewButtonTapped() {
@@ -67,14 +77,19 @@ class SpeedOrderAddressViewController: BaseTableViewController {
 extension SpeedOrderAddressViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(textField: UITextField) {
     address?.detailAddress = textField.text
+    if selectedIndex == nil {
+      tempAddress = address
+    }
   }
 }
 
 extension SpeedOrderAddressViewController: AddressDelegate {
   
   func handleAddress(address: Address) {
-    selectedIndex = nil
     self.address = address
+    if selectedIndex == nil {
+      tempAddress = address
+    }
     tableView.reloadData()
   }
 }
@@ -87,7 +102,7 @@ extension SpeedOrderAddressViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     if let cell = cell as? AddressCell {
-      cell.configureCell(address, selectedIndex: selectedIndex)
+      cell.configureCell(address, selectedIndex: selectedIndex, addressCount: addresses.total)
     }
     return cell
   }
@@ -113,14 +128,21 @@ extension SpeedOrderAddressViewController: DynamicHeightTableViewDelegate {
 
 class AddressCell: UITableViewCell {
   
+  @IBOutlet weak var newAddressSelectButton: UIButton!
   @IBOutlet weak var firstAddressSelectButton: UIButton!
   @IBOutlet weak var secondAddressSelectButton: UIButton!
   @IBOutlet weak var thirdAddressSelectButton: UIButton!
   @IBOutlet weak var zipCodeTextField: UITextField!
   @IBOutlet weak var addressTextField: UITextField!
   @IBOutlet weak var detailAddressTextField: UITextField!
+  @IBOutlet weak var findAddressButtonTapped: UIButton!
+  @IBOutlet weak var zipCodeTextFieldTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var newButtonTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var firstButtonTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var secondButtonTrailingLayoutConstraint: NSLayoutConstraint!
   
-  func configureCell(address: Address?, selectedIndex: Int?) {
+  func configureCell(address: Address?, selectedIndex: Int?, addressCount: Int) {
+    newAddressSelectButton.selected = selectedIndex == nil
     firstAddressSelectButton.selected = selectedIndex == 0
     secondAddressSelectButton.selected = selectedIndex == 1
     thirdAddressSelectButton.selected = selectedIndex == 2
@@ -128,5 +150,16 @@ class AddressCell: UITableViewCell {
     zipCodeTextField.text = address?.zipCode()
     addressTextField.text = address?.addressString()
     detailAddressTextField.text = address?.detailAddress
+    
+    findAddressButtonTapped.configureAlpha(selectedIndex == nil)
+    zipCodeTextFieldTrailingLayoutConstraint.constant = selectedIndex == nil ? 144 : 8
+    
+    firstAddressSelectButton.configureAlpha(addressCount > 0)
+    secondAddressSelectButton.configureAlpha(addressCount > 1)
+    thirdAddressSelectButton.configureAlpha(addressCount > 2)
+    
+    newButtonTrailingLayoutConstraint.constant = 8 + CGFloat(addressCount) * 48
+    firstButtonTrailingLayoutConstraint.constant = 8 + CGFloat(addressCount - 1) * 48
+    secondButtonTrailingLayoutConstraint.constant = 8 + CGFloat(addressCount - 2) * 48
   }
 }

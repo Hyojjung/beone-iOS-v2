@@ -13,33 +13,7 @@ class OptionTextView: OptionTypeView {
       
       textView.placeholder = optionItem.placeholder
       textView.optionId = optionItem.id
-      textView.delegate = delegate as? UITextViewDelegate
     }
   }
 }
 
-class BeoneTextView: UITextView {
-  var placeholder: String? {
-    didSet {
-      isModiFying = text != nil && !text.isEmpty
-    }
-  }
-  var optionId: Int?
-  
-  var isHighlighted: Bool = true {
-    didSet {
-      if let superview = superview!.superview as? OptionTextView {
-        superview.backgroundImageView.image =
-          isHighlighted ? UIImage(named: kInputActiveImageName) : UIImage(named: kInputImageName)
-      }
-    }
-  }
-  
-  var isModiFying: Bool = false {
-    didSet {
-      if let superview = superview!.superview as? OptionTextView {
-        superview.placeholderLabel.text = isModiFying ? nil : placeholder
-      }
-    }
-  }
-}

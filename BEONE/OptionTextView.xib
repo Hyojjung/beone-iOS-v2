@@ -24,8 +24,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-Kv-gkE" customClass="BeoneTextView" customModule="BEONE" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="517" height="108"/>
+                            <rect key="frame" x="8" y="4" width="501" height="100"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -33,8 +34,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="dig-dE-CZ5" secondAttribute="trailing" constant="13" id="4gC-0f-Fob"/>
-                        <constraint firstItem="lgE-Kv-gkE" firstAttribute="top" secondItem="r3u-Re-9mR" secondAttribute="top" id="5mM-JV-EUs"/>
-                        <constraint firstAttribute="trailing" secondItem="lgE-Kv-gkE" secondAttribute="trailing" id="Cxx-bC-5A2"/>
+                        <constraint firstItem="lgE-Kv-gkE" firstAttribute="top" secondItem="r3u-Re-9mR" secondAttribute="top" constant="4" id="5mM-JV-EUs"/>
+                        <constraint firstAttribute="trailing" secondItem="lgE-Kv-gkE" secondAttribute="trailing" constant="8" id="Cxx-bC-5A2"/>
                         <constraint firstAttribute="bottom" secondItem="mSd-Tc-LBT" secondAttribute="bottom" id="L68-Eo-hmt"/>
                         <constraint firstAttribute="height" constant="108" id="MIt-0S-myg"/>
                         <constraint firstItem="dig-dE-CZ5" firstAttribute="top" secondItem="r3u-Re-9mR" secondAttribute="top" constant="13" id="QT8-jy-w1G"/>
@@ -42,8 +43,8 @@
                         <constraint firstAttribute="trailing" secondItem="mSd-Tc-LBT" secondAttribute="trailing" id="aeJ-S1-5zP"/>
                         <constraint firstItem="dig-dE-CZ5" firstAttribute="leading" secondItem="r3u-Re-9mR" secondAttribute="leading" constant="13" id="iWh-s3-ebH"/>
                         <constraint firstItem="mSd-Tc-LBT" firstAttribute="top" secondItem="r3u-Re-9mR" secondAttribute="top" id="ljD-Sw-1HG"/>
-                        <constraint firstAttribute="bottom" secondItem="lgE-Kv-gkE" secondAttribute="bottom" id="m2V-Sh-gne"/>
-                        <constraint firstItem="lgE-Kv-gkE" firstAttribute="leading" secondItem="r3u-Re-9mR" secondAttribute="leading" id="qMf-BS-5KX"/>
+                        <constraint firstAttribute="bottom" secondItem="lgE-Kv-gkE" secondAttribute="bottom" constant="4" id="m2V-Sh-gne"/>
+                        <constraint firstItem="lgE-Kv-gkE" firstAttribute="leading" secondItem="r3u-Re-9mR" secondAttribute="leading" constant="8" id="qMf-BS-5KX"/>
                     </constraints>
                 </view>
             </subviews>

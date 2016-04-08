@@ -92,6 +92,7 @@
 		6286FB861C57569F00845BE4 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB851C57569F00845BE4 /* SWRevealViewController.m */; };
 		6286FB881C57589300845BE4 /* AddingCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB871C57589300845BE4 /* AddingCouponViewController.swift */; };
 		6286FB8A1C579D7D00845BE4 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB891C579D7D00845BE4 /* Setting.storyboard */; };
+		6291469D1CB7CCF200989254 /* BeoneTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291469C1CB7CCF200989254 /* BeoneTextView.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SearchViewController.swift */; };
@@ -376,6 +377,7 @@
 		6286FB851C57569F00845BE4 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SWRevealViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6286FB871C57589300845BE4 /* AddingCouponViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingCouponViewController.swift; sourceTree = "<group>"; };
 		6286FB891C579D7D00845BE4 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		6291469C1CB7CCF200989254 /* BeoneTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeoneTextView.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 				73398AF11C06EE5600F57D4A /* MainTitleView.xib */,
 				73BE226C1C36CC23003FA11C /* TimeSelectView.swift */,
 				62FA562C1CB4A9AE00613801 /* DeleteCouponButtonCell.swift */,
+				6291469C1CB7CCF200989254 /* BeoneTextView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1566,6 +1569,7 @@
 				622DE1221C5E61CF00F0C9DF /* NSString+Base64.m in Sources */,
 				7323FD2D1C3BB80D008B99DF /* OrderResultViewController.swift in Sources */,
 				7388FA3C1C0341910015C3DF /* Reviews.swift in Sources */,
+				6291469D1CB7CCF200989254 /* BeoneTextView.swift in Sources */,
 				622AE9781C646405009F1A50 /* OrderItemSetProgress.swift in Sources */,
 				73F629A41BF43892001EA72F /* ButtonTemplateCell.swift in Sources */,
 				62FC6E921BDF40AC0071E1B1 /* BaseViewController.swift in Sources */,

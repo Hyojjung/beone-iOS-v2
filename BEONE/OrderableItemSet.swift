@@ -183,8 +183,8 @@ extension OrderableItemSet {
     for (index, progress) in self.progresses.enumerate() {
       if progress.progressedAt != nil {
         progress.progressStatus = .Done
-        if progresses.isInRange(index) {
-          let nextProgress = self.progresses[index + 1]
+        if progresses.isInRange(index + 1) {
+          let nextProgress = self.progresses.objectAtIndex(index + 1)!
           if nextProgress.progressedAt == nil {
             progress.progressStatus = .Progressing
           }

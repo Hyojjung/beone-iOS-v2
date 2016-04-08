@@ -35,15 +35,18 @@ extension Array {
     return false
   }
   
-  func objectAtIndex(index: Int) -> Element? {
-    if index < count {
-      return self[index]
+  func objectAtIndex(index: Int?) -> Element? {
+    if isInRange(index) {
+      return self[index!]
     }
     return nil
   }
   
-  func isInRange(index: Int) -> Bool {
-    return index + 1 < count
+  func isInRange(index: Int?) -> Bool {
+    if let index = index {
+      return index < count
+    }
+    return false
   }
   
   mutating func appendObject(element: Element?) {

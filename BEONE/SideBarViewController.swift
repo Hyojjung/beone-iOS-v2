@@ -394,9 +394,6 @@ class AnniveraryCell: UITableViewCell {
 
 class ButtonsCell: UITableViewCell {
   
-  @IBOutlet weak var anniversariesCountLabel: UILabel!
-  
   func setUpCell(sideBarViewContents: SideBarViewContents) {
-    anniversariesCountLabel.text = "\(sideBarViewContents.userAnniversariesCount)"
   }
 }
