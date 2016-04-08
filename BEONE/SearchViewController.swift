@@ -92,9 +92,16 @@ class SearchViewController: BaseTableViewController {
     products.productPropertyValueIds = selectedProductPropertyValueIds
     products.tagIds = selectedTagIds
     products.get { () -> Void in
-      if let locationName = BEONEManager.selectedLocation?.name {
+      self.dataLoaded = true
+      self.changeProductCount()
+    }
+  }
+  
+  func changeProductCount() {
+    if let locationName = BEONEManager.selectedLocation?.name {
+      UIView.transitionWithView(view, duration: 0.25, options: .TransitionCrossDissolve, animations: {
         self.productCountLabel.text = "\(locationName)지역 \(self.products.total)개의 상품"
-      }
+        }, completion: nil)
     }
   }
 }

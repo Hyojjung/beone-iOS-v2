@@ -9,6 +9,7 @@ class BaseViewController: UIViewController {
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
   var needOftenUpdate = true
+  var dataLoaded = false
 
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
@@ -130,7 +131,9 @@ extension BaseViewController {
   }
   
   func startIndicator() {
-    loadingView.show()
+    if !dataLoaded {
+      loadingView.show()
+    }
   }
   
   func stopIndicator() {
