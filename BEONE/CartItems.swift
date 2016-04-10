@@ -27,12 +27,10 @@ class CartItems: BaseListModel {
   
   // MARK: - BaseModel Methods (Post)
 
-  override func postSuccess() -> NetworkSuccess? {
-    return {(result) -> Void in
-      if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
-        for (index, cartItem) in self.list.enumerate() {
-          cartItem.id = data[index][kObjectPropertyKeyId] as? Int
-        }
+  override func postSuccess(result: AnyObject?) {
+    if let result = result as? [String: AnyObject], data = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
+      for (index, cartItem) in self.list.enumerate() {
+        cartItem.id = data[index][kObjectPropertyKeyId] as? Int
       }
     }
   }

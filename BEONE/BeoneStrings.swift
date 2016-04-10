@@ -58,3 +58,4 @@ let kPaymentScheme = "cmbeone://payment"
 // MARK: - User Defaults Keys
 
 let kVisited = "visited"
+let kFavoriteProductIds = "favoriteProductIds"
