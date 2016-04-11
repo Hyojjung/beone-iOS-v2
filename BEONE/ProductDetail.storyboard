@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="height" constant="64" id="ZEq-oT-nZC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록된 문의가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebj-YE-WGO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록된 문의가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebj-YE-WGO">
                                 <rect key="frame" x="220" y="340" width="161" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,6 +208,7 @@
                                             <outlet property="editButton" destination="BWg-bM-VKh" id="P3Q-00-QOO"/>
                                             <outlet property="emailLabel" destination="Tyo-Jn-s58" id="wKT-9c-sY1"/>
                                             <outlet property="heightConstraint" destination="kH1-gj-KIR" id="52L-vB-C1H"/>
+                                            <outlet property="profileImageView" destination="gnG-M8-IDS" id="QYh-Yx-SQX"/>
                                             <outlet property="replyView" destination="GdI-gu-Mtt" id="ufG-NX-1kw"/>
                                             <outlet property="shopLabel" destination="StX-CE-BuC" id="OSp-LG-jKg"/>
                                         </connections>
@@ -275,6 +276,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="700"/>
                     <connections>
+                        <outlet property="noInquiryLabel" destination="Ebj-YE-WGO" id="C7B-9Y-BQ2"/>
                         <outlet property="tableView" destination="E27-QW-mHf" id="6fl-I3-ibU"/>
                     </connections>
                 </viewController>
@@ -612,8 +614,93 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shopCell" id="Eus-i8-lBF" customClass="ProductShopCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="70" y="0.0" width="460" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZc-hL-na9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-3f-kwT" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_product_store" translatesAutoresizingMaskIntoConstraints="NO" id="XVk-M4-bHy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워샵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="545" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-iG-OY7">
+                                                            <rect key="frame" x="16" y="122" width="62.5" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="93m-mT-YeG">
+                                                            <rect key="frame" x="16" y="149" width="390" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_product_store_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="b4y-LN-ige">
+                                                            <rect key="frame" x="423" y="139" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="15" id="i7v-VW-emw"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="i7v-VW-emw"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Mvi-iG-OY7" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" constant="16" id="2vM-Sz-fea"/>
+                                                        <constraint firstAttribute="width" secondItem="uZc-hL-na9" secondAttribute="height" multiplier="320:180" priority="750" id="4y1-qL-ejY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qJY-3f-kwT" secondAttribute="trailing" id="7ec-au-EhU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="XVk-M4-bHy" secondAttribute="bottom" id="9I0-EG-EF7"/>
+                                                        <constraint firstItem="93m-mT-YeG" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" constant="16" id="Hec-ae-Ryx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="b4y-LN-ige" secondAttribute="trailing" constant="15" id="Ib9-jP-0ZO"/>
+                                                        <constraint firstItem="qJY-3f-kwT" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" id="J7p-hI-Paf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XVk-M4-bHy" secondAttribute="trailing" id="JhG-SL-XLf"/>
+                                                        <constraint firstItem="XVk-M4-bHy" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" id="NS0-Gu-Jlt"/>
+                                                        <constraint firstAttribute="height" constant="180" id="QH7-FK-P9n"/>
+                                                        <constraint firstAttribute="bottom" secondItem="qJY-3f-kwT" secondAttribute="bottom" id="WmD-fA-eFe"/>
+                                                        <constraint firstItem="XVk-M4-bHy" firstAttribute="top" secondItem="uZc-hL-na9" secondAttribute="top" id="XqE-zt-14z"/>
+                                                        <constraint firstAttribute="bottom" secondItem="93m-mT-YeG" secondAttribute="bottom" constant="15" id="cU8-Qo-dM3"/>
+                                                        <constraint firstItem="93m-mT-YeG" firstAttribute="top" secondItem="Mvi-iG-OY7" secondAttribute="bottom" constant="5" id="kO8-01-wk7"/>
+                                                        <constraint firstItem="b4y-LN-ige" firstAttribute="leading" secondItem="93m-mT-YeG" secondAttribute="trailing" constant="17" id="lgM-cJ-TwM"/>
+                                                        <constraint firstItem="qJY-3f-kwT" firstAttribute="top" secondItem="uZc-hL-na9" secondAttribute="top" id="qdK-oy-jJk"/>
+                                                        <constraint firstAttribute="width" priority="750" constant="320" id="xit-49-Ak9"/>
+                                                        <constraint firstAttribute="bottom" secondItem="b4y-LN-ige" secondAttribute="bottom" constant="19" id="ynH-FJ-yKq"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="4y1-qL-ejY"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="uZc-hL-na9" secondAttribute="bottom" id="ZnO-VV-q4y"/>
+                                            <constraint firstItem="uZc-hL-na9" firstAttribute="top" secondItem="Eus-i8-lBF" secondAttribute="top" id="eCz-7Y-Itz"/>
+                                            <constraint firstItem="uZc-hL-na9" firstAttribute="leading" secondItem="Eus-i8-lBF" secondAttribute="leading" id="oUj-HV-i0c"/>
+                                            <constraint firstAttribute="trailing" secondItem="uZc-hL-na9" secondAttribute="trailing" id="qxR-ko-0eq"/>
+                                        </constraints>
+                                        <size key="customSize" width="460" height="180"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="uZc-hL-na9" id="QIJ-Gh-G6Z"/>
+                                            <outlet property="shopImageView" destination="qJY-3f-kwT" id="niD-JT-PaN"/>
+                                            <outlet property="shopNameLabel" destination="Mvi-iG-OY7" id="lnC-39-31O"/>
+                                            <outlet property="shopSummaryLabel" destination="93m-mT-YeG" id="vVU-QA-agS"/>
+                                        </connections>
+                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rateCell" id="xYa-SX-lEN" customClass="RateCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="0.0" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="180" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -719,7 +806,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="priceCell" id="vSQ-dJ-df6" customClass="PriceCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="120" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="300" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -812,7 +899,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="infoCell" id="Gwy-h7-dfH" customClass="InfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="240" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="420" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -951,7 +1038,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailInfoCell" id="WEB-n4-H4B" customClass="DetailInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="360" width="460" height="370"/>
+                                        <rect key="frame" x="70" y="540" width="460" height="370"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="370"/>
@@ -1105,7 +1192,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="descriptionCell" id="Wo6-Dh-m46" customClass="ProductDesctriptionCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="730" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="910" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -1194,7 +1281,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shareButtonCell" id="DhE-w2-k2E" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="850" width="460" height="90"/>
+                                        <rect key="frame" x="70" y="1030" width="460" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="90"/>
@@ -1272,7 +1359,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="precautionCell" id="rKR-6f-NRj" customClass="PrecautionCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="940" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="1120" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -1359,7 +1446,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="refundGuideCell" id="3EJ-CR-ijd" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1060" width="460" height="50"/>
+                                        <rect key="frame" x="70" y="1240" width="460" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
@@ -1440,7 +1527,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="inquiryCell" id="tUE-Rc-NYx" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1110" width="460" height="50"/>
+                                        <rect key="frame" x="70" y="1290" width="460" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
@@ -1500,7 +1587,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="spaceCell" id="age-7t-H6R" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1160" width="460" height="25"/>
+                                        <rect key="frame" x="70" y="1340" width="460" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="25"/>
@@ -1527,91 +1614,6 @@
                                         <size key="customSize" width="460" height="25"/>
                                         <connections>
                                             <outlet property="containerView" destination="y1X-cA-fVW" id="UBP-XO-pg5"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shopCell" id="Eus-i8-lBF" customClass="ProductShopCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1185" width="460" height="180"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZc-hL-na9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-3f-kwT" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_product_store" translatesAutoresizingMaskIntoConstraints="NO" id="XVk-M4-bHy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="180"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워샵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="545" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-iG-OY7">
-                                                            <rect key="frame" x="16" y="122" width="62.5" height="22"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="93m-mT-YeG">
-                                                            <rect key="frame" x="16" y="149" width="390" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_product_store_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="b4y-LN-ige">
-                                                            <rect key="frame" x="423" y="139" width="22" height="22"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="15" id="i7v-VW-emw"/>
-                                                            </constraints>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="i7v-VW-emw"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="Mvi-iG-OY7" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" constant="16" id="2vM-Sz-fea"/>
-                                                        <constraint firstAttribute="width" secondItem="uZc-hL-na9" secondAttribute="height" multiplier="320:180" priority="750" id="4y1-qL-ejY"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qJY-3f-kwT" secondAttribute="trailing" id="7ec-au-EhU"/>
-                                                        <constraint firstAttribute="bottom" secondItem="XVk-M4-bHy" secondAttribute="bottom" id="9I0-EG-EF7"/>
-                                                        <constraint firstItem="93m-mT-YeG" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" constant="16" id="Hec-ae-Ryx"/>
-                                                        <constraint firstAttribute="trailing" secondItem="b4y-LN-ige" secondAttribute="trailing" constant="15" id="Ib9-jP-0ZO"/>
-                                                        <constraint firstItem="qJY-3f-kwT" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" id="J7p-hI-Paf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="XVk-M4-bHy" secondAttribute="trailing" id="JhG-SL-XLf"/>
-                                                        <constraint firstItem="XVk-M4-bHy" firstAttribute="leading" secondItem="uZc-hL-na9" secondAttribute="leading" id="NS0-Gu-Jlt"/>
-                                                        <constraint firstAttribute="height" constant="180" id="QH7-FK-P9n"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qJY-3f-kwT" secondAttribute="bottom" id="WmD-fA-eFe"/>
-                                                        <constraint firstItem="XVk-M4-bHy" firstAttribute="top" secondItem="uZc-hL-na9" secondAttribute="top" id="XqE-zt-14z"/>
-                                                        <constraint firstAttribute="bottom" secondItem="93m-mT-YeG" secondAttribute="bottom" constant="15" id="cU8-Qo-dM3"/>
-                                                        <constraint firstItem="93m-mT-YeG" firstAttribute="top" secondItem="Mvi-iG-OY7" secondAttribute="bottom" constant="5" id="kO8-01-wk7"/>
-                                                        <constraint firstItem="b4y-LN-ige" firstAttribute="leading" secondItem="93m-mT-YeG" secondAttribute="trailing" constant="17" id="lgM-cJ-TwM"/>
-                                                        <constraint firstItem="qJY-3f-kwT" firstAttribute="top" secondItem="uZc-hL-na9" secondAttribute="top" id="qdK-oy-jJk"/>
-                                                        <constraint firstAttribute="width" priority="750" constant="320" id="xit-49-Ak9"/>
-                                                        <constraint firstAttribute="bottom" secondItem="b4y-LN-ige" secondAttribute="bottom" constant="19" id="ynH-FJ-yKq"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="4y1-qL-ejY"/>
-                                                        </mask>
-                                                    </variation>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="uZc-hL-na9" secondAttribute="bottom" id="ZnO-VV-q4y"/>
-                                            <constraint firstItem="uZc-hL-na9" firstAttribute="top" secondItem="Eus-i8-lBF" secondAttribute="top" id="eCz-7Y-Itz"/>
-                                            <constraint firstItem="uZc-hL-na9" firstAttribute="leading" secondItem="Eus-i8-lBF" secondAttribute="leading" id="oUj-HV-i0c"/>
-                                            <constraint firstAttribute="trailing" secondItem="uZc-hL-na9" secondAttribute="trailing" id="qxR-ko-0eq"/>
-                                        </constraints>
-                                        <size key="customSize" width="460" height="180"/>
-                                        <connections>
-                                            <outlet property="containerView" destination="uZc-hL-na9" id="QIJ-Gh-G6Z"/>
-                                            <outlet property="shopImageView" destination="qJY-3f-kwT" id="niD-JT-PaN"/>
-                                            <outlet property="shopNameLabel" destination="Mvi-iG-OY7" id="lnC-39-31O"/>
-                                            <outlet property="shopSummaryLabel" destination="93m-mT-YeG" id="vVU-QA-agS"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewTitleCell" id="4Nc-3k-2Cp" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">

@@ -3,6 +3,8 @@ import UIKit
 
 class InquiriesViewController: BaseTableViewController {
   
+  @IBOutlet weak var noInquiryLabel: UILabel!
+
   let inquiries: Inquiries = {
     let inquiries = Inquiries()
     return inquiries
@@ -12,13 +14,15 @@ class InquiriesViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     inquiries.productId = product?.id
-    inquiries.get { 
+    inquiries.get {
+      self.noInquiryLabel.configureAlpha(self.inquiries.total == 0)
       self.tableView.reloadData()
     }
   }
   
   override func setUpView() {
     super.setUpView()
+    title = "상품문의"
     tableView.dynamicHeightDelgate = self
   }
   
@@ -79,6 +83,8 @@ extension InquiriesViewController: DynamicHeightTableViewDelegate {
 }
 
 class InquiryCell: UITableViewCell {
+  
+  @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var replyView: UIView!
   @IBOutlet var heightConstraint: NSLayoutConstraint!
   @IBOutlet weak var emailLabel: UILabel!
@@ -87,6 +93,11 @@ class InquiryCell: UITableViewCell {
   @IBOutlet weak var answerLabel: UILabel!
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    profileImageView.makeCircleView()
+  }
   
   func calculatedHeight(inquiry: Inquiry) -> CGFloat {
     var height = CGFloat(93)

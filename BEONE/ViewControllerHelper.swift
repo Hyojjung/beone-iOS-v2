@@ -231,8 +231,10 @@ extension UIViewController {
   }
   
   func showShopView(shopId: Int?) {
-    let shopViewController = UIViewController.viewController(.Shop) as! ShopViewController
-    shopViewController.shop.id = shopId
-    showViewController(shopViewController, sender: nil)
+    if let shopId = shopId {
+      let shopViewController = UIViewController.viewController(.Shop) as! ShopViewController
+      shopViewController.shop.id = shopId
+      showViewController(shopViewController, sender: nil)
+    }
   }
 }

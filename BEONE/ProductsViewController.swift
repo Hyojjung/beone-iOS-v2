@@ -6,18 +6,21 @@ class ProductsViewController: BaseTableViewController {
   // MARK: - Constant
   
   private enum SearchTableViewSection: Int {
-    case Search
     case Product
     case NoProducts
     case Count
   }
   
   private let kSearchTableViewCellIdentifiers = [
-    "searchCell",
     "productCoupleTemplateCell",
     "noProductsCell"]
   
   // MARK: - Property
+  
+  @IBOutlet weak var searchViewHeightLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var locationLabel: UILabel!
+  @IBOutlet weak var searchValueLabel: UILabel!
+  @IBOutlet weak var searchButton: UIButton!
   
   var isSpeedOrder = false
   
@@ -46,9 +49,8 @@ class ProductsViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
-    if !forSearchResult {
-      tableView.contentInset = UIEdgeInsetsMake(6, 0, 0, 0)
-    }
+    tableView.contentInset = UIEdgeInsetsMake(6, 0, 0, 0)
+    setUpSearchView()
   }
   
   override func setUpData() {
@@ -76,14 +78,64 @@ class ProductsViewController: BaseTableViewController {
       }
       
       productProperties.get { 
-        self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
-          withRowAnimation: .Automatic)
+        self.setUpSearchView()
       }
       tags.get { 
-        self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
-          withRowAnimation: .Automatic)
+        self.setUpSearchView()
       } 
     }
+  }
+  
+  private func setUpSearchView() {
+    searchViewHeightLayoutConstraint.constant = forSearchResult ? 89 : 0
+    if forSearchResult {
+      locationLabel.text = selectedLocation.name
+      let searchValueStrings = self.searchValueStrings(selectedProductPropertyValueIds,
+                                                       selectedTagIds: selectedTagIds,
+                                                       productProperties: productProperties.list as! [ProductProperty],
+                                                       tags: tags.list as! [Tag],
+                                                       minPrice: minPrice,
+                                                       maxPrice: maxPrice)
+      searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
+      searchButton.configureAlpha(isSpeedOrder)
+    }
+  }
+  
+  private func searchValueStrings(selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
+                                  productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int) -> [String] {
+    var searchValueStrings = [String]()
+    
+    let priceString = "\(minPrice / kPriceUnit)~\(maxPrice / kPriceUnit)만원"
+    searchValueStrings.appendObject(priceString)
+    
+    for productProperty in productProperties {
+      var productPropertyString = String()
+      for productPropertyValue in productProperty.values {
+        if selectedProductPropertyValueIds.contains(productPropertyValue.id!) {
+          if !productPropertyString.isEmpty {
+            productPropertyString += ", "
+          }
+          productPropertyString += productPropertyValue.name!
+        }
+      }
+      if !productPropertyString.isEmpty {
+        searchValueStrings.appendObject(productPropertyString)
+      }
+    }
+    
+    var tagString = String()
+    for tag in tags {
+      if selectedTagIds.contains(tag.id!) {
+        if !tagString.isEmpty {
+          tagString += ", "
+        }
+        tagString += tag.name!
+      }
+    }
+    if !tagString.isEmpty {
+      searchValueStrings.appendObject(tagString)
+    }
+    return searchValueStrings
   }
 }
 
@@ -116,16 +168,7 @@ extension ProductsViewController {
 extension ProductsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? SearchCell {
-      cell.configureCell(selectedLocation,
-        selectedProductPropertyValueIds: selectedProductPropertyValueIds,
-        selectedTagIds: selectedTagIds,
-        productProperties: productProperties.list as! [ProductProperty],
-        tags: tags.list as! [Tag],
-        minPrice: minPrice,
-        maxPrice: maxPrice,
-        isSpeedOrder: isSpeedOrder)
-    } else if let cell = cell as? ProductCoupleTemplateCell {
+    if let cell = cell as? ProductCoupleTemplateCell {
       configureProductCell(cell, indexPath: indexPath)
     }
     return cell
@@ -136,9 +179,7 @@ extension ProductsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == SearchTableViewSection.Search.rawValue && !forSearchResult {
-      return 0
-    } else if section == SearchTableViewSection.NoProducts.rawValue && products.list.count > 0 {
+    if section == SearchTableViewSection.NoProducts.rawValue && products.list.count > 0 {
       return 0
     }
     return section == SearchTableViewSection.Product.rawValue ? (products.list.count + 1) / kSimpleProductColumn : 1
@@ -174,64 +215,5 @@ extension ProductsViewController: DynamicHeightTableViewDelegate {
       return cellHeight
     }
     return 89
-  }
-}
-
-class SearchCell: UITableViewCell {
-  
-  @IBOutlet weak var locationLabel: UILabel!
-  @IBOutlet weak var searchValueLabel: UILabel!
-  @IBOutlet weak var searchButton: UIButton!
-  
-  func configureCell(location: Location, selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
-    productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int, isSpeedOrder: Bool) {
-      locationLabel.text = location.name
-      
-      let searchValueStrings = self.searchValueStrings(selectedProductPropertyValueIds,
-        selectedTagIds: selectedTagIds,
-        productProperties: productProperties,
-        tags: tags,
-        minPrice: minPrice,
-        maxPrice: maxPrice)
-      searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
-      
-      searchButton.configureAlpha(isSpeedOrder)
-  }
-  
-  private func searchValueStrings(selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
-    productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int) -> [String] {
-      var searchValueStrings = [String]()
-      
-      let priceString = "\(minPrice / kPriceUnit)~\(maxPrice / kPriceUnit)만원"
-      searchValueStrings.appendObject(priceString)
-      
-      for productProperty in productProperties {
-        var productPropertyString = String()
-        for productPropertyValue in productProperty.values {
-          if selectedProductPropertyValueIds.contains(productPropertyValue.id!) {
-            if !productPropertyString.isEmpty {
-              productPropertyString += ", "
-            }
-            productPropertyString += productPropertyValue.name!
-          }
-        }
-        if !productPropertyString.isEmpty {
-          searchValueStrings.appendObject(productPropertyString)
-        }
-      }
-      
-      var tagString = String()
-      for tag in tags {
-        if selectedTagIds.contains(tag.id!) {
-          if !tagString.isEmpty {
-            tagString += ", "
-          }
-          tagString += tag.name!
-        }
-      }
-      if !tagString.isEmpty {
-        searchValueStrings.appendObject(tagString)
-      }
-      return searchValueStrings
   }
 }
