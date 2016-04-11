@@ -40,7 +40,7 @@ class OptionViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({ 
+    product.get({
       if self.product.soldOut {
         let confirmAction = Action()
         confirmAction.type = .Method
@@ -62,22 +62,18 @@ class OptionViewController: BaseTableViewController {
   
   func setUpProductData() {
     setUpProductDeliveryTypeNames()
-    
     if isModifing && cartItems.count == 1 {
       selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
       if let selectedOption = cartItems.first?.selectedOption {
         self.selectedOption = selectedOption.copy() as? ProductOptionSets
       }
     } else if !isModifing {
-      
-      if product.productOrderableInfos.count == 1 {
-        selectedProductOrderableInfo = product.productOrderableInfos.first
-      }
-      if product.productOptionSets.list.count == 0 && cartItems.count == 0 {
+      setUpToDefault()
+      if product.productOptionSets.list.count == 0 && cartItems.count == 0
+        && selectedProductOrderableInfo != nil {
         addCartItemButtonTapped()
         return
       }
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
     }
     
     tableView.reloadData()
@@ -123,26 +119,24 @@ class OptionViewController: BaseTableViewController {
 extension OptionViewController {
   
   @IBAction func sendCart() {
-    if let productOrderableInfo = selectedProductOrderableInfo {
-      if cartItems.count == 0 {
-        addCartItemButtonTapped()
-      }
-      for cartItem in cartItems {
-        cartItem.productOrderableInfo = productOrderableInfo
-      }
-      if !isModifing {
-        CartItemManager.postCartItems(cartItems, postSuccess: { (cartItems) in
-          self.cartItems = cartItems
-          self.handlePostCartItemSuccess()
-        })
-      } else if cartItems.count == 1 {
-        cartItems.first?.selectedOption = selectedOption
-        cartItems.first!.put({ (result) -> Void in
-          self.handlePostCartItemSuccess()
-        })
-      }
+    if cartItems.count == 0 {
+      addCartItem(true)
     } else {
-      showAlertView(NSLocalizedString("select delivery type", comment: "alert title"))
+      sendCartItems()
+    }
+  }
+  
+  func sendCartItems() {
+    if !isModifing {
+      CartItemManager.postCartItems(cartItems, postSuccess: { (cartItems) in
+        self.cartItems = cartItems
+        self.handlePostCartItemSuccess()
+      })
+    } else {
+      cartItems.first?.selectedOption = selectedOption
+      cartItems.first!.put({ (result) -> Void in
+        self.handlePostCartItemSuccess()
+      })
     }
   }
   
@@ -187,16 +181,37 @@ extension OptionViewController {
   }
   
   @IBAction func addCartItemButtonTapped() {
+    addCartItem()
+  }
+  
+  func addCartItem(needPost: Bool = false) {
     if let validationMessage = selectedOption?.validationMessage() {
       showAlertView(validationMessage)
-    } else {
+    } else if let selectedProductOrderableInfo = selectedProductOrderableInfo {
       let cartItem = CartItem()
       cartItem.product = product
+      cartItem.productOrderableInfo = selectedProductOrderableInfo
       cartItem.selectedOption = selectedOption?.copy() as? ProductOptionSets
-      selectedOption = product.productOptionSets.copy() as? ProductOptionSets
       cartItems.appendObject(cartItem)
-      tableView.reloadData()
+      setUpToDefault()
+      if needPost {
+        sendCartItems()
+      } else {
+        tableView.reloadData()
+      }
+    } else {
+      showAlertView(NSLocalizedString("select delivery type", comment: "alert title"))
     }
+  }
+  
+  func setUpToDefault() {
+    if product.productOrderableInfos.count == 1 {
+      selectedProductOrderableInfo = product.productOrderableInfos.first
+    } else {
+      selectedProductOrderableInfo = nil
+    }
+    
+    selectedOption = product.productOptionSets.copy() as? ProductOptionSets
   }
 }
 

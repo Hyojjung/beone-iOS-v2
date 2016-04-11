@@ -2621,8 +2621,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="deleteButton" destination="n90-xo-ZGr" id="CBe-dv-ubk"/>
+                                            <outlet property="deliveryTypeNameLabel" destination="34y-su-izv" id="0XB-BZ-L3J"/>
                                             <outlet property="optionLabel" destination="oxE-s9-NCe" id="naD-6t-Xpk"/>
-                                            <outlet property="productNameLabel" destination="34y-su-izv" id="hF2-ow-sGZ"/>
                                             <outlet property="quantitySelectButton" destination="SPO-wu-B3u" id="ZPk-dV-Nnw"/>
                                             <outlet property="selectedQuantityLabel" destination="Td1-Tl-QEU" id="Jl6-Ya-ram"/>
                                         </connections>

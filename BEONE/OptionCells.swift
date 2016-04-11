@@ -46,13 +46,13 @@ class CartItemCountCell: UITableViewCell {
   
   @IBOutlet weak var selectedQuantityLabel: UILabel!
   @IBOutlet weak var quantitySelectButton: UIButton!
-  @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var deliveryTypeNameLabel: UILabel!
   @IBOutlet weak var optionLabel: UILabel!
   @IBOutlet weak var deleteButton: UIButton!
   
   func configureCell(cartItem: CartItem, indexPath: NSIndexPath) {
     selectedQuantityLabel.text = "\(cartItem.quantity)개"
-    productNameLabel.text = cartItem.selectedOption != nil ? cartItem.product.title : nil
+    deliveryTypeNameLabel.text = cartItem.productOrderableInfo.deliveryType.name
     optionLabel.text = cartItem.selectedOption?.optionString()
     optionLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
     quantitySelectButton.tag = indexPath.row
