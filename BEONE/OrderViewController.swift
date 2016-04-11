@@ -50,7 +50,7 @@ class OrderViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    order.get { () -> Void in
+    order.get { 
       self.setUpOrder()
       self.tableView.reloadData()
     }

@@ -34,14 +34,14 @@ class BillKeysViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo
-    billKeys.get { () -> Void in
+    billKeys.get { 
       self.tableView.reloadData()
     }
   }
   
   @IBAction func deleteCardButtonTapped(sender: UIButton) {
-    billKeys.list[sender.tag].remove({() -> Void in
-      self.billKeys.get { () -> Void in
+    billKeys.list[sender.tag].remove({
+      self.billKeys.get { 
         self.tableView.reloadData()
       }
     })

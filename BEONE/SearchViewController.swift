@@ -67,13 +67,13 @@ class SearchViewController: BaseTableViewController {
       self.maxPrice = maxPrice
     }
     
-    productProperties.get { () -> Void in
+    productProperties.get { 
       self.tableView.reloadData()
     }
-    tags.get { () -> Void in
+    tags.get { 
       self.tableView.reloadData()
     }
-    productSearchData.get { () -> Void in
+    productSearchData.get { 
       self.minPrice = self.productSearchData.minPrice
       self.maxPrice = self.productSearchData.maxPrice
       self.setUpProducts()
@@ -91,7 +91,7 @@ class SearchViewController: BaseTableViewController {
     products.minPrice = minPrice
     products.productPropertyValueIds = selectedProductPropertyValueIds
     products.tagIds = selectedTagIds
-    products.get { () -> Void in
+    products.get { 
       self.dataLoaded = true
       self.changeProductCount()
     }

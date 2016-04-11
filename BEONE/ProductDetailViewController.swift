@@ -91,7 +91,7 @@ class ProductDetailViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({ () -> Void in
+    product.get({ 
       self.setUpProductData()
     })
     reviews.get {

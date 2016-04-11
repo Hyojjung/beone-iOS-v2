@@ -4,7 +4,6 @@ import UIKit
 class ProductSingleTemplateCell: TemplateCell {
   
   @IBOutlet weak var productImageView: LazyLoadingImageView!
-  @IBOutlet weak var labelsView: UIView!
   @IBOutlet weak var favoriteButton: UIButton!
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productSubTitleLabel: UILabel!
@@ -32,6 +31,7 @@ class ProductSingleTemplateCell: TemplateCell {
       productSubTitleLabel.text = product.subtitle
       priceLabel.text = product.actualPrice.priceNotation(.English)
       originalPriceLabel.attributedText = product.priceAttributedString()
+      favoriteButton.selected = product.isFavorite()
       if let discountPercent = product.discountPercent {
         discountPercentLabel.text = "\(discountPercent)%"
         priceLabelLeadingLayoutConstraint.constant = 6
@@ -45,5 +45,17 @@ class ProductSingleTemplateCell: TemplateCell {
   
   @IBAction func productButtonTapped() {
     delegate?.showProductView(productId)
+  }
+  
+  @IBAction func favoriteButtonTapped(sender: UIButton) {
+    if sender.selected == false {
+      FavoriteProductHelper.postFavoriteProduct(productId, success: {
+        sender.selected = true
+      })
+    } else {
+      FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
+        sender.selected = false
+      })
+    }
   }
 }

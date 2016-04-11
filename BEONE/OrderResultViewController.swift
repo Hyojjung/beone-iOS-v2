@@ -50,7 +50,7 @@ class OrderResultViewController: BaseViewController {
       configureFailureResultView()
     } else if let order = order {
       order.isDone = true
-      order.get { () -> Void in
+      order.get { 
         self.paymentInfo = order.paymentInfos.model(self.paymentInfoId) as? PaymentInfo
         if self.paymentInfo?.isSuccess == true {
           CartItemManager.removeCartItem(order.cartItemIds)

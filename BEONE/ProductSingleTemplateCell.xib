@@ -30,26 +30,11 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="hQu-Uc-KDH" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="0.0" width="339" height="198"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K72-VY-UAv">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="198"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
-                                                <rect key="frame" x="302" y="17" width="29" height="29"/>
-                                                <state key="normal" image="btnFavoriteOff"/>
-                                                <state key="selected" image="btnFavoriteOn"/>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ACY-v3-5KD" secondAttribute="top" constant="17" id="1Cc-sa-nDZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="12" id="3Fc-5A-aGf"/>
-                                            <constraint firstItem="sbe-AY-uQN" firstAttribute="leading" secondItem="K72-VY-UAv" secondAttribute="trailing" constant="12" id="7ll-68-yYU"/>
                                             <constraint firstAttribute="bottom" secondItem="hQu-Uc-KDH" secondAttribute="bottom" id="BID-Xh-05a"/>
-                                            <constraint firstItem="K72-VY-UAv" firstAttribute="leading" secondItem="ACY-v3-5KD" secondAttribute="leading" id="PpZ-fc-UFm"/>
                                             <constraint firstItem="hQu-Uc-KDH" firstAttribute="top" secondItem="ACY-v3-5KD" secondAttribute="top" id="TS1-TU-qpi"/>
-                                            <constraint firstItem="K72-VY-UAv" firstAttribute="top" secondItem="ACY-v3-5KD" secondAttribute="top" id="YZZ-pu-61S"/>
-                                            <constraint firstAttribute="bottom" secondItem="K72-VY-UAv" secondAttribute="bottom" id="cdP-ww-AvB"/>
                                             <constraint firstItem="hQu-Uc-KDH" firstAttribute="leading" secondItem="ACY-v3-5KD" secondAttribute="leading" constant="2" id="fAC-Ee-VHs"/>
                                             <constraint firstAttribute="trailing" secondItem="hQu-Uc-KDH" secondAttribute="trailing" constant="2" id="fen-cl-fOe"/>
                                             <constraint firstAttribute="height" constant="198" id="oRe-CA-d7g"/>
@@ -119,14 +104,24 @@
                                             <action selector="productButtonTapped" destination="2uB-kz-C90" eventType="touchUpInside" id="SQC-Gt-pfN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
+                                        <rect key="frame" x="302" y="17" width="29" height="29"/>
+                                        <state key="normal" image="btnFavoriteOff"/>
+                                        <state key="selected" image="btnFavoriteOn"/>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="2uB-kz-C90" eventType="touchUpInside" id="03e-tt-Omg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="7dg-w6-DgA"/>
                                     <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
+                                    <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="12" id="8ug-Vb-G14"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
+                                    <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="17" id="fBp-6O-fLq"/>
                                     <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="fQG-Y2-8BU"/>
                                     <constraint firstAttribute="bottom" secondItem="yCd-sP-rVa" secondAttribute="bottom" id="qwX-Fk-7Cz"/>
@@ -189,7 +184,6 @@
                 <outlet property="backgroundImageView" destination="Y10-aO-rEn" id="3aX-l5-y5k"/>
                 <outlet property="discountPercentLabel" destination="gdJ-8i-t4d" id="ncK-o0-cUj"/>
                 <outlet property="favoriteButton" destination="sbe-AY-uQN" id="8to-4V-3Aq"/>
-                <outlet property="labelsView" destination="K72-VY-UAv" id="teb-xF-DBf"/>
                 <outlet property="originalPriceLabel" destination="WGs-VU-Krp" id="bnG-4R-TAh"/>
                 <outlet property="priceLabel" destination="R3Y-N5-d0s" id="N5g-KB-VAp"/>
                 <outlet property="priceLabelLeadingLayoutConstraint" destination="YEx-Te-gko" id="ON6-pf-xfq"/>

@@ -12,7 +12,7 @@ class NoticesViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    notices.get { () -> Void in
+    notices.get { 
       self.tableView.reloadData()
     }
   }

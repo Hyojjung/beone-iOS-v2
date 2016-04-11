@@ -161,7 +161,7 @@ extension BaseViewController {
     showUserViewController(viewController)
   }
   
-  private func showUserViewController(viewController: UIViewController) {
+  func showUserViewController(viewController: UIViewController) {
     if !MyInfo.sharedMyInfo().isUser() {
       signingShowViewController = viewController
       showSigningView()

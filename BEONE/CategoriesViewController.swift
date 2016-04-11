@@ -17,7 +17,7 @@ class CategoriesViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    categories.get { () -> Void in
+    categories.get { 
       self.tableView.reloadData()
     }
   }

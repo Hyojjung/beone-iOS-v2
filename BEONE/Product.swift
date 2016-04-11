@@ -171,6 +171,14 @@ extension Product {
     }
     return imageUrls
   }
+  
+  func isFavorite() -> Bool {
+    if let favoriteProductIds = NSUserDefaults.standardUserDefaults().objectForKey(kFavoriteProductIds) as? [Int],
+      id = id {
+      return favoriteProductIds.contains(id)
+    }
+    return false
+  }
 }
 
 extension Int {

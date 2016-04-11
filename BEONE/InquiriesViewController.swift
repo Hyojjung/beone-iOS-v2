@@ -12,7 +12,7 @@ class InquiriesViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     inquiries.productId = product?.id
-    inquiries.get { () -> Void in
+    inquiries.get { 
       self.tableView.reloadData()
     }
   }
@@ -32,8 +32,8 @@ class InquiriesViewController: BaseTableViewController {
   
   @IBAction func deleteInquiryButtonTapped(sender: UIButton) {
     if let inquiry = inquiries.model(sender.tag) as? Inquiry {
-      inquiry.remove({ () -> Void in
-        self.inquiries.get({ () -> Void in
+      inquiry.remove({ 
+        self.inquiries.get({ 
           self.tableView.reloadData()
         })
       })

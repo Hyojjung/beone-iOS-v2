@@ -40,7 +40,7 @@ class LazyLoadingImageView: UIImageView {
       UIView.transitionWithView(self,
         duration: 0.2,
         options: [.AllowUserInteraction, .TransitionCrossDissolve],
-        animations: { () -> Void in
+        animations: { 
           self.image = image
         },
         completion:nil)

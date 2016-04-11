@@ -103,7 +103,7 @@ class DynamicHeightTableView: UITableView {
   }
   
   func handleKeyboardWillHide(notification: NSNotification) {
-    UIView.animateWithDuration(0.25) { () -> Void in
+    UIView.animateWithDuration(0.25) { 
       self.contentInset = UIEdgeInsetsZero
       self.scrollIndicatorInsets = UIEdgeInsetsZero
     }

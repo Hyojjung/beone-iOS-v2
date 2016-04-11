@@ -70,7 +70,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
         }
       }
     }
-    OrderHelper.fetchOrderableInfo(order) { () -> Void in
+    OrderHelper.fetchOrderableInfo(order) { 
       for orderableItemSet in self.order.orderableItemSets {
         for orderableItem in orderableItemSet.orderableItems.list as! [OrderableItem] {
           if let cartItemId = orderableItem.cartItemId {

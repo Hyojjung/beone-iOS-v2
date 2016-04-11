@@ -45,7 +45,7 @@ class SideBarViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    sideBarViewContents.get { () -> Void in
+    sideBarViewContents.get { 
       self.tableView.reloadData()
     }
   }
@@ -68,6 +68,10 @@ extension SideBarViewController {
   
   @IBAction func showRecentProductsViewButtonTapped() {
     setUpScheme("/recent-products")
+  }
+  
+  @IBAction func showFavoriteProductsViewButtonTapped() {
+    setUpScheme("/favorite-products")
   }
   
   @IBAction func kakaoInquiryButtonTapped(sender: AnyObject) {
@@ -111,7 +115,7 @@ extension SideBarViewController {
   
   func orderDone() {
     sideBarViewContents.orderDeliveryItemSets.first?.put({ (_) -> Void in
-      self.sideBarViewContents.get({ () -> Void in
+      self.sideBarViewContents.get({ 
         self.tableView.reloadData()
       })
     })

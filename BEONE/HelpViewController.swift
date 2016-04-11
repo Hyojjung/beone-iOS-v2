@@ -12,7 +12,7 @@ class HelpsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    helps.get { () -> Void in
+    helps.get { 
       self.tableView.reloadData()
     }
   }

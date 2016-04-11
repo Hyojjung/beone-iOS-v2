@@ -8,6 +8,7 @@ class Products: BaseListModel {
     case Shop
     case Category
     case Recent
+    case Favorite
   }
   
   var type = Type.None
@@ -37,6 +38,11 @@ class Products: BaseListModel {
       }
     case .Recent:
       return "recent-products"
+    case .Favorite:
+      if MyInfo.sharedMyInfo().isUser() {
+        return "users/\(MyInfo.sharedMyInfo().userId!)/favorite-products"
+      }
+      return "favorite-products"
     case .None:
       return "products"
     }
@@ -45,9 +51,12 @@ class Products: BaseListModel {
   
   override func getParameter() -> AnyObject? {
     var parameter = [String: AnyObject]()
-    parameter["locationId"] = locationId
+    parameter[kNetworkRequestKeyLocationId] = locationId
     switch type {
     case .Shop, .Category, .Recent:
+      return nil
+    case .Favorite:
+//      parameter["noData"] = noData
       return nil
     case .None:
       parameter["productPropertyValueIds"] = productPropertyValueIds
@@ -64,11 +73,17 @@ class Products: BaseListModel {
   
   override func assignObject(data: AnyObject?) {
     list.removeAll()
+    if type == .Favorite {
+      FavoriteProductHelper.resetFavoriteProduct()
+    }
     if let products = data as? [[String: AnyObject]] {
       for productObject in products {
         let product = Product()
         product.assignObject(productObject)
         list.appendObject(product)
+        if type == .Favorite {
+          FavoriteProductHelper.saveFavoriteProduct(product.id)
+        }
       }
     }
   }

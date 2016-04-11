@@ -25,7 +25,7 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    orderItems.get { () -> Void in
+    orderItems.get { 
       self.tableView.reloadData()
     }
   }

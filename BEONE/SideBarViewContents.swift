@@ -14,6 +14,7 @@ class SideBarViewContents: BaseModel {
   }
   
   override func assignObject(data: AnyObject?) {
+    print(data)
     if let sideBarViewContents = data as? [String: AnyObject] {
       if let user = sideBarViewContents["user"] as? [String: AnyObject] {
         MyInfo.sharedMyInfo().assignObject(user)

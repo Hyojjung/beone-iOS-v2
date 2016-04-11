@@ -29,6 +29,11 @@ class ProductsViewController: BaseTableViewController {
   }()
   var forSearchResult = false
   var products = Products()
+  let favoriteProducts: Products = {
+    let products = Products()
+    products.type = .Favorite
+    return products
+  }()
   
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
@@ -50,7 +55,10 @@ class ProductsViewController: BaseTableViewController {
     super.setUpData()
     products.noData = false
     products.isQuickOrder = false
-    products.get { () -> Void in
+    favoriteProducts.get { 
+      self.tableView.reloadData()
+    }
+    products.get {
       self.tableView.reloadData()
     }
     if forSearchResult {
@@ -67,11 +75,11 @@ class ProductsViewController: BaseTableViewController {
         self.maxPrice = maxPrice
       }
       
-      productProperties.get { () -> Void in
+      productProperties.get { 
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
       }
-      tags.get { () -> Void in
+      tags.get { 
         self.tableView.reloadSections(NSIndexSet(index: SearchTableViewSection.Search.rawValue),
           withRowAnimation: .Automatic)
       } 
@@ -87,7 +95,7 @@ extension ProductsViewController {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
       self.selectedLocation = BEONEManager.sharedLocations.list[selectedIndex] as! Location
       self.products.locationId = self.selectedLocation.id
-      self.products.get({ () -> Void in
+      self.products.get({ 
         self.tableView.reloadData()
       })
     }

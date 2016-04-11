@@ -21,7 +21,7 @@
   
   override func setUpData() {
     if MyInfo.sharedMyInfo().isUser(){
-      cartItems.get({ () -> Void in
+      cartItems.get({ 
         self.fetchOrderableInfo()
       })
     }
@@ -79,7 +79,7 @@
   }
   
   func deleteCartItem(cartItemIds: [Int]) {
-    CartItemManager.removeCartItem(cartItemIds) { () -> Void in
+    CartItemManager.removeCartItem(cartItemIds) { 
       self.setUpData()
     }
   }

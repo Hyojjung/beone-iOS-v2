@@ -57,10 +57,10 @@ class SettingViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    version.get { () -> Void in
+    version.get { 
       self.tableView.reloadData()
     }
-    deviceInfo.get { () -> Void in
+    deviceInfo.get { 
       self.tableView.reloadData()
     }
   }
@@ -127,7 +127,7 @@ extension SettingViewController {
   }
   
   func logOut() {
-    MyInfo.sharedMyInfo().logOut { () -> Void in
+    MyInfo.sharedMyInfo().logOut { 
       self.tableView.reloadData()
     }
   }

@@ -27,7 +27,7 @@ class ShopsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shops.get { () -> Void in
+    shops.get { 
       self.tableView.reloadData()
     }
   }

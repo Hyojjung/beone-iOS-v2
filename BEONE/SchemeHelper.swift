@@ -2,6 +2,7 @@
 import UIKit
 
 let kRecentProductsSchemeString = "recent-products"
+let kFavoriteProductsSchemeString = "favorite-products"
 
 enum SchemeTabViewIdentifier: String {
   case Home = "home"
@@ -145,6 +146,11 @@ extension BaseViewController {
             productsViewController.title = "최근 본 상품"
             productsViewController.products.type = .Recent
             showViewController(productsViewController, sender: nil)
+          } else if schemeString == kFavoriteProductsSchemeString  {
+            let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
+            productsViewController.title = "찜한 상품"
+            productsViewController.products.type = .Favorite
+            showUserViewController(productsViewController)
           }
         }
       } else {

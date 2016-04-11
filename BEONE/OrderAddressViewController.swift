@@ -49,11 +49,11 @@ class OrderAddressViewController: BaseViewController {
     if let selectedAddress = BEONEManager.selectedAddress {
       handleAddress(selectedAddress)
     } else {
-      addresses.get { () -> Void in
+      addresses.get { 
         self.handleAddresses()
       }
     }
-    MyInfo.sharedMyInfo().get { () -> Void in
+    MyInfo.sharedMyInfo().get { 
       self.senderNameTextField.text = MyInfo.sharedMyInfo().name
       self.senderPhoneTextField.text = MyInfo.sharedMyInfo().phone
     }

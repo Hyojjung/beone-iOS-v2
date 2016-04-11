@@ -43,7 +43,7 @@ class SpeedOrderAddressViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    addresses.get { () -> Void in
+    addresses.get { 
       self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0,
         inSection: SpeedOrderAddressTableViewSection.Address.rawValue)],
         withRowAnimation: .Automatic)

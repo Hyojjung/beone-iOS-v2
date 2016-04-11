@@ -54,13 +54,13 @@ extension AlertViewController {
 extension AlertViewController {
   
   @IBAction func cancelButtonTapped() {
-    dismissViewControllerAnimated(true) { () -> Void in
+    dismissViewControllerAnimated(true) { 
       self.cancelAction?.action()
     }
   }
   
   @IBAction func confirmButtonTapped() {
-    dismissViewControllerAnimated(true) { () -> Void in
+    dismissViewControllerAnimated(true) { 
       self.confirmAction?.action()
     }
   }

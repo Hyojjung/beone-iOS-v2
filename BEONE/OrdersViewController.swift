@@ -43,10 +43,10 @@ class OrdersViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    orders.get { () -> Void in
+    orders.get { 
       self.tableView.reloadData()
     }
-    reviewableOrderItems.get { () -> Void in
+    reviewableOrderItems.get { 
       self.tableView.reloadData()
     }
     OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in

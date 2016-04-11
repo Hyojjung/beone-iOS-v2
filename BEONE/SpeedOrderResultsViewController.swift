@@ -15,7 +15,7 @@ class SpeedOrderResultsViewController: BaseViewController {
   var products = Products()
   
   override func setUpData() {
-    products.get { () -> Void in
+    products.get { 
       self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1
       self.setUpContentViews()
       self.configureReviewLabels()

@@ -13,7 +13,7 @@ class Shops: BaseListModel {
   
   override func getParameter() -> AnyObject? {
     var parameter = [String: AnyObject]()
-    parameter["locationId"] = locationId
+    parameter[kNetworkRequestKeyLocationId] = locationId
     return parameter
   }
   

@@ -21,7 +21,7 @@ class LandingViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    templates.get { () -> Void in
+    templates.get { 
       self.tableView.reloadData()
     }
   }

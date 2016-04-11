@@ -91,15 +91,11 @@ class BaseModel: NSObject {
     return nil
   }
   
-  
   // MARK: - Delete Methods
-  
-  func delete() {
-    NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: deleteSuccess(), failure: deleteFailure())
-  }
   
   func remove(deleteSuccess: (() -> Void)? = nil, deleteFailure: ((NetworkError) -> Void)? = nil) {
     NetworkHelper.requestDelete(deleteUrl(), parameter: deleteParameter(), success: { (result) -> Void in
+      self.deleteSuccess()
       deleteSuccess?()
       }, failure: { (error) in
       deleteFailure?(error)
@@ -114,8 +110,7 @@ class BaseModel: NSObject {
     return nil
   }
   
-  func deleteSuccess() -> NetworkSuccess? {
-    return nil
+  func deleteSuccess() {
   }
   
   func deleteFailure() -> NetworkFailure? {

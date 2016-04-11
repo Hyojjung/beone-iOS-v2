@@ -43,14 +43,14 @@ class CouponsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    usableCoupons.get { () -> Void in
+    usableCoupons.get { 
       self.tableView.reloadData()
     }
   }
   
   @IBAction func moreShowButtonTapped() {
     isMoreShow = true
-    unusableCoupons.get { () -> Void in
+    unusableCoupons.get { 
       self.tableView.reloadData()
     }
   }

@@ -214,8 +214,8 @@ extension NetworkHelper {
     } else {
       param = parameter as! [String: AnyObject]
     }
-    if param["locationId"] == nil {
-      param["locationId"] = BEONEManager.selectedLocation?.id
+    if param[kNetworkRequestKeyLocationId] == nil && !url.containsString(kNetworkRequestKeyLocationId) {
+      param[kNetworkRequestKeyLocationId] = BEONEManager.selectedLocation?.id
     }
     
     networkManager.GET(url, parameters: param, success: { (operation, responseObject) -> Void in

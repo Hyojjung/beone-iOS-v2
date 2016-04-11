@@ -40,7 +40,7 @@ class OptionViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({ () -> Void in
+    product.get({ 
       if self.product.soldOut {
         let confirmAction = Action()
         confirmAction.type = .Method

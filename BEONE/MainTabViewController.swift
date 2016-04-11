@@ -33,7 +33,7 @@ class MainTabViewController: UITabBarController {
   }
   
   func setUpData() {
-    BEONEManager.sharedLocations.get { () -> Void in
+    BEONEManager.sharedLocations.get { 
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
     }
     BEONEManager.globalViewContents.get()

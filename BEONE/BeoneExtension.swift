@@ -1,7 +1,7 @@
 
 extension Array {
   
-  mutating func removeObject<U: Equatable>(object: U) {
+  mutating func removeObject<U: Equatable>(object: U?) {
     var index: Int?
     for (idx, objectToCompare) in enumerate() {
       if let to = objectToCompare as? U {
@@ -13,6 +13,12 @@ extension Array {
     
     if let index = index {
       self.removeAtIndex(index)
+    }
+  }
+  
+  mutating func appendObject(element: Element?) {
+    if let element = element {
+      append(element)
     }
   }
   
@@ -47,12 +53,6 @@ extension Array {
       return index < count
     }
     return false
-  }
-  
-  mutating func appendObject(element: Element?) {
-    if let element = element {
-      append(element)
-    }
   }
 }
 

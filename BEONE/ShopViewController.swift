@@ -27,10 +27,10 @@ class ShopViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shop.get({ () -> Void in
+    shop.get({ 
       self.tableView.reloadData()
     })
-    shopProducts.get { () -> Void in
+    shopProducts.get { 
       self.tableView.reloadData()
     }
   }
