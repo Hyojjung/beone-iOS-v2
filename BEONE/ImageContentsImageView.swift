@@ -5,6 +5,7 @@ import SDWebImage
 class ImageContentsImageView: LazyLoadingImageView {
   
   var template: Template?
+  @IBOutlet weak var heightLayoutConstraint: NSLayoutConstraint!
   
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
     super.setImageWithAnimation(image, cacheType: cacheType)
@@ -29,10 +30,11 @@ class ImageContentsImageView: LazyLoadingImageView {
   
   func modifyHeightConstraint() {
     if let height = heightFromRatio(image?.size) {
-      if self.template?.height != height {
-        self.template?.height = height
-        postNotification(kNotificationContentsViewLayouted)
-      }
+//      if self.template?.height != height {
+//        self.template?.height = height
+//        postNotification(kNotificationContentsViewLayouted)
+//      }
+      heightLayoutConstraint.constant = height
     }
   }
   

@@ -16,14 +16,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTl-dx-uqL">
-                        <rect key="frame" x="8" y="8" width="561" height="367"/>
+                        <rect key="frame" x="8" y="8" width="561" height="367.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x0m-7v-or7" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="561" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="561" height="367.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-RH-j0M">
-                                <rect key="frame" x="8" y="16" width="545" height="335"/>
+                                <rect key="frame" x="8" y="16" width="545" height="335.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dIp-nr-GjY">
                                     <size key="itemSize" width="50" height="50"/>

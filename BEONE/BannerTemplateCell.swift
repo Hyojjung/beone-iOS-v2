@@ -14,7 +14,8 @@ class BannerTemplateCell: TemplateCell {
   }
   
   override func calculatedHeight(template: Template) -> CGFloat? {
-    return 300
+    return 300 + template.style.margin.top + template.style.margin.bottom + template.style.padding.top + template.style.padding.bottom
+
   }
   
   override func configureCell(template: Template) {

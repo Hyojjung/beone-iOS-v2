@@ -24,15 +24,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dg0-7D-Doc">
                                 <rect key="frame" x="8" y="8" width="288" height="11"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="CV5-2R-IMl"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="CV5-2R-IMl"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="buttonClicked:" destination="0TE-OU-rmg" eventType="touchUpInside" id="4vf-dd-tUH"/>
                                 </connections>

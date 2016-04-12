@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="633"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8rR-Ry-x7v" id="dPV-wC-aG6">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="633"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="632.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ek6-J5-LDB">
@@ -25,20 +25,12 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="leD-7S-CuK">
                                 <rect key="frame" x="8" y="8" width="288" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="600" id="S3i-68-XUu"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mrf-h0-J6T">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="S3i-68-XUu"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="8rR-Ry-x7v" id="nf4-fe-ekN"/>
                                     <outlet property="delegate" destination="8rR-Ry-x7v" id="gqx-G2-pYS"/>

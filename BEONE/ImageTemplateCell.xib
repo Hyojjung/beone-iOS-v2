@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKt-ua-VZR" id="hkM-3B-ScA">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-EL-Ap9">
@@ -23,10 +23,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="195"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalCompressionResistancePriority="751" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="288" height="179"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="300" id="54q-ji-Kxd"/>
+                                    <constraint firstAttribute="height" constant="179" id="NC0-Y2-eYl"/>
                                     <constraint firstAttribute="height" priority="750" constant="300" id="QeU-Yy-TKX"/>
                                     <constraint firstAttribute="height" constant="600" id="T82-ey-sGi"/>
                                     <constraint firstAttribute="height" constant="600" id="atw-pg-qIN"/>
@@ -34,29 +35,33 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="54q-ji-Kxd"/>
                                         <exclude reference="QeU-Yy-TKX"/>
                                         <exclude reference="T82-ey-sGi"/>
                                         <exclude reference="atw-pg-qIN"/>
                                         <exclude reference="dTV-fe-XW0"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="heightLayoutConstraint" destination="NC0-Y2-eYl" id="7WC-nl-EdH"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sXC-1q-pvk" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leadingMargin" id="092-wt-Ncg"/>
-                            <constraint firstItem="sXC-1q-pvk" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="topMargin" id="2Uh-1G-OCy"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="sXC-1q-pvk" secondAttribute="bottom" id="5CO-5d-pjs"/>
+                            <constraint firstItem="sXC-1q-pvk" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leadingMargin" id="3tc-t8-1AV"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="topMargin" id="7Ep-ha-gus"/>
+                            <constraint firstItem="sXC-1q-pvk" firstAttribute="bottom" secondItem="bjg-EL-Ap9" secondAttribute="bottomMargin" id="7lf-dc-ubf"/>
                             <constraint firstAttribute="trailing" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="B5o-aJ-lW6"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leading" id="HKL-Xh-MIo"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leading" id="Mxv-SJ-K1H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sXC-1q-pvk" secondAttribute="trailing" id="P6w-KY-fKY"/>
+                            <constraint firstItem="sXC-1q-pvk" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="topMargin" id="P6f-rz-KjC"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="top" id="RW5-AN-Pio"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="VwB-fC-eLs"/>
                             <constraint firstAttribute="bottom" secondItem="3C0-ss-cZ7" secondAttribute="bottom" id="ZBR-gq-ePC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="3C0-ss-cZ7" secondAttribute="bottom" id="bKo-6z-Juj"/>
                             <constraint firstAttribute="trailing" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="gdq-GX-gpS"/>
+                            <constraint firstItem="sXC-1q-pvk" firstAttribute="trailing" secondItem="bjg-EL-Ap9" secondAttribute="trailingMargin" id="hev-fl-6b5"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leadingMargin" id="iHZ-Rt-eae"/>
                             <constraint firstAttribute="bottom" secondItem="3C0-ss-cZ7" secondAttribute="bottom" id="ubX-Nc-Jhm"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="top" id="yrC-sX-Y1O"/>
