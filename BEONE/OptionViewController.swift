@@ -134,6 +134,9 @@ extension OptionViewController {
       })
     } else {
       cartItems.first?.selectedOption = selectedOption
+      if let selectedProductOrderableInfo = selectedProductOrderableInfo {
+        cartItems.first?.productOrderableInfo = selectedProductOrderableInfo        
+      }
       cartItems.first!.put({ (result) -> Void in
         self.handlePostCartItemSuccess()
       })

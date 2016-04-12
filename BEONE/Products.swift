@@ -64,6 +64,7 @@ class Products: BaseListModel {
       parameter["minPrice"] = minPrice
       parameter["maxPrice"] = maxPrice
       parameter["noData"] = noData
+      parameter["isQuickOrder"] = isQuickOrder
       parameter["availableDates"] = availableDates
       parameter["address"] = address?.addressString()
       parameter["addressType"] = address?.addressType?.rawValue
