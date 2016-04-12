@@ -90,7 +90,7 @@ class Address: BaseModel {
         if splitLine {
           return address + "\n" + detailAddress
         }
-        return address + detailAddress
+        return address + " " + detailAddress
       }
       return address
     }
