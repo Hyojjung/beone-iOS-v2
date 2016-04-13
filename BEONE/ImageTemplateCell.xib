@@ -46,20 +46,31 @@
                                     <outlet property="heightLayoutConstraint" destination="NC0-Y2-eYl" id="7WC-nl-EdH"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8G-G5-IZv">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="195"/>
+                                <connections>
+                                    <action selector="viewTapped" destination="bKt-ua-VZR" eventType="touchUpInside" id="tFC-nD-93U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sXC-1q-pvk" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leadingMargin" id="3tc-t8-1AV"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="topMargin" id="7Ep-ha-gus"/>
                             <constraint firstItem="sXC-1q-pvk" firstAttribute="bottom" secondItem="bjg-EL-Ap9" secondAttribute="bottomMargin" id="7lf-dc-ubf"/>
                             <constraint firstAttribute="trailing" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="B5o-aJ-lW6"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leading" id="HKL-Xh-MIo"/>
+                            <constraint firstItem="t8G-G5-IZv" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leading" id="JjS-JF-IYu"/>
+                            <constraint firstItem="t8G-G5-IZv" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="top" id="LhQ-Xb-a8G"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leading" id="Mxv-SJ-K1H"/>
                             <constraint firstItem="sXC-1q-pvk" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="topMargin" id="P6f-rz-KjC"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="top" secondItem="bjg-EL-Ap9" secondAttribute="top" id="RW5-AN-Pio"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="VwB-fC-eLs"/>
                             <constraint firstAttribute="bottom" secondItem="3C0-ss-cZ7" secondAttribute="bottom" id="ZBR-gq-ePC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="3C0-ss-cZ7" secondAttribute="bottom" id="bKo-6z-Juj"/>
+                            <constraint firstAttribute="bottom" secondItem="t8G-G5-IZv" secondAttribute="bottom" id="flq-ke-ED0"/>
+                            <constraint firstAttribute="trailing" secondItem="t8G-G5-IZv" secondAttribute="trailing" id="gZe-Yf-zx0"/>
                             <constraint firstAttribute="trailing" secondItem="3C0-ss-cZ7" secondAttribute="trailing" id="gdq-GX-gpS"/>
                             <constraint firstItem="sXC-1q-pvk" firstAttribute="trailing" secondItem="bjg-EL-Ap9" secondAttribute="trailingMargin" id="hev-fl-6b5"/>
                             <constraint firstItem="3C0-ss-cZ7" firstAttribute="leading" secondItem="bjg-EL-Ap9" secondAttribute="leadingMargin" id="iHZ-Rt-eae"/>

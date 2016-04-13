@@ -6,7 +6,8 @@ class TemplateCell: UITableViewCell {
   
   @IBOutlet weak var templateContentsView: UIView!
   @IBOutlet weak var backgroundImageView: LazyLoadingImageView!
-  
+  var action: Action?
+
   override func awakeFromNib() {
     super.awakeFromNib()
     backgroundImageView.contentMode = .ScaleAspectFill
@@ -20,6 +21,7 @@ class TemplateCell: UITableViewCell {
   
   func configureCell(template: Template) {
     configureStyle(template.style)
+    action = template.action
   }
   
   func configureDefaulStyle() {

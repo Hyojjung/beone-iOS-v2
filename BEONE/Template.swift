@@ -71,6 +71,7 @@ class Template: BaseModel {
   
   override func assignObject(data: AnyObject?) {
     if let template = data as? [String: AnyObject] {
+      print(data)
       id = template[kObjectPropertyKeyId] as? Int
       action.assignObject(template["action"])
       style.assignObject(template[kTemplatePropertyKeyStyle])

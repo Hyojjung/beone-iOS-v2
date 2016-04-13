@@ -16,6 +16,6 @@ class ImageTemplateCell: TemplateCell {
   // MARK: - Actions
   
   @IBAction func viewTapped() {
-    
+    action?.action()
   }
 }

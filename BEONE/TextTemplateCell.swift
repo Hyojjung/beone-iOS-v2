@@ -52,7 +52,7 @@ class TextTemplateCell: TemplateCell {
   // MARK: - Actions
   
   @IBAction func viewTapped() {
-   
+    action?.action()
   }
   
   // MARK: - Private Methods

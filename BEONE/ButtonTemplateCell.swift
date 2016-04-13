@@ -5,7 +5,6 @@ import SDWebImage
 class ButtonTemplateCell: TemplateCell {
   
   @IBOutlet weak var button: UIButton!
-  var action: Action?
   var unpressedBackgroundColor: UIColor?
   var pressedBackgroundColor: UIColor?
   
@@ -30,7 +29,6 @@ class ButtonTemplateCell: TemplateCell {
     button.sd_setBackgroundImageWithURL(template.content.backgroundImageUrl?.url(), forState: .Normal)
     button.sd_setBackgroundImageWithURL(template.content.pressedBackgroundImageUrl?.url(), forState: .Highlighted)
     templateId = template.id
-    action = template.action
   }
   
   override func calculatedHeight(template: Template) -> CGFloat? {

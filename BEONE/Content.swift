@@ -62,7 +62,6 @@ class Content: BaseModel {
   
   override func assignObject(data: AnyObject?) {
     if let contents = data as? [String: AnyObject] {
-      // TODO: - Assign Model
       id = contents[kObjectPropertyKeyId] as? Int
       text = contents[kContentsPropertyKeyText] as? String
       imageUrl = contents[kContentsPropertyKeyImageUrl] as? String
