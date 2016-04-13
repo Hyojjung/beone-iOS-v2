@@ -31,20 +31,6 @@ class TableTemplateCell: TemplateCell {
     collectionView.reloadData()
   }
   
-  private func setUpCollectionViewFlowLayout(template: Template) {
-    if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-      let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
-      collectionViewLayout.minimumInteritemSpacing = space
-      collectionViewLayout.minimumLineSpacing = space
-      
-      if let column = self.column{
-        let viewWidth = self.viewWidth(template)
-        let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
-        collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-      }
-    }
-  }
-  
   override func calculatedHeight(template: Template) -> CGFloat {
     if let height = template.height {
       return height
@@ -65,8 +51,25 @@ class TableTemplateCell: TemplateCell {
       return height
     }
   }
+}
+
+extension TableTemplateCell {
+
+  private func setUpCollectionViewFlowLayout(template: Template) {
+    if let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+      let space = self.hasSpace != nil && self.hasSpace! ? kSpaceWidthCell : kNoSpaceWidthCell
+      collectionViewLayout.minimumInteritemSpacing = space
+      collectionViewLayout.minimumLineSpacing = space
+      
+      if let column = self.column{
+        let viewWidth = self.viewWidth(template)
+        let itemWidth = (viewWidth - space * CGFloat(column - 1)) / CGFloat(column)
+        collectionViewLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+      }
+    }
+  }
   
-  func viewWidth(template: Template) -> CGFloat {
+  private func viewWidth(template: Template) -> CGFloat {
     return ViewControllerHelper.screenWidth -
       (template.style.margin.left + template.style.margin.right +
         template.style.padding.left + template.style.padding.right)
@@ -89,13 +92,5 @@ extension TableTemplateCell {
       forIndexPath: indexPath) as! TableContentsCollectionViewCell
     cell.configure(content?.items.objectAtIndex(indexPath.row))
     return cell
-  }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension TableTemplateCell: UICollectionViewDelegate {
-  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
   }
 }

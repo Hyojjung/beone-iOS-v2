@@ -12,7 +12,6 @@ class ProductSingleTemplateCell: TemplateCell {
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var priceLabelLeadingLayoutConstraint: NSLayoutConstraint!
   var productId: Int?
-  weak var delegate: BaseViewController?
 
   override func configureCell(template: Template) {
     super.configureCell(template)
@@ -44,7 +43,9 @@ class ProductSingleTemplateCell: TemplateCell {
   }
   
   @IBAction func productButtonTapped() {
-    delegate?.showProductView(productId)
+    if let productId = productId {
+      SchemeHelper.setUpScheme("/product/\(productId)")
+    }
   }
   
   @IBAction func favoriteButtonTapped(sender: UIButton) {

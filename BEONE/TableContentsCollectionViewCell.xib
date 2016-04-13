@@ -7,39 +7,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tableContentsCell" id="KgT-kE-pfp" customClass="TableContentsCollectionViewCell" customModule="BEONE" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tableContentsCell" id="JUi-Ii-phL" customClass="TableContentsCollectionViewCell" customModule="BEONE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="7Dr-zA-NYL" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="1Gn-Z4-zgH" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj9-fe-19I">
-                        <rect key="frame" x="86" y="88" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eas-B0-wnF">
+                        <rect key="frame" x="8" y="88" width="198" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-lT-mke">
+                        <rect key="frame" x="0.0" y="0.0" width="214" height="197"/>
+                        <connections>
+                            <action selector="actionButtonTapped" destination="JUi-Ii-phL" eventType="touchUpInside" id="6iD-hn-G8O"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="7Dr-zA-NYL" secondAttribute="bottom" id="6TO-uh-Dmn"/>
-                <constraint firstItem="mj9-fe-19I" firstAttribute="centerX" secondItem="KgT-kE-pfp" secondAttribute="centerX" id="GQd-0j-OZ0"/>
-                <constraint firstItem="7Dr-zA-NYL" firstAttribute="top" secondItem="KgT-kE-pfp" secondAttribute="top" id="L13-69-nVB"/>
-                <constraint firstItem="mj9-fe-19I" firstAttribute="centerY" secondItem="KgT-kE-pfp" secondAttribute="centerY" id="cFY-zS-itb"/>
-                <constraint firstItem="7Dr-zA-NYL" firstAttribute="leading" secondItem="KgT-kE-pfp" secondAttribute="leading" id="kkQ-lR-6p9"/>
-                <constraint firstAttribute="trailing" secondItem="7Dr-zA-NYL" secondAttribute="trailing" id="vT9-8F-kNB"/>
+                <constraint firstItem="FsZ-lT-mke" firstAttribute="top" secondItem="JUi-Ii-phL" secondAttribute="top" id="0ub-15-7n1"/>
+                <constraint firstItem="1Gn-Z4-zgH" firstAttribute="leading" secondItem="JUi-Ii-phL" secondAttribute="leading" id="1qO-js-I36"/>
+                <constraint firstItem="Eas-B0-wnF" firstAttribute="centerX" secondItem="JUi-Ii-phL" secondAttribute="centerX" id="DjH-uf-5l2"/>
+                <constraint firstItem="Eas-B0-wnF" firstAttribute="centerY" secondItem="JUi-Ii-phL" secondAttribute="centerY" id="ILz-0E-0gM"/>
+                <constraint firstAttribute="trailing" secondItem="1Gn-Z4-zgH" secondAttribute="trailing" id="U8g-tL-FKb"/>
+                <constraint firstAttribute="bottom" secondItem="FsZ-lT-mke" secondAttribute="bottom" id="cJ1-ny-SuT"/>
+                <constraint firstAttribute="bottom" secondItem="1Gn-Z4-zgH" secondAttribute="bottom" id="cku-Pn-qFv"/>
+                <constraint firstAttribute="trailing" secondItem="FsZ-lT-mke" secondAttribute="trailing" id="dWE-3P-D6m"/>
+                <constraint firstItem="Eas-B0-wnF" firstAttribute="leading" secondItem="JUi-Ii-phL" secondAttribute="leading" constant="8" id="eYw-q4-7qY"/>
+                <constraint firstAttribute="trailing" secondItem="Eas-B0-wnF" secondAttribute="trailing" constant="8" id="rdp-Kw-jqI"/>
+                <constraint firstItem="FsZ-lT-mke" firstAttribute="leading" secondItem="JUi-Ii-phL" secondAttribute="leading" id="tcc-0S-n0v"/>
+                <constraint firstItem="1Gn-Z4-zgH" firstAttribute="top" secondItem="JUi-Ii-phL" secondAttribute="top" id="xTc-Nb-tWw"/>
             </constraints>
             <size key="customSize" width="214" height="197"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="DjH-uf-5l2"/>
+                </mask>
+            </variation>
             <connections>
-                <outlet property="backgroundImageView" destination="7Dr-zA-NYL" id="06D-90-aEh"/>
-                <outlet property="textLabel" destination="mj9-fe-19I" id="6ez-xE-6jR"/>
+                <outlet property="backgroundImageView" destination="1Gn-Z4-zgH" id="edW-gi-zid"/>
+                <outlet property="textLabel" destination="Eas-B0-wnF" id="qTo-HO-whS"/>
             </connections>
             <point key="canvasLocation" x="341" y="705.5"/>
         </collectionViewCell>

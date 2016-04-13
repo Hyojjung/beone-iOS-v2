@@ -20,6 +20,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     "usageCell"]
   
   var address: Address?
+  var addresses = Addresses()
   var selectedUsageIndex: Int?
   var selectedDeliveryDateIndex: Int?
   var productSearchData = ProductSearchData()
@@ -41,13 +42,13 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     } else if let speedOrderResultsViewController = segue.destinationViewController as? SpeedOrderResultsViewController {
       if let productProperty = productProperties.list.first as? ProductProperty,
         selectedUsageIndex = selectedUsageIndex {
-        speedOrderResultsViewController.products.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
+        speedOrderResultsViewController.productPropertyValueIds = [productProperty.values[selectedUsageIndex].id!]
       }
-      speedOrderResultsViewController.products.address = address
       if let selectedDeliveryDateIndex = selectedDeliveryDateIndex {
-        speedOrderResultsViewController.products.availableDates =
+        speedOrderResultsViewController.availableDates =
           [productSearchData.reservationDateOptions[selectedDeliveryDateIndex].value!]
       }
+      speedOrderResultsViewController.address = address
     }
   }
   
@@ -59,7 +60,16 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     productProperties.get()
-    productSearchData.get()
+    productSearchData.get { 
+      if !self.productSearchData.reservationDateOptions.isEmpty {
+        self.selectedDeliveryDateIndex = 0
+        self.tableView.reloadData()
+      }
+    }
+    addresses.get {
+      self.address = self.addresses.list.first as? Address
+      self.tableView.reloadData()
+    }
   }
   
   @IBAction func selectUsageButtonTapped() {
@@ -76,7 +86,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   }
   
   @IBAction func selectDeliveryDateButtonTapped() {
-    showActionSheet("배송 받으실 날짜를 선택해 주세요",
+    showActionSheet(NSLocalizedString("select delivery date for search", comment: "action sheet title"),
                     rows: productSearchData.reservationDateOptionsNames(),
                     initialSelection: selectedDeliveryDateIndex,
                     sender: nil,
@@ -97,7 +107,14 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   }
   
   @IBAction func showResultViewButtonTapped() {
-    performSegueWithIdentifier("From Quick Search To Search Result", sender: nil)
+    if selectedDeliveryDateIndex == nil {
+      showAlertView(NSLocalizedString("select delivery date for search", comment: "alert title"))
+    } else if address == nil {
+      showAlertView(NSLocalizedString("select address for search",
+        comment: "alert title"))
+    } else {
+      performSegueWithIdentifier("From Quick Search To Search Result", sender: nil)
+    }
   }
 }
 
@@ -126,8 +143,8 @@ extension SpeedOrderFilterViewController: UITableViewDataSource {
         usageValue = productProperty.values[selectedUsageIndex]
       }
       cell.configureCell(usageValue)
-    } else if let cell = cell as? DeliveryDateCell, selectedDeliveryDateIndex = selectedDeliveryDateIndex {
-      cell.configureCell(productSearchData.reservationDateOptions[selectedDeliveryDateIndex].name)
+    } else if let cell = cell as? DeliveryDateCell {
+      cell.configureCell(productSearchData.reservationDateOptions.objectAtIndex(selectedDeliveryDateIndex))
     }
     return cell
   }
@@ -159,7 +176,8 @@ class SpeedOrderAddressCell: UITableViewCell {
     if let address = address {
       addressLabel.text = address.fullAddressString(true)
     } else {
-      addressLabel.text = "배송지를 선택해 주세요"
+      addressLabel.text = NSLocalizedString("select address for search",
+                                            comment: "selection")
     }
   }
 }
@@ -171,21 +189,26 @@ class UsageCell: UITableViewCell {
   func configureCell(usage: ProductPropertyValue?) {
     if let usage = usage {
       usageLabel.text = usage.name
+      usageLabel.font = UIFont.systemFontOfSize(20)
     } else {
-      usageLabel.text = "용도 (선택)"
+      usageLabel.text = "어떤 때 필요하신가요? (선택사항)"
+      usageLabel.font = UIFont.systemFontOfSize(15)
     }
   }
 }
 
 class DeliveryDateCell: UITableViewCell {
   
+  @IBOutlet weak var deliveryDateTitleLabel: UILabel!
   @IBOutlet weak var deliveryDateLabel: UILabel!
   
-  func configureCell(deliveryDateTitle: String?) {
-    if let deliveryDateTitle = deliveryDateTitle {
+  func configureCell(reservationDateOption: ReservationDateOption?) {
+    if let deliveryDateTitle = reservationDateOption?.display {
       deliveryDateLabel.text = deliveryDateTitle
     } else {
-      deliveryDateLabel.text = "배송 받으실 날짜를 선택해 주세요"
+      deliveryDateLabel.text = NSLocalizedString("select delivery date for search",
+                                                 comment: "selection")
     }
+    deliveryDateTitleLabel.text = reservationDateOption?.name
   }
 }

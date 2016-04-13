@@ -40,17 +40,19 @@ class OptionViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({
-      if self.product.soldOut {
-        let confirmAction = Action()
-        confirmAction.type = .Method
-        confirmAction.content = "popView"
-        
-        self.showAlertView(NSLocalizedString("sold out product", comment: "alert title"), confirmAction: confirmAction, delegate: self)
-      } else {
-        self.setUpProductData()
-      }
-    })
+    if product.id != nil {
+      product.get({
+        if self.product.soldOut {
+          let confirmAction = Action()
+          confirmAction.type = .Method
+          confirmAction.content = "popView"
+          
+          self.showAlertView(NSLocalizedString("sold out product", comment: "alert title"), confirmAction: confirmAction, delegate: self)
+        } else {
+          self.setUpProductData()
+        }
+      })
+    }
   }
   
   override func setUpView() {
@@ -134,6 +136,9 @@ extension OptionViewController {
       })
     } else {
       cartItems.first?.selectedOption = selectedOption
+      if let selectedProductOrderableInfo = selectedProductOrderableInfo {
+        cartItems.first?.productOrderableInfo = selectedProductOrderableInfo        
+      }
       cartItems.first!.put({ (result) -> Void in
         self.handlePostCartItemSuccess()
       })
@@ -366,5 +371,13 @@ extension OptionViewController: UITextViewDelegate {
       optionItem.value = textView.text
       textView.isModiFying = !(textView.text == kEmptyString || textView.text == nil)
     }
+  }
+}
+
+extension OptionViewController: SchemeDelegate {
+  
+  func handleScheme(with id: Int) {
+    product.id = id
+    setUpData()
   }
 }

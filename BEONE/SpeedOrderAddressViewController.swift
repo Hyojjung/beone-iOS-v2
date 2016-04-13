@@ -135,7 +135,7 @@ class AddressCell: UITableViewCell {
   @IBOutlet weak var zipCodeTextField: UITextField!
   @IBOutlet weak var addressTextField: UITextField!
   @IBOutlet weak var detailAddressTextField: UITextField!
-  @IBOutlet weak var findAddressButtonTapped: UIButton!
+  @IBOutlet weak var findAddressButton: UIButton!
   @IBOutlet weak var zipCodeTextFieldTrailingLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var newButtonTrailingLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var firstButtonTrailingLayoutConstraint: NSLayoutConstraint!
@@ -151,7 +151,7 @@ class AddressCell: UITableViewCell {
     addressTextField.text = address?.addressString()
     detailAddressTextField.text = address?.detailAddress
     
-    findAddressButtonTapped.configureAlpha(selectedIndex == nil)
+    findAddressButton.configureAlpha(selectedIndex == nil)
     zipCodeTextFieldTrailingLayoutConstraint.constant = selectedIndex == nil ? 144 : 8
     
     firstAddressSelectButton.configureAlpha(addressCount > 0)

@@ -11,11 +11,21 @@ class SpeedOrderResultsViewController: BaseViewController {
   @IBOutlet weak var allShowButton: UIButton!
   @IBOutlet weak var orderButton: UIButton!
   
+  var address: Address?
+  var availableDates: [String]?
+  var productPropertyValueIds: [Int]?
+
   var contentViews = [UIView]()
   var products = Products()
   
   override func setUpData() {
-    products.get { 
+    super.setUpData()
+    products.isQuickOrder = true
+    products.address = address
+    products.availableDates = availableDates
+    
+    products.get {
+      self.productsScrollViewPageControl.configureAlpha(!self.products.list.isEmpty)
       self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1
       self.setUpContentViews()
       self.configureReviewLabels()
@@ -64,6 +74,10 @@ extension SpeedOrderResultsViewController {
     if let productsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
       productsViewController.products = products
       productsViewController.products.isQuickOrder = false
+      productsViewController.products.address = nil
+      productsViewController.products.availableDates = nil
+      productsViewController.products.productPropertyValueIds = nil
+      
       productsViewController.forSearchResult = true
       productsViewController.isSpeedOrder = true
       

@@ -99,3 +99,6 @@
 
 "took picture" = "에서 찍어주신\n";
 "real product" = "께 실제 배송된 상품 사진입니다.";
+
+"select delivery date for search" = "배송 받으실 날짜를 선택해 주세요";
+"select address for search" = "배송지를 선택해 주세요";

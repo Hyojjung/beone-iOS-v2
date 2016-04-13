@@ -22,17 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dg0-7D-Doc">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dg0-7D-Doc">
                                 <rect key="frame" x="8" y="8" width="288" height="11"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="CV5-2R-IMl"/>
-                                </constraints>
+                                <color key="tintColor" red="1" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="CV5-2R-IMl"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="buttonClicked:" destination="0TE-OU-rmg" eventType="touchUpInside" id="4vf-dd-tUH"/>
                                 </connections>

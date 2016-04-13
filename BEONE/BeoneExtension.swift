@@ -57,6 +57,7 @@ extension Array {
 }
 
 extension String {
+  
   func convertToBigCamelCase() -> String {
     var bigCamelCaseString = String()
     if characters.count > 0 {
@@ -64,5 +65,22 @@ extension String {
       bigCamelCaseString += substringWithRange(Range(startIndex.advancedBy(1)..<endIndex))
     }
     return bigCamelCaseString
+  }
+}
+
+extension UIColor {
+  
+  func imageWithColor() -> UIImage {
+    let rect = CGRectMake(0, 0, 1, 1)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()
+    
+    CGContextSetFillColorWithColor(context, CGColor)
+    CGContextFillRect(context, rect)
+    
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return image
   }
 }

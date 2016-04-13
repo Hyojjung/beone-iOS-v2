@@ -16,14 +16,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTl-dx-uqL">
-                        <rect key="frame" x="8" y="8" width="561" height="367"/>
+                        <rect key="frame" x="8" y="8" width="561" height="367.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x0m-7v-or7" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="561" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="561" height="367.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-RH-j0M">
-                                <rect key="frame" x="8" y="16" width="545" height="335"/>
+                                <rect key="frame" x="8" y="8" width="545" height="351.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dIp-nr-GjY">
                                     <size key="itemSize" width="50" height="50"/>
@@ -47,10 +47,10 @@
                             <constraint firstAttribute="trailing" secondItem="x0m-7v-or7" secondAttribute="trailing" id="hBG-FC-YMt"/>
                             <constraint firstAttribute="bottom" secondItem="x0m-7v-or7" secondAttribute="bottom" id="hhi-jI-R9q"/>
                             <constraint firstItem="x0m-7v-or7" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leading" id="htz-or-UFJ"/>
-                            <constraint firstItem="SdN-RH-j0M" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="topMargin" constant="8" id="idS-4p-i3b"/>
+                            <constraint firstItem="SdN-RH-j0M" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="topMargin" id="idS-4p-i3b"/>
                             <constraint firstItem="x0m-7v-or7" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leading" id="jeU-WE-4vZ"/>
                             <constraint firstItem="x0m-7v-or7" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="topMargin" id="n1E-yM-9rn"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="SdN-RH-j0M" secondAttribute="bottom" constant="8" id="nRC-Kz-J9z"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SdN-RH-j0M" secondAttribute="bottom" id="nRC-Kz-J9z"/>
                             <constraint firstAttribute="trailing" secondItem="x0m-7v-or7" secondAttribute="trailing" id="rQH-tG-5Mq"/>
                             <constraint firstItem="SdN-RH-j0M" firstAttribute="leading" secondItem="UTl-dx-uqL" secondAttribute="leadingMargin" id="rwc-nk-pSI"/>
                             <constraint firstItem="x0m-7v-or7" firstAttribute="top" secondItem="UTl-dx-uqL" secondAttribute="top" id="sYN-Kg-VNa"/>

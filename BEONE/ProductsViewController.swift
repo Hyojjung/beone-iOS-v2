@@ -187,7 +187,6 @@ extension ProductsViewController: UITableViewDataSource {
   
   private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? ProductCoupleTemplateCell {
-      cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
       let index = indexPath.row * kSimpleProductColumn

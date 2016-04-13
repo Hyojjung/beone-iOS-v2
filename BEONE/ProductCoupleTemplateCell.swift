@@ -5,12 +5,6 @@ class ProductCoupleTemplateCell: TemplateCell {
   
   @IBOutlet weak var firstProductView: ProductCoupleView!
   @IBOutlet weak var secondProductView: ProductCoupleView!
-  weak var delegate: BaseViewController? {
-    didSet {
-      firstProductView.delegate = delegate
-      secondProductView.delegate = delegate
-    }
-  }
 
   func configureView(products: [Product]) {
     configureDefaulStyle()

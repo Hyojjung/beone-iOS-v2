@@ -7,15 +7,14 @@ protocol ShopTemplateCellDelegate: NSObjectProtocol {
 
 class ShopTemplateCell: TemplateCell {
   
-  weak var delegate: ShopTemplateCellDelegate?
-  var shopId: Int?
-  
   @IBOutlet weak var shopImageView: LazyLoadingImageView!
   @IBOutlet weak var shopProfileImageView: LazyLoadingImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var productCountLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
   
+  var shopId: Int?
+
   override func awakeFromNib() {
     super.awakeFromNib()
     shopProfileImageView.makeCircleView()
@@ -47,7 +46,7 @@ extension ShopTemplateCell {
   
   @IBAction func shopButtonTapped() {
     if let shopId = shopId {
-      delegate?.shopButtonTapped(shopId)
+      SchemeHelper.setUpScheme("/shop/\(shopId)")
     }
   }
 }

@@ -4,7 +4,8 @@ import UIKit
 class OrderAddressViewController: BaseViewController {
   
   let kScrollViewAdjustHeight = CGFloat(98)
-  
+  private let kInvalidAddressIndex = 4
+
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var senderNameTextField: UITextField!
   @IBOutlet weak var senderPhoneTextField: UITextField!
@@ -12,16 +13,32 @@ class OrderAddressViewController: BaseViewController {
   @IBOutlet weak var secretButton: UIButton!
   @IBOutlet weak var receiverNameTextField: UITextField!
   @IBOutlet weak var receiverPhoneTextField: UITextField!
-  @IBOutlet weak var zonecodeLabel: UILabel!
+  @IBOutlet weak var zonecodeTextField: UITextField!
   @IBOutlet weak var addressTextField: UITextField!
   @IBOutlet weak var detailAddressTextField: UITextField!
   @IBOutlet weak var deliveryMemoTextView: UITextView!
   
+  @IBOutlet weak var newAddressSelectButton: UIButton!
+  @IBOutlet weak var firstAddressSelectButton: UIButton!
+  @IBOutlet weak var secondAddressSelectButton: UIButton!
+  @IBOutlet weak var thirdAddressSelectButton: UIButton!
+  @IBOutlet weak var findAddressButton: UIButton!
+  @IBOutlet weak var zipCodeTextFieldTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var newButtonTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var firstButtonTrailingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var secondButtonTrailingLayoutConstraint: NSLayoutConstraint!
+  
   var order = Order()
-  var address = Address()
+  var address: Address?
   var addresses = Addresses()
+  var selectedAddressIndex: Int?
   
   // MARK: - Init & Deinit
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let selectingPaymentTypeViewController = segue.destinationViewController as? SelectingPaymentTypeViewController {
@@ -49,8 +66,12 @@ class OrderAddressViewController: BaseViewController {
     if let selectedAddress = BEONEManager.selectedAddress {
       handleAddress(selectedAddress)
     } else {
-      addresses.get { 
+      addresses.get {
+        if !self.addresses.list.isEmpty {
+          self.selectedAddressIndex = 0
+        }
         self.handleAddresses()
+        self.setUpAddressButtons()
       }
     }
     MyInfo.sharedMyInfo().get { 
@@ -101,6 +122,16 @@ extension OrderAddressViewController {
       })
     }
   }
+  
+  @IBAction func selectIndexButtonTapped(sender: UIButton) {
+    if sender.tag == kInvalidAddressIndex {
+      selectedAddressIndex = nil
+    } else {
+      endEditing()
+      selectedAddressIndex = !sender.selected ? sender.tag : nil
+    }
+    handleAddresses()
+  }
 }
 
 // MARK: - Observer Methods
@@ -115,25 +146,45 @@ extension OrderAddressViewController: AddressDelegate {
 
 extension OrderAddressViewController {
   
-  func handleAddresses() {
-    if addresses.list.count > 0 {
-      address = addresses.list.first as! Address
-    }
-    receiverNameTextField.text = address.receiverName
-    receiverPhoneTextField.text = address.receiverPhone
+  private func handleAddresses() {
+    setUpAddressButtonsSelected()
+
+    address = addresses.list.objectAtIndex(selectedAddressIndex) as? Address
     setUpAddressView()
   }
   
-  func setUpAddress() {
-    address.detailAddress = detailAddressTextField.text
-    address.receiverName = receiverNameTextField.text
-    address.receiverPhone = receiverPhoneTextField.text
+  private func setUpAddress() {
+    if let address = address {
+      address.detailAddress = detailAddressTextField.text
+      address.receiverName = receiverNameTextField.text
+      address.receiverPhone = receiverPhoneTextField.text
+      
+      order.senderName = senderNameTextField.text
+      order.senderPhone = senderPhoneTextField.text
+      order.isSecret = secretButton.selected
+      order.address = address
+      order.deliveryMemo = deliveryMemoTextView.text
+    }
+  }
+  
+  private func setUpAddressButtons() {
+    firstAddressSelectButton.configureAlpha(addresses.total > 0)
+    secondAddressSelectButton.configureAlpha(addresses.total > 1)
+    thirdAddressSelectButton.configureAlpha(addresses.total > 2)
     
-    order.senderName = senderNameTextField.text
-    order.senderPhone = senderPhoneTextField.text
-    order.isSecret = secretButton.selected
-    order.address = address
-    order.deliveryMemo = deliveryMemoTextView.text
+    newButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total) * 48
+    firstButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 1) * 48
+    secondButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 2) * 48
+  }
+  
+  private func setUpAddressButtonsSelected() {
+    newAddressSelectButton.selected = selectedAddressIndex == nil
+    firstAddressSelectButton.selected = selectedAddressIndex == 0
+    secondAddressSelectButton.selected = selectedAddressIndex == 1
+    thirdAddressSelectButton.selected = selectedAddressIndex == 2
+    
+    findAddressButton.configureAlpha(selectedAddressIndex == nil)
+    zipCodeTextFieldTrailingLayoutConstraint.constant = selectedAddressIndex == nil ? 146 : 10
   }
 }
 
@@ -142,16 +193,26 @@ extension OrderAddressViewController {
 extension OrderAddressViewController {
   
   func setUpAddressView() {
-    if let zonecode = address.zonecode {
-      zonecodeLabel.text = zonecode
-    } else if let zipcode1 = address.zipcode01, zipcode2 = address.zipcode02 {
-      zonecodeLabel.text = "\(zipcode1) - \(zipcode2)"
+    if let zonecode = address?.zonecode {
+      zonecodeTextField.text = zonecode
+    } else if let zipcode1 = address?.zipcode01, zipcode2 = address?.zipcode02 {
+      zonecodeTextField.text = "\(zipcode1) - \(zipcode2)"
+    } else {
+      zonecodeTextField.text = nil
     }
     
-    let addressString = address.addressString()
+    let addressString = address?.addressString()
     if addressTextField.text != addressString {
       addressTextField.text = addressString
-      detailAddressTextField.text = address.detailAddress
+      detailAddressTextField.text = address?.detailAddress
+    }
+    
+    if let address = address {
+      receiverNameTextField.text = address.receiverName
+      receiverPhoneTextField.text = address.receiverPhone
+    }
+    if sameButton.selected {
+      setUpSenderAndReceiverView()
     }
   }
   
@@ -169,7 +230,7 @@ extension OrderAddressViewController {
       return NSLocalizedString("enter receiver", comment: "alert")
     } else if receiverPhoneTextField.text == nil || receiverPhoneTextField.text!.isEmpty {
       return NSLocalizedString("enter receiver phone", comment: "alert")
-    } else if addressTextField.text == nil || addressTextField.text!.isEmpty {
+    } else if address == nil {
       return NSLocalizedString("enter address", comment: "alert")
     } else if detailAddressTextField.text == nil || detailAddressTextField.text!.isEmpty {
       return NSLocalizedString("enter detail address", comment: "alert")

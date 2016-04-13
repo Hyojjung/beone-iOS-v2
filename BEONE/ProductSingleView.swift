@@ -11,7 +11,6 @@ class ProductCoupleView: UIView {
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
-  weak var delegate: BaseViewController?
   var productId: Int?
   
   func configureView(product: Product?) {
@@ -27,11 +26,15 @@ class ProductCoupleView: UIView {
   }
   
   @IBAction func orderButtonTapped() {
-    delegate?.showOptionView(productId, rightOrdering: true)
+    if let productId = productId {
+      SchemeHelper.setUpScheme("/option/\(productId)")
+    }
   }
   
   @IBAction func productButtonTapped() {
-    delegate?.showProductView(productId)
+    if let productId = productId {
+      SchemeHelper.setUpScheme("/product/\(productId)")
+    }
   }
   
   @IBAction func favoriteButtonTapped(sender: UIButton) {
