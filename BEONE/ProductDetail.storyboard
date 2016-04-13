@@ -2158,7 +2158,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rDm-du-nF3" secondAttribute="trailing" id="0lA-vd-3cv"/>
-                            <constraint firstItem="rDm-du-nF3" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" id="3py-0F-638"/>
+                            <constraint firstItem="rDm-du-nF3" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" id="3py-0F-638">
+                                <variation key="heightClass=regular" constant="-20"/>
+                            </constraint>
                             <constraint firstItem="wCh-GO-pqK" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" constant="10" id="DWO-ei-KuS"/>
                             <constraint firstItem="PeH-9W-7jI" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="LD7-ul-pG2"/>
                             <constraint firstItem="cNr-0v-VsF" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="bottom" id="Lf9-mi-hE4"/>
@@ -2512,7 +2514,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <variation key="heightClass=regular" misplaced="YES">
                                                                 <rect key="frame" x="15" y="15" width="65" height="22"/>
                                                             </variation>
                                                         </label>
@@ -2521,7 +2523,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.72941176470588232" green="0.62745098039215685" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <variation key="heightClass=regular" misplaced="YES">
                                                                 <rect key="frame" x="15" y="42" width="26" height="18"/>
                                                             </variation>
                                                         </label>
