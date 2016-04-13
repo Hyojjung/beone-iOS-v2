@@ -8,7 +8,7 @@ let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
 let kProductDetailHeaderCellIdentifier = "headerCell"
 
 let kProductDetailHeaderCellDefaultHeight = CGFloat(300)
-let kProductDetailHeaderCellMinimumHeight = CGFloat(74)
+let kProductDetailHeaderCellMinimumHeight = CGFloat(82)
 let kKaKaoLinkImageWidth = CGFloat(140)
 
 class ProductDetailViewController: BaseViewController {

@@ -14,11 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="461" height="291"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u55-bY-uKg" customClass="XLCCycleScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="461" height="216.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="208.5"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.0" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
-                        <rect key="frame" x="50" y="241.5" width="361" height="24.5"/>
+                        <rect key="frame" x="50" y="239.5" width="361" height="24.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="titleLabel"/>
                         <constraints>
@@ -47,13 +47,13 @@
                 <constraint firstItem="RsJ-EI-vkO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5MW-oF-cX2"/>
                 <constraint firstAttribute="bottom" secondItem="RsJ-EI-vkO" secondAttribute="bottom" id="8UQ-pc-QYa"/>
                 <constraint firstAttribute="trailing" secondItem="SoB-S5-nLO" secondAttribute="trailing" constant="50" id="9Jh-F9-hzg"/>
-                <constraint firstItem="SoB-S5-nLO" firstAttribute="top" secondItem="u55-bY-uKg" secondAttribute="bottom" constant="25" id="Huy-eJ-eX3"/>
+                <constraint firstItem="SoB-S5-nLO" firstAttribute="top" secondItem="u55-bY-uKg" secondAttribute="bottom" constant="31" id="Huy-eJ-eX3"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pdw-NB-lxj"/>
                 <constraint firstAttribute="trailing" secondItem="RsJ-EI-vkO" secondAttribute="trailing" constant="12" id="SDY-gt-7EO"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eyp-dx-BiX"/>
                 <constraint firstAttribute="bottom" secondItem="u55-bY-uKg" secondAttribute="bottom" id="k65-cK-kk2"/>
                 <constraint firstItem="SoB-S5-nLO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="oeK-rN-uIA"/>
-                <constraint firstAttribute="bottom" secondItem="SoB-S5-nLO" secondAttribute="bottom" constant="25" id="uCn-G7-UrK"/>
+                <constraint firstAttribute="bottom" secondItem="SoB-S5-nLO" secondAttribute="bottom" constant="27" id="uCn-G7-UrK"/>
                 <constraint firstAttribute="trailing" secondItem="u55-bY-uKg" secondAttribute="trailing" id="v2e-Yj-6RG"/>
             </constraints>
             <size key="customSize" width="461" height="291"/>
