@@ -91,7 +91,6 @@ class SchemeHelper {
   static func setUpScheme(scheme: String) {
     let navi = rootNavigationController()
     navi?.dismissViewControllerAnimated(false, completion: nil)
-    navi?.popToRootViewControllerAnimated(false)
     
     var schemeString = scheme
     if scheme.hasPrefix(kSchemeBaseUrl) {
@@ -122,9 +121,13 @@ class SchemeHelper {
   }
   
   static func handleScheme() {
-    if let navi = rootNavigationController(), mainTabViewController = navi.topViewController as? MainTabViewController,
-      viewController = mainTabViewController.selectedViewController as? BaseViewController {
-      viewController.handleScheme()
+    if let navi = rootNavigationController() {
+      if let mainTabViewController = navi.topViewController as? MainTabViewController,
+        viewController = mainTabViewController.selectedViewController as? BaseViewController {
+        viewController.handleScheme()
+      } else if let viewCotroller = navi.topViewController as? BaseViewController {
+        viewCotroller.handleScheme()
+      }
     }
   }
 }

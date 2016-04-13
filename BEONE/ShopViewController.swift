@@ -27,11 +27,13 @@ class ShopViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    shop.get({ 
-      self.tableView.reloadData()
-    })
-    shopProducts.get { 
-      self.tableView.reloadData()
+    if shop.id != nil {
+      shop.get({
+        self.tableView.reloadData()
+      })
+      shopProducts.get {
+        self.tableView.reloadData()
+      }
     }
   }
   
@@ -98,7 +100,6 @@ extension ShopViewController {
   
   private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? ProductCoupleTemplateCell {
-      cell.delegate = self
       cell.configureDefaulStyle()
       var products = [Product]()
       let index = indexPath.row * kSimpleProductColumn
@@ -141,5 +142,13 @@ class ShopSummaryCell: UITableViewCell {
     tagLabel.text = shop.tagString()
     tagLabel.setWidth(ViewControllerHelper.screenWidth - 76)
     return 339 + descrtiptionLabel.frame.height + tagLabel.frame.height
+  }
+}
+
+extension ShopViewController: SchemeDelegate {
+  
+  func handleScheme(with id: Int) {
+    shop.id = id
+    setUpData()
   }
 }

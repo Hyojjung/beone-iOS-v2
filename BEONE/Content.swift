@@ -100,7 +100,7 @@ class Content: BaseModel {
       if let padding = contents[kTemplateStylePropertyKeyPadding] as? String {
         self.padding = padding.edgeInsets()
       }
-      
+
       if let itemsObject = contents["items"] as? [[String: AnyObject]] {
         if type == .ProductCouple || type == .ProductSingle {
           models = [Product]()
@@ -115,6 +115,13 @@ class Content: BaseModel {
             let review = Review()
             review.assignObject(itemObject)
             models?.appendObject(review)
+          }
+        } else if type == .Shop {
+          models = [Shop]()
+          for itemObject in itemsObject {
+            let shop = Shop()
+            shop.assignObject(itemObject)
+            models?.appendObject(shop)
           }
         } else {
           items.removeAll()

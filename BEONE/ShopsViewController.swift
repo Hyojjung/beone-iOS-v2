@@ -55,7 +55,6 @@ extension ShopsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
     if let cell = cell as? ShopTemplateCell, shop = shops.list[indexPath.row] as? Shop {
-      cell.delegate = self
       cell.configureView(shop)
     }
     return cell
