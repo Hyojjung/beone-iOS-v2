@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--상품-->
@@ -143,17 +144,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_cart_empty" translatesAutoresizingMaskIntoConstraints="NO" id="Vi7-iw-iMX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEmptyContent" translatesAutoresizingMaskIntoConstraints="NO" id="Vi7-iw-iMX">
+                                                    <rect key="frame" x="246" y="-10" width="108" height="108"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과에 맞는 상품이 없습니다. 설정을 변경해 다시 검색 해보세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJz-bm-XnN">
+                                                    <rect key="frame" x="22" y="118" width="556" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Vi7-iw-iMX" firstAttribute="top" secondItem="Hrw-td-eAr" secondAttribute="top" id="AAC-sB-sQb"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vi7-iw-iMX" secondAttribute="bottom" id="G3F-Dk-79l"/>
+                                                <constraint firstItem="PJz-bm-XnN" firstAttribute="centerX" secondItem="Hrw-td-eAr" secondAttribute="centerX" id="IIc-C0-6ka"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vi7-iw-iMX" secondAttribute="trailing" id="R02-wU-mcV"/>
+                                                <constraint firstItem="Vi7-iw-iMX" firstAttribute="centerY" secondItem="Hrw-td-eAr" secondAttribute="centerY" id="SRe-qL-yb2"/>
+                                                <constraint firstItem="PJz-bm-XnN" firstAttribute="leading" secondItem="Hrw-td-eAr" secondAttribute="leadingMargin" constant="14" id="bRa-uT-9Lk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PJz-bm-XnN" secondAttribute="trailing" constant="14" id="iud-SE-UiQ"/>
                                                 <constraint firstItem="Vi7-iw-iMX" firstAttribute="leading" secondItem="Hrw-td-eAr" secondAttribute="leading" id="pVC-Xd-Mix"/>
+                                                <constraint firstItem="PJz-bm-XnN" firstAttribute="top" secondItem="Vi7-iw-iMX" secondAttribute="bottom" constant="20" id="tfv-Ru-kal"/>
+                                                <constraint firstItem="Vi7-iw-iMX" firstAttribute="centerX" secondItem="Hrw-td-eAr" secondAttribute="centerX" id="vkx-6E-vRE"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="AAC-sB-sQb"/>
+                                                    <exclude reference="G3F-Dk-79l"/>
+                                                    <exclude reference="R02-wU-mcV"/>
+                                                    <exclude reference="pVC-Xd-Mix"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -198,9 +219,9 @@
         <image name="bgCellUnderlineWhite" width="4" height="4"/>
         <image name="btnRectDarkgray" width="3" height="3"/>
         <image name="btnRectDarkgrayPressed" width="3" height="3"/>
+        <image name="iconEmptyContent" width="108" height="108"/>
         <image name="iconFilter" width="20" height="20"/>
         <image name="iconLocation" width="20" height="20"/>
         <image name="iconNavFind" width="26" height="26"/>
-        <image name="image_cart_empty" width="200" height="245"/>
     </resources>
 </document>
