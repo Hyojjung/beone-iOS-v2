@@ -40,6 +40,7 @@ class ButtonTemplateCell: TemplateCell {
     } else if let pressedBackgroundImageUrl = template.content.pressedBackgroundImageUrl {
       button.sd_setBackgroundImageWithURL(pressedBackgroundImageUrl.url(), forState: .Normal)
     }
+    button.sd_setImageWithURL(template.content.imageUrl?.url(), forState: .Normal)
     
     if let borderColor = template.content.borderColor {
       button.layer.borderColor = borderColor.CGColor
@@ -47,30 +48,6 @@ class ButtonTemplateCell: TemplateCell {
     }
     
     templateId = template.id
-  }
-  
-  override func calculatedHeight(template: Template) -> CGFloat? {
-    if let height = template.height {
-      return height
-    } else {
-      var height: CGFloat = 0
-      height += template.style.margin.top + template.style.margin.bottom
-      height += template.style.padding.top + template.style.padding.bottom
-      
-      let button = UIButton()
-      if let textSize = template.content.textSize {
-        button.titleLabel?.font = UIFont.systemFontOfSize(textSize)
-      }
-      button.contentEdgeInsets = template.content.padding
-      if template.content.borderColor != nil {
-        button.layer.borderWidth = 1
-      }
-      button.sizeToFit()
-      
-      height += button.frame.height
-      template.height = height
-      return height
-    }
   }
   
   @IBAction func buttonClicked(sender: AnyObject) {
