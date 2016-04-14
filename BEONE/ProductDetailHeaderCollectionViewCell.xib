@@ -14,17 +14,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="461" height="291"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u55-bY-uKg" customClass="XLCCycleScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="461" height="230"/>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="208.5"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.0" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
-                        <rect key="frame" x="50" y="248" width="361" height="25"/>
+                        <rect key="frame" x="50" y="239.5" width="361" height="24.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="titleLabel"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="laP-JZ-Mov"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
-                        <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
@@ -41,18 +42,18 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="RsJ-EI-vkO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5MW-oF-cX2"/>
                 <constraint firstAttribute="bottom" secondItem="RsJ-EI-vkO" secondAttribute="bottom" id="8UQ-pc-QYa"/>
                 <constraint firstAttribute="trailing" secondItem="SoB-S5-nLO" secondAttribute="trailing" constant="50" id="9Jh-F9-hzg"/>
-                <constraint firstItem="SoB-S5-nLO" firstAttribute="top" secondItem="u55-bY-uKg" secondAttribute="bottom" constant="18" id="Huy-eJ-eX3"/>
+                <constraint firstItem="SoB-S5-nLO" firstAttribute="top" secondItem="u55-bY-uKg" secondAttribute="bottom" constant="31" id="Huy-eJ-eX3"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pdw-NB-lxj"/>
                 <constraint firstAttribute="trailing" secondItem="RsJ-EI-vkO" secondAttribute="trailing" constant="12" id="SDY-gt-7EO"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eyp-dx-BiX"/>
                 <constraint firstAttribute="bottom" secondItem="u55-bY-uKg" secondAttribute="bottom" id="k65-cK-kk2"/>
                 <constraint firstItem="SoB-S5-nLO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="oeK-rN-uIA"/>
-                <constraint firstAttribute="bottom" secondItem="SoB-S5-nLO" secondAttribute="bottom" constant="18" id="uCn-G7-UrK"/>
+                <constraint firstAttribute="bottom" secondItem="SoB-S5-nLO" secondAttribute="bottom" constant="27" id="uCn-G7-UrK"/>
                 <constraint firstAttribute="trailing" secondItem="u55-bY-uKg" secondAttribute="trailing" id="v2e-Yj-6RG"/>
             </constraints>
             <size key="customSize" width="461" height="291"/>

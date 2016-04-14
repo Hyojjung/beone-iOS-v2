@@ -1059,7 +1059,7 @@
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="wuf-L7-SUX">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="wuf-L7-SUX">
                                                             <rect key="frame" x="12" y="79" width="436" height="14"/>
                                                             <accessibility key="accessibilityConfiguration" label="sizeLabel"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -2147,7 +2147,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-GO-pqK">
                                 <rect key="frame" x="10" y="30" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                <state key="normal" image="btn_back">
+                                <state key="normal" image="btnBack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2161,12 +2161,12 @@
                             <constraint firstItem="rDm-du-nF3" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" id="3py-0F-638">
                                 <variation key="heightClass=regular" constant="-20"/>
                             </constraint>
-                            <constraint firstItem="wCh-GO-pqK" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" constant="10" id="DWO-ei-KuS"/>
+                            <constraint firstItem="wCh-GO-pqK" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="DWO-ei-KuS"/>
                             <constraint firstItem="PeH-9W-7jI" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="LD7-ul-pG2"/>
                             <constraint firstItem="cNr-0v-VsF" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="bottom" id="Lf9-mi-hE4"/>
                             <constraint firstItem="rDm-du-nF3" firstAttribute="width" secondItem="msV-1H-v4L" secondAttribute="width" id="MCi-Yu-lJY"/>
                             <constraint firstAttribute="trailing" secondItem="PeH-9W-7jI" secondAttribute="trailing" id="RJa-KV-xo4"/>
-                            <constraint firstItem="wCh-GO-pqK" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" constant="10" id="aXz-Sc-XPS"/>
+                            <constraint firstItem="wCh-GO-pqK" firstAttribute="top" secondItem="1Zd-44-5M8" secondAttribute="bottom" id="aXz-Sc-XPS"/>
                             <constraint firstItem="cNr-0v-VsF" firstAttribute="top" secondItem="rDm-du-nF3" secondAttribute="bottom" id="ada-Zm-ZSD"/>
                             <constraint firstItem="rDm-du-nF3" firstAttribute="leading" secondItem="msV-1H-v4L" secondAttribute="leading" id="iFa-yG-mDk"/>
                         </constraints>
@@ -2712,12 +2712,12 @@
         <image name="bg_list" width="3" height="3"/>
         <image name="bg_list_darken" width="3" height="3"/>
         <image name="bg_product_review" width="3" height="3"/>
+        <image name="btnBack" width="55" height="55"/>
         <image name="btnDeleteItem" width="42" height="42"/>
         <image name="btnGoldStroke" width="11" height="11"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btnSelectOff" width="36" height="40"/>
         <image name="btnSelectOn" width="36" height="40"/>
-        <image name="btn_back" width="40" height="40"/>
         <image name="btn_product_question_write" width="60" height="60"/>
         <image name="btn_share_kakao" width="44" height="44"/>
         <image name="btn_submit_darkgrey" width="3" height="3"/>
