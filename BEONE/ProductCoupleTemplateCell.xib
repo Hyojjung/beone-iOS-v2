@@ -244,7 +244,7 @@
                                         <state key="normal" image="btnFavoriteOff"/>
                                         <state key="selected" image="btnFavoriteOn"/>
                                         <connections>
-                                            <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="D1N-ve-k9M"/>
+                                            <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exf-ck-6sB">
@@ -304,18 +304,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KWT-tO-GTa" secondAttribute="trailing" constant="2" id="IKR-di-dI0"/>
+                            <constraint firstItem="KWT-tO-GTa" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="BxE-a4-pMv"/>
                             <constraint firstItem="cuW-kw-D3y" firstAttribute="leading" secondItem="ELo-ok-fs3" secondAttribute="leading" constant="2" id="IhX-kc-vVP"/>
-                            <constraint firstItem="KWT-tO-GTa" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="2" id="KNx-Ly-2RE"/>
-                            <constraint firstAttribute="bottom" secondItem="KWT-tO-GTa" secondAttribute="bottom" constant="4" id="QKG-Ck-Gue"/>
                             <constraint firstAttribute="trailing" secondItem="SUY-gj-dt7" secondAttribute="trailing" id="Vfk-YI-T6t"/>
+                            <constraint firstItem="KWT-tO-GTa" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="2" id="ZBp-P5-GMj"/>
                             <constraint firstAttribute="centerX" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="1" id="Zvw-UN-zWd"/>
                             <constraint firstItem="SUY-gj-dt7" firstAttribute="leading" secondItem="ELo-ok-fs3" secondAttribute="leading" id="eZX-rN-Tq5"/>
                             <constraint firstAttribute="bottom" secondItem="SUY-gj-dt7" secondAttribute="bottom" id="iDi-u9-dta"/>
                             <constraint firstItem="SUY-gj-dt7" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="m0t-vr-8Lr"/>
-                            <constraint firstItem="KWT-tO-GTa" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="nN8-6z-hXd"/>
                             <constraint firstAttribute="bottom" secondItem="cuW-kw-D3y" secondAttribute="bottom" constant="4" id="v1e-s0-vT1"/>
                             <constraint firstItem="cuW-kw-D3y" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="wIX-oA-ji4"/>
+                            <constraint firstAttribute="trailing" secondItem="KWT-tO-GTa" secondAttribute="trailing" constant="2" id="wef-n9-90z"/>
+                            <constraint firstAttribute="bottom" secondItem="KWT-tO-GTa" secondAttribute="bottom" constant="4" id="zGn-RX-uja"/>
                         </constraints>
                     </view>
                 </subviews>
