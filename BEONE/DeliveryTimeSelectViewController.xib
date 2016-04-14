@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryTimeSelectViewController" customModule="BEONE" customModuleProvider="target">
             <connections>
+                <outlet property="bottomLayoutConstraint" destination="IAI-0v-5dr" id="yYh-8t-GRV"/>
                 <outlet property="timeSelectScrollView" destination="WW0-Pb-uTk" id="2CZ-3q-Nxm"/>
+                <outlet property="timeSelectView" destination="5Nn-QR-hiL" id="3ho-KG-efa"/>
+                <outlet property="topLayoutConstraint" destination="08W-mO-jm9" id="bK7-Vm-mBN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FOV-5Z-NSb"/>
             </connections>
         </placeholder>
@@ -28,7 +31,7 @@
                                     <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKq-7M-cV1">
                                         <rect key="frame" x="14" y="0.0" width="522" height="60"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconClock" translatesAutoresizingMaskIntoConstraints="NO" id="dEQ-2g-ast">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconClock" translatesAutoresizingMaskIntoConstraints="NO" id="dEQ-2g-ast">
                                                 <rect key="frame" x="203" y="22" width="16" height="16"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="희망시간대 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4M-TK-bq0">
@@ -55,9 +58,28 @@
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW0-Pb-uTk">
                                         <rect key="frame" x="14" y="80" width="522" height="445"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-QR-hiL" customClass="TimeSelectView" customModule="BEONE" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="522" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" placeholder="YES" id="uur-GE-Oxb"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5Nn-QR-hiL" secondAttribute="trailing" id="E7F-fG-xmf"/>
                                             <constraint firstAttribute="height" constant="445" placeholder="YES" id="GAJ-VY-SXZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="5Nn-QR-hiL" secondAttribute="bottom" id="M4T-AX-PHD"/>
+                                            <constraint firstItem="5Nn-QR-hiL" firstAttribute="width" secondItem="WW0-Pb-uTk" secondAttribute="width" id="Mor-Xb-Krg"/>
+                                            <constraint firstItem="5Nn-QR-hiL" firstAttribute="top" secondItem="WW0-Pb-uTk" secondAttribute="top" id="PbI-eL-dKJ"/>
+                                            <constraint firstItem="5Nn-QR-hiL" firstAttribute="leading" secondItem="WW0-Pb-uTk" secondAttribute="leading" id="r9O-8u-lSh"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="GAJ-VY-SXZ"/>
+                                            </mask>
+                                        </variation>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,20 +96,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="f0H-hr-UB8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="b5l-dK-c9A" secondAttribute="top" constant="25" id="08W-mO-jm9"/>
-                            <constraint firstItem="f0H-hr-UB8" firstAttribute="centerY" secondItem="b5l-dK-c9A" secondAttribute="centerY" id="74g-D6-ti6"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f0H-hr-UB8" secondAttribute="bottom" constant="25" id="IAI-0v-5dr"/>
+                            <constraint firstItem="f0H-hr-UB8" firstAttribute="top" secondItem="b5l-dK-c9A" secondAttribute="top" constant="25" id="08W-mO-jm9"/>
+                            <constraint firstAttribute="bottom" secondItem="f0H-hr-UB8" secondAttribute="bottom" constant="25" id="IAI-0v-5dr"/>
                             <constraint firstAttribute="trailing" secondItem="f0H-hr-UB8" secondAttribute="trailing" constant="25" id="IZA-RV-4bH"/>
-                            <constraint firstAttribute="bottom" secondItem="f0H-hr-UB8" secondAttribute="bottom" constant="25" id="MdB-0h-EFh"/>
                             <constraint firstItem="f0H-hr-UB8" firstAttribute="leading" secondItem="b5l-dK-c9A" secondAttribute="leading" constant="25" id="tKg-kk-p92"/>
-                            <constraint firstItem="f0H-hr-UB8" firstAttribute="top" secondItem="b5l-dK-c9A" secondAttribute="top" constant="25" id="vFO-lQ-ik4"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="MdB-0h-EFh"/>
-                                <exclude reference="vFO-lQ-ik4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
