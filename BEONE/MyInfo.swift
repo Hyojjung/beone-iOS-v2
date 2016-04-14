@@ -92,6 +92,7 @@ class MyInfo: NSManagedObject {
     SigningHelper.signInForNonUser { (result) -> Void in
       self.refreshToken = nil
       self.userId = nil
+      FavoriteProductHelper.resetFavoriteProduct()
       CoreDataHelper.sharedCoreDataHelper.saveContext()
       logoutSuccess()
     }

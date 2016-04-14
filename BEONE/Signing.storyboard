@@ -328,10 +328,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SX1-Mi-kd3" userLabel="Nav">
                                 <rect key="frame" x="0.0" y="20" width="600" height="49"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-4i-0Nm">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-4i-0Nm">
                                         <rect key="frame" x="14" y="5" width="40" height="40"/>
                                         <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                        <state key="normal" image="btn_back">
+                                        <state key="normal" image="btnBack">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -528,16 +528,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zde-lL-lvl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail" translatesAutoresizingMaskIntoConstraints="NO" id="zde-lL-lvl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-oU-zGF" userLabel="Nav">
                                 <rect key="frame" x="0.0" y="20" width="600" height="49"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGZ-z2-qcH">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGZ-z2-qcH">
                                         <rect key="frame" x="14" y="5" width="40" height="40"/>
                                         <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                        <state key="normal" image="btn_back">
+                                        <state key="normal" image="btnBack">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -937,9 +937,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HxL-bn-zmm">
-                                <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Mru-F9-3cJ" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="401"/>
                                 <subviews>
@@ -1216,22 +1213,25 @@
                                     <constraint firstItem="8Sm-0C-8JY" firstAttribute="leading" secondItem="Mru-F9-3cJ" secondAttribute="leading" id="qSH-XH-mhQ"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-z0-5na">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-z0-5na">
                                 <rect key="frame" x="14" y="25" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                <state key="normal" image="btn_back">
+                                <state key="normal" image="btnBack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="backButtonTapped" destination="Vyr-nv-b6X" eventType="touchUpInside" id="87S-dQ-yNv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phE-Is-JsC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phE-Is-JsC">
                                 <rect key="frame" x="265" y="33" width="70" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail" translatesAutoresizingMaskIntoConstraints="NO" id="HxL-bn-zmm">
+                                <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1295,9 +1295,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3Rm-Tc-quy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-mc-9kC" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="163"/>
                                 <subviews>
@@ -1398,22 +1395,25 @@
                                     </mask>
                                 </variation>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-VU-je2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="비밀번호 찾기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-VU-je2">
                                 <rect key="frame" x="246" y="33" width="109" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-kd-fVh">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRG-kd-fVh">
                                 <rect key="frame" x="14" y="25" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="backButton"/>
-                                <state key="normal" image="btn_back">
+                                <state key="normal" image="btnBack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="backButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="flJ-2C-29d"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail" translatesAutoresizingMaskIntoConstraints="NO" id="3Rm-Tc-quy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="">
@@ -1456,9 +1456,8 @@
     <resources>
         <image name="bg_join" width="960" height="1644"/>
         <image name="bg_join_detail" width="960" height="1644"/>
-        <image name="bg_join_detail.jpg" width="960" height="1644"/>
         <image name="bg_join_form" width="9" height="9"/>
-        <image name="btn_back" width="40" height="40"/>
+        <image name="btnBack" width="55" height="55"/>
         <image name="btn_close" width="40" height="40"/>
         <image name="btn_join_login" width="9" height="9"/>
         <image name="btn_submit_gold" width="2" height="2"/>

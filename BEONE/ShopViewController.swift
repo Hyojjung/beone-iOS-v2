@@ -22,6 +22,11 @@ class ShopViewController: BaseTableViewController {
     products.shopId = self.shop.id
     return products
   }()
+  let favoriteProducts: Products = {
+    let products = Products()
+    products.type = .Favorite
+    return products
+  }()
   
   // MARK: - BaseViewController Methods
   
@@ -32,6 +37,9 @@ class ShopViewController: BaseTableViewController {
         self.tableView.reloadData()
       })
       shopProducts.get {
+        self.tableView.reloadData()
+      }
+      favoriteProducts.get {
         self.tableView.reloadData()
       }
     }

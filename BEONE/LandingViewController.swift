@@ -6,7 +6,12 @@ class LandingViewController: BaseTableViewController {
   // MARK: - Property
   
   var templates = Templates()
-
+  let favoriteProducts: Products = {
+    let products = Products()
+    products.type = .Favorite
+    return products
+  }()
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
@@ -22,6 +27,9 @@ class LandingViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     templates.get { 
+      self.tableView.reloadData()
+    }
+    favoriteProducts.get {
       self.tableView.reloadData()
     }
   }

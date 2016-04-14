@@ -49,7 +49,10 @@ class CartItem: BaseModel {
     parameter[kCartItemPropertyKeyQuantity] = quantity
     parameter[kCartItemPropertyKeyProductId] = product.id
     parameter[kCartItemPropertyKeyProductOrderableInfoId] = productOrderableInfo.id
-    parameter[kCartItemPropertyKeyProductOptionSets] = selectedOption?.serverFormat()
+    let selectedOptionServerFormat = selectedOption?.serverFormat()
+    if selectedOptionServerFormat != nil && !selectedOptionServerFormat!.isEmpty {
+      parameter[kCartItemPropertyKeyProductOptionSets] = selectedOptionServerFormat
+    }
     return parameter
   }
 }

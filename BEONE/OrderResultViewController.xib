@@ -38,8 +38,8 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwI-Ia-OAM">
-                    <rect key="frame" x="14" y="541" width="572" height="60"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwI-Ia-OAM">
+                    <rect key="frame" x="14" y="541" width="572" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="XFQ-CA-Kbc"/>
                     </constraints>

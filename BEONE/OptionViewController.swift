@@ -25,7 +25,7 @@ class OptionViewController: BaseTableViewController {
   var selectedOption: ProductOptionSets?
   var orderingCartItemIds = [Int]()
   var isModifing = false
-  var isOrdering = false
+  var isOrdering = true
   
   private var selectedProductOrderableInfo: ProductOrderableInfo?
   private var deliveryTypeNames = [String]()
