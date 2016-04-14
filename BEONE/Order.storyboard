@@ -508,7 +508,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLm-Qu-2Qi">
                                                                 <rect key="frame" x="99" y="0.0" width="481" height="40"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-3Y-LhC">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" highlightedImage="inputActive" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-3Y-LhC">
                                                                         <rect key="frame" x="0.0" y="0.0" width="481" height="40"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVS-6r-qNx">
@@ -566,7 +566,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69h-lG-RC5">
                                                                 <rect key="frame" x="99" y="0.0" width="481" height="40"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="im8-Vr-bzR">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" highlightedImage="inputActive" translatesAutoresizingMaskIntoConstraints="NO" id="im8-Vr-bzR">
                                                                         <rect key="frame" x="0.0" y="0.0" width="481" height="40"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AoD-GP-PME">
@@ -784,7 +784,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-xJ-Fhq">
                                                                 <rect key="frame" x="99" y="0.0" width="481" height="40"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="wer-dV-uzR">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" highlightedImage="inputActive" translatesAutoresizingMaskIntoConstraints="NO" id="wer-dV-uzR">
                                                                         <rect key="frame" x="0.0" y="0.0" width="481" height="40"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTk-yq-4bY">
@@ -917,7 +917,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kud-fF-2iQ">
                                                                 <rect key="frame" x="99" y="0.0" width="481" height="40"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="rhZ-od-1gj">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="input" highlightedImage="inputActive" translatesAutoresizingMaskIntoConstraints="NO" id="rhZ-od-1gj">
                                                                         <rect key="frame" x="0.0" y="0.0" width="481" height="40"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mFd-Y7-M5y">
@@ -3160,7 +3160,7 @@ IAo
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="ZbF-rb-nJ3" secondAttribute="bottom" constant="12" id="8tb-I1-e5N"/>
                                                 <constraint firstItem="ZbF-rb-nJ3" firstAttribute="top" secondItem="rbN-Ru-trV" secondAttribute="top" constant="28" id="BNQ-xy-vkJ"/>
@@ -3781,6 +3781,7 @@ IAo
         <image name="image_card_white" width="256" height="145"/>
         <image name="image_list_style_dash" width="5" height="1"/>
         <image name="input" width="4" height="4"/>
+        <image name="inputActive" width="4" height="4"/>
         <image name="radio_off" width="35" height="35"/>
         <image name="radio_on" width="35" height="35"/>
         <image name="stroke_1" width="2" height="1"/>
