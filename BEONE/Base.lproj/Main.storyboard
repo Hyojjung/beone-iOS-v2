@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="5rM-1M-5pw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
                                 <rect key="frame" x="507" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -1295,7 +1295,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="ylm-H2-eaP" secondAttribute="trailing" constant="-19.5" id="7A5-CU-jvw">
                                                             <variation key="widthClass=compact" constant="0.0"/>
@@ -1319,13 +1319,13 @@
                                                             <exclude reference="ylm-H2-eaP"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <exclude reference="DO0-hI-wTf"/>
-                                                            <exclude reference="xFd-LC-ufi"/>
                                                             <exclude reference="7A5-CU-jvw"/>
                                                             <exclude reference="OCd-E9-zYg"/>
                                                             <exclude reference="Xcr-FE-LfH"/>
                                                             <exclude reference="a8g-zh-tRp"/>
                                                             <exclude reference="oQs-xn-O3L"/>
+                                                            <exclude reference="DO0-hI-wTf"/>
+                                                            <exclude reference="xFd-LC-ufi"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
@@ -1334,13 +1334,13 @@
                                                             <include reference="ylm-H2-eaP"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <include reference="DO0-hI-wTf"/>
-                                                            <include reference="xFd-LC-ufi"/>
                                                             <include reference="7A5-CU-jvw"/>
                                                             <include reference="OCd-E9-zYg"/>
                                                             <include reference="Xcr-FE-LfH"/>
                                                             <include reference="a8g-zh-tRp"/>
                                                             <include reference="oQs-xn-O3L"/>
+                                                            <include reference="DO0-hI-wTf"/>
+                                                            <include reference="xFd-LC-ufi"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -1379,7 +1379,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1437,7 +1437,7 @@
                                     <outlet property="delegate" destination="fZQ-LG-5eG" id="M7n-se-gUi"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
                                 <rect key="frame" x="507" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -2371,7 +2371,7 @@
                                     <outlet property="delegate" destination="QoW-kr-PiG" id="ajb-Io-LfE"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
                                 <rect key="frame" x="507" y="448" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>

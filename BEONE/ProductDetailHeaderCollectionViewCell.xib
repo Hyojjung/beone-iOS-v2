@@ -14,11 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="461" height="291"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u55-bY-uKg" customClass="XLCCycleScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="461" height="208.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="209"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.0" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
-                        <rect key="frame" x="50" y="239.5" width="361" height="24.5"/>
+                        <rect key="frame" x="50" y="240" width="361" height="24"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="titleLabel"/>
                         <constraints>
