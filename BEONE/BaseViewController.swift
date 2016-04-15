@@ -10,7 +10,8 @@ class BaseViewController: UIViewController {
   private var signingShowViewController: UIViewController? = nil
   var needOftenUpdate = true
   var dataLoaded = false
-
+  var needHandleScheme = true
+  
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
     loadingView.layout()
@@ -52,9 +53,12 @@ class BaseViewController: UIViewController {
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    handleScheme()
+    if !(self is SigningViewController) {
+      needHandleScheme = false
+      handleScheme()
+    }
   }
-
+  
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
     removeObservers()
@@ -69,7 +73,7 @@ extension BaseViewController {
   func setUpView() {
     view.backgroundColor = bgColor
     UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(backButtonOffset,
-      forBarMetrics: .Default)
+                                                                      forBarMetrics: .Default)
   }
   
   func setUpData() {
@@ -77,13 +81,13 @@ extension BaseViewController {
   
   func addObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(BaseViewController.showAlert(_:)),
-      name: kNotificationShowAlert,
-      object: nil)
+                                                     selector: #selector(BaseViewController.showAlert(_:)),
+                                                     name: kNotificationShowAlert,
+                                                     object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(BaseViewController.showWebView(_:)),
-      name: kNotificationShowWebView,
-      object: nil)
+                                                     selector: #selector(BaseViewController.showWebView(_:)),
+                                                     name: kNotificationShowWebView,
+                                                     object: nil)
   }
   
   func removeObservers() {
@@ -95,29 +99,33 @@ extension BaseViewController {
 // MARK: - Private Methods
 
 extension BaseViewController {
-
+  
   private func checkNeedToShowUserViewController() {
-    if !MyInfo.sharedMyInfo().isUser() {
-      SchemeHelper.schemeStrings = nil
-      isWaitingSigning = true
-    } else if let signingShowViewController = signingShowViewController {
-      showViewController(signingShowViewController, sender: nil)
+    if let signingShowViewController = signingShowViewController {
+      if isWaitingSigning {
+        if !MyInfo.sharedMyInfo().isUser() {
+          SchemeHelper.schemeStrings.removeAll()
+        } else {
+          showViewController(signingShowViewController, sender: nil)
+        }
+        isWaitingSigning = false
+      }
+      self.signingShowViewController = nil
     }
-    signingShowViewController = nil
   }
 }
 
 // MARK: - BaseViewController Action Methods
 
 extension BaseViewController {
-
+  
   func showAlert(notification: NSNotification) {
     if let userInfo = notification.userInfo as? [String: AnyObject] {
       showAlertView(userInfo[kNotificationAlertKeyMessage] as? String,
-        hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
-        confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
-        cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action,
-        delegate: self)
+                    hasCancel: userInfo[kNotificationAlertKeyHasCancel] as? Bool,
+                    confirmAction: userInfo[kNotificationAlertKeyConfirmationAction] as? Action,
+                    cancelAction: userInfo[kNotificationAlertKeyCancelAction] as? Action,
+                    delegate: self)
     }
   }
   func showWebView(notification: NSNotification) {
@@ -125,7 +133,7 @@ extension BaseViewController {
       showWebView(userInfo[kNotificationAlertKeyMessage] as? String, title: nil)
     }
   }
-
+  
   func endEditing() {
     view.endEditing(true)
   }
@@ -164,6 +172,7 @@ extension BaseViewController {
   func showUserViewController(viewController: UIViewController) {
     if !MyInfo.sharedMyInfo().isUser() {
       signingShowViewController = viewController
+      isWaitingSigning = true
       showSigningView()
     } else {
       showViewController(viewController, sender: nil)
@@ -171,13 +180,13 @@ extension BaseViewController {
   }
   
   func showOptionView(selectedProductId: Int?, selectedCartItem: CartItem? = nil,
-    rightOrdering: Bool = false, isModifing: Bool = false) {
-      if let optionViewController = UIViewController.viewController(.Option) as? OptionViewController {
-        optionViewController.product.id = selectedProductId
-        optionViewController.isModifing = isModifing
-        optionViewController.isOrdering = rightOrdering
-        optionViewController.cartItems.appendObject(selectedCartItem)
-        showUserViewController(optionViewController)
-      }
+                      rightOrdering: Bool = false, isModifing: Bool = false) {
+    if let optionViewController = UIViewController.viewController(.Option) as? OptionViewController {
+      optionViewController.product.id = selectedProductId
+      optionViewController.isModifing = isModifing
+      optionViewController.isOrdering = rightOrdering
+      optionViewController.cartItems.appendObject(selectedCartItem)
+      showUserViewController(optionViewController)
+    }
   }
 }

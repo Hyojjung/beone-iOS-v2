@@ -94,6 +94,7 @@ extension SigningViewController {
 // MARK: - Observer Actions
 
 extension SigningViewController {
+  
   func handleSnsSignInFailure() {
     performSegueWithIdentifier(kSegueIdentifierFromSigningToSnsSignUp, sender: nil)
   }

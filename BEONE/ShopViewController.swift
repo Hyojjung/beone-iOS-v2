@@ -158,5 +158,7 @@ extension ShopViewController: SchemeDelegate {
   func handleScheme(with id: Int) {
     shop.id = id
     setUpData()
+    SchemeHelper.schemeStrings.removeAtIndex(0)
+    handleScheme()
   }
 }

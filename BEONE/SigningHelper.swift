@@ -42,6 +42,9 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
+        if !SchemeHelper.schemeStrings.isEmpty {
+          SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
+        }
         postNotification(kNotificationSigningSuccess)
       },
       failure: nil)
@@ -59,6 +62,9 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
+        if !SchemeHelper.schemeStrings.isEmpty {
+          SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
+        }
         postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
@@ -82,6 +88,9 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlUsers, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
+        if !SchemeHelper.schemeStrings.isEmpty {
+          SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
+        }
         postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
@@ -105,6 +114,9 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlUsers, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: true)
+        if !SchemeHelper.schemeStrings.isEmpty {
+          SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
+        }
         postNotification(kNotificationSigningSuccess)
       },
       failure:nil)

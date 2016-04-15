@@ -201,6 +201,8 @@ extension OrderViewController: SchemeDelegate {
   func handleScheme(with id: Int) {
     order.id = id
     setUpData()
+    SchemeHelper.schemeStrings.removeAtIndex(0)
+    handleScheme()
   }
 }
 

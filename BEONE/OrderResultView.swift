@@ -17,7 +17,7 @@ class OrderResultView: UIView {
         usedCouponLabel.text = "\(couponName) - \(order.discountPrice.priceNotation(.Korean))"
       }
     } else {
-      usedCouponLabel.text = "0원"
+      usedCouponLabel.text = "0 원"
     }
   }
 }

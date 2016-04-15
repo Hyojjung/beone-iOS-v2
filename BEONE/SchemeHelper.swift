@@ -80,8 +80,7 @@ protocol SchemeDelegate {
 
 class SchemeHelper {
   
-  static var schemeStrings: [String]?
-  static var index = 0
+  static var schemeStrings = [String]()
   
   static func rootNavigationController() -> UINavigationController? {
     let root = UIApplication.sharedApplication().delegate?.window!!.rootViewController as? SWRevealViewController
@@ -99,9 +98,10 @@ class SchemeHelper {
     schemeStrings = schemeString.componentsSeparatedByString("/")
     
     if scheme.hasPrefix("/") {
-      schemeStrings?.removeAtIndex(0)
+      schemeStrings.removeAtIndex(0)
       handleScheme()
     } else {
+      navi?.popToRootViewControllerAnimated(false)
       setUpTabController()
     }
   }
@@ -109,10 +109,10 @@ class SchemeHelper {
   static func setUpTabController() {
     if let navi = rootNavigationController(),
       mainTabViewController = navi.topViewController as? MainTabViewController,
-      mainTabViewIdentifier = schemeStrings?.first,
+      mainTabViewIdentifier = schemeStrings.first,
       mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
-      schemeStrings?.removeAtIndex(0)
-      if mainTabViewController.selectedIndex == mainTabScheme.viewControllerTabIndex() {
+      schemeStrings.removeAtIndex(0)
+      if mainTabViewController.selectedIndex != mainTabScheme.viewControllerTabIndex() {
         handleScheme()
       } else {
         mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
@@ -135,30 +135,26 @@ class SchemeHelper {
 extension BaseViewController {
   
   func handleScheme() {
-    if let schemeStrings = SchemeHelper.schemeStrings {
-      if SchemeHelper.index < schemeStrings.count {
-        let schemeString = schemeStrings[SchemeHelper.index]
-        SchemeHelper.index += 1
-        if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
-          showViewController(schemeIdentifier)
-        } else if let topViewController = SchemeHelper.rootNavigationController()?.topViewController {
-          if let id = Int(schemeString), topViewController = topViewController as? SchemeDelegate {
-            topViewController.handleScheme(with: id)
-          } else if schemeString == kRecentProductsSchemeString {
-            let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
-            productsViewController.title = "최근 본 상품"
-            productsViewController.products.type = .Recent
-            showViewController(productsViewController, sender: nil)
-          } else if schemeString == kFavoriteProductsSchemeString  {
-            let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
-            productsViewController.title = "찜한 상품"
-            productsViewController.products.type = .Favorite
-            showUserViewController(productsViewController)
-          }
+    if let schemeString = SchemeHelper.schemeStrings.first {
+      if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
+        showViewController(schemeIdentifier)
+      } else if let topViewController = SchemeHelper.rootNavigationController()?.topViewController {
+        if let id = Int(schemeString), topViewController = topViewController as? SchemeDelegate {
+          topViewController.handleScheme(with: id)
+        } else if schemeString == kRecentProductsSchemeString {
+          let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
+          productsViewController.title = "최근 본 상품"
+          productsViewController.products.type = .Recent
+          showViewController(productsViewController, sender: nil)
+        } else if schemeString == kFavoriteProductsSchemeString  {
+          let productsViewController = UIViewController.viewController(.Products) as! ProductsViewController
+          productsViewController.title = "찜한 상품"
+          productsViewController.products.type = .Favorite
+          showUserViewController(productsViewController)
         }
-      } else {
-        SchemeHelper.schemeStrings = nil
-        SchemeHelper.index = 0
+      }
+      if !SchemeHelper.schemeStrings.isEmpty {
+        SchemeHelper.schemeStrings.removeAtIndex(0)
       }
     }
   }

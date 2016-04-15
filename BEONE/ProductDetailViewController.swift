@@ -220,6 +220,8 @@ extension ProductDetailViewController: SchemeDelegate {
   func handleScheme(with id: Int) {
     product.id = id
     setUpData()
+    SchemeHelper.schemeStrings.removeAtIndex(0)
+    handleScheme()
   }
 }
 
