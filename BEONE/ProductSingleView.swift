@@ -4,7 +4,7 @@ import UIKit
 let kSimpleProductColumn = 2
  
  protocol FavoriteProductDelegate: NSObjectProtocol {
-  func toggleFavoriteProduct()
+  func toggleFavoriteProduct(sender: UIView, productId: Int, isFavorite: Bool)
  }
  
 class ProductCoupleView: UIView {
@@ -47,12 +47,12 @@ class ProductCoupleView: UIView {
     if sender.selected == false {
       FavoriteProductHelper.postFavoriteProduct(productId, success: {
         sender.selected = true
-        self.favoriteProductDelegate?.toggleFavoriteProduct()
+        self.favoriteProductDelegate?.toggleFavoriteProduct(self, productId: self.productId!, isFavorite: sender.selected)
       })
     } else {
       FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
         sender.selected = false
-        self.favoriteProductDelegate?.toggleFavoriteProduct()
+        self.favoriteProductDelegate?.toggleFavoriteProduct(self, productId: self.productId!, isFavorite: sender.selected)
       })
     }
   }

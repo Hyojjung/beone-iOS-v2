@@ -112,7 +112,7 @@ extension LandingViewController {
 }
 
 extension LandingViewController: FavoriteProductDelegate {
-  func toggleFavoriteProduct() {
+  func toggleFavoriteProduct(sender: UIView, productId: Int, isFavorite: Bool) {
     tableView.reloadData()
   }
 }
