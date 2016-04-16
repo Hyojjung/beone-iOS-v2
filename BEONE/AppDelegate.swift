@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application.registerUserNotificationSettings( settings )
     application.registerForRemoteNotifications()
     
+    let hasRegistedToken = NSUserDefaults.standardUserDefaults().objectForKey(kHasRegistedToken) as? Bool
+    if hasRegistedToken != true &&
+    MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
+      AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
+        SigningHelper.signInForNonUser({ (result) -> Void in
+          self.postNotification(kNotificationGuestAuthenticationSuccess)
+        })
+      }
+    }
+    
     Fabric.with([Crashlytics.self])
     
     #if RELEASE
