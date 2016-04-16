@@ -21,7 +21,7 @@ class TemplateCell: UITableViewCell {
   
   func configureCell(template: Template) {
     configureStyle(template.style)
-    action = template.action
+    action = template.content.action
   }
   
   func configureDefaulStyle() {
