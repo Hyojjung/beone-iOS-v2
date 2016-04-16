@@ -155,6 +155,7 @@ class SigningHelper: NSObject {
     
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: kHasRegistedToken)
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
         success?(result: result)
       },
