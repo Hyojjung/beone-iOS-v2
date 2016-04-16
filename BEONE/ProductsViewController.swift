@@ -141,7 +141,7 @@ class ProductsViewController: BaseTableViewController {
 
 // MAKR: - Actions
 
-extension ProductsViewController {
+extension ProductsViewController: FavoriteProductDelegate {
   
   @IBAction func selectLocationButtonTapped() {
     showLocationPicker(selectedLocation) { (selectedIndex) -> Void in
@@ -161,6 +161,14 @@ extension ProductsViewController {
       navigationController?.showViewController(searchViewController, sender: nil)
     } else {
       popView()
+    }
+  }
+  
+  func toggleFavoriteProduct(sender: UIView, productId: Int, isFavorite: Bool) {
+    if !isFavorite {
+      products.list = products.list.filter { ($0 as! Product).id != productId  }
+      
+      self.tableView.reloadData()
     }
   }
 }
@@ -188,6 +196,7 @@ extension ProductsViewController: UITableViewDataSource {
   private func configureProductCell(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? ProductCoupleTemplateCell {
       cell.configureDefaulStyle()
+      cell.favoriteProductDelegate = self;
       var products = [Product]()
       let index = indexPath.row * kSimpleProductColumn
       products.appendObject(self.products.list.objectAtIndex(index) as? Product)

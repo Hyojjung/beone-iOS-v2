@@ -96,16 +96,12 @@ extension PersonalInfoViewController {
   }
   
   @IBAction func maleButtonTapped(sender: UIButton) {
-    sender.selected = !sender.selected
-    MyInfo.sharedMyInfo().gender = sender.selected ? Gender.Male.rawValue : Gender.Female.rawValue
-    syncMyInfoWithView()
+    MyInfo.sharedMyInfo().gender = Gender.Male.rawValue
     tableView.reloadData()
   }
   
   @IBAction func femaleButtonTapped(sender: UIButton) {
-    sender.selected = !sender.selected
-    MyInfo.sharedMyInfo().gender = sender.selected ? Gender.Female.rawValue : Gender.Male.rawValue
-    syncMyInfoWithView()
+    MyInfo.sharedMyInfo().gender = Gender.Female.rawValue
     tableView.reloadData()
   }
 }
