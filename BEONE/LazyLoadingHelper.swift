@@ -89,7 +89,7 @@ class ProductDetailImageView: LazyLoadingImageView {
     if let image = self.image {
       let height = image.size.heightFromRatio(ViewControllerHelper.screenWidth)
       heightLayoutConstraint.constant = height
-      productDetail?.height = height
+//      productDetail?.height = height
     }
   }
 }

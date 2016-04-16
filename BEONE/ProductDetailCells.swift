@@ -25,6 +25,7 @@ class RateCell: ProductDetailCell {
 }
 
 class PriceCell: ProductDetailCell {
+  
   @IBOutlet weak var actualPriceLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   
@@ -36,6 +37,7 @@ class PriceCell: ProductDetailCell {
 }
 
 class InfoCell: ProductDetailCell {
+  
   @IBOutlet weak var productCodeLabel: UILabel!
   @IBOutlet weak var deliveryLabel: UILabel!
   @IBOutlet weak var sellerLabel: UILabel!
@@ -51,6 +53,7 @@ class InfoCell: ProductDetailCell {
 }
 
 class DetailInfoCell: ProductDetailCell {
+  
   @IBOutlet weak var sizeLabel: UILabel!
   @IBOutlet weak var shelfLifeLabel: UILabel!
   @IBOutlet weak var compositionLabel: UILabel!
@@ -87,37 +90,63 @@ class ProductDesctriptionCell: ProductDetailCell {
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
-    
+    imageButton.tag = indexPath.row
+  }
+  
+  func setUpView(productDetail: ProductDetail, buttonEnabled: Bool) {
     imageView.image = nil
     imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultLow
     titleLabel.text = nil
     descriptionLabel.text = nil
     
-    if indexPath.row > 0 {
-      let productDetail = product.productDetails[indexPath.row - 1]
-      
-      imageButton.enabled = productDetail.detailType == .Image
-      imageButton.tag = indexPath.row
-      
-      if let detailType = productDetail.detailType {
-        switch detailType {
-        case .Image:
-          imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultHigh
-          imageView.productDetail = productDetail
-          imageView.heightLayoutConstraint.constant = productDetail.height!
-          imageView.setLazyLoaingImage(productDetail.content)
-        case .Title:
-          titleLabel.text = productDetail.content
-        case .Text:
-          descriptionLabel.text = productDetail.content
-        }
+    imageButton.enabled = buttonEnabled && productDetail.detailType == .Image
+    
+    if let detailType = productDetail.detailType {
+      switch detailType {
+      case .Image:
+        imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultHigh
+        imageView.productDetail = productDetail
+//        imageView.heightLayoutConstraint.constant = productDetail.height!
+        imageView.setLazyLoaingImage(productDetail.content)
+      case .Title:
+        titleLabel.text = productDetail.content
+      case .Text:
+        descriptionLabel.text = productDetail.content
       }
     }
-    
+  }
+}
+
+class ProductMainDesctriptionCell: ProductDesctriptionCell {
+  
+  override func configureCell(product: Product, indexPath: NSIndexPath) {
+    super.configureCell(product, indexPath: indexPath)
+    let productDetail = product.productDetails[indexPath.row]
+    setUpView(productDetail, buttonEnabled: true)
+  }
+}
+
+class ProductHeaderDesctriptionCell: ProductDesctriptionCell {
+  
+  override func configureCell(product: Product, indexPath: NSIndexPath) {
+    super.configureCell(product, indexPath: indexPath)
+    let productDetail = product.productDetailHeaders[indexPath.row]
+    setUpView(productDetail, buttonEnabled: true)
+  }
+}
+
+
+class ProductFooterDesctriptionCell: ProductDesctriptionCell {
+  
+  override func configureCell(product: Product, indexPath: NSIndexPath) {
+    super.configureCell(product, indexPath: indexPath)
+    let productDetail = product.productDetailFooters[indexPath.row]
+    setUpView(productDetail, buttonEnabled: true)
   }
 }
 
 class PrecautionCell: ProductDetailCell {
+  
   @IBOutlet weak var precautionLabel: UILabel!
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {

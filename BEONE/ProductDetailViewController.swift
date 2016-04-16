@@ -20,7 +20,9 @@ class ProductDetailViewController: BaseViewController {
     case Price
     case Info
     case DetailInfo
+    case HeaderDescription
     case Description
+    case FooterDescription
     case ShareButton
     case Precaution
     case RefundGuide
@@ -37,7 +39,9 @@ class ProductDetailViewController: BaseViewController {
     "priceCell",
     "infoCell",
     "detailInfoCell",
+    "headerDescriptionCell",
     "descriptionCell",
+    "footerDescriptionCell",
     "shareButtonCell",
     "precautionCell",
     "refundGuideCell",
@@ -192,7 +196,7 @@ extension ProductDetailViewController {
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
-    let selectedImageUrl = product.productDetails[sender.tag - 1].content
+    let selectedImageUrl = product.productDetails[sender.tag].content
     for (index, imageUrl) in imageUrls.enumerate() {
       if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
         showImage(index, view: sender)
@@ -266,7 +270,11 @@ extension ProductDetailViewController {
     if ProductDetailTableViewSection(rawValue: section) == .Review {
       return product.reviews.count == 0 ? 1 : product.reviews.count
     } else if ProductDetailTableViewSection(rawValue: section) == .Description {
-      return product.productDetails.count + 1
+      return product.productDetails.count
+    } else if ProductDetailTableViewSection(rawValue: section) == .HeaderDescription {
+      return product.productDetailHeaders.count
+    } else if ProductDetailTableViewSection(rawValue: section) == .FooterDescription {
+      return product.productDetailFooters.count
     } else {
       return 1
     }

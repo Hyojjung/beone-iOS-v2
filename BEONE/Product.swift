@@ -50,7 +50,9 @@ class Product: BaseModel {
   var reviewCount = 1
   var reviews = [Review]()
   
+  var productDetailHeaders = [ProductDetail]()
   var productDetails = [ProductDetail]()
+  var productDetailFooters = [ProductDetail]()
   var productOptionSets = ProductOptionSets()
   var productOrderableInfos = [ProductOrderableInfo]()
   var shop = Shop()
@@ -108,7 +110,9 @@ class Product: BaseModel {
         self.soldOut = soldOut
       }
       assignProductOrderableInfos(product[kProductPropertyKeyProductOrderableInfos])
+      assignProductDetailHeaders(product["productDetailHeaders"])
       assignProductDetails(product[kProductPropertyKeyProductDetails])
+      assignProductDetailFooters(product["productDetailFooters"])
       shop.assignObject(product[kProductPropertyKeyShop])
       if let reviews = product["reviews"] as? [[String: AnyObject]] {
         for reviewObject in reviews {
@@ -139,6 +143,28 @@ class Product: BaseModel {
         let productDetail = ProductDetail()
         productDetail.assignObject(productDetailObject)
         productDetails.appendObject(productDetail)
+      }
+    }
+  }
+  
+  private func assignProductDetailFooters(productDetailsObject: AnyObject?) {
+    if let productDetailsObject = productDetailsObject as? [[String: AnyObject]] {
+      productDetailFooters.removeAll()
+      for productDetailObject in productDetailsObject {
+        let productDetail = ProductDetail()
+        productDetail.assignObject(productDetailObject)
+        productDetailFooters.appendObject(productDetail)
+      }
+    }
+  }
+  
+  private func assignProductDetailHeaders(productDetailsObject: AnyObject?) {
+    if let productDetailsObject = productDetailsObject as? [[String: AnyObject]] {
+      productDetailHeaders.removeAll()
+      for productDetailObject in productDetailsObject {
+        let productDetail = ProductDetail()
+        productDetail.assignObject(productDetailObject)
+        productDetailHeaders.appendObject(productDetail)
       }
     }
   }

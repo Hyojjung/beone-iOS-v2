@@ -699,7 +699,7 @@
                                             <outlet property="shopSummaryLabel" destination="93m-mT-YeG" id="vVU-QA-agS"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="749" reuseIdentifier="descriptionCell" id="Wo6-Dh-m46" customClass="ProductDesctriptionCell" customModule="BEONE" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="749" reuseIdentifier="headerDescriptionCell" id="Wo6-Dh-m46" customClass="ProductHeaderDesctriptionCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="70" y="180" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -791,8 +791,192 @@
                                             <outlet property="titleLabel" destination="a7H-wx-Kud" id="fiX-NN-68u"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rateCell" id="xYa-SX-lEN" customClass="RateCell" customModule="BEONE" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="749" reuseIdentifier="descriptionCell" id="9gr-La-jyD" customClass="ProductMainDesctriptionCell" customModule="BEONE" customModuleProvider="target">
                                         <rect key="frame" x="70" y="300" width="460" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wx4-BC-kLf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" misplaced="YES" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="t7O-5y-h5W" customClass="ProductDetailImageView" customModule="BEONE" customModuleProvider="target">
+                                                            <rect key="frame" x="-1" y="0.0" width="460" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" priority="750" constant="120" id="9P9-2q-jmK"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="heightLayoutConstraint" destination="9P9-2q-jmK" id="DRc-BB-OU4"/>
+                                                            </connections>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="rAs-VR-b8z" userLabel="title">
+                                                            <rect key="frame" x="12" y="24" width="436" height="93"/>
+                                                            <accessibility key="accessibilityConfiguration" label="0"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="title">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-pB-H2c" userLabel="description">
+                                                            <rect key="frame" x="12" y="22" width="436" height="74"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr0-S7-gZi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                                            <connections>
+                                                                <action selector="imageButtonTapped:" destination="0O0-Tf-ajG" eventType="touchUpInside" id="ZDs-w8-axO"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="t7O-5y-h5W" secondAttribute="trailing" id="2fl-v1-538"/>
+                                                        <constraint firstAttribute="trailing" secondItem="kEf-pB-H2c" secondAttribute="trailing" constant="12" id="2vX-ER-r01"/>
+                                                        <constraint firstItem="rAs-VR-b8z" firstAttribute="leading" secondItem="Wx4-BC-kLf" secondAttribute="leading" constant="12" id="5ll-Y5-ajF"/>
+                                                        <constraint firstAttribute="bottom" secondItem="nr0-S7-gZi" secondAttribute="bottom" id="I81-u8-yWg"/>
+                                                        <constraint firstItem="kEf-pB-H2c" firstAttribute="top" secondItem="Wx4-BC-kLf" secondAttribute="top" constant="22" id="LvC-vS-bfH"/>
+                                                        <constraint firstItem="kEf-pB-H2c" firstAttribute="leading" secondItem="Wx4-BC-kLf" secondAttribute="leading" constant="12" id="MBt-Gl-4oP"/>
+                                                        <constraint firstAttribute="height" constant="120" id="O3Z-ji-KAi"/>
+                                                        <constraint firstItem="rAs-VR-b8z" firstAttribute="top" secondItem="Wx4-BC-kLf" secondAttribute="top" constant="24" id="PrW-He-Fsy"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nr0-S7-gZi" secondAttribute="trailing" id="QA0-rJ-DUM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rAs-VR-b8z" secondAttribute="trailing" constant="12" id="TBx-Tl-xTn"/>
+                                                        <constraint firstAttribute="bottom" secondItem="kEf-pB-H2c" secondAttribute="bottom" priority="500" constant="24" id="Ve8-hr-tsU"/>
+                                                        <constraint firstItem="nr0-S7-gZi" firstAttribute="top" secondItem="Wx4-BC-kLf" secondAttribute="top" id="gHR-6x-p3r"/>
+                                                        <constraint firstItem="t7O-5y-h5W" firstAttribute="leading" secondItem="Wx4-BC-kLf" secondAttribute="leading" id="jQX-I2-vLx"/>
+                                                        <constraint firstAttribute="bottom" secondItem="t7O-5y-h5W" secondAttribute="bottom" id="q47-Sh-tnb"/>
+                                                        <constraint firstItem="nr0-S7-gZi" firstAttribute="leading" secondItem="Wx4-BC-kLf" secondAttribute="leading" id="qJX-ip-XdI"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rAs-VR-b8z" secondAttribute="bottom" priority="500" constant="3" id="rtv-rg-TM5"/>
+                                                        <constraint firstItem="t7O-5y-h5W" firstAttribute="top" secondItem="Wx4-BC-kLf" secondAttribute="top" id="vWj-Eg-eBq"/>
+                                                        <constraint firstAttribute="width" priority="750" constant="320" id="xy8-Ew-Zn6"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="O3Z-ji-KAi"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Wx4-BC-kLf" secondAttribute="bottom" id="1Aa-Gy-Gkx"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wx4-BC-kLf" secondAttribute="trailing" id="5Fx-an-2yV"/>
+                                            <constraint firstItem="Wx4-BC-kLf" firstAttribute="top" secondItem="9gr-La-jyD" secondAttribute="top" id="kcw-ml-Lhl"/>
+                                            <constraint firstItem="Wx4-BC-kLf" firstAttribute="leading" secondItem="9gr-La-jyD" secondAttribute="leading" id="uKe-lB-BF3"/>
+                                        </constraints>
+                                        <size key="customSize" width="460" height="120"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="Wx4-BC-kLf" id="nb9-eo-Dm4"/>
+                                            <outlet property="descriptionLabel" destination="kEf-pB-H2c" id="lPw-9G-nzf"/>
+                                            <outlet property="imageButton" destination="nr0-S7-gZi" id="M36-Ej-YsX"/>
+                                            <outlet property="imageView" destination="t7O-5y-h5W" id="JSk-Sr-kVL"/>
+                                            <outlet property="titleLabel" destination="rAs-VR-b8z" id="O9c-l1-oXB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="749" reuseIdentifier="footerDescriptionCell" id="wiJ-Gk-E7o" customClass="ProductFooterDesctriptionCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="70" y="420" width="460" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sW5-cx-eSV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" misplaced="YES" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="voh-tg-U3O" customClass="ProductDetailImageView" customModule="BEONE" customModuleProvider="target">
+                                                            <rect key="frame" x="-1" y="0.0" width="460" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" priority="750" constant="120" id="V8w-RF-nJf"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="heightLayoutConstraint" destination="V8w-RF-nJf" id="Tc5-4U-teV"/>
+                                                            </connections>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="zII-2L-35b" userLabel="title">
+                                                            <rect key="frame" x="12" y="24" width="436" height="93"/>
+                                                            <accessibility key="accessibilityConfiguration" label="0"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="title">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Nsg-mU-qfe" userLabel="description">
+                                                            <rect key="frame" x="12" y="22" width="436" height="74"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSi-jU-mG8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
+                                                            <connections>
+                                                                <action selector="imageButtonTapped:" destination="0O0-Tf-ajG" eventType="touchUpInside" id="UO8-mF-Xoh"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="1pW-43-wrj"/>
+                                                        <constraint firstItem="voh-tg-U3O" firstAttribute="top" secondItem="sW5-cx-eSV" secondAttribute="top" id="2DJ-HQ-9aO"/>
+                                                        <constraint firstItem="QSi-jU-mG8" firstAttribute="leading" secondItem="sW5-cx-eSV" secondAttribute="leading" id="65m-eG-JLx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="voh-tg-U3O" secondAttribute="trailing" id="Am0-qa-vVZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zII-2L-35b" secondAttribute="bottom" priority="500" constant="3" id="BNU-l3-g2p"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Nsg-mU-qfe" secondAttribute="bottom" priority="500" constant="24" id="DOJ-XK-M58"/>
+                                                        <constraint firstItem="voh-tg-U3O" firstAttribute="leading" secondItem="sW5-cx-eSV" secondAttribute="leading" id="Erw-iG-JdP"/>
+                                                        <constraint firstItem="zII-2L-35b" firstAttribute="top" secondItem="sW5-cx-eSV" secondAttribute="top" constant="24" id="QQj-Bt-7AA"/>
+                                                        <constraint firstItem="QSi-jU-mG8" firstAttribute="top" secondItem="sW5-cx-eSV" secondAttribute="top" id="RRG-lv-3fk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="QSi-jU-mG8" secondAttribute="trailing" id="TbG-cX-Y1D"/>
+                                                        <constraint firstAttribute="width" priority="750" constant="320" id="c5t-Hy-S1m"/>
+                                                        <constraint firstItem="Nsg-mU-qfe" firstAttribute="top" secondItem="sW5-cx-eSV" secondAttribute="top" constant="22" id="fG2-u0-Acl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zII-2L-35b" secondAttribute="trailing" constant="12" id="hhs-0N-Geg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Nsg-mU-qfe" secondAttribute="trailing" constant="12" id="iNg-Yt-UHO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="voh-tg-U3O" secondAttribute="bottom" id="l0P-9U-3lJ"/>
+                                                        <constraint firstItem="Nsg-mU-qfe" firstAttribute="leading" secondItem="sW5-cx-eSV" secondAttribute="leading" constant="12" id="rxR-gB-xLi"/>
+                                                        <constraint firstItem="zII-2L-35b" firstAttribute="leading" secondItem="sW5-cx-eSV" secondAttribute="leading" constant="12" id="saX-kY-Bsb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="QSi-jU-mG8" secondAttribute="bottom" id="zsJ-lu-bIB"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1pW-43-wrj"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="sW5-cx-eSV" secondAttribute="trailing" id="30m-7R-9Uj"/>
+                                            <constraint firstItem="sW5-cx-eSV" firstAttribute="top" secondItem="wiJ-Gk-E7o" secondAttribute="top" id="a4g-Ie-7Wb"/>
+                                            <constraint firstItem="sW5-cx-eSV" firstAttribute="leading" secondItem="wiJ-Gk-E7o" secondAttribute="leading" id="kVd-9y-ban"/>
+                                            <constraint firstAttribute="bottom" secondItem="sW5-cx-eSV" secondAttribute="bottom" id="lPG-WJ-BCt"/>
+                                        </constraints>
+                                        <size key="customSize" width="460" height="120"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="sW5-cx-eSV" id="TiC-Zr-JBm"/>
+                                            <outlet property="descriptionLabel" destination="Nsg-mU-qfe" id="Sof-XK-OTS"/>
+                                            <outlet property="imageButton" destination="QSi-jU-mG8" id="n7S-sF-hcI"/>
+                                            <outlet property="imageView" destination="voh-tg-U3O" id="WoT-kp-4co"/>
+                                            <outlet property="titleLabel" destination="zII-2L-35b" id="y8f-Ui-IZC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rateCell" id="xYa-SX-lEN" customClass="RateCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="70" y="540" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -898,7 +1082,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="priceCell" id="vSQ-dJ-df6" customClass="PriceCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="420" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="660" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -991,7 +1175,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="infoCell" id="Gwy-h7-dfH" customClass="InfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="540" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="780" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -1130,7 +1314,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailInfoCell" id="WEB-n4-H4B" customClass="DetailInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="660" width="460" height="370"/>
+                                        <rect key="frame" x="70" y="900" width="460" height="370"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="370"/>
@@ -1284,7 +1468,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shareButtonCell" id="DhE-w2-k2E" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1030" width="460" height="90"/>
+                                        <rect key="frame" x="70" y="1270" width="460" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="90"/>
@@ -1362,7 +1546,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="precautionCell" id="rKR-6f-NRj" customClass="PrecautionCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1120" width="460" height="120"/>
+                                        <rect key="frame" x="70" y="1360" width="460" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="120"/>
@@ -1449,7 +1633,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="refundGuideCell" id="3EJ-CR-ijd" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1240" width="460" height="50"/>
+                                        <rect key="frame" x="70" y="1480" width="460" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
@@ -1530,7 +1714,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="inquiryCell" id="tUE-Rc-NYx" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1290" width="460" height="50"/>
+                                        <rect key="frame" x="70" y="1530" width="460" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
@@ -1590,7 +1774,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="spaceCell" id="age-7t-H6R" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1340" width="460" height="25"/>
+                                        <rect key="frame" x="70" y="1580" width="460" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="25"/>
@@ -1620,7 +1804,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewTitleCell" id="4Nc-3k-2Cp" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1365" width="460" height="65"/>
+                                        <rect key="frame" x="70" y="1605" width="460" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="65"/>
@@ -1660,7 +1844,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noReviewCell" id="fg3-UX-G8f" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1430" width="460" height="50"/>
+                                        <rect key="frame" x="70" y="1670" width="460" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
@@ -1706,7 +1890,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageReviewCell" id="AUH-de-8wK" customClass="ReviewSummaryCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1480" width="460" height="200"/>
+                                        <rect key="frame" x="70" y="1720" width="460" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="200"/>
@@ -1950,7 +2134,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewCell" id="vzD-wi-dX8" customClass="ReviewSummaryCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1680" width="460" height="200"/>
+                                        <rect key="frame" x="70" y="1920" width="460" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="200"/>
@@ -2055,7 +2239,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonSpaceCell" id="QzN-wh-08R" customClass="ProductDetailCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="70" y="1880" width="460" height="49"/>
+                                        <rect key="frame" x="70" y="2120" width="460" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="460" height="49"/>
