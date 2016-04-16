@@ -48,7 +48,10 @@ class ProductDetailViewController: BaseViewController {
     "reviewSection",
     "buttonSpaceCell"]
   
+  @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var favoriteImageView: UIImageView!
   @IBOutlet weak var collectionView: UICollectionView!
+  
   let product = Product()
   lazy var reviews: Reviews = {
     let reviews = Reviews()
@@ -91,8 +94,11 @@ class ProductDetailViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({ 
+    product.get({
       self.setUpProductData()
+      let isFavorite = self.product.isFavorite()
+      self.favoriteImageView.highlighted = isFavorite
+      self.favoriteButton.selected = isFavorite
     })
     reviews.get {
       self.product.reviews = self.reviews.list as! [Review]
@@ -127,14 +133,33 @@ class ProductDetailViewController: BaseViewController {
     }
   }
   
-  func setUpProductData() {
+  private func setUpProductData() {
     self.imageUrls.removeAll()
     for imageUrl in product.productDetailImageUrls() {
       self.imageUrls.appendObject(imageUrl.url())
     }
     collectionView.reloadData()
   }
+}
+
+extension ProductDetailViewController {
   
+  @IBAction func favoriteButtonTapped(sender: UIButton) {
+    if let productId = product.id {
+      if !sender.selected {
+        FavoriteProductHelper.postFavoriteProduct(productId, success: { 
+          sender.selected = true
+          self.favoriteImageView.highlighted = true
+        })
+      } else {
+        FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
+          sender.selected = false
+          self.favoriteImageView.highlighted = false
+        })
+      }
+    }
+  }
+
   @IBAction func backButtonTapped() {
     popView()
   }
@@ -162,7 +187,7 @@ class ProductDetailViewController: BaseViewController {
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
-    let selectedImageUrl = product.productDetails[sender.tag].content
+    let selectedImageUrl = product.productDetails[sender.tag - 1].content
     for (index, imageUrl) in imageUrls.enumerate() {
       if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
         showImage(index, view: sender)
@@ -236,7 +261,7 @@ extension ProductDetailViewController {
     if ProductDetailTableViewSection(rawValue: section) == .Review {
       return product.reviews.count == 0 ? 1 : product.reviews.count
     } else if ProductDetailTableViewSection(rawValue: section) == .Description {
-      return product.productDetails.count
+      return product.productDetails.count + 1
     } else {
       return 1
     }
@@ -277,6 +302,7 @@ extension ProductDetailViewController {
     }
   }
 }
+
 
 extension ProductDetailViewController: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

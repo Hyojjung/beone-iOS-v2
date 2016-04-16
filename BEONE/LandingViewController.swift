@@ -88,6 +88,11 @@ extension LandingViewController: DynamicHeightTableViewDelegate {
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? TemplateCell {
+      if let cell = cell as? ProductCoupleTemplateCell {
+        cell.favoriteProductDelegate = self
+      } else if let cell = cell as? ProductSingleTemplateCell {
+        cell.favoriteProductDelegate = self
+      }
       cell.configureCell(templates.filterdTemplates[indexPath.row])
     }
   }
@@ -100,20 +105,14 @@ extension LandingViewController: DynamicHeightTableViewDelegate {
   }
 }
 
-// MARK: - Observer Actions
-
 extension LandingViewController {
   func handleLayoutChange() {
     tableView.reloadData()
   }
-  
-  func handleAction(notification: NSNotification) {
-    if let userInfo = notification.userInfo, templateId = userInfo[kNotificationKeyTemplateId] as? NSNumber {
-      for template in templates.list as! [Template] {
-        if template.id == templateId {
-          break;
-        }
-      }
-    }
+}
+
+extension LandingViewController: FavoriteProductDelegate {
+  func toggleFavoriteProduct() {
+    tableView.reloadData()
   }
 }

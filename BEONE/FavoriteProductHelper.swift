@@ -5,12 +5,16 @@ class FavoriteProductHelper {
   
   static func postFavoriteProduct(productId: Int?, success: () -> Void) {
     if let productId = productId {
-      NetworkHelper.requestPost(requestUrl(),
-                                parameter: requestParameter(productId),
-                                success: { (result) in
-                                  saveFavoriteProduct(productId)
-                                  success()
+      if !MyInfo.sharedMyInfo().isUser() {
+        ViewControllerHelper.topViewController()?.showSigningView()
+      } else {
+        NetworkHelper.requestPost(requestUrl(),
+                                  parameter: requestParameter(productId),
+                                  success: { (result) in
+                                    saveFavoriteProduct(productId)
+                                    success()
       })
+      }
     }
   }
   

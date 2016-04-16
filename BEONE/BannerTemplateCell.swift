@@ -54,6 +54,6 @@ extension BannerTemplateCell: XLCCycleScrollViewDatasource {
 
 extension BannerTemplateCell: XLCCycleScrollViewDelegate {
   func didClickPage(csView: XLCCycleScrollView!, atIndex index: Int) {
-
+    bannerContents[index].action.action()
   }
 }
