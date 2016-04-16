@@ -66,6 +66,7 @@ class LazyLoadingImageView: UIImageView {
 }
 
 class LazyLoadingHelper: NSObject {
+  
   static var originalImageUrls = [String]()
   
   static func imageUrl(url: String, imageType: ImageType) -> NSURL {
@@ -79,11 +80,16 @@ class LazyLoadingHelper: NSObject {
 }
 
 class ProductDetailImageView: LazyLoadingImageView {
+  
+  @IBOutlet weak var heightLayoutConstraint: NSLayoutConstraint!
+  var productDetail: ProductDetail?
+  
   override func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
     super.setImageWithAnimation(image, cacheType: cacheType)
     if let image = self.image {
-      let height = image.size.heightFromRatio(frame.size.width)
-      changeHeightLayoutConstant(height)
+      let height = image.size.heightFromRatio(ViewControllerHelper.screenWidth)
+      heightLayoutConstraint.constant = height
+      productDetail?.height = height
     }
   }
 }

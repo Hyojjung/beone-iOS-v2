@@ -187,7 +187,7 @@ extension ProductDetailViewController {
   }
   
   @IBAction func imageButtonTapped(sender: UIButton) {
-    let selectedImageUrl = product.productDetails[sender.tag].content
+    let selectedImageUrl = product.productDetails[sender.tag - 1].content
     for (index, imageUrl) in imageUrls.enumerate() {
       if selectedImageUrl != nil && imageUrl.absoluteString.containsString(selectedImageUrl!) {
         showImage(index, view: sender)
@@ -261,7 +261,7 @@ extension ProductDetailViewController {
     if ProductDetailTableViewSection(rawValue: section) == .Review {
       return product.reviews.count == 0 ? 1 : product.reviews.count
     } else if ProductDetailTableViewSection(rawValue: section) == .Description {
-      return product.productDetails.count
+      return product.productDetails.count + 1
     } else {
       return 1
     }
@@ -302,6 +302,7 @@ extension ProductDetailViewController {
     }
   }
 }
+
 
 extension ProductDetailViewController: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

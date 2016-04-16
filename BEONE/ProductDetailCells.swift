@@ -79,6 +79,7 @@ class DetailInfoCell: ProductDetailCell {
 }
 
 class ProductDesctriptionCell: ProductDetailCell {
+  
   @IBOutlet weak var imageView: ProductDetailImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
@@ -86,24 +87,33 @@ class ProductDesctriptionCell: ProductDetailCell {
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
-    let productDetail = product.productDetails[indexPath.row]
+    
     imageView.image = nil
+    imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultLow
     titleLabel.text = nil
     descriptionLabel.text = nil
     
-    imageButton.enabled = productDetail.detailType == .Image
-    imageButton.tag = indexPath.row
-    
-    if let detailType = productDetail.detailType {
-      switch detailType {
-      case .Image:
-        imageView.setLazyLoaingImage(productDetail.content)
-      case .Title:
-        titleLabel.text = productDetail.content
-      case .Text:
-        descriptionLabel.text = productDetail.content
+    if indexPath.row > 0 {
+      let productDetail = product.productDetails[indexPath.row - 1]
+      
+      imageButton.enabled = productDetail.detailType == .Image
+      imageButton.tag = indexPath.row
+      
+      if let detailType = productDetail.detailType {
+        switch detailType {
+        case .Image:
+          imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultHigh
+          imageView.productDetail = productDetail
+          imageView.heightLayoutConstraint.constant = productDetail.height!
+          imageView.setLazyLoaingImage(productDetail.content)
+        case .Title:
+          titleLabel.text = productDetail.content
+        case .Text:
+          descriptionLabel.text = productDetail.content
+        }
       }
     }
+    
   }
 }
 
