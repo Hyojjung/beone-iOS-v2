@@ -48,7 +48,10 @@ class ProductDetailViewController: BaseViewController {
     "reviewSection",
     "buttonSpaceCell"]
   
+  @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var favoriteImageView: UIImageView!
   @IBOutlet weak var collectionView: UICollectionView!
+  
   let product = Product()
   lazy var reviews: Reviews = {
     let reviews = Reviews()
@@ -91,8 +94,11 @@ class ProductDetailViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({ 
+    product.get({
       self.setUpProductData()
+      let isFavorite = self.product.isFavorite()
+      self.favoriteImageView.highlighted = isFavorite
+      self.favoriteButton.selected = isFavorite
     })
     reviews.get {
       self.product.reviews = self.reviews.list as! [Review]
@@ -127,14 +133,33 @@ class ProductDetailViewController: BaseViewController {
     }
   }
   
-  func setUpProductData() {
+  private func setUpProductData() {
     self.imageUrls.removeAll()
     for imageUrl in product.productDetailImageUrls() {
       self.imageUrls.appendObject(imageUrl.url())
     }
     collectionView.reloadData()
   }
+}
+
+extension ProductDetailViewController {
   
+  @IBAction func favoriteButtonTapped(sender: UIButton) {
+    if let productId = product.id {
+      if !sender.selected {
+        FavoriteProductHelper.postFavoriteProduct(productId, success: { 
+          sender.selected = true
+          self.favoriteImageView.highlighted = true
+        })
+      } else {
+        FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
+          sender.selected = false
+          self.favoriteImageView.highlighted = false
+        })
+      }
+    }
+  }
+
   @IBAction func backButtonTapped() {
     popView()
   }

@@ -819,7 +819,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="460" height="80"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="51" translatesAutoresizingMaskIntoConstraints="NO" id="num-NU-bFz">
-                                                                    <rect key="frame" x="434.5" y="19" width="13.5" height="26"/>
+                                                                    <rect key="frame" x="434" y="19" width="13.5" height="26"/>
                                                                     <accessibility key="accessibilityConfiguration" label="priceLabel"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                     <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2090,8 +2090,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PeH-9W-7jI">
                                 <rect key="frame" x="0.0" y="1951" width="600" height="49"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-JR-GBG">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3m-AZ-tQ3">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akv-kp-NRX">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="49"/>
+                                                <color key="backgroundColor" red="0.32156862749999998" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" backgroundImage="btn_submit_gold">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected" backgroundImage="btn_submit_gold_pressed"/>
+                                                <connections>
+                                                    <action selector="favoriteButtonTapped:" destination="0O0-Tf-ajG" eventType="touchUpInside" id="FID-0s-7b9"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnFavoriteOff" highlightedImage="btnFavoriteOn" translatesAutoresizingMaskIntoConstraints="NO" id="utD-gl-zCk">
+                                                <rect key="frame" x="33" y="10" width="29" height="29"/>
+                                                <color key="tintColor" red="0.67931265780000005" green="0.35375946479999998" blue="0.39161646119999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.88235294119999996" green="0.83921568629999999" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="utD-gl-zCk" secondAttribute="centerY" id="00A-0K-hQV"/>
+                                            <constraint firstAttribute="width" constant="95" id="L34-5a-ZBC"/>
+                                            <constraint firstAttribute="bottom" secondItem="akv-kp-NRX" secondAttribute="bottom" id="QbJ-R8-3Di"/>
+                                            <constraint firstAttribute="trailing" secondItem="akv-kp-NRX" secondAttribute="trailing" id="aeQ-Pn-Ins"/>
+                                            <constraint firstAttribute="centerX" secondItem="utD-gl-zCk" secondAttribute="centerX" id="cja-ih-5LL"/>
+                                            <constraint firstItem="akv-kp-NRX" firstAttribute="leading" secondItem="k3m-AZ-tQ3" secondAttribute="leading" id="iiF-hS-AlQ"/>
+                                            <constraint firstItem="akv-kp-NRX" firstAttribute="top" secondItem="k3m-AZ-tQ3" secondAttribute="top" id="p08-5X-11Z"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-JR-GBG">
+                                        <rect key="frame" x="95" y="0.0" width="95" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ue-jg-m3J">
                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="49"/>
@@ -2120,13 +2150,13 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-hd-MHr">
-                                        <rect key="frame" x="95" y="0.0" width="505" height="49"/>
-                                        <color key="backgroundColor" red="0.68627450980392157" green="0.59607843137254901" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="190" y="0.0" width="410" height="49"/>
                                         <accessibility key="accessibilityConfiguration" label="orderButton"/>
-                                        <state key="normal" title="바로 구매">
+                                        <state key="normal" title="바로 구매" backgroundImage="btn_submit_gold">
                                             <color key="titleColor" red="0.98431372549019602" green="0.97254901960784312" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="highlighted" backgroundImage="btn_submit_gold_pressed"/>
                                         <connections>
                                             <action selector="orderButtonTapped" destination="0O0-Tf-ajG" eventType="touchUpInside" id="bk4-af-F43"/>
                                         </connections>
@@ -2134,6 +2164,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="k3m-AZ-tQ3" secondAttribute="bottom" id="9rR-xO-Kgi"/>
+                                    <constraint firstItem="DnH-JR-GBG" firstAttribute="leading" secondItem="k3m-AZ-tQ3" secondAttribute="trailing" id="CJA-sy-fXG"/>
+                                    <constraint firstItem="k3m-AZ-tQ3" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="top" id="DYC-2W-B6p"/>
                                     <constraint firstItem="Iah-hd-MHr" firstAttribute="leading" secondItem="DnH-JR-GBG" secondAttribute="trailing" id="FeD-ui-Raz"/>
                                     <constraint firstItem="DnH-JR-GBG" firstAttribute="leading" secondItem="PeH-9W-7jI" secondAttribute="leading" id="N17-4J-sqT"/>
                                     <constraint firstItem="DnH-JR-GBG" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="top" id="O2V-QA-Z1g"/>
@@ -2141,11 +2174,17 @@
                                     <constraint firstItem="Iah-hd-MHr" firstAttribute="top" secondItem="PeH-9W-7jI" secondAttribute="top" id="Zgm-Bz-t2g"/>
                                     <constraint firstAttribute="bottom" secondItem="DnH-JR-GBG" secondAttribute="bottom" id="dLy-PN-Uec"/>
                                     <constraint firstAttribute="height" constant="49" id="jF3-I8-d3i"/>
+                                    <constraint firstItem="k3m-AZ-tQ3" firstAttribute="leading" secondItem="PeH-9W-7jI" secondAttribute="leading" id="r1s-za-z5G"/>
                                     <constraint firstAttribute="trailing" secondItem="Iah-hd-MHr" secondAttribute="trailing" id="veS-ym-g6k"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="N17-4J-sqT"/>
+                                    </mask>
+                                </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-GO-pqK">
-                                <rect key="frame" x="10" y="30" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-GO-pqK">
+                                <rect key="frame" x="0.0" y="20" width="55" height="55"/>
                                 <accessibility key="accessibilityConfiguration" label="backButton"/>
                                 <state key="normal" image="btnBack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2175,6 +2214,8 @@
                     <size key="freeformSize" width="600" height="2000"/>
                     <connections>
                         <outlet property="collectionView" destination="rDm-du-nF3" id="UaR-YC-8zr"/>
+                        <outlet property="favoriteButton" destination="akv-kp-NRX" id="7RR-ch-IAa"/>
+                        <outlet property="favoriteImageView" destination="utD-gl-zCk" id="7ki-9E-lPv"/>
                         <segue destination="oH7-Bu-1Bx" kind="show" identifier="From Product Detail To Review" id="vRv-mk-U6R"/>
                         <segue destination="Csn-Bo-N69" kind="show" identifier="From Product Detail To Inquiry" id="YMG-78-3cX"/>
                         <segue destination="gh2-yY-KRU" kind="show" identifier="From Product Detail To Option" id="Ed8-bt-Bbj"/>
@@ -2714,6 +2755,8 @@
         <image name="bg_product_review" width="3" height="3"/>
         <image name="btnBack" width="55" height="55"/>
         <image name="btnDeleteItem" width="42" height="42"/>
+        <image name="btnFavoriteOff" width="29" height="29"/>
+        <image name="btnFavoriteOn" width="29" height="28"/>
         <image name="btnGoldStroke" width="11" height="11"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btnSelectOff" width="36" height="40"/>
