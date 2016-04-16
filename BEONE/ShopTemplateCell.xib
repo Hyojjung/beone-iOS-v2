@@ -24,19 +24,19 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
-                                <rect key="frame" x="8" y="8" width="545" height="351"/>
+                                <rect key="frame" x="11" y="8" width="539" height="348"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLF-jt-H4w">
-                                        <rect key="frame" x="2" y="0.0" width="541" height="170"/>
+                                        <rect key="frame" x="2" y="0.0" width="535" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="bg_cart_infomation" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-n6-DMq" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="541" height="170"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="535" height="170"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="170" id="ZLd-bn-6fm"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fg_gradiant_topbanner" translatesAutoresizingMaskIntoConstraints="NO" id="Qpv-c2-4OW">
-                                                <rect key="frame" x="0.0" y="0.0" width="541" height="170"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="535" height="170"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-lo-0GZ" userLabel="shop_logo" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="105" width="50" height="50"/>
@@ -73,25 +73,25 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGG-qx-tlY">
-                                        <rect key="frame" x="0.0" y="170" width="545" height="181"/>
+                                        <rect key="frame" x="0.0" y="170" width="539" height="178"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListWhiteShadow" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-Cd-tvk">
-                                                <rect key="frame" x="0.0" y="0.0" width="545" height="181"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="539" height="178"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워 판매 중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-Wu-xIG">
-                                                <rect key="frame" x="12" y="38" width="533" height="15"/>
+                                                <rect key="frame" x="12" y="39" width="527" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="플라워 샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-Tx-zar">
-                                                <rect key="frame" x="12" y="58" width="521" height="111"/>
+                                                <rect key="frame" x="12" y="56" width="515" height="105"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라워샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awD-TX-CjT">
-                                                <rect key="frame" x="12" y="15" width="521" height="18"/>
+                                                <rect key="frame" x="12" y="15" width="515" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -104,11 +104,11 @@
                                             <constraint firstItem="4xO-Cd-tvk" firstAttribute="top" secondItem="iGG-qx-tlY" secondAttribute="top" id="Ezp-cQ-jfi"/>
                                             <constraint firstItem="awD-TX-CjT" firstAttribute="leading" secondItem="iGG-qx-tlY" secondAttribute="leading" constant="12" id="IYX-fO-4Bc"/>
                                             <constraint firstAttribute="trailing" secondItem="awD-TX-CjT" secondAttribute="trailing" constant="12" id="O0q-TE-vtr"/>
-                                            <constraint firstItem="ry0-Tx-zar" firstAttribute="top" secondItem="oY4-Wu-xIG" secondAttribute="bottom" constant="5" id="SSU-WN-zMs"/>
-                                            <constraint firstAttribute="bottom" secondItem="ry0-Tx-zar" secondAttribute="bottom" constant="12" id="Syi-9a-9Oa"/>
+                                            <constraint firstItem="ry0-Tx-zar" firstAttribute="top" secondItem="oY4-Wu-xIG" secondAttribute="bottom" constant="2" id="SSU-WN-zMs"/>
+                                            <constraint firstAttribute="bottom" secondItem="ry0-Tx-zar" secondAttribute="bottom" constant="17" id="Syi-9a-9Oa"/>
                                             <constraint firstItem="awD-TX-CjT" firstAttribute="top" secondItem="iGG-qx-tlY" secondAttribute="top" constant="15" id="Tt4-ws-Ore"/>
                                             <constraint firstItem="oY4-Wu-xIG" firstAttribute="leading" secondItem="ry0-Tx-zar" secondAttribute="leading" id="Ue8-D6-lIO"/>
-                                            <constraint firstItem="oY4-Wu-xIG" firstAttribute="top" secondItem="awD-TX-CjT" secondAttribute="bottom" constant="5" id="Uxd-R4-BeS"/>
+                                            <constraint firstItem="oY4-Wu-xIG" firstAttribute="top" secondItem="awD-TX-CjT" secondAttribute="bottom" constant="6" id="Uxd-R4-BeS"/>
                                             <constraint firstItem="oY4-Wu-xIG" firstAttribute="leading" secondItem="awD-TX-CjT" secondAttribute="leading" id="WbT-ev-TM5"/>
                                             <constraint firstAttribute="bottom" secondItem="4xO-Cd-tvk" secondAttribute="bottom" id="Zps-H9-BVA"/>
                                             <constraint firstAttribute="trailing" secondItem="ry0-Tx-zar" secondAttribute="trailing" constant="12" id="adO-0C-7S3"/>
@@ -138,11 +138,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RJy-mU-COf" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="top" id="7tS-vp-mg1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iN0-l3-epB" secondAttribute="trailing" id="O1d-JC-VWk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="3" id="O1d-JC-VWk"/>
                             <constraint firstAttribute="trailing" secondItem="RJy-mU-COf" secondAttribute="trailing" id="WWK-YE-Fch"/>
                             <constraint firstItem="RJy-mU-COf" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leading" id="dgL-IO-Gl0"/>
-                            <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leadingMargin" id="eCR-Xc-h5S"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="iN0-l3-epB" secondAttribute="bottom" id="eKP-pZ-lII"/>
+                            <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="k6f-E9-zow" secondAttribute="leadingMargin" constant="3" id="eCR-Xc-h5S"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="3" id="eKP-pZ-lII"/>
                             <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="k6f-E9-zow" secondAttribute="topMargin" id="s3w-RB-4Ga"/>
                             <constraint firstAttribute="bottom" secondItem="RJy-mU-COf" secondAttribute="bottom" id="zoR-Vt-dU9"/>
                         </constraints>

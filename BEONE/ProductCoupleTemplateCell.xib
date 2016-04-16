@@ -158,7 +158,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWT-tO-GTa" customClass="ProductCoupleView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="293" y="0.0" width="289" height="579"/>
+                                <rect key="frame" x="292" y="0.0" width="289" height="579"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBd-Jb-cKC">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
@@ -307,14 +307,14 @@
                             <constraint firstItem="KWT-tO-GTa" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="BxE-a4-pMv"/>
                             <constraint firstItem="cuW-kw-D3y" firstAttribute="leading" secondItem="ELo-ok-fs3" secondAttribute="leading" constant="2" id="IhX-kc-vVP"/>
                             <constraint firstAttribute="trailing" secondItem="SUY-gj-dt7" secondAttribute="trailing" id="Vfk-YI-T6t"/>
-                            <constraint firstItem="KWT-tO-GTa" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="2" id="ZBp-P5-GMj"/>
+                            <constraint firstItem="KWT-tO-GTa" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="1" id="ZBp-P5-GMj"/>
                             <constraint firstAttribute="centerX" secondItem="cuW-kw-D3y" secondAttribute="trailing" constant="1" id="Zvw-UN-zWd"/>
                             <constraint firstItem="SUY-gj-dt7" firstAttribute="leading" secondItem="ELo-ok-fs3" secondAttribute="leading" id="eZX-rN-Tq5"/>
                             <constraint firstAttribute="bottom" secondItem="SUY-gj-dt7" secondAttribute="bottom" id="iDi-u9-dta"/>
                             <constraint firstItem="SUY-gj-dt7" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="m0t-vr-8Lr"/>
                             <constraint firstAttribute="bottom" secondItem="cuW-kw-D3y" secondAttribute="bottom" constant="4" id="v1e-s0-vT1"/>
                             <constraint firstItem="cuW-kw-D3y" firstAttribute="top" secondItem="ELo-ok-fs3" secondAttribute="top" id="wIX-oA-ji4"/>
-                            <constraint firstAttribute="trailing" secondItem="KWT-tO-GTa" secondAttribute="trailing" constant="2" id="wef-n9-90z"/>
+                            <constraint firstAttribute="trailing" secondItem="KWT-tO-GTa" secondAttribute="trailing" constant="3" id="wef-n9-90z"/>
                             <constraint firstAttribute="bottom" secondItem="KWT-tO-GTa" secondAttribute="bottom" constant="4" id="zGn-RX-uja"/>
                         </constraints>
                     </view>
