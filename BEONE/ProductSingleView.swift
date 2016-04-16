@@ -3,6 +3,10 @@ import UIKit
  
 let kSimpleProductColumn = 2
  
+ protocol FavoriteProductDelegate: NSObjectProtocol {
+  func toggleFavoriteProduct()
+ }
+ 
 class ProductCoupleView: UIView {
   
   @IBOutlet weak var imageView: LazyLoadingImageView!
@@ -11,6 +15,8 @@ class ProductCoupleView: UIView {
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
+  
+  weak var favoriteProductDelegate: FavoriteProductDelegate?
   var productId: Int?
   
   func configureView(product: Product?) {
@@ -41,10 +47,12 @@ class ProductCoupleView: UIView {
     if sender.selected == false {
       FavoriteProductHelper.postFavoriteProduct(productId, success: {
         sender.selected = true
+        self.favoriteProductDelegate?.toggleFavoriteProduct()
       })
     } else {
       FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
         sender.selected = false
+        self.favoriteProductDelegate?.toggleFavoriteProduct()
       })
     }
   }

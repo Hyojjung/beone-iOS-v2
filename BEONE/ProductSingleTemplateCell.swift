@@ -11,6 +11,8 @@ class ProductSingleTemplateCell: TemplateCell {
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var priceLabelLeadingLayoutConstraint: NSLayoutConstraint!
+  
+  weak var favoriteProductDelegate: FavoriteProductDelegate?
   var productId: Int?
 
   override func configureCell(template: Template) {
@@ -52,10 +54,12 @@ class ProductSingleTemplateCell: TemplateCell {
     if sender.selected == false {
       FavoriteProductHelper.postFavoriteProduct(productId, success: {
         sender.selected = true
+        self.favoriteProductDelegate?.toggleFavoriteProduct()
       })
     } else {
       FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
         sender.selected = false
+        self.favoriteProductDelegate?.toggleFavoriteProduct()
       })
     }
   }
