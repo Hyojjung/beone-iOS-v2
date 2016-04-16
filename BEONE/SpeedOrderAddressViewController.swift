@@ -81,6 +81,11 @@ extension SpeedOrderAddressViewController: UITextFieldDelegate {
       tempAddress = address
     }
   }
+
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    endEditing()
+    return true
+  }
 }
 
 extension SpeedOrderAddressViewController: AddressDelegate {

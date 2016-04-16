@@ -86,11 +86,11 @@ class ProductDesctriptionCell: ProductDetailCell {
   @IBOutlet weak var imageView: ProductDetailImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var imageButton: UIButton!
+  @IBOutlet weak var imageButton: UIButton?
   
   override func configureCell(product: Product, indexPath: NSIndexPath) {
     super.configureCell(product, indexPath: indexPath)
-    imageButton.tag = indexPath.row
+    imageButton?.tag = indexPath.row
   }
   
   func setUpView(productDetail: ProductDetail, buttonEnabled: Bool) {
@@ -99,14 +99,13 @@ class ProductDesctriptionCell: ProductDetailCell {
     titleLabel.text = nil
     descriptionLabel.text = nil
     
-    imageButton.enabled = buttonEnabled && productDetail.detailType == .Image
+    imageButton?.enabled = buttonEnabled && productDetail.detailType == .Image
     
     if let detailType = productDetail.detailType {
       switch detailType {
       case .Image:
         imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultHigh
         imageView.productDetail = productDetail
-//        imageView.heightLayoutConstraint.constant = productDetail.height!
         imageView.setLazyLoaingImage(productDetail.content)
       case .Title:
         titleLabel.text = productDetail.content
