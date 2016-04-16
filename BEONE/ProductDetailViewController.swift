@@ -7,7 +7,7 @@ import SDWebImage
 let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
 let kProductDetailHeaderCellIdentifier = "headerCell"
 
-let kProductDetailHeaderCellDefaultHeight = CGFloat(300)
+let kProductDetailHeaderCellDefaultHeight = CGFloat(450)
 let kProductDetailHeaderCellMinimumHeight = CGFloat(82)
 let kKaKaoLinkImageWidth = CGFloat(140)
 
