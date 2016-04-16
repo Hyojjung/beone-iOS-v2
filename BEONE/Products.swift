@@ -62,6 +62,7 @@ class Products: BaseListModel {
       parameter["productPropertyValueIds"] = productPropertyValueIds
       parameter["tagIds"] = tagIds
       parameter["minPrice"] = minPrice
+      parameter[kNetworkRequestKeyLocationId] = locationId
       parameter["maxPrice"] = maxPrice
       parameter["noData"] = noData
       parameter["isQuickOrder"] = isQuickOrder

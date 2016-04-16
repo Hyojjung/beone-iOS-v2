@@ -1295,6 +1295,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail" translatesAutoresizingMaskIntoConstraints="NO" id="3Rm-Tc-quy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-mc-9kC" customClass="KeyboardScrollView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="69" width="600" height="163"/>
                                 <subviews>
@@ -1411,9 +1414,6 @@
                                     <action selector="backButtonTapped" destination="FqX-h6-qpT" eventType="touchUpInside" id="flJ-2C-29d"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_join_detail" translatesAutoresizingMaskIntoConstraints="NO" id="3Rm-Tc-quy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="">

@@ -1597,7 +1597,7 @@
     <resources>
         <image name="bg_list" width="3" height="3"/>
         <image name="bg_list_divider" width="3" height="3"/>
-        <image name="btnGoldStroke" width="12" height="12"/>
+        <image name="btnGoldStroke" width="11" height="11"/>
         <image name="btnGoldStrokePressed" width="12" height="12"/>
         <image name="btn_address_num_off" width="40" height="40"/>
         <image name="btn_address_num_on" width="40" height="40"/>

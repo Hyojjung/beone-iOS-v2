@@ -61,6 +61,11 @@ class ProductDetailViewController: BaseViewController {
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.hidden = true
