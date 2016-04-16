@@ -91,6 +91,8 @@ class SearchViewController: BaseTableViewController {
     products.minPrice = minPrice
     products.productPropertyValueIds = selectedProductPropertyValueIds
     products.tagIds = selectedTagIds
+    products.locationId = BEONEManager.selectedLocation?.id
+    products.isQuickOrder = false
     products.get { 
       self.dataLoaded = true
       self.changeProductCount()

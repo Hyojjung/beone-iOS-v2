@@ -319,6 +319,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgSidebarPcolorGradient" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-Zp-W8G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소를 입력해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-0Y-5Ck">
                                                     <rect key="frame" x="217" y="35" width="166" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -331,9 +334,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgSidebarPcolorGradient" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-Zp-W8G">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="MeC-Zp-W8G" secondAttribute="bottom" id="3np-jk-4X8"/>

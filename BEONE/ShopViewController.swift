@@ -34,6 +34,7 @@ class ShopViewController: BaseTableViewController {
     super.setUpData()
     if shop.id != nil {
       shop.get({
+        self.title = self.shop.name
         self.tableView.reloadData()
       })
       shopProducts.get {
