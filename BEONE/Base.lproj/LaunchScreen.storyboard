@@ -16,12 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgSplash" translatesAutoresizingMaskIntoConstraints="NO" id="LN8-6D-gTm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSplashBeone" translatesAutoresizingMaskIntoConstraints="NO" id="RKP-tx-f9T">
+                                <rect key="frame" x="178" y="120" width="244" height="90"/>
+                            </imageView>
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="center" text="국내최초 모바일 플라워 마켓" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoU-W6-60X">
+                                <rect key="frame" x="216" y="222" width="168" height="18"/>
+                                <accessibility key="accessibilityConfiguration" identifier="D05E9FF7-A26C-47DA-816F-2D393C33AD1F"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="" pointSize="15"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.88235294119999996" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RKP-tx-f9T" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="100" id="5Oj-7E-lJt"/>
+                            <constraint firstItem="LN8-6D-gTm" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="AqF-jh-Rxu"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="LN8-6D-gTm" secondAttribute="bottom" id="HkO-Wp-ycU"/>
+                            <constraint firstItem="IoU-W6-60X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XHZ-y7-Kzc"/>
+                            <constraint firstItem="RKP-tx-f9T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Yii-eJ-h0e"/>
+                            <constraint firstItem="IoU-W6-60X" firstAttribute="top" secondItem="RKP-tx-f9T" secondAttribute="bottom" constant="12" id="bl7-z2-Vfc"/>
+                            <constraint firstItem="LN8-6D-gTm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dDk-EQ-BoL"/>
+                            <constraint firstAttribute="trailing" secondItem="LN8-6D-gTm" secondAttribute="trailing" id="dM1-aa-L9w"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-31" y="400"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bgSplash" width="960" height="1644"/>
+        <image name="imageSplashBeone" width="244" height="90"/>
+    </resources>
 </document>
