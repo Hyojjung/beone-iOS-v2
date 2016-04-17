@@ -42,6 +42,8 @@ class SearchViewController: BaseTableViewController {
   var selectedTagIds = [Int]()
   var minPrice = kDefaultMinPrice
   var maxPrice = kDefaultMaxPrice
+  var minPrices = [Int]()
+  var maxPrices = [Int]()
   
   @IBOutlet weak var productCountLabel: UILabel!
   
@@ -67,15 +69,32 @@ class SearchViewController: BaseTableViewController {
       self.maxPrice = maxPrice
     }
     
-    productProperties.get { 
+    productProperties.get {
       self.tableView.reloadData()
     }
-    tags.get { 
+    tags.get {
       self.tableView.reloadData()
     }
-    productSearchData.get { 
-      self.minPrice = self.productSearchData.minPrice
-      self.maxPrice = self.productSearchData.maxPrice
+    productSearchData.get {
+      self.minPrices.removeAll()
+      self.maxPrices.removeAll()
+      
+      for i in 0..<((self.productSearchData.maxPrice - self.productSearchData.minPrice) / self.productSearchData.priceUnit) {
+        let minPriceItem = self.productSearchData.minPrice + i * self.productSearchData.priceUnit
+        let maxPriceItem = self.productSearchData.minPrice + (i + 1) * self.productSearchData.priceUnit
+        
+        self.minPrices.append(minPriceItem)
+        self.maxPrices.append(maxPriceItem)
+      }
+
+      if self.minPrice == kDefaultMinPrice && self.minPrices.count > 0 {
+        self.minPrice = self.minPrices.first!
+      }
+      
+      if self.maxPrice == kDefaultMaxPrice && self.maxPrices.count > 0 {
+        self.maxPrice = self.maxPrices.last!
+      }
+      
       self.setUpProducts()
       self.tableView.reloadData()
     }
@@ -93,7 +112,7 @@ class SearchViewController: BaseTableViewController {
     products.tagIds = selectedTagIds
     products.locationId = BEONEManager.selectedLocation?.id
     products.isQuickOrder = false
-    products.get { 
+    products.get {
       self.dataLoaded = true
       self.changeProductCount()
     }
@@ -169,15 +188,20 @@ extension SearchViewController {
   }
   
   func selectPrice(sender: UIButton, isMin: Bool, donBlock: (Int) -> Void) {
-    var rows = [String]()
-    var initialSelection = 0
-    for i in 0..<((productSearchData.maxPrice - productSearchData.minPrice) / productSearchData.priceUnit) {
-      let index = isMin ? i : i + 1
-      let price = (productSearchData.minPrice + index * productSearchData.priceUnit) / kPriceUnit
-      if maxPrice == price {
-        initialSelection = i
-      }
-      rows.appendObject("\(price)")
+    let prices = isMin ? self.minPrices : self.maxPrices
+    let price = isMin ? self.minPrice : self.maxPrice
+    
+    let rows = prices.map { (p: Int) -> String in
+      return "\(p / kPriceUnit)"
+    }
+    
+    let rowValueForPrice = "\(price / kPriceUnit)"
+    var initialSelection = rows.indexOf(rowValueForPrice)
+    
+    if initialSelection == nil {
+      initialSelection = isMin ?
+        0 :
+        rows.count - 1
     }
     
     let actionSheetTitle = isMin ?
