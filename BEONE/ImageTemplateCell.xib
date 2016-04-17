@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageTemplateCell" id="bKt-ua-VZR" customClass="ImageTemplateCell" customModule="BEONE" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageTemplateCell" rowHeight="308" id="bKt-ua-VZR" customClass="ImageTemplateCell" customModule="BEONE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="308"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKt-ua-VZR" id="hkM-3B-ScA">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="307.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-EL-Ap9">
@@ -106,7 +106,7 @@
                 <outlet property="forgoundImageView" destination="sXC-1q-pvk" id="8rK-nX-yyz"/>
                 <outlet property="templateContentsView" destination="bjg-EL-Ap9" id="wta-Cg-bzH"/>
             </connections>
-            <point key="canvasLocation" x="-54" y="271"/>
+            <point key="canvasLocation" x="-54" y="403"/>
         </tableViewCell>
     </objects>
     <resources>
