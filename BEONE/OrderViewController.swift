@@ -40,6 +40,7 @@ class OrderViewController: BaseTableViewController {
   var bankUnpaiedPaymentInfos = [PaymentInfo]()
   var returnableOrderItemSets = [OrderableItemSet]()
   var paymentTypes: PaymentTypes?
+  var paymentInfoToOperate: PaymentInfo?
   
   // MARK: - BaseViewController Methods
   
@@ -137,20 +138,18 @@ extension OrderViewController {
   
   @IBAction func paymentButtonTapped(sender: UIButton) {
     if let paymentInfo = order.paymentInfos.model(sender.tag) as? PaymentInfo {
+      paymentInfoToOperate = paymentInfo;
+      
       if paymentInfo.transactionButtonType == .Payment {
         showPayment(paymentTypes?.list as? [PaymentType],
                     order: order,
                     paymentInfoId: paymentInfo.id!)
-      } else if paymentInfo.transactionButtonType == .Cancel{
-        if paymentInfo.isMainPayment {
-          order.put({ (_) -> Void in
-            self.popView()
-          })
-        } else {
-          paymentInfo.put({ (_) -> Void in
-            self.setUpData()
-          })
-        }
+      } else if paymentInfo.transactionButtonType == .Cancel {
+        let confirmAction = Action()
+        confirmAction.type = .Method
+        confirmAction.content = "cancelOrder"
+        
+        showAlertView(NSLocalizedString("sure order cancel", comment: "alert"), hasCancel: true, confirmAction: confirmAction, cancelAction: nil, delegate: self)
       }
     }
   }
@@ -161,6 +160,24 @@ extension OrderViewController {
         showWebView(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, title: "배송조회")
         break
       }
+    }
+  }
+  
+  func cancelOrder() {
+    // 결제가 메인 결제이면, 주문 자체가 취소
+    // 아닌 경우, 한 결제만 취소
+    if let paymentInfo = paymentInfoToOperate{
+      if paymentInfo.isMainPayment {
+        order.put({ (_) -> Void in
+          self.popView()
+        })
+        
+      } else {
+        paymentInfoToOperate?.put({ (_) -> Void in
+          self.setUpData()
+        })
+      }
+      
     }
   }
 }
