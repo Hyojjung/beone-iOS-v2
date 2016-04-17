@@ -96,7 +96,7 @@ static NSString *kBOImageSliderDotInactive = @"image_slider_dot_inactive";
 - (void)_addPageControl {
   [self addSubview:self.pageControl];
   NSDictionary *views = @{@"pageControl": self.pageControl};
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pageControl]-(14)-|"
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pageControl]-(5)-|"
                                                                options:0
                                                                metrics:nil
                                                                  views:views]];

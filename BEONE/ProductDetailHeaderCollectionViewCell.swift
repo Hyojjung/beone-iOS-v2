@@ -4,8 +4,11 @@ import UIKit
 class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var imageScrollView: XLCCycleScrollView!
   @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var favoriteButton: UIButton!
+  
   var imageUrls: [String]?
-    
+  var product: Product?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     imageScrollView.datasource = self
@@ -13,6 +16,11 @@ class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
   }
   
   func configureCell(product: Product) {
+    self.product = product
+    
+    if let isFavorite = self.product?.isFavorite() {
+      self.favoriteButton.selected = isFavorite
+    }
     productNameLabel.text = product.title
     imageUrls = product.productDetailImageUrls()
     imageScrollView.reloadData()
@@ -49,6 +57,30 @@ extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDatasource {
 extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDelegate {
   func didClickPage(csView: XLCCycleScrollView!, atIndex index: Int) {
     postNotification(kNotificationProductDetailImageTapped,
-      userInfo: [kNotificationKeyIndex: index, kNotificationKeyView: csView])
+                     userInfo: [kNotificationKeyIndex: index, kNotificationKeyView: csView])
   }
+}
+
+// MARK: IB Actions
+
+extension ProductDetailHeaderCollectionViewCell {
+  
+  @IBAction func favoriteButtonTapped(sender: UIButton) {
+    if let product = self.product {
+      if let productId = product.id {
+        sender.selected = !sender.selected
+        if !sender.selected {
+          FavoriteProductHelper.postFavoriteProduct(productId, success: {
+            
+          })
+        } else {
+          FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
+            
+          })
+        }
+      }
+    }
+    
+  }
+  
 }

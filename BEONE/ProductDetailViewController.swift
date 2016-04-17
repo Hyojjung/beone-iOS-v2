@@ -8,7 +8,7 @@ let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
 let kProductDetailHeaderCellIdentifier = "headerCell"
 
 let kProductDetailHeaderCellDefaultHeight = CGFloat(450)
-let kProductDetailHeaderCellMinimumHeight = CGFloat(82)
+let kProductDetailHeaderCellMinimumHeight = CGFloat(64)
 let kKaKaoLinkImageWidth = CGFloat(140)
 
 class ProductDetailViewController: BaseViewController {
@@ -52,8 +52,6 @@ class ProductDetailViewController: BaseViewController {
     "reviewSection",
     "buttonSpaceCell"]
   
-  @IBOutlet weak var favoriteButton: UIButton!
-  @IBOutlet weak var favoriteImageView: UIImageView!
   @IBOutlet weak var collectionView: UICollectionView!
   
   let product = Product()
@@ -105,9 +103,6 @@ class ProductDetailViewController: BaseViewController {
     super.setUpData()
     product.get({
       self.setUpProductData()
-      let isFavorite = self.product.isFavorite()
-      self.favoriteImageView.highlighted = isFavorite
-      self.favoriteButton.selected = isFavorite
     })
     reviews.get {
       self.product.reviews = self.reviews.list as! [Review]
@@ -152,22 +147,6 @@ class ProductDetailViewController: BaseViewController {
 }
 
 extension ProductDetailViewController {
-  
-  @IBAction func favoriteButtonTapped(sender: UIButton) {
-    if let productId = product.id {
-      if !sender.selected {
-        FavoriteProductHelper.postFavoriteProduct(productId, success: { 
-          sender.selected = true
-          self.favoriteImageView.highlighted = true
-        })
-      } else {
-        FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
-          sender.selected = false
-          self.favoriteImageView.highlighted = false
-        })
-      }
-    }
-  }
 
   @IBAction func backButtonTapped() {
     popView()

@@ -14,46 +14,70 @@
                 <rect key="frame" x="0.0" y="0.0" width="461" height="291"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u55-bY-uKg" customClass="XLCCycleScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="461" height="209"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="247"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.0" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
-                        <rect key="frame" x="50" y="240" width="361" height="24"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbI-8J-VDG">
+                        <rect key="frame" x="0.0" y="227" width="461" height="64"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-zD-f7q">
+                                <rect key="frame" x="0.0" y="0.0" width="461" height="20"/>
+                                <color key="backgroundColor" red="0.32156862745098036" green="0.32156862745098036" blue="0.32156862745098036" alpha="0.86615287162162169" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="nX7-MH-5z6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="제품명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
+                                <rect key="frame" x="50" y="32" width="361" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="titleLabel"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="laP-JZ-Mov"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="laP-JZ-Mov"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-r0-KbW" userLabel="Favorite Button">
+                                <rect key="frame" x="418" y="24.5" width="34" height="34"/>
+                                <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="F4J-Gw-5wA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <accessibility key="accessibilityConfiguration" label="titleLabel"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="laP-JZ-Mov"/>
+                            <constraint firstItem="SoB-S5-nLO" firstAttribute="leading" secondItem="FbI-8J-VDG" secondAttribute="leading" constant="50" id="DEo-hc-2lK"/>
+                            <constraint firstAttribute="height" constant="64" id="DJz-bF-ivq"/>
+                            <constraint firstAttribute="trailing" secondItem="SoB-S5-nLO" secondAttribute="trailing" constant="50" id="Ddh-lj-9TO"/>
+                            <constraint firstItem="SoB-S5-nLO" firstAttribute="centerX" secondItem="FbI-8J-VDG" secondAttribute="centerX" id="J4V-UE-Kee"/>
+                            <constraint firstItem="XNl-zD-f7q" firstAttribute="top" secondItem="FbI-8J-VDG" secondAttribute="top" id="VAG-7M-xK4"/>
+                            <constraint firstAttribute="trailing" secondItem="XNl-zD-f7q" secondAttribute="trailing" id="eZv-IW-Syd"/>
+                            <constraint firstAttribute="trailing" secondItem="1aw-r0-KbW" secondAttribute="trailing" constant="12" id="gNy-n7-jLv"/>
+                            <constraint firstItem="SoB-S5-nLO" firstAttribute="centerY" secondItem="FbI-8J-VDG" secondAttribute="centerY" constant="10" id="pcZ-f5-UIg"/>
+                            <constraint firstItem="XNl-zD-f7q" firstAttribute="leading" secondItem="FbI-8J-VDG" secondAttribute="leading" id="qXS-3k-Iv0"/>
+                            <constraint firstItem="1aw-r0-KbW" firstAttribute="centerY" secondItem="FbI-8J-VDG" secondAttribute="centerY" constant="10" id="qj2-YO-LuY"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
-                        <color key="textColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="laP-JZ-Mov"/>
-                            </mask>
-                        </variation>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stroke_1" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-EI-vkO">
-                        <rect key="frame" x="12" y="290" width="437" height="1"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="uae-cf-RaD"/>
-                        </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.32156862745098036" green="0.32156862745098036" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="RsJ-EI-vkO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5MW-oF-cX2"/>
-                <constraint firstAttribute="bottom" secondItem="RsJ-EI-vkO" secondAttribute="bottom" id="8UQ-pc-QYa"/>
-                <constraint firstAttribute="trailing" secondItem="SoB-S5-nLO" secondAttribute="trailing" constant="50" id="9Jh-F9-hzg"/>
-                <constraint firstItem="SoB-S5-nLO" firstAttribute="top" secondItem="u55-bY-uKg" secondAttribute="bottom" constant="31" id="Huy-eJ-eX3"/>
+                <constraint firstItem="u55-bY-uKg" firstAttribute="bottom" secondItem="FbI-8J-VDG" secondAttribute="top" constant="20" id="K7m-UW-sMe"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pdw-NB-lxj"/>
-                <constraint firstAttribute="trailing" secondItem="RsJ-EI-vkO" secondAttribute="trailing" constant="12" id="SDY-gt-7EO"/>
+                <constraint firstItem="FbI-8J-VDG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VU5-f1-qhP"/>
+                <constraint firstAttribute="trailing" secondItem="FbI-8J-VDG" secondAttribute="trailing" id="XJc-QE-a7I"/>
                 <constraint firstItem="u55-bY-uKg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eyp-dx-BiX"/>
                 <constraint firstAttribute="bottom" secondItem="u55-bY-uKg" secondAttribute="bottom" id="k65-cK-kk2"/>
-                <constraint firstItem="SoB-S5-nLO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="oeK-rN-uIA"/>
-                <constraint firstAttribute="bottom" secondItem="SoB-S5-nLO" secondAttribute="bottom" constant="27" id="uCn-G7-UrK"/>
+                <constraint firstAttribute="bottom" secondItem="FbI-8J-VDG" secondAttribute="bottom" id="sMy-AK-H2e"/>
                 <constraint firstAttribute="trailing" secondItem="u55-bY-uKg" secondAttribute="trailing" id="v2e-Yj-6RG"/>
             </constraints>
             <size key="customSize" width="461" height="291"/>
@@ -63,6 +87,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="favoriteButton" destination="1aw-r0-KbW" id="2CX-VH-K0l"/>
                 <outlet property="imageScrollView" destination="u55-bY-uKg" id="HXd-QL-VBW"/>
                 <outlet property="productNameLabel" destination="SoB-S5-nLO" id="jnG-eC-de7"/>
             </connections>
@@ -70,6 +95,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="stroke_1" width="2" height="1"/>
+        <image name="btnProductdetailFavoriteOff" width="34" height="34"/>
+        <image name="btnProductdetailFavoriteOn" width="34" height="34"/>
     </resources>
 </document>
