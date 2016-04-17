@@ -29,6 +29,8 @@ class OrdersViewController: BaseTableViewController {
   let reviewableOrderItems = OrderItems()
   var paymentTypes: PaymentTypes?
   
+  var orderToOperate: Order?
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     super.prepareForSegue(segue, sender: sender)
     if let orderViewController = segue.destinationViewController as? OrderViewController, orderId = sender as? Int {
@@ -43,10 +45,10 @@ class OrdersViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    orders.get { 
+    orders.get {
       self.tableView.reloadData()
     }
-    reviewableOrderItems.get { 
+    reviewableOrderItems.get {
       self.tableView.reloadData()
     }
     OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
@@ -87,25 +89,35 @@ extension OrdersViewController: SchemeDelegate {
 extension OrdersViewController: AddintionalPaymentDelegate {
   
   func paymentButtonTapped(orderId: Int, paymentInfoId: Int) {
+    
     if let order = orders.model(orderId) as? Order {
-      if let paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo {
-        if paymentInfo.transactionButtonType == .Payment {
+      orderToOperate = order
+      
+      if orderToOperate!.transactionButtonType == .Payment {
+        if let paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo {
           showPayment(paymentTypes?.list as? [PaymentType],
                       order: order,
                       paymentInfoId: paymentInfo.id!)
-        } else if paymentInfo.transactionButtonType == .Cancel{
-          if paymentInfo.isMainPayment {
-            order.put({ (_) -> Void in
-              self.setUpData()
-            })
-          } else {
-            paymentInfo.put({ (_) -> Void in
-              self.setUpData()
-            })
-          }
         }
+        
+      } else if orderToOperate!.transactionButtonType == .Cancel {
+        let confirmAction = Action()
+        confirmAction.type = .Method
+        confirmAction.content = "cancelOrder"
+        
+        showAlertView(NSLocalizedString("sure order cancel", comment: "alert"),
+                      hasCancel: true,
+                      confirmAction: confirmAction,
+                      cancelAction: nil,
+                      delegate: self)
       }
     }
+  }
+  
+  func cancelOrder() {
+    orderToOperate?.put({ (_) in
+      self.setUpData()
+    });
   }
 }
 

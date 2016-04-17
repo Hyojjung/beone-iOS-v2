@@ -62,7 +62,12 @@ class OrderResultViewController: BaseViewController {
   
   @IBAction func closeViewButtonTapped() {
     if status == .Success {
-      navigationController?.popToRootViewControllerAnimated(false)
+      // rootView까지 갔다가 주문 목록 보여줌.
+      let navigation = navigationController;
+      navigation?.popToRootViewControllerAnimated(false)
+      let ordersViewController = UIViewController.viewController(.Orders)
+      navigation?.pushViewController(ordersViewController, animated: true)
+      
     } else {
       popView()
     }

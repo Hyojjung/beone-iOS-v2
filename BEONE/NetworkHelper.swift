@@ -53,6 +53,10 @@ class NetworkHelper: NSObject {
   
   static private func request(method: NetworkMethod, url: String, parameter: AnyObject?,
                               success: NetworkSuccess?, failure: NetworkFailure?) {
+    #if DEBUG
+      print("\(method) \(url)")
+      print("parameter: \(parameter)")
+    #endif
     switch method {
     case .Get:
       requestGet(url, parameter: parameter, success: success, failure: failure)
@@ -68,7 +72,6 @@ class NetworkHelper: NSObject {
   static private func handleErrorDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, error: NSError, success: NetworkSuccess?, failure: NetworkFailure?) {
     #if DEBUG
       print("\(operation.response?.statusCode) \(operation.request.URL)")
-      print("responseObject: \(responseObject)")
     #endif
     let responseObject = responseObject as? [String: AnyObject]
     if let statusCode = operation.response?.statusCode {
@@ -143,7 +146,12 @@ class NetworkHelper: NSObject {
   
   static private func handleSuccessDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, success: NetworkSuccess?) {
     #if DEBUG
-      print("\(operation.response?.statusCode) \(operation.request.URL)")
+      do {
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject!, options: NSJSONWritingOptions.PrettyPrinted)
+        print("responseObject: \(NSString(data: jsonData, encoding: NSUTF8StringEncoding))")
+      } catch let error as NSError{
+        print(error.description)
+      }
     #endif
     if let success = success, responseObject = responseObject {
       
@@ -203,9 +211,6 @@ class NetworkHelper: NSObject {
 
 extension NetworkHelper {
   static func requestGet(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
-    #if DEBUG
-      print("GET \(url)")
-    #endif
     addNetworkCount()
     
     var param: [String: AnyObject]
@@ -228,9 +233,6 @@ extension NetworkHelper {
   }
   
   static func requestPost(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
-    #if DEBUG
-      print("POST \(url)")
-    #endif
     addNetworkCount()
     networkManager.POST(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
@@ -242,9 +244,6 @@ extension NetworkHelper {
   }
   
   static func requestPut(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure?) {
-    #if DEBUG
-      print("PUT \(url)")
-    #endif
     addNetworkCount()
     networkManager.PUT(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
@@ -256,9 +255,6 @@ extension NetworkHelper {
   }
   
   static func requestDelete(url: String, parameter: AnyObject?, success: NetworkSuccess?, failure: NetworkFailure? = nil) {
-    #if DEBUG
-      print("DELETE \(url)")
-    #endif
     addNetworkCount()
     networkManager.DELETE(url, parameters: parameter, success: { (operation, responseObject) -> Void in
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
