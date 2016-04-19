@@ -19,6 +19,9 @@
                         <constraint firstAttribute="width" secondItem="kWm-Sm-lo3" secondAttribute="height" multiplier="1:1" id="bZw-79-pSw"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgColorList" translatesAutoresizingMaskIntoConstraints="NO" id="vWO-Ps-Rbm">
+                    <rect key="frame" x="0.0" y="81" width="81" height="41"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ob-f7-EZD">
                     <rect key="frame" x="4" y="85" width="73" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -42,13 +45,17 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="vWO-Ps-Rbm" firstAttribute="top" secondItem="kWm-Sm-lo3" secondAttribute="bottom" id="3BD-1V-gEa"/>
                 <constraint firstAttribute="bottom" secondItem="Zud-aX-lcG" secondAttribute="bottom" id="FOq-O8-aOJ"/>
                 <constraint firstAttribute="trailing" secondItem="hvx-cd-DtG" secondAttribute="trailing" constant="4" id="FvF-bs-4Xh"/>
                 <constraint firstItem="hvx-cd-DtG" firstAttribute="top" secondItem="0Ob-f7-EZD" secondAttribute="bottom" constant="2" id="INP-18-aWd"/>
                 <constraint firstItem="0Ob-f7-EZD" firstAttribute="top" secondItem="kWm-Sm-lo3" secondAttribute="bottom" constant="4" id="Mwy-A9-gKN"/>
                 <constraint firstItem="hvx-cd-DtG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="Soq-Lz-Axg"/>
+                <constraint firstItem="vWO-Ps-Rbm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Y4r-bG-80N"/>
                 <constraint firstItem="kWm-Sm-lo3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="a2V-l4-NpE"/>
                 <constraint firstAttribute="trailing" secondItem="kWm-Sm-lo3" secondAttribute="trailing" id="aI8-bs-EaZ"/>
+                <constraint firstAttribute="trailing" secondItem="vWO-Ps-Rbm" secondAttribute="trailing" id="fig-Pp-fLR"/>
+                <constraint firstAttribute="bottom" secondItem="vWO-Ps-Rbm" secondAttribute="bottom" id="g4Z-y8-MSE"/>
                 <constraint firstItem="0Ob-f7-EZD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="hYx-VX-Tbq"/>
                 <constraint firstAttribute="trailing" secondItem="Zud-aX-lcG" secondAttribute="trailing" id="k0D-Ug-gFz"/>
                 <constraint firstItem="kWm-Sm-lo3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="msw-Vw-cnS"/>
@@ -74,6 +81,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bgColorList" width="6" height="4"/>
         <image name="fgMainSelectColorBorder" width="36" height="36"/>
         <image name="fgMainSelectColorChecked" width="24" height="19"/>
     </resources>
