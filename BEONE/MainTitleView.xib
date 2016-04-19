@@ -11,8 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUc-O0-qhw">
-                    <rect key="frame" x="42" y="0.0" width="31" height="22"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="서울" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUc-O0-qhw">
+                    <rect key="frame" x="17" y="0.0" width="80" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="9G7-tZ-6pe"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <color key="textColor" red="0.95294117649999999" green="0.93333333330000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -69,7 +72,7 @@
             <connections>
                 <outlet property="locationLabel" destination="sUc-O0-qhw" id="eld-6l-WPi"/>
             </connections>
-            <point key="canvasLocation" x="97.5" y="195.5"/>
+            <point key="canvasLocation" x="97" y="195"/>
         </view>
     </objects>
     <resources>
