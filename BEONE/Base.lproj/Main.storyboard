@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kpg-HD-frD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kpg-HD-frD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -301,8 +301,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListIvory" translatesAutoresizingMaskIntoConstraints="NO" id="PBk-Kj-cEt">
                                                     <rect key="frame" x="0.0" y="14" width="600" height="136"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2g-Eg-Tkr">
-                                                    <rect key="frame" x="12" y="24" width="8" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2g-Eg-Tkr">
+                                                    <rect key="frame" x="12" y="24" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -365,7 +365,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울지역 0개의 상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mE-RU-Ve0">
-                                        <rect key="frame" x="236" y="10" width="129" height="20"/>
+                                        <rect key="frame" x="236" y="10.5" width="129" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -581,12 +581,18 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarKakao" translatesAutoresizingMaskIntoConstraints="NO" id="m8v-Ir-TqD">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오톡 문의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234-fU-euW">
                                                             <rect key="frame" x="9" y="103" width="76" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058820000003" green="0.65490196079999996" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="14" y="110" width="76" height="24"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -610,7 +616,8 @@
                                                             <exclude reference="xZ0-lc-QWk"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="13" width="104" height="134"/>
                                                         <mask key="constraints">
                                                             <include reference="Tly-ZO-Daf"/>
                                                             <include reference="xZ0-lc-QWk"/>
@@ -620,11 +627,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P80-vP-DNQ">
                                                     <rect key="frame" x="226" y="19" width="93" height="120"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="최근본상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
-                                                            <rect key="frame" x="17" y="103" width="61" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="주문/배송내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNN-FK-eP8">
+                                                            <rect key="frame" x="16.5" y="103" width="61" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058823529413" green="0.65490196078431373" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="14" y="110" width="78" height="17"/>
+                                                            </variation>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2C-81-2nH">
                                                             <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
@@ -647,8 +657,11 @@
                                                                 <action selector="showRecentProductsViewButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="EJT-TJ-Gbw"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarRecent" translatesAutoresizingMaskIntoConstraints="NO" id="lYu-cO-XVV">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarOrders" translatesAutoresizingMaskIntoConstraints="NO" id="lYu-cO-XVV">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -694,6 +707,9 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.77647058820000003" green="0.65490196079999996" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="27" y="110" width="52" height="17"/>
+                                                            </variation>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="700-k2-dVS">
                                                             <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
@@ -718,6 +734,9 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-wC-UKk">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1350,7 +1369,8 @@
                                                             <exclude reference="xFd-LC-ufi"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="22" y="-31" width="301" height="146"/>
                                                         <mask key="subviews">
                                                             <include reference="TYM-Nz-XG5"/>
                                                             <include reference="ylm-H2-eaP"/>
@@ -1571,6 +1591,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nC-Or-e2z">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <state key="normal" backgroundImage="bgCellUnderlineWhite"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showCouponViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="ZHF-IO-LFK"/>
                                         </connections>
@@ -1607,6 +1630,9 @@
                                         <exclude reference="aVU-6f-1c2"/>
                                     </mask>
                                 </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="134" height="134"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-HT-pEu" userLabel="주문내역뷰">
                                 <rect key="frame" x="200" y="64" width="200" height="200"/>
@@ -1614,6 +1640,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AX-ig-G8G">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <state key="normal" backgroundImage="bgCellUnderlineWhite"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="133" height="134"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showOrdersViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="M2S-9n-Ir5"/>
                                         </connections>
@@ -1651,6 +1680,9 @@
                                         <exclude reference="b7c-H4-K7N"/>
                                     </mask>
                                 </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="133" y="64" width="133" height="134"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgn-JM-uxm" userLabel="내정보뷰">
                                 <rect key="frame" x="400" y="64" width="200" height="200"/>
@@ -1667,9 +1699,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="48" y="85" width="37" height="17"/>
+                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMoreUser" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
                                         <rect key="frame" x="85" y="85" width="30" height="30"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="52" y="51" width="30" height="30"/>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1701,12 +1739,18 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-US-JiZ">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <state key="normal" backgroundImage="bgCellUnderlineWhite"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="133"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showHelpViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="Qdm-AX-a0r"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMoreHelp" translatesAutoresizingMaskIntoConstraints="NO" id="XGO-pr-N3M">
                                         <rect key="frame" x="85" y="85" width="30" height="30"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="51" y="51" width="30" height="30"/>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도움말" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9c-XU-kgU">
                                         <rect key="frame" x="81" y="119" width="37" height="17"/>
@@ -1736,6 +1780,9 @@
                                         <exclude reference="eZj-Zc-Mul"/>
                                         <exclude reference="mmy-kX-ubC"/>
                                     </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="197" width="134" height="133"/>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNP-aP-Sew" userLabel="공지사항뷰">
@@ -1780,6 +1827,9 @@
                                         <exclude reference="Yoc-b1-CHl"/>
                                     </mask>
                                 </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="133" y="197" width="133" height="133"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaL-9t-uce" userLabel="설정뷰">
                                 <rect key="frame" x="400" y="264" width="200" height="200"/>
@@ -1787,6 +1837,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-IO-0fB">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <state key="normal" backgroundImage="bgCellUnderlineWhite"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="133"/>
+                                        </variation>
                                         <connections>
                                             <action selector="showSettingViewButtonTapped" destination="dna-2A-h1W" eventType="touchUpInside" id="i1W-u6-KEV"/>
                                         </connections>
@@ -1823,6 +1876,9 @@
                                         <exclude reference="nYu-eN-fUB"/>
                                         <exclude reference="rc9-2y-9hm"/>
                                     </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="266" y="197" width="134" height="133"/>
                                 </variation>
                             </view>
                         </subviews>
@@ -2458,7 +2514,7 @@
         <image name="iconNavCart" width="26" height="26"/>
         <image name="iconSidebarFavorite" width="44" height="44"/>
         <image name="iconSidebarKakao" width="44" height="44"/>
-        <image name="iconSidebarRecent" width="44" height="44"/>
+        <image name="iconSidebarOrders" width="44" height="44"/>
         <image name="icon_nav_sidebar" width="40" height="40"/>
         <image name="imageBeone" width="71" height="23"/>
         <image name="imageSidebarLineOff" width="4" height="1"/>
