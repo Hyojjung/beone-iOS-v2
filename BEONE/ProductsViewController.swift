@@ -57,6 +57,13 @@ class ProductsViewController: BaseTableViewController {
     super.setUpData()
     products.noData = false
     products.isQuickOrder = false
+    if (forSearchResult) {
+      products.minPrice = minPrice
+      products.maxPrice = maxPrice
+      products.productPropertyValueIds = selectedProductPropertyValueIds
+      products.tagIds = selectedTagIds
+    }
+    
     favoriteProducts.get { 
       self.tableView.reloadData()
     }

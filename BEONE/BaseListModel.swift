@@ -12,8 +12,18 @@ class BaseListModel: BaseModel {
   override func get(getSuccess: (() -> Void)? = nil) {
     NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
       if let result = result as? [String: AnyObject] {
-        if let total = result["total"] as? Int {
-          self.total = total
+        if let meta = result["meta"] as? [String: AnyObject] {
+          if let total = meta["total"] as? Int {
+            self.total = total
+          }
+          
+          if let count = meta["count"] as? Int {
+            self.count = count
+          }
+          
+          if let page = meta["page"] as? Int {
+            self.page = page
+          }
         }
         self.assignObject(result[kNetworkResponseKeyData])
       }
