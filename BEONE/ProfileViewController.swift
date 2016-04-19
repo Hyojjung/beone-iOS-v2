@@ -11,7 +11,7 @@ class ProfileViewController: BaseTableViewController {
     case Account
     case ProfileTitle
     case Profile
-    case Address
+//    case Address
     case Logo
     case Count
   }
@@ -21,7 +21,7 @@ class ProfileViewController: BaseTableViewController {
     "accountCell",
     "profileTitleCell",
     "profileCell",
-    "addressCell",
+//    "addressCell",
     "logoCell"]
   
   
