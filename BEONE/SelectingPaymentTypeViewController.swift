@@ -120,6 +120,7 @@ extension SelectingPaymentTypeViewController {
           self.order.assignObject(data)
           if paymentTypeId == PaymentTypeId.Card.rawValue {
             self.showBillKeysView(self.order, paymentInfoId: (self.order.paymentInfos.mainPaymentInfo?.id)!)
+            
           } else if let selectedPaymentType = paymentTypes.model(paymentTypeId) as? PaymentType {
             if selectedPaymentType.isWebViewTransaction {
               self.showOrderWebView(self.order,

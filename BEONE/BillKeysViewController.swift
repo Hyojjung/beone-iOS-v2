@@ -12,6 +12,9 @@ class BillKeysViewController: BaseTableViewController {
     case Count
   }
   
+  private var alreadyShowAddingBillkey = false
+  private let SEGUE_ADD_BILL_KEY = "From Bill Keys To Add Bill Key By Show"
+  
   private let kBillKeyTableViewCellIdentifiers = [
     "cardCell",
     "addCardCell",
@@ -34,7 +37,13 @@ class BillKeysViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo
-    billKeys.get { 
+    billKeys.get {
+      if (self.billKeys.list.count < 1 && !self.alreadyShowAddingBillkey) {
+        // 저장된 카드가 없는 경우,
+        // 카드 추가 화면으로 자동으로 넘어가도록 함
+        self.performSegueWithIdentifier(self.SEGUE_ADD_BILL_KEY, sender: self)
+        self.alreadyShowAddingBillkey = true
+      }
       self.tableView.reloadData()
     }
   }
