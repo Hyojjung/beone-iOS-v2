@@ -4,8 +4,11 @@ import IDMPhotoBrowser
 
 class ReviewsViewController: BaseTableViewController {
   
+  var productId: Int?
+  
   lazy var reviews: Reviews = {
     let reviews = Reviews()
+    reviews.productId = self.productId
     return reviews
   }()
   
@@ -20,14 +23,21 @@ class ReviewsViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
+    if reviews.productId == nil {
+      popView()
+      return
+    }
+    
     reviews.get {
       self.tableView.reloadData()
+      
+      if let showingReviewId = self.showingReviewId, showingImageIndex = self.showingImageIndex {
+        self.showReviewImage(showingReviewId, showingImageIndex: showingImageIndex)
+        self.showingReviewId = nil
+        self.showingImageIndex = nil
+      }
     }
-    if let showingReviewId = showingReviewId, showingImageIndex = showingImageIndex {
-      showReviewImage(showingReviewId, showingImageIndex: showingImageIndex)
-      self.showingReviewId = nil
-      self.showingImageIndex = nil
-    }
+    
   }
 
   @IBAction func reviewImageButtonTapped(sender: UIButton) {

@@ -9,6 +9,7 @@ enum ReviewsType {
 class Reviews: BaseListModel {
   var type = ReviewsType.Default
   var productId: Int?
+  var isRecentThree: Bool = false
   
   override func getUrl() -> String {
     if let productId = productId {
@@ -16,11 +17,17 @@ class Reviews: BaseListModel {
     }
     return "reviews"
   }
-//  
-//  override func getParameter() -> AnyObject? {
-//    return ["page": 1, "count": 1]
-//  }
-//  
+  
+  override func getParameter() -> AnyObject? {
+    if isRecentThree {
+      var parameter = [String: AnyObject]()
+      parameter["page"] = 1
+      parameter["count"] = 3
+      return parameter
+    }
+    return nil
+  }
+  
   override func assignObject(data: AnyObject?) {
     list.removeAll()
     if let reviews = data as? [[String: AnyObject]] {

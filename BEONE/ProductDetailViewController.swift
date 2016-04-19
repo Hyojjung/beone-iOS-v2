@@ -55,11 +55,7 @@ class ProductDetailViewController: BaseViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   
   let product = Product()
-  lazy var reviews: Reviews = {
-    let reviews = Reviews()
-    reviews.productId = self.product.id
-    return reviews
-  }()
+  let reviews: Reviews = Reviews()
   var imageUrls = [NSURL]()
   var selectedImageUrlIndex = 0
   
@@ -83,7 +79,7 @@ class ProductDetailViewController: BaseViewController {
     if let inquiriesViewController = segue.destinationViewController as? InquiriesViewController {
       inquiriesViewController.product = product
     } else if let reviewsViewController = segue.destinationViewController as? ReviewsViewController {
-      reviewsViewController.reviews = reviews
+      reviewsViewController.productId = product.id
       if let sender = sender as? [Int] {
         reviewsViewController.showingReviewId = sender.first
         reviewsViewController.showingImageIndex = sender.last
@@ -104,6 +100,9 @@ class ProductDetailViewController: BaseViewController {
     product.get({
       self.setUpProductData()
     })
+    
+    reviews.productId = product.id
+    reviews.isRecentThree = true
     reviews.get {
       self.product.reviews = self.reviews.list as! [Review]
       self.collectionView.reloadData()
