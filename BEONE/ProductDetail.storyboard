@@ -1107,6 +1107,9 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="heightClass=regular" misplaced="YES">
+                                                                        <rect key="frame" x="418" y="27" width="8" height="16"/>
+                                                                    </variation>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.97254901960784312" green="0.96078431372549022" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2267,7 +2270,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PeH-9W-7jI">
                                 <rect key="frame" x="0.0" y="1951" width="600" height="49"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-JR-GBG">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DnH-JR-GBG">
                                         <rect key="frame" x="95" y="0.0" width="95" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ue-jg-m3J">
@@ -2296,7 +2299,7 @@
                                             <constraint firstItem="4Ue-jg-m3J" firstAttribute="leading" secondItem="DnH-JR-GBG" secondAttribute="leading" id="yLz-qz-Gfy"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-hd-MHr">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iah-hd-MHr">
                                         <rect key="frame" x="190" y="0.0" width="410" height="49"/>
                                         <accessibility key="accessibilityConfiguration" label="orderButton"/>
                                         <state key="normal" title="바로 구매" backgroundImage="btn_submit_gold">
