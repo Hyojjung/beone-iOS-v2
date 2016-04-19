@@ -148,6 +148,7 @@ class NetworkHelper: NSObject {
     #if DEBUG
       do {
         let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject!, options: NSJSONWritingOptions.PrettyPrinted)
+        print("\(operation.response?.URL)")
         print("responseObject: \(NSString(data: jsonData, encoding: NSUTF8StringEncoding))")
       } catch let error as NSError{
         print(error.description)
