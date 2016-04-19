@@ -4,7 +4,7 @@ import UIKit
 class SignInViewController: BaseViewController {
   
   // MARK: - Property
-
+  
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var emailTextField: UIFloatLabelTextField!
   @IBOutlet weak var passwordTextField: UIFloatLabelTextField!
@@ -14,14 +14,20 @@ class SignInViewController: BaseViewController {
   override func addObservers() {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: #selector(SignInViewController.closeViewController),
-      name: kNotificationSigningSuccess,
-      object: nil)
+                                                     selector: #selector(SignInViewController.closeViewController),
+                                                     name: kNotificationSigningSuccess,
+                                                     object: nil)
+    
+    NSNotificationCenter.defaultCenter().addObserver(self,
+                                                     selector: #selector(SignInViewController.signInErrorOccurred),
+                                                     name: kNotificationSignInFailure,
+                                                     object: nil)
   }
   
   override func removeObservers() {
     super.removeObservers()
     NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSigningSuccess, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSignInFailure, object: nil)
   }
   
   override func setUpView() {
@@ -55,7 +61,7 @@ extension SignInViewController {
       showAlertView(errorMessage)
     } else {
       SigningHelper.signIn(emailTextField.text!,
-        password: passwordTextField.text!)
+                           password: passwordTextField.text!)
     }
   }
 }
@@ -65,6 +71,10 @@ extension SignInViewController {
 extension SignInViewController {
   func closeViewController() {
     parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  func signInErrorOccurred() {
+    showAlertView(NSLocalizedString("not exist account", comment: "alert"))
   }
 }
 

@@ -47,7 +47,11 @@ class SigningHelper: NSObject {
         }
         postNotification(kNotificationSigningSuccess)
       },
-      failure: nil)
+      failure: { (error: NetworkError) -> Void in
+        if error.statusCode == NetworkResponseCode.Invalid.rawValue {
+          postNotification(kNotificationSignInFailure)
+        }
+      })
   }
   
   static func signIn(snsType: SnsType, userId: String, token: String) {
