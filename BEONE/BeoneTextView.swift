@@ -4,6 +4,7 @@ import UIKit
 class BeoneTextView: UITextView {
   
   var optionId: Int?
+  
   var placeholder: String? {
     didSet {
       isModiFying = text != nil && !text.isEmpty

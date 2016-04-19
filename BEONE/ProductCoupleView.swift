@@ -15,6 +15,7 @@ class ProductCoupleView: UIView {
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var soldOutView: UIView!
   
   weak var favoriteProductDelegate: FavoriteProductDelegate?
   var productId: Int?
@@ -27,6 +28,7 @@ class ProductCoupleView: UIView {
       originalPriceLabel.attributedText = product.priceAttributedString()
       summaryLabel.text = product.subtitle
       favoriteButton.selected = product.isFavorite()
+      soldOutView.hidden = !product.soldOut
       productId = product.id
     }
   }

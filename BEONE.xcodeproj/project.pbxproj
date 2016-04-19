@@ -148,7 +148,7 @@
 		62FDC3881BDFC0F30072BBCE /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */; };
 		62FDC38A1BDFC1780072BBCE /* DesignResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDC3891BDFC1780072BBCE /* DesignResource.swift */; };
 		730902FC1C43E2FE006AD627 /* ProductPropertyValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730902FB1C43E2FE006AD627 /* ProductPropertyValueView.swift */; };
-		7309D73C1BFC97E000F9761A /* ProductSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D73B1BFC97E000F9761A /* ProductSingleView.swift */; };
+		7309D73C1BFC97E000F9761A /* ProductCoupleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D73B1BFC97E000F9761A /* ProductCoupleView.swift */; };
 		7309D73E1BFC980900F9761A /* ProductCoupleTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7309D73D1BFC980900F9761A /* ProductCoupleTemplateCell.xib */; };
 		7309D7401BFC9F6600F9761A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D73F1BFC9F6600F9761A /* Product.swift */; };
 		7309D7471BFCB1A400F9761A /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309D7461BFCB1A400F9761A /* Products.swift */; };
@@ -440,7 +440,7 @@
 		62FDC3871BDFC0F30072BBCE /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UIFloatLabelTextField.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		62FDC3891BDFC1780072BBCE /* DesignResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignResource.swift; sourceTree = "<group>"; };
 		730902FB1C43E2FE006AD627 /* ProductPropertyValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPropertyValueView.swift; sourceTree = "<group>"; };
-		7309D73B1BFC97E000F9761A /* ProductSingleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductSingleView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		7309D73B1BFC97E000F9761A /* ProductCoupleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProductCoupleView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7309D73D1BFC980900F9761A /* ProductCoupleTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCoupleTemplateCell.xib; sourceTree = "<group>"; };
 		7309D73F1BFC9F6600F9761A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Product.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7309D7461BFCB1A400F9761A /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -1006,7 +1006,7 @@
 		7309D7411BFCA24E00F9761A /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				7309D73B1BFC97E000F9761A /* ProductSingleView.swift */,
+				7309D73B1BFC97E000F9761A /* ProductCoupleView.swift */,
 				7309D73D1BFC980900F9761A /* ProductCoupleTemplateCell.xib */,
 				734D282F1C3F8860007BDDE9 /* ProductCoupleTemplateCell.swift */,
 				73DF1D851C42245B00DB3550 /* ProductSingleTemplateCell.xib */,
@@ -1693,7 +1693,7 @@
 				73445E781BFAC3F2008BE2AC /* BeoneStrings.swift in Sources */,
 				6286FB5F1C560AE900845BE4 /* SideBarViewController.swift in Sources */,
 				73398AFF1C082F2100F57D4A /* OrderHelper.swift in Sources */,
-				7309D73C1BFC97E000F9761A /* ProductSingleView.swift in Sources */,
+				7309D73C1BFC97E000F9761A /* ProductCoupleView.swift in Sources */,
 				73BE22541C293A3A003FA11C /* Select.swift in Sources */,
 				6286FB791C573BFA00845BE4 /* Coupons.swift in Sources */,
 				73BE22691C3120C5003FA11C /* OptionStringView.swift in Sources */,

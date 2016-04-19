@@ -11,6 +11,7 @@ class ProductSingleTemplateCell: TemplateCell {
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var originalPriceLabel: UILabel!
   @IBOutlet weak var priceLabelLeadingLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var soldOutView: UIView!
   
   weak var favoriteProductDelegate: FavoriteProductDelegate?
   var productId: Int?
@@ -40,6 +41,7 @@ class ProductSingleTemplateCell: TemplateCell {
         discountPercentLabel.text = nil
         priceLabelLeadingLayoutConstraint.constant = 0
       }
+      soldOutView.hidden = !product.soldOut
       productId = product.id
     }
   }

@@ -9,13 +9,14 @@ class OptionViewController: BaseTableViewController {
     case Product
     case DeliveryInfo
     case Option
+    case AddCartItem
     case CartItemCount
     case Button
     case Count
   }
   
   private let kOptionTableViewCellIdentifiers =
-    ["productCell", "deliveryInfoCell", "optionCell", "cartItemCountCell", "buttonCell"]
+    ["productCell", "deliveryInfoCell", "optionCell", "addCartItemCell", "cartItemCountCell", "buttonCell"]
   private let kQuantityStrings = ["1", "2", "3", "4", "5"]
   
   // MARK: - Property
@@ -64,18 +65,11 @@ class OptionViewController: BaseTableViewController {
   
   func setUpProductData() {
     setUpProductDeliveryTypeNames()
-    if isModifing && cartItems.count == 1 {
-      selectedProductOrderableInfo = cartItems.first!.productOrderableInfo
-      if let selectedOption = cartItems.first?.selectedOption {
-        self.selectedOption = selectedOption.copy() as? ProductOptionSets
-      }
-    } else if !isModifing {
-      setUpToDefault()
-      if product.productOptionSets.list.count == 0 && cartItems.count == 0
-        && selectedProductOrderableInfo != nil {
-        addCartItemButtonTapped()
-        return
-      }
+    setUpToDefault()
+    if product.productOptionSets.list.count == 0 && cartItems.count == 0
+      && selectedProductOrderableInfo != nil {
+      addCartItemButtonTapped()
+      return
     }
     
     tableView.reloadData()
@@ -121,7 +115,7 @@ class OptionViewController: BaseTableViewController {
 extension OptionViewController {
   
   @IBAction func sendCart() {
-    if cartItems.count == 0 {
+    if cartItems.count < 1 {
       addCartItem(true)
     } else {
       sendCartItems()
@@ -129,20 +123,25 @@ extension OptionViewController {
   }
   
   func sendCartItems() {
-    if !isModifing {
-      CartItemManager.postCartItems(cartItems, postSuccess: { (cartItems) in
-        self.cartItems = cartItems
-        self.handlePostCartItemSuccess()
-      })
-    } else {
-      cartItems.first?.selectedOption = selectedOption
-      if let selectedProductOrderableInfo = selectedProductOrderableInfo {
-        cartItems.first?.productOrderableInfo = selectedProductOrderableInfo        
-      }
+    // 수정 시 첫 번째 카트 아이템을 지우고 다른 카트아이템 추가시 첫 번째 카트 아이템이 안지워지는 버그 존재
+    if isModifing && cartItems.first!.id != nil {
+      // 첫 번째 카트 아이템의 아이디가 있는 경우,
+      // 첫 번재 카트 아이템은 수정, 나머지 카트 아이템은 추가.
       cartItems.first!.put({ (result) -> Void in
-        self.handlePostCartItemSuccess()
+        self.cartItems.removeAtIndex(0);
+        self.postCartItems(self.cartItems)
       })
+      
+    } else {
+      postCartItems(self.cartItems)
     }
+  }
+  
+  func postCartItems(cartItems: [CartItem]) {
+    CartItemManager.postCartItems(cartItems, postSuccess: { (cartItems) in
+      self.cartItems = cartItems
+      self.handlePostCartItemSuccess()
+    })
   }
   
   @IBAction func selectDeliveryTypeButtonTapped(sender: UIButton) {
@@ -232,7 +231,8 @@ extension OptionViewController {
     case .Option:
       return product.productOptionSets.list.count == 0 ? 0 : 1
     case .CartItemCount:
-      return isModifing ? 0 : cartItems.count
+      return cartItems.count
+//      return isModifing ? 1 : cartItems.count
     default:
       return 1
     }
@@ -272,7 +272,8 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
     } else if let cell = cell as? OptionCell {
       cell.delegate = self
-      cell.configureCell(selectedOption, needButton: !isModifing)
+      cell.textViewDelegate = self
+      cell.configureCell(selectedOption)
     }
   }
 }

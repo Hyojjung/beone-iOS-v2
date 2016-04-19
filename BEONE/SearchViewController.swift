@@ -178,7 +178,6 @@ extension SearchViewController {
     if let searchResultViewController =
       UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
       searchResultViewController.forSearchResult = true
-      searchResultViewController.products = products
       searchResultViewController.selectedTagIds = selectedTagIds
       searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
       searchResultViewController.minPrice = minPrice
