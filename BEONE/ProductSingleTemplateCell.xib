@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2uB-kz-C90" id="61Z-YO-2yb">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="329.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-QO-Kcb">
@@ -58,8 +58,8 @@
                                                 <color key="textColor" red="0.81568627450980391" green="0.6470588235294118" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3Y-N5-d0s">
-                                                <rect key="frame" x="68" y="60" width="49" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3Y-N5-d0s">
+                                                <rect key="frame" x="68" y="59" width="49" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
                                                 <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -70,8 +70,8 @@
                                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-VU-Krp">
-                                                <rect key="frame" x="122" y="67" width="33" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-VU-Krp">
+                                                <rect key="frame" x="122" y="66" width="33" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -105,9 +105,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
-                                        <rect key="frame" x="294" y="17" width="31" height="31"/>
-                                        <state key="normal" image="btnFavoriteOff"/>
-                                        <state key="selected" image="btnFavoriteOn"/>
+                                        <rect key="frame" x="293" y="12" width="34" height="34"/>
+                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
                                         <connections>
                                             <action selector="favoriteButtonTapped:" destination="2uB-kz-C90" eventType="touchUpInside" id="03e-tt-Omg"/>
                                         </connections>
@@ -117,11 +117,11 @@
                                 <constraints>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="7dg-w6-DgA"/>
                                     <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
-                                    <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="12" id="8ug-Vb-G14"/>
+                                    <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="10" id="8ug-Vb-G14"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="2" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
-                                    <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="17" id="fBp-6O-fLq"/>
+                                    <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="12" id="fBp-6O-fLq"/>
                                     <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="fQG-Y2-8BU"/>
                                     <constraint firstAttribute="bottom" secondItem="yCd-sP-rVa" secondAttribute="bottom" id="qwX-Fk-7Cz"/>
@@ -139,8 +139,8 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
                                 <rect key="frame" x="14" y="8" width="331" height="292"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
-                                        <rect key="frame" x="113" y="90" width="133" height="133"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
+                                        <rect key="frame" x="99" y="80" width="133" height="133"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFl-mS-20a">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="292"/>
@@ -234,8 +234,8 @@
     </objects>
     <resources>
         <image name="bgListWhiteShadow" width="13" height="10"/>
-        <image name="btnFavoriteOff" width="31" height="31"/>
-        <image name="btnFavoriteOn" width="31" height="30"/>
+        <image name="btnProductdetailFavoriteOff" width="34" height="34"/>
+        <image name="btnProductdetailFavoriteOn" width="34" height="34"/>
         <image name="imageSoldoutToday" width="133" height="133"/>
         <image name="image_post_thumbnail" width="320" height="179"/>
     </resources>
