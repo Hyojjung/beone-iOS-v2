@@ -208,11 +208,13 @@ extension Product {
 }
 
 extension Int {
+  
   enum NotationType: String {
     case None = ""
     case English = " won"
     case Korean = " 원"
     case KoreanFreeNotation = "무료"
+    case USA = "$ "
   }
   
   func priceNotation(notationType: NotationType) -> String {
@@ -223,9 +225,21 @@ extension Int {
     } else if let priceNotation = formatter.stringFromNumber(NSNumber(integer: self)) {
       if notationType == .KoreanFreeNotation {
         return "\(priceNotation)\(NotationType.Korean.rawValue)"
+      } else if notationType == .USA {
+        return "\(notationType.rawValue)\(priceNotation)"
       }
       return "\(priceNotation)\(notationType.rawValue)"
     }
     return "0\(notationType.rawValue)"
+  }
+}
+
+extension Double {
+  func priceWithCurrencyType(currencyType: CurrencyType) -> String {
+    if currencyType == .USD {
+      return NSString(format: "$ %.2f", self) as String
+    }
+    let intAmount = Int(self)
+    return intAmount.priceNotation(.Korean)
   }
 }

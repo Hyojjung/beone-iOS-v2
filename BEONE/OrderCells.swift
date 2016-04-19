@@ -168,7 +168,8 @@ class PaymentInfoCell: UITableViewCell {
     } else {
       paidAtLabel.text = "미결제"
     }
-    totalPriceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
+  
+    totalPriceLabel.text = paymentInfo.amount.priceWithCurrencyType(paymentInfo.currencyType)
     
     if paymentInfo.isMainPayment {
       payButton.setUp(order.transactionButtonType, isOrder: true)
