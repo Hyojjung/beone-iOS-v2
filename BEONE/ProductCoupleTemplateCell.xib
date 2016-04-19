@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGP-F8-qv2" id="2db-BO-P33">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-ok-fs3">
@@ -29,7 +29,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7l-Qv-rZ7">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="23E294FE-E71B-446F-98B1-002AE6607C05" translatesAutoresizingMaskIntoConstraints="NO" id="zx1-p5-x5m" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="70EFC29A-7293-4280-B3EF-287A814D2A67" translatesAutoresizingMaskIntoConstraints="NO" id="zx1-p5-x5m" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="y6b-8y-Ubo"/>
@@ -107,17 +107,17 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
                                         <rect key="frame" x="249" y="8" width="29" height="29"/>
-                                        <state key="normal" image="D18462F4-AA31-4BEF-B01D-EA62305D531A"/>
-                                        <state key="selected" image="A5EFBB4A-85B0-4677-8F4C-E8E4BDF5E1F1"/>
+                                        <state key="normal" image="D9CAC277-CA52-4AA0-B908-1405CA5C42AB"/>
+                                        <state key="selected" image="A2485A2E-CB24-4D36-ACA5-3C1B0D69D40B"/>
                                         <connections>
                                             <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="h69-XH-mrT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-Wi-3xX">
-                                        <rect key="frame" x="8" y="533" width="273" height="30"/>
+                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="f8H-zk-1dz"/>
+                                            <constraint firstAttribute="height" constant="34" id="f8H-zk-1dz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
@@ -131,10 +131,10 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-UN-Ivm" userLabel="First SoldOut View">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLD OUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQU-YB-RQ3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SOLD OUT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQU-YB-RQ3">
                                                 <rect key="frame" x="100" y="74" width="84" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-Lc-ouF">
@@ -144,7 +144,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.71999999999999997" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.33725490200000002" green="0.3294117647" blue="0.35686274509999999" alpha="0.63775760140000004" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="wQU-YB-RQ3" firstAttribute="centerX" secondItem="5LV-UN-Ivm" secondAttribute="centerX" id="CAx-nM-2bu"/>
                                             <constraint firstAttribute="bottom" secondItem="C8H-Lc-ouF" secondAttribute="bottom" id="ehY-ms-M4z"/>
@@ -194,7 +194,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBd-Jb-cKC">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="23E294FE-E71B-446F-98B1-002AE6607C05" translatesAutoresizingMaskIntoConstraints="NO" id="13k-ss-nzn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="70EFC29A-7293-4280-B3EF-287A814D2A67" translatesAutoresizingMaskIntoConstraints="NO" id="13k-ss-nzn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="87b-Bf-hxY"/>
@@ -272,17 +272,17 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
                                         <rect key="frame" x="249" y="8" width="29" height="29"/>
-                                        <state key="normal" image="D18462F4-AA31-4BEF-B01D-EA62305D531A"/>
-                                        <state key="selected" image="A5EFBB4A-85B0-4677-8F4C-E8E4BDF5E1F1"/>
+                                        <state key="normal" image="D9CAC277-CA52-4AA0-B908-1405CA5C42AB"/>
+                                        <state key="selected" image="A2485A2E-CB24-4D36-ACA5-3C1B0D69D40B"/>
                                         <connections>
                                             <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exf-ck-6sB">
-                                        <rect key="frame" x="8" y="533" width="273" height="30"/>
+                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="TkX-hj-knf"/>
+                                            <constraint firstAttribute="height" constant="34" id="TkX-hj-knf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
@@ -296,10 +296,10 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdl-Km-fZj" userLabel="Second SoldOut View">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLD OUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x6-iS-K87">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SOLD OUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x6-iS-K87">
                                                 <rect key="frame" x="100" y="74" width="84" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" red="0.75294117650000003" green="0.68627450980000004" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sS-gC-b9e">
@@ -309,7 +309,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.71999999999999997" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.33725490200000002" green="0.3294117647" blue="0.35686274509999999" alpha="0.63775760140000004" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6sS-gC-b9e" secondAttribute="trailing" id="3Sw-rd-6zw"/>
                                             <constraint firstItem="6sS-gC-b9e" firstAttribute="top" secondItem="jdl-Km-fZj" secondAttribute="top" id="6bi-ht-RDy"/>
@@ -401,7 +401,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="23E294FE-E71B-446F-98B1-002AE6607C05" width="320" height="179">
+        <image name="70EFC29A-7293-4280-B3EF-287A814D2A67" width="320" height="179">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4273,7 +4273,7 @@ AAOI5wADiOwAA4j7AAOI/wADiQYAA4kOAAOJGwADiSAAA4kiAAOJJAADiSkAA4kxAAOJNAADiTkAA4lB
 AAOJRAADiVYAA4lZAAOJXgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAA4lgA
 </mutableData>
         </image>
-        <image name="A5EFBB4A-85B0-4677-8F4C-E8E4BDF5E1F1" width="29" height="28">
+        <image name="A2485A2E-CB24-4D36-ACA5-3C1B0D69D40B" width="29" height="28">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -4397,7 +4397,7 @@ zhrTGtsa3hrjGvIa9hr9GwUbEhsXGxkbGxsgGygbKxswGzgbOxtNG1AbVQAAAAAAAAIBAAAAAAAAAD4A
 AAAAAAAAAAAAAAAAABtXA
 </mutableData>
         </image>
-        <image name="D18462F4-AA31-4BEF-B01D-EA62305D531A" width="29" height="29">
+        <image name="D9CAC277-CA52-4AA0-B908-1405CA5C42AB" width="29" height="29">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -4523,7 +4523,7 @@ TxtSG1cbZhtqG3EbeRuGG4sbjRuPG5QbnBufG6QbrBuvG8EbxBvJAAAAAAAAAgEAAAAAAAAAPgAAAAAA
 AAAAAAAAAAAAG8s
 </mutableData>
         </image>
-        <image name="bgListWhiteShadow" width="11" height="10"/>
+        <image name="bgListWhiteShadow" width="13" height="10"/>
         <image name="btnGreyLine" width="11" height="11"/>
         <image name="btnGreyLinePressed" width="12" height="12"/>
     </resources>

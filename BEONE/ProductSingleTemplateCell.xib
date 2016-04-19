@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -105,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
-                                        <rect key="frame" x="296" y="17" width="29" height="29"/>
+                                        <rect key="frame" x="294" y="17" width="31" height="31"/>
                                         <state key="normal" image="btnFavoriteOff"/>
                                         <state key="selected" image="btnFavoriteOn"/>
                                         <connections>
@@ -137,19 +137,19 @@
                                 </variation>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
-                                <rect key="frame" x="11" y="8" width="337" height="294"/>
+                                <rect key="frame" x="14" y="8" width="331" height="292"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="image_soldout_today" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
                                         <rect key="frame" x="113" y="90" width="133" height="133"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFl-mS-20a">
-                                        <rect key="frame" x="0.0" y="0.0" width="337" height="294"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="292"/>
                                         <connections>
                                             <action selector="productButtonTapped" destination="2uB-kz-C90" eventType="touchUpInside" id="D1e-BD-XWU"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.71999999999999997" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.33725490196078434" green="0.32941176470588235" blue="0.35686274509803922" alpha="0.6377576013513514" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dFl-mS-20a" secondAttribute="trailing" id="2fz-iQ-9cs"/>
                                     <constraint firstItem="dFl-mS-20a" firstAttribute="leading" secondItem="jqw-v3-fhu" secondAttribute="leading" id="5FR-hq-nPe"/>
@@ -175,16 +175,16 @@
                             <constraint firstAttribute="trailing" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="YG3-Cf-ChG"/>
                             <constraint firstItem="ZTR-Pk-lPn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leadingMargin" constant="3" id="bfm-vS-kcg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" constant="3" id="dms-z0-XOM"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="dpU-Wf-tXm"/>
+                            <constraint firstItem="jqw-v3-fhu" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="3" id="dpU-Wf-tXm"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="fpQ-a9-saY"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="k3G-hd-zcT"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="bottom" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" id="kYD-g2-LrZ"/>
+                            <constraint firstItem="jqw-v3-fhu" firstAttribute="bottom" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" constant="-2" id="kYD-g2-LrZ"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="topMargin" id="mmx-Pz-cvH"/>
                             <constraint firstAttribute="trailing" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="nZi-dj-zVT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZTR-Pk-lPn" secondAttribute="trailing" constant="3" id="rqa-cS-Yof"/>
                             <constraint firstAttribute="bottom" secondItem="jqw-v3-fhu" secondAttribute="bottom" id="uqD-4i-WzA"/>
                             <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="vjb-cQ-S6W"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="trailing" secondItem="ZTR-Pk-lPn" secondAttribute="trailing" id="xEl-OQ-maJ"/>
+                            <constraint firstItem="jqw-v3-fhu" firstAttribute="trailing" secondItem="ZTR-Pk-lPn" secondAttribute="trailing" constant="-3" id="xEl-OQ-maJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Y10-aO-rEn" secondAttribute="bottom" id="xbg-ba-S8r"/>
                         </constraints>
                         <variation key="default">
@@ -233,10 +233,10 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
-        <image name="bgListWhiteShadow" width="11" height="10"/>
-        <image name="btnFavoriteOff" width="29" height="29"/>
-        <image name="btnFavoriteOn" width="29" height="28"/>
+        <image name="bgListWhiteShadow" width="13" height="10"/>
+        <image name="btnFavoriteOff" width="31" height="31"/>
+        <image name="btnFavoriteOn" width="31" height="30"/>
+        <image name="imageSoldoutToday" width="133" height="133"/>
         <image name="image_post_thumbnail" width="320" height="179"/>
-        <image name="image_soldout_today" width="133" height="133"/>
     </resources>
 </document>
