@@ -371,12 +371,14 @@ class SideBarProductCell: UITableViewCell {
   @IBOutlet weak var productActualPriceLabel: UILabel!
   @IBOutlet weak var productPriceLabel: UILabel!
   @IBOutlet weak var productButton: UIButton!
+  @IBOutlet weak var soldOutView: UIView!
   
   func configureCell(product: Product) {
     productImageView.setLazyLoaingImage(product.mainImageUrl)
     productNameLabel.text = product.title
     productActualPriceLabel.text = product.actualPrice.priceNotation(.English)
     productPriceLabel.attributedText = product.priceAttributedString()
+    soldOutView.hidden = !product.soldOut
     if let productId = product.id {
       productButton.tag = productId
     }
