@@ -64,7 +64,7 @@ class OptionViewController: BaseTableViewController {
   // MARK: - Observer Actions
   
   func setUpProductData() {
-    setUpProductDeliveryTypeNames()    
+    setUpProductDeliveryTypeNames()
     setUpToDefault()
     if product.productOptionSets.list.count == 0 && cartItems.count == 0
       && selectedProductOrderableInfo != nil {
@@ -272,6 +272,7 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
     } else if let cell = cell as? OptionCell {
       cell.delegate = self
+      cell.textViewDelegate = self
       cell.configureCell(selectedOption)
     }
   }
