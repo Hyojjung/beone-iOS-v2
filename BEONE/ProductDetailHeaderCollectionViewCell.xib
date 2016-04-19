@@ -27,8 +27,8 @@
                                     <constraint firstAttribute="height" constant="20" id="nX7-MH-5z6"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="제품명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
-                                <rect key="frame" x="50" y="32" width="361" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제품명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="480" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-S5-nLO">
+                                <rect key="frame" x="50" y="32" width="361" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label="titleLabel"/>
                                 <constraints>
@@ -44,7 +44,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-r0-KbW" userLabel="Favorite Button">
-                                <rect key="frame" x="418" y="24.5" width="34" height="34"/>
+                                <rect key="frame" x="418" y="25" width="34" height="34"/>
                                 <state key="normal" image="btnProductdetailFavoriteOff"/>
                                 <state key="selected" image="btnProductdetailFavoriteOn"/>
                                 <connections>
