@@ -35,6 +35,7 @@ enum TransactionButtonType: String {
 class PaymentInfo: BaseModel {
   
   var actualPrice = 0
+  var amount: Double = 0
   var currencyType = CurrencyType.KRW
   var transactionButtonType = TransactionButtonType.None
   
@@ -72,6 +73,9 @@ class PaymentInfo: BaseModel {
       
       if let actualPrice = paymentInfo["actualPrice"] as? Int {
         self.actualPrice = actualPrice
+      }
+      if let amount = paymentInfo["amount"] as? Double {
+        self.amount = amount
       }
       if let currencyTypeString = paymentInfo["currencyType"] as? String,
         currencyType = CurrencyType(rawValue: currencyTypeString) {

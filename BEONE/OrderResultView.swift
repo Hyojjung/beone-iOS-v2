@@ -9,7 +9,8 @@ class OrderResultView: UIView {
   @IBOutlet weak var usedCouponLabel: UILabel!
   
   func layoutView(order: Order, paymentInfo: PaymentInfo) {
-    priceLabel.text = paymentInfo.actualPrice.priceNotation(.Korean)
+    priceLabel.text = paymentInfo.amount.priceWithCurrencyType(paymentInfo.currencyType)
+    
     deliveryDateLabel.text = order.deliveryDateString()
     usedPointLabel.text = order.usedPoint?.priceNotation(.Korean)
     if let coupon = order.usedCoupon, couponName = coupon.title {
