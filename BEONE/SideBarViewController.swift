@@ -65,9 +65,14 @@ extension SideBarViewController {
       setUpScheme("/order/\(orderId)")
     }
   }
+
   
   @IBAction func showOrderListView() {
     setUpScheme("/orders")
+  }
+  
+  @IBAction func showRecentProductsViewButtonTapped() {
+    setUpScheme("/recent-products")
   }
   
   @IBAction func showFavoriteProductsViewButtonTapped() {
