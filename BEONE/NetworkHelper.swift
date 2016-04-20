@@ -24,10 +24,9 @@ let kHeaderAuthorizationKey = "x-beone-authorization"
 let kBOHeaderVersionKey = "x-beone-version"
 let kBOHeaderVersion = "v2.0"
 
-// TODO: 주소수정
 #if DEBUG
-let kBaseApiUrl = "https://devapi.beone.kr/"
-let kBaseUrl = "https://devapi.beone.kr/"
+let kBaseApiUrl = "https://api.beone.kr/"
+let kBaseUrl = "https://api.beone.kr/"
 #else
 let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
@@ -55,7 +54,6 @@ class NetworkHelper: NSObject {
                               success: NetworkSuccess?, failure: NetworkFailure?) {
     #if DEBUG
       print("\(method) \(url)")
-      print("parameter: \(parameter)")
     #endif
     switch method {
     case .Get:
@@ -111,7 +109,6 @@ class NetworkHelper: NSObject {
         if let failure = failure {
           failure(error: networkError)
         }
-        // TODO: handle common error
       }
     } else {
       // TODO: show alert view with "check network"
@@ -228,7 +225,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                        failure: { (operation, error) -> Void in
-                        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
+                        self.handleErrorDefault(operation!, responseObject: operation?.responseObject, error: error,
                           success: success, failure: failure)
     })
   }
@@ -239,7 +236,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                         failure: { (operation, error) -> Void in
-                          self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
+                          self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
                             success: success, failure: failure)
     })
   }
@@ -250,7 +247,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                        failure: { (operation, error) -> Void in
-                        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
+                        self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
                           success: success, failure: failure)
     })
   }
@@ -261,7 +258,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                           failure: { (operation, error) -> Void in
-                            self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
+                            self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
                               success: success, failure: failure)
     })
   }

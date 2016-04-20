@@ -77,7 +77,7 @@ class OrderItemSetInfoCell: UITableViewCell {
   @IBOutlet weak var deliveryInfoButton: UIButton!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var totalPriceLabel: UILabel!
-  @IBOutlet weak var deliveryDateLabel: UILabel! // TODO
+  @IBOutlet weak var deliveryDateLabel: UILabel!
   @IBOutlet weak var deliveryTrackingButton: UIButton!
   @IBOutlet weak var orderDoneButton: UIButton!
   @IBOutlet weak var deliveryTrackingInfoTrailingLayoutConstraint: NSLayoutConstraint!

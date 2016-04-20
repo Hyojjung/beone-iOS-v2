@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'BEONE' do
 
-pod 'AFNetworking'
+pod 'AFNetworking', '~>2.6.1'
 pod 'Google/Analytics'
 pod 'SDWebImage'
 pod 'CSStickyHeaderFlowLayout'

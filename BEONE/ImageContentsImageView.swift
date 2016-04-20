@@ -30,10 +30,6 @@ class ImageContentsImageView: LazyLoadingImageView {
   
   func modifyHeightConstraint() {
     if let height = heightFromRatio(image?.size) {
-//      if self.template?.height != height {
-//        self.template?.height = height
-//        postNotification(kNotificationContentsViewLayouted)
-//      }
       heightLayoutConstraint.constant = height
     }
   }

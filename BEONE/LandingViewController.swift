@@ -38,14 +38,11 @@ class LandingViewController: BaseTableViewController {
     super.addObservers()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.setUpData),
       name: kNotificationGuestAuthenticationSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LandingViewController.handleLayoutChange),
-      name: kNotificationContentsViewLayouted, object: nil)
   }
   
   override func removeObservers() {
     super.removeObservers()
     NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationGuestAuthenticationSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationContentsViewLayouted, object: nil)
   }
   
   @IBAction func showSpeedOrder() {
@@ -102,12 +99,6 @@ extension LandingViewController: DynamicHeightTableViewDelegate {
       return cell.calculatedHeight(templates.filterdTemplates[indexPath.row])
     }
     return nil
-  }
-}
-
-extension LandingViewController {
-  func handleLayoutChange() {
-    tableView.reloadData()
   }
 }
 
