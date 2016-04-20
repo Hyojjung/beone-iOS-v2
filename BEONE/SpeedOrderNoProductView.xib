@@ -15,20 +15,25 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="585"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujz-un-GzZ">
-                            <rect key="frame" x="23" y="40" width="283" height="108"/>
+                            <rect key="frame" x="23" y="25" width="279" height="108"/>
                             <string key="text">아직
 마음을 전달하실 제품을 
 찾지 못하셨나요?</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageQuickorderFindproducts" translatesAutoresizingMaskIntoConstraints="NO" id="N79-je-hKX">
+                            <rect key="frame" x="204" y="314" width="192" height="271"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.65098039215686276" green="0.58823529411764708" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="N79-je-hKX" firstAttribute="centerX" secondItem="PkS-cS-ewh" secondAttribute="centerX" id="BdD-HJ-wWQ"/>
                         <constraint firstItem="Ujz-un-GzZ" firstAttribute="leading" secondItem="PkS-cS-ewh" secondAttribute="leading" constant="23" id="b0V-WU-IDV"/>
-                        <constraint firstItem="Ujz-un-GzZ" firstAttribute="top" secondItem="PkS-cS-ewh" secondAttribute="top" constant="40" id="cx6-yL-MGk"/>
+                        <constraint firstItem="Ujz-un-GzZ" firstAttribute="top" secondItem="PkS-cS-ewh" secondAttribute="top" constant="25" id="cx6-yL-MGk"/>
                         <constraint firstAttribute="trailing" secondItem="Ujz-un-GzZ" secondAttribute="trailing" constant="24" id="hGc-1M-h3Y"/>
+                        <constraint firstAttribute="bottom" secondItem="N79-je-hKX" secondAttribute="bottom" id="x90-Ki-VOL"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -46,4 +51,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="imageQuickorderFindproducts" width="192" height="271"/>
+    </resources>
 </document>

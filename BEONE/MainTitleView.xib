@@ -63,9 +63,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="eSr-ck-Div"/>
                     <exclude reference="4ml-fe-ZFm"/>
                     <exclude reference="7P7-PH-Aw7"/>
-                    <exclude reference="eSr-ck-Div"/>
                     <exclude reference="EXm-XZ-mEu"/>
                 </mask>
             </variation>
