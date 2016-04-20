@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGP-F8-qv2" id="2db-BO-P33">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-ok-fs3">
@@ -29,7 +29,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7l-Qv-rZ7">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DFD0D55D-FFD6-4143-9D80-5E032F1B0421" translatesAutoresizingMaskIntoConstraints="NO" id="zx1-p5-x5m" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A7F9890A-8A88-41AD-AD05-213D64DA5C72" translatesAutoresizingMaskIntoConstraints="NO" id="zx1-p5-x5m" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="y6b-8y-Ubo"/>
@@ -105,29 +105,6 @@
                                             <action selector="productButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="xd8-8X-Z2K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
-                                        <rect key="frame" x="244" y="8" width="34" height="34"/>
-                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
-                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
-                                        <connections>
-                                            <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="h69-XH-mrT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-Wi-3xX">
-                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="f8H-zk-1dz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
-                                            <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
-                                        <connections>
-                                            <action selector="orderButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="YGt-jq-6on"/>
-                                        </connections>
-                                    </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-UN-Ivm" userLabel="First SoldOut View">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
@@ -154,6 +131,29 @@
                                             <constraint firstItem="C8H-Lc-ouF" firstAttribute="top" secondItem="5LV-UN-Ivm" secondAttribute="top" id="x83-6e-hEN"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
+                                        <rect key="frame" x="244" y="8" width="34" height="34"/>
+                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="h69-XH-mrT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-Wi-3xX">
+                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="f8H-zk-1dz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
+                                            <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
+                                        <connections>
+                                            <action selector="orderButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="YGt-jq-6on"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -194,7 +194,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBd-Jb-cKC">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DFD0D55D-FFD6-4143-9D80-5E032F1B0421" translatesAutoresizingMaskIntoConstraints="NO" id="13k-ss-nzn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A7F9890A-8A88-41AD-AD05-213D64DA5C72" translatesAutoresizingMaskIntoConstraints="NO" id="13k-ss-nzn" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="168"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="168" id="87b-Bf-hxY"/>
@@ -270,29 +270,6 @@
                                             <action selector="productButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="28j-cr-dbf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
-                                        <rect key="frame" x="244" y="8" width="34" height="34"/>
-                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
-                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
-                                        <connections>
-                                            <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exf-ck-6sB">
-                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="TkX-hj-knf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
-                                            <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
-                                        <connections>
-                                            <action selector="orderButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="qlF-k5-RXt"/>
-                                        </connections>
-                                    </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdl-Km-fZj" userLabel="Second SoldOut View">
                                         <rect key="frame" x="3" y="0.0" width="283" height="168"/>
                                         <subviews>
@@ -319,6 +296,29 @@
                                             <constraint firstItem="6sS-gC-b9e" firstAttribute="leading" secondItem="jdl-Km-fZj" secondAttribute="leading" id="bem-Hv-TFV"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
+                                        <rect key="frame" x="244" y="8" width="34" height="34"/>
+                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exf-ck-6sB">
+                                        <rect key="frame" x="8" y="529" width="273" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="TkX-hj-knf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="바로구매" backgroundImage="btnGreyLine">
+                                            <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="btnGreyLinePressed"/>
+                                        <connections>
+                                            <action selector="orderButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="qlF-k5-RXt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -401,7 +401,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="DFD0D55D-FFD6-4143-9D80-5E032F1B0421" width="320" height="179">
+        <image name="A7F9890A-8A88-41AD-AD05-213D64DA5C72" width="320" height="179">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

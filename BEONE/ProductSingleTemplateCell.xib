@@ -104,24 +104,14 @@
                                             <action selector="productButtonTapped" destination="2uB-kz-C90" eventType="touchUpInside" id="SQC-Gt-pfN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
-                                        <rect key="frame" x="293" y="12" width="34" height="34"/>
-                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
-                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
-                                        <connections>
-                                            <action selector="favoriteButtonTapped:" destination="2uB-kz-C90" eventType="touchUpInside" id="03e-tt-Omg"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="7dg-w6-DgA"/>
                                     <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
-                                    <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="10" id="8ug-Vb-G14"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="2" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
-                                    <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="12" id="fBp-6O-fLq"/>
                                     <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="fQG-Y2-8BU"/>
                                     <constraint firstAttribute="bottom" secondItem="yCd-sP-rVa" secondAttribute="bottom" id="qwX-Fk-7Cz"/>
@@ -159,6 +149,14 @@
                                     <constraint firstItem="xDK-gq-oYv" firstAttribute="centerY" secondItem="jqw-v3-fhu" secondAttribute="centerY" id="WAI-la-42N"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
+                                <rect key="frame" x="309" y="13" width="34" height="34"/>
+                                <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="2uB-kz-C90" eventType="touchUpInside" id="03e-tt-Omg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -171,7 +169,9 @@
                             <constraint firstAttribute="trailing" secondItem="jqw-v3-fhu" secondAttribute="trailing" id="NeO-Hk-pHw"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leadingMargin" id="O1i-T5-U8n"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leading" id="R3P-4O-Iji"/>
+                            <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="5" id="UEq-xS-bRx"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leading" id="WNk-Dd-bw3"/>
+                            <constraint firstAttribute="trailing" secondItem="sbe-AY-uQN" secondAttribute="trailing" constant="16" id="X8q-eV-i0h"/>
                             <constraint firstAttribute="trailing" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="YG3-Cf-ChG"/>
                             <constraint firstItem="ZTR-Pk-lPn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leadingMargin" constant="3" id="bfm-vS-kcg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" constant="3" id="dms-z0-XOM"/>
