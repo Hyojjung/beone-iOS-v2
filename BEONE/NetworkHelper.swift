@@ -225,7 +225,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                        failure: { (operation, error) -> Void in
-                        self.handleErrorDefault(operation!, responseObject: operation?.responseObject, error: error,
+                        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
                           success: success, failure: failure)
     })
   }
@@ -236,7 +236,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                         failure: { (operation, error) -> Void in
-                          self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
+                          self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
                             success: success, failure: failure)
     })
   }
@@ -247,7 +247,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                        failure: { (operation, error) -> Void in
-                        self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
+                        self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
                           success: success, failure: failure)
     })
   }
@@ -258,7 +258,7 @@ extension NetworkHelper {
       self.handleSuccessDefault(operation, responseObject: responseObject, success: success)
       },
                           failure: { (operation, error) -> Void in
-                            self.handleErrorDefault(operation!, responseObject: operation!.responseObject, error: error,
+                            self.handleErrorDefault(operation, responseObject: operation.responseObject, error: error,
                               success: success, failure: failure)
     })
   }

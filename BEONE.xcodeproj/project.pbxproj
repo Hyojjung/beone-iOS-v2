@@ -566,6 +566,7 @@
 		73F629A11BF1EB39001EA72F /* XLCCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCCycleScrollView.m; sourceTree = "<group>"; };
 		73F629A31BF43892001EA72F /* ButtonTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTemplateCell.swift; sourceTree = "<group>"; };
 		73F629A51BF43AE2001EA72F /* ButtonTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonTemplateCell.xib; sourceTree = "<group>"; };
+		F181BD831CC7A92E009D9E1A /* BEONE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BEONE.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +684,7 @@
 		62E5CF0C1BDDE19100A99F4C /* BEONE */ = {
 			isa = PBXGroup;
 			children = (
+				F181BD831CC7A92E009D9E1A /* BEONE.entitlements */,
 				62FDC3851BDFC0E40072BBCE /* Vendor */,
 				62FC6EA61BDF73150071E1B1 /* Resources */,
 				62E5CF351BDDEBA100A99F4C /* Storyboard */,
@@ -1333,6 +1335,14 @@
 					62E5CF091BDDE19100A99F4C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 6FP5KJHZA9;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					62E5CF1F1BDDE19100A99F4C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1829,7 +1839,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = BEONE/BEONE.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1860,8 +1871,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = BEONE/BEONE.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cosmic Latte (6FP5KJHZA9)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1879,7 +1891,7 @@
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.beone.BEONE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "75edfd51-1d15-4137-a0cd-198aa865551d";
 				SWIFT_OBJC_BRIDGING_HEADER = "BEONE/BEONE-Bridging-Header.h";
 			};
 			name = Release;
