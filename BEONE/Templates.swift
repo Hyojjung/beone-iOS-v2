@@ -37,6 +37,7 @@ class Templates: BaseListModel {
             if index < (template.content.models?.count)! - 1 {
               newTmplate.content.models?.appendObject(template.content.models![index + 1] as! Product)
             }
+            newTmplate.style = template.style
             filterdTemplates.appendObject(newTmplate)
           }
         }

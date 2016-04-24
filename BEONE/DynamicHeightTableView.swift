@@ -22,11 +22,6 @@ class DynamicHeightTableView: UITableView {
       cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
     }
     if let cell = cell {
-      if cell is ShopTemplateCell {
-        return 258
-      } else if cell is ProductCoupleTemplateCell {
-        return 328
-      }
       return calculateHeight(cell, indexPath: indexPath)
     }
     return 0
