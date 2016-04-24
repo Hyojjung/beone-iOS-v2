@@ -271,6 +271,7 @@ extension NetworkHelper {
     networkManager.requestSerializer = AFJSONRequestSerializer()
     if let accessToken = MyInfo.sharedMyInfo().accessToken {
       networkManager.requestSerializer.setValue(accessToken, forHTTPHeaderField: kHeaderAuthorizationKey)
+      networkManager.requestSerializer.setValue(kBOHeaderVersion, forHTTPHeaderField: kBOHeaderVersionKey)
     }
     return networkManager
   }

@@ -51,7 +51,7 @@ PODS:
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
-  - AFNetworking
+  - AFNetworking (~> 2.6.1)
   - CSStickyHeaderFlowLayout
   - Google/Analytics
   - IDMPhotoBrowser
