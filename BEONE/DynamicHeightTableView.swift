@@ -18,8 +18,7 @@ class DynamicHeightTableView: UITableView {
     var cell = dequeueReusableCellWithIdentifier(cellIdentifier)
     if cell == nil {
       registerNib(UINib(nibName: cellIdentifier.convertToBigCamelCase(), bundle: nil), forCellReuseIdentifier: cellIdentifier)
-
-      cell = dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+      cell = dequeueReusableCellWithIdentifier(cellIdentifier)
     }
     if let cell = cell {
       return calculateHeight(cell, indexPath: indexPath)

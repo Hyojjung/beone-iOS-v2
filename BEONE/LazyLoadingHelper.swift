@@ -30,15 +30,12 @@ class LazyLoadingImageView: UIImageView {
         }
       }
     }
-    // TODO: image load 방식 개선
   }
   
   func setImageWithAnimation(image: UIImage, cacheType: SDImageCacheType) {
-    if cacheType == .Disk || cacheType == .Memory {
-      self.image = image
-    } else {
+    if cacheType == .None {
       UIView.transitionWithView(self,
-        duration: 0.2,
+        duration: 0.3,
         options: [.AllowUserInteraction, .TransitionCrossDissolve],
         animations: { 
           self.image = image
@@ -54,12 +51,7 @@ class LazyLoadingImageView: UIImageView {
       if LazyLoadingHelper.originalImageUrls.contains(urlString) {
         setLazyLoaingImage(urlString, imageType: .Original)
       } else {
-        let thumbnailUrl = LazyLoadingHelper.imageUrl(urlString, imageType: .Thumbnail)
-        let isThumbnailLoaded = SDWebImageManager.sharedManager().cachedImageExistsForURL(thumbnailUrl)
         setLazyLoaingImage(urlString, imageType: .Thumbnail)
-        if isThumbnailLoaded {
-          setLazyLoaingImage(urlString, imageType: .Basic)
-        }
       }
     }
   }

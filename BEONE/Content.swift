@@ -51,6 +51,7 @@ class Content: BaseModel {
   var pressedBackgroundColor: UIColor?
   var borderColor: UIColor?
   var size: CGFloat?
+  var ratio: CGFloat?
   var textSize: CGFloat?
   var imageUrl: String?
   var backgroundImageUrl: String?
@@ -72,6 +73,7 @@ class Content: BaseModel {
       isItalic = contents[kContentsPropertyKeyIsItalic] as? Bool
       isCancelLined = contents[kContentsPropertyKeyIsCancelLined] as? Bool
       size = contents[kContentsPropertyKeySize] as? CGFloat
+      ratio = contents["ratio"] as? CGFloat
       textSize = contents[kContentsPropertyKeyTextSize] as? CGFloat
       hasSpace = contents[kContentsPropertyKeyHasSpace] as? Bool
       row = contents[kContentsPropertyKeyRow] as? Int

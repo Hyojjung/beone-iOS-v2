@@ -5,23 +5,52 @@ class BannerTemplateCell: TemplateCell {
   
   var bannerContents = [Content]()
   var style: TemplateStyle?
+  var timer: NSTimer?
+  
   @IBOutlet weak var bannerView: XLCCycleScrollView!
-
+  
   override func awakeFromNib() {
     super.awakeFromNib()
+    timer = NSTimer.scheduledTimerWithTimeInterval(3,
+                                                   target: self,
+                                                   selector: #selector(BannerTemplateCell.setUpPage),
+                                                   userInfo: nil,
+                                                   repeats: true)
     bannerView.datasource = self
     bannerView.delegate = self
   }
   
-  override func calculatedHeight(template: Template) -> CGFloat? {
-    return 300 + template.style.margin.top + template.style.margin.bottom + template.style.padding.top + template.style.padding.bottom
-
+  deinit {
+    timer?.invalidate()
+    timer = nil
+  }
+  
+  override  func calculatedHeight(template: Template) -> CGFloat? {
+    let verticalMargin =
+      template.style.margin.top + template.style.margin.bottom + template.style.padding.top + template.style.padding.bottom
+    if let ratio = template.content.ratio {
+      return ratio * ViewControllerHelper.screenWidth + verticalMargin
+    }
+    return 300 + verticalMargin
   }
   
   override func configureCell(template: Template) {
     super.configureCell(template)
     bannerContents = template.content.items
-    bannerView.reloadData()
+    setUpFirstPage()
+    NSTimer.scheduledTimerWithTimeInterval(0.3,
+                                           target: self,
+                                           selector: #selector(BannerTemplateCell.setUpFirstPage),
+                                           userInfo: nil,
+                                           repeats: false)
+  }
+  
+  func setUpFirstPage() {
+    self.bannerView.setViewContent(self.pageAtIndex(0), atIndex: 0)
+  }
+  
+  func setUpPage() {
+    bannerView.scrollView.setContentOffset(CGPointMake(bannerView.frame.width * 2, 0), animated: true)
   }
 }
 
@@ -46,6 +75,7 @@ extension BannerTemplateCell: XLCCycleScrollViewDatasource {
     imageView.frame = viewFrame
     imageView.contentMode = .ScaleAspectFill
     imageView.clipsToBounds = true
+    imageView.image = UIImage(named: kimagePostThumbnail)
     imageView.setLazyLoaingImage(bannerContent.imageUrl)
     view.addSubview(imageView)
     return view
