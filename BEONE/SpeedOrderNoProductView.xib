@@ -15,7 +15,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="585"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujz-un-GzZ">
-                            <rect key="frame" x="23" y="25" width="356" height="25.5"/>
+                            <rect key="frame" x="23" y="25" width="567" height="25.5"/>
                             <attributedString key="attributedText">
                                 <fragment content="아직">
                                     <attributes>
@@ -364,6 +364,7 @@
                     <constraints>
                         <constraint firstItem="zG6-Yo-bZ1" firstAttribute="leading" secondItem="Ujz-un-GzZ" secondAttribute="leading" id="59N-c1-LCY"/>
                         <constraint firstItem="zG6-Yo-bZ1" firstAttribute="top" secondItem="Ujz-un-GzZ" secondAttribute="bottom" constant="16" id="AOg-fU-pO0"/>
+                        <constraint firstAttribute="trailing" secondItem="Ujz-un-GzZ" secondAttribute="trailing" constant="10" id="BM9-eN-LAR"/>
                         <constraint firstItem="N79-je-hKX" firstAttribute="centerX" secondItem="PkS-cS-ewh" secondAttribute="centerX" id="BdD-HJ-wWQ"/>
                         <constraint firstItem="BgH-Ot-G2D" firstAttribute="leading" secondItem="PkS-cS-ewh" secondAttribute="leading" id="MKf-lb-A34"/>
                         <constraint firstAttribute="trailing" secondItem="BgH-Ot-G2D" secondAttribute="trailing" id="PVh-aq-hkt"/>
@@ -373,7 +374,6 @@
                         <constraint firstItem="Ujz-un-GzZ" firstAttribute="top" secondItem="PkS-cS-ewh" secondAttribute="top" constant="25" id="cx6-yL-MGk"/>
                         <constraint firstAttribute="trailing" secondItem="Ujz-un-GzZ" secondAttribute="trailing" constant="24" id="hGc-1M-h3Y"/>
                         <constraint firstAttribute="trailing" secondItem="N79-je-hKX" secondAttribute="trailing" constant="8" id="szS-aE-lLB"/>
-                        <constraint firstAttribute="bottom" secondItem="N79-je-hKX" secondAttribute="bottom" id="x90-Ki-VOL"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">

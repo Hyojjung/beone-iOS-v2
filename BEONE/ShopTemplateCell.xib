@@ -44,7 +44,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="539" height="170"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-lo-0GZ" userLabel="shop_logo" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="105" width="50" height="50"/>
+                                                <rect key="frame" x="12" y="108" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="DGz-uc-GPc"/>
                                                     <constraint firstAttribute="height" constant="50" id="e7M-mg-DsY"/>
@@ -56,15 +56,24 @@
                                                     <action selector="shopButtonTapped" destination="73Z-dS-tcv" eventType="touchUpInside" id="zrU-Qe-8ZO"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fgCircleLine" translatesAutoresizingMaskIntoConstraints="NO" id="Lgs-LW-KVR">
+                                                <rect key="frame" x="12" y="108" width="50" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="R7O-Gx-dhq"/>
+                                                    <constraint firstAttribute="width" constant="50" id="ZsD-qK-8qW"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="170" id="2d6-Hw-Ljg"/>
                                             <constraint firstAttribute="bottom" secondItem="YcI-DG-ygg" secondAttribute="bottom" id="2o8-8Q-1yu"/>
                                             <constraint firstAttribute="bottom" secondItem="SEC-n6-DMq" secondAttribute="bottom" id="2rg-4N-K5o"/>
-                                            <constraint firstAttribute="bottom" secondItem="ctb-lo-0GZ" secondAttribute="bottom" constant="15" id="4e1-gL-Yz4"/>
+                                            <constraint firstAttribute="bottom" secondItem="ctb-lo-0GZ" secondAttribute="bottom" constant="12" id="4e1-gL-Yz4"/>
                                             <constraint firstAttribute="trailing" secondItem="SEC-n6-DMq" secondAttribute="trailing" id="8i5-30-5Rc"/>
                                             <constraint firstItem="SEC-n6-DMq" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" id="IBQ-07-JYV"/>
+                                            <constraint firstItem="Lgs-LW-KVR" firstAttribute="centerX" secondItem="ctb-lo-0GZ" secondAttribute="centerX" id="MGB-y7-0oQ"/>
                                             <constraint firstItem="YcI-DG-ygg" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="top" id="MPq-KH-jYr"/>
                                             <constraint firstAttribute="trailing" secondItem="Qpv-c2-4OW" secondAttribute="trailing" id="P3Z-1X-NUt"/>
                                             <constraint firstItem="YcI-DG-ygg" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" id="P4F-U5-pdE"/>
@@ -74,6 +83,7 @@
                                             <constraint firstItem="Qpv-c2-4OW" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="top" id="diW-JD-v5r"/>
                                             <constraint firstItem="SEC-n6-DMq" firstAttribute="top" secondItem="gLF-jt-H4w" secondAttribute="top" id="lMb-k3-UVq"/>
                                             <constraint firstAttribute="trailing" secondItem="YcI-DG-ygg" secondAttribute="trailing" id="lqP-hq-5f0"/>
+                                            <constraint firstItem="Lgs-LW-KVR" firstAttribute="centerY" secondItem="ctb-lo-0GZ" secondAttribute="centerY" id="o1L-aY-Vat"/>
                                             <constraint firstItem="ctb-lo-0GZ" firstAttribute="leading" secondItem="gLF-jt-H4w" secondAttribute="leading" constant="12" id="sNx-I9-xEJ"/>
                                         </constraints>
                                         <variation key="default">
@@ -192,6 +202,7 @@
     <resources>
         <image name="bgListWhiteShadow" width="13" height="10"/>
         <image name="bg_cart_infomation" width="4" height="4"/>
+        <image name="fgCircleLine" width="50" height="50"/>
         <image name="fg_gradiant_topbanner" width="320" height="205"/>
         <image name="image_post_thumbnail" width="320" height="179"/>
     </resources>
