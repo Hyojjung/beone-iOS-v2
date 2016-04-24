@@ -6,9 +6,8 @@ class MainTabViewController: UITabBarController {
   let locations = Locations()
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
-  
   private var mainTitleView = UIView.loadFromNibName(kMainTitleViewNibName) as! MainTitleView
-  
+
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self,
                                                         name: kNotificationGuestAuthenticationSuccess,
@@ -17,6 +16,7 @@ class MainTabViewController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    delegate = self
     NSNotificationCenter.defaultCenter().addObserver(self,
                                                      selector: #selector(setUpData),
                                                      name: kNotificationGuestAuthenticationSuccess, object: nil)
@@ -48,12 +48,17 @@ class MainTabViewController: UITabBarController {
   }
 }
 
+extension MainTabViewController: UITabBarControllerDelegate {
+  func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    mainTitleView.viewTitleLabel.text = viewController.title
+  }
+}
+
 extension MainTabViewController: MainTitleViewDelegate {
   func locationButtonTapped() {
     showLocationPicker { (selectedIndex) -> Void in
       BEONEManager.selectedLocation = BEONEManager.sharedLocations.list[selectedIndex] as? Location
       self.mainTitleView.locationLabel.text = BEONEManager.selectedLocation?.name
-      
       if let selectedViewController = self.selectedViewController as? BaseViewController {
         selectedViewController.setUpData()
       }

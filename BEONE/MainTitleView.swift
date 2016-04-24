@@ -9,6 +9,7 @@ class MainTitleView: UIView {
   
   weak var delegate: MainTitleViewDelegate?
   @IBOutlet weak var locationLabel: UILabel!
+  @IBOutlet weak var viewTitleLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
