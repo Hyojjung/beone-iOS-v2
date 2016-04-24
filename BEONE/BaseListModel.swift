@@ -8,19 +8,19 @@ class BaseListModel: BaseModel {
   var total = 0
   var page: Int?
   var list = [BaseModel]()
+  var title: String?
   
   override func get(getSuccess: (() -> Void)? = nil) {
     NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
       if let result = result as? [String: AnyObject] {
         if let meta = result["meta"] as? [String: AnyObject] {
+          self.title = meta["title"] as? String
           if let total = meta["total"] as? Int {
             self.total = total
           }
-          
           if let count = meta["count"] as? Int {
             self.count = count
           }
-          
           if let page = meta["page"] as? Int {
             self.page = page
           }

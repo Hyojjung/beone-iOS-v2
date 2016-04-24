@@ -20,6 +20,7 @@ class TemplatesViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     templates.get {
+      self.title = self.templates.title
       self.tableView.reloadData()
     }
     favoriteProducts.get {
