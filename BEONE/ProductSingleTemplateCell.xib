@@ -109,10 +109,10 @@
                                         </variation>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
-                                        <rect key="frame" x="3" y="1" width="331" height="292"/>
+                                        <rect key="frame" x="3" y="0.0" width="331" height="293"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
-                                                <rect key="frame" x="99" y="80" width="133" height="133"/>
+                                                <rect key="frame" x="99" y="80.5" width="133" height="133"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33725490196078434" green="0.32941176470588235" blue="0.35686274509803922" alpha="0.6377576013513514" colorSpace="calibratedRGB"/>
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="2" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
-                                    <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="1" id="Npk-b4-5Op"/>
+                                    <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="Npk-b4-5Op"/>
                                     <constraint firstAttribute="trailing" secondItem="jqw-v3-fhu" secondAttribute="trailing" constant="3" id="WeV-du-jhU"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
                                     <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
