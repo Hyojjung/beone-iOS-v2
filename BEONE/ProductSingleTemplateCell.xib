@@ -108,6 +108,19 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
+                                        <rect key="frame" x="3" y="1" width="331" height="292"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
+                                                <rect key="frame" x="99" y="80" width="133" height="133"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.33725490196078434" green="0.32941176470588235" blue="0.35686274509803922" alpha="0.6377576013513514" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="xDK-gq-oYv" firstAttribute="centerX" secondItem="jqw-v3-fhu" secondAttribute="centerX" id="I1V-hb-YSU"/>
+                                            <constraint firstItem="xDK-gq-oYv" firstAttribute="centerY" secondItem="jqw-v3-fhu" secondAttribute="centerY" id="WAI-la-42N"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-dv-714">
                                         <rect key="frame" x="0.0" y="0.0" width="337" height="294"/>
                                         <connections>
@@ -121,43 +134,24 @@
                                     <constraint firstAttribute="trailing" secondItem="cTg-dv-714" secondAttribute="trailing" id="8Ls-dN-k9U"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="2" id="GHB-N3-NX5"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" id="GQP-wK-8yd"/>
+                                    <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="1" id="Npk-b4-5Op"/>
+                                    <constraint firstAttribute="trailing" secondItem="jqw-v3-fhu" secondAttribute="trailing" constant="3" id="WeV-du-jhU"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="cTg-dv-714" secondAttribute="bottom" id="bQE-OR-ytP"/>
                                     <constraint firstAttribute="bottom" secondItem="cTg-dv-714" secondAttribute="bottom" id="fC2-IZ-s1T"/>
                                     <constraint firstItem="cTg-dv-714" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="fQG-Y2-8BU"/>
+                                    <constraint firstItem="jqw-v3-fhu" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="3" id="qbL-oY-f9W"/>
                                     <constraint firstAttribute="bottom" secondItem="yCd-sP-rVa" secondAttribute="bottom" id="qwX-Fk-7Cz"/>
                                     <constraint firstItem="yCd-sP-rVa" firstAttribute="top" secondItem="ACY-v3-5KD" secondAttribute="bottom" id="rJm-p8-PsV"/>
                                     <constraint firstAttribute="trailing" secondItem="yCd-sP-rVa" secondAttribute="trailing" id="sVC-4g-dUU"/>
                                     <constraint firstAttribute="trailing" secondItem="ACY-v3-5KD" secondAttribute="trailing" constant="2" id="vEw-G1-2OB"/>
                                     <constraint firstItem="ACY-v3-5KD" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="xSQ-OS-OKT"/>
+                                    <constraint firstAttribute="bottom" secondItem="jqw-v3-fhu" secondAttribute="bottom" constant="1" id="yU9-Q9-y9N"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bQE-OR-ytP"/>
                                     </mask>
                                 </variation>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
-                                <rect key="frame" x="14" y="8" width="331" height="292"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
-                                        <rect key="frame" x="99" y="80" width="133" height="133"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFl-mS-20a">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="292"/>
-                                        <connections>
-                                            <action selector="productButtonTapped" destination="2uB-kz-C90" eventType="touchUpInside" id="D1e-BD-XWU"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.33725490196078434" green="0.32941176470588235" blue="0.35686274509803922" alpha="0.6377576013513514" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="dFl-mS-20a" secondAttribute="trailing" id="2fz-iQ-9cs"/>
-                                    <constraint firstItem="dFl-mS-20a" firstAttribute="leading" secondItem="jqw-v3-fhu" secondAttribute="leading" id="5FR-hq-nPe"/>
-                                    <constraint firstAttribute="bottom" secondItem="dFl-mS-20a" secondAttribute="bottom" id="DRg-zg-h7n"/>
-                                    <constraint firstItem="dFl-mS-20a" firstAttribute="top" secondItem="jqw-v3-fhu" secondAttribute="top" id="Fn3-bP-gfh"/>
-                                    <constraint firstItem="xDK-gq-oYv" firstAttribute="centerX" secondItem="jqw-v3-fhu" secondAttribute="centerX" id="I1V-hb-YSU"/>
-                                    <constraint firstItem="xDK-gq-oYv" firstAttribute="centerY" secondItem="jqw-v3-fhu" secondAttribute="centerY" id="WAI-la-42N"/>
-                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-AY-uQN">
                                 <rect key="frame" x="309" y="13" width="34" height="34"/>
@@ -171,12 +165,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZTR-Pk-lPn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="topMargin" id="39y-cL-RL2"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leading" id="7sD-xL-QRj"/>
                             <constraint firstAttribute="bottom" secondItem="Y10-aO-rEn" secondAttribute="bottom" id="ATc-NQ-AhT"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" id="M2Y-Gu-sox"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="NYo-d4-LX9"/>
                             <constraint firstAttribute="bottom" secondItem="Y10-aO-rEn" secondAttribute="bottom" id="NZJ-Hz-CAw"/>
-                            <constraint firstAttribute="trailing" secondItem="jqw-v3-fhu" secondAttribute="trailing" id="NeO-Hk-pHw"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leadingMargin" id="O1i-T5-U8n"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leading" id="R3P-4O-Iji"/>
                             <constraint firstItem="sbe-AY-uQN" firstAttribute="top" secondItem="ZTR-Pk-lPn" secondAttribute="top" constant="5" id="UEq-xS-bRx"/>
@@ -185,16 +176,11 @@
                             <constraint firstAttribute="trailing" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="YG3-Cf-ChG"/>
                             <constraint firstItem="ZTR-Pk-lPn" firstAttribute="leading" secondItem="Iz9-QO-Kcb" secondAttribute="leadingMargin" constant="3" id="bfm-vS-kcg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" constant="3" id="dms-z0-XOM"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="leading" secondItem="ZTR-Pk-lPn" secondAttribute="leading" constant="3" id="dpU-Wf-tXm"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="fpQ-a9-saY"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="k3G-hd-zcT"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="bottom" secondItem="ZTR-Pk-lPn" secondAttribute="bottom" constant="-2" id="kYD-g2-LrZ"/>
                             <constraint firstItem="Y10-aO-rEn" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="topMargin" id="mmx-Pz-cvH"/>
                             <constraint firstAttribute="trailing" secondItem="Y10-aO-rEn" secondAttribute="trailing" id="nZi-dj-zVT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZTR-Pk-lPn" secondAttribute="trailing" constant="3" id="rqa-cS-Yof"/>
-                            <constraint firstAttribute="bottom" secondItem="jqw-v3-fhu" secondAttribute="bottom" id="uqD-4i-WzA"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="top" secondItem="Iz9-QO-Kcb" secondAttribute="top" id="vjb-cQ-S6W"/>
-                            <constraint firstItem="jqw-v3-fhu" firstAttribute="trailing" secondItem="ZTR-Pk-lPn" secondAttribute="trailing" constant="-3" id="xEl-OQ-maJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Y10-aO-rEn" secondAttribute="bottom" id="xbg-ba-S8r"/>
                         </constraints>
                         <variation key="default">
@@ -207,10 +193,6 @@
                                 <exclude reference="fpQ-a9-saY"/>
                                 <exclude reference="mmx-Pz-cvH"/>
                                 <exclude reference="xbg-ba-S8r"/>
-                                <exclude reference="7sD-xL-QRj"/>
-                                <exclude reference="NeO-Hk-pHw"/>
-                                <exclude reference="uqD-4i-WzA"/>
-                                <exclude reference="vjb-cQ-S6W"/>
                             </mask>
                         </variation>
                     </view>

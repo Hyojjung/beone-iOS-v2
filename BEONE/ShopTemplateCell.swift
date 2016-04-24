@@ -23,12 +23,16 @@ class ShopTemplateCell: TemplateCell {
   override func configureCell(template: Template) {
     super.configureCell(template)
     if let shops = template.content.models as? [Shop] {
-      configureView(shops.first)
+      setUpView(shops.first)
     }
   }
   
   func configureView(shop: Shop?) {
     configureDefaulStyle()
+    setUpView(shop)
+  }
+  
+  private func setUpView(shop: Shop?) {
     if let shop = shop {
       shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
       shopProfileImageView.setLazyLoaingImage(shop.profileImageUrl)

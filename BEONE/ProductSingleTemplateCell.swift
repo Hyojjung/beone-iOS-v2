@@ -19,14 +19,11 @@ class ProductSingleTemplateCell: TemplateCell {
   override func configureCell(template: Template) {
     super.configureCell(template)
     if let products = template.content.models as? [Product] {
-      if products.count > 0 {
-        configureView(products.first!)
-      }
+      configureView(products.objectAtIndex(0))
     }
   }
   
   func configureView(product: Product?) {
-    configureDefaulStyle()
     if let product = product {
       productImageView.setLazyLoaingImage(product.mainImageUrl)
       productNameLabel.text = product.title

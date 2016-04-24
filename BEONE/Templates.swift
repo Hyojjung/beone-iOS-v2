@@ -46,6 +46,7 @@ class Templates: BaseListModel {
           let newTmplate = Template(type: .ProductSingle)
           newTmplate.content.models = [Product]()
           newTmplate.content.models?.appendObject(product)
+          newTmplate.style = template.style
           filterdTemplates.appendObject(newTmplate)
         }
       } else if template.type == .Shop {
@@ -53,6 +54,7 @@ class Templates: BaseListModel {
           let newTmplate = Template(type: .Shop)
           newTmplate.content.models = [Shop]()
           newTmplate.content.models?.appendObject(shop)
+          newTmplate.style = template.style
           filterdTemplates.appendObject(newTmplate)
         }
       } else {

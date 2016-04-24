@@ -8,7 +8,6 @@ class ProductCoupleTemplateCell: TemplateCell {
   weak var favoriteProductDelegate: FavoriteProductDelegate?
 
   func configureView(products: [Product]) {
-//    configureDefaulStyle()
     firstProductView.configureView(products.first)
     secondProductView.configureAlpha(products.count > 1)
     if products.count > 1 {
