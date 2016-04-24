@@ -30,6 +30,11 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     return productProperties
   }()
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   deinit {
     BEONEManager.selectedAddress = nil
     BEONEManager.selectedDate = nil
