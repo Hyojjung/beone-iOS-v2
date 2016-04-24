@@ -29,6 +29,15 @@ class TemplatesViewController: BaseTableViewController {
   }
 }
 
+extension TemplatesViewController: SchemeDelegate {
+  func handleScheme(with id: Int) {
+    templates.id = id
+    setUpData()
+    SchemeHelper.schemeStrings.removeAtIndex(0)
+    handleScheme()
+  }
+}
+
 // MARK: - UITableViewDataSource
 
 extension TemplatesViewController {

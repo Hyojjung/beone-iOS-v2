@@ -7,7 +7,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--비밀의화원-->
@@ -1539,19 +1538,12 @@
                                 <action selector="toggleRevealViewPositionButtonTapped:" destination="49e-Tb-3d3" id="DRQ-hx-g6y"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="iconNavCart" id="Y77-FT-kcE">
-                                <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="cart:" destination="49e-Tb-3d3" id="Flm-S3-Hbo"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="PLh-AN-oKv">
-                                <connections>
-                                    <action selector="showTemplateView:" destination="49e-Tb-3d3" id="Lq5-Tm-xxM"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="iconNavCart" id="Y77-FT-kcE">
+                            <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cart:" destination="49e-Tb-3d3" id="Flm-S3-Hbo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">

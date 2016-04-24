@@ -152,11 +152,12 @@ extension BaseViewController {
 extension BaseViewController {
   
   func showViewController(schemeIdentifier: SchemeIdentifier) {
-    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
-    if viewIdentifiers.isForUser {
-      showUserViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
-    } else {
-      showViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+    if let viewIdentifiers = schemeIdentifier.viewIdentifiers() {
+      if viewIdentifiers.isForUser {
+        showUserViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+      } else {
+        showViewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+      }
     }
   }
   

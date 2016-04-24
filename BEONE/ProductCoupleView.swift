@@ -35,13 +35,13 @@ class ProductCoupleView: UIView {
   
   @IBAction func orderButtonTapped() {
     if let productId = productId {
-      SchemeHelper.setUpScheme("/option/\(productId)")
+      SchemeHelper.setUpScheme("current/option/\(productId)")
     }
   }
   
   @IBAction func productButtonTapped() {
     if let productId = productId {
-      SchemeHelper.setUpScheme("/product/\(productId)")
+      SchemeHelper.setUpScheme("current/product/\(productId)")
     }
   }
   

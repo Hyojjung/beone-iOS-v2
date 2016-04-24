@@ -66,7 +66,7 @@ class OrderResultViewController: BaseViewController {
       let navigation = navigationController;
       navigation?.popToRootViewControllerAnimated(false)
       let ordersViewController = UIViewController.viewController(.Orders)
-      navigation?.pushViewController(ordersViewController, animated: true)
+      navigation?.pushViewController(ordersViewController!, animated: true)
       
     } else {
       popView()

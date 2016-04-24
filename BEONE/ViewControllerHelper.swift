@@ -139,9 +139,11 @@ extension UIViewController {
     return storyboard.instantiateViewControllerWithIdentifier(viewIdentifier)
   }
   
-  static func viewController(schemeIdentifier: SchemeIdentifier) -> UIViewController {
-    let viewIdentifiers = schemeIdentifier.viewIdentifiers()
-    return viewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+  static func viewController(schemeIdentifier: SchemeIdentifier) -> UIViewController? {
+    if let viewIdentifiers = schemeIdentifier.viewIdentifiers() {
+      return viewController(viewIdentifiers.storyboardName, viewIdentifier: viewIdentifiers.viewIdentifier)
+    }
+    return nil
   }
 }
 

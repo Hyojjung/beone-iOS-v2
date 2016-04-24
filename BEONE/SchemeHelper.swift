@@ -41,8 +41,9 @@ enum SchemeIdentifier: String {
   case Setting = "setting"
   case Option = "option"
   case Shop = "shop"
+  case AppView = "app-views"
   
-  func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool) {
+  func viewIdentifiers() -> (storyboardName: String, viewIdentifier: String, isForUser: Bool)? {
     switch (self) {
     case .Profile:
       return (kProfileStoryboardName, kProfileViewIdentifier, true)
@@ -70,6 +71,8 @@ enum SchemeIdentifier: String {
       return (kShopStoryboardName, kShopViewIdentifier, false)
     case .Option:
       return (kProductDetailStoryboardName, kProductOptionViewIdentifier, true)
+    default:
+      return nil
     }
   }
 }
@@ -97,7 +100,7 @@ class SchemeHelper {
     }
     schemeStrings = schemeString.componentsSeparatedByString("/")
     
-    if scheme.hasPrefix("/") {
+    if schemeString.hasPrefix("current") {
       schemeStrings.removeAtIndex(0)
       handleScheme()
     } else {
@@ -137,7 +140,13 @@ extension BaseViewController {
   func handleScheme() {
     if let schemeString = SchemeHelper.schemeStrings.first {
       if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
-        showViewController(schemeIdentifier)
+        if schemeString == SchemeIdentifier.AppView.rawValue {
+          let viewController = TemplatesViewController(nibName: "TemplatesViewController", bundle: nil)
+          viewController.templates.type = .AppView
+          showViewController(viewController, sender: nil)
+        } else {
+          showViewController(schemeIdentifier)
+        }
       } else if let topViewController = SchemeHelper.rootNavigationController()?.topViewController {
         if let id = Int(schemeString), topViewController = topViewController as? SchemeDelegate {
           topViewController.handleScheme(with: id)

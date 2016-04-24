@@ -46,7 +46,7 @@ extension ShopTemplateCell {
   
   @IBAction func shopButtonTapped() {
     if let shopId = shopId {
-      SchemeHelper.setUpScheme("/shop/\(shopId)")
+      SchemeHelper.setUpScheme("current/shop/\(shopId)")
     }
   }
 }

@@ -48,7 +48,7 @@ class ProductSingleTemplateCell: TemplateCell {
   
   @IBAction func productButtonTapped() {
     if let productId = productId {
-      SchemeHelper.setUpScheme("/product/\(productId)")
+      SchemeHelper.setUpScheme("current/product/\(productId)")
     }
   }
   

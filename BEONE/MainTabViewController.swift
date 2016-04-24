@@ -40,18 +40,11 @@ class MainTabViewController: UITabBarController {
   }
   
   @IBAction func cart(sender: AnyObject) {
-    SchemeHelper.setUpScheme("/cart")
+    SchemeHelper.setUpScheme("current/cart")
   }
   
   @IBAction func toggleRevealViewPositionButtonTapped(sender: UIBarButtonItem) {
     self.revealViewController().revealToggleAnimated(true)
-  }
-  
-  @IBAction func showTemplateView(sender: AnyObject) {
-    let viewController = TemplatesViewController(nibName: "TemplatesViewController", bundle: nil)
-    viewController.templates.type = .AppView
-    viewController.templates.id = 1
-    showViewController(viewController, sender: nil)
   }
 }
 
