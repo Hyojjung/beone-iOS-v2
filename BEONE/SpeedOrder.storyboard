@@ -6,10 +6,10 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--빠른주문-->
+        <!--간편주문-->
         <scene sceneID="OHW-l1-fud">
             <objects>
-                <viewController storyboardIdentifier="SpeedOrderView" title="빠른주문" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B7H-fM-z0d" customClass="SpeedOrderFilterViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpeedOrderView" title="간편주문" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B7H-fM-z0d" customClass="SpeedOrderFilterViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RuT-ip-wwl"/>
                         <viewControllerLayoutGuide type="bottom" id="pOt-Um-dlj"/>
