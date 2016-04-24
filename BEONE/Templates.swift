@@ -1,8 +1,15 @@
 
 import UIKit
 
+enum TemplatesType {
+  case Main
+  case AppView
+}
+
 class Templates: BaseListModel {
+  
   var filterdTemplates = [Template]()
+  var type = TemplatesType.Main
   
   override func assignObject(data: AnyObject?) {
     list.removeAll()
@@ -54,6 +61,15 @@ class Templates: BaseListModel {
   }
   
   override func getUrl() -> String {
-    return "app-views/main/template-items"
+    switch type {
+    case .Main:
+      return "app-views/main/template-items"
+    case .AppView:
+      if let id = id {
+        return "app-views/\(id)/template-items"
+      } else {
+        return "app-views/template-items"
+      }
+    }
   }
 }

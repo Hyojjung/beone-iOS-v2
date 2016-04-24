@@ -95,6 +95,8 @@
 		6286FB881C57589300845BE4 /* AddingCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FB871C57589300845BE4 /* AddingCouponViewController.swift */; };
 		6286FB8A1C579D7D00845BE4 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6286FB891C579D7D00845BE4 /* Setting.storyboard */; };
 		6291469D1CB7CCF200989254 /* BeoneTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291469C1CB7CCF200989254 /* BeoneTextView.swift */; };
+		629A65AA1CCCC130009B68BD /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A65A91CCCC130009B68BD /* TemplatesViewController.swift */; };
+		629A65AC1CCCC1F8009B68BD /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SearchViewController.swift */; };
@@ -381,6 +383,8 @@
 		6286FB871C57589300845BE4 /* AddingCouponViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingCouponViewController.swift; sourceTree = "<group>"; };
 		6286FB891C579D7D00845BE4 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		6291469C1CB7CCF200989254 /* BeoneTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeoneTextView.swift; sourceTree = "<group>"; };
+		629A65A91CCCC130009B68BD /* TemplatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
+		629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -783,6 +787,8 @@
 				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
 				6211B31A1CB16DF400B5939B /* PersonalInfoViewController.swift */,
 				62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */,
+				629A65A91CCCC130009B68BD /* TemplatesViewController.swift */,
+				629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1380,6 +1386,7 @@
 				73BE225F1C31040F003FA11C /* OptionStringView.xib in Resources */,
 				73F629A61BF43AE2001EA72F /* ButtonTemplateCell.xib in Resources */,
 				73EA25451BE4D7DD0085382A /* AlertViewController.xib in Resources */,
+				629A65AC1CCCC1F8009B68BD /* TemplatesViewController.xib in Resources */,
 				62FC6E991BDF4FF50071E1B1 /* Localizable.strings in Resources */,
 				62FC6EA51BDF72F60071E1B1 /* Images.xcassets in Resources */,
 				622AE9721C61EB73009F1A50 /* OrderResultViewController.xib in Resources */,
@@ -1597,6 +1604,7 @@
 				7323FD271C3A068C008B99DF /* PaymentTypesView.swift in Sources */,
 				62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */,
 				62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */,
+				629A65AA1CCCC130009B68BD /* TemplatesViewController.swift in Sources */,
 				62FA804F1BDFE0C000C016C3 /* SignInViewController.swift in Sources */,
 				73445E801BFAFAD2008BE2AC /* ShopsViewController.swift in Sources */,
 				627E221B1C6C623900FBB91D /* InquiryEditViewController.swift in Sources */,
