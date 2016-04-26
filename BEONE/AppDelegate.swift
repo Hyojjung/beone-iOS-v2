@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, openURL url: NSURL,
                    sourceApplication: String?, annotation: AnyObject) -> Bool {
     if url.absoluteString.hasPrefix(kPaymentScheme) {
-      if let orderWebViewController = SchemeHelper.rootNavigationController()?.topViewController as? OrderWebViewController {
+      if let orderWebViewController = ViewControllerHelper.topMostViewController() as? OrderWebViewController {
         orderWebViewController.handleUrl(url.absoluteString)
       }
       return true

@@ -135,9 +135,7 @@ extension SideBarViewController {
 
 extension SideBarViewController: SWRevealViewControllerDelegate {
   func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-    if let navi = revealController.frontViewController as? UINavigationController,
-      topViewController = navi.topViewController as? UITabBarController,
-      selectedViewController = topViewController.selectedViewController {
+    if let selectedViewController = ViewControllerHelper.topMostViewController() {
       if position == .Right {
         sideBarGestureView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         selectedViewController.view.addSubViewAndEdgeLayout(sideBarGestureView)

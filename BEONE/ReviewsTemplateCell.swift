@@ -59,8 +59,7 @@ extension ReviewsTemplateCell {
 }
 
 extension ReviewsTemplateCell: ReviewContentDelegate {
-  
   func reviewButtonTapped(productId: Int) {
-    ViewControllerHelper.topViewController()?.showProductView(productId)
+    ViewControllerHelper.topRootViewController()?.showProductView(productId)
   }
 }

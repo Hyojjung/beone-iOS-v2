@@ -83,7 +83,7 @@ class NetworkHelper: NSObject {
       if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
         
       } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
-        ViewControllerHelper.topViewController()?.showAlertView("서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.")
+        ViewControllerHelper.topRootViewController()?.showAlertView("서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.")
       } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
         if errorCode != nil && errorKey != nil {
           if errorCode == NetworkErrorCode.Invalid.rawValue && errorKey == NetworkErrorKey.AccessToken.rawValue && !myInfo.isUser() {

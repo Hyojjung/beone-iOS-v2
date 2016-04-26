@@ -85,13 +85,8 @@ class SchemeHelper {
   
   static var schemeStrings = [String]()
   
-  static func rootNavigationController() -> UINavigationController? {
-    let root = UIApplication.sharedApplication().delegate?.window!!.rootViewController as? SWRevealViewController
-    return root?.frontViewController as? UINavigationController
-  }
-  
   static func setUpScheme(scheme: String) {
-    let navi = rootNavigationController()
+    let navi = ViewControllerHelper.topRootViewController() as? UINavigationController
     navi?.dismissViewControllerAnimated(false, completion: nil)
     
     var schemeString = scheme
@@ -110,7 +105,7 @@ class SchemeHelper {
   }
   
   static func setUpTabController() {
-    if let navi = rootNavigationController(),
+    if let navi = ViewControllerHelper.topRootViewController() as? UINavigationController,
       mainTabViewController = navi.topViewController as? MainTabViewController,
       mainTabViewIdentifier = schemeStrings.first,
       mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
@@ -124,19 +119,13 @@ class SchemeHelper {
   }
   
   static func handleScheme() {
-    if let navi = rootNavigationController() {
-      if let mainTabViewController = navi.topViewController as? MainTabViewController,
-        viewController = mainTabViewController.selectedViewController as? BaseViewController {
-        viewController.handleScheme()
-      } else if let viewCotroller = navi.topViewController as? BaseViewController {
-        viewCotroller.handleScheme()
-      }
+    if let topMostViewController = ViewControllerHelper.topMostViewController() as? BaseViewController {
+      topMostViewController.handleScheme()
     }
   }
 }
 
 extension BaseViewController {
-  
   func handleScheme() {
     if let schemeString = SchemeHelper.schemeStrings.first {
       if let schemeIdentifier = SchemeIdentifier(rawValue: schemeString) {
@@ -147,7 +136,7 @@ extension BaseViewController {
         } else {
           showViewController(schemeIdentifier)
         }
-      } else if let topViewController = SchemeHelper.rootNavigationController()?.topViewController {
+      } else if let topViewController = ViewControllerHelper.topMostViewController() {
         if let id = Int(schemeString), topViewController = topViewController as? SchemeDelegate {
           topViewController.handleScheme(with: id)
         } else if schemeString == kRecentProductsSchemeString {

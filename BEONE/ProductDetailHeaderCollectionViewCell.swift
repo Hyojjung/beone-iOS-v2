@@ -68,14 +68,13 @@ extension ProductDetailHeaderCollectionViewCell {
   @IBAction func favoriteButtonTapped(sender: UIButton) {
     if let product = self.product {
       if let productId = product.id {
-        sender.selected = !sender.selected
         if !sender.selected {
           FavoriteProductHelper.postFavoriteProduct(productId, success: {
-            
+            sender.selected = !sender.selected
           })
         } else {
           FavoriteProductHelper.deleteFavoriteProduct(productId, success: {
-            
+            sender.selected = !sender.selected
           })
         }
       }

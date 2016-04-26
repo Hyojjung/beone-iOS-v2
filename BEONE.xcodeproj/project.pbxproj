@@ -627,13 +627,6 @@
 			name = StringExtension;
 			sourceTree = "<group>";
 		};
-		621A71161C4DFDBF004AF8E7 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
 		622AE9661C5F4598009F1A50 /* SpeedOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,13 +637,14 @@
 			name = SpeedOrder;
 			sourceTree = "<group>";
 		};
-		622DE1131C58B6B500F0C9DF /* OrderList */ = {
+		622DE1131C58B6B500F0C9DF /* Orders */ = {
 			isa = PBXGroup;
 			children = (
 				623AAD9B1C5858980095731B /* OrdersViewController.swift */,
 				622DE1111C58B6A800F0C9DF /* OrderViewController.swift */,
+				626BBDF01C8BFD680066F89B /* AddingReviewViewController.swift */,
 			);
-			name = OrderList;
+			name = Orders;
 			sourceTree = "<group>";
 		};
 		625EDDAA1C69D4700009377A /* Coupon */ = {
@@ -662,6 +656,26 @@
 				625EDDB71C69EFDB0009377A /* DeleteCouponButtonCell.xib */,
 			);
 			name = Coupon;
+			sourceTree = "<group>";
+		};
+		629A65C01CCF8129009B68BD /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				6286FB7C1C5747E700845BE4 /* CouponsViewController.swift */,
+				6286FB871C57589300845BE4 /* AddingCouponViewController.swift */,
+			);
+			name = Coupon;
+			sourceTree = "<group>";
+		};
+		629A65C11CCF815E009B68BD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				73445E791BFAD843008BE2AC /* ProfileViewController.swift */,
+				6211B3121CAE5AB500B5939B /* AccountsViewController.swift */,
+				6211B31A1CB16DF400B5939B /* PersonalInfoViewController.swift */,
+				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		62E5CF011BDDE19100A99F4C = {
@@ -766,7 +780,6 @@
 				62F2F51A1C6DA37800D96964 /* More */,
 				62F2F5191C6DA2A800D96964 /* Mains */,
 				622AE9661C5F4598009F1A50 /* SpeedOrder */,
-				621A71161C4DFDBF004AF8E7 /* Base */,
 				73398AF31C07425500F57D4A /* Order */,
 				7342416F1BFC285A00BE21F5 /* Base */,
 				62FC6E951BDF43CB0071E1B1 /* Signing */,
@@ -779,13 +792,9 @@
 				7388FA4D1C049CA40015C3DF /* ReviewViewController.swift */,
 				73BE226A1C328B9F003FA11C /* CartViewController.swift */,
 				621A71141C4DF7D5004AF8E7 /* ProductsViewController.swift */,
-				6286FB871C57589300845BE4 /* AddingCouponViewController.swift */,
-				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
 				627E22191C6C623900FBB91D /* InquiryEditViewController.swift */,
 				627E221A1C6C623900FBB91D /* InquiryEditViewController.xib */,
 				62F7EA3D1C8564D500587C14 /* ReviewableOrderItemsViewController.swift */,
-				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
-				6211B31A1CB16DF400B5939B /* PersonalInfoViewController.swift */,
 				62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */,
 				629A65A91CCCC130009B68BD /* TemplatesViewController.swift */,
 				629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */,
@@ -930,9 +939,9 @@
 				626B6EF11C4F41C800F29FD5 /* MainTabViewController.swift */,
 				62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */,
 				62E5CF111BDDE19100A99F4C /* SearchViewController.swift */,
+				62F2F51B1C6DA3CC00D96964 /* CategoriesViewController.swift */,
 				73445E7F1BFAFAD2008BE2AC /* ShopsViewController.swift */,
 				6286FB641C56443F00845BE4 /* MoreViewController.swift */,
-				62F2F51B1C6DA3CC00D96964 /* CategoriesViewController.swift */,
 			);
 			name = Mains;
 			sourceTree = "<group>";
@@ -940,12 +949,12 @@
 		62F2F51A1C6DA37800D96964 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				629A65C11CCF815E009B68BD /* Profile */,
+				629A65C01CCF8129009B68BD /* Coupon */,
+				622DE1131C58B6B500F0C9DF /* Orders */,
 				6286FB6C1C56462F00845BE4 /* NoticeViewController.swift */,
 				6286FB721C56780100845BE4 /* HelpViewController.swift */,
 				73445E711BF9791C008BE2AC /* SettingViewController.swift */,
-				73445E791BFAD843008BE2AC /* ProfileViewController.swift */,
-				6286FB7C1C5747E700845BE4 /* CouponsViewController.swift */,
-				6211B3121CAE5AB500B5939B /* AccountsViewController.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -1131,19 +1140,18 @@
 		73398AF31C07425500F57D4A /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				622DE1131C58B6B500F0C9DF /* OrderList */,
-				7309D7501BFEFC6200F9761A /* OrderAddressViewController.swift */,
-				73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */,
 				73398AF61C08202A00F57D4A /* DeliveryDateViewController.swift */,
+				7309D7501BFEFC6200F9761A /* OrderAddressViewController.swift */,
+				622AE9751C634BC7009F1A50 /* InvalidAddressViewController.swift */,
+				73398AF41C07443800F57D4A /* SelectingPaymentTypeViewController.swift */,
+				625EDDB51C69EF730009377A /* OrderCouponsViewController.xib */,
+				625EDDB31C69D6300009377A /* OrderCouponsViewController.swift */,
 				623AAD971C57D1CF0095731B /* BillKeysViewController.swift */,
+				622DE1141C5A58FF00F0C9DF /* AddingBillKeyViewController.swift */,
+				622AE9731C631BFA009F1A50 /* OrderWebViewController.xib */,
 				7323FD281C3B8B3E008B99DF /* OrderWebViewController.swift */,
 				622AE9711C61EB73009F1A50 /* OrderResultViewController.xib */,
 				7323FD2C1C3BB80D008B99DF /* OrderResultViewController.swift */,
-				622AE9731C631BFA009F1A50 /* OrderWebViewController.xib */,
-				622AE9751C634BC7009F1A50 /* InvalidAddressViewController.swift */,
-				625EDDB51C69EF730009377A /* OrderCouponsViewController.xib */,
-				625EDDB31C69D6300009377A /* OrderCouponsViewController.swift */,
-				626BBDF01C8BFD680066F89B /* AddingReviewViewController.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";

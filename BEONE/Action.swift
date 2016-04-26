@@ -18,7 +18,7 @@ enum ActionType: String {
 class Action: BaseModel {
   
   // MARK: - Property
-
+  
   var type: ActionType?
   var content: String?
   // url string for webview
@@ -29,7 +29,7 @@ class Action: BaseModel {
   var confirmationAction: Action?
   var cancelAction: Action?
   var actionDelegate: AnyObject?
-
+  
   // MARK: - BaseModel Methods
   
   override func assignObject(data: AnyObject?) {
@@ -64,19 +64,12 @@ extension Action {
       case .Scheme:
         SchemeHelper.setUpScheme(content)
       case .Alert:
-        var userInfo = [String: AnyObject]()
-        userInfo[kNotificationAlertKeyMessage] = content
-        userInfo[kNotificationAlertKeyHasCancel] = hasCancel
-        userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
-        userInfo[kNotificationAlertKeyCancelAction] = cancelAction
-//        postNotification(kNotificationShowAlert, userInfo: userInfo)
-        if let revealViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
-          navigationViewController = revealViewController.frontViewController as? UINavigationController {
-          navigationViewController.showAlertView(content,
-                        hasCancel: hasCancel,
-                        confirmAction: confirmationAction,
-                        cancelAction: cancelAction,
-                        delegate: navigationViewController)
+        if let topRootViewController = ViewControllerHelper.topRootViewController() {
+          topRootViewController.showAlertView(content,
+                                              hasCancel: hasCancel,
+                                              confirmAction: confirmationAction,
+                                              cancelAction: cancelAction,
+                                              delegate: topRootViewController)
         }
       case .Method:
         actionDelegate?.performSelector(Selector(stringLiteral: content))

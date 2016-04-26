@@ -6,7 +6,7 @@ class FavoriteProductHelper {
   static func postFavoriteProduct(productId: Int?, success: () -> Void) {
     if let productId = productId {
       if !MyInfo.sharedMyInfo().isUser() {
-        ViewControllerHelper.topViewController()?.showSigningView()
+        ViewControllerHelper.topRootViewController()?.showSigningView()
       } else {
         NetworkHelper.requestPost(requestUrl(),
                                   parameter: requestParameter(productId),

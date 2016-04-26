@@ -4,6 +4,7 @@ import UIKit
 class MainTabViewController: UITabBarController {
   
   let locations = Locations()
+  var selectingIndex = 0
   private var isWaitingSigning = false
   private var signingShowViewController: UIViewController? = nil
   private var mainTitleView = UIView.loadFromNibName(kMainTitleViewNibName) as! MainTitleView
@@ -51,6 +52,15 @@ class MainTabViewController: UITabBarController {
 extension MainTabViewController: UITabBarControllerDelegate {
   func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
     mainTitleView.viewTitleLabel.text = viewController.title
+  }
+  
+  func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+    for (index, viewControllerss) in viewControllers!.enumerate() {
+      if viewControllerss == viewController {
+        selectingIndex = index
+      }
+    }
+    return true
   }
 }
 

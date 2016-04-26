@@ -27,10 +27,31 @@ class ViewControllerHelper: NSObject {
     return nil
   }
   
-  static func topViewController() -> UIViewController? {
-    if let revealViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
-      navigationViewController = revealViewController.frontViewController as? UINavigationController {
-      return navigationViewController.topViewController
+  static func topRootViewController() -> UIViewController? {
+    if var topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+      while topViewController.presentedViewController != nil {
+        topViewController = topViewController.presentedViewController!
+      }
+      if let topRootViewController = topViewController as? SWRevealViewController,
+        rootNavigationViewController = topRootViewController.frontViewController as? UINavigationController {
+          return rootNavigationViewController
+      } else if let topRootViewController = topViewController as? UINavigationController {
+        return topRootViewController.topViewController
+      }
+      return topViewController
+    }
+    return nil
+  }
+  
+  static func topMostViewController() -> UIViewController? {
+    if let topRootViewController = topRootViewController() {
+      if let topRootViewController = topRootViewController as? UINavigationController {
+        if let mainTabViewController = topRootViewController.topViewController as? MainTabViewController {
+          return mainTabViewController.viewControllers?.objectAtIndex(mainTabViewController.selectingIndex)
+        }
+        return topRootViewController.topViewController
+      }
+      return topRootViewController
     }
     return nil
   }
@@ -43,9 +64,7 @@ extension UIView {
     }
     return nil
   }
-}
-
-extension UIImageView {
+  
   func makeCircleView() {
     layer.masksToBounds = false
     layer.borderColor = UIColor.whiteColor().CGColor
