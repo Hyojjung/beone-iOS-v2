@@ -69,7 +69,15 @@ extension Action {
         userInfo[kNotificationAlertKeyHasCancel] = hasCancel
         userInfo[kNotificationAlertKeyConfirmationAction] = confirmationAction
         userInfo[kNotificationAlertKeyCancelAction] = cancelAction
-        postNotification(kNotificationShowAlert, userInfo: userInfo)
+//        postNotification(kNotificationShowAlert, userInfo: userInfo)
+        if let revealViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
+          navigationViewController = revealViewController.frontViewController as? UINavigationController {
+          navigationViewController.showAlertView(content,
+                        hasCancel: hasCancel,
+                        confirmAction: confirmationAction,
+                        cancelAction: cancelAction,
+                        delegate: navigationViewController)
+        }
       case .Method:
         actionDelegate?.performSelector(Selector(stringLiteral: content))
       default:
