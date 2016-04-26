@@ -85,7 +85,7 @@ class SelectingPaymentTypeViewController: BaseTableViewController {
       self.orderPrice = self.order.actualPrice
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
+    OrderHelper.fetchPaymentTypes(cartItemIds: order.cartItemIds) {(paymentTypes) -> Void in
       self.paymentTypes = paymentTypes
       self.tableView.reloadData()
     }

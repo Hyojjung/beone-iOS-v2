@@ -204,7 +204,6 @@
                     </view>
                     <connections>
                         <outlet property="locationLabel" destination="28V-et-axj" id="J7u-ho-B47"/>
-                        <outlet property="searchButton" destination="OKG-gw-L22" id="HQ2-3q-9fQ"/>
                         <outlet property="searchValueLabel" destination="yo8-CH-XQq" id="Xil-dw-bgp"/>
                         <outlet property="searchViewHeightLayoutConstraint" destination="gAn-3c-4O3" id="HcH-Nb-ZF5"/>
                         <outlet property="tableView" destination="Cri-sv-Kwc" id="LlZ-G7-xII"/>

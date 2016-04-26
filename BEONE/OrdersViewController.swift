@@ -27,7 +27,6 @@ class OrdersViewController: BaseTableViewController {
   
   let orders = Orders()
   let reviewableOrderItems = OrderItems()
-  var paymentTypes: PaymentTypes?
   
   var orderToOperate: Order?
   
@@ -50,9 +49,6 @@ class OrdersViewController: BaseTableViewController {
     }
     reviewableOrderItems.get {
       self.tableView.reloadData()
-    }
-    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
-      self.paymentTypes = paymentTypes
     }
   }
 }
@@ -95,9 +91,11 @@ extension OrdersViewController: AddintionalPaymentDelegate {
       
       if orderToOperate!.transactionButtonType == .Payment {
         if let paymentInfo = order.paymentInfos.model(paymentInfoId) as? PaymentInfo {
-          showPayment(paymentTypes?.list as? [PaymentType],
-                      order: order,
-                      paymentInfoId: paymentInfo.id!)
+          OrderHelper.fetchPaymentTypes(order.id) {(paymentTypes) -> Void in
+            self.showPayment(paymentTypes.list as? [PaymentType],
+                             order: order,
+                             paymentInfoId: paymentInfo.id!)
+          }
         }
         
       } else if orderToOperate!.transactionButtonType == .Cancel {

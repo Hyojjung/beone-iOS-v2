@@ -12,8 +12,12 @@ class OrderHelper: NSObject {
     }
   }
   
-  static func fetchPaymentTypes(getSuccess: (paymentTypes: PaymentTypes) -> Void) {
-    NetworkHelper.requestGet("payment-types", parameter: ["isVisible": true], success: { (result) -> Void in
+  static func fetchPaymentTypes(orderId: Int? = nil, cartItemIds: [Int]? = nil, getSuccess: (paymentTypes: PaymentTypes) -> Void) {
+    var parameter = [String: AnyObject]()
+    parameter["orderId"] = orderId
+    parameter["cartItemIds"] = cartItemIds
+    parameter["isVisible"] = true
+    NetworkHelper.requestGet("payment-types", parameter: parameter, success: { (result) -> Void in
       let paymentTypes = PaymentTypes()
       if let paymentTypeObjects = result[kNetworkResponseKeyData] as? [[String: AnyObject]] {
         for paymentTypeObject in paymentTypeObjects {

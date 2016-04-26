@@ -20,7 +20,6 @@ class ProductsViewController: BaseTableViewController {
   @IBOutlet weak var searchViewHeightLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var searchValueLabel: UILabel!
-  @IBOutlet weak var searchButton: UIButton!
   
   var isSpeedOrder = false
   
@@ -104,7 +103,6 @@ class ProductsViewController: BaseTableViewController {
                                                        minPrice: minPrice,
                                                        maxPrice: maxPrice)
       searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
-      searchButton.configureAlpha(isSpeedOrder)
     }
   }
   

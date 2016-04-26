@@ -55,7 +55,7 @@ class OrderViewController: BaseTableViewController {
       self.setUpOrder()
       self.tableView.reloadData()
     }
-    OrderHelper.fetchPaymentTypes() {(paymentTypes) -> Void in
+    OrderHelper.fetchPaymentTypes(order.id) {(paymentTypes) -> Void in
       self.paymentTypes = paymentTypes
     }
   }

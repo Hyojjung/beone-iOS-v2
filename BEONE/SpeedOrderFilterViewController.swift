@@ -68,6 +68,11 @@ class SpeedOrderFilterViewController: BaseTableViewController {
     productSearchData.get { 
       if !self.productSearchData.reservationDateOptions.isEmpty {
         self.selectedDeliveryDateIndex = 0
+        for (index, reservationDateOption) in self.productSearchData.reservationDateOptions.enumerate() {
+          if reservationDateOption.isSelected {
+            self.selectedDeliveryDateIndex = index
+          }
+        }
         self.tableView.reloadData()
       }
     }
