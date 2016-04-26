@@ -24,6 +24,10 @@ class OrderResultViewController: BaseViewController {
     didSet {
       if let orderStatus = orderResult?[kOrderResultKeyStatus] as? String, status = OrderStatus(rawValue: orderStatus) {
         self.status = status
+      } else if let isSuccess = orderResult?["isSuccess"] as? String {
+        if isSuccess == "false" {
+          self.status = .Failure
+        }
       }
     }
   }
@@ -120,6 +124,7 @@ extension OrderResultViewController {
       var failureMessage = String()
       if let orderResult = orderResult, message = orderResult[kOrderResultKeyMessage] as? String {
         failureMessage += message
+        failureMessage += " "
       }
       failureMessage += NSLocalizedString("order failure", comment: "result label")
       orderResultView.orderResultLabel.text = failureMessage

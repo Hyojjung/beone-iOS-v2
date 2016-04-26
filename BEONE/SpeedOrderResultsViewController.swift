@@ -23,7 +23,7 @@ class SpeedOrderResultsViewController: BaseViewController {
     products.isQuickOrder = true
     products.address = address
     products.availableDates = availableDates
-    
+    products.productPropertyValueIds = productPropertyValueIds
     products.get {
       self.productsScrollViewPageControl.configureAlpha(!self.products.list.isEmpty)
       self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1

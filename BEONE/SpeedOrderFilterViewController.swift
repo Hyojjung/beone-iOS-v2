@@ -79,7 +79,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
   
   @IBAction func selectUsageButtonTapped() {
     if let productProperty = productProperties.list.first as? ProductProperty {
-      showActionSheet("용도를 선택해 주세요",
+      showActionSheet(NSLocalizedString("select usage", comment: "action sheet title"),
                       rows: productProperty.valueTitles(),
                       initialSelection: selectedUsageIndex,
                       sender: nil,
@@ -196,7 +196,7 @@ class UsageCell: UITableViewCell {
       usageLabel.text = usage.name
       usageLabel.font = UIFont.systemFontOfSize(20)
     } else {
-      usageLabel.text = "어떤 때 필요하신가요? (선택사항)"
+      usageLabel.text = NSLocalizedString("select usage", comment: "label text")
       usageLabel.font = UIFont.systemFontOfSize(15)
     }
   }

@@ -24,7 +24,7 @@ extension String {
       let components = query.componentsSeparatedByString("&")
       for component in components {
         if let key = component.componentsSeparatedByString("=").first {
-          parameter[key] = component.componentsSeparatedByString("=").last
+          parameter[key] = component.componentsSeparatedByString("=").last?.stringByRemovingPercentEncoding
         }
       }
     }

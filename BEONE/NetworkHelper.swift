@@ -143,13 +143,13 @@ class NetworkHelper: NSObject {
   
   static private func handleSuccessDefault(operation: AFHTTPRequestOperation, responseObject: AnyObject?, success: NetworkSuccess?) {
     #if DEBUG
-//      do {
-//        let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject!, options: NSJSONWritingOptions.PrettyPrinted)
-//        print("\(operation.response?.URL)")
+      do {
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject!, options: NSJSONWritingOptions.PrettyPrinted)
+        print("\(operation.response?.URL)")
 //        print("responseObject: \(NSString(data: jsonData, encoding: NSUTF8StringEncoding))")
-//      } catch let error as NSError{
-//        print(error.description)
-//      }
+      } catch let error as NSError {
+        print(error.description)
+      }
     #endif
     if let success = success, responseObject = responseObject {
       
