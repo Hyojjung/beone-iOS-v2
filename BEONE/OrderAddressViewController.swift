@@ -207,10 +207,8 @@ extension OrderAddressViewController {
       detailAddressTextField.text = address?.detailAddress
     }
     
-    if let address = address {
-      receiverNameTextField.text = address.receiverName
-      receiverPhoneTextField.text = address.receiverPhone
-    }
+    receiverNameTextField.text = address?.receiverName
+    receiverPhoneTextField.text = address?.receiverPhone
     if sameButton.selected {
       setUpSenderAndReceiverView()
     }
