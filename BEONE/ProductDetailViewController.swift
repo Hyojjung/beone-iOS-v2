@@ -97,15 +97,17 @@ class ProductDetailViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    product.get({
-      self.setUpProductData()
-    })
-    
-    reviews.productId = product.id
-    reviews.isRecentThree = true
-    reviews.get {
-      self.product.reviews = self.reviews.list as! [Review]
-      self.collectionView.reloadData()
+    if product.id != nil {
+      product.get({
+        self.setUpProductData()
+      })
+      
+      reviews.productId = product.id
+      reviews.isRecentThree = true
+      reviews.get {
+        self.product.reviews = self.reviews.list as! [Review]
+        self.collectionView.reloadData()
+      }
     }
   }
   

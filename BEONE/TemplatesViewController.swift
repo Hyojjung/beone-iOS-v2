@@ -4,6 +4,7 @@ import UIKit
 class TemplatesViewController: BaseTableViewController {
   
   let templates = Templates()
+  var needSetTitle = true
   let favoriteProducts: Products = {
     let products = Products()
     products.type = .Favorite
@@ -20,7 +21,9 @@ class TemplatesViewController: BaseTableViewController {
   override func setUpData() {
     super.setUpData()
     templates.get {
-      self.title = self.templates.title
+      if self.needSetTitle {
+        self.title = self.templates.title
+      }
       self.tableView.reloadData()
     }
     favoriteProducts.get {

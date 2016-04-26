@@ -2,6 +2,11 @@
 import UIKit
 
 class LandingViewController: TemplatesViewController {
+
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needSetTitle = false
+  }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
