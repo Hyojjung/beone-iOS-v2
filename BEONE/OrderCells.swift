@@ -62,6 +62,7 @@ class OrderItemCell: UITableViewCell {
   
   func configureCell(orderItem: OrderableItem) {
     productImageView.setLazyLoaingImage(orderItem.productImageUrl)
+    productImageView.makeCircleView()
     productTitleLabel.text = orderItem.productTitle
     productPriceLabel.text = orderItem.productPrice?.priceNotation(.Korean)
     qauntityLabel.text = "\(orderItem.quantity)"

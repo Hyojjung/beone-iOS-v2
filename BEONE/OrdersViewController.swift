@@ -188,6 +188,7 @@ class OrderCell: UITableViewCell {
     orderPriceLabel.text = order.actualPrice.priceNotation(.Korean)
     let orderableItem = order.orderableItemSets.first?.orderableItems.list.first as? OrderableItem
     orderImageView.setLazyLoaingImage(orderableItem?.productImageUrl)
+    orderImageView.makeCircleView()
     layoutPaymentsView(order.paymentInfos.list as! [PaymentInfo],
                        addintionalPaymentDelegate: addintionalPaymentDelegate)
     
