@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -31,19 +31,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_mypage_anniversary" translatesAutoresizingMaskIntoConstraints="NO" id="kyj-3L-cdg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_drawer_top" translatesAutoresizingMaskIntoConstraints="NO" id="kyj-3L-cdg">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="187"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kyj-3L-cdg" secondAttribute="height" multiplier="16:5" priority="750" id="KMd-By-ofm"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBV-ak-mHY">
+                                                    <rect key="frame" x="251" y="79" width="100" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 계정정보를 확인하실 수 있습니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-oV-XvV">
+                                                    <rect key="frame" x="202" y="114" width="197" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="kyj-3L-cdg" secondAttribute="trailing" id="6p1-mS-nBT"/>
+                                                <constraint firstItem="EBV-ak-mHY" firstAttribute="centerX" secondItem="jJm-zV-Av4" secondAttribute="centerX" id="Da4-Do-uxp"/>
                                                 <constraint firstItem="kyj-3L-cdg" firstAttribute="leading" secondItem="jJm-zV-Av4" secondAttribute="leading" id="KT2-ai-R6n"/>
+                                                <constraint firstItem="uEN-oV-XvV" firstAttribute="centerX" secondItem="jJm-zV-Av4" secondAttribute="centerX" id="QJT-Mx-o4T"/>
                                                 <constraint firstItem="kyj-3L-cdg" firstAttribute="top" secondItem="jJm-zV-Av4" secondAttribute="top" id="Rl5-HH-1bX"/>
                                                 <constraint firstItem="kyj-3L-cdg" firstAttribute="width" secondItem="jJm-zV-Av4" secondAttribute="width" id="XSp-Se-SKw"/>
+                                                <constraint firstItem="uEN-oV-XvV" firstAttribute="top" secondItem="EBV-ak-mHY" secondAttribute="bottom" constant="5" id="kyb-qj-UKS"/>
                                                 <constraint firstAttribute="bottom" secondItem="kyj-3L-cdg" secondAttribute="bottom" id="qxw-8K-wTI"/>
+                                                <constraint firstItem="EBV-ak-mHY" firstAttribute="centerY" secondItem="jJm-zV-Av4" secondAttribute="centerY" id="wPP-9I-doD"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1604,8 +1620,8 @@
         <image name="btn_submit_gold" width="2" height="2"/>
         <image name="btn_submit_gold_pressed" width="2" height="2"/>
         <image name="icon_list_arrow" width="7" height="14"/>
+        <image name="image_drawer_top" width="270" height="160"/>
         <image name="image_list_end" width="23" height="30"/>
-        <image name="image_mypage_anniversary" width="320" height="100"/>
         <image name="radio_off" width="35" height="35"/>
         <image name="radio_on" width="35" height="35"/>
     </resources>
