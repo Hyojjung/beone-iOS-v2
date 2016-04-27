@@ -25,11 +25,11 @@ let kBOHeaderVersionKey = "x-beone-version"
 let kBOHeaderVersion = "v2.0"
 
 #if DEBUG
-let kBaseApiUrl = "https://api.beone.kr/"
-let kBaseUrl = "https://api.beone.kr/"
-#else
 let kBaseApiUrl = "https://devapi.beone.kr/"
 let kBaseUrl = "https://devapi.beone.kr/"
+#else
+let kBaseApiUrl = "https://api.beone.kr/"
+let kBaseUrl = "https://api.beone.kr/"
 #endif
 
 enum NetworkErrorCode: Int {
