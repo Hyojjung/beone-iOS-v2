@@ -47,7 +47,6 @@ class Product: BaseModel {
   var size: String?
   var soldOut = true
   var summary: String?
-  var reviewCount = 1
   var reviews = [Review]()
   
   var productDetailHeaders = [ProductDetail]()

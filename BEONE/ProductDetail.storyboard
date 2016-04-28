@@ -287,7 +287,7 @@
         <!--상품후기-->
         <scene sceneID="6FC-rV-85q">
             <objects>
-                <viewController title="상품후기" automaticallyAdjustsScrollViewInsets="NO" id="oH7-Bu-1Bx" customClass="ReviewsViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewView" title="상품후기" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oH7-Bu-1Bx" customClass="ReviewsViewController" customModule="BEONE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UMe-3t-77d"/>
                         <viewControllerLayoutGuide type="bottom" id="FIx-a0-5Jx"/>
@@ -296,15 +296,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-EC-fjP">
-                                <rect key="frame" x="0.0" y="-44" width="600" height="64"/>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvA-ok-qTU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="Raw-3B-hVw"/>
+                                    <constraint firstAttribute="height" constant="64" id="M1E-iq-Sv4"/>
                                 </constraints>
-                            </view>
+                                <color key="tintColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.93725490199999995" green="0.8980392157" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="상품후기" id="Kjj-rp-gff">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Acf-Bg-8FK">
+                                            <connections>
+                                                <action selector="closeButtonTapped" destination="oH7-Bu-1Bx" id="olB-fx-euk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="151" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-5z-yZw" customClass="DynamicHeightTableView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="600" height="1980"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="1936"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" rowHeight="238" id="ph7-Dt-gay" customClass="ReviewCell" customModule="BEONE" customModuleProvider="target">
@@ -345,77 +358,77 @@
                                                     <rect key="frame" x="111" y="40" width="19" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CZj-IY-vpo" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="15" y="122" width="136.5" height="50"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="8SE-c2-wIu"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c0-yQ-fkC">
-                                                    <rect key="frame" x="15" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="15" y="122" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="f5Q-2B-ia0"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pPB-bE-Hbg" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="159" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="159" y="122" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-Vv-wPo">
-                                                    <rect key="frame" x="159" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="159" y="122" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="6gx-3C-qDB"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aA-1L-WPa" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="304" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="304" y="122" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tlj-Am-IcI">
-                                                    <rect key="frame" x="304" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="304" y="122" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="Dqz-wd-Uec"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iXn-oZ-Ego" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="448" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="448" y="122" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DB0-Bd-paB">
-                                                    <rect key="frame" x="448" y="122" width="137" height="50"/>
+                                                    <rect key="frame" x="448" y="122" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="0yZ-E8-zF4"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="70R-ku-Oej" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="15" y="180" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srM-OO-5VC">
-                                                    <rect key="frame" x="15" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="15" y="180" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="iV0-Dp-ae8"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pOd-uM-OBy" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="159" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="159" y="180" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-4K-tx3">
-                                                    <rect key="frame" x="159" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="159" y="180" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="bqQ-dl-L9x"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-ie-Vbv" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="304" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="304" y="180" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOo-mP-F8F">
-                                                    <rect key="frame" x="304" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="304" y="180" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="QAy-Nb-9dD"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyO-Kw-eoh" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                                    <rect key="frame" x="448" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="448" y="180" width="136.5" height="50"/>
                                                 </imageView>
                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jU-Cb-fX4">
-                                                    <rect key="frame" x="448" y="180" width="137" height="50"/>
+                                                    <rect key="frame" x="448" y="180" width="136.5" height="50"/>
                                                     <connections>
                                                         <action selector="reviewImageButtonTapped:" destination="oH7-Bu-1Bx" eventType="touchUpInside" id="GrM-Xb-nJC"/>
                                                     </connections>
@@ -575,16 +588,25 @@
                         <color key="backgroundColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FIx-a0-5Jx" firstAttribute="top" secondItem="Sdz-5z-yZw" secondAttribute="bottom" id="0oy-Kw-tyr"/>
-                            <constraint firstAttribute="trailing" secondItem="jAb-EC-fjP" secondAttribute="trailing" id="6nA-Zg-geE"/>
-                            <constraint firstItem="jAb-EC-fjP" firstAttribute="top" secondItem="UMe-3t-77d" secondAttribute="bottom" constant="-64" id="Fhf-jH-Fgs"/>
-                            <constraint firstItem="jAb-EC-fjP" firstAttribute="leading" secondItem="UPQ-OC-A88" secondAttribute="leading" id="PHO-ob-Va7"/>
+                            <constraint firstItem="lvA-ok-qTU" firstAttribute="top" secondItem="UPQ-OC-A88" secondAttribute="top" id="28Z-7Z-9MJ"/>
+                            <constraint firstAttribute="trailing" secondItem="lvA-ok-qTU" secondAttribute="trailing" id="bRv-P0-N5c"/>
+                            <constraint firstItem="lvA-ok-qTU" firstAttribute="top" secondItem="UMe-3t-77d" secondAttribute="bottom" id="fSp-gF-Rqg"/>
                             <constraint firstItem="Sdz-5z-yZw" firstAttribute="leading" secondItem="UPQ-OC-A88" secondAttribute="leading" id="nma-Y4-Csu"/>
                             <constraint firstItem="Sdz-5z-yZw" firstAttribute="top" secondItem="UMe-3t-77d" secondAttribute="bottom" id="ohA-1u-ZC8"/>
+                            <constraint firstItem="lvA-ok-qTU" firstAttribute="leading" secondItem="UPQ-OC-A88" secondAttribute="leading" id="ooC-A0-89C"/>
+                            <constraint firstItem="Sdz-5z-yZw" firstAttribute="top" secondItem="lvA-ok-qTU" secondAttribute="bottom" id="vpb-nX-Qzf"/>
                             <constraint firstAttribute="trailing" secondItem="Sdz-5z-yZw" secondAttribute="trailing" id="xhO-La-Npl"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fSp-gF-Rqg"/>
+                                <exclude reference="ohA-1u-ZC8"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="yth-l3-Eeq"/>
                     <connections>
+                        <outlet property="naviBar" destination="lvA-ok-qTU" id="6Sq-Gj-2kq"/>
                         <outlet property="tableView" destination="Sdz-5z-yZw" id="qf9-HC-Ber"/>
                     </connections>
                 </viewController>

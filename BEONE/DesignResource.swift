@@ -12,6 +12,7 @@ let taupe = UIColor(red:186.0 / 255, green:160.0 / 255, blue:130.0 / 255, alpha:
 let warmGrey = UIColor(red:158.0 / 255, green:158.0 / 255, blue:158.0 / 255, alpha:1)
 let productPropertyValueButtonColor = UIColor(red:241.0 / 255, green:236.0 / 255, blue:230.0 / 255, alpha:1)
 let selectedProductPropertyValueButtonColor = UIColor(red:208.0 / 255, green:165.0 / 255, blue:114.0 / 255, alpha:1)
+let navigationTintColor = UIColor(red:239.0 / 255, green:229.0 / 255, blue:216.0 / 255, alpha:1)
 
 let kTableViewDefaultHeight = CGFloat(44)
 let kCollectionViewDefaultSize = CGSize(width: ViewControllerHelper.screenWidth, height: kTableViewDefaultHeight)

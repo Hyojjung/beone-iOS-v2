@@ -96,6 +96,16 @@ extension SpeedOrderResultsViewController {
       showViewController(productsViewController, sender: nil)
     }
   }
+  
+  @IBAction func showReviewViewButtonTapped() {
+    if let reviewsViewController = UIViewController.viewController("ProductDetail",
+                                                                   viewIdentifier: "ReviewView") as? ReviewsViewController,
+      let product = products.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
+      reviewsViewController.isPresented = true
+      reviewsViewController.reviews.list = product.reviews
+      presentViewController(reviewsViewController, animated: true, completion: nil)
+    }
+  }
 }
 
 extension SpeedOrderResultsViewController: UIScrollViewDelegate {
@@ -110,10 +120,10 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
   
   private func configureReviewLabels() {
     if let currentProduct = products.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
-      reviewShowLabel.configureAlpha(currentProduct.reviewCount != 0)
-      reviewCountLabel.configureAlpha(currentProduct.reviewCount != 0)
-      reviewButton.configureAlpha(currentProduct.reviewCount != 0)
-      reviewCountLabel.text = "\(currentProduct.reviewCount)개의 유용한 후기가 있습니다"
+      reviewShowLabel.configureAlpha(currentProduct.reviews.count != 0)
+      reviewCountLabel.configureAlpha(currentProduct.reviews.count != 0)
+      reviewButton.configureAlpha(currentProduct.reviews.count != 0)
+      reviewCountLabel.text = "\(currentProduct.reviews.count)개의 유용한 후기가 있습니다"
       allShowButton.configureAlpha(false)
       orderButton.alpha = 1
     } else {

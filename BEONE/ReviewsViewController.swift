@@ -5,6 +5,8 @@ import IDMPhotoBrowser
 class ReviewsViewController: BaseTableViewController {
   
   var productId: Int?
+  var isPresented = false
+  @IBOutlet weak var naviBar: UINavigationBar!
   
   lazy var reviews: Reviews = {
     let reviews = Reviews()
@@ -19,15 +21,11 @@ class ReviewsViewController: BaseTableViewController {
     super.setUpView()
     title = "상품후기"
     tableView.dynamicHeightDelgate = self
+    naviBar.tintColor = isPresented ? navigationTintColor : UIColor.clearColor()
   }
   
   override func setUpData() {
     super.setUpData()
-    if reviews.productId == nil {
-      popView()
-      return
-    }
-    
     reviews.get {
       self.tableView.reloadData()
       
@@ -40,6 +38,10 @@ class ReviewsViewController: BaseTableViewController {
     
   }
 
+  @IBAction func closeButtonTapped() {
+    presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
   @IBAction func reviewImageButtonTapped(sender: UIButton) {
     if let reviewId = sender.superview?.tag {
       showReviewImage(reviewId, showingImageIndex: sender.tag)
