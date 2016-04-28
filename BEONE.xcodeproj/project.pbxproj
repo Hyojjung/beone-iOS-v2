@@ -120,6 +120,7 @@
 		62EDA08A1CD2623D00695E5E /* IDMTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0801CD2623D00695E5E /* IDMTapDetectingImageView.m */; };
 		62EDA08B1CD2623D00695E5E /* IDMTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0821CD2623D00695E5E /* IDMTapDetectingView.m */; };
 		62EDA08C1CD2623D00695E5E /* IDMZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0841CD2623D00695E5E /* IDMZoomingScrollView.m */; };
+		62EDA08E1CD26A8800695E5E /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA08D1CD26A8800695E5E /* AddressesViewController.swift */; };
 		62EFE9351BE079C00035B2DE /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9341BE079C00035B2DE /* Template.swift */; };
 		62EFE9371BE07AA90035B2DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9361BE07AA90035B2DE /* BaseModel.swift */; };
 		62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9381BE087770035B2DE /* TemplateStyle.swift */; };
@@ -430,6 +431,7 @@
 		62EDA0821CD2623D00695E5E /* IDMTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMTapDetectingView.m; sourceTree = "<group>"; };
 		62EDA0831CD2623D00695E5E /* IDMZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMZoomingScrollView.h; sourceTree = "<group>"; };
 		62EDA0841CD2623D00695E5E /* IDMZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMZoomingScrollView.m; sourceTree = "<group>"; };
+		62EDA08D1CD26A8800695E5E /* AddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		62EFE9341BE079C00035B2DE /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Template.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62EFE9361BE07AA90035B2DE /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62EFE9381BE087770035B2DE /* TemplateStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateStyle.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 				6211B3121CAE5AB500B5939B /* AccountsViewController.swift */,
 				6211B31A1CB16DF400B5939B /* PersonalInfoViewController.swift */,
 				6211B3181CB0EEFA00B5939B /* PasswordChangingViewController.swift */,
+				62EDA08D1CD26A8800695E5E /* AddressesViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1754,6 +1757,7 @@
 				6286FB6D1C56462F00845BE4 /* NoticeViewController.swift in Sources */,
 				62FA562D1CB4A9AE00613801 /* DeleteCouponButtonCell.swift in Sources */,
 				73BE224A1C293105003FA11C /* ProductOptionSet.swift in Sources */,
+				62EDA08E1CD26A8800695E5E /* AddressesViewController.swift in Sources */,
 				622DE1121C58B6A800F0C9DF /* OrderViewController.swift in Sources */,
 				6286FB861C57569F00845BE4 /* SWRevealViewController.m in Sources */,
 				73BE22471C292E53003FA11C /* ProductOptionSetLis.swift in Sources */,

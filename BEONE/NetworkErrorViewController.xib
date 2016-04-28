@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NetworkErrorViewController" customModule="BEONE" customModuleProvider="target">
             <connections>
+                <outlet property="label" destination="RPx-pt-U9S" id="osm-gC-rcz"/>
+                <outlet property="retryButton" destination="nux-jF-O2b" id="FVz-IH-ESs"/>
                 <outlet property="view" destination="RxW-tK-7b5" id="idu-yo-kWQ"/>
             </connections>
         </placeholder>

@@ -40,7 +40,7 @@ let kProductPropertyNameTypeValueViewNibName = "ProductPropertyNameTypeValueView
 let kProductPropertyColorTypeValueViewNibName = "ProductPropertyColorTypeValueView"
 let kOrderResultLabelViewNibName = "OrderResultLabelView"
 
-// MARK: - Cell Identifier
+// MARK: - Cell Identifiers
 
 let kDeliveryTypeCellIdentifier = "deliveryTypeCell"
 let kShopNameCellIdentifier = "shopNameCell"
@@ -50,7 +50,7 @@ let kShopNameCellIdentifier = "shopNameCell"
 let kFromProductDetailToOptionSegueIdentifier = "From Product Detail To Option"
 let kFromProductDetailToReviewSegueIdentifier = "From Product Detail To Review"
 
-// MARK: - Scheme String
+// MARK: - Scheme Strings
 
 let kSchemeBaseUrl = "cmbeone://beone.kr/"
 let kPaymentScheme = "cmbeone://payment"
@@ -64,3 +64,7 @@ let kHasRegistedToken = "hasRegistedToken"
 // MARK: - Query Keys
 
 let kNetworkRequestKeyLocationId = "locationId"
+
+// MARK: - Url Strings
+
+let kPostCodesWebViewUrl = "postcodes"

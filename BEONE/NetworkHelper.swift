@@ -69,7 +69,15 @@ class NetworkHelper: NSObject {
   
   static private func handleErrorDefault(operation: AFHTTPRequestOperation?, responseObject: AnyObject?, error: NSError, success: NetworkSuccess?, failure: NetworkFailure?) {
     #if DEBUG
-      print("\(operation?.response?.statusCode) \(operation?.request.URL)")
+      if let responseObject = responseObject {
+        do {
+          let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject, options: NSJSONWritingOptions.PrettyPrinted)
+          print("\(operation?.response?.statusCode) \(operation?.response?.URL)")
+          print("responseObject: \(NSString(data: jsonData, encoding: NSUTF8StringEncoding))")
+        } catch let error as NSError {
+          print(error.description)
+        }
+      }
     #endif
     let responseObject = responseObject as? [String: AnyObject]
     if let statusCode = operation?.response?.statusCode {
@@ -81,7 +89,7 @@ class NetworkHelper: NSObject {
       }
       let myInfo = MyInfo.sharedMyInfo()
       if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
-        ViewControllerHelper.showNetworkErrorViewController()
+        ViewControllerHelper.showServerCheckViewController()
       } else if operation?.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
         ViewControllerHelper.topRootViewController()?.showAlertView("서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.")
       } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
@@ -143,13 +151,7 @@ class NetworkHelper: NSObject {
   
   static private func handleSuccessDefault(operation: AFHTTPRequestOperation?, responseObject: AnyObject?, success: NetworkSuccess?) {
     #if DEBUG
-      do {
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(responseObject!, options: NSJSONWritingOptions.PrettyPrinted)
-        print("\(operation?.response?.URL)")
-        print("responseObject: \(NSString(data: jsonData, encoding: NSUTF8StringEncoding))")
-      } catch let error as NSError {
-        print(error.description)
-      }
+      print("\(operation?.response?.statusCode) \(operation?.response?.URL)")
     #endif
     if let success = success, responseObject = responseObject {
       

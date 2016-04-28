@@ -35,6 +35,7 @@ let kAddressPropertyKeyJibunAddress = "jibunAddress"
 let kAddressPropertyKeyBuildingName = "buildingName"
 
 class Address: BaseModel {
+  
   var receiverName: String?
   var receiverPhone: String?
   var zipcode01: String?
@@ -45,8 +46,31 @@ class Address: BaseModel {
   var detailAddress: String?
   var addressType: AddressType?
   
+  override func postUrl() -> String {
+    if let userId = MyInfo.sharedMyInfo().userId {
+      return "users/\(userId)/delivery-destinations"
+    }
+    return "users/delivery-destinations"
+  }
+  
+  override func putUrl() -> String {
+    if let userId = MyInfo.sharedMyInfo().userId, id = id {
+      return "users/\(userId)/delivery-destinations/\(id)"
+    }
+    return "users/delivery-destinations"
+  }
+  
+  override func postParameter() -> AnyObject? {
+    return parameter()
+  }
+  
+  override func putParameter() -> AnyObject? {
+    return parameter()
+  }
+  
   override func assignObject(data: AnyObject?) {
     if let address = data as? [String: AnyObject] {
+      id = address[kObjectPropertyKeyId] as? Int
       addressType = AddressType.addressType(with: address[kAddressPropertyKeyReceiverAddressType] as? String)
       zipcode01 = address[kAddressPropertyKeyZipCode1] as? String
       zipcode02 = address[kAddressPropertyKeyZipCode2] as? String
@@ -57,6 +81,21 @@ class Address: BaseModel {
       receiverName = address[kAddressPropertyKeyName] as? String
       receiverPhone = address[kAddressPropertyKeyPhone] as? String
     }
+  }
+  
+  private func parameter() -> [String: AnyObject] {
+    var parameter = [String: AnyObject]()
+    parameter[kAddressPropertyKeyName] = receiverName
+    parameter[kAddressPropertyKeyPhone] = receiverPhone
+    parameter[kAddressPropertyKeyZipCode1] = zipcode01
+    parameter[kAddressPropertyKeyZipCode2] = zipcode02
+    parameter[kAddressPropertyKeyReceiverZonecode] = zonecode
+    parameter[kAddressPropertyKeyReceiverAddressType] = addressType?.rawValue
+    parameter[kAddressPropertyKeyReceiverRoadAddress] = roadAddress
+    parameter[kAddressPropertyKeyReceiverJibunAddress] = jibunAddress
+    parameter[kAddressPropertyKeyDetailAddress] = detailAddress
+    print(parameter)
+    return parameter
   }
   
   func assign(address: [String: String]) {

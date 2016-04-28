@@ -2,6 +2,7 @@
 import UIKit
 
 class Addresses: BaseListModel {
+ 
   override func getUrl() -> String {
     if let userId = MyInfo.sharedMyInfo().userId {
       return "users/\(userId)/delivery-destinations"

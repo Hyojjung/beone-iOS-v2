@@ -67,6 +67,17 @@ class ViewControllerHelper: NSObject {
     if !networkErrorViewController.showing {
       if let topRootViewController = ViewControllerHelper.topRootViewController() {
         networkErrorViewController.showing = true
+        networkErrorViewController.networkError = true
+        topRootViewController.presentViewController(networkErrorViewController, animated: true, completion: nil)
+      }
+    }
+  }
+  
+  static func showServerCheckViewController() {
+    if !networkErrorViewController.showing {
+      if let topRootViewController = ViewControllerHelper.topRootViewController() {
+        networkErrorViewController.showing = true
+        networkErrorViewController.networkError = false
         topRootViewController.presentViewController(networkErrorViewController, animated: true, completion: nil)
       }
     }

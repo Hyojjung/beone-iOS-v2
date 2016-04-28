@@ -100,7 +100,7 @@ extension OrderAddressViewController {
   }
   
   @IBAction func segueToAddressViewButtonTapped() {
-    showWebView("postcodes", title: NSLocalizedString("order view title", comment: "view title"), addressDelegate: self)
+    showWebView(kPostCodesWebViewUrl, title: NSLocalizedString("order view title", comment: "view title"), addressDelegate: self)
   }
   
   @IBAction func sendAddressButtonTapped() {

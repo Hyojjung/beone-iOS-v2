@@ -26,6 +26,18 @@ extension String {
     }
   }
   
+  func isValidPhoneNumber() -> Bool {
+    do {
+      let regularExpression = try NSRegularExpression(pattern: "^[0-9]{6,15}$",
+                                                      options: .CaseInsensitive)
+      return regularExpression.firstMatchInString(self,
+                                                  options: NSMatchingOptions(rawValue: 0),
+                                                  range: NSMakeRange(0, self.characters.count)) != nil
+    } catch {
+      return false
+    }
+  }
+  
   func emailCharacterString() -> String {
     do {
       let regex = try NSRegularExpression(pattern: "[A-Z0-9.@]+", options: .CaseInsensitive)

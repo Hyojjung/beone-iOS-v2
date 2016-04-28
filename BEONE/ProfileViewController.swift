@@ -11,7 +11,7 @@ class ProfileViewController: BaseTableViewController {
     case Account
     case ProfileTitle
     case Profile
-//    case Address
+    case Address
     case Logo
     case Count
   }
@@ -21,9 +21,8 @@ class ProfileViewController: BaseTableViewController {
     "accountCell",
     "profileTitleCell",
     "profileCell",
-//    "addressCell",
+    "addressCell",
     "logoCell"]
-  
   
   override func setUpView() {
     super.setUpView()
@@ -44,7 +43,6 @@ extension ProfileViewController {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
-    configure(cell, indexPath: indexPath)
     return cell
   }
 }
@@ -57,9 +55,5 @@ extension ProfileViewController: DynamicHeightTableViewDelegate {
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kProfileTableViewCellIdentifiers[indexPath.section]
-  }
-  
-  override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
-
   }
 }
