@@ -14,11 +14,13 @@ class PaymentType: BaseModel {
   var isAvailable = false
   var isWebViewTransaction = false
   var name: String?
+  var alert: String?
   
   override func assignObject(data: AnyObject?) {
     if let paymentType = data as? [String: AnyObject] {
       id = paymentType[kObjectPropertyKeyId] as? Int
       name = paymentType[kObjectPropertyKeyName] as? String
+      alert = paymentType["alert"] as? String
       if let isAvailable = paymentType["isAvailable"] as? Bool {
         self.isAvailable = isAvailable
       }

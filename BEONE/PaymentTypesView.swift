@@ -42,22 +42,32 @@ class PaymentTypesView: UIView {
   
   func paymentTypeView(paymentType: PaymentType, isSelected: Bool) -> PaymentTypeView {
     let paymentTypeView = PaymentTypeView()
-    
     paymentTypeView.layoutView()
     paymentTypeView.isSelected = isSelected
     paymentTypeView.paymentTypeButton.tag = paymentType.id!
     paymentTypeView.paymentTypeButton.setTitle(paymentType.name, forState: .Normal)
     paymentTypeView.paymentTypeButton.addTarget(self, action: #selector(PaymentTypesView.selectPaymentTypeViewTapped(_:)),
       forControlEvents: .TouchUpInside)
+    paymentTypeView.alertLabel.text = paymentType.alert
     return paymentTypeView
   }
 }
 
 class PaymentTypeView: UIView {
+  
   private lazy var checkedImageView: UIImageView = {
     let checkedImageView = UIImageView()
     checkedImageView.highlightedImage = UIImage(named: "iconButtonChecked")
     return checkedImageView
+  }()
+  lazy var alertLabel: UILabel = {
+    let alertLabel = UILabel()
+    alertLabel.font = UIFont.systemFontOfSize(12)
+    alertLabel.textColor = pinkishGrey
+    alertLabel.numberOfLines = 0
+    alertLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
+    alertLabel.textAlignment = .Center
+    return alertLabel
   }()
   lazy var paymentTypeButton: UIButton = {
     let paymentTypeButton = UIButton()
@@ -76,10 +86,20 @@ class PaymentTypeView: UIView {
   }
   
   func layoutView() {
-    addHeightLayout(kPaymentTypeButtonHeight)
-    addSubViewAndEdgeLayout(paymentTypeButton)
+    addSubViewAndEnableAutoLayout(paymentTypeButton)
+    paymentTypeButton.addHeightLayout(kPaymentTypeButtonHeight)
+    addTopLayout(paymentTypeButton)
+    addLeadingLayout(paymentTypeButton)
+    addTrailingLayout(paymentTypeButton)
+    
     addSubViewAndEnableAutoLayout(checkedImageView)
-    addCenterYLayout(checkedImageView)
+    addTopLayout(checkedImageView, constant: 25)
     addLeadingLayout(checkedImageView, constant: 27)
+    
+    addSubViewAndEnableAutoLayout(alertLabel)
+    addVerticalLayout(paymentTypeButton, bottomView: alertLabel, contsant: 4)
+    addLeadingLayout(alertLabel)
+    addTrailingLayout(alertLabel)
+    addBottomLayout(alertLabel)
   }
 }
