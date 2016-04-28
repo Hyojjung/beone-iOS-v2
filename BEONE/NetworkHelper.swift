@@ -81,7 +81,7 @@ class NetworkHelper: NSObject {
       }
       let myInfo = MyInfo.sharedMyInfo()
       if statusCode == NetworkResponseCode.BadGateWay.rawValue || statusCode == NetworkResponseCode.ServiceUnavailable.rawValue {
-        
+        ViewControllerHelper.showNetworkErrorViewController()
       } else if operation.response?.statusCode == NetworkResponseCode.SomethingWrongInServer.rawValue {
         ViewControllerHelper.topRootViewController()?.showAlertView("서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.")
       } else if statusCode == NetworkResponseCode.NeedAuthority.rawValue {
@@ -111,7 +111,7 @@ class NetworkHelper: NSObject {
         }
       }
     } else {
-      // TODO: show alert view with "check network"
+      ViewControllerHelper.showNetworkErrorViewController()
     }
     subtractNetworkCount()
   }

@@ -110,6 +110,8 @@
 		62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */; };
 		62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */; };
 		62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */; };
+		62EDA0721CD23ED900695E5E /* NetworkErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */; };
+		62EDA0731CD23ED900695E5E /* NetworkErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */; };
 		62EFE9351BE079C00035B2DE /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9341BE079C00035B2DE /* Template.swift */; };
 		62EFE9371BE07AA90035B2DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9361BE07AA90035B2DE /* BaseModel.swift */; };
 		62EFE9391BE087770035B2DE /* TemplateStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9381BE087770035B2DE /* TemplateStyle.swift */; };
@@ -402,6 +404,8 @@
 		62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyInfo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
+		62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewController.swift; sourceTree = "<group>"; };
+		62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkErrorViewController.xib; sourceTree = "<group>"; };
 		62EFE9341BE079C00035B2DE /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Template.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62EFE9361BE07AA90035B2DE /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62EFE9381BE087770035B2DE /* TemplateStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateStyle.swift; sourceTree = "<group>"; };
@@ -777,6 +781,8 @@
 		62E5CF311BDDEB6D00A99F4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				73EA25421BE4D5FF0085382A /* AlertViewController.swift */,
+				73EA25441BE4D7DD0085382A /* AlertViewController.xib */,
 				62F2F51A1C6DA37800D96964 /* More */,
 				62F2F5191C6DA2A800D96964 /* Mains */,
 				622AE9661C5F4598009F1A50 /* SpeedOrder */,
@@ -798,6 +804,8 @@
 				62FA56321CB5EF0E00613801 /* WelcomeViewController.swift */,
 				629A65A91CCCC130009B68BD /* TemplatesViewController.swift */,
 				629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */,
+				62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */,
+				62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1209,8 +1217,6 @@
 			children = (
 				73BE22441C22BC3B003FA11C /* DynamicHeightTableView.swift */,
 				62FA80501BDFE3CA00C016C3 /* LoadingView.swift */,
-				73EA25421BE4D5FF0085382A /* AlertViewController.swift */,
-				73EA25441BE4D7DD0085382A /* AlertViewController.xib */,
 				73168C101BF07F4700308AF2 /* KeyboardScrollView.swift */,
 			);
 			name = Common;
@@ -1411,6 +1417,7 @@
 				7309D74F1BFEFBD200F9761A /* Order.storyboard in Resources */,
 				620717511BE239AD0014B9AC /* TableTemplateCell.xib in Resources */,
 				734241731BFC4AB700BE21F5 /* Shop.storyboard in Resources */,
+				62EDA0731CD23ED900695E5E /* NetworkErrorViewController.xib in Resources */,
 				73398AF21C06EE5600F57D4A /* MainTitleView.xib in Resources */,
 				73DF1D961C438CFA00DB3550 /* ProductPropertyColorTypeValueView.xib in Resources */,
 				627A81EE1CA5375F00BCE2DE /* ReviewsTemplateCell.xib in Resources */,
@@ -1724,6 +1731,7 @@
 				6286FB791C573BFA00845BE4 /* Coupons.swift in Sources */,
 				73BE22691C3120C5003FA11C /* OptionStringView.swift in Sources */,
 				62E5CF421BDE0CBC00A99F4C /* MyInfo+CoreDataProperties.swift in Sources */,
+				62EDA0721CD23ED900695E5E /* NetworkErrorViewController.swift in Sources */,
 				7309D74B1BFDC3F000F9761A /* OptionViewController.swift in Sources */,
 				623D498E1C6B318300400ED0 /* CalendarView.swift in Sources */,
 				73BE22631C311634003FA11C /* OptionSelectView.swift in Sources */,

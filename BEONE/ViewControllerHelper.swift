@@ -9,6 +9,13 @@ struct ActionSheetButton {
 
 class ViewControllerHelper: NSObject {
   
+  static var networkErrorViewController: NetworkErrorViewController = {
+    let networkErrorViewController = NetworkErrorViewController(nibName: "NetworkErrorViewController", bundle: nil)
+    networkErrorViewController.modalPresentationStyle = .OverCurrentContext
+    networkErrorViewController.modalTransitionStyle = .CrossDissolve
+    return networkErrorViewController
+  }()
+  
   static var screenWidth: CGFloat = {
     return UIScreen.mainScreen().bounds.width
   }()
@@ -54,6 +61,15 @@ class ViewControllerHelper: NSObject {
       return topRootViewController
     }
     return nil
+  }
+  
+  static func showNetworkErrorViewController() {
+    if !networkErrorViewController.showing {
+      if let topRootViewController = ViewControllerHelper.topRootViewController() {
+        networkErrorViewController.showing = true
+        topRootViewController.presentViewController(networkErrorViewController, animated: true, completion: nil)
+      }
+    }
   }
 }
 
@@ -181,7 +197,6 @@ extension UIViewController {
 }
 
 extension UIViewController {
-  
   func showActionSheet(title: String,
                        rows: [String],
                        initialSelection: Int?,
