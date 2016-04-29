@@ -1,7 +1,6 @@
 
 import UIKit
 import CSStickyHeaderFlowLayout
-import IDMPhotoBrowser
 import SDWebImage
 
 let kProductDetailHeaderCellNibName = "ProductDetailHeaderCollectionViewCell"
@@ -139,9 +138,9 @@ class ProductDetailViewController: BaseViewController {
   }
   
   private func setUpProductData() {
-    self.imageUrls.removeAll()
+    imageUrls.removeAll()
     for imageUrl in product.productDetailImageUrls() {
-      self.imageUrls.appendObject(imageUrl.url())
+      imageUrls.appendObject(imageUrl.url())
     }
     collectionView.reloadData()
   }

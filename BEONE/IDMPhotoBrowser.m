@@ -1298,10 +1298,10 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
 			}
 			else
 			{
-				[self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
-					[selfBlock hideControlsAfterDelay];
-					selfBlock.activityViewController = nil;
-				}];
+        [self.activityViewController setCompletionWithItemsHandler:^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+          [selfBlock hideControlsAfterDelay];
+          selfBlock.activityViewController = nil;
+        }];
 			}
 
 			if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {

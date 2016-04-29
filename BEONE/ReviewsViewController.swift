@@ -1,6 +1,5 @@
 
 import UIKit
-import IDMPhotoBrowser
 
 class ReviewsViewController: BaseTableViewController {
   

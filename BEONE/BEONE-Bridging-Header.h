@@ -11,3 +11,4 @@
 #import "NSData+AES.h"
 #import "NSData+Base64.h"
 #import "NSString+Base64.h"
+#import "IDMPhotoBrowser.h"
