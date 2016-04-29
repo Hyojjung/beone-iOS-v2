@@ -34,12 +34,14 @@ class ButtonTemplateCell: TemplateCell {
     } else {
       button.backgroundColor = UIColor.clearColor()
     }
+    
     if template.content.pressedBackgroundColor != nil && template.content.pressedBackgroundImageUrl == nil {
       let pressedBackgroundColorImage = template.content.pressedBackgroundColor?.imageWithColor()
       button.setBackgroundImage(pressedBackgroundColorImage, forState: .Highlighted)
     } else if let pressedBackgroundImageUrl = template.content.pressedBackgroundImageUrl {
       button.sd_setBackgroundImageWithURL(pressedBackgroundImageUrl.url(), forState: .Normal)
     }
+    
     button.sd_setImageWithURL(template.content.imageUrl?.url(), forState: .Normal)
     
     if let borderColor = template.content.borderColor {

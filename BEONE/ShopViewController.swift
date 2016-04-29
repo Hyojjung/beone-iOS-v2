@@ -11,7 +11,7 @@ class ShopViewController: BaseTableViewController {
     case Count
   }
   
-  private let kShopTableViewCellIdentifiers = ["shopSummaryCell", "productCoupleTemplateCell"]
+  private let kShopTableViewCellIdentifiers = [kShopSummaryCellIdentifier, kProductCoupleTemplateCellIdentifier]
   
   // MARK: - Property
   
@@ -29,6 +29,15 @@ class ShopViewController: BaseTableViewController {
   }()
   
   // MARK: - BaseViewController Methods
+  
+  
+  override func setUpView() {
+    super.setUpView()
+    tableView.dynamicHeightDelgate = self
+    
+    tableView.registerNib(UINib(nibName: kProductCoupleTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kProductCoupleTemplateCellIdentifier)
+  }
   
   override func setUpData() {
     super.setUpData()
@@ -48,11 +57,6 @@ class ShopViewController: BaseTableViewController {
     }
   }
   
-  override func setUpView() {
-    super.setUpView()
-    tableView.dynamicHeightDelgate = self
-  }
-  
   // MARK: - Observer Actions
   
   func segueToOpion(notification: NSNotification) {
@@ -64,10 +68,24 @@ class ShopViewController: BaseTableViewController {
 
 extension ShopViewController: DynamicHeightTableViewDelegate {
   
-  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    if let cell = cell as? ShopSummaryCell {
-      return cell.calculatedHeight(shop)
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if indexPath.section == ShopTableViewSection.Summary.rawValue {
+      let descrtiptionLabel = UILabel()
+      descrtiptionLabel.font = UIFont.systemFontOfSize(14)
+      descrtiptionLabel.text = shop.desc
+      descrtiptionLabel.setWidth(ViewControllerHelper.screenWidth - 76)
+      
+      let tagLabel = UILabel()
+      tagLabel.font = UIFont.systemFontOfSize(13)
+      tagLabel.text = shop.tagString()
+      tagLabel.setWidth(ViewControllerHelper.screenWidth - 76)
+      return 339 + descrtiptionLabel.frame.height + tagLabel.frame.height
+    } else {
+      return kProductCoupleTemplateCellHeight
     }
+  }
+  
+  func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     return nil
   }
   
@@ -98,7 +116,7 @@ extension ShopViewController {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath) , forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
     configure(cell, indexPath: indexPath)
     return cell
   }
@@ -140,19 +158,6 @@ class ShopSummaryCell: UITableViewCell {
     nameLabel.text = shop?.name
     descriptionLabel.text = shop?.desc
     tagLabel.text = shop?.tagString()
-  }
-  
-  func calculatedHeight(shop: Shop) -> CGFloat {
-    let descrtiptionLabel = UILabel()
-    descrtiptionLabel.font = UIFont.systemFontOfSize(14)
-    descrtiptionLabel.text = shop.desc
-    descrtiptionLabel.setWidth(ViewControllerHelper.screenWidth - 76)
-    
-    let tagLabel = UILabel()
-    tagLabel.font = UIFont.systemFontOfSize(13)
-    tagLabel.text = shop.tagString()
-    tagLabel.setWidth(ViewControllerHelper.screenWidth - 76)
-    return 339 + descrtiptionLabel.frame.height + tagLabel.frame.height
   }
 }
 

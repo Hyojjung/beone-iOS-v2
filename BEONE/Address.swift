@@ -94,7 +94,6 @@ class Address: BaseModel {
     parameter[kAddressPropertyKeyReceiverRoadAddress] = roadAddress
     parameter[kAddressPropertyKeyReceiverJibunAddress] = jibunAddress
     parameter[kAddressPropertyKeyDetailAddress] = detailAddress
-    print(parameter)
     return parameter
   }
   

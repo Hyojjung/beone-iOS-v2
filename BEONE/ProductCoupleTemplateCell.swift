@@ -1,6 +1,8 @@
 
 import UIKit
 
+let kProductCoupleTemplateCellHeight: CGFloat = 328
+
 class ProductCoupleTemplateCell: TemplateCell {
   
   @IBOutlet weak var firstProductView: ProductCoupleView!

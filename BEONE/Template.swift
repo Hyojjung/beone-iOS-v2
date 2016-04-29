@@ -75,4 +75,12 @@ class Template: BaseModel {
       content.assignObject(template[kTemplatePropertyKeyContents])
     }
   }
+  
+  func verticalMargin() -> CGFloat {
+    return style.margin.top + style.margin.bottom + style.padding.top + style.padding.bottom
+  }
+  
+  func horizontalMargin() -> CGFloat {
+    return style.margin.left + style.margin.right + style.padding.left + style.padding.right
+  }
 }

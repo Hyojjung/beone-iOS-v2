@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGP-F8-qv2" id="2db-BO-P33">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-ok-fs3">
@@ -65,7 +65,7 @@
                                                             <action selector="productButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="xd8-8X-Z2K"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
                                                         <rect key="frame" x="236" y="8" width="34" height="34"/>
                                                         <state key="normal" image="btnProductdetailFavoriteOff"/>
                                                         <state key="selected" image="btnProductdetailFavoriteOn"/>
@@ -220,7 +220,7 @@
                                                             <action selector="productButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="28j-cr-dbf"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
                                                         <rect key="frame" x="236" y="8" width="34" height="34"/>
                                                         <state key="normal" image="btnProductdetailFavoriteOff"/>
                                                         <state key="selected" image="btnProductdetailFavoriteOn"/>
@@ -261,7 +261,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoK-Ny-bBW">
-                                                        <rect key="frame" x="8" y="274" width="35.5" height="17"/>
+                                                        <rect key="frame" x="8" y="274" width="36" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="ybu-Ck-NiI"/>
                                                         </constraints>
@@ -270,7 +270,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ok-QU-LVd">
-                                                        <rect key="frame" x="48" y="275" width="231.5" height="16"/>
+                                                        <rect key="frame" x="49" y="275" width="231" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>

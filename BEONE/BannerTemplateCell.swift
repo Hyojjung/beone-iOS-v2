@@ -25,15 +25,6 @@ class BannerTemplateCell: TemplateCell {
     timer = nil
   }
   
-  override  func calculatedHeight(template: Template) -> CGFloat? {
-    let verticalMargin =
-      template.style.margin.top + template.style.margin.bottom + template.style.padding.top + template.style.padding.bottom
-    if let ratio = template.content.ratio {
-      return ratio * ViewControllerHelper.screenWidth + verticalMargin
-    }
-    return 300 + verticalMargin
-  }
-  
   override func configureCell(template: Template) {
     super.configureCell(template)
     bannerContents = template.content.items

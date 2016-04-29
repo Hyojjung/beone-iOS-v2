@@ -29,8 +29,7 @@ class TextTemplateCell: TemplateCell {
       return height
     } else {
       var height: CGFloat = 0
-      height += template.style.margin.top + template.style.margin.bottom
-      height += template.style.padding.top + template.style.padding.bottom
+      height += template.verticalMargin()
       
       let label = UILabel()
       if let size = template.content.size {

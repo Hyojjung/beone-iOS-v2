@@ -32,7 +32,6 @@ class OrderWebViewController: BaseViewController {
 
 extension OrderWebViewController: UIWebViewDelegate {
   func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-    print(request.URL)
     if let url = request.URL?.absoluteString {
       if url.hasPrefix(kPaymentScheme) {
         handleUrl(url)

@@ -99,13 +99,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="545" height="179"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="플라워 판매 중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-Wu-xIG">
-                                                <rect key="frame" x="12" y="119" width="533" height="15"/>
+                                                <rect key="frame" x="12" y="117" width="70" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="플라워샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awD-TX-CjT">
-                                                <rect key="frame" x="12" y="15" width="521" height="98"/>
+                                                <rect key="frame" x="12" y="93" width="521" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -120,6 +120,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="ry0-Tx-zar" firstAttribute="leading" secondItem="iGG-qx-tlY" secondAttribute="leading" constant="12" id="3F2-mb-6xA"/>
+                                            <constraint firstItem="awD-TX-CjT" firstAttribute="top" secondItem="iGG-qx-tlY" secondAttribute="top" constant="15" id="6Bj-yW-Wtf"/>
                                             <constraint firstItem="oY4-Wu-xIG" firstAttribute="leading" secondItem="iGG-qx-tlY" secondAttribute="leading" constant="12" id="7oE-Id-p0Z"/>
                                             <constraint firstAttribute="trailing" secondItem="4xO-Cd-tvk" secondAttribute="trailing" id="CVq-GN-1DD"/>
                                             <constraint firstAttribute="bottom" secondItem="ry0-Tx-zar" secondAttribute="bottom" constant="12" id="Eyq-Ya-tZr"/>
@@ -141,6 +142,7 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="Tt4-ws-Ore"/>
                                                 <exclude reference="Ue8-D6-lIO"/>
                                                 <exclude reference="WbT-ev-TM5"/>
                                                 <exclude reference="rNG-a8-8lw"/>

@@ -44,6 +44,7 @@ let kOrderResultLabelViewNibName = "OrderResultLabelView"
 
 let kDeliveryTypeCellIdentifier = "deliveryTypeCell"
 let kShopNameCellIdentifier = "shopNameCell"
+let kShopSummaryCellIdentifier = "shopSummaryCell"
 
 // MARK: - Segue Identifiers
 

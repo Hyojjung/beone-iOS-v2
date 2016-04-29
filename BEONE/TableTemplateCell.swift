@@ -36,8 +36,7 @@ class TableTemplateCell: TemplateCell {
       return height
     } else {
       var height: CGFloat = 0
-      height += template.style.margin.top + template.style.margin.bottom
-      height += template.style.padding.top + template.style.padding.bottom
+      height += template.verticalMargin()
       
       let space = template.content.hasSpace != nil && template.content.hasSpace! ?
         kSpaceWidthCell : kNoSpaceWidthCell
@@ -70,9 +69,7 @@ extension TableTemplateCell {
   }
   
   private func viewWidth(template: Template) -> CGFloat {
-    return ViewControllerHelper.screenWidth -
-      (template.style.margin.left + template.style.margin.right +
-        template.style.padding.left + template.style.padding.right)
+    return ViewControllerHelper.screenWidth - template.horizontalMargin()
   }
 }
 

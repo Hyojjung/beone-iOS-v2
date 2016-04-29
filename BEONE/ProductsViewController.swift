@@ -50,6 +50,9 @@ class ProductsViewController: BaseTableViewController {
     tableView.dynamicHeightDelgate = self
     tableView.contentInset = UIEdgeInsetsMake(6, 0, 0, 0)
     setUpSearchView()
+    
+    tableView.registerNib(UINib(nibName: kProductCoupleTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kProductCoupleTemplateCellIdentifier)
   }
   
   override func setUpData() {
@@ -218,8 +221,12 @@ extension ProductsViewController: DynamicHeightTableViewDelegate {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
+    return nil
+  }
+  
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if indexPath.section == SearchTableViewSection.Product.rawValue {
-      return 330
+      return kProductCoupleTemplateCellHeight
     } else if indexPath.section == SearchTableViewSection.NoProducts.rawValue {
       var cellHeight = ViewControllerHelper.screenHeight - 64
       if forSearchResult {

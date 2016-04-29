@@ -39,6 +39,8 @@ class Content: BaseModel {
   var row: Int?
   var column: Int?
   
+  var imageHeight: CGFloat = 100
+  
   var text: String?
   var alignment: Alignment?
   var isUnderlined: Bool?

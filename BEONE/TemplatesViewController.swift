@@ -16,6 +16,17 @@ class TemplatesViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    
+    tableView.registerNib(UINib(nibName: kProductCoupleTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kProductCoupleTemplateCellIdentifier)
+    tableView.registerNib(UINib(nibName: kProductSingleTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kProductSingleTemplateCellIdentifier)
+    tableView.registerNib(UINib(nibName: kButtonTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kButtonTemplateCellIdentifier)
+    tableView.registerNib(UINib(nibName: kBannerTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kBannerTemplateCellIdentifier)
+    tableView.registerNib(UINib(nibName: kShopTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kShopTemplateCellIdentifier)
   }
   
   override func setUpData() {
@@ -84,6 +95,31 @@ extension TemplatesViewController: DynamicHeightTableViewDelegate {
       return cell.calculatedHeight(templates.filterdTemplates[indexPath.row])
     }
     return nil
+  }
+  
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    let template = templates.filterdTemplates[indexPath.row]
+    let cellIdentifier = template.type?.cellIdentifier()
+    if cellIdentifier == kProductCoupleTemplateCellIdentifier {
+      return kProductCoupleTemplateCellHeight + template.verticalMargin()
+    } else if cellIdentifier == kProductSingleTemplateCellIdentifier {
+      return 297 + template.verticalMargin()
+    } else if cellIdentifier == kShopTemplateCellIdentifier {
+      return 271 + template.verticalMargin()
+    } else if cellIdentifier == kButtonTemplateCellIdentifier && template.content.imageUrl == nil {
+      if let textSize = template.content.textSize {
+        return textSize + template.verticalMargin() + template.content.padding.top + template.content.padding.bottom
+      }
+    } else if cellIdentifier == kBannerTemplateCellIdentifier {
+      if let ratio = template.content.ratio {
+        return ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
+      }
+      return 300 + template.verticalMargin()
+    }
+    if let tableView = tableView as? DynamicHeightTableView {
+      return tableView.heightForBasicCell(indexPath)
+    }
+    return 0
   }
 }
 
