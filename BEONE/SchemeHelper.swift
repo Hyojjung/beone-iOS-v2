@@ -99,21 +99,25 @@ class SchemeHelper {
       schemeStrings.removeAtIndex(0)
       handleScheme()
     } else {
-      navi?.popToRootViewControllerAnimated(false)
       setUpTabController()
     }
   }
   
   static func setUpTabController() {
-    if let navi = ViewControllerHelper.topRootViewController() as? UINavigationController,
-      mainTabViewController = navi.topViewController as? MainTabViewController,
-      mainTabViewIdentifier = schemeStrings.first,
-      mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
-      schemeStrings.removeAtIndex(0)
-      if mainTabViewController.selectedIndex != mainTabScheme.viewControllerTabIndex() {
-        handleScheme()
-      } else {
-        mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
+    if let root = UIApplication.sharedApplication().keyWindow?.rootViewController as? SWRevealViewController,
+      navi = root.frontViewController as? UINavigationController {
+      navi.popToRootViewControllerAnimated(false)
+      root.dismissViewControllerAnimated(false, completion: nil)
+      root.setFrontViewPosition(.Left, animated: false)
+      if let mainTabViewController = navi.topViewController as? MainTabViewController,
+        mainTabViewIdentifier = schemeStrings.first,
+        mainTabScheme = SchemeTabViewIdentifier(rawValue: mainTabViewIdentifier) {
+        schemeStrings.removeAtIndex(0)
+        if mainTabViewController.selectedIndex != mainTabScheme.viewControllerTabIndex() {
+          mainTabViewController.selectedIndex = mainTabScheme.viewControllerTabIndex()
+        } else {
+          handleScheme()
+        }
       }
     }
   }
