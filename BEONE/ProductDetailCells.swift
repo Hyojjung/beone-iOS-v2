@@ -95,6 +95,7 @@ class ProductDesctriptionCell: ProductDetailCell {
   
   func setUpView(productDetail: ProductDetail, buttonEnabled: Bool) {
     imageView.image = nil
+    imageView.sd_cancelCurrentImageLoad()
     imageView.heightLayoutConstraint.priority = UILayoutPriorityDefaultLow
     titleLabel.text = nil
     descriptionLabel.text = nil

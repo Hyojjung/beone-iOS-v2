@@ -17,7 +17,6 @@ class ProductDetailHeaderCollectionViewCell: UICollectionViewCell {
   
   func configureCell(product: Product) {
     self.product = product
-    
     if let isFavorite = self.product?.isFavorite() {
       self.favoriteButton.selected = isFavorite
     }
