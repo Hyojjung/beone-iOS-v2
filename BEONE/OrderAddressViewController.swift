@@ -172,6 +172,10 @@ extension OrderAddressViewController {
     secondAddressSelectButton.configureAlpha(addresses.total > 1)
     thirdAddressSelectButton.configureAlpha(addresses.total > 2)
     
+    if addresses.total > 3 {
+      addresses.total = 3
+    }
+    
     newButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total) * 48
     firstButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 1) * 48
     secondButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 2) * 48
@@ -222,12 +226,12 @@ extension OrderAddressViewController {
   func errorMessage() -> String? {
     if senderNameTextField.text == nil || senderNameTextField.text!.isEmpty {
       return NSLocalizedString("enter sender", comment: "alert")
-    } else if senderPhoneTextField.text == nil || senderPhoneTextField.text!.isEmpty {
-      return NSLocalizedString("enter sender phone", comment: "alert")
+    } else if senderPhoneTextField.text?.isValidPhoneNumber() != true {
+      return NSLocalizedString("check sender phone", comment: "alert")
     } else if receiverNameTextField.text == nil || receiverNameTextField.text!.isEmpty {
       return NSLocalizedString("enter receiver", comment: "alert")
-    } else if receiverPhoneTextField.text == nil || receiverPhoneTextField.text!.isEmpty {
-      return NSLocalizedString("enter receiver phone", comment: "alert")
+    } else if receiverPhoneTextField.text?.isValidPhoneNumber() != true {
+      return NSLocalizedString("check receiver phone", comment: "alert")
     } else if address == nil {
       return NSLocalizedString("enter address", comment: "alert")
     } else if detailAddressTextField.text == nil || detailAddressTextField.text!.isEmpty {

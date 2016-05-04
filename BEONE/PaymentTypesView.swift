@@ -93,7 +93,7 @@ class PaymentTypeView: UIView {
     addTrailingLayout(paymentTypeButton)
     
     addSubViewAndEnableAutoLayout(checkedImageView)
-    addTopLayout(checkedImageView, constant: 25)
+    addTopLayout(checkedImageView, constant: 15)
     addLeadingLayout(checkedImageView, constant: 27)
     
     addSubViewAndEnableAutoLayout(alertLabel)

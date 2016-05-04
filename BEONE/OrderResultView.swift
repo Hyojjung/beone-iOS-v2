@@ -12,7 +12,11 @@ class OrderResultView: UIView {
     priceLabel.text = paymentInfo.amount.priceWithCurrencyType(paymentInfo.currencyType)
     
     deliveryDateLabel.text = order.deliveryDateString()
-    usedPointLabel.text = order.usedPoint?.priceNotation(.Korean)
+    if let usedPoint = order.usedPoint {
+      usedPointLabel.text = usedPoint.priceNotation(.None) + " point"
+    } else {
+      usedPointLabel.text = "0 point"
+    }
     if let coupon = order.usedCoupon, couponName = coupon.title {
       if order.discountPrice != 0 && order.discountPrice != order.usedPoint {
         usedCouponLabel.text = "\(couponName) - \(order.discountPrice.priceNotation(.Korean))"

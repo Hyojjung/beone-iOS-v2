@@ -247,7 +247,7 @@ extension DeliveryDateViewController: DynamicHeightTableViewDelegate {
   
   override func configure(cell: UITableViewCell, indexPath: NSIndexPath) {
     if let cell = cell as? OrderItemSetDeliveryTypeCell {
-      cell.configureCell(order.orderableItemSets[indexPath.section])
+      cell.configureCell(order.orderableItemSets[indexPath.section], needCell: order.deliveryTypeCellHeight(indexPath.section))
     } else if let cell = cell as? OrderOrderableItemCell,
       orderItems = order.orderableItemSets[indexPath.section].orderableItems.list as? [OrderableItem] {
       cell.configureCell(orderItems[indexPath.row - 2])
