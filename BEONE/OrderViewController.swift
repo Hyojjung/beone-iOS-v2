@@ -19,7 +19,7 @@ class OrderViewController: BaseTableViewController {
     case OrdererInfo
     case AddressInfo
     case PaymentInfo
-    case Buttons
+//    case Buttons
     case Count
   }
   
@@ -30,8 +30,9 @@ class OrderViewController: BaseTableViewController {
     "shopCell",
     "ordererInfoCell",
     "addressInfoCell",
-    "paymentInfoCell",
-    "buttonCell"]
+    "paymentInfoCell"
+//    "buttonCell"
+  ]
   
   // MARK: - Variables
   
@@ -154,6 +155,10 @@ extension OrderViewController {
     }
   }
   
+  @IBAction func imageButtonTapped(sender: UIButton) {
+//    let index = sender.tag - 100
+  }
+  
   @IBAction func deliveryTrackingInfoButtonTapped(sender: UIButton) {
     for orderItemSet in order.orderableItemSets {
       if orderItemSet.id == sender.tag {
@@ -206,9 +211,10 @@ extension OrderViewController: UITableViewDataSource {
       return orderItemSet(section).orderableItems.list.count + 2
     } else if sectionType == .PaymentInfo {
       return order.paymentInfos.list.count
-    } else if sectionType == .Buttons && returnableOrderItemSets.isEmpty {
-      return 0
     }
+//    else if sectionType == .Buttons && returnableOrderItemSets.isEmpty {
+//      return 0
+//    }
     return 1
   }
 }
@@ -283,8 +289,8 @@ extension OrderViewController: DynamicHeightTableViewDelegate {
       return 130
     case .PaymentInfo:
       return 148
-    case .Buttons:
-      return 65
+//    case .Buttons:
+//      return 65
     case .Count, .AddressInfo: break
     }
     return nil

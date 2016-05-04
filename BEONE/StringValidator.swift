@@ -4,7 +4,7 @@ import UIKit
 extension String {
   func isValidEmail() -> Bool {
     do {
-      let regularExpression = try NSRegularExpression(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}",
+      let regularExpression = try NSRegularExpression(pattern: "[A-Z0-9a-z\\`\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\_\\=\\+\\\\\\|\\[\\]\\{\\}\\;\\:\\\'\\\"\\,\\.\\<\\>\\/\\?]+@[A-Z0-9a-z._%+-]+\\.[A-Za-z]{2,6}",
         options: .CaseInsensitive)
       return regularExpression.firstMatchInString(self,
         options: NSMatchingOptions(rawValue: 0),
@@ -40,7 +40,7 @@ extension String {
   
   func emailCharacterString() -> String {
     do {
-      let regex = try NSRegularExpression(pattern: "[A-Z0-9.@]+", options: .CaseInsensitive)
+      let regex = try NSRegularExpression(pattern: "[A-Z0-9\\`\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\_\\=\\+\\\\\\|\\[\\]\\{\\}\\;\\:\\\'\\\"\\,\\.\\<\\>\\/\\?]+", options: .CaseInsensitive)
       let nsString = self as NSString
       let results = regex.matchesInString(self, options: [], range: NSMakeRange(0, nsString.length))
       let strings = results.map {

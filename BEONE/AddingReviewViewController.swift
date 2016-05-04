@@ -39,7 +39,11 @@ class AddingReviewViewController: BaseTableViewController {
 extension AddingReviewViewController {
   
   @IBAction func deleteImageButtonTapped(sender: UIButton) {
-    reviewImages.removeAtIndex(sender.tag)
+    if sender.tag >= review.orderItem!.itemImageUrls.count {
+      reviewImages.removeAtIndex(sender.tag - review.orderItem!.itemImageUrls.count)
+    } else {
+      review.orderItem!.itemImageUrls.removeAtIndex(sender.tag)
+    }
     tableView.reloadData()
   }
   
@@ -52,6 +56,7 @@ extension AddingReviewViewController {
   
   @IBAction func addReviewButtonTapped() {
     if review.content != nil && review.content?.characters.count > 20 {
+      review.reviewImageUrls.appendContentsOf(review.orderItem!.itemImageUrls)
       if reviewImages.count > 0 {
         ImageUploadHelper.uploadImages(reviewImages) {(imageUrls) -> Void in
           for imageUrl in imageUrls {
@@ -76,12 +81,13 @@ extension AddingReviewViewController {
   }
   
   @IBAction func pickImageButtonTapped() {
-    if reviewImages.count < kMaxTotalImageCount {
+    if reviewImages.count + review.orderItem!.itemImageUrls.count < kMaxTotalImageCount {
       let pickImageButton = ActionSheetButton(title: "사진선택") {(_) -> Void in
         let imagePickerController = QBImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.allowsMultipleSelection = true
-        imagePickerController.maximumNumberOfSelection = UInt(self.kMaxTotalImageCount - self.reviewImages.count)
+        imagePickerController.maximumNumberOfSelection =
+          UInt(self.kMaxTotalImageCount - self.reviewImages.count - self.review.orderItem!.itemImageUrls.count)
         self.presentViewController(imagePickerController, animated: true, completion: nil)
       }
       
@@ -194,8 +200,12 @@ extension AddingReviewViewController: DynamicHeightTableViewDelegate {
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
     if indexPath.section == AddingReviewTableViewSection.Image.rawValue {
-      let imageSize = reviewImages[indexPath.row].size
-      return imageSize.height * (ViewControllerHelper.screenWidth - 16) / imageSize.width + 12
+      if indexPath.row >= review.orderItem!.itemImageUrls.count {
+        let imageSize = reviewImages.objectAtIndex(indexPath.row - review.orderItem!.itemImageUrls.count)!.size
+        return imageSize.height * (ViewControllerHelper.screenWidth - 16) / imageSize.width + 12
+      } else {
+        return 300
+      }
     } else if let cell = cell as? ReviewableImageTitleCell {
       if let orderItem = review.orderItem,
         shopName = orderItem.orderDeliveryItemSet?.shop.name,
@@ -216,9 +226,9 @@ extension AddingReviewViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == AddingReviewTableViewSection.Image.rawValue {
-      return reviewImages.count
+      return reviewImages.count + review.orderItem!.itemImageUrls.count
     } else if section == AddingReviewTableViewSection.AddImageButton.rawValue
-      && reviewImages.count >= kMaxTotalImageCount {
+      && reviewImages.count + review.orderItem!.itemImageUrls.count >= kMaxTotalImageCount {
       return 0
     }
     return 1
@@ -230,7 +240,9 @@ extension AddingReviewViewController: UITableViewDataSource {
     if let cell = cell as? ReviewableOrderItemReviewCell {
       cell.setUpCell(review)
     } else if let cell = cell as? ReviewImageCell {
-      cell.setUpCell(reviewImages[indexPath.row], index: indexPath.row)
+      cell.setUpCell(reviewImages.objectAtIndex(indexPath.row - review.orderItem!.itemImageUrls.count),
+                     imageUrl: review.orderItem!.itemImageUrls.objectAtIndex(indexPath.row),
+                     index: indexPath.row)
     } else if let cell = cell as? ReviewableImageTitleCell {
       if let orderItem = review.orderItem,
         shopName = orderItem.orderDeliveryItemSet?.shop.name,
@@ -279,11 +291,15 @@ class ReviewableOrderItemReviewCell: UITableViewCell {
 
 class ReviewImageCell: UITableViewCell {
   
-  @IBOutlet weak var reviewImageView: UIImageView!
+  @IBOutlet weak var reviewImageView: LazyLoadingImageView!
   @IBOutlet weak var deleteReviewButton: UIButton!
   
-  func setUpCell(image: UIImage, index: Int) {
-    reviewImageView.image = image
+  func setUpCell(image: UIImage?, imageUrl: String?, index: Int) {
+    if let image = image {
+      reviewImageView.image = image
+    } else{
+      reviewImageView.setLazyLoaingImage(imageUrl)
+    }
     deleteReviewButton.tag = index
   }
 }

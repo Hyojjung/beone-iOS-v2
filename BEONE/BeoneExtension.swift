@@ -50,7 +50,7 @@ extension Array {
   
   func isInRange(index: Int?) -> Bool {
     if let index = index {
-      return index < count
+      return index >= 0 && index < count
     }
     return false
   }
