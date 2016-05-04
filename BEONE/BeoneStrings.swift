@@ -69,3 +69,13 @@ let kNetworkRequestKeyLocationId = "locationId"
 // MARK: - Url Strings
 
 let kPostCodesWebViewUrl = "postcodes"
+
+// MARK: - Mixpanel Keys
+
+let kMixpanelKeyLaunchCount = "launch"
+let kMixpanelKeyName = "$name"
+let kMixpanelKeyEmail = "$email"
+let kMixpanelKeyPhone = "$phone"
+let kMixpanelKeyGender = "gender"
+let kMixpanelKeyBirthday = "birthday"
+let kMixpanelKeyAddress = "address"

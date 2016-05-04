@@ -1,5 +1,6 @@
 
 import UIKit
+import Mixpanel
 
 class OrderAddressViewController: BaseViewController {
   
@@ -109,6 +110,10 @@ extension OrderAddressViewController {
       showAlertView(error)
     } else {
       setUpAddress()
+      
+      var properties = [String: AnyObject]()
+      properties[kMixpanelKeyAddress] = address?.addressString()
+      Mixpanel.sharedInstance().people.set(properties)
       
       OrderHelper.fetchDeliverableCartItems(order.cartItemIds,
         address: order.address.addressString()!,

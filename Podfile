@@ -14,6 +14,7 @@ pod 'ActionSheetPicker-3.0'
 pod 'DACircularProgress'
 pod 'QBImagePickerController'
 pod 'pop'
+pod 'Mixpanel'
 
 end
 

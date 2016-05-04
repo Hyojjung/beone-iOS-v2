@@ -1,6 +1,7 @@
 
 import Foundation
 import CoreData
+import Mixpanel
 
 let kMyInfoPropertyKeyEmail = "email"
 let kMyInfoPropertyKeyPoint = "point"
@@ -46,18 +47,26 @@ class MyInfo: NSManagedObject {
   
   func assignObject(data: AnyObject?) {
     if let myInfo = data as? [String: AnyObject] {
-      self.account = myInfo[kMyInfoPropertyKeyAccount] as? String
-      self.email = myInfo[kMyInfoPropertyKeyEmail] as? String
-      self.name = myInfo[kObjectPropertyKeyName] as? String
-      self.phone = myInfo[kMyInfoPropertyKeyPhone] as? String
-      self.gender = myInfo["gender"] as? String
-      self.point = myInfo[kMyInfoPropertyKeyPoint] as? NSNumber
+      account = myInfo[kMyInfoPropertyKeyAccount] as? String
+      email = myInfo[kMyInfoPropertyKeyEmail] as? String
+      name = myInfo[kObjectPropertyKeyName] as? String
+      phone = myInfo[kMyInfoPropertyKeyPhone] as? String
+      gender = myInfo["gender"] as? String
+      point = myInfo[kMyInfoPropertyKeyPoint] as? NSNumber
       if let birthday = myInfo["birthday"] as? String {
         self.birthday = birthday.date()
       } else {
         self.birthday = nil
       }
       CoreDataHelper.sharedCoreDataHelper.saveContext()
+      
+      var properties = [String: AnyObject]()
+      properties[kMixpanelKeyName] = name
+      properties[kMixpanelKeyEmail] = email
+      properties[kMixpanelKeyPhone] = phone
+      properties[kMixpanelKeyGender] = gender
+      properties[kMixpanelKeyBirthday] = birthday?.briefDateString()
+      Mixpanel.sharedInstance().people.set(properties)
     }
   }
   

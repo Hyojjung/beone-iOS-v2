@@ -3,12 +3,13 @@ import UIKit
 import FBSDKCoreKit
 import Fabric
 import Crashlytics
+import Mixpanel
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let hasRegistedToken = NSUserDefaults.standardUserDefaults().objectForKey(kHasRegistedToken) as? Bool
     if hasRegistedToken != true &&
-    MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
+      MyInfo.sharedMyInfo().userDeviceInfoId == nil || MyInfo.sharedMyInfo().userDeviceInfoId == 0 {
       AuthenticationHelper.registerDeviceInfo() { (result) -> Void in
         SigningHelper.signInForNonUser({ (result) -> Void in
           self.postNotification(kNotificationGuestAuthenticationSuccess)
@@ -29,15 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Fabric.with([Crashlytics.self])
     
 #if RELEASE
-      // Configure tracker from GoogleService-Info.plist.
-      var configureError:NSError?
-      GGLContext.sharedInstance().configureWithError(&configureError)
-      assert(configureError == nil, "Error configuring Google services: \(configureError)")
+    // Configure tracker from GoogleService-Info.plist.
+    var configureError:NSError?
+    GGLContext.sharedInstance().configureWithError(&configureError)
+    assert(configureError == nil, "Error configuring Google services: \(configureError)")
       
-      // Optional: configure GAI options.
-      let gai = GAI.sharedInstance()
-      gai.trackUncaughtExceptions = true  // report uncaught exceptions
+    // Optional: configure GAI options.
+    let gai = GAI.sharedInstance()
+    gai.trackUncaughtExceptions = true  // report uncaught exceptions
 #endif
+    
+    
+    #if DEBUG
+      let mixpanel = Mixpanel.sharedInstanceWithToken("5664ab63c207a56807d11dc603c7502b")
+    #else
+      let mixpanel = Mixpanel.sharedInstanceWithToken("d9a85727e5a1a3daf4c0b95243a74ed7")
+    #endif
+    mixpanel.identify(mixpanel.distinctId)
+    mixpanel.people.increment(kMixpanelKeyLaunchCount, by: 1)
     
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true

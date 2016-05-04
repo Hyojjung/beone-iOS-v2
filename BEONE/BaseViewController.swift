@@ -1,5 +1,6 @@
 
 import UIKit
+import Mixpanel
 
 class BaseViewController: UIViewController {
   
@@ -54,12 +55,15 @@ class BaseViewController: UIViewController {
   }
   
   func sendViewTitle() {
-#if RELEASE
-    let tracker = GAI.sharedInstance().defaultTracker
-    tracker.set(kGAIScreenName, value: title)
-    print(title)
-    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
-#endif
+    if let title = title {
+      #if RELEASE
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: title)
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
+      #endif
+      Mixpanel.sharedInstance().track(title, properties: nil)
+      print(title)
+    }
   }
   
   override func viewDidAppear(animated: Bool) {
