@@ -98,6 +98,8 @@ class ProductDetailViewController: BaseViewController {
     super.setUpData()
     if product.id != nil {
       product.get({
+        self.title = self.product.title
+        self.sendViewTitle()
         self.setUpProductData()
       })
       

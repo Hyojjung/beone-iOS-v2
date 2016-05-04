@@ -38,6 +38,7 @@ class CouponsViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "쿠폰함"
     tableView.dynamicHeightDelgate = self
   }
   

@@ -39,6 +39,7 @@ class OrdersViewController: BaseTableViewController {
   
   override func setUpView() {
     super.setUpView()
+    title = "주문/배송내역"
     tableView.dynamicHeightDelgate = self
   }
   

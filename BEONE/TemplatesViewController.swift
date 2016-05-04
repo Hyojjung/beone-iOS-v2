@@ -34,6 +34,7 @@ class TemplatesViewController: BaseTableViewController {
     templates.get {
       if self.needSetTitle {
         self.title = self.templates.title
+        self.sendViewTitle()
       }
       self.tableView.reloadData()
     }

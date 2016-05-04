@@ -27,6 +27,7 @@ class ProfileViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    title = "내 정보"
   }
 }
 

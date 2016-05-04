@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     Fabric.with([Crashlytics.self])
     
-    #if RELEASE
+#if RELEASE
       // Configure tracker from GoogleService-Info.plist.
       var configureError:NSError?
       GGLContext.sharedInstance().configureWithError(&configureError)
@@ -36,9 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       // Optional: configure GAI options.
       let gai = GAI.sharedInstance()
-      gai.trackerWithTrackingId("UA-67382494-4")
       gai.trackUncaughtExceptions = true  // report uncaught exceptions
-    #endif
+#endif
     
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     return true

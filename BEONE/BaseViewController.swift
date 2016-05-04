@@ -44,11 +44,22 @@ class BaseViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    sendViewTitle()
+
     checkNeedToShowUserViewController()
     if needOftenUpdate {
       setUpData()
     }
     addObservers()
+  }
+  
+  func sendViewTitle() {
+#if RELEASE
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: title)
+    print(title)
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
+#endif
   }
   
   override func viewDidAppear(animated: Bool) {

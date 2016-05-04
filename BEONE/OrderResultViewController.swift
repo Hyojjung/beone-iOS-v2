@@ -36,6 +36,11 @@ class OrderResultViewController: BaseViewController {
     return resultLabelView
   }()
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "결제완료"
+  }
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.hidden = true

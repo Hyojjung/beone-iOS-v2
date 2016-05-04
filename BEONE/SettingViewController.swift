@@ -53,6 +53,7 @@ class SettingViewController: BaseTableViewController {
   override func setUpView() {
     super.setUpView()
     tableView.dynamicHeightDelgate = self
+    title = "설정"
   }
   
   override func setUpData() {
