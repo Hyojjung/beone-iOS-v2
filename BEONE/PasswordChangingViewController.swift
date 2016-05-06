@@ -36,7 +36,7 @@ class PasswordChangingViewController: BaseViewController {
                                           self.popView()
       }, failure: {(networkError) in
         if let statusCode = networkError.statusCode {
-          if statusCode == NetworkResponseCode.Invalid.rawValue {
+          if statusCode == NetworkResponseCode.Invalid {
             self.showAlertView(NSLocalizedString("check established password", comment: "alert title"))
           }
         }

@@ -45,7 +45,7 @@ class AuthenticationHelper: NSObject {
           success(result: result)
         },
         failure: { (error) -> Void in
-          if error.statusCode == NetworkResponseCode.NotFound.rawValue {
+          if error.statusCode == NetworkResponseCode.NotFound {
             registerDeviceInfo(success)
           }
       })

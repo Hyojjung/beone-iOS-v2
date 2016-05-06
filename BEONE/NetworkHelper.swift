@@ -110,9 +110,10 @@ class NetworkHelper: NSObject {
         }
       }
       
-      if let response = operation?.response {
+      if let response = operation?.response, statusCode = NetworkResponseCode(rawValue: response.statusCode) {
         let networkError =
-          NetworkError(statusCode: response.statusCode, errorCode: errorCode, errorKey: errorKey, responseObject: responseObject)
+          NetworkError(statusCode: statusCode
+            , errorCode: errorCode, errorKey: errorKey, responseObject: responseObject)
         
         if let failure = failure {
           failure(error: networkError)

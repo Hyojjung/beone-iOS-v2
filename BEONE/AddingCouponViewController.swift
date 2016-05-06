@@ -15,10 +15,10 @@ class AddingCouponViewController: BaseViewController {
         self.popView()
         }) { (error) -> Void in
           var message: String?
-          if error.statusCode == NetworkResponseCode.Duplicated.rawValue {
+          if error.statusCode == NetworkResponseCode.Duplicated {
             message = NSLocalizedString("coupon conflict", comment: "alert title")
-          } else if error.statusCode == NetworkResponseCode.Invalid.rawValue ||
-            error.statusCode == NetworkResponseCode.NotFound.rawValue {
+          } else if error.statusCode == NetworkResponseCode.Invalid ||
+            error.statusCode == NetworkResponseCode.NotFound {
               message = NSLocalizedString("check coupon number", comment: "alert title")
           }
           if let message = message {

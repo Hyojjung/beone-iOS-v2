@@ -121,7 +121,7 @@ extension AccountsViewController {
       self.setUpData()
       }, postFailure: { (error) in
         if let statusCode = error.statusCode {
-          if statusCode == NetworkResponseCode.Duplicated.rawValue {
+          if statusCode == NetworkResponseCode.Duplicated {
             self.showAlertView(NSLocalizedString("linked sns info", comment: "alert title"))
           }
         }

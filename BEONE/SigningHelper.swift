@@ -31,7 +31,7 @@ class SigningHelper: NSObject {
   
   // MARK: - Static Public Methods
   
-  static func signIn(email: String, password: String) {
+  static func signIn(email: String, password: String, success: () -> Void, failure: () -> Void) {
     let myInfo = MyInfo.sharedMyInfo()
     var parameter = [String: AnyObject]()
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
@@ -42,14 +42,11 @@ class SigningHelper: NSObject {
     NetworkHelper.requestPost(kRequestUrlAuthentications, parameter: parameter,
       success: { (result) -> Void in
         saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)
-        if !SchemeHelper.schemeStrings.isEmpty {
-          SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
-        }
-        postNotification(kNotificationSigningSuccess)
+        success()
       },
       failure: { (error: NetworkError) -> Void in
-        if error.statusCode == NetworkResponseCode.Invalid.rawValue {
-          postNotification(kNotificationSignInFailure)
+        if error.statusCode == NetworkResponseCode.Invalid {
+          failure()
         }
       })
   }
@@ -72,7 +69,7 @@ class SigningHelper: NSObject {
         postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
-        if error.statusCode == NetworkResponseCode.Invalid.rawValue &&
+        if error.statusCode == NetworkResponseCode.Invalid &&
           error.errorKey == NetworkErrorKey.Uid.rawValue &&
           error.errorCode == NetworkErrorCode.NothingMathed.rawValue {
             postNotification(kNotificationNeedSignUp)
@@ -98,7 +95,7 @@ class SigningHelper: NSObject {
         postNotification(kNotificationSigningSuccess)
       },
       failure: { (error) -> Void in
-        if error.statusCode == NetworkResponseCode.Duplicated.rawValue {
+        if error.statusCode == NetworkResponseCode.Duplicated {
           postNotification(kNotificationSigningFailure)
         }
     })
@@ -172,7 +169,7 @@ class SigningHelper: NSObject {
       },
       failure: { (error) -> Void in
         if let statusCode = error.statusCode {
-          failure(statusCode)
+          failure(statusCode.rawValue)
         }
     })
   }

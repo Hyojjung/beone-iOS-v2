@@ -18,18 +18,24 @@ extension String {
 }
 
 extension NSDate {
-  
   func rangeReservationDateString() -> String {
     let dateFormatter = NSDateFormatter()
-    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
+    dateFormatter.timeZone = DateFormatterHelper.koreanTimeZone
     dateFormatter.dateFormat = "yyyy년 M월 d일 E요일";
     return dateFormatter.stringFromDate(self)
   }
   
   func briefDateString() -> String {
     let dateFormatter = NSDateFormatter()
-    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
+    dateFormatter.timeZone = DateFormatterHelper.koreanTimeZone
     dateFormatter.dateFormat = "yyyy.MM.dd";
+    return dateFormatter.stringFromDate(self)
+  }
+  
+  func paidAtDateString() -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.timeZone = DateFormatterHelper.koreanTimeZone
+    dateFormatter.dateFormat = "yyyy년 MMM d일 HH시 mm분"
     return dateFormatter.stringFromDate(self)
   }
   
@@ -39,13 +45,6 @@ extension NSDate {
   
   func dueDateDateString() -> String {
     return paidAtDateString() + "까지"
-  }
-  
-  func paidAtDateString() -> String {
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
-    dateFormatter.dateFormat = "yyyy년 MMM d일 HH시 mm분"
-    return dateFormatter.stringFromDate(self)
   }
   
   func dateComponent() -> (month: Int, day: Int) {
@@ -117,9 +116,13 @@ class DateFormatterHelper: NSObject {
   
   static var koreanCalendar: NSCalendar = {
     if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-      calendar.timeZone = NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
+      calendar.timeZone = koreanTimeZone
       return calendar
     }
     fatalError("must return calendar")
+  }()
+  
+  static var koreanTimeZone: NSTimeZone = {
+    return NSTimeZone(forSecondsFromGMT: kKoreanTimeZone)
   }()
 }

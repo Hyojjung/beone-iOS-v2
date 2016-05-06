@@ -46,7 +46,7 @@ extension String {
       let strings = results.map {
         nsString.substringWithRange($0.range)
       }
-      return strings.joinWithSeparator("")
+      return strings.joinWithSeparator(kEmptyString)
     } catch {
       return String()
     }

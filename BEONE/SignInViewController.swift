@@ -11,25 +11,6 @@ class SignInViewController: BaseViewController {
   
   // MARK: - BaseViewController Methods
   
-  override func addObservers() {
-    super.addObservers()
-    NSNotificationCenter.defaultCenter().addObserver(self,
-                                                     selector: #selector(SignInViewController.closeViewController),
-                                                     name: kNotificationSigningSuccess,
-                                                     object: nil)
-    
-    NSNotificationCenter.defaultCenter().addObserver(self,
-                                                     selector: #selector(SignInViewController.signInErrorOccurred),
-                                                     name: kNotificationSignInFailure,
-                                                     object: nil)
-  }
-  
-  override func removeObservers() {
-    super.removeObservers()
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSigningSuccess, object: nil)
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationSignInFailure, object: nil)
-  }
-  
   override func setUpView() {
     super.setUpView()
     emailTextField.setUpFloatingLabel(NSLocalizedString("email form", comment: "placeholder"))
@@ -61,20 +42,17 @@ extension SignInViewController {
       showAlertView(errorMessage)
     } else {
       SigningHelper.signIn(emailTextField.text!,
-                           password: passwordTextField.text!)
+                           password: passwordTextField.text!,
+                           success: {
+                            if !SchemeHelper.schemeStrings.isEmpty {
+                              SchemeHelper.schemeStrings.insert(kEmptyString, atIndex: 0)
+                            }
+                            self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+        },
+                           failure: {
+                            self.showAlertView(NSLocalizedString("not exist account", comment: "alert"))
+      })
     }
-  }
-}
-
-// MARK: - Observer Actions
-
-extension SignInViewController {
-  func closeViewController() {
-    parentViewController?.dismissViewControllerAnimated(true, completion: nil)
-  }
-  
-  func signInErrorOccurred() {
-    showAlertView(NSLocalizedString("not exist account", comment: "alert"))
   }
 }
 

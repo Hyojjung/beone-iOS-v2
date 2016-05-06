@@ -69,20 +69,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcR-tP-8qC">
                                         <rect key="frame" x="0.0" y="45" width="600" height="44"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bgCellUnderlineWhite" translatesAutoresizingMaskIntoConstraints="NO" id="O8d-ly-YLb">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgCellUnderlineWhite" translatesAutoresizingMaskIntoConstraints="NO" id="O8d-ly-YLb">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iconFilter" translatesAutoresizingMaskIntoConstraints="NO" id="kwA-Tu-hO4">
-                                                <rect key="frame" x="6" y="13" width="20" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFilter" translatesAutoresizingMaskIntoConstraints="NO" id="kwA-Tu-hO4">
+                                                <rect key="frame" x="6" y="12" width="20" height="20"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yo8-CH-XQq">
-                                                <rect key="frame" x="31" y="15" width="501" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yo8-CH-XQq">
+                                                <rect key="frame" x="31" y="13.5" width="501" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-2q-P03">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-2q-P03">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                 <connections>
                                                     <action selector="showSearchModalButtonTapped" destination="aR5-Rt-8nE" eventType="touchUpInside" id="Hrk-8h-2Ub"/>
                                                 </connections>

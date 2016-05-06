@@ -40,8 +40,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-c1-Bff">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNf-Nc-Tuq">
-                                                            <rect key="frame" x="0.0" y="65" width="600" height="321"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNf-Nc-Tuq">
+                                                            <rect key="frame" x="0.0" y="64.5" width="600" height="322"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" image="image_cart_empty" translatesAutoresizingMaskIntoConstraints="NO" id="pjr-sm-d8j">
                                                                     <rect key="frame" x="200" y="0.0" width="200" height="245"/>
@@ -129,8 +129,8 @@
                                                             <color key="textColor" red="0.56862745100000001" green="0.55294117649999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="501" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-tv-q5G">
-                                                            <rect key="frame" x="260" y="66" width="80" height="39"/>
+                                                        <button opaque="NO" tag="501" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-tv-q5G">
+                                                            <rect key="frame" x="260" y="67" width="80" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="Szd-2s-OvZ"/>
                                                                 <constraint firstAttribute="height" priority="999" constant="39" id="WKw-ze-H7J"/>
@@ -192,8 +192,8 @@
                                                     <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-22-dca">
-                                                    <rect key="frame" x="129" y="47" width="21" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" text="가격" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-22-dca">
+                                                    <rect key="frame" x="129" y="48" width="21" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745098039214" green="0.55294117647058827" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

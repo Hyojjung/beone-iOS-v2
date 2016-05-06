@@ -59,23 +59,23 @@ class AddingBillKeyViewController: BaseTableViewController {
 extension AddingBillKeyViewController {
   func addToolbar(textField: UITextField) {
     let previousButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 105)!,
-      target: self,
-      action: #selector(AddingBillKeyViewController.previousButtonTapped))
+                                         target: self,
+                                         action: #selector(AddingBillKeyViewController.previousButtonTapped))
     previousButton.tintColor = gold
     
     let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
     fixedSpace.width = 20
     
     let nextButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 106)!,
-      target: self,
-      action: #selector(AddingBillKeyViewController.nextButtonTapped))
+                                     target: self,
+                                     action: #selector(AddingBillKeyViewController.nextButtonTapped))
     nextButton.tintColor = gold
     
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
     
     let doneButton = UIBarButtonItem(barButtonSystemItem: .Done,
-      target: self,
-      action: #selector(NSMutableAttributedString.endEditing))
+                                     target: self,
+                                     action: #selector(NSMutableAttributedString.endEditing))
     doneButton.tintColor = gold
     
     let toolBar = UIToolbar()
@@ -172,15 +172,14 @@ extension AddingBillKeyViewController {
     }
     billKey.post({ (_) -> Void in
       self.popView()
-      }) { (error) -> Void in
-        if error.statusCode == NetworkResponseCode.Invalid.rawValue ||
-          error.statusCode == NetworkResponseCode.CannotGoThrough.rawValue {
-            if let responseObject = error.responseObject as? [String: AnyObject],
-              error = responseObject["error"] as? [String: AnyObject],
-              key = error["alert"] as? String {
-                self.showAlertView("'" + key + "' 다시 확인해주세요.")
-            }
+    }) { (error) -> Void in
+      if error.statusCode == NetworkResponseCode.Invalid || error.statusCode == NetworkResponseCode.CannotGoThrough {
+        if let responseObject = error.responseObject as? [String: AnyObject],
+          error = responseObject["error"] as? [String: AnyObject],
+          key = error["alert"] as? String {
+          self.showAlertView("'" + key + "' 다시 확인해주세요.")
         }
+      }
     }
   }
   
@@ -203,40 +202,40 @@ extension AddingBillKeyViewController {
   
   @IBAction func selectMonthButtonTapped() {
     showActionSheet(NSLocalizedString("select month", comment: "action sheet title"),
-      rows: monthArray,
-      initialSelection: billKey.expiredMonth - 1,
-      sender: nil,
-      doneBlock: { (_, index, _) -> Void in
-        self.billKey.expiredMonth = index + 1
-        self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-          withRowAnimation: .Automatic)
-        
-        if self.isGoingDown {
-          self.selectYearButtonTapped()
-        } else {
-          let cardNumberLastTextField = self.view.viewWithTag(kCardNumberLastTextFieldTag) as! UITextField
-          cardNumberLastTextField.becomeFirstResponder()
-        }
+                    rows: monthArray,
+                    initialSelection: billKey.expiredMonth - 1,
+                    sender: nil,
+                    doneBlock: { (_, index, _) -> Void in
+                      self.billKey.expiredMonth = index + 1
+                      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
+                        withRowAnimation: .Automatic)
+                      
+                      if self.isGoingDown {
+                        self.selectYearButtonTapped()
+                      } else {
+                        let cardNumberLastTextField = self.view.viewWithTag(kCardNumberLastTextFieldTag) as! UITextField
+                        cardNumberLastTextField.becomeFirstResponder()
+                      }
     })
   }
   
   @IBAction func selectYearButtonTapped() {
     let initialSelection = NSDate().year() - billKey.expiredYear
     showActionSheet(NSLocalizedString("select year", comment: "action sheet title"),
-      rows: yearArray,
-      initialSelection: initialSelection,
-      sender: nil,
-      doneBlock: { (_, index, _) -> Void in
-        self.billKey.expiredYear = NSDate().year() + index
-        self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-          withRowAnimation: .Automatic)
-        
-        if self.isGoingDown {
-          let nextButtonTextField = self.view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
-          nextButtonTextField.becomeFirstResponder()
-        } else {
-          self.selectMonthButtonTapped()
-        }
+                    rows: yearArray,
+                    initialSelection: initialSelection,
+                    sender: nil,
+                    doneBlock: { (_, index, _) -> Void in
+                      self.billKey.expiredYear = NSDate().year() + index
+                      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
+                        withRowAnimation: .Automatic)
+                      
+                      if self.isGoingDown {
+                        let nextButtonTextField = self.view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
+                        nextButtonTextField.becomeFirstResponder()
+                      } else {
+                        self.selectMonthButtonTapped()
+                      }
     })
   }
   
@@ -273,7 +272,7 @@ extension AddingBillKeyViewController: UITextFieldDelegate {
         tag == kNextYearButtonTextFieldTag && billKey.type == .Corporation && stringLength > 3 ||
         tag == kNextYearButtonTextFieldTag + 2 && billKey.type == .Corporation && stringLength > 5 ||
         tag == kBirthdayTextFieldTag && billKey.type == .Personal && stringLength > 6 {
-          return false
+        return false
       }
     }
     return true
@@ -299,7 +298,7 @@ extension AddingBillKeyViewController: UITableViewDataSource {
     if billKey.type == .Personal && section == BillKeyTableViewSection.CorporationNumber.rawValue ||
       billKey.type == .Corporation &&
       (section == BillKeyTableViewSection.Password.rawValue || section == BillKeyTableViewSection.Birthday.rawValue) {
-        return 0
+      return 0
     }
     return 1
   }
