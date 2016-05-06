@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UGP-F8-qv2" id="2db-BO-P33">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-ok-fs3">
@@ -59,37 +59,17 @@
                                                             <constraint firstItem="wQU-YB-RQ3" firstAttribute="centerY" secondItem="5LV-UN-Ivm" secondAttribute="centerY" id="p9b-iY-7TJ"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqM-rS-cLw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="168"/>
-                                                        <connections>
-                                                            <action selector="productButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="xd8-8X-Z2K"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
-                                                        <rect key="frame" x="236" y="8" width="34" height="34"/>
-                                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
-                                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
-                                                        <connections>
-                                                            <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="h69-XH-mrT"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="aqM-rS-cLw" firstAttribute="leading" secondItem="a7l-Qv-rZ7" secondAttribute="leading" id="ADs-t7-haZ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="aqM-rS-cLw" secondAttribute="bottom" id="BZ7-QW-5nF"/>
                                                     <constraint firstItem="zx1-p5-x5m" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="top" id="EOZ-qV-ISD"/>
-                                                    <constraint firstItem="izq-a0-oio" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="top" constant="8" id="HIp-ik-0zh"/>
                                                     <constraint firstAttribute="bottom" secondItem="zx1-p5-x5m" secondAttribute="bottom" id="J6G-Sh-L2m"/>
                                                     <constraint firstAttribute="bottom" secondItem="5LV-UN-Ivm" secondAttribute="bottom" id="WEo-rX-TVp"/>
-                                                    <constraint firstAttribute="trailing" secondItem="izq-a0-oio" secondAttribute="trailing" constant="8" id="XKm-q1-cJE"/>
                                                     <constraint firstItem="5LV-UN-Ivm" firstAttribute="leading" secondItem="a7l-Qv-rZ7" secondAttribute="leading" id="XWy-el-8k2"/>
                                                     <constraint firstAttribute="height" constant="168" id="cFj-bx-ndn"/>
-                                                    <constraint firstItem="aqM-rS-cLw" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="top" id="cRk-ws-0JE"/>
                                                     <constraint firstItem="zx1-p5-x5m" firstAttribute="leading" secondItem="a7l-Qv-rZ7" secondAttribute="leading" id="lbQ-Ap-lsH"/>
                                                     <constraint firstAttribute="trailing" secondItem="5LV-UN-Ivm" secondAttribute="trailing" id="oE0-4d-8Rb"/>
                                                     <constraint firstItem="5LV-UN-Ivm" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="top" id="omd-Dz-KEe"/>
-                                                    <constraint firstAttribute="trailing" secondItem="aqM-rS-cLw" secondAttribute="trailing" id="vJG-D8-uk5"/>
                                                     <constraint firstAttribute="trailing" secondItem="zx1-p5-x5m" secondAttribute="trailing" id="zZd-oy-2oL"/>
                                                 </constraints>
                                             </view>
@@ -168,17 +148,43 @@
                                                     </mask>
                                                 </variation>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqM-rS-cLw">
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="566"/>
+                                                <connections>
+                                                    <action selector="productButtonTapped" destination="cuW-kw-D3y" eventType="touchUpInside" id="xd8-8X-Z2K"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izq-a0-oio">
+                                                <rect key="frame" x="239" y="8" width="34" height="34"/>
+                                                <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                                <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                                <connections>
+                                                    <action selector="favoriteButtonTapped:" destination="cuW-kw-D3y" eventType="touchUpInside" id="h69-XH-mrT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="a7l-Qv-rZ7" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="leading" constant="3" id="9na-Sw-xbd"/>
+                                            <constraint firstAttribute="bottom" secondItem="aqM-rS-cLw" secondAttribute="bottom" id="AJE-67-3LP"/>
                                             <constraint firstItem="pyT-f0-rh8" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="leading" id="Ls9-5f-Nry"/>
+                                            <constraint firstItem="aqM-rS-cLw" firstAttribute="top" secondItem="cuW-kw-D3y" secondAttribute="top" id="MoV-o4-ziB"/>
                                             <constraint firstAttribute="trailing" secondItem="a7l-Qv-rZ7" secondAttribute="trailing" constant="2" id="PPU-FT-XWr"/>
                                             <constraint firstAttribute="bottom" secondItem="pyT-f0-rh8" secondAttribute="bottom" id="acn-7X-qfO"/>
+                                            <constraint firstAttribute="trailing" secondItem="aqM-rS-cLw" secondAttribute="trailing" id="h3u-dY-8EM"/>
                                             <constraint firstItem="pyT-f0-rh8" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="bottom" id="k7f-xr-7Px"/>
+                                            <constraint firstItem="aqM-rS-cLw" firstAttribute="leading" secondItem="cuW-kw-D3y" secondAttribute="leading" id="lP1-3d-RKc"/>
                                             <constraint firstItem="a7l-Qv-rZ7" firstAttribute="top" secondItem="cuW-kw-D3y" secondAttribute="top" id="p7g-L5-ezr"/>
+                                            <constraint firstItem="aqM-rS-cLw" firstAttribute="top" secondItem="a7l-Qv-rZ7" secondAttribute="bottom" id="qEb-cj-SVK"/>
                                             <constraint firstAttribute="trailing" secondItem="pyT-f0-rh8" secondAttribute="trailing" constant="-1" id="qPt-u9-BKH"/>
+                                            <constraint firstAttribute="trailing" secondItem="izq-a0-oio" secondAttribute="trailing" constant="10" id="sYJ-Iw-mos"/>
+                                            <constraint firstItem="izq-a0-oio" firstAttribute="top" secondItem="cuW-kw-D3y" secondAttribute="top" constant="8" id="tSM-rc-MXm"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="qEb-cj-SVK"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="favoriteButton" destination="izq-a0-oio" id="YYd-Uu-cQt"/>
                                             <outlet property="imageView" destination="zx1-p5-x5m" id="Aem-4a-Iph"/>
@@ -214,37 +220,17 @@
                                                             <constraint firstItem="0x6-iS-K87" firstAttribute="centerY" secondItem="jdl-Km-fZj" secondAttribute="centerY" id="N1D-t2-V55"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBp-aJ-wg3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="168"/>
-                                                        <connections>
-                                                            <action selector="productButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="28j-cr-dbf"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
-                                                        <rect key="frame" x="236" y="8" width="34" height="34"/>
-                                                        <state key="normal" image="btnProductdetailFavoriteOff"/>
-                                                        <state key="selected" image="btnProductdetailFavoriteOn"/>
-                                                        <connections>
-                                                            <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="13k-ss-nzn" firstAttribute="leading" secondItem="jBd-Jb-cKC" secondAttribute="leading" id="3d7-tq-nOW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="aBp-aJ-wg3" secondAttribute="trailing" id="3lw-H6-5Jc"/>
                                                     <constraint firstAttribute="trailing" secondItem="jdl-Km-fZj" secondAttribute="trailing" id="48M-xS-wpC"/>
-                                                    <constraint firstItem="Tvx-D6-Gid" firstAttribute="top" secondItem="jBd-Jb-cKC" secondAttribute="top" constant="8" id="5My-2k-r6f"/>
                                                     <constraint firstAttribute="bottom" secondItem="jdl-Km-fZj" secondAttribute="bottom" id="7cg-eo-hih"/>
                                                     <constraint firstAttribute="height" constant="168" id="K6c-9A-V2w"/>
                                                     <constraint firstAttribute="trailing" secondItem="13k-ss-nzn" secondAttribute="trailing" id="XIe-22-r3p"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Tvx-D6-Gid" secondAttribute="trailing" constant="8" id="a6a-1t-HoF"/>
                                                     <constraint firstAttribute="bottom" secondItem="13k-ss-nzn" secondAttribute="bottom" id="bbO-Ty-i57"/>
-                                                    <constraint firstItem="aBp-aJ-wg3" firstAttribute="leading" secondItem="jBd-Jb-cKC" secondAttribute="leading" id="fbK-0w-WtI"/>
                                                     <constraint firstItem="jdl-Km-fZj" firstAttribute="top" secondItem="jBd-Jb-cKC" secondAttribute="top" id="gSG-EC-ETj"/>
                                                     <constraint firstItem="13k-ss-nzn" firstAttribute="top" secondItem="jBd-Jb-cKC" secondAttribute="top" id="mER-Iv-vEl"/>
-                                                    <constraint firstItem="aBp-aJ-wg3" firstAttribute="top" secondItem="jBd-Jb-cKC" secondAttribute="top" id="qqJ-Ad-xYK"/>
-                                                    <constraint firstAttribute="bottom" secondItem="aBp-aJ-wg3" secondAttribute="bottom" id="t0U-Sl-1KK"/>
                                                     <constraint firstItem="jdl-Km-fZj" firstAttribute="leading" secondItem="jBd-Jb-cKC" secondAttribute="leading" id="vXP-xo-Mdc"/>
                                                 </constraints>
                                             </view>
@@ -326,15 +312,35 @@
                                                     </mask>
                                                 </variation>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBp-aJ-wg3">
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="566"/>
+                                                <connections>
+                                                    <action selector="productButtonTapped" destination="KWT-tO-GTa" eventType="touchUpInside" id="28j-cr-dbf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-D6-Gid">
+                                                <rect key="frame" x="239" y="8" width="34" height="34"/>
+                                                <state key="normal" image="btnProductdetailFavoriteOff"/>
+                                                <state key="selected" image="btnProductdetailFavoriteOn"/>
+                                                <connections>
+                                                    <action selector="favoriteButtonTapped:" destination="KWT-tO-GTa" eventType="touchUpInside" id="Pxy-6i-O7J"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="jBd-Jb-cKC" secondAttribute="trailing" constant="3" id="4yo-HI-XEy"/>
                                             <constraint firstItem="jBd-Jb-cKC" firstAttribute="top" secondItem="KWT-tO-GTa" secondAttribute="top" id="M6m-gH-ijb"/>
+                                            <constraint firstItem="aBp-aJ-wg3" firstAttribute="leading" secondItem="KWT-tO-GTa" secondAttribute="leading" id="M9L-c6-z6F"/>
+                                            <constraint firstItem="aBp-aJ-wg3" firstAttribute="top" secondItem="KWT-tO-GTa" secondAttribute="top" id="X14-ca-xw4"/>
                                             <constraint firstItem="FNg-qa-zCG" firstAttribute="top" secondItem="jBd-Jb-cKC" secondAttribute="bottom" id="XUI-NC-oUd"/>
+                                            <constraint firstAttribute="trailing" secondItem="aBp-aJ-wg3" secondAttribute="trailing" id="cYV-67-EXm"/>
                                             <constraint firstItem="jBd-Jb-cKC" firstAttribute="leading" secondItem="KWT-tO-GTa" secondAttribute="leading" constant="2" id="cuh-mY-PW9"/>
                                             <constraint firstAttribute="bottom" secondItem="FNg-qa-zCG" secondAttribute="bottom" id="cy2-1e-Fga"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tvx-D6-Gid" secondAttribute="trailing" constant="10" id="jIX-aV-XJY"/>
                                             <constraint firstAttribute="trailing" secondItem="FNg-qa-zCG" secondAttribute="trailing" id="mZd-fL-K6L"/>
+                                            <constraint firstItem="Tvx-D6-Gid" firstAttribute="top" secondItem="KWT-tO-GTa" secondAttribute="top" constant="8" id="pjK-bx-G7r"/>
+                                            <constraint firstAttribute="bottom" secondItem="aBp-aJ-wg3" secondAttribute="bottom" id="u8A-0V-ytL"/>
                                             <constraint firstItem="FNg-qa-zCG" firstAttribute="leading" secondItem="KWT-tO-GTa" secondAttribute="leading" constant="-1" id="ySO-RL-EyS"/>
                                         </constraints>
                                         <connections>

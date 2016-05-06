@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2uB-kz-C90" id="61Z-YO-2yb">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="329.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-QO-Kcb">
@@ -111,8 +111,8 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-v3-fhu">
                                         <rect key="frame" x="3" y="0.0" width="331" height="293"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
-                                                <rect key="frame" x="99" y="81" width="133" height="133"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSoldoutToday" translatesAutoresizingMaskIntoConstraints="NO" id="xDK-gq-oYv">
+                                                <rect key="frame" x="99" y="80" width="133" height="133"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33725490196078434" green="0.32941176470588235" blue="0.35686274509803922" alpha="0.6377576013513514" colorSpace="calibratedRGB"/>
