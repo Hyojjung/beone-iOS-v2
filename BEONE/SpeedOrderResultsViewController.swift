@@ -5,11 +5,10 @@ class SpeedOrderResultsViewController: BaseViewController {
   
   @IBOutlet weak var speedOrderProductsScrollView: UIScrollView!
   @IBOutlet weak var productsScrollViewPageControl: UIPageControl!
-  @IBOutlet weak var reviewShowLabel: UILabel!
   @IBOutlet weak var reviewCountLabel: UILabel!
-  @IBOutlet weak var reviewButton: UIButton!
   @IBOutlet weak var allShowButton: UIButton!
   @IBOutlet weak var orderButton: UIButton!
+  @IBOutlet weak var reviewView: UIView!
   
   var address: Address?
   var availableDates: [String]?
@@ -120,17 +119,13 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
   
   private func configureReviewLabels() {
     if let currentProduct = products.list.objectAtIndex(productsScrollViewPageControl.currentPage) as? Product {
-      reviewShowLabel.configureAlpha(currentProduct.reviews.count != 0)
-      reviewCountLabel.configureAlpha(currentProduct.reviews.count != 0)
-      reviewButton.configureAlpha(currentProduct.reviews.count != 0)
+      reviewView.hidden = currentProduct.reviews.count != 0 ? false : true
       reviewCountLabel.text = "\(currentProduct.reviews.count)개의 유용한 후기가 있습니다"
       allShowButton.configureAlpha(false)
       orderButton.alpha = 1
     } else {
       orderButton.alpha = 0
-      reviewShowLabel.alpha = 0
-      reviewCountLabel.alpha = 0
-      reviewButton.configureAlpha(false)
+      reviewView.hidden = true
       allShowButton.configureAlpha(true)
     }
   }

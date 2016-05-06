@@ -803,9 +803,8 @@
                         <outlet property="allShowButton" destination="E4I-Ea-rf0" id="IZW-ub-uX9"/>
                         <outlet property="orderButton" destination="6BT-99-xVT" id="nh7-BX-s8G"/>
                         <outlet property="productsScrollViewPageControl" destination="TnE-gn-04i" id="wbN-hg-qiY"/>
-                        <outlet property="reviewButton" destination="QGA-av-gUI" id="HxO-lL-V2k"/>
                         <outlet property="reviewCountLabel" destination="cWO-3C-rle" id="kQV-Tl-szD"/>
-                        <outlet property="reviewShowLabel" destination="RzA-hO-9nD" id="us9-Zd-KAW"/>
+                        <outlet property="reviewView" destination="Gr9-Yq-tIz" id="4ym-ko-Y7q"/>
                         <outlet property="speedOrderProductsScrollView" destination="npS-Fm-tBz" id="LF7-Bd-CBV"/>
                     </connections>
                 </viewController>
