@@ -85,7 +85,7 @@ class OrderableItemSet: BaseModel {
       }
       if let deliveryPriceInfo = orderableItemSet["deliveryPriceInfo"] as? [String: AnyObject],
         deliveryPrice = deliveryPriceInfo["actualPrice"] as? Int {
-          self.deliveryPrice = deliveryPrice
+        self.deliveryPrice = deliveryPrice
       }
       location.assignObject(orderableItemSet["location"])
       deliveryType.assignObject(orderableItemSet["deliveryType"])
@@ -107,6 +107,24 @@ class OrderableItemSet: BaseModel {
   
   override func putParameter() -> AnyObject? {
     return ["statusId": 16]
+  }
+  
+  func deliveryDateString() -> String {
+    var deliveryDateString = String()
+    let orderItem = orderableItems.list.first as! OrderableItem
+    deliveryDateString += orderItem.productTitle!
+    if orderableItems.list.count > 1 {
+      deliveryDateString += " 외 \(orderableItems.list.count - 1)개"
+    }
+    deliveryDateString += " : "
+    if let selectedTimeRange = selectedTimeRange {
+      deliveryDateString += selectedTimeRange.dateNotation()
+    } else if isExpressReservation {
+      deliveryDateString += "즉시배송"
+    } else {
+      deliveryDateString += "택배배송"
+    }
+    return deliveryDateString
   }
 }
 
@@ -166,7 +184,7 @@ extension OrderableItemSet {
 // MARK: - Progress Methods
 
 extension OrderableItemSet {
-
+  
   private func assignProgresses(progressObjects: AnyObject?) {
     if let progressObjects = progressObjects as? [[String: AnyObject]] {
       var progresses = [OrderItemSetProgress]()

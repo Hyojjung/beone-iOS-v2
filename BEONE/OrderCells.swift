@@ -87,9 +87,14 @@ class OrderItemSetInfoCell: UITableViewCell {
     deliveryStatusLabel.text = orderItemSet.statusName
     deliveryPriceLabel.text = orderItemSet.deliveryPrice.priceNotation(.Korean)
     totalPriceLabel.text = orderItemSet.actualPrice.priceNotation(.Korean)
-    
-    deliveryInfoButton.setTitle(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, forState: .Normal)
-    deliveryInfoButton.setTitle(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl, forState: .Highlighted)
+    let deliveryInfoButtonTitle: String?
+    if orderItemSet.selectedTimeRange != nil {
+      deliveryInfoButtonTitle = orderItemSet.deliveryDateString()
+    } else {
+      deliveryInfoButtonTitle = orderItemSet.orderDeliveryInfo.deliveryTrackingUrl
+    }
+    deliveryInfoButton.setTitle(deliveryInfoButtonTitle, forState: .Normal)
+    deliveryInfoButton.setTitle(deliveryInfoButtonTitle, forState: .Highlighted)
     
     deliveryTrackingButton.configureAlpha(orderItemSet.orderDeliveryInfo.deliveryTrackingUrl != nil)
     

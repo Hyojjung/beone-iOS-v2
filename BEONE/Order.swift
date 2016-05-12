@@ -122,7 +122,6 @@ class Order: BaseModel {
 // MARK: - Public Methods
 
 extension Order {
-  
   func prices() -> (totalItemPrice: Int, totalDeliveryPrice: Int) {
     var totalItemPrice = 0
     var totalDeliveryPrice = 0
@@ -138,19 +137,7 @@ extension Order {
   func deliveryDateString() -> String {
     var deliveryDateString = String()
     for (i, orderItemSet) in orderableItemSets.enumerate() {
-      let orderItem = orderItemSet.orderableItems.list.first as! OrderableItem
-      deliveryDateString += orderItem.productTitle!
-      if orderItemSet.orderableItems.list.count > 1 {
-        deliveryDateString += " 외 \(orderItemSet.orderableItems.list.count - 1)개"
-      }
-      deliveryDateString += " : "
-      if let selectedTimeRange = orderItemSet.selectedTimeRange {
-        deliveryDateString += selectedTimeRange.dateNotation()
-      } else if orderItemSet.isExpressReservation {
-        deliveryDateString += "즉시배송"
-      } else {
-        deliveryDateString += "택배배송"
-      }
+      deliveryDateString += orderItemSet.deliveryDateString()
       if i < orderableItemSets.count - 1 {
         deliveryDateString += "\n"
       }
