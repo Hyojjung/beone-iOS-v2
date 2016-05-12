@@ -110,6 +110,9 @@
 		62E5CF431BDE0CBC00A99F4C /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */; };
 		62E5CF451BDE108900A99F4C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */; };
 		62E5CF481BDE21C100A99F4C /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */; };
+		62E681521CE4ECA30019B7AA /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E681511CE4ECA30019B7AA /* Advertisement.swift */; };
+		62E681551CE4F0EA0019B7AA /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E681531CE4F0EA0019B7AA /* AdvertisementViewController.swift */; };
+		62E681561CE4F0EA0019B7AA /* AdvertisementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62E681541CE4F0EA0019B7AA /* AdvertisementViewController.xib */; };
 		62EDA0721CD23ED900695E5E /* NetworkErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */; };
 		62EDA0731CD23ED900695E5E /* NetworkErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */; };
 		62EDA0851CD2623D00695E5E /* IDMCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EDA0761CD2623D00695E5E /* IDMCaptionView.m */; };
@@ -412,6 +415,9 @@
 		62E5CF411BDE0CBC00A99F4C /* MyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyInfo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		62E5CF441BDE108900A99F4C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		62E5CF471BDE21C100A99F4C /* AuthenticationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
+		62E681511CE4ECA30019B7AA /* Advertisement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
+		62E681531CE4F0EA0019B7AA /* AdvertisementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
+		62E681541CE4F0EA0019B7AA /* AdvertisementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertisementViewController.xib; sourceTree = "<group>"; };
 		62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewController.swift; sourceTree = "<group>"; };
 		62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkErrorViewController.xib; sourceTree = "<group>"; };
 		62EDA0751CD2623D00695E5E /* IDMCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMCaptionView.h; sourceTree = "<group>"; };
@@ -785,6 +791,7 @@
 				62F2F51D1C6DA45D00D96964 /* ProductCategory.swift */,
 				62F2F51F1C6DA47000D96964 /* ProductCategories.swift */,
 				6205FD641CB93288003ED411 /* FavoriteProductHelper.swift */,
+				62E681511CE4ECA30019B7AA /* Advertisement.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -831,6 +838,8 @@
 				629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */,
 				62EDA0701CD23ED900695E5E /* NetworkErrorViewController.swift */,
 				62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */,
+				62E681531CE4F0EA0019B7AA /* AdvertisementViewController.swift */,
+				62E681541CE4F0EA0019B7AA /* AdvertisementViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1504,6 +1513,7 @@
 				62122D711C5EF3DE00B9850E /* SpeedOrder.storyboard in Resources */,
 				73BE225B1C30E087003FA11C /* OptionTextView.xib in Resources */,
 				73ED3BB81C4A25CC00D0B742 /* Products.storyboard in Resources */,
+				62E681561CE4F0EA0019B7AA /* AdvertisementViewController.xib in Resources */,
 				73168C0F1BF07CBE00308AF2 /* GoogleService-Info.plist in Resources */,
 				6286FB8A1C579D7D00845BE4 /* Setting.storyboard in Resources */,
 				623AAD9A1C5858850095731B /* Orders.storyboard in Resources */,
@@ -1746,6 +1756,7 @@
 				6211B31B1CB16DF400B5939B /* PersonalInfoViewController.swift in Sources */,
 				73F629A21BF1EB39001EA72F /* XLCCycleScrollView.m in Sources */,
 				73398AF51C07443800F57D4A /* SelectingPaymentTypeViewController.swift in Sources */,
+				62E681521CE4ECA30019B7AA /* Advertisement.swift in Sources */,
 				620717481BE221830014B9AC /* ImageTemplateCell.swift in Sources */,
 				7388FA5C1C057E3B0015C3DF /* OptionCells.swift in Sources */,
 				622AE9761C634BC7009F1A50 /* InvalidAddressViewController.swift in Sources */,
@@ -1762,6 +1773,7 @@
 				73445E761BF9AF7C008BE2AC /* Version.swift in Sources */,
 				732B73B41C45650300C98D3F /* ProductSearchData.swift in Sources */,
 				62F2F5201C6DA47000D96964 /* ProductCategories.swift in Sources */,
+				62E681551CE4F0EA0019B7AA /* AdvertisementViewController.swift in Sources */,
 				73BE22671C311BDE003FA11C /* OptionTextView.swift in Sources */,
 				73445E861BFAFEAE008BE2AC /* Shops.swift in Sources */,
 				62F2F51C1C6DA3CC00D96964 /* CategoriesViewController.swift in Sources */,

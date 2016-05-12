@@ -3,12 +3,31 @@ import UIKit
 
 class LandingViewController: TemplatesViewController {
   
+  lazy var advertisementViewController: AdvertisementViewController = {
+    let deliveryTimeSelectViewController = AdvertisementViewController(nibName: "AdvertisementViewController",
+                                                                            bundle: nil)
+    deliveryTimeSelectViewController.modalPresentationStyle = .OverCurrentContext
+    deliveryTimeSelectViewController.modalTransitionStyle = .CrossDissolve
+    return deliveryTimeSelectViewController
+  }()
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     tableView.addGestureRecognizer(revealViewController().panGestureRecognizer())
   }
   
   // MARK: - BaseViewController
+  
+  override func setUpView() {
+    super.setUpView()
+    let advertisement = Advertisement()
+    advertisement.get {
+      if NSUserDefaults.standardUserDefaults().integerForKey(kNotShowingAdvertisementIdUserDefaultKey) != advertisement.id {
+        self.advertisementViewController.advertisement = advertisement
+        self.presentViewController(self.advertisementViewController, animated: true, completion: nil)
+      }
+    }
+  }
   
   override func addObservers() {
     super.addObservers()

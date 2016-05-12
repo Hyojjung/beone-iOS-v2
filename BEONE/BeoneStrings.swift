@@ -61,6 +61,7 @@ let kPaymentScheme = "cmbeone://payment"
 let kVisited = "visited"
 let kFavoriteProductIds = "favoriteProductIds"
 let kHasRegistedToken = "hasRegistedToken"
+let kNotShowingAdvertisementIdUserDefaultKey = "notShowingAdvertisementId"
 
 // MARK: - Query Keys
 
