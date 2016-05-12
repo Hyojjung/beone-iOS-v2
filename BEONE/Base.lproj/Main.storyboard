@@ -30,7 +30,7 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="5rM-1M-5pw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
                                 <rect key="frame" x="510" y="458" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -482,8 +482,110 @@
                                 <rect key="frame" x="0.0" y="64" width="545" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="manualOrderItemSetCell" rowHeight="148" id="fGe-zw-DWO" customClass="SideBarOrderItemSetCell" customModule="BEONE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="545" height="148"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGe-zw-DWO" id="B0D-F7-DvJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="545" height="148"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgListIvory" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-a5-Bel">
+                                                    <rect key="frame" x="0.0" y="0.0" width="545" height="148"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV7-61-L4r">
+                                                    <rect key="frame" x="25" y="15" width="49" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.52549019610000003" green="0.4941176471" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="받으시는 분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAM-XW-vCA">
+                                                    <rect key="frame" x="25" y="39" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="께 전달될" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLT-em-2zp">
+                                                    <rect key="frame" x="103" y="39" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.64705882349999999" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh0-Zo-cPJ">
+                                                    <rect key="frame" x="25" y="61" width="512" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.64705882349999999" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4S-f8-yki">
+                                                    <rect key="frame" x="12" y="15" width="1" height="62"/>
+                                                    <color key="backgroundColor" red="0.64705882349999999" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="5P0-OU-bLT"/>
+                                                        <constraint firstAttribute="width" constant="1" id="HxF-1Z-vXO"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-4s-Ur5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="545" height="148"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <connections>
+                                                        <action selector="orderItemButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="dF8-SK-P0w"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xj9-hh-3O8">
+                                                    <rect key="frame" x="0.0" y="95" width="545" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="VuS-oW-Ofz"/>
+                                                    </constraints>
+                                                    <state key="normal" title="결제하기" backgroundImage="btnRectPcolor">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted" title="결제하기" backgroundImage="btnRectPcolorPressed"/>
+                                                    <connections>
+                                                        <action selector="paymentButtonTapped" destination="oE0-aN-JgH" eventType="touchUpInside" id="Sjy-eT-Uyo"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xj9-hh-3O8" firstAttribute="leading" secondItem="B0D-F7-DvJ" secondAttribute="leading" id="2zD-F9-0NX"/>
+                                                <constraint firstItem="QLT-em-2zp" firstAttribute="centerY" secondItem="DAM-XW-vCA" secondAttribute="centerY" id="3em-Rk-qN7"/>
+                                                <constraint firstItem="aV7-61-L4r" firstAttribute="leading" secondItem="s4S-f8-yki" secondAttribute="trailing" constant="12" id="Gsn-QA-6yS">
+                                                    <variation key="widthClass=compact" constant="6"/>
+                                                </constraint>
+                                                <constraint firstItem="haZ-4s-Ur5" firstAttribute="top" secondItem="B0D-F7-DvJ" secondAttribute="top" id="Kbg-V7-yVr"/>
+                                                <constraint firstItem="QLT-em-2zp" firstAttribute="leading" secondItem="DAM-XW-vCA" secondAttribute="trailing" id="Mqm-LC-qkS"/>
+                                                <constraint firstItem="yh0-Zo-cPJ" firstAttribute="top" secondItem="DAM-XW-vCA" secondAttribute="bottom" constant="1" id="Qxa-oi-eqI"/>
+                                                <constraint firstItem="bYe-a5-Bel" firstAttribute="leading" secondItem="B0D-F7-DvJ" secondAttribute="leading" id="SOC-37-o0Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="bYe-a5-Bel" secondAttribute="trailing" id="UGa-Lx-ywv"/>
+                                                <constraint firstItem="yh0-Zo-cPJ" firstAttribute="leading" secondItem="DAM-XW-vCA" secondAttribute="leading" id="YHD-GR-t9I"/>
+                                                <constraint firstAttribute="trailing" secondItem="xj9-hh-3O8" secondAttribute="trailing" id="aLk-OC-ff2"/>
+                                                <constraint firstItem="aV7-61-L4r" firstAttribute="top" secondItem="B0D-F7-DvJ" secondAttribute="top" constant="15" id="aRF-Y4-Blv"/>
+                                                <constraint firstItem="s4S-f8-yki" firstAttribute="leading" secondItem="B0D-F7-DvJ" secondAttribute="leading" constant="12" id="c3c-Vd-KjH"/>
+                                                <constraint firstItem="aV7-61-L4r" firstAttribute="leading" secondItem="DAM-XW-vCA" secondAttribute="leading" id="cYW-Ah-1MQ"/>
+                                                <constraint firstItem="haZ-4s-Ur5" firstAttribute="leading" secondItem="B0D-F7-DvJ" secondAttribute="leading" id="dCg-B9-yuR"/>
+                                                <constraint firstAttribute="bottom" secondItem="xj9-hh-3O8" secondAttribute="bottom" id="dho-Gy-f5Q"/>
+                                                <constraint firstAttribute="bottom" secondItem="haZ-4s-Ur5" secondAttribute="bottom" id="dk2-uS-znd"/>
+                                                <constraint firstItem="s4S-f8-yki" firstAttribute="top" secondItem="B0D-F7-DvJ" secondAttribute="top" constant="15" id="gZb-I1-Mfv"/>
+                                                <constraint firstItem="DAM-XW-vCA" firstAttribute="top" secondItem="aV7-61-L4r" secondAttribute="bottom" constant="7" id="j9m-nl-HLf"/>
+                                                <constraint firstItem="bYe-a5-Bel" firstAttribute="top" secondItem="B0D-F7-DvJ" secondAttribute="top" id="lbA-bS-wya"/>
+                                                <constraint firstAttribute="bottom" secondItem="bYe-a5-Bel" secondAttribute="bottom" id="pZo-H0-wy9"/>
+                                                <constraint firstAttribute="trailing" secondItem="haZ-4s-Ur5" secondAttribute="trailing" id="uCj-A6-jgJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="yh0-Zo-cPJ" secondAttribute="trailing" constant="8" id="xOt-He-LCt"/>
+                                                <constraint firstItem="DAM-XW-vCA" firstAttribute="leading" secondItem="s4S-f8-yki" secondAttribute="trailing" constant="15" id="yjy-IO-bQd"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="yjy-IO-bQd"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="orderCodeLabel" destination="aV7-61-L4r" id="rHC-0G-o81"/>
+                                            <outlet property="orderNameLabel" destination="yh0-Zo-cPJ" id="jc0-Oj-qhu"/>
+                                            <outlet property="receiverNameLabel" destination="DAM-XW-vCA" id="C8i-KF-qFW"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progressingOrderCountCell" rowHeight="40" id="OWu-W3-nbY" customClass="CountCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="545" height="40"/>
+                                        <rect key="frame" x="0.0" y="176" width="545" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OWu-W3-nbY" id="IJ4-ip-qmv">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="40"/>
@@ -523,7 +625,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="orderItemSetCell" rowHeight="221" id="UDo-X5-JBU" customClass="LatestOrderDeliveryItemSetCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="545" height="221"/>
+                                        <rect key="frame" x="0.0" y="216" width="545" height="221"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UDo-X5-JBU" id="8jW-Qy-dNK">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="221"/>
@@ -757,7 +859,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vBankOrderItemSetCell" rowHeight="221" id="NoV-OL-Gc6" customClass="VBankOrderItemSetCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="289" width="545" height="221"/>
+                                        <rect key="frame" x="0.0" y="437" width="545" height="221"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoV-OL-Gc6" id="zwG-xP-ydt">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="221"/>
@@ -934,7 +1036,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentProductCell" rowHeight="84" id="Y6x-G0-dLe" customClass="SideBarProductCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="510" width="545" height="84"/>
+                                        <rect key="frame" x="0.0" y="658" width="545" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y6x-G0-dLe" id="Y1T-jd-pHC">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="84"/>
@@ -1046,7 +1148,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userInfoCell" rowHeight="64" id="svA-ch-kZG" customClass="UserInfoCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="594" width="545" height="64"/>
+                                        <rect key="frame" x="0.0" y="742" width="545" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="svA-ch-kZG" id="fyb-Q7-GlF">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="64"/>
@@ -1112,7 +1214,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonsCell" rowHeight="158" id="LUs-zN-RgR" customClass="ButtonsCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="658" width="545" height="158"/>
+                                        <rect key="frame" x="0.0" y="806" width="545" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LUs-zN-RgR" id="hEo-OM-h4q">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="158"/>
@@ -1361,7 +1463,7 @@
                                         <color key="backgroundColor" red="0.21176470588235294" green="0.23921568627450979" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="anniversaryCell" rowHeight="130" id="8t1-vm-p4h" customClass="AnniveraryCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="816" width="545" height="130"/>
+                                        <rect key="frame" x="0.0" y="964" width="545" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8t1-vm-p4h" id="wss-uh-6nE">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="130"/>
@@ -1434,7 +1536,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentProductsCountCell" rowHeight="40" id="0IQ-lk-FHo" customClass="CountCell" customModule="BEONE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="946" width="545" height="40"/>
+                                        <rect key="frame" x="0.0" y="1094" width="545" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0IQ-lk-FHo" id="161-ao-Qqh">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="40"/>
@@ -1484,7 +1586,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noRecentProductCell" rowHeight="84" id="LUv-yg-STu">
-                                        <rect key="frame" x="0.0" y="986" width="545" height="84"/>
+                                        <rect key="frame" x="0.0" y="1134" width="545" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LUv-yg-STu" id="0Yu-Sb-pHY">
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="84"/>
@@ -1628,7 +1730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1X-X5-TRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-871.5" y="-944"/>
+            <point key="canvasLocation" x="-872" y="-944"/>
         </scene>
         <!--플라워 샵-->
         <scene sceneID="E8X-eR-iZi">
@@ -1652,7 +1754,7 @@
                                     <outlet property="delegate" destination="fZQ-LG-5eG" id="M7n-se-gUi"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
                                 <rect key="frame" x="510" y="458" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -2616,7 +2718,7 @@
                                     <outlet property="delegate" destination="QoW-kr-PiG" id="ajb-Io-LfE"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsn-Uk-6il">
                                 <rect key="frame" x="510" y="458" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>

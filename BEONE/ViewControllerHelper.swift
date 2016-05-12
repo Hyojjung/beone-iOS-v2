@@ -41,7 +41,7 @@ class ViewControllerHelper: NSObject {
       }
       if let topRootViewController = topViewController as? SWRevealViewController,
         rootNavigationViewController = topRootViewController.frontViewController as? UINavigationController {
-          return rootNavigationViewController
+        return rootNavigationViewController
       } else if let topRootViewController = topViewController as? UINavigationController {
         return topRootViewController.topViewController
       }
@@ -232,19 +232,25 @@ extension UIViewController {
     actionSheet.showActionSheetPicker()
   }
   
-  func showPayment(paymentTypes: [PaymentType]?, order: Order, paymentInfoId: Int) {
+  func showPayment(paymentTypes: [PaymentType]?, order: Order, paymentInfoId: Int,
+                   paymentBaseViewController: UIViewController? = nil) {
     if let paymentTypes = paymentTypes {
       var actionSheetButtons = [ActionSheetButton]()
       for paymentType in paymentTypes {
         let paymentTypeButton = ActionSheetButton(title: paymentType.name!)
         {(_) -> Void in
+          var viewController = self
+          if let paymentBaseViewController = paymentBaseViewController {
+            viewController = paymentBaseViewController
+            self.revealViewController().revealToggleAnimated(true)
+          }
           if paymentType.id == PaymentTypeId.Card.rawValue {
-            self.showBillKeysView(order, paymentInfoId: paymentInfoId)
+            viewController.showBillKeysView(order, paymentInfoId: paymentInfoId)
           } else {
-            self.showOrderWebView(order,
-                                  paymentTypeId: paymentType.id!,
-                                  paymentTypeName: paymentType.name,
-                                  paymentInfoId: paymentInfoId)
+            viewController.showOrderWebView(order,
+                                            paymentTypeId: paymentType.id!,
+                                            paymentTypeName: paymentType.name,
+                                            paymentInfoId: paymentInfoId)
           }
         }
         actionSheetButtons.appendObject(paymentTypeButton)

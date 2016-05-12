@@ -31,6 +31,7 @@ class SideBarViewController: BaseTableViewController {
                                                  "noRecentProductCell"]
   
   var sideBarViewContents = SideBarViewContents()
+  var paymentTypes: PaymentTypes?
   lazy var sideBarGestureView: UIView = {
     let sideBarGestureView = UIView()
     sideBarGestureView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
@@ -45,7 +46,12 @@ class SideBarViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    sideBarViewContents.get { 
+    sideBarViewContents.get {
+      if self.sideBarViewContents.orderDeliveryItemSets.first?.statusId == .ManualOrder {
+        OrderHelper.fetchPaymentTypes(self.sideBarViewContents.orderDeliveryItemSets.first?.order.id) {(paymentTypes) -> Void in
+          self.paymentTypes = paymentTypes
+        }
+      }
       self.tableView.reloadData()
     }
   }
@@ -116,6 +122,16 @@ extension SideBarViewController {
     }
     
     showAlertView(alertTitle, hasCancel: true, confirmAction: action, delegate: self)
+  }
+  
+  @IBAction func paymentButtonTapped() {
+    if let paymentInfo = sideBarViewContents.orderDeliveryItemSets.first?.order.paymentInfos.mainPaymentInfo {
+      let viewController = (revealViewController().frontViewController as? UINavigationController)?.topViewController
+      showPayment(paymentTypes?.list as? [PaymentType],
+                  order: sideBarViewContents.orderDeliveryItemSets.first!.order,
+                  paymentInfoId: paymentInfo.id!,
+                  paymentBaseViewController: viewController)
+    }
   }
   
   func orderDone() {
@@ -208,7 +224,9 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
       return 40
     case .OrderItemSet:
       let orderItemSet = sideBarViewContents.orderDeliveryItemSets.first
-      if orderItemSet?.statusId == .PaymentWaiting &&
+      if orderItemSet?.statusId == .ManualOrder {
+        return 148
+      } else if orderItemSet?.statusId == .PaymentWaiting &&
         orderItemSet?.order.paymentInfos.mainPaymentInfo?.paymentType.id == PaymentTypeId.VBank.rawValue {
         return 221
       } else if sideBarViewContents.orderDeliveryItemSets.first?.isCompletable == true {
@@ -234,7 +252,9 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     if indexPath.section == SideBarTableViewSection.OrderItemSet.rawValue {
       let orderItemSet = sideBarViewContents.orderDeliveryItemSets.first
-      if orderItemSet?.statusId == .PaymentWaiting &&
+      if orderItemSet?.statusId == .ManualOrder {
+        return "manualOrderItemSetCell"
+      } else if orderItemSet?.statusId == .PaymentWaiting &&
         orderItemSet?.order.paymentInfos.mainPaymentInfo?.paymentType.id == PaymentTypeId.VBank.rawValue {
         return "vBankOrderItemSetCell"
       }
