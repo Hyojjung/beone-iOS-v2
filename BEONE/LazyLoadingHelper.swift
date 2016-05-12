@@ -84,3 +84,9 @@ class ProductDetailImageView: LazyLoadingImageView {
     }
   }
 }
+
+extension CGSize {
+  func heightFromRatio(width: CGFloat) -> CGFloat {
+    return height / self.width * width
+  }
+}

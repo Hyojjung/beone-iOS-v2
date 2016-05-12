@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,14 +17,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-EL-Ap9">
-                        <rect key="frame" x="8" y="8" width="304" height="195"/>
+                        <rect key="frame" x="8" y="8" width="304" height="291.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3C0-ss-cZ7" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="195"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="291.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="288" height="179"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="LazyLoadingImageView" customModule="BEONE" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="288" height="275.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="300" id="54q-ji-Kxd"/>
                                     <constraint firstAttribute="height" constant="179" id="NC0-Y2-eYl"/>
@@ -36,18 +36,16 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="54q-ji-Kxd"/>
+                                        <exclude reference="NC0-Y2-eYl"/>
                                         <exclude reference="QeU-Yy-TKX"/>
                                         <exclude reference="T82-ey-sGi"/>
                                         <exclude reference="atw-pg-qIN"/>
                                         <exclude reference="dTV-fe-XW0"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <outlet property="heightLayoutConstraint" destination="NC0-Y2-eYl" id="7WC-nl-EdH"/>
-                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8G-G5-IZv">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="195"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="291.5"/>
                                 <connections>
                                     <action selector="viewTapped" destination="bKt-ua-VZR" eventType="touchUpInside" id="tFC-nD-93U"/>
                                 </connections>
@@ -103,7 +101,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="backgroundImageView" destination="3C0-ss-cZ7" id="4ha-3M-Zvh"/>
-                <outlet property="forgoundImageView" destination="sXC-1q-pvk" id="8rK-nX-yyz"/>
+                <outlet property="foregoundImageView" destination="sXC-1q-pvk" id="LmI-IN-aRi"/>
                 <outlet property="templateContentsView" destination="bjg-EL-Ap9" id="wta-Cg-bzH"/>
             </connections>
             <point key="canvasLocation" x="-54" y="403"/>

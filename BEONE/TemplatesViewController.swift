@@ -26,6 +26,8 @@ class TemplatesViewController: BaseTableViewController {
                           forCellReuseIdentifier: kBannerTemplateCellIdentifier)
     tableView.registerNib(UINib(nibName: kShopTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
                           forCellReuseIdentifier: kShopTemplateCellIdentifier)
+    tableView.registerNib(UINib(nibName: kImageTemplateCellIdentifier.convertToBigCamelCase(), bundle: nil),
+                          forCellReuseIdentifier: kImageTemplateCellIdentifier)
   }
   
   override func setUpData() {
@@ -113,10 +115,9 @@ extension TemplatesViewController: DynamicHeightTableViewDelegate {
         return textSize + template.verticalMargin() + template.content.padding.top + template.content.padding.bottom
       }
     } else if cellIdentifier == kBannerTemplateCellIdentifier {
-      if let ratio = template.content.ratio {
-        return ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
-      }
-      return 300 + template.verticalMargin()
+      return template.content.ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
+    } else if cellIdentifier == kImageTemplateCellIdentifier {
+      return template.content.ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
     }
     if let tableView = tableView as? DynamicHeightTableView {
       return tableView.heightForBasicCell(indexPath)

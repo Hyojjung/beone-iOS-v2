@@ -3,13 +3,13 @@ import UIKit
 
 class ImageTemplateCell: TemplateCell {
   
-  @IBOutlet weak var forgoundImageView: ImageContentsImageView!
+  @IBOutlet weak var foregoundImageView: LazyLoadingImageView!
   
   // MARK: - Override Methods
   
   override func configureCell(template: Template) {
     super.configureCell(template)
-    forgoundImageView.setTemplateImage(template)
+    foregoundImageView.setLazyLoaingImage(template.content.imageUrl)
     templateId = template.id
   }
   
