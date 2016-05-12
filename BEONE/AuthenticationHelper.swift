@@ -24,6 +24,7 @@ class AuthenticationHelper: NSObject {
     NetworkHelper.requestPost("device-infos", parameter: parameter,
       success: { (result) -> Void in
         if let deviceInfo = result[kNetworkResponseKeyData] as? [String: AnyObject] {
+          NSUserDefaults.standardUserDefaults().setBool(true, forKey: kHasRegistedToken)
           myInfo.userDeviceInfoId = deviceInfo[kObjectPropertyKeyId] as? NSNumber
           CoreDataHelper.sharedCoreDataHelper.saveContext()
         }
