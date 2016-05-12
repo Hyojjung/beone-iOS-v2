@@ -102,16 +102,6 @@ class SpeedOrderFilterViewController: BaseTableViewController {
                     sender: nil,
                     doneBlock: { (_, index, _) -> Void in
                       self.selectedDeliveryDateIndex = index
-                      
-                      let dayInterval = self.productSearchData.reservationDateOptions[index]
-                      BEONEManager.selectedDate = nil
-                      if let day = Double(dayInterval.value!) {
-                        let calendar = DateFormatterHelper.koreanCalendar
-                        let selectedDate = calendar.components([.Year, .Month, .Day],
-                          fromDate: NSDate().dateByAddingTimeInterval(day * kSecondToDay))
-                        BEONEManager.selectedDate = selectedDate
-                      }
-                      
                       self.tableView.reloadData()
     })
   }
@@ -123,6 +113,14 @@ class SpeedOrderFilterViewController: BaseTableViewController {
       showAlertView(NSLocalizedString("select address for search",
         comment: "alert title"))
     } else {
+      let dayInterval = productSearchData.reservationDateOptions[selectedDeliveryDateIndex!]
+      if let day = Double(dayInterval.value!) {
+        let calendar = DateFormatterHelper.koreanCalendar
+        let selectedDate = calendar.components([.Year, .Month, .Day],
+                                               fromDate: NSDate().dateByAddingTimeInterval(day * kSecondToDay))
+        BEONEManager.selectedDate = selectedDate
+      }
+      BEONEManager.selectedAddress = address
       performSegueWithIdentifier("From Quick Search To Search Result", sender: nil)
     }
   }
@@ -132,7 +130,6 @@ extension SpeedOrderFilterViewController: AddressDelegate {
   
   func handleAddress(address: Address) {
     self.address = address
-    BEONEManager.selectedAddress = address
     tableView.reloadData()
   }
 }

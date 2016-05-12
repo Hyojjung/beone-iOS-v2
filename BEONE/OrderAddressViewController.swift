@@ -6,7 +6,7 @@ class OrderAddressViewController: BaseViewController {
   
   let kScrollViewAdjustHeight = CGFloat(98)
   private let kInvalidAddressIndex = 4
-
+  
   @IBOutlet weak var scrollView: KeyboardScrollView!
   @IBOutlet weak var senderNameTextField: UITextField!
   @IBOutlet weak var senderPhoneTextField: UITextField!
@@ -46,8 +46,8 @@ class OrderAddressViewController: BaseViewController {
       selectingPaymentTypeViewController.order = order
     } else if let invalidAddressViewController = segue.destinationViewController as? InvalidAddressViewController,
       orderableCartItemIds = sender as? [Int] {
-        invalidAddressViewController.order = order
-        invalidAddressViewController.orderableCartItemIds = orderableCartItemIds
+      invalidAddressViewController.order = order
+      invalidAddressViewController.orderableCartItemIds = orderableCartItemIds
     }
   }
   
@@ -64,18 +64,17 @@ class OrderAddressViewController: BaseViewController {
   
   override func setUpData() {
     super.setUpData()
-    if let selectedAddress = BEONEManager.selectedAddress {
-      handleAddress(selectedAddress)
-    } else {
-      addresses.get {
-        if !self.addresses.list.isEmpty {
-          self.selectedAddressIndex = 0
-        }
+    addresses.get {
+      if let selectedAddress = BEONEManager.selectedAddress {
+        self.setUpAddressButtonsSelected()
+        self.handleAddress(selectedAddress)
+      } else if !self.addresses.list.isEmpty {
+        self.selectedAddressIndex = 0
         self.handleAddresses()
-        self.setUpAddressButtons()
       }
+      self.setUpAddressButtons()
     }
-    MyInfo.sharedMyInfo().get { 
+    MyInfo.sharedMyInfo().get {
       self.senderNameTextField.text = MyInfo.sharedMyInfo().name
       self.senderPhoneTextField.text = MyInfo.sharedMyInfo().phone
     }
@@ -116,14 +115,14 @@ extension OrderAddressViewController {
       Mixpanel.sharedInstance().people.set(properties)
       
       OrderHelper.fetchDeliverableCartItems(order.cartItemIds,
-        address: order.address.addressString()!,
-        addressType: order.address.addressType!,
-        getSuccess: { (cartItemIds) -> Void in
-          if cartItemIds.hasEqualObjects(self.order.cartItemIds) {
-            self.performSegueWithIdentifier("From Order Address To Order", sender: nil)
-          } else {
-            self.performSegueWithIdentifier("From Order Address To Invalid Address", sender: cartItemIds)
-          }
+                                            address: order.address.addressString()!,
+                                            addressType: order.address.addressType!,
+                                            getSuccess: { (cartItemIds) -> Void in
+                                              if cartItemIds.hasEqualObjects(self.order.cartItemIds) {
+                                                self.performSegueWithIdentifier("From Order Address To Order", sender: nil)
+                                              } else {
+                                                self.performSegueWithIdentifier("From Order Address To Invalid Address", sender: cartItemIds)
+                                              }
       })
     }
   }
@@ -153,7 +152,6 @@ extension OrderAddressViewController {
   
   private func handleAddresses() {
     setUpAddressButtonsSelected()
-
     address = addresses.list.objectAtIndex(selectedAddressIndex) as? Address
     setUpAddressView()
   }
@@ -181,9 +179,9 @@ extension OrderAddressViewController {
       addresses.total = 3
     }
     
-    newButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total) * 48
-    firstButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 1) * 48
-    secondButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 2) * 48
+    newButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total) * 46
+    firstButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 1) * 46
+    secondButtonTrailingLayoutConstraint.constant = 10 + CGFloat(addresses.total - 2) * 46
   }
   
   private func setUpAddressButtonsSelected() {
