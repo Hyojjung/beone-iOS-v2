@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="308"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKt-ua-VZR" id="hkM-3B-ScA">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="308"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="307.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-EL-Ap9">
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="195"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalCompressionResistancePriority="751" image="image_post_thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="sXC-1q-pvk" customClass="ImageContentsImageView" customModule="BEONE" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="288" height="179"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="300" id="54q-ji-Kxd"/>
@@ -109,7 +109,4 @@
             <point key="canvasLocation" x="-54" y="403"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="image_post_thumbnail" width="320" height="179"/>
-    </resources>
 </document>

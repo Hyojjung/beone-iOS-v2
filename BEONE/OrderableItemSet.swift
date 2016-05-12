@@ -1,6 +1,16 @@
 
 import UIKit
 
+enum OrderStatus: Int {
+  case ManualOrder = 2
+  case PaymentWaiting = 11
+  case PaymentComplete
+  case ProductsPreparing
+  case Shipping
+  case ShippingComplete
+  case OrderComplete
+}
+
 class OrderableItemSet: BaseModel {
   
   var actualPrice = 0
@@ -39,6 +49,7 @@ class OrderableItemSet: BaseModel {
   }()
   
   var statusName: String?
+  var statusId: OrderStatus?
   var isCancellable = false
   var isCompletable = false
   var isRefundable = false
@@ -132,6 +143,10 @@ extension OrderableItemSet {
   private func assignStatus(status: AnyObject?) {
     if let statusObject = status as? [String: AnyObject] {
       statusName = statusObject[kObjectPropertyKeyName] as? String
+      if let statusIdNumber = statusObject[kObjectPropertyKeyId] as? Int,
+        statusId = OrderStatus(rawValue: statusIdNumber) {
+        self.statusId = statusId
+      }
       if let isCancellable = statusObject["isCancellable"] as? Bool {
         self.isCancellable = isCancellable
       }

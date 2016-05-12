@@ -46,7 +46,7 @@ extension OrderWebViewController: UIWebViewDelegate {
   
   func handleUrl(url: String) {
     if url.hasPrefix("cmbeone://payment.cancelled") {
-      showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Canceled.rawValue])
+      showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderResultType.Canceled.rawValue])
     } else if let order = order, paymentInfoId = paymentInfoId {
       showOrderResultView(order, paymentInfoId: paymentInfoId, orderResult: url.jsonObject())
     }

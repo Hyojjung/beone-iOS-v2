@@ -62,7 +62,6 @@ class BaseViewController: UIViewController {
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
       #endif
       Mixpanel.sharedInstance().track(title, properties: nil)
-      print(title)
     }
   }
   

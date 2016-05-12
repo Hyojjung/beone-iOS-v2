@@ -1,7 +1,7 @@
 
 import UIKit
 
-enum OrderStatus: String {
+enum OrderResultType: String {
   case Success
   case Canceled = "canceled"
   case Failure = "failure"
@@ -19,10 +19,10 @@ class OrderResultViewController: BaseViewController {
   
   var paymentInfoId: Int?
   var order: Order?
-  var status = OrderStatus.Success
+  var status = OrderResultType.Success
   var orderResult: [String: AnyObject]? {
     didSet {
-      if let orderStatus = orderResult?[kOrderResultKeyStatus] as? String, status = OrderStatus(rawValue: orderStatus) {
+      if let orderStatus = orderResult?[kOrderResultKeyStatus] as? String, status = OrderResultType(rawValue: orderStatus) {
         self.status = status
       } else if let isSuccess = orderResult?["isSuccess"] as? String {
         if isSuccess == "false" {

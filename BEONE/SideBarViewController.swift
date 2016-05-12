@@ -13,7 +13,7 @@ class SideBarViewController: BaseTableViewController {
     case UserInfo
     case Buttons
     case ProgressingOrderCount
-    case LatestOrderDeliveryItemSet
+    case OrderItemSet
     case Anniversary
     case RecentProductsCount
     case RecentProduct
@@ -156,7 +156,7 @@ extension SideBarViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier(indexPath), forIndexPath: indexPath)
-    if let cell = cell as? LatestOrderDeliveryItemSetCell {
+    if let cell = cell as? SideBarOrderItemSetCell {
       cell.configureCell(sideBarViewContents.orderDeliveryItemSets[indexPath.row])
     } else if let cell = cell as? UserInfoCell {
       cell.configureCell()
@@ -177,7 +177,7 @@ extension SideBarViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == SideBarTableViewSection.LatestOrderDeliveryItemSet.rawValue {
+    if section == SideBarTableViewSection.OrderItemSet.rawValue {
       return sideBarViewContents.orderDeliveryItemSets.count
     } else if section == SideBarTableViewSection.ProgressingOrderCount.rawValue &&
       sideBarViewContents.progressingOrderCount == 0 {
@@ -206,8 +206,12 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
       return 158
     case .ProgressingOrderCount, .RecentProductsCount:
       return 40
-    case .LatestOrderDeliveryItemSet:
-      if sideBarViewContents.orderDeliveryItemSets.first?.isCompletable == true {
+    case .OrderItemSet:
+      let orderItemSet = sideBarViewContents.orderDeliveryItemSets.first
+      if orderItemSet?.statusId == .PaymentWaiting &&
+        orderItemSet?.order.paymentInfos.mainPaymentInfo?.paymentType.id == PaymentTypeId.VBank.rawValue {
+        return 221
+      } else if sideBarViewContents.orderDeliveryItemSets.first?.isCompletable == true {
         return 221
       } else {
         return 168
@@ -228,6 +232,13 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
   }
   
   func cellIdentifier(indexPath: NSIndexPath) -> String {
+    if indexPath.section == SideBarTableViewSection.OrderItemSet.rawValue {
+      let orderItemSet = sideBarViewContents.orderDeliveryItemSets.first
+      if orderItemSet?.statusId == .PaymentWaiting &&
+        orderItemSet?.order.paymentInfos.mainPaymentInfo?.paymentType.id == PaymentTypeId.VBank.rawValue {
+        return "vBankOrderItemSetCell"
+      }
+    }
     return kSearchTableViewCellIdentifiers[indexPath.section]
   }
 }
@@ -251,11 +262,43 @@ class UserInfoCell: UITableViewCell {
   }
 }
 
-class LatestOrderDeliveryItemSetCell: UITableViewCell {
+class SideBarOrderItemSetCell: UITableViewCell {
   
   @IBOutlet weak var orderCodeLabel: UILabel!
   @IBOutlet weak var receiverNameLabel: UILabel!
   @IBOutlet weak var orderNameLabel: UILabel!
+  
+  func configureCell(orderItemSet: OrderableItemSet) {
+    orderCodeLabel.text = orderItemSet.order.orderCode
+    orderNameLabel.text = orderItemSet.title
+    if let receiverName = orderItemSet.order.address.receiverName {
+      receiverNameLabel.text = "\(receiverName)님"
+    } else {
+      receiverNameLabel.text = nil
+    }
+  }
+}
+
+class VBankOrderItemSetCell: SideBarOrderItemSetCell {
+  
+  @IBOutlet weak var dueDateLabel: UILabel!
+  @IBOutlet weak var priceLabel: UILabel!
+  @IBOutlet weak var accountIssureLabel: UILabel!
+  @IBOutlet weak var bankLabel: UILabel!
+  @IBOutlet weak var accountNumberLabel: UILabel!
+  
+  override func configureCell(orderItemSet: OrderableItemSet) {
+    super.configureCell(orderItemSet)
+    let paymentInfo = orderItemSet.order.paymentInfos.mainPaymentInfo
+    dueDateLabel.text = paymentInfo?.vbankExpiredAt?.paidAtDateString()
+    priceLabel.text = paymentInfo?.actualPrice.priceNotation(.Korean)
+    accountIssureLabel.text = paymentInfo?.vbankIssuerName
+    bankLabel.text = paymentInfo?.vbankIssuerBankName
+    accountNumberLabel.text = paymentInfo?.vbankIssuerAccount
+  }
+}
+
+class LatestOrderDeliveryItemSetCell: SideBarOrderItemSetCell {
   
   @IBOutlet weak var itemPreparingStatusImageView: UIImageView!
   @IBOutlet weak var firstLineImageView: UIImageView!
@@ -272,15 +315,8 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   @IBOutlet weak var buttonViewHeightLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var orderDoneButtonLeadingLayoutConstraint: NSLayoutConstraint!
   
-  func configureCell(orderItemSet: OrderableItemSet) {
-    orderCodeLabel.text = orderItemSet.order.orderCode
-    orderNameLabel.text = orderItemSet.title
-    if let receiverName = orderItemSet.order.address.receiverName {
-      receiverNameLabel.text = "\(receiverName)님"
-    } else {
-      receiverNameLabel.text = nil
-    }
-    
+  override func configureCell(orderItemSet: OrderableItemSet) {
+    super.configureCell(orderItemSet)
     if let firstProgress = orderItemSet.progresses.first {
       configureViews(firstProgress,
                      statusImageView: itemPreparingStatusImageView,
@@ -316,7 +352,10 @@ class LatestOrderDeliveryItemSetCell: UITableViewCell {
   }
   
   private func configureViews(progress: OrderItemSetProgress,
-                              statusImageView: UIImageView, lineImageView: UIImageView?, statusNameLabel: UILabel, statusTimeLabel: UILabel) {
+                              statusImageView: UIImageView,
+                              lineImageView: UIImageView?,
+                              statusNameLabel: UILabel,
+                              statusTimeLabel: UILabel) {
     configureLineImageView(lineImageView, progressStatus: progress.progressStatus)
     configureStatusImageView(statusImageView, progressStatus: progress.progressStatus)
     configureStatusNameLabel(statusNameLabel, progress: progress)

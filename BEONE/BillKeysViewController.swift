@@ -68,7 +68,7 @@ class BillKeysViewController: BaseTableViewController {
       paymentInfo.post({ (_) -> Void in
         self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
         }, postFailure: { (_) -> Void in
-          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderResultType.Failure.rawValue])
       })
     }
   }

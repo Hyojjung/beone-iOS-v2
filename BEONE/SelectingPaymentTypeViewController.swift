@@ -105,14 +105,14 @@ extension SelectingPaymentTypeViewController {
               paymentInfo.post({ (_) -> Void in
                 self.showOrderResultView(self.order, paymentInfoId: paymentInfo.id!)
                 }, postFailure: { (_) -> Void in
-                  self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+                  self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderResultType.Failure.rawValue])
               })
             }
           }
         }
         
         }, postFailure: { (_) -> Void in
-          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderResultType.Failure.rawValue])
       })
     } else if let paymentTypeId = selectedPaymentTypeId, paymentTypes = paymentTypes {
       order.post({ (result) -> Void in
@@ -132,7 +132,7 @@ extension SelectingPaymentTypeViewController {
         }
         
         }, postFailure: { (_) -> Void in
-          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderStatus.Failure.rawValue])
+          self.showOrderResultView(orderResult: [kOrderResultKeyStatus: OrderResultType.Failure.rawValue])
       })
     } else {
       showAlertView("결제 수단을 선택해주세요.")
