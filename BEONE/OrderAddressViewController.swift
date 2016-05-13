@@ -17,7 +17,7 @@ class OrderAddressViewController: BaseViewController {
   @IBOutlet weak var zonecodeTextField: UITextField!
   @IBOutlet weak var addressTextField: UITextField!
   @IBOutlet weak var detailAddressTextField: UITextField!
-  @IBOutlet weak var deliveryMemoTextView: UITextView!
+  @IBOutlet weak var deliveryMemoTextView: BeoneTextView1!
   
   @IBOutlet weak var newAddressSelectButton: UIButton!
   @IBOutlet weak var firstAddressSelectButton: UIButton!
@@ -30,7 +30,7 @@ class OrderAddressViewController: BaseViewController {
   @IBOutlet weak var secondButtonTrailingLayoutConstraint: NSLayoutConstraint!
   
   var order = Order()
-  var address: Address?
+  var newAddress = Address()
   var addresses = Addresses()
   var selectedAddressIndex: Int?
   
@@ -55,7 +55,6 @@ class OrderAddressViewController: BaseViewController {
   
   override func setUpView() {
     super.setUpView()
-    
     self.senderNameTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
     self.senderPhoneTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
     self.receiverNameTextField.addTarget(self, action: #selector(OrderAddressViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
@@ -66,13 +65,17 @@ class OrderAddressViewController: BaseViewController {
     super.setUpData()
     addresses.get {
       if let selectedAddress = BEONEManager.selectedAddress {
-        self.setUpAddressButtonsSelected()
-        self.handleAddress(selectedAddress)
+        if let addressId = selectedAddress.id, index = self.addresses.indexOfModel(with: addressId) { // if selected address is from stored addresses
+          self.selectedAddressIndex = index
+        } else {
+          self.selectedAddressIndex = nil
+          self.newAddress = selectedAddress
+        }
       } else if !self.addresses.list.isEmpty {
         self.selectedAddressIndex = 0
-        self.handleAddresses()
       }
       self.setUpAddressButtons()
+      self.setUpAddressViewWithSelectedAddress()
     }
     MyInfo.sharedMyInfo().get {
       self.senderNameTextField.text = MyInfo.sharedMyInfo().name
@@ -89,29 +92,33 @@ extension OrderAddressViewController {
   }
   
   @IBAction func sameButtonTapped(sender: UIButton) {
-    setUpSameButtonSelected(!sender.selected)
-  }
-  
-  private func setUpSameButtonSelected(selected: Bool) {
-    sameButton.selected = selected
-    if selected {
-      setUpSenderAndReceiverView()
+    sender.selected = !sender.selected
+    if sender.selected {
+      if selectedAddressIndex != nil {
+        selectedAddressIndex = nil
+        setUpAddressViewWithSelectedAddress()
+      }
+      receiverNameTextField.background = UIImage(named: kInputActiveImageName)
+      receiverPhoneTextField.background = UIImage(named: kInputActiveImageName)
     }
+    setUpViewWithIsSame(sender.selected)
   }
-  
+
   @IBAction func segueToAddressViewButtonTapped() {
+    endEditing()
     showWebView(kPostCodesWebViewUrl, title: NSLocalizedString("order view title", comment: "view title"), addressDelegate: self)
   }
   
   @IBAction func sendAddressButtonTapped() {
     endEditing()
+    makeAllInputsDefaultBackground()
     if let error = errorMessage() {
       showAlertView(error)
     } else {
       setUpAddress()
       
       var properties = [String: AnyObject]()
-      properties[kMixpanelKeyAddress] = address?.addressString()
+      properties[kMixpanelKeyAddress] = selectedAddress().addressString()
       Mixpanel.sharedInstance().people.set(properties)
       
       OrderHelper.fetchDeliverableCartItems(order.cartItemIds,
@@ -128,46 +135,44 @@ extension OrderAddressViewController {
   }
   
   @IBAction func selectIndexButtonTapped(sender: UIButton) {
+    endEditing()
     if sender.tag == kInvalidAddressIndex {
       selectedAddressIndex = nil
     } else {
-      endEditing()
-      selectedAddressIndex = !sender.selected ? sender.tag : nil
+      selectedAddressIndex = sender.tag
+      sameButton.selected = false
     }
-    handleAddresses()
+    setUpAddressViewWithSelectedAddress()
   }
 }
 
 // MARK: - Observer Methods
 
 extension OrderAddressViewController: AddressDelegate {
-  
   func handleAddress(address: Address) {
-    self.address = address
-    setUpAddressView()
+    newAddress = address
+    newAddress.receiverName = receiverNameTextField.text
+    newAddress.receiverPhone = receiverPhoneTextField.text
+    setUpAddressViewWithSelectedAddress()
+    
+    let inputActiveImage = UIImage(named: kInputActiveImageName)
+    zonecodeTextField.background = inputActiveImage
+    addressTextField.background = inputActiveImage
   }
 }
 
 extension OrderAddressViewController {
-  
-  private func handleAddresses() {
-    setUpAddressButtonsSelected()
-    address = addresses.list.objectAtIndex(selectedAddressIndex) as? Address
-    setUpAddressView()
-  }
-  
   private func setUpAddress() {
-    if let address = address {
-      address.detailAddress = detailAddressTextField.text
-      address.receiverName = receiverNameTextField.text
-      address.receiverPhone = receiverPhoneTextField.text
-      
-      order.senderName = senderNameTextField.text
-      order.senderPhone = senderPhoneTextField.text
-      order.isSecret = secretButton.selected
-      order.address = address
-      order.deliveryMemo = deliveryMemoTextView.text
-    }
+    let address = selectedAddress()
+    address.detailAddress = detailAddressTextField.text
+    address.receiverName = receiverNameTextField.text
+    address.receiverPhone = receiverPhoneTextField.text
+    
+    order.senderName = senderNameTextField.text
+    order.senderPhone = senderPhoneTextField.text
+    order.isSecret = secretButton.selected
+    order.address = address
+    order.deliveryMemo = deliveryMemoTextView.text
   }
   
   private func setUpAddressButtons() {
@@ -193,32 +198,50 @@ extension OrderAddressViewController {
     findAddressButton.configureAlpha(selectedAddressIndex == nil)
     zipCodeTextFieldTrailingLayoutConstraint.constant = selectedAddressIndex == nil ? 146 : 10
   }
+  
+  private func makeAllInputsDefaultBackground() {
+    let inputImage = UIImage(named: kInputImageName)
+    senderNameTextField.background = inputImage
+    senderPhoneTextField.background = inputImage
+    receiverNameTextField.background = inputImage
+    receiverPhoneTextField.background = inputImage
+    zonecodeTextField.background = inputImage
+    addressTextField.background = inputImage
+    detailAddressTextField.background = inputImage
+    deliveryMemoTextView.isHighlighted = false
+  }
 }
 
 // MARK: - Private Methods
 
 extension OrderAddressViewController {
+  private func selectedAddress() -> Address {
+    if let selectedAddressIndex = selectedAddressIndex {
+      return addresses.list.objectAtIndex(selectedAddressIndex) as! Address
+    }
+    return newAddress
+  }
   
-  func setUpAddressView() {
-    if let zonecode = address?.zonecode {
-      zonecodeTextField.text = zonecode
-    } else if let zipcode1 = address?.zipcode01, zipcode2 = address?.zipcode02 {
-      zonecodeTextField.text = "\(zipcode1) - \(zipcode2)"
-    } else {
-      zonecodeTextField.text = nil
-    }
-    
-    let addressString = address?.addressString()
-    if addressTextField.text != addressString {
-      addressTextField.text = addressString
-      detailAddressTextField.text = address?.detailAddress
-    }
-    
-    receiverNameTextField.text = address?.receiverName
-    receiverPhoneTextField.text = address?.receiverPhone
-    if sameButton.selected {
+  private func setUpViewWithIsSame(selected: Bool) {
+    sameButton.selected = selected
+    if selected {
       setUpSenderAndReceiverView()
     }
+  }
+  
+  func setUpAddressViewWithSelectedAddress() {
+    setUpAddressButtonsSelected()
+    makeAllInputsDefaultBackground()
+    let address = selectedAddress()
+    
+    zonecodeTextField.text = address.zipCode()
+    let addressString = address.addressString()
+    if addressTextField.text != addressString {
+      addressTextField.text = addressString
+      detailAddressTextField.text = address.detailAddress
+    }
+    receiverNameTextField.text = address.receiverName
+    receiverPhoneTextField.text = address.receiverPhone
   }
   
   func setUpSenderAndReceiverView() {
@@ -235,7 +258,7 @@ extension OrderAddressViewController {
       return NSLocalizedString("enter receiver", comment: "alert")
     } else if receiverPhoneTextField.text?.isValidPhoneNumber() != true {
       return NSLocalizedString("check receiver phone", comment: "alert")
-    } else if address == nil {
+    } else if addressTextField.text == nil || addressTextField.text!.isEmpty {
       return NSLocalizedString("enter address", comment: "alert")
     } else if detailAddressTextField.text == nil || detailAddressTextField.text!.isEmpty {
       return NSLocalizedString("enter detail address", comment: "alert")
@@ -246,18 +269,23 @@ extension OrderAddressViewController {
 
 // MARK: - UITextFieldDelegate
 
-extension OrderAddressViewController {
+extension OrderAddressViewController: UITextFieldDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-    scrollView.focusOffset =
-      textField.convertPoint(textField.frame.origin, toView: scrollView).y - kScrollViewAdjustHeight
-    return true
+    if selectedAddressIndex == nil || textField == senderNameTextField || textField == senderPhoneTextField {
+      makeAllInputsDefaultBackground()
+      textField.background = UIImage(named: kInputActiveImageName)
+      scrollView.focusOffset =
+        textField.convertPoint(textField.frame.origin, toView: scrollView).y - kScrollViewAdjustHeight
+      return true
+    }
+    return false
   }
   
   func textFieldDidChange(textField: UITextField) {
     if sameButton.selected && (textField == senderNameTextField || textField == senderPhoneTextField) {
       setUpSenderAndReceiverView()
     } else if sameButton.selected && textField == receiverNameTextField || textField == receiverPhoneTextField {
-      setUpSameButtonSelected(false)
+      setUpViewWithIsSame(false)
     }
   }
   
@@ -279,6 +307,10 @@ extension OrderAddressViewController {
 
 extension OrderAddressViewController {
   func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    if let textView = textView as? BeoneTextView1 {
+      makeAllInputsDefaultBackground()
+      textView.isHighlighted = true
+    }
     scrollView.focusOffset =
       textView.convertPoint(textView.frame.origin, toView: scrollView).y - kScrollViewAdjustHeight
     return true

@@ -48,4 +48,13 @@ class BaseListModel: BaseModel {
     }
     return nil
   }
+  
+  func indexOfModel(with id: Int) -> Int? {
+    for (index, object) in list.enumerate() {
+      if object.id == id {
+        return index
+      }
+    }
+    return nil
+  }
 }

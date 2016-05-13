@@ -55,6 +55,4 @@ class ButtonTemplateCell: TemplateCell {
   @IBAction func buttonClicked(sender: AnyObject) {
     action?.action()
   }
-  
-
 }
