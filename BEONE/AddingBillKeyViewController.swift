@@ -107,7 +107,7 @@ extension AddingBillKeyViewController {
     } else {
       endEditing()
       if tag == kCardNumberLastTextFieldTag {
-        selectMonthButtonTapped()
+        selectMonthButtonTapped(view.viewWithTag(150) as! UIButton)
       }
     }
   }
@@ -123,7 +123,7 @@ extension AddingBillKeyViewController {
     } else {
       endEditing()
       if tag == kNextYearButtonTextFieldTag {
-        selectYearButtonTapped()
+        selectYearButtonTapped(view.viewWithTag(151) as! UIButton)
       }
     }
   }
@@ -132,6 +132,10 @@ extension AddingBillKeyViewController {
 // MARK: - Actions
 
 extension AddingBillKeyViewController {
+  
+  func cardNumberFirstTextField() -> UITextField? {
+    return view.viewWithTag(kCardNumberFirstTextFieldTag) as? UITextField
+  }
   
   @IBAction func postBillKeyButtonTapped() {
     endEditing()
@@ -200,18 +204,20 @@ extension AddingBillKeyViewController {
     showWebView(url, title: "카드정보 수집 및 이용방침")
   }
   
-  @IBAction func selectMonthButtonTapped() {
+  @IBAction func selectMonthButtonTapped(sender: UIButton) {
+    makeAllInputsDefaultBackground()
+    sender.selected = true
     showActionSheet(NSLocalizedString("select month", comment: "action sheet title"),
                     rows: monthArray,
                     initialSelection: billKey.expiredMonth - 1,
                     sender: nil,
                     doneBlock: { (_, index, _) -> Void in
                       self.billKey.expiredMonth = index + 1
-                      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-                        withRowAnimation: .Automatic)
-                      
+                      if let monthLabel = sender.superview?.viewWithTag(112) as? UILabel {
+                        monthLabel.text = self.billKey.expiredMonthString() + "월"
+                      }
                       if self.isGoingDown {
-                        self.selectYearButtonTapped()
+                        self.selectYearButtonTapped(self.view.viewWithTag(151) as! UIButton)
                       } else {
                         let cardNumberLastTextField = self.view.viewWithTag(kCardNumberLastTextFieldTag) as! UITextField
                         cardNumberLastTextField.becomeFirstResponder()
@@ -219,7 +225,9 @@ extension AddingBillKeyViewController {
     })
   }
   
-  @IBAction func selectYearButtonTapped() {
+  @IBAction func selectYearButtonTapped(sender: UIButton) {
+    makeAllInputsDefaultBackground()
+    sender.selected = true
     let initialSelection = NSDate().year() - billKey.expiredYear
     showActionSheet(NSLocalizedString("select year", comment: "action sheet title"),
                     rows: yearArray,
@@ -227,14 +235,14 @@ extension AddingBillKeyViewController {
                     sender: nil,
                     doneBlock: { (_, index, _) -> Void in
                       self.billKey.expiredYear = NSDate().year() + index
-                      self.tableView.reloadSections(NSIndexSet(index: BillKeyTableViewSection.ExpiredAt.rawValue),
-                        withRowAnimation: .Automatic)
-                      
+                      if let yearLabel = sender.superview?.viewWithTag(113) as? UILabel {
+                        yearLabel.text = "\(self.billKey.expiredYear)년"
+                      }
                       if self.isGoingDown {
                         let nextButtonTextField = self.view.viewWithTag(kNextYearButtonTextFieldTag) as! UITextField
                         nextButtonTextField.becomeFirstResponder()
                       } else {
-                        self.selectMonthButtonTapped()
+                        self.selectMonthButtonTapped(self.view.viewWithTag(150) as! UIButton)
                       }
     })
   }
@@ -248,10 +256,27 @@ extension AddingBillKeyViewController {
     billKey.type = .Corporation
     tableView.reloadData()
   }
+  
+  private func makeAllInputsDefaultBackground() {
+    let inputImage = UIImage(named: kInputImageName)
+    for i in kCardNumberFirstTextFieldTag..<(kCardNameTextFieldTag + 1) {
+      if let textField = view.viewWithTag(i) as? UITextField {
+        textField.background = inputImage
+      }
+    }
+    if let button = view.viewWithTag(150) as? UIButton {
+      button.selected = false
+    }
+    if let button = view.viewWithTag(151) as? UIButton {
+      button.selected = false
+    }
+  }
 }
 
 extension AddingBillKeyViewController: UITextFieldDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    makeAllInputsDefaultBackground()
+    textField.background = UIImage(named: kInputActiveImageName)
     addToolbar(textField)
     return true
   }

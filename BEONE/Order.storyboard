@@ -2033,16 +2033,16 @@ IAo
                                                         <action selector="selectCorporationCardButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="laZ-9N-bnG"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="법인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckU-K5-3iQ">
-                                                    <rect key="frame" x="253" y="53" width="26" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NICEPAY에서 제공하는 결제 서비스입니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adx-Kf-8Y9">
                                                     <rect key="frame" x="14" y="12" width="226" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="법인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckU-K5-3iQ">
+                                                    <rect key="frame" x="253" y="53" width="26" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2098,6 +2098,7 @@ IAo
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="Udk-nU-Lf2">
                                                     <rect key="frame" x="94" y="5" width="120" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="3Nr-NA-1sy"/>
                                                         <constraint firstAttribute="height" constant="35" id="5aX-KX-wFn"/>
@@ -2116,6 +2117,7 @@ IAo
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="PWb-3c-z1Q">
                                                     <rect key="frame" x="219" y="5" width="119" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="6kx-Ue-zJb"/>
                                                         <constraint firstAttribute="height" constant="35" id="8fW-gB-nrN"/>
@@ -2134,6 +2136,7 @@ IAo
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="wDE-mn-B1Z">
                                                     <rect key="frame" x="343" y="5" width="119" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="4S3-4t-HZt"/>
                                                         <constraint firstAttribute="height" constant="35" id="527-RP-sjv"/>
@@ -2152,6 +2155,7 @@ IAo
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-wO-4fY">
                                                     <rect key="frame" x="467" y="5" width="119" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="S9s-Sa-9Wy"/>
                                                         <constraint firstAttribute="height" constant="35" id="kip-P4-Axa"/>
@@ -2232,6 +2236,16 @@ IAo
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNY-Lz-GnM">
                                                     <rect key="frame" x="94" y="4" width="80" height="35"/>
                                                     <subviews>
+                                                        <button opaque="NO" tag="150" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-hV-g6J">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="35"/>
+                                                            <state key="normal" backgroundImage="combobox_gold_disalbed">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="selected" backgroundImage="combobox_gold"/>
+                                                            <connections>
+                                                                <action selector="selectMonthButtonTapped:" destination="7B2-Fp-fOE" eventType="touchUpInside" id="MmL-yK-9fJ"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="112" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00월" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-Q4-RXa">
                                                             <rect key="frame" x="12" y="10" width="28" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2241,8 +2255,12 @@ IAo
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Hzd-hV-g6J" secondAttribute="trailing" id="6ST-yX-s4g"/>
+                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="leading" secondItem="tNY-Lz-GnM" secondAttribute="leading" id="6xC-nC-t17"/>
                                                         <constraint firstAttribute="width" constant="80" id="DlC-5y-ZMZ"/>
+                                                        <constraint firstItem="Hzd-hV-g6J" firstAttribute="top" secondItem="tNY-Lz-GnM" secondAttribute="top" id="I63-FO-mQN"/>
                                                         <constraint firstAttribute="centerY" secondItem="Zti-Q4-RXa" secondAttribute="centerY" id="LXl-1K-rD1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Hzd-hV-g6J" secondAttribute="bottom" id="SBQ-M1-XiE"/>
                                                         <constraint firstAttribute="height" priority="999" constant="35" id="jgT-md-3da"/>
                                                         <constraint firstItem="Zti-Q4-RXa" firstAttribute="leading" secondItem="tNY-Lz-GnM" secondAttribute="leading" constant="12" id="ncW-Ng-lW5"/>
                                                     </constraints>
@@ -2250,11 +2268,15 @@ IAo
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-yK-MBN">
                                                     <rect key="frame" x="178" y="4" width="100" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qn-cZ-GOY">
+                                                        <button opaque="NO" tag="151" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qn-cZ-GOY">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
-                                                            <state key="normal" backgroundImage="combobox_gold">
+                                                            <state key="normal" backgroundImage="combobox_gold_disalbed">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <state key="selected" backgroundImage="combobox_gold"/>
+                                                            <connections>
+                                                                <action selector="selectYearButtonTapped:" destination="7B2-Fp-fOE" eventType="touchUpInside" id="G4a-fv-I50"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="113" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irR-6r-Qhl">
                                                             <rect key="frame" x="12" y="10" width="44" height="16"/>
@@ -2279,15 +2301,6 @@ IAo
                                                         <constraint firstItem="5qn-cZ-GOY" firstAttribute="leading" secondItem="Uyg-yK-MBN" secondAttribute="leading" id="wcP-Oh-T8J"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-hV-g6J">
-                                                    <rect key="frame" x="94" y="4" width="80" height="35"/>
-                                                    <state key="normal" backgroundImage="combobox_gold">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="selectMonthButtonTapped" destination="7B2-Fp-fOE" eventType="touchUpInside" id="0I1-az-gEo"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2334,26 +2347,9 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG">
-                                                    <rect key="frame" x="259" y="5" width="161" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" id="m4C-Dv-z0d"/>
-                                                        <constraint firstAttribute="height" constant="35" id="uyp-Df-soL"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="m4C-Dv-z0d"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="ufJ-Kw-srp"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp">
-                                                    <rect key="frame" x="425" y="5" width="161" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Uc-9Vp" customClass="BeoneTextField" customModule="BEONE" customModuleProvider="target">
+                                                    <rect key="frame" x="425.5" y="5" width="160.5" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="PCi-kN-kEf"/>
                                                         <constraint firstAttribute="width" constant="46" id="ys2-YH-z3Y"/>
@@ -2370,8 +2366,9 @@ IAo
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="BRt-6c-MOH"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-yn-9CZ">
-                                                    <rect key="frame" x="94" y="5" width="161" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-yn-9CZ" customClass="BeoneTextField" customModule="BEONE" customModuleProvider="target">
+                                                    <rect key="frame" x="94" y="5" width="160.5" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="CMq-xj-5El"/>
                                                         <constraint firstAttribute="height" constant="35" id="GJv-OS-L14"/>
@@ -2386,6 +2383,25 @@ IAo
                                                     </variation>
                                                     <connections>
                                                         <outlet property="delegate" destination="7B2-Fp-fOE" id="9tL-Xh-zBq"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="M7T-Ab-QvG" customClass="BeoneTextField" customModule="BEONE" customModuleProvider="target">
+                                                    <rect key="frame" x="259.5" y="5" width="161" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" id="m4C-Dv-z0d"/>
+                                                        <constraint firstAttribute="height" constant="35" id="uyp-Df-soL"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="m4C-Dv-z0d"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="ufJ-Kw-srp"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -2444,6 +2460,7 @@ IAo
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앞 2자리" textAlignment="center" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="LH5-Ve-YJi">
                                                     <rect key="frame" x="94" y="4" width="64" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="Xd2-kI-45P"/>
                                                         <constraint firstAttribute="width" constant="64" id="bHC-h0-gn4"/>
@@ -2497,64 +2514,40 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imv-JE-1jI">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" 예) 900101" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="O7B-P2-iQq" customClass="BeoneTextField" customModule="BEONE" customModuleProvider="target">
                                                     <rect key="frame" x="94" y="5" width="492" height="35"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="Tcg-VD-N3V">
-                                                            <rect key="frame" x="0.0" y="0.0" width="492" height="35"/>
-                                                        </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" 예) 900101" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O7B-P2-iQq">
-                                                            <rect key="frame" x="4" y="0.0" width="484" height="35"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="46" id="Qs7-bA-sVl"/>
-                                                                <constraint firstAttribute="height" constant="35" id="gDd-jC-RfI"/>
-                                                                <constraint firstAttribute="width" constant="84" id="hJf-Fu-CHQ"/>
-                                                            </constraints>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="Qs7-bA-sVl"/>
-                                                                    <exclude reference="gDd-jC-RfI"/>
-                                                                    <exclude reference="hJf-Fu-CHQ"/>
-                                                                </mask>
-                                                            </variation>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="7B2-Fp-fOE" id="uay-O1-mad"/>
-                                                            </connections>
-                                                        </textField>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="centerY" secondItem="O7B-P2-iQq" secondAttribute="centerY" id="0b8-Uj-Eja"/>
-                                                        <constraint firstItem="O7B-P2-iQq" firstAttribute="leading" secondItem="Imv-JE-1jI" secondAttribute="leading" constant="4" id="7uK-Cp-cTA"/>
-                                                        <constraint firstItem="Tcg-VD-N3V" firstAttribute="top" secondItem="Imv-JE-1jI" secondAttribute="top" id="SWY-9w-OX3"/>
-                                                        <constraint firstAttribute="height" constant="35" id="azH-fc-5q9"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Tcg-VD-N3V" secondAttribute="trailing" id="dlz-an-jtj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="O7B-P2-iQq" secondAttribute="bottom" id="jN2-rH-LrR"/>
-                                                        <constraint firstItem="O7B-P2-iQq" firstAttribute="top" secondItem="Imv-JE-1jI" secondAttribute="top" id="m30-Y8-IbM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="O7B-P2-iQq" secondAttribute="trailing" constant="4" id="r19-gG-uAi"/>
-                                                        <constraint firstItem="Tcg-VD-N3V" firstAttribute="leading" secondItem="Imv-JE-1jI" secondAttribute="leading" id="rym-jj-rJy"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Tcg-VD-N3V" secondAttribute="bottom" id="uX2-YH-5au"/>
+                                                        <constraint firstAttribute="width" constant="46" id="Qs7-bA-sVl"/>
+                                                        <constraint firstAttribute="height" constant="35" id="Xb9-Wq-ifj"/>
+                                                        <constraint firstAttribute="height" constant="35" id="gDd-jC-RfI"/>
+                                                        <constraint firstAttribute="width" constant="84" id="hJf-Fu-CHQ"/>
                                                     </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="0b8-Uj-Eja"/>
+                                                            <exclude reference="Qs7-bA-sVl"/>
+                                                            <exclude reference="gDd-jC-RfI"/>
+                                                            <exclude reference="hJf-Fu-CHQ"/>
                                                         </mask>
                                                     </variation>
-                                                </view>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="uay-O1-mad"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="X5G-ma-ln0" firstAttribute="centerY" secondItem="Vfd-I0-aq2" secondAttribute="centerY" id="6Ad-f3-YN0"/>
-                                                <constraint firstItem="Imv-JE-1jI" firstAttribute="leading" secondItem="X5G-ma-ln0" secondAttribute="trailing" id="6LQ-Pz-G8G"/>
-                                                <constraint firstItem="Imv-JE-1jI" firstAttribute="centerY" secondItem="X5G-ma-ln0" secondAttribute="centerY" id="7Me-AG-D3p"/>
+                                                <constraint firstAttribute="trailing" secondItem="O7B-P2-iQq" secondAttribute="trailing" constant="14" id="8FM-3x-TfM"/>
                                                 <constraint firstItem="Vfd-I0-aq2" firstAttribute="top" secondItem="PHO-ac-hOp" secondAttribute="top" id="KBP-BC-Az7"/>
                                                 <constraint firstItem="X5G-ma-ln0" firstAttribute="leading" secondItem="PHO-ac-hOp" secondAttribute="leading" constant="14" id="KT9-dj-eNo"/>
+                                                <constraint firstItem="O7B-P2-iQq" firstAttribute="leading" secondItem="X5G-ma-ln0" secondAttribute="trailing" id="RbJ-8D-5Av"/>
+                                                <constraint firstItem="O7B-P2-iQq" firstAttribute="centerY" secondItem="PHO-ac-hOp" secondAttribute="centerY" id="c85-oG-hBH"/>
                                                 <constraint firstAttribute="centerY" secondItem="X5G-ma-ln0" secondAttribute="centerY" id="cw2-cb-r5Q"/>
                                                 <constraint firstItem="Vfd-I0-aq2" firstAttribute="leading" secondItem="PHO-ac-hOp" secondAttribute="leading" id="dbL-tF-CGI"/>
-                                                <constraint firstAttribute="trailing" secondItem="Imv-JE-1jI" secondAttribute="trailing" constant="14" id="eSB-bL-TDz"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vfd-I0-aq2" secondAttribute="bottom" id="oX8-yb-Bmd"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vfd-I0-aq2" secondAttribute="trailing" id="wU7-nu-br9"/>
                                             </constraints>
@@ -2576,53 +2569,6 @@ IAo
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_list" translatesAutoresizingMaskIntoConstraints="NO" id="XWI-r2-mdm">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUg-mb-6hZ">
-                                                    <rect key="frame" x="94" y="5" width="492" height="35"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-SA-O1b">
-                                                            <rect key="frame" x="0.0" y="0.0" width="492" height="35"/>
-                                                        </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="(선택) 카드별명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxz-cz-F29">
-                                                            <rect key="frame" x="4" y="0.0" width="484" height="35"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="35" id="4Jj-KA-zpb"/>
-                                                                <constraint firstAttribute="width" constant="84" id="FDS-ec-BX2"/>
-                                                                <constraint firstAttribute="width" constant="46" id="KOY-c2-ZJ4"/>
-                                                            </constraints>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="4Jj-KA-zpb"/>
-                                                                    <exclude reference="FDS-ec-BX2"/>
-                                                                    <exclude reference="KOY-c2-ZJ4"/>
-                                                                </mask>
-                                                            </variation>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="7B2-Fp-fOE" id="L0T-qi-1Ak"/>
-                                                            </connections>
-                                                        </textField>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="Jxz-cz-F29" firstAttribute="leading" secondItem="LUg-mb-6hZ" secondAttribute="leading" constant="4" id="HNW-PN-W3X"/>
-                                                        <constraint firstAttribute="trailing" secondItem="zNW-SA-O1b" secondAttribute="trailing" id="Kjh-sP-vl1"/>
-                                                        <constraint firstItem="zNW-SA-O1b" firstAttribute="top" secondItem="LUg-mb-6hZ" secondAttribute="top" id="Sdl-5K-ZJe"/>
-                                                        <constraint firstAttribute="centerY" secondItem="Jxz-cz-F29" secondAttribute="centerY" id="Tzs-Ba-QgB"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Jxz-cz-F29" secondAttribute="bottom" id="bNB-DP-EhG"/>
-                                                        <constraint firstItem="zNW-SA-O1b" firstAttribute="leading" secondItem="LUg-mb-6hZ" secondAttribute="leading" id="f2N-uG-3nD"/>
-                                                        <constraint firstAttribute="bottom" secondItem="zNW-SA-O1b" secondAttribute="bottom" id="fvX-L3-zKP"/>
-                                                        <constraint firstItem="Jxz-cz-F29" firstAttribute="top" secondItem="LUg-mb-6hZ" secondAttribute="top" id="gee-9p-kNG"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Jxz-cz-F29" secondAttribute="trailing" constant="4" id="lbi-Wh-rkA"/>
-                                                        <constraint firstAttribute="height" constant="35" id="mP6-Kb-rXk"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Tzs-Ba-QgB"/>
-                                                        </mask>
-                                                    </variation>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou2-j4-8X3">
                                                     <rect key="frame" x="14" y="14" width="80" height="18"/>
                                                     <constraints>
@@ -2632,7 +2578,7 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-3n-GGh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-3n-GGh">
                                                     <rect key="frame" x="94" y="44" width="184" height="43"/>
                                                     <string key="text">별명으로 카드를 구분하실 수 있습니다.
 예) 레저용 카드, 회사 법인카드
@@ -2641,21 +2587,42 @@ IAo
                                                     <color key="textColor" red="0.58431372550000005" green="0.51372549020000002" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="(선택) 카드별명" minimumFontSize="17" background="input" translatesAutoresizingMaskIntoConstraints="NO" id="Jxz-cz-F29" customClass="BeoneTextField" customModule="BEONE" customModuleProvider="target">
+                                                    <rect key="frame" x="94" y="5" width="492" height="35"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="4Jj-KA-zpb"/>
+                                                        <constraint firstAttribute="width" constant="84" id="FDS-ec-BX2"/>
+                                                        <constraint firstAttribute="width" constant="46" id="KOY-c2-ZJ4"/>
+                                                        <constraint firstAttribute="height" constant="35" id="ZD3-px-OVZ"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="4Jj-KA-zpb"/>
+                                                            <exclude reference="FDS-ec-BX2"/>
+                                                            <exclude reference="KOY-c2-ZJ4"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="7B2-Fp-fOE" id="L0T-qi-1Ak"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="LUg-mb-6hZ" firstAttribute="leading" secondItem="uBA-3n-GGh" secondAttribute="leading" id="1oY-bR-e64"/>
                                                 <constraint firstItem="XWI-r2-mdm" firstAttribute="top" secondItem="sl9-uw-dqf" secondAttribute="top" id="554-8h-Uj3"/>
+                                                <constraint firstItem="Jxz-cz-F29" firstAttribute="leading" secondItem="ou2-j4-8X3" secondAttribute="trailing" id="8NI-bh-XmU"/>
                                                 <constraint firstItem="XWI-r2-mdm" firstAttribute="leading" secondItem="sl9-uw-dqf" secondAttribute="leading" id="8a3-Av-2af"/>
                                                 <constraint firstAttribute="trailing" secondItem="XWI-r2-mdm" secondAttribute="trailing" id="BVm-tY-8PO"/>
+                                                <constraint firstItem="Jxz-cz-F29" firstAttribute="centerY" secondItem="ou2-j4-8X3" secondAttribute="centerY" id="Bwj-dh-Mqn"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jxz-cz-F29" secondAttribute="trailing" constant="14" id="HjD-me-o8q"/>
                                                 <constraint firstAttribute="centerY" secondItem="ou2-j4-8X3" secondAttribute="centerY" id="IdT-0l-yGF"/>
-                                                <constraint firstItem="uBA-3n-GGh" firstAttribute="top" secondItem="LUg-mb-6hZ" secondAttribute="bottom" constant="4" id="Vno-dY-GhD"/>
-                                                <constraint firstItem="LUg-mb-6hZ" firstAttribute="leading" secondItem="ou2-j4-8X3" secondAttribute="trailing" id="X8z-83-Miw"/>
                                                 <constraint firstItem="ou2-j4-8X3" firstAttribute="leading" secondItem="sl9-uw-dqf" secondAttribute="leading" constant="14" id="ctH-a2-azJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="LUg-mb-6hZ" secondAttribute="trailing" constant="14" id="fO0-s1-7UJ"/>
-                                                <constraint firstItem="LUg-mb-6hZ" firstAttribute="top" secondItem="sl9-uw-dqf" secondAttribute="top" constant="5" id="hqo-z1-BfJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="XWI-r2-mdm" secondAttribute="bottom" id="nKK-w3-drT"/>
-                                                <constraint firstItem="LUg-mb-6hZ" firstAttribute="centerY" secondItem="ou2-j4-8X3" secondAttribute="centerY" id="tad-U9-jqm"/>
+                                                <constraint firstItem="Jxz-cz-F29" firstAttribute="top" secondItem="sl9-uw-dqf" secondAttribute="top" constant="5" id="uzl-bk-dvY"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -3640,6 +3607,7 @@ IAo
         <image name="checkbox_off" width="35" height="35"/>
         <image name="checkbox_on" width="35" height="35"/>
         <image name="combobox_gold" width="29" height="35"/>
+        <image name="combobox_gold_disalbed" width="29" height="35"/>
         <image name="iconButtonChecked" width="24" height="19"/>
         <image name="icon_btn_add" width="12" height="12"/>
         <image name="image_address_cant_delivery" width="161" height="161"/>

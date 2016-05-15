@@ -223,10 +223,8 @@ extension UIViewController {
                               initialSelection: selectedIndex!,
                               doneBlock: { (actionSheet, selectedIndex, selectedString) -> Void in
                                 doneBlock?(actionSheet, selectedIndex, selectedString)
-                                sender?.selected = false
         }, cancelBlock: {(actionSheet) -> Void in
           cancelBlock?(actionSheet)
-          sender?.selected = false
         }, origin: view)
     
     actionSheet.showActionSheetPicker()
