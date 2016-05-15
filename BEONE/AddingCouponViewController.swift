@@ -4,11 +4,11 @@ import UIKit
 class AddingCouponViewController: BaseViewController {
   
   @IBOutlet weak var couponNumberTextField: UITextField!
-  @IBOutlet weak var couponTextFieldBackgroundImageView: UIImageView!
   
   let coupon = Coupon()
   
   @IBAction func postCouponButtonTapped() {
+    endEditing()
     if couponNumberTextField.text != nil && !(couponNumberTextField.text!.isEmpty) {
       coupon.serialNumber = couponNumberTextField.text
       coupon.post({ (_) -> Void in
@@ -33,11 +33,7 @@ class AddingCouponViewController: BaseViewController {
 
 extension AddingCouponViewController: UITextFieldDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-    couponTextFieldBackgroundImageView.image = UIImage(named: kInputActiveImageName)
+    textField.background = UIImage(named: kInputActiveImageName)
     return true
-  }
-  
-  func textFieldDidEndEditing(textField: UITextField) {
-    couponTextFieldBackgroundImageView.image = UIImage(named: kInputImageName)
   }
 }
