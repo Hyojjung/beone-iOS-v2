@@ -20,4 +20,17 @@ class Addresses: BaseListModel {
       }
     }
   }
+  
+  func removeRecentAddress() {
+    var recentAddressIndex: Int?
+    for (index, address) in (list as! [Address]).enumerate() {
+      if address.isRecent {
+        recentAddressIndex = index
+      }
+    }
+    if let recentAddressIndex = recentAddressIndex {
+      list.removeAtIndex(recentAddressIndex)
+      total -= 1
+    }
+  }
 }

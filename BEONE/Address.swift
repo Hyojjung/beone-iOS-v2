@@ -45,6 +45,7 @@ class Address: BaseModel {
   var jibunAddress: String?
   var detailAddress: String?
   var addressType: AddressType?
+  var isRecent = false
   
   override func postUrl() -> String {
     if let userId = MyInfo.sharedMyInfo().userId {
@@ -80,6 +81,9 @@ class Address: BaseModel {
       detailAddress = address[kAddressPropertyKeyDetailAddress] as? String
       receiverName = address[kAddressPropertyKeyName] as? String
       receiverPhone = address[kAddressPropertyKeyPhone] as? String
+      if let isRecent = address["isRecent"] as? Bool {
+        self.isRecent = isRecent
+      }
     }
   }
   

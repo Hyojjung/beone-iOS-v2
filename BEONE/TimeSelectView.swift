@@ -26,7 +26,7 @@ class TimeSelectView: UIView {
     for index in 0..<hourLineCount {
       addHourView(startDateTime.hour() + index)
     }
-    addBottomLayout(hourLines.last!, constant: 8)
+    addBottomLayout(hourLines.last!, constant: 24)
   }
   
   private func addHourSelectViews(timeRanges: [AvailableTimeRange], selectedTimeRange: AvailableTimeRange?, startDateTime: NSDate) {
