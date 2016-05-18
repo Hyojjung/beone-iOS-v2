@@ -221,7 +221,11 @@ extension NetworkHelper {
       param = parameter as! [String: AnyObject]
     }
     if param[kNetworkRequestKeyLocationId] == nil && !url.containsString(kNetworkRequestKeyLocationId) {
-      param[kNetworkRequestKeyLocationId] = BEONEManager.selectedLocation?.id
+      if let speedOrderLocationId = BEONEManager.speedOrderLocationId {
+        param[kNetworkRequestKeyLocationId] = speedOrderLocationId
+      } else {
+        param[kNetworkRequestKeyLocationId] = BEONEManager.selectedLocation?.id
+      }
     }
     
     networkManager.GET(url, parameters: param, success: { (operation, responseObject) -> Void in

@@ -28,7 +28,7 @@ class ProductCoupleView: UIView {
       originalPriceLabel.attributedText = product.priceAttributedString()
       summaryLabel.text = product.subtitle
       favoriteButton.selected = product.isFavorite()
-      soldOutView.hidden = !product.soldOut
+      soldOutView.configureAlpha(product.soldOut)
       productId = product.id
     }
   }

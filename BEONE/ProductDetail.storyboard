@@ -2580,7 +2580,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="107" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="배송 가능일" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-bO-QUc">
-                                                            <rect key="frame" x="98" y="73" width="488" height="11"/>
+                                                            <rect key="frame" x="98" y="73" width="488" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.59607843140000005" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2605,7 +2605,7 @@
                                                         <constraint firstItem="ToZ-bO-QUc" firstAttribute="leading" secondItem="VRW-34-Uhe" secondAttribute="leading" id="jYb-Fv-SmH"/>
                                                         <constraint firstItem="ToZ-bO-QUc" firstAttribute="top" secondItem="VRW-34-Uhe" secondAttribute="bottom" constant="14" id="je6-gx-K2J"/>
                                                         <constraint firstAttribute="bottom" secondItem="c7Q-Jy-zXC" secondAttribute="bottom" constant="16" id="r8X-Lp-dzy"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ToZ-bO-QUc" secondAttribute="bottom" constant="16" id="zMC-OP-WCg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ToZ-bO-QUc" secondAttribute="bottom" priority="750" constant="16" id="zMC-OP-WCg"/>
                                                         <constraint firstItem="VRW-34-Uhe" firstAttribute="top" secondItem="qCL-nt-Sts" secondAttribute="top" constant="19" id="zQJ-VM-1DW"/>
                                                     </constraints>
                                                     <variation key="default">
@@ -2719,7 +2719,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="72" id="Uj1-Kl-tUV"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="72" id="Uj1-Kl-tUV"/>
                                                         <constraint firstAttribute="trailing" secondItem="SOt-nD-tCK" secondAttribute="trailing" constant="15" id="bMY-v3-Znv"/>
                                                         <constraint firstItem="SOt-nD-tCK" firstAttribute="centerY" secondItem="FB4-lb-072" secondAttribute="centerY" id="gfB-7e-66v"/>
                                                     </constraints>
@@ -2956,7 +2956,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1P8-Fk-cRO" id="IGM-9q-OST">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

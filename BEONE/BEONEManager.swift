@@ -17,6 +17,8 @@ class BEONEManager: NSObject {
       CoreDataHelper.sharedCoreDataHelper.saveContext()
     }
   }
+  
+  static var speedOrderLocationId: Int? = nil
   static var sharedLocations = Locations()
   static var globalViewContents = GlobalViewContents()
   static var selectedAddress: Address?

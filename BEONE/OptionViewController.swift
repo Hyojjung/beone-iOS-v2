@@ -249,7 +249,6 @@ extension OptionViewController {
 // MARK: - DynamicHeightTableViewDelegate
 
 extension OptionViewController: DynamicHeightTableViewDelegate {
-  
   func cellIdentifier(indexPath: NSIndexPath) -> String {
     return kOptionTableViewCellIdentifiers[indexPath.section]
   }

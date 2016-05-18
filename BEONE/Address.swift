@@ -100,6 +100,24 @@ class Address: BaseModel {
     parameter[kAddressPropertyKeyDetailAddress] = detailAddress
     return parameter
   }
+}
+
+extension Address {
+  func getLocationId(success: (Int) -> Void, failure: () -> Void) {
+    var parameter = [String: AnyObject]()
+    parameter["address"] = addressString()
+    parameter["addressType"] = addressType?.rawValue
+    
+    NetworkHelper.requestGet("locations", parameter: parameter, success: {(result) in
+      if let data = result[kNetworkResponseKeyData] as? [[String: AnyObject]],
+        location = data.first, locationId = location[kObjectPropertyKeyId] as? Int {
+        BEONEManager.speedOrderLocationId = locationId
+        success(locationId)
+      } else {
+        failure()
+      }
+    })
+  }
   
   func assign(address: [String: String]) {
     addressType = AddressType.addressType(with: address[kAddressPropertyKeyUserSelectedType])

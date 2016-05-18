@@ -10,8 +10,9 @@ class ProductCoupleTemplateCell: TemplateCell {
   weak var favoriteProductDelegate: FavoriteProductDelegate?
 
   func configureView(products: [Product]) {
-    firstProductView.configureView(products.first)
     secondProductView.configureAlpha(products.count > 1)
+
+    firstProductView.configureView(products.first)
     if products.count > 1 {
       secondProductView.configureView(products.last)
     }

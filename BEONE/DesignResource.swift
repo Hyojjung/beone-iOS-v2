@@ -36,9 +36,6 @@ extension UILabel {
 
 extension UIView {
   func configureAlpha(condition: Bool) {
-    alpha = condition ? 1 : 0
-    if let button = self as? UIButton {
-      button.enabled = condition
-    }
+    hidden = condition ? false : true
   }
 }

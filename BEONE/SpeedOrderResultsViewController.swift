@@ -13,22 +13,31 @@ class SpeedOrderResultsViewController: BaseViewController {
   var address: Address?
   var availableDates: [String]?
   var productPropertyValueIds: [Int]?
-
+  
   var contentViews = [UIView]()
   var products = Products()
   
   override func setUpData() {
     super.setUpData()
-    products.isQuickOrder = true
-    products.address = address
-    products.availableDates = availableDates
-    products.productPropertyValueIds = productPropertyValueIds
-    products.get {
-      self.productsScrollViewPageControl.configureAlpha(!self.products.list.isEmpty)
-      self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1
-      self.setUpContentViews()
-      self.configureReviewLabels()
-    }
+    address?.getLocationId({ locationId in
+      self.products.isQuickOrder = true
+      self.products.locationId = locationId
+      self.products.availableDates = self.availableDates
+      self.products.productPropertyValueIds = self.productPropertyValueIds
+      self.products.get {
+        self.productsScrollViewPageControl.configureAlpha(!self.products.list.isEmpty)
+        self.productsScrollViewPageControl.numberOfPages = self.products.list.count + 1
+        self.setUpContentViews()
+        self.configureReviewLabels()
+      }
+      }, failure: {
+        ViewControllerHelper.topRootViewController()?.showAlertView("배송 가능한 지역이 아닙니다.")
+        self.popView()
+    })
+  }
+  
+  deinit {
+    BEONEManager.speedOrderLocationId = nil
   }
   
   private func setUpContentViews() {
