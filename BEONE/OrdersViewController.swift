@@ -115,8 +115,14 @@ extension OrdersViewController: AddintionalPaymentDelegate {
   
   func cancelOrder() {
     orderToOperate?.put({ (_) in
-      self.setUpData()
-    });
+        self.setUpData()
+      }, putFailure: { (error) in
+        if let responseObject = error.responseObject,
+        error = responseObject["error"] as? [String: AnyObject],
+          alert = error["alert"] as? String {
+          self.showAlertView(alert)
+        }
+    })
   }
 }
 

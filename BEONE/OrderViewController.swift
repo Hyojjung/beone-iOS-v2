@@ -173,10 +173,15 @@ extension OrderViewController {
     // 아닌 경우, 한 결제만 취소
     if let paymentInfo = paymentInfoToOperate{
       if paymentInfo.isMainPayment {
-        order.put({ (_) -> Void in
-          self.popView()
+        order.put({ (_) in
+          self.setUpData()
+          }, putFailure: { (error) in
+            if let responseObject = error.responseObject,
+              error = responseObject["error"] as? [String: AnyObject],
+              alert = error["alert"] as? String {
+              self.showAlertView(alert)
+            }
         })
-        
       } else {
         paymentInfoToOperate?.put({ (_) -> Void in
           self.setUpData()
