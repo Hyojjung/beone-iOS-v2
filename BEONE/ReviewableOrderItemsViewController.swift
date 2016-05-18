@@ -17,6 +17,7 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
   // MARK: - Variable
   
   var orderItems = OrderItems()
+  @IBOutlet weak var noReviewableItemLabel: UILabel!
   
   override func setUpView() {
     super.setUpView()
@@ -27,6 +28,7 @@ class ReviewableOrderItemsViewController: BaseTableViewController {
     super.setUpData()
     orderItems.get { 
       self.tableView.reloadData()
+      self.noReviewableItemLabel.configureAlpha(self.orderItems.total == 0)
     }
   }
   

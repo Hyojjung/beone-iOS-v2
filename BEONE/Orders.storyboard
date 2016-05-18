@@ -218,6 +218,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="noReviewableItemLabel" destination="0O1-GJ-Wy3" id="NGi-6o-LFH"/>
                         <outlet property="tableView" destination="08p-mR-THW" id="EJf-zS-e66"/>
                         <segue destination="k5N-JD-zP5" kind="show" identifier="From Review Order Items To Review" id="rCD-IZ-hPL"/>
                     </connections>
