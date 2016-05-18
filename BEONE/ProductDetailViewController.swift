@@ -97,10 +97,17 @@ class ProductDetailViewController: BaseViewController {
   override func setUpData() {
     super.setUpData()
     if product.id != nil {
-      product.get({
-        self.title = self.product.title
-        self.sendViewTitle()
-        self.setUpProductData()
+      product.get({ 
+          self.title = self.product.title
+          self.sendViewTitle()
+          self.setUpProductData()
+        }, failure: { (error) in
+          if error.statusCode == .NotFound {
+            let action = Action()
+            action.type = .Method
+            action.content = "popView"
+            ViewControllerHelper.topRootViewController()?.showAlertView("구매불가한 상품입니다.", confirmAction: action, delegate: self)
+          }
       })
       
       reviews.productId = product.id

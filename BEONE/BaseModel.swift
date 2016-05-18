@@ -17,6 +17,15 @@ class BaseModel: NSObject {
       }, failure: nil)
   }
   
+  func get(getSuccess: (() -> Void)? = nil, failure: (NetworkError) -> Void) {
+    NetworkHelper.requestGet(getUrl(), parameter: getParameter(), success: { (result) -> Void in
+      self.assignObject(result[kNetworkResponseKeyData])
+      getSuccess?()
+      }, failure: {(error) in
+        failure(error)
+    })
+  }
+  
   func getUrl() -> String {
     fatalError("Must Override")
   }
@@ -45,7 +54,7 @@ class BaseModel: NSObject {
     NetworkHelper.requestPost(postUrl(), parameter: postParameter(), success: { (result) -> Void in
       self.postSuccess(result)
       postSuccess?(result)
-      }, failure: {(error) -> Void in
+      }, failure: {(error) in
         postFailure?(error)
     })
   }
