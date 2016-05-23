@@ -135,9 +135,9 @@ extension SpeedOrderResultsViewController: UIScrollViewDelegate {
       reviewView.hidden = currentProduct.reviews.count != 0 ? false : true
       reviewCountLabel.text = "\(currentProduct.reviews.count)개의 유용한 후기가 있습니다"
       allShowButton.configureAlpha(false)
-      orderButton.alpha = 1
+      orderButton.hidden = false
     } else {
-      orderButton.alpha = 0
+      orderButton.hidden = true
       reviewView.hidden = true
       allShowButton.configureAlpha(true)
     }

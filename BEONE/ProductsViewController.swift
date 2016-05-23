@@ -174,8 +174,9 @@ extension ProductsViewController: FavoriteProductDelegate {
   
   func toggleFavoriteProduct(sender: UIView, productId: Int, isFavorite: Bool) {
     if !isFavorite {
-      products.list = products.list.filter { ($0 as! Product).id != productId  }
-      
+      if products.type == .Favorite {
+        products.list = products.list.filter { ($0 as! Product).id != productId  }
+      }
       self.tableView.reloadData()
     }
   }

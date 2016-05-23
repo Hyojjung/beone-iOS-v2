@@ -98,9 +98,9 @@ class AddressesViewController: BaseViewController {
     firstButton.configureAlpha(addresses.total > 0)
     secondButton.configureAlpha(addresses.total > 1)
     thirdButton.configureAlpha(addresses.total > 2)
-    newButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total - 1) * 50 + 14
-    firstButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total - 2) * 50 + 14
-    secondButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total - 3) * 50 + 14
+    newButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total) * 50 + 14
+    firstButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total - 1) * 50 + 14
+    secondButtonTrailingLayoutConstraint.constant = CGFloat(addresses.total - 2) * 50 + 14
   }
   
   private func setUpButtonsSelected() {
