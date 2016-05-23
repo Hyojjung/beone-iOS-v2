@@ -88,6 +88,7 @@ extension BaseViewController {
     view.backgroundColor = bgColor
     UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(backButtonOffset,
                                                                       forBarMetrics: .Default)
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
   }
   
   func setUpData() {
