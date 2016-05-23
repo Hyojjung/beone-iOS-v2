@@ -1,9 +1,9 @@
 
 import UIKit
 
-enum BillKeyType: Int {
-  case Personal
-  case Corporation
+enum BillKeyType: String {
+  case Personal = "person"
+  case Corporation = "corporate"
 }
 
 let kCentury21 = 2000
@@ -47,10 +47,11 @@ class BillKey: BaseModel {
   
   override func assignObject(data: AnyObject?) {
     if let billKey = data as? [String: AnyObject] {
+      print(data)
       id = billKey[kObjectPropertyKeyId] as? Int
       cardNumber = billKey["cardNumber"] as? String
       cardCompanyName = billKey["cardCompanyName"] as? String
-      if let cardType = billKey["cardType"] as? Int, billKeyType = BillKeyType(rawValue: cardType) {
+      if let cardType = billKey["cardType"] as? String, billKeyType = BillKeyType(rawValue: cardType) {
         self.type = billKeyType
       }
       if let desc = billKey[kObjectPropertyKeyDescription] as? String {

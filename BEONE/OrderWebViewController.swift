@@ -19,7 +19,7 @@ class OrderWebViewController: BaseViewController {
   
   func configureWebView() {
     if let order = order, paymentTypeId = paymentTypeId, paymentInfoId = paymentInfoId {
-      var url = "https://devapi.beone.kr/users/\(MyInfo.sharedMyInfo().userId!)"
+      var url = kBaseApiUrl + "users/\(MyInfo.sharedMyInfo().userId!)"
       url += "/orders/\(order.id!)/payment-infos/\(paymentInfoId)/transactions/new?paymentTypeId=\(paymentTypeId)"
       
       let orderWebViewUrlRequest = NSMutableURLRequest(URL: url.url())

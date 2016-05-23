@@ -93,6 +93,7 @@ class InquiryCell: UITableViewCell {
   @IBOutlet weak var answerLabel: UILabel!
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
+  @IBOutlet weak var reviewViewHeightLayoutConstraint: NSLayoutConstraint!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -100,23 +101,35 @@ class InquiryCell: UITableViewCell {
   }
   
   func calculatedHeight(inquiry: Inquiry) -> CGFloat {
-    var height = CGFloat(93)
-    
+    return contentViewHeight(inquiry) + answerViewHeight(inquiry)
+  }
+  
+  func contentLabelHeight(inquiry: Inquiry) -> CGFloat {
     let contentLabel = UILabel()
     contentLabel.font = UIFont.systemFontOfSize(15)
     contentLabel.text = inquiry.content
     contentLabel.setWidth(ViewControllerHelper.screenWidth - 66)
-    height += contentLabel.frame.height
-    
+    return  contentLabel.frame.height
+  }
+  
+  func contentViewHeight(inquiry: Inquiry) -> CGFloat {
+    var height = CGFloat(50)
+    height += contentLabelHeight(inquiry)
+    if inquiry.status == .Answered || inquiry.status == .BlindRequesting {
+      return height
+    }
+    return height + 54
+  }
+  
+  func answerViewHeight(inquiry: Inquiry) -> CGFloat {
     if inquiry.status == .Answered || inquiry.status == .BlindRequesting {
       let answerLabel = UILabel()
       answerLabel.font = UIFont.systemFontOfSize(15)
       answerLabel.text = inquiry.answer
       answerLabel.setWidth(ViewControllerHelper.screenWidth - 66)
-      height += answerLabel.frame.height
-      height += 50
+      return answerLabel.frame.height + 66
     }
-    return height
+    return 0
   }
   
   func configureCell(inquiry: Inquiry, shop: Shop?) {
@@ -125,6 +138,7 @@ class InquiryCell: UITableViewCell {
     } else {
       replyView.addConstraint(heightConstraint)
     }
+    reviewViewHeightLayoutConstraint.constant = contentViewHeight(inquiry)
     emailLabel.text = inquiry.userEmail
     contentLabel.text = inquiry.content
     shopLabel.text = shop?.name

@@ -388,7 +388,6 @@
                                                     <rect key="frame" x="231" y="13" width="138" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="138" id="5qS-v6-jaV"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="138" id="gEx-un-FqK"/>
                                                         <constraint firstAttribute="height" constant="28" id="vL4-8X-Gwj"/>
                                                     </constraints>
                                                 </imageView>
@@ -475,6 +474,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="9N0-kW-mZB"/>
                                                     <exclude reference="STB-MW-MTj"/>
                                                 </mask>
                                             </variation>

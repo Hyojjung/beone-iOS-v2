@@ -31,8 +31,12 @@ class SpeedOrderResultsViewController: BaseViewController {
         self.configureReviewLabels()
       }
       }, failure: {
-        ViewControllerHelper.topRootViewController()?.showAlertView("배송 가능한 지역이 아닙니다.")
-        self.popView()
+        let action = Action()
+        action.type = .Method
+        action.content = "popView"
+        ViewControllerHelper.topRootViewController()?.showAlertView("배송 가능한 지역이 아닙니다.",
+          confirmAction: action,
+          delegate: self)
     })
   }
   
