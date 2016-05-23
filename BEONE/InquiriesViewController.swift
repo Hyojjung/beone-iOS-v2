@@ -4,7 +4,7 @@ import UIKit
 class InquiriesViewController: BaseTableViewController {
   
   @IBOutlet weak var noInquiryLabel: UILabel!
-
+  
   let inquiries: Inquiries = {
     let inquiries = Inquiries()
     return inquiries
@@ -36,8 +36,8 @@ class InquiriesViewController: BaseTableViewController {
   
   @IBAction func deleteInquiryButtonTapped(sender: UIButton) {
     if let inquiry = inquiries.model(sender.tag) as? Inquiry {
-      inquiry.remove({ 
-        self.inquiries.get({ 
+      inquiry.remove({
+        self.inquiries.get({
           self.tableView.reloadData()
         })
       })
@@ -47,7 +47,7 @@ class InquiriesViewController: BaseTableViewController {
   @IBAction func addInquiryButtonTapped() {
     let inquiryEditViewController = InquiryEditViewController(nibName: "InquiryEditViewController", bundle: nil)
     inquiryEditViewController.productId = product?.id
-    showViewController(inquiryEditViewController, sender: nil)
+    showUserViewController(inquiryEditViewController)
   }
 }
 
@@ -115,10 +115,12 @@ class InquiryCell: UITableViewCell {
   func contentViewHeight(inquiry: Inquiry) -> CGFloat {
     var height = CGFloat(50)
     height += contentLabelHeight(inquiry)
-    if inquiry.status == .Answered || inquiry.status == .BlindRequesting {
-      return height
+    if inquiry.userId == MyInfo.sharedMyInfo().userId?.integerValue ||
+      !(inquiry.status == .Answered || inquiry.status == .BlindRequesting) {
+      return height + 54
+      
     }
-    return height + 54
+    return height
   }
   
   func answerViewHeight(inquiry: Inquiry) -> CGFloat {
