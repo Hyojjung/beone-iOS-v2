@@ -1995,7 +1995,7 @@
                                                         <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_star" highlightedImage="image_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-NC-IjZ">
                                                             <rect key="frame" x="112" y="40" width="19" height="19"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="Age-Vw-VRf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" verticalHuggingPriority="249" layoutMarginsFollowReadableWidth="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Age-Vw-VRf">
                                                             <rect key="frame" x="16" y="72" width="428" height="112"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.68627450980000004" green="0.59607843140000005" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

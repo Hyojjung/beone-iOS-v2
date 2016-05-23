@@ -281,12 +281,4 @@ extension UIViewController {
     orderWebViewController.paymentTypeId = paymentTypeId
     navigationController?.showViewController(orderWebViewController, sender: nil)
   }
-  
-  func showShopView(shopId: Int?) {
-    if let shopId = shopId {
-      let shopViewController = UIViewController.viewController(.Shop) as! ShopViewController
-      shopViewController.shop.id = shopId
-      showViewController(shopViewController, sender: nil)
-    }
-  }
 }

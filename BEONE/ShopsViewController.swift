@@ -71,15 +71,3 @@ extension ShopsViewController: DynamicHeightTableViewDelegate {
     return kShopCellIdentifier
   }
 }
-
-extension ShopsViewController: ShopTemplateCellDelegate {
-  
-  func shopButtonTapped(shopId: Int) {
-    for shop in shops.list as! [Shop] {
-      if shopId == shop.id {
-        showShopView(shop.id)
-        break
-      }
-    }
-  }
-}

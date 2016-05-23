@@ -1,10 +1,6 @@
 
 import UIKit
 
-protocol ShopTemplateCellDelegate: NSObjectProtocol {
-  func shopButtonTapped(shopId: Int)
-}
-
 class ShopTemplateCell: TemplateCell {
   
   @IBOutlet weak var shopImageView: LazyLoadingImageView!

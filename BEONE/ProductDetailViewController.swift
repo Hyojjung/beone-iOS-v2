@@ -318,7 +318,9 @@ extension ProductDetailViewController: UICollectionViewDelegate {
     case .Review, .MoreReview:
       performSegueWithIdentifier(kFromProductDetailToReviewSegueIdentifier, sender: nil)
     case .Shop:
-      showShopView(product.shop.id)
+      if let shopId = product.shop.id {
+        SchemeHelper.setUpScheme("current/shop/\(shopId)")
+      }
     default:
       break
     }
