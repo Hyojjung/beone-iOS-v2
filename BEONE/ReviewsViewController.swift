@@ -117,6 +117,7 @@ class ReviewCell: UITableViewCell {
     userNameLabel.text = review.userName
     createdAtLabel.text = review.createdAt?.briefDateString()
     createdAtLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
+    contentLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
     contentLabel.text = review.content
     
     for imageButton in imageButtons {

@@ -108,6 +108,7 @@ class CategoryCell: UITableViewCell {
   
   private func setLazyLoaingImage(imageView: LazyLoadingImageView, products: Products, index: Int) {
     let product = products.list.objectAtIndex(index) as? Product
+    imageView.image = UIImage(named: kimagePostThumbnail)
     imageView.setLazyLoaingImage(product?.mainImageUrl)
   }
 }

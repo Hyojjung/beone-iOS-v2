@@ -25,6 +25,7 @@ class ProductSingleTemplateCell: TemplateCell {
   
   func configureView(product: Product?) {
     if let product = product {
+      productImageView.image = UIImage(named: kimagePostThumbnail)
       productImageView.setLazyLoaingImage(product.mainImageUrl)
       productNameLabel.text = product.title
       productSubTitleLabel.text = product.subtitle

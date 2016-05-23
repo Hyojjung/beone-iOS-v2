@@ -32,8 +32,10 @@ class ShopTemplateCell: TemplateCell {
     setUpView(shop)
   }
   
-  private func setUpView(shop: Shop?) {
+  private func setUpView(shop:Shop?) {
     if let shop = shop {
+      shopImageView.image = UIImage(named: kimagePostThumbnail)
+      shopProfileImageView.image = UIImage(named: kimagePostThumbnail)
       shopImageView.setLazyLoaingImage(shop.backgroundImageUrl)
       shopProfileImageView.setLazyLoaingImage(shop.profileImageUrl)
       nameLabel.text = shop.name

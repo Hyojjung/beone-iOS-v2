@@ -195,7 +195,7 @@ class ReviewSummaryCell: ProductDetailCell {
     
     userNameLabel.text = review.userName
     createdAtLabel.text = review.createdAt?.briefDateString()
-    createdAtLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 32
+    contentLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 32
     contentLabel.text = review.content
     
     if let imageButtons = imageButtons {

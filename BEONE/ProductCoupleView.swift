@@ -22,6 +22,7 @@ class ProductCoupleView: UIView {
   
   func configureView(product: Product?) {
     if let product = product {
+      imageView.image = UIImage(named: kimagePostThumbnail)
       imageView.setLazyLoaingImage(product.mainImageUrl)
       nameLabel.text = product.title
       priceLabel.text = product.actualPrice.priceNotation(.English)

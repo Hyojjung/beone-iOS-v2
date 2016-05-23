@@ -30,6 +30,7 @@ class ProductDetailViewController: BaseViewController {
     case Shop
     case ReviewTitle
     case Review
+    case MoreReview
     case ButtonSpace
     case Count
   }
@@ -49,6 +50,7 @@ class ProductDetailViewController: BaseViewController {
     "shopCell",
     "reviewTitleCell",
     "reviewSection",
+    "moreReviewCell",
     "buttonSpaceCell"]
   
   @IBOutlet weak var collectionView: UICollectionView!
@@ -262,6 +264,8 @@ extension ProductDetailViewController {
       return product.productDetailHeaders.count
     } else if ProductDetailTableViewSection(rawValue: section) == .FooterDescription {
       return product.productDetailFooters.count
+    } else if ProductDetailTableViewSection(rawValue: section) == .MoreReview {
+      return reviews.total > 3 ? 1 : 0
     } else {
       return 1
     }
@@ -311,7 +315,7 @@ extension ProductDetailViewController: UICollectionViewDelegate {
       showWebView("policies/delivery", title: "배송/교환/환불안내")
     case .Inquiry:
       performSegueWithIdentifier("From Product Detail To Inquiry", sender: nil)
-    case .Review:
+    case .Review, .MoreReview:
       performSegueWithIdentifier(kFromProductDetailToReviewSegueIdentifier, sender: nil)
     case .Shop:
       showShopView(product.shop.id)
