@@ -86,7 +86,7 @@ class SearchViewController: BaseTableViewController {
         self.minPrices.append(minPriceItem)
         self.maxPrices.append(maxPriceItem)
       }
-
+      
       if self.minPrice == kDefaultMinPrice && self.minPrices.count > 0 {
         self.minPrice = self.minPrices.first!
       }
@@ -176,8 +176,7 @@ extension SearchViewController {
   
   func showSearhResultView() {
     if let searchResultViewController =
-      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kProductsViewIdentifier) as? ProductsViewController {
-      searchResultViewController.forSearchResult = true
+      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kSearchResultViewIdentifier) as? SearchResultViewController {
       searchResultViewController.selectedTagIds = selectedTagIds
       searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
       searchResultViewController.minPrice = minPrice
@@ -189,33 +188,34 @@ extension SearchViewController {
   func selectPrice(sender: UIButton, isMin: Bool, donBlock: (Int) -> Void) {
     let prices = isMin ? self.minPrices : self.maxPrices
     let price = isMin ? self.minPrice : self.maxPrice
-    
-    let rows = prices.map { (p: Int) -> String in
-      return "\(p / kPriceUnit)"
+    if !prices.isEmpty {
+      let rows = prices.map { (p: Int) -> String in
+        return "\(p / kPriceUnit)"
+      }
+      
+      let rowValueForPrice = "\(price / kPriceUnit)"
+      var initialSelection = rows.indexOf(rowValueForPrice)
+      
+      if initialSelection == nil {
+        initialSelection = isMin ?
+          0 :
+          rows.count - 1
+      }
+      
+      let actionSheetTitle = isMin ?
+        NSLocalizedString("select min price", comment: "action sheet title") :
+        NSLocalizedString("select max price", comment: "action sheet title")
+      showActionSheet(actionSheetTitle,
+                      rows: rows,
+                      initialSelection: initialSelection,
+                      sender: sender,
+                      doneBlock: { (_, _, selectedValue) -> Void in
+                        if let selectedValue = selectedValue as? String {
+                          donBlock(Int(selectedValue)! * kPriceUnit)
+                        }
+                        self.tableView.reloadData()
+      })
     }
-    
-    let rowValueForPrice = "\(price / kPriceUnit)"
-    var initialSelection = rows.indexOf(rowValueForPrice)
-    
-    if initialSelection == nil {
-      initialSelection = isMin ?
-        0 :
-        rows.count - 1
-    }
-    
-    let actionSheetTitle = isMin ?
-      NSLocalizedString("select min price", comment: "action sheet title") :
-      NSLocalizedString("select max price", comment: "action sheet title")
-    showActionSheet(actionSheetTitle,
-                    rows: rows,
-                    initialSelection: initialSelection,
-                    sender: sender,
-                    doneBlock: { (_, _, selectedValue) -> Void in
-                      if let selectedValue = selectedValue as? String {
-                        donBlock(Int(selectedValue)! * kPriceUnit)
-                      }
-                      self.tableView.reloadData()
-    })
   }
 }
 

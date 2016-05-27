@@ -186,8 +186,6 @@ extension SideBarViewController: UITableViewDataSource {
       cell.configureCell(sideBarViewContents.recentProducts.list[indexPath.row] as! Product)
     } else if let cell = cell as? AnniveraryCell {
       cell.setUpCell(sideBarViewContents.anniversary!)
-    } else if let cell = cell as? ButtonsCell {
-      cell.setUpCell(sideBarViewContents)
     }
     return cell
   }
@@ -199,7 +197,7 @@ extension SideBarViewController: UITableViewDataSource {
       sideBarViewContents.progressingOrderCount == 0 {
       return 0
     } else if section == SideBarTableViewSection.RecentProductsCount.rawValue &&
-      sideBarViewContents.progressingOrderCount != 0 {
+      sideBarViewContents.recentProducts.list.count == 0 {
       return 0
     } else if section == SideBarTableViewSection.RecentProduct.rawValue {
       return sideBarViewContents.recentProducts.list.count
@@ -240,9 +238,9 @@ extension SideBarViewController: DynamicHeightTableViewDelegate {
       return 130
     case .NoRecentProduct:
       if sideBarViewContents.anniversary == nil {
-        return ViewControllerHelper.screenHeight - 64 - 64 - 158 - 40
+        return ViewControllerHelper.screenHeight - 64 - 64 - 158
       } else {
-        return ViewControllerHelper.screenHeight - 64 - 64 - 158 - 40 - 130
+        return ViewControllerHelper.screenHeight - 64 - 64 - 158 - 130
       }
     default:
       return nil
@@ -457,11 +455,5 @@ class AnniveraryCell: UITableViewCell {
     leftDayLabel.text = anniversary.leftDayString()
     nameLabel.text = anniversary.name
     descriptionLabel.text = anniversary.desc
-  }
-}
-
-class ButtonsCell: UITableViewCell {
-  
-  func setUpCell(sideBarViewContents: SideBarViewContents) {
   }
 }

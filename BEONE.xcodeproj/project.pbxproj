@@ -97,6 +97,7 @@
 		6291469D1CB7CCF200989254 /* BeoneTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291469C1CB7CCF200989254 /* BeoneTextView.swift */; };
 		629A65AA1CCCC130009B68BD /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A65A91CCCC130009B68BD /* TemplatesViewController.swift */; };
 		629A65AC1CCCC1F8009B68BD /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */; };
+		62D5881B1CF7F51E008C20CC /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D5881A1CF7F51E008C20CC /* SearchResultViewController.swift */; };
 		62E5CF0E1BDDE19100A99F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */; };
 		62E5CF101BDDE19100A99F4C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */; };
 		62E5CF121BDDE19100A99F4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5CF111BDDE19100A99F4C /* SearchViewController.swift */; };
@@ -398,6 +399,7 @@
 		6291469C1CB7CCF200989254 /* BeoneTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeoneTextView.swift; sourceTree = "<group>"; };
 		629A65A91CCCC130009B68BD /* TemplatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
 		629A65AB1CCCC1F8009B68BD /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
+		62D5881A1CF7F51E008C20CC /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		62E5CF0A1BDDE19100A99F4C /* BEONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E5CF0D1BDDE19100A99F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E5CF0F1BDDE19100A99F4C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 				62EDA0711CD23ED900695E5E /* NetworkErrorViewController.xib */,
 				62E681531CE4F0EA0019B7AA /* AdvertisementViewController.swift */,
 				62E681541CE4F0EA0019B7AA /* AdvertisementViewController.xib */,
+				62D5881A1CF7F51E008C20CC /* SearchResultViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1669,6 +1672,7 @@
 				7388FA3C1C0341910015C3DF /* Reviews.swift in Sources */,
 				62EDA0891CD2623D00695E5E /* IDMPhotoBrowser.m in Sources */,
 				6291469D1CB7CCF200989254 /* BeoneTextView.swift in Sources */,
+				62D5881B1CF7F51E008C20CC /* SearchResultViewController.swift in Sources */,
 				622AE9781C646405009F1A50 /* OrderItemSetProgress.swift in Sources */,
 				73F629A41BF43892001EA72F /* ButtonTemplateCell.swift in Sources */,
 				62EDA08C1CD2623D00695E5E /* IDMZoomingScrollView.m in Sources */,

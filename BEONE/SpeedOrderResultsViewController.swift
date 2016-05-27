@@ -83,29 +83,28 @@ class SpeedOrderResultsViewController: BaseViewController {
 
 extension SpeedOrderResultsViewController {
   @IBAction func showAllProductsViewButtonTapped() {
-    if let productsViewController = UIViewController.viewController(.Products) as? ProductsViewController {
-      productsViewController.products = products
-      productsViewController.products.isQuickOrder = false
-      productsViewController.products.address = nil
-      productsViewController.products.availableDates = nil
-      productsViewController.products.productPropertyValueIds = nil
-      
-      productsViewController.forSearchResult = true
-      productsViewController.isSpeedOrder = true
+    if let searchResultViewController =
+      UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kSearchResultViewIdentifier) as? SearchResultViewController {
+      searchResultViewController.products = products
+      searchResultViewController.products.isQuickOrder = false
+      searchResultViewController.products.address = nil
+      searchResultViewController.products.availableDates = nil
+      searchResultViewController.products.productPropertyValueIds = nil
+      searchResultViewController.isSpeedOrder = true
       
       if let productPropertyValueIds = products.productPropertyValueIds {
-        productsViewController.selectedProductPropertyValueIds = productPropertyValueIds
+        searchResultViewController.selectedProductPropertyValueIds = productPropertyValueIds
       }
       if let tagIds = products.tagIds {
-        productsViewController.selectedTagIds = tagIds
+        searchResultViewController.selectedTagIds = tagIds
       }
       if let minPrice = products.minPrice {
-        productsViewController.minPrice = minPrice
+        searchResultViewController.minPrice = minPrice
       }
       if let maxPrice = products.maxPrice {
-        productsViewController.maxPrice = maxPrice
+        searchResultViewController.maxPrice = maxPrice
       }
-      showViewController(productsViewController, sender: nil)
+      showViewController(searchResultViewController, sender: nil)
     }
   }
   

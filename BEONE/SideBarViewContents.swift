@@ -31,6 +31,8 @@ class SideBarViewContents: BaseModel {
       }
       if let progressingOrderCount = sideBarViewContents["progressingOrderCount"] as? Int {
         self.progressingOrderCount = progressingOrderCount
+      } else {
+        self.progressingOrderCount = 0
       }
       
       orderDeliveryItemSets.removeAll()

@@ -78,7 +78,9 @@ class Option: BaseModel {
       optionString += " (+ \(price.priceNotation(.Korean)))"
     }
     for optionItem in optionItems {
-      optionString += " / \(optionItem.value!)"
+      if let value = optionItem.value {
+        optionString += " / \(value)"
+      }
     }
     return optionString
   }

@@ -24,13 +24,13 @@ let kHeaderAuthorizationKey = "x-beone-authorization"
 let kBOHeaderVersionKey = "x-beone-version"
 let kBOHeaderVersion = "v2.0"
 
-#if DEBUG
-let kBaseApiUrl = "https://staging-api.beone.kr/"
-let kBaseUrl = "https://staging-api.beone.kr/"
-#else
+//#if DEBUG
+//let kBaseApiUrl = "https://dev-api.beone.kr/"
+//let kBaseUrl = "https://dev-api.beone.kr/"
+//#else
 let kBaseApiUrl = "https://api.beone.kr/"
 let kBaseUrl = "https://api.beone.kr/"
-#endif
+//#endif
 
 enum NetworkErrorCode: Int {
   case TokenExpired = 1101
