@@ -129,8 +129,12 @@ extension Address {
     
     if let buildingName = address[kAddressPropertyKeyBuildingName], roadAddress = roadAddress, jibunAddress = jibunAddress {
       if !buildingName.isEmpty {
-        self.roadAddress = "\(roadAddress) (\(buildingName))"
-        self.jibunAddress = "\(jibunAddress) (\(buildingName))"
+        if !roadAddress.isEmpty {
+          self.roadAddress = "\(roadAddress) (\(buildingName))"
+        }
+        if !jibunAddress.isEmpty {
+          self.jibunAddress = "\(jibunAddress) (\(buildingName))"
+        }
       }
     }
   }
