@@ -42,15 +42,25 @@ class SpeedOrderAddressViewController: BaseViewController {
   @IBOutlet weak var firstButtonTrailingLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var secondButtonTrailingLayoutConstraint: NSLayoutConstraint!
   
+  // MARK: - Init & Deinit
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    needOftenUpdate = false
+  }
+  
   override func setUpView() {
     super.setUpView()
     setUpButtonsLayout()
+    setUpAddressView()
   }
   
   override func setUpData() {
     super.setUpData()
     addresses.get {
-      self.addresses.removeRecentAddress()
+      if let recentAddress = self.addresses.recentAddress() {
+        self.newAddress = recentAddress
+      }
       self.setUpButtonsLayout()
       self.setUpAddressView()
     }

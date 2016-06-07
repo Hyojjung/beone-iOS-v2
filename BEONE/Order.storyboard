@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -432,7 +432,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WA0-WI-LfF">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="993"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1024"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p5a-UD-OEZ" userLabel="TopView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
@@ -586,7 +586,7 @@
                                                             </mask>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="secretButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="bHU-Cj-0cD"/>
+                                                            <action selector="toggleButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="rFS-WJ-jci"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -638,10 +638,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEM-UO-gtj" userLabel="AddressView">
-                                                <rect key="frame" x="0.0" y="408" width="600" height="495"/>
+                                                <rect key="frame" x="0.0" y="408" width="600" height="526"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgAdressTopLine" translatesAutoresizingMaskIntoConstraints="NO" id="Lfg-Xm-xPT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="495"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="526"/>
                                                     </imageView>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I32-Fq-Ikt">
                                                         <rect key="frame" x="410" y="25" width="40" height="40"/>
@@ -700,7 +700,7 @@
                                                             </mask>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="sameButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="erb-Z9-0FN"/>
+                                                            <action selector="sameButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="wbh-0L-KJx"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문고객과 동일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RD8-Tv-bYp">
@@ -916,7 +916,7 @@
                                                         </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-k8-4To">
-                                                        <rect key="frame" x="10" y="359" width="580" height="100"/>
+                                                        <rect key="frame" x="10" y="390" width="580" height="100"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVW-IP-AXr">
                                                                 <rect key="frame" x="99" y="0.0" width="481" height="100"/>
@@ -986,10 +986,38 @@
                                                             <action selector="selectIndexButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="rUZ-Oe-YrB"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bht-Uo-1YS">
+                                                        <rect key="frame" x="467" y="347" width="31" height="31"/>
+                                                        <accessibility key="accessibilityConfiguration" label="sameButton"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="5Sw-h2-8pf"/>
+                                                            <constraint firstAttribute="width" constant="25" id="VOH-6H-9A7"/>
+                                                        </constraints>
+                                                        <state key="normal" image="checkboxRound">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="checkboxRoundChecked"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="5Sw-h2-8pf"/>
+                                                                <exclude reference="VOH-6H-9A7"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="toggleButtonTapped:" destination="tel-f9-qfU" eventType="touchUpInside" id="ZlH-lq-Rq0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 주소 저장" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5W-Ry-pbL">
+                                                        <rect key="frame" x="504" y="354" width="86" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="m9m-En-Y9z" firstAttribute="leading" secondItem="lEM-UO-gtj" secondAttribute="leading" constant="10" id="0r5-Cb-5I5"/>
+                                                    <constraint firstItem="bht-Uo-1YS" firstAttribute="top" secondItem="0qO-h1-UBs" secondAttribute="bottom" constant="8" id="4Ww-w7-KQU"/>
                                                     <constraint firstItem="LhD-9w-Sbj" firstAttribute="leading" secondItem="qFY-jI-laE" secondAttribute="trailing" constant="6" id="4f4-Xb-CE9"/>
                                                     <constraint firstItem="Lfg-Xm-xPT" firstAttribute="leading" secondItem="lEM-UO-gtj" secondAttribute="leading" id="4l1-ka-swn"/>
                                                     <constraint firstAttribute="trailing" secondItem="p4H-3E-dNW" secondAttribute="trailing" constant="104" id="7XC-yD-xvD"/>
@@ -1003,7 +1031,8 @@
                                                     <constraint firstItem="RD8-Tv-bYp" firstAttribute="leading" secondItem="61K-g6-ld0" secondAttribute="trailing" constant="4" id="FJF-8z-GQT"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lfg-Xm-xPT" secondAttribute="trailing" id="Gbc-Ad-IeN"/>
                                                     <constraint firstAttribute="trailing" secondItem="Vg0-zZ-7hD" secondAttribute="trailing" constant="10" id="Gpk-vn-vEH"/>
-                                                    <constraint firstItem="nQU-k8-4To" firstAttribute="top" secondItem="0qO-h1-UBs" secondAttribute="bottom" constant="20" id="NOw-WH-pkq"/>
+                                                    <constraint firstItem="0qO-h1-UBs" firstAttribute="trailing" secondItem="W5W-Ry-pbL" secondAttribute="trailing" id="KL0-pb-pfw"/>
+                                                    <constraint firstItem="nQU-k8-4To" firstAttribute="top" secondItem="0qO-h1-UBs" secondAttribute="bottom" constant="51" id="NOw-WH-pkq"/>
                                                     <constraint firstItem="nQU-k8-4To" firstAttribute="leading" secondItem="lEM-UO-gtj" secondAttribute="leading" constant="10" id="Nzr-kK-Qs2"/>
                                                     <constraint firstItem="Lfg-Xm-xPT" firstAttribute="top" secondItem="lEM-UO-gtj" secondAttribute="top" id="PnY-gj-GNV"/>
                                                     <constraint firstItem="I32-Fq-Ikt" firstAttribute="top" secondItem="lEM-UO-gtj" secondAttribute="top" constant="25" id="VT2-MU-1Qg"/>
@@ -1022,6 +1051,8 @@
                                                     <constraint firstItem="QtA-cS-JIk" firstAttribute="top" secondItem="I32-Fq-Ikt" secondAttribute="bottom" constant="18" id="k55-gk-MrU"/>
                                                     <constraint firstItem="61K-g6-ld0" firstAttribute="leading" secondItem="lEM-UO-gtj" secondAttribute="leading" constant="10" id="kBC-qy-VkE"/>
                                                     <constraint firstItem="QtA-cS-JIk" firstAttribute="leading" secondItem="lEM-UO-gtj" secondAttribute="leading" constant="10" id="krH-4p-q19"/>
+                                                    <constraint firstItem="W5W-Ry-pbL" firstAttribute="leading" secondItem="bht-Uo-1YS" secondAttribute="trailing" constant="6" id="ktA-ss-kFn"/>
+                                                    <constraint firstItem="W5W-Ry-pbL" firstAttribute="centerY" secondItem="bht-Uo-1YS" secondAttribute="centerY" id="kxo-pP-2Uc"/>
                                                     <constraint firstAttribute="bottom" secondItem="nQU-k8-4To" secondAttribute="bottom" constant="36" id="ky9-Fb-Lae"/>
                                                     <constraint firstItem="p4H-3E-dNW" firstAttribute="centerY" secondItem="I32-Fq-Ikt" secondAttribute="centerY" id="m6G-PL-vIn"/>
                                                     <constraint firstItem="qFY-jI-laE" firstAttribute="centerY" secondItem="I32-Fq-Ikt" secondAttribute="centerY" id="mB5-3d-twE"/>
@@ -1041,7 +1072,7 @@
                                                 </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fln-ff-boY">
-                                                <rect key="frame" x="14" y="913" width="572" height="60"/>
+                                                <rect key="frame" x="14" y="944" width="572" height="60"/>
                                                 <accessibility key="accessibilityConfiguration" label="submitAddressButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="7rf-Wv-YH6"/>
@@ -1146,6 +1177,8 @@
                         <outlet property="receiverNameTextField" destination="aTk-yq-4bY" id="DpL-d8-jIe"/>
                         <outlet property="receiverPhoneTextField" destination="mFd-Y7-M5y" id="E76-It-D51"/>
                         <outlet property="sameButton" destination="61K-g6-ld0" id="PSL-wn-IPy"/>
+                        <outlet property="saveAddressButton" destination="bht-Uo-1YS" id="foS-HH-vFh"/>
+                        <outlet property="saveAddressLabel" destination="W5W-Ry-pbL" id="mV7-YO-4e0"/>
                         <outlet property="scrollView" destination="THs-1A-946" id="MCc-jX-csT"/>
                         <outlet property="secondAddressSelectButton" destination="qFY-jI-laE" id="yAJ-dL-l6R"/>
                         <outlet property="secondButtonTrailingLayoutConstraint" destination="Y3B-A2-Quo" id="1PZ-xP-nss"/>

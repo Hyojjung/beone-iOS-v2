@@ -1,5 +1,6 @@
 
 import UIKit
+import Mixpanel
 
 let kRequestUrlAuthentications = "authentications"
 
@@ -20,6 +21,7 @@ class AuthenticationHelper: NSObject {
     var parameter = [String: AnyObject]()
     parameter[kMyInfoPropertyKeyDeviceType] = kDeviceTypeiOS
     parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
+    parameter["uniqueToken"] = Mixpanel.sharedInstance().distinctId
     
     NetworkHelper.requestPost("device-infos", parameter: parameter,
       success: { (result) -> Void in
@@ -39,7 +41,7 @@ class AuthenticationHelper: NSObject {
       var parameter = [String: AnyObject]()
       parameter[kMyInfoPropertyKeyDeviceToken] = myInfo.deviceToken
       parameter[kAuthenticationPropertyKeyRefreshToken] = myInfo.refreshToken
-      
+
       NetworkHelper.requestPut("\(kRequestUrlAuthentications)/\(authenticationId)", parameter: parameter,
         success: { (result) -> Void in
           SigningHelper.saveMyInfo(result as? [String: AnyObject], isNewUserResponse: false)

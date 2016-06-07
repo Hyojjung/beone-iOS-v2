@@ -24,6 +24,8 @@ class OrderAddressViewController: BaseViewController {
   @IBOutlet weak var secondAddressSelectButton: UIButton!
   @IBOutlet weak var thirdAddressSelectButton: UIButton!
   @IBOutlet weak var findAddressButton: UIButton!
+  @IBOutlet weak var saveAddressButton: UIButton!
+  @IBOutlet weak var saveAddressLabel: UILabel!
   @IBOutlet weak var zipCodeTextFieldTrailingLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var newButtonTrailingLayoutConstraint: NSLayoutConstraint!
   @IBOutlet weak var firstButtonTrailingLayoutConstraint: NSLayoutConstraint!
@@ -64,14 +66,17 @@ class OrderAddressViewController: BaseViewController {
   override func setUpData() {
     super.setUpData()
     addresses.get {
+      if let recentAddress = self.addresses.recentAddress() {
+        self.newAddress = recentAddress
+      }
       if let selectedAddress = BEONEManager.selectedAddress {
-        if let addressId = selectedAddress.id, index = self.addresses.indexOfModel(with: addressId) { // if selected address is from stored addresses
+        if let addressId = selectedAddress.id, index = self.addresses.indexOfModel(with: addressId) {
+          // if selected address is from stored addresses
           self.selectedAddressIndex = index
         } else {
-          self.selectedAddressIndex = nil
           self.newAddress = selectedAddress
         }
-      } else if !self.addresses.list.isEmpty {
+      } else if !self.addresses.list.isEmpty && self.newAddress.addressType == nil {
         self.selectedAddressIndex = 0
       }
       self.setUpAddressButtons()
@@ -87,7 +92,7 @@ class OrderAddressViewController: BaseViewController {
 // MARK: - Action Methods
 
 extension OrderAddressViewController {
-  @IBAction func secretButtonTapped(sender: UIButton) {
+  @IBAction func toggleButtonTapped(sender: UIButton) {
     sender.selected = !sender.selected
   }
   
@@ -126,6 +131,9 @@ extension OrderAddressViewController {
                                             addressType: order.address.addressType!,
                                             getSuccess: { (cartItemIds) -> Void in
                                               if cartItemIds.hasEqualObjects(self.order.cartItemIds) {
+                                                if self.saveAddressButton.selected && self.selectedAddressIndex == nil {
+                                                  self.newAddress.post()
+                                                }
                                                 self.performSegueWithIdentifier("From Order Address To Order", sender: nil)
                                               } else {
                                                 self.performSegueWithIdentifier("From Order Address To Invalid Address", sender: cartItemIds)
@@ -197,6 +205,8 @@ extension OrderAddressViewController {
     
     findAddressButton.configureAlpha(selectedAddressIndex == nil)
     zipCodeTextFieldTrailingLayoutConstraint.constant = selectedAddressIndex == nil ? 146 : 10
+    saveAddressButton.configureAlpha(selectedAddressIndex == nil)
+    saveAddressLabel.configureAlpha(selectedAddressIndex == nil)
   }
   
   private func makeAllInputsDefaultBackground() {

@@ -34,6 +34,7 @@ class AddressesViewController: BaseViewController {
   override func setUpData() {
     super.setUpData()
     addresses.get {
+      self.addresses.recentAddress()
       if self.addresses.total >= self.kMaxAddressCount {
         self.selectedAddressIndex = 0
       }

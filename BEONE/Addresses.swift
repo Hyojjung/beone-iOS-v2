@@ -21,18 +21,14 @@ class Addresses: BaseListModel {
     }
   }
   
-  func removeRecentAddress() {
-    if total > 3 {
-      var recentAddressIndex: Int?
-      for (index, address) in (list as! [Address]).enumerate() {
-        if address.isRecent {
-          recentAddressIndex = index
-        }
-      }
-      if let recentAddressIndex = recentAddressIndex {
-        list.removeAtIndex(recentAddressIndex)
-        total -= 1
+  func recentAddress() -> Address? {
+    for address in list as! [Address] {
+      if address.isRecent {
+        list.removeObject(address)
+        total -= 1 // remove recent address from address list
+        return address
       }
     }
+    return nil
   }
 }

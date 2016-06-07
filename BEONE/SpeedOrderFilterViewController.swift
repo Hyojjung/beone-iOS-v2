@@ -77,7 +77,7 @@ class SpeedOrderFilterViewController: BaseTableViewController {
       }
     }
     addresses.get {
-      self.address = self.addresses.list.first as? Address
+      self.address = self.addresses.recentAddress()
       self.tableView.reloadData()
     }
   }
