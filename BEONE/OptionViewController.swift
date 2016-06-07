@@ -375,7 +375,6 @@ extension OptionViewController: UITextViewDelegate {
 }
 
 extension OptionViewController: SchemeDelegate {
-  
   func handleScheme(with id: Int) {
     product.id = id
     setUpData()

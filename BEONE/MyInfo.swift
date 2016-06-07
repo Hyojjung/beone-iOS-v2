@@ -64,6 +64,7 @@ class MyInfo: NSManagedObject {
       properties[kMixpanelKeyName] = name
       properties[kMixpanelKeyEmail] = email
       properties[kMixpanelKeyPhone] = phone
+      properties[kMixpanelKeyUserId] = userId
       properties[kMixpanelKeyGender] = gender
       properties[kMixpanelKeyBirthday] = birthday?.briefDateString()
       Mixpanel.sharedInstance().people.set(properties)

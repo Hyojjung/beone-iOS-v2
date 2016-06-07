@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     gai.trackUncaughtExceptions = true
 #endif
     
-    
 #if DEBUG
     let mixpanel = Mixpanel.sharedInstanceWithToken("5664ab63c207a56807d11dc603c7502b")
 #else

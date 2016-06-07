@@ -113,6 +113,8 @@ extension TemplatesViewController: DynamicHeightTableViewDelegate {
     } else if cellIdentifier == kButtonTemplateCellIdentifier && template.content.imageUrl == nil {
       if let textSize = template.content.textSize {
         return textSize + template.verticalMargin() + template.content.padding.top + template.content.padding.bottom
+      } else if template.content.imageUrl != nil {
+        return template.content.ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
       }
     } else if cellIdentifier == kBannerTemplateCellIdentifier {
       return template.content.ratio * ViewControllerHelper.screenWidth + template.verticalMargin()
