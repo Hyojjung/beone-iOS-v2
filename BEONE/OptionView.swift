@@ -4,7 +4,6 @@ import UIKit
 class OptionView: UIView {
   
   weak var delegate: AnyObject?
-  weak var textViewDelegate: UITextViewDelegate?
   
   func layoutView(productOptionSets: ProductOptionSets) {
     subviews.forEach { $0.removeFromSuperview() }
@@ -51,9 +50,6 @@ class OptionView: UIView {
     switch optionItem.type {
     case .Text:
       optionItemView = UIView.loadFromNibName("OptionTextView") as! OptionTypeView
-      let optionTextView = optionItemView as! OptionTextView
-      optionTextView.textViewDelegate = textViewDelegate
-      
     case .String:
       optionItemView = UIView.loadFromNibName("OptionStringView") as! OptionTypeView
     case .Select:

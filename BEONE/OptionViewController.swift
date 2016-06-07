@@ -189,6 +189,7 @@ extension OptionViewController {
   }
   
   func addCartItem(needPost: Bool = false) {
+    endEditing()
     if let validationMessage = selectedOption?.validationMessage() {
       showAlertView(validationMessage)
     } else if let selectedProductOrderableInfo = selectedProductOrderableInfo {
@@ -271,7 +272,6 @@ extension OptionViewController: DynamicHeightTableViewDelegate {
       cell.configureCell(cartItems[indexPath.row], indexPath: indexPath)
     } else if let cell = cell as? OptionCell {
       cell.delegate = self
-      cell.textViewDelegate = self
       cell.configureCell(selectedOption)
     }
   }
@@ -370,6 +370,15 @@ extension OptionViewController: UITextViewDelegate {
       let optionItem = selectedOptionItem(optionId)
       optionItem.value = textView.text
       textView.isModiFying = !(textView.text == kEmptyString || textView.text == nil)
+    }
+  }
+}
+
+extension OptionViewController: UITextFieldDelegate {
+  func textFieldDidEndEditing(textField: UITextField) {
+    if let optionStringView = textField.superview as? OptionStringView, optionId = optionStringView.optionId  {
+      let optionItem = selectedOptionItem(optionId)
+      optionItem.value = textField.text
     }
   }
 }

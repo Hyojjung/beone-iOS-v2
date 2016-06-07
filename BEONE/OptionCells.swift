@@ -77,7 +77,6 @@ class ButtonCell: UITableViewCell {
 class OptionCell: UITableViewCell {
   
   weak var delegate: AnyObject?
-  weak var textViewDelegate: UITextViewDelegate?
   
   @IBOutlet weak var optionView: OptionView!
   @IBOutlet weak var optionViewBottomMarginLayoutConstraint: NSLayoutConstraint!
@@ -85,7 +84,6 @@ class OptionCell: UITableViewCell {
   func configureCell(productOptionSets: ProductOptionSets?) {
     if let productOptionSets = productOptionSets {
       optionView.delegate = delegate
-      optionView.textViewDelegate = textViewDelegate
       optionView.layoutView(productOptionSets)
     }
   }
