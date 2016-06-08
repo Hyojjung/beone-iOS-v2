@@ -118,6 +118,7 @@ class ProductDetailViewController: BaseViewController {
         self.product.reviews = self.reviews.list as! [Review]
         self.collectionView.reloadData()
       }
+      showingLoadingView = false
     }
   }
   
@@ -158,7 +159,6 @@ class ProductDetailViewController: BaseViewController {
 }
 
 extension ProductDetailViewController {
-
   @IBAction func backButtonTapped() {
     popView()
   }

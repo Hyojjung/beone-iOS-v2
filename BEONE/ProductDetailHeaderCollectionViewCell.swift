@@ -63,7 +63,6 @@ extension ProductDetailHeaderCollectionViewCell: XLCCycleScrollViewDelegate {
 // MARK: IB Actions
 
 extension ProductDetailHeaderCollectionViewCell {
-  
   @IBAction func favoriteButtonTapped(sender: UIButton) {
     if let product = self.product {
       if let productId = product.id {

@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
   var needOftenUpdate = true
   var dataLoaded = false
   var needHandleScheme = true
+  var showingLoadingView = true
   
   lazy var loadingView: LoadingView = {
     let loadingView = LoadingView()
@@ -154,7 +155,8 @@ extension BaseViewController {
   }
   
   func startIndicator() {
-    if !dataLoaded {
+    if !dataLoaded && showingLoadingView &&
+      (self == ViewControllerHelper.topMostViewController() || self is SideBarViewController) {
       loadingView.show()
     }
   }

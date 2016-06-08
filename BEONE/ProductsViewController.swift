@@ -43,6 +43,7 @@ class ProductsViewController: BaseTableViewController {
     products.get {
       self.tableView.reloadData()
     }
+    showingLoadingView = false
   }
 }
 

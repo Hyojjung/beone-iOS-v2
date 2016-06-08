@@ -43,6 +43,7 @@ class TemplatesViewController: BaseTableViewController {
       favoriteProducts.get {
         self.tableView.reloadData()
       }
+      showingLoadingView = false
     }
   }
 }
