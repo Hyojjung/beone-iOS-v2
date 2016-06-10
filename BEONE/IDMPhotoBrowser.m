@@ -10,7 +10,7 @@
 #import "IDMPhotoBrowser.h"
 #import "IDMZoomingScrollView.h"
 
-#import "pop/POP.h"
+@import pop;
 
 #ifndef IDMPhotoBrowserLocalizedStrings
 #define IDMPhotoBrowserLocalizedStrings(key) \

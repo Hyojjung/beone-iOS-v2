@@ -17,8 +17,3 @@ pod 'pop'
 pod 'Mixpanel'
 
 end
-
-target 'BEONETests' do
-
-end
-
