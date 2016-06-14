@@ -188,7 +188,7 @@ class OrderCell: UITableViewCell {
   
   func configureCell(order: Order, row: Int, addintionalPaymentDelegate: AddintionalPaymentDelegate) {
     createdAtLabel.text = order.createdAt?.briefDateString()
-    orderCodeLabel.text = order.orderCode
+    orderCodeLabel.text = "주문번호 " + order.orderCode!
     orderTitleLabel.text = order.title
     orderPriceLabel.text = order.actualPrice.priceNotation(.Korean)
     let orderableItem = order.orderableItemSets.first?.orderableItems.list.first as? OrderableItem

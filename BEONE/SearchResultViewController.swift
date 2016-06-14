@@ -14,8 +14,8 @@ class SearchResultViewController: ProductsViewController {
   
   var selectedProductPropertyValueIds = [Int]()
   var selectedTagIds = [Int]()
-  var minPrice = kDefaultMinPrice
-  var maxPrice = kDefaultMaxPrice
+  var minPrice: Int?
+  var maxPrice: Int?
   
   var productProperties = ProductProperties()
   var tags = Tags()
@@ -26,12 +26,6 @@ class SearchResultViewController: ProductsViewController {
   }
   
   override func setUpData() {
-    if (products.minPrice == nil) {
-      products.minPrice = minPrice
-      products.maxPrice = maxPrice
-      products.productPropertyValueIds = selectedProductPropertyValueIds
-      products.tagIds = selectedTagIds
-    }
     super.setUpData()
     
     if let productPropertyValueIds = products.productPropertyValueIds {
@@ -63,15 +57,21 @@ class SearchResultViewController: ProductsViewController {
                                                      tags: tags.list as! [Tag],
                                                      minPrice: minPrice,
                                                      maxPrice: maxPrice)
-    searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
+    if searchValueStrings.isEmpty {
+      searchValueLabel.text = "검색필터를 설정해주세요."
+    } else {
+      searchValueLabel.text = searchValueStrings.joinWithSeparator(" / ")
+    }
   }
   
   private func searchValueStrings(selectedProductPropertyValueIds: [Int], selectedTagIds: [Int],
-                                  productProperties: [ProductProperty], tags: [Tag], minPrice: Int, maxPrice: Int) -> [String] {
+                                  productProperties: [ProductProperty], tags: [Tag], minPrice: Int?, maxPrice: Int?) -> [String] {
     var searchValueStrings = [String]()
     
-    let priceString = "\(minPrice / kPriceUnit)~\(maxPrice / kPriceUnit)만원"
-    searchValueStrings.appendObject(priceString)
+    if let minPrice = minPrice, maxPrice = maxPrice {
+      let priceString = "\(minPrice / kPriceUnit) ~ \(maxPrice / kPriceUnit) 만원"
+      searchValueStrings.appendObject(priceString)
+    }
     
     for productProperty in productProperties {
       var productPropertyString = String()
