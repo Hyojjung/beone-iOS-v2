@@ -10,16 +10,12 @@ class SearchViewController: BaseTableViewController {
   private enum SearchTableViewSection: Int {
     case Price
     case Tag
-    case Usage
-    case MoreUsageButton
-    case Color
+    case ProductProperty
     case Count
   }
   
   private let kSearchTableViewCellIdentifiers = ["priceCell",
                                                  "searchPropertyCell",
-                                                 "searchPropertyCell",
-                                                 "moreUsageButtonCell",
                                                  "searchPropertyCell"]
   
   // MARK: - Property
@@ -123,6 +119,10 @@ class SearchViewController: BaseTableViewController {
         self.productCountLabel.text = "\(locationName)지역 \(self.products.total)개의 상품"
         }, completion: nil)
     }
+  }
+  
+  private func needShowingMore(productProperty: ProductProperty) -> Bool {
+    return !showingMore && productProperty.values.count > kPartialValuesCount && productProperty.displayType == .Name
   }
 }
 
@@ -229,12 +229,8 @@ extension SearchViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == SearchTableViewSection.MoreUsageButton.rawValue {
-      if let productProperty = productProperties.list.first as? ProductProperty {
-        if productProperty.values.count < kPartialValuesCount || showingMore {
-          return 0
-        }
-      }
+    if section == SearchTableViewSection.ProductProperty.rawValue {
+      return productProperties.list.count
     }
     return 1
   }
@@ -254,6 +250,7 @@ extension SearchViewController: UITableViewDataSource {
                            searchValues: productProperty.values,
                            selectedSearchValueIds: selectedProductPropertyValueIds,
                            delegate: self,
+                           needMoreButton: needShowingMore(productProperties.list[indexPath.row] as! ProductProperty),
                            displayType: productProperty.displayType)
       }
     } else if let cell = cell as? SearchPriceCell {
@@ -264,17 +261,13 @@ extension SearchViewController: UITableViewDataSource {
   }
   
   private func productProperty(indexPath: NSIndexPath) -> ProductProperty? {
-    if indexPath.section == SearchTableViewSection.Usage.rawValue {
-      if let productProperty = productProperties.list.first as? ProductProperty {
-        if !showingMore && productProperty.values.count > kPartialValuesCount {
+    if indexPath.section == SearchTableViewSection.ProductProperty.rawValue {
+      if let productProperty = productProperties.list.objectAtIndex(indexPath.row) as? ProductProperty {
+        if needShowingMore(productProperty) {
           return productProperty.productPropertyWithPartValues()
         } else {
           return productProperty
         }
-      }
-    } else if indexPath.section == SearchTableViewSection.Color.rawValue {
-      if let productProperty = productProperties.list.last as? ProductProperty {
-        return productProperty
       }
     }
     return nil
@@ -287,19 +280,47 @@ extension SearchViewController: DynamicHeightTableViewDelegate {
   }
   
   func calculatedHeight(cell: UITableViewCell, indexPath: NSIndexPath) -> CGFloat? {
-    if let cell = cell as? SearchPropertyCell {
-      if indexPath.section == SearchTableViewSection.Tag.rawValue {
-        return cell.calculatedHeight(tags.list, subTitle: tags.desc)
-      } else if let productProperty = productProperty(indexPath) {
-        return cell.calculatedHeight(productProperty.values, subTitle: productProperty.desc,
-                                     displayType: productProperty.displayType)
-      }
-    } else if cell is SearchPriceCell {
-      return 180
-    } else if indexPath.section == SearchTableViewSection.MoreUsageButton.rawValue {
-      return 56
-    }
     return nil
+  }
+}
+
+extension SearchViewController {
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if indexPath.section == SearchTableViewSection.Price.rawValue {
+      return 180
+    } else if indexPath.section == SearchTableViewSection.Tag.rawValue {
+      return calculatedHeight(tags.list, subTitle: tags.desc)
+    } else if let productProperty = productProperty(indexPath) {
+      return calculatedHeight(productProperty.values,
+                                   subTitle: productProperty.desc,
+                                   needMoreButton: needShowingMore(productProperties.list[indexPath.row] as! ProductProperty),
+                                   displayType: productProperty.displayType)
+    }
+    return 0
+  }
+  
+  private func calculatedSubTitleHeight(description: String?) -> CGFloat {
+    let descriptionLabel = UILabel()
+    descriptionLabel.font = UIFont.systemFontOfSize(13)
+    descriptionLabel.text = description
+    descriptionLabel.setWidth(ViewControllerHelper.screenWidth - 24)
+    return descriptionLabel.frame.height
+  }
+  
+  private func calculatedHeight(searchValues: [BaseModel],
+                        subTitle: String?,
+                        needMoreButton: Bool = false,
+                        displayType: ProductPropertyDisplayType? = nil) -> CGFloat {
+    var height = 97 + Int(calculatedSubTitleHeight(subTitle))
+    let rowCount = (searchValues.count - 1) / kRowValueButtonCount + 1
+    let viewHeight = ProductPropertyViewHelper.buttonViewHeight(displayType)
+    height += rowCount * Int(viewHeight)
+    let verticalInterval = ProductPropertyViewHelper.buttonInterval(displayType)
+    height += (rowCount - 1) * Int(verticalInterval)
+    if needMoreButton {
+      height += 56
+    }
+    return CGFloat(height)
   }
 }
 
@@ -342,8 +363,15 @@ class SearchPriceCell: SearchFilterCell {
 class SearchPropertyCell: SearchFilterCell {
   
   @IBOutlet weak var valuesView: UIView!
+  @IBOutlet weak var moreButtonHeightLayoutConstraint: NSLayoutConstraint!
+  @IBOutlet weak var moreView: UIView!
   
-  func configureCell(name: String?, subTitle: String?, searchValues: [BaseModel], selectedSearchValueIds: [Int], delegate: AnyObject,
+  func configureCell(name: String?,
+                     subTitle: String?,
+                     searchValues: [BaseModel],
+                     selectedSearchValueIds: [Int],
+                     delegate: AnyObject,
+                     needMoreButton: Bool = false,
                      displayType: ProductPropertyDisplayType? = nil) {
     nameLabel.text = name
     subTitleLabel.text = subTitle
@@ -351,17 +379,9 @@ class SearchPropertyCell: SearchFilterCell {
     let productPropertyNameTypeValuesView = ProductPropertyValuesView()
     productPropertyNameTypeValuesView.layoutView(searchValues,
                                                  selectedSearchValueIds: selectedSearchValueIds, delegate: delegate, displayType: displayType)
+    moreButtonHeightLayoutConstraint.constant = needMoreButton ? 56 : 0
+    moreView.configureAlpha(needMoreButton)
     valuesView.addSubViewAndEdgeLayout(productPropertyNameTypeValuesView)
-  }
-  
-  func calculatedHeight(searchValues: [BaseModel], subTitle: String?, displayType: ProductPropertyDisplayType? = nil) -> CGFloat {
-    var height = 97 + Int(calculatedSubTitleHeight(subTitle))
-    let rowCount = (searchValues.count - 1) / kRowValueButtonCount + 1
-    let viewHeight = ProductPropertyViewHelper.buttonViewHeight(displayType)
-    height += rowCount * Int(viewHeight)
-    let verticalInterval = ProductPropertyViewHelper.buttonInterval(displayType)
-    height += (rowCount - 1) * Int(verticalInterval)
-    return CGFloat(height)
   }
 }
 
@@ -370,11 +390,4 @@ class SearchFilterCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var subTitleLabel: UILabel!
   
-  func calculatedSubTitleHeight(description: String?) -> CGFloat {
-    let descriptionLabel = UILabel()
-    descriptionLabel.font = UIFont.systemFontOfSize(13)
-    descriptionLabel.text = description
-    descriptionLabel.setWidth(ViewControllerHelper.screenWidth - 24)
-    return descriptionLabel.frame.height
-  }
 }
