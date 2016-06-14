@@ -78,9 +78,7 @@ class OptionViewController: BaseTableViewController {
   private func setUpProductDeliveryTypeNames() {
     deliveryTypeNames.removeAll()
     for productOrderableInfo in product.productOrderableInfos {
-      if let name = productOrderableInfo.deliveryType.name {
-        deliveryTypeNames.appendObject(name)
-      }
+      deliveryTypeNames.appendObject(productOrderableInfo.name())
     }
   }
   

@@ -55,7 +55,6 @@ class SearchViewController: BaseTableViewController {
   
   override func setUpData() {
     super.setUpData()
-    
     if let productPropertyValueIds = products.productPropertyValueIds {
       selectedProductPropertyValueIds = productPropertyValueIds
     }
@@ -120,7 +119,7 @@ class SearchViewController: BaseTableViewController {
   
   func changeProductCount() {
     if let locationName = BEONEManager.selectedLocation?.name {
-      UIView.transitionWithView(view, duration: 0.25, options: .TransitionCrossDissolve, animations: {
+      UIView.transitionWithView(self.productCountLabel, duration: 0.25, options: .TransitionCrossDissolve, animations: {
         self.productCountLabel.text = "\(locationName)지역 \(self.products.total)개의 상품"
         }, completion: nil)
     }
@@ -130,7 +129,6 @@ class SearchViewController: BaseTableViewController {
 // MARK: - Actions
 
 extension SearchViewController {
-  
   @IBAction func moreButtonTapped() {
     showingMore = true
     tableView.reloadData()
