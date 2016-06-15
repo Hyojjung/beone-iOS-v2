@@ -30,7 +30,7 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="5rM-1M-5pw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-bk-sQG">
                                 <rect key="frame" x="510" y="458" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -593,6 +593,9 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarOrders" translatesAutoresizingMaskIntoConstraints="NO" id="lYu-cO-XVV">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -665,6 +668,9 @@
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSidebarFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-wC-UKk">
                                                             <rect key="frame" x="25" y="22" width="44" height="44"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="31" y="30" width="44" height="44"/>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -837,29 +843,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="545" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEmptyContent" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-uN-5dA">
-                                                    <rect key="frame" x="218" y="36" width="108" height="108"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 구경하신 상품이 없네요! 예쁜 꽃을 즐겨보세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hB-2O-M92">
-                                                    <rect key="frame" x="132" y="156" width="282" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-Xf-plA">
+                                                    <rect key="frame" x="21" y="36" width="503" height="109"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEmptyContent" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-uN-5dA">
+                                                            <rect key="frame" x="212" y="0.0" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="Svq-eV-fIZ"/>
+                                                                <constraint firstAttribute="width" constant="80" id="Zoj-sT-wn9"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 구경하신 상품이 없네요! 예쁜 꽃을 즐겨보세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hB-2O-M92">
+                                                            <rect key="frame" x="0.0" y="92" width="503" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="2hB-2O-M92" secondAttribute="trailing" id="P1e-q0-10g"/>
+                                                        <constraint firstItem="CyX-uN-5dA" firstAttribute="centerX" secondItem="z2g-Xf-plA" secondAttribute="centerX" id="Spc-50-vZu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2hB-2O-M92" secondAttribute="bottom" id="StW-Xy-MOr"/>
+                                                        <constraint firstItem="CyX-uN-5dA" firstAttribute="top" secondItem="z2g-Xf-plA" secondAttribute="top" id="VjL-2E-vlY"/>
+                                                        <constraint firstItem="2hB-2O-M92" firstAttribute="centerX" secondItem="z2g-Xf-plA" secondAttribute="centerX" id="pJf-rH-8Zw"/>
+                                                        <constraint firstItem="2hB-2O-M92" firstAttribute="leading" secondItem="z2g-Xf-plA" secondAttribute="leading" id="q1k-yl-Qaz"/>
+                                                        <constraint firstItem="2hB-2O-M92" firstAttribute="top" secondItem="CyX-uN-5dA" secondAttribute="bottom" constant="12" id="vBN-DS-iSb"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="2hB-2O-M92" firstAttribute="top" secondItem="CyX-uN-5dA" secondAttribute="bottom" constant="12" id="AWb-bZ-vdP"/>
-                                                <constraint firstItem="2hB-2O-M92" firstAttribute="centerX" secondItem="0Yu-Sb-pHY" secondAttribute="centerX" id="Ltn-3M-BJR"/>
-                                                <constraint firstItem="CyX-uN-5dA" firstAttribute="centerX" secondItem="0Yu-Sb-pHY" secondAttribute="centerX" id="YVB-zA-Jfw"/>
-                                                <constraint firstItem="2hB-2O-M92" firstAttribute="centerY" secondItem="CyX-uN-5dA" secondAttribute="centerY" id="cfS-CB-rh5"/>
-                                                <constraint firstItem="CyX-uN-5dA" firstAttribute="centerY" secondItem="0Yu-Sb-pHY" secondAttribute="centerY" id="q0b-LY-BkQ"/>
+                                                <constraint firstItem="z2g-Xf-plA" firstAttribute="leading" secondItem="0Yu-Sb-pHY" secondAttribute="leadingMargin" constant="13" id="4q5-pA-bZ3"/>
+                                                <constraint firstItem="z2g-Xf-plA" firstAttribute="centerY" secondItem="0Yu-Sb-pHY" secondAttribute="centerY" id="XpA-dP-EFF"/>
+                                                <constraint firstItem="z2g-Xf-plA" firstAttribute="centerX" secondItem="0Yu-Sb-pHY" secondAttribute="centerX" id="a5l-af-e5P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="z2g-Xf-plA" secondAttribute="trailing" constant="13" id="fzy-7s-XDZ"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="cfS-CB-rh5"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
@@ -1683,7 +1702,7 @@
                                     <outlet property="delegate" destination="fZQ-LG-5eG" id="M7n-se-gUi"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-nm-TU0">
                                 <rect key="frame" x="510" y="458" width="83" height="83"/>
                                 <state key="normal" image="btnSpeedorder"/>
                                 <connections>
@@ -1903,9 +1922,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.72941176470000002" green="0.62745098040000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="48" y="85" width="37" height="17"/>
+                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMoreUser" translatesAutoresizingMaskIntoConstraints="NO" id="oDU-Sf-h38">
                                         <rect key="frame" x="85" y="85" width="30" height="30"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="52" y="51" width="30" height="30"/>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
