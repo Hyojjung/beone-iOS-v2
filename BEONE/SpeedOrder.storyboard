@@ -32,16 +32,16 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_quickorder_top.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jQr-2U-jnW">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바로주문" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xm-z9-zWl">
-                                                    <rect key="frame" x="274" y="62" width="52" height="18"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="" pointSize="15"/>
-                                                    <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="주문 가능하신 상품을 손쉽게" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PM9-Sz-vDx">
                                                     <rect key="frame" x="188" y="35" width="224" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <color key="textColor" red="0.56862745098039214" green="0.52156862745098043" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바로주문" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xm-z9-zWl">
+                                                    <rect key="frame" x="274" y="62" width="52" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -252,10 +252,10 @@
                                             <constraint firstAttribute="height" constant="60" id="JZg-Rw-H57"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="완료" backgroundImage="btnRectDarkgray">
+                                        <state key="normal" title="완료" backgroundImage="btnRectPcolor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" backgroundImage="btnRectDarkgrayPressed"/>
+                                        <state key="highlighted" backgroundImage="btnRectPcolorPressed"/>
                                         <connections>
                                             <action selector="showResultViewButtonTapped" destination="B7H-fM-z0d" eventType="touchUpInside" id="C6M-hp-BcA"/>
                                         </connections>
@@ -317,15 +317,15 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_quickorder_top.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-Zp-W8G">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="118"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="주소를 입력해 주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-0Y-5Ck">
-                                                <rect key="frame" x="217" y="35" width="166" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소를 입력해 주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUF-0Y-5Ck">
+                                                <rect key="frame" x="226" y="38" width="149" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <color key="textColor" red="0.56862745098039214" green="0.52156862745098043" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="해당지역에 배송가능한 제품을 추천해 드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGC-fp-Fz6">
-                                                <rect key="frame" x="166" y="59" width="267" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당지역에 배송가능한 제품을 추천해 드려요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGC-fp-Fz6">
+                                                <rect key="frame" x="169" y="62" width="262" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -338,7 +338,7 @@
                                             <constraint firstItem="MeC-Zp-W8G" firstAttribute="leading" secondItem="lCZ-1Q-p2x" secondAttribute="leading" id="R9I-rh-nmi"/>
                                             <constraint firstAttribute="trailing" secondItem="MeC-Zp-W8G" secondAttribute="trailing" id="ceH-vE-cZY"/>
                                             <constraint firstAttribute="height" constant="118" id="cz4-r0-TZC"/>
-                                            <constraint firstItem="gGC-fp-Fz6" firstAttribute="top" secondItem="eUF-0Y-5Ck" secondAttribute="bottom" id="hz2-Jh-Jcd"/>
+                                            <constraint firstItem="gGC-fp-Fz6" firstAttribute="top" secondItem="eUF-0Y-5Ck" secondAttribute="bottom" constant="3" id="hz2-Jh-Jcd"/>
                                             <constraint firstItem="eUF-0Y-5Ck" firstAttribute="centerX" secondItem="lCZ-1Q-p2x" secondAttribute="centerX" id="iDz-yV-3B0"/>
                                             <constraint firstItem="eUF-0Y-5Ck" firstAttribute="bottom" secondItem="lCZ-1Q-p2x" secondAttribute="centerY" id="s0f-Vm-Niq"/>
                                         </constraints>
@@ -515,10 +515,10 @@
                                             <constraint firstAttribute="height" constant="60" id="bvi-GU-hkE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="확인" backgroundImage="btnRectDarkgray">
+                                        <state key="normal" title="확인" backgroundImage="btnRectPcolor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" backgroundImage="btnRectDarkgrayPressed"/>
+                                        <state key="highlighted" backgroundImage="btnRectPcolorPressed"/>
                                         <connections>
                                             <action selector="selectAddressButtonTapped" destination="1KN-ux-hd3" eventType="touchUpInside" id="DBf-j0-l0V"/>
                                         </connections>
@@ -732,7 +732,6 @@
     <resources>
         <image name="bgCellUnderlineWhite" width="4" height="4"/>
         <image name="btnRectDarkgray" width="3" height="3"/>
-        <image name="btnRectDarkgrayPressed" width="3" height="3"/>
         <image name="btnRectPcolor" width="3" height="3"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btn_address_num_off" width="40" height="40"/>
