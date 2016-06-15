@@ -87,9 +87,6 @@ extension SpeedOrderResultsViewController {
       UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kSearchResultViewIdentifier) as? SearchResultViewController {
       searchResultViewController.products = products
       searchResultViewController.products.isQuickOrder = false
-      searchResultViewController.products.address = nil
-      searchResultViewController.products.availableDates = nil
-      searchResultViewController.products.productPropertyValueIds = nil
       searchResultViewController.isSpeedOrder = true
       
       if let productPropertyValueIds = products.productPropertyValueIds {

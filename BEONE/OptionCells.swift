@@ -19,7 +19,7 @@ class DeliveryInfoCell: UITableViewCell {
   
   func configureCell(productOrderableInfo: ProductOrderableInfo?) {
     selectedDeliveryNameLabel.text = productOrderableInfo == nil ?
-      NSLocalizedString("select delivery type", comment: "picker title") : productOrderableInfo?.deliveryType.name
+      NSLocalizedString("select delivery type", comment: "picker title") : productOrderableInfo?.name()
     if let productOrderableInfo = productOrderableInfo {
       availableDeliveryDatesLabel.text = productOrderableInfo.availableDatesString()
     } else {
@@ -52,7 +52,7 @@ class CartItemCountCell: UITableViewCell {
   
   func configureCell(cartItem: CartItem, indexPath: NSIndexPath) {
     selectedQuantityLabel.text = "\(cartItem.quantity)개"
-    deliveryTypeNameLabel.text = cartItem.productOrderableInfo.deliveryType.name
+    deliveryTypeNameLabel.text = cartItem.productOrderableInfo.name()
     optionLabel.text = cartItem.selectedOption?.optionString()
     optionLabel.preferredMaxLayoutWidth = ViewControllerHelper.screenWidth - 30
     quantitySelectButton.tag = indexPath.row

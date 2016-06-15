@@ -132,7 +132,7 @@ class CartOrderableItemCell: OrderableItemCell {
     productImageView.setLazyLoaingImage(orderableItem.product.mainImageUrl)
     productNameLabel.text = orderableItem.product.title
     productPriceLabel.attributedText = orderableItem.product.priceAttributedString()
-    deliveryPriceLabel.text = orderableItem.productOrderableInfo.price?.priceNotation(.KoreanFreeNotation)
+    deliveryPriceLabel.text = orderableItem.productOrderableInfo.price.priceNotation(.KoreanFreeNotation)
     productActualPriceLabel.text = orderableItem.product.actualPrice.priceNotation(.Korean)
     optionLabel.text = selectedOption?.optionString()
     optionKeyView.configureAlpha(selectedOption != nil && !selectedOption!.list.isEmpty)

@@ -18,7 +18,6 @@ class Products: BaseListModel {
   var minPrice: Int?
   var maxPrice: Int?
   var shopId: Int?
-  var address: Address?
   var productCategoryId: Int?
   lazy var locationId: Int? = {
     return BEONEManager.selectedLocation?.id
@@ -56,7 +55,6 @@ class Products: BaseListModel {
     case .Shop, .Category, .Recent:
       return nil
     case .Favorite:
-//      parameter["noData"] = noData
       return nil
     case .None:
       parameter["productPropertyValueIds"] = productPropertyValueIds
@@ -67,8 +65,6 @@ class Products: BaseListModel {
       parameter["noData"] = noData
       parameter["isQuickOrder"] = isQuickOrder
       parameter["availableDates"] = availableDates
-      parameter["address"] = address?.addressString()
-      parameter["addressType"] = address?.addressType?.rawValue
     }
     return parameter
   }
