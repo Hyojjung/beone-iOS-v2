@@ -255,7 +255,6 @@
                                         <state key="normal" title="완료" backgroundImage="btnRectPcolor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" backgroundImage="btnRectPcolorPressed"/>
                                         <connections>
                                             <action selector="showResultViewButtonTapped" destination="B7H-fM-z0d" eventType="touchUpInside" id="C6M-hp-BcA"/>
                                         </connections>

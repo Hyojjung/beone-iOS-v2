@@ -198,7 +198,7 @@ class UsageCell: UITableViewCell {
       usageLabel.text = usage.name
       usageLabel.font = UIFont.systemFontOfSize(20)
     } else {
-      usageLabel.text = NSLocalizedString("select usage", comment: "label text")
+      usageLabel.text = NSLocalizedString("usage", comment: "label text")
       usageLabel.font = UIFont.systemFontOfSize(15)
     }
   }
