@@ -582,9 +582,10 @@
                                     <constraint firstAttribute="height" constant="48" id="4mp-hK-LaB"/>
                                     <constraint firstAttribute="width" constant="170" id="weQ-hk-Z1J"/>
                                 </constraints>
-                                <state key="normal" title="모든 제품 보기">
+                                <state key="normal" title="모든 제품 보기" backgroundImage="btnRectPcolor90">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" backgroundImage="btnRectPcolor90Pressed"/>
                                 <connections>
                                     <action selector="showAllProductsViewButtonTapped" destination="Eie-xy-Rf5" eventType="touchUpInside" id="Afd-QM-Aie"/>
                                 </connections>
@@ -732,6 +733,8 @@
         <image name="bgCellUnderlineWhite" width="4" height="4"/>
         <image name="btnRectDarkgray" width="3" height="3"/>
         <image name="btnRectPcolor" width="3" height="3"/>
+        <image name="btnRectPcolor90" width="13" height="14"/>
+        <image name="btnRectPcolor90Pressed" width="13" height="14"/>
         <image name="btnRectPcolorPressed" width="3" height="3"/>
         <image name="btn_address_num_off" width="40" height="40"/>
         <image name="btn_address_num_on" width="40" height="40"/>
