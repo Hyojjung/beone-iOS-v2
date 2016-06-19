@@ -40,6 +40,7 @@ class ProductsViewController: BaseTableViewController {
     favoriteProducts.get {
       self.tableView.reloadData()
     }
+    products.noData = false
     products.get {
       self.tableView.reloadData()
     }
