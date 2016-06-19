@@ -88,19 +88,6 @@ extension SpeedOrderResultsViewController {
       searchResultViewController.products = products
       searchResultViewController.products.isQuickOrder = false
       searchResultViewController.isSpeedOrder = true
-      
-      if let productPropertyValueIds = products.productPropertyValueIds {
-        searchResultViewController.selectedProductPropertyValueIds = productPropertyValueIds
-      }
-      if let tagIds = products.tagIds {
-        searchResultViewController.selectedTagIds = tagIds
-      }
-      if let minPrice = products.minPrice {
-        searchResultViewController.minPrice = minPrice
-      }
-      if let maxPrice = products.maxPrice {
-        searchResultViewController.maxPrice = maxPrice
-      }
       showViewController(searchResultViewController, sender: nil)
     }
   }

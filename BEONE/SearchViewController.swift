@@ -106,6 +106,7 @@ class SearchViewController: BaseTableViewController {
     products.productPropertyValueIds = selectedProductPropertyValueIds
     products.tagIds = selectedTagIds
     products.locationId = BEONEManager.selectedLocation?.id
+    products.noData = true
     products.isQuickOrder = false
     products.get {
       self.dataLoaded = true
@@ -175,10 +176,7 @@ extension SearchViewController {
   func showSearhResultView() {
     if let searchResultViewController =
       UIViewController.viewController(kProductsStoryboardName, viewIdentifier: kSearchResultViewIdentifier) as? SearchResultViewController {
-      searchResultViewController.selectedTagIds = selectedTagIds
-      searchResultViewController.selectedProductPropertyValueIds = selectedProductPropertyValueIds
-      searchResultViewController.minPrice = minPrice
-      searchResultViewController.maxPrice = maxPrice
+      searchResultViewController.products = products
       navigationController?.showViewController(searchResultViewController, sender: nil)
     }
   }

@@ -27,7 +27,6 @@ class SearchResultViewController: ProductsViewController {
   
   override func setUpData() {
     super.setUpData()
-    
     if let productPropertyValueIds = products.productPropertyValueIds {
       selectedProductPropertyValueIds = productPropertyValueIds
     }
