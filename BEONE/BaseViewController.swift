@@ -55,6 +55,7 @@ class BaseViewController: UIViewController {
     addObservers()
   }
   
+  
   func sendViewTitle() {
     if let title = title {
       #if RELEASE
