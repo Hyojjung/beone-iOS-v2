@@ -15,5 +15,6 @@ pod 'DACircularProgress'
 pod 'QBImagePickerController'
 pod 'pop'
 pod 'Mixpanel'
+pod ‘Flurry-iOS-SDK/FlurrySDK’
 
 end
