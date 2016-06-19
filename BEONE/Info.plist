@@ -63,6 +63,8 @@
 	<string>1414064805578739</string>
 	<key>FacebookDisplayName</key>
 	<string>비밀의화원</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>KAKAO_APP_KEY</key>
 	<string>bd09094081fd6407c0d04e0415afaf7c</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -150,8 +152,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>
 </plist>
